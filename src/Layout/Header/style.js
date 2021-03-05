@@ -34,7 +34,7 @@ export const LogoName = styled.span`
 
 export const LogoSlogan = styled.span`
     display: block;
-    margin-left: auto;
+    text-align: right;
     font-size: 12px;
     color: ${colors.blacks.normal};
 `   

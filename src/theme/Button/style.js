@@ -14,4 +14,5 @@ export const ButtonComponent = styled.button`
     font-family: 'Fjalla One', sans-serif;
     text-transform: uppercase;
     color: #fff;
+    margin-bottom: 15px;
 ` 

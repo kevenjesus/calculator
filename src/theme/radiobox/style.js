@@ -4,9 +4,9 @@ import RadioBoxIcon from 'assets/icons/radio.svg'
 import radioBoxChecked from 'assets/icons/radio-checked.svg'
 
 export const LabelContainer = styled.label`
-    display: flex;
-    align-items: center;
+    display: inline-block;
     height: 30px;
+    margin: 0 20px 15px 0;
 ` 
 
 export const Text = styled.span`

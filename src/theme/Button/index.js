@@ -1,8 +1,8 @@
 import { ButtonComponent } from './style'
 
-const Button = ({children, variant = 'primary'}) => {
+const Button = ({children, variant = 'primary', ...rest}) => {
     return (
-        <ButtonComponent variant={variant}>
+        <ButtonComponent variant={variant} {...rest}>
             {children}
         </ButtonComponent>
     )

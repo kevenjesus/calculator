@@ -1,0 +1,9 @@
+export const YES = 1;
+export const NO = 0;
+export const IMPACTED_AREA = 1;
+export const AMOUNT_GOLD = 0;
+export const OPPORTUNITY_COST = 1;
+export const REPLACEMENT_COST_OF_AREA_RECOVERY = 0;
+export const DEFORESTATION = 1;
+export const MERCURY_IMPACTED = 2;
+export const PIT_DEPTH = 3;

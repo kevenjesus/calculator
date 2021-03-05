@@ -24,7 +24,7 @@ const Sidebar = ({visible, onClose}) => {
                     <Usa />
                     <LanguageLabel>English</LanguageLabel>
                 </Language>
-                <Menuitem>Ir para o site</Menuitem>
+                <Menuitem href="https://www.conservation-strategy.org/" target="_blank">Ir para o site</Menuitem>
             </Container>
             <Overlay visible={visible} onClick={onClose} />
         </>

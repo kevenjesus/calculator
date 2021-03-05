@@ -43,7 +43,8 @@ export const LanguageLabel = styled.span`
     margin-left: 10px;
 ` 
 
-export const Menuitem = styled.span`
+export const Menuitem = styled.a`
+    text-decoration: none;
     font-family: 'Fjalla One', sans-serif;
     font-size: 20px;
     text-transform: uppercase;
