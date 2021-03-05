@@ -15,4 +15,7 @@ export const Text = styled.h1`
 
 export const Img = styled.img`
     margin: 50px 0 0 -25px;
+    @media (min-width: 768px) {
+        width: 70%;
+    }
 ` 

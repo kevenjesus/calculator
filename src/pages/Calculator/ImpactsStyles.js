@@ -9,7 +9,7 @@ export const Container = styled.div`
 
 export const Menu = styled.aside`
     width: 100%;
-    padding: 26px 23px;
+    padding: 26px 15px;
     border: 1px solid #C2C2C2;
     margin-bottom: 25px;
 ` 
@@ -29,6 +29,10 @@ export const MenuItem = styled.a`
         margin-right: 10px;
         background: ${({active}) => active ? colors.primary : colors.blacks.normal};
         mask: url(${arrowRight}) center top no-repeat;
+    }
+
+    @media (min-width: 768px) {
+        font-size: 12px;
     }
 `
 
@@ -53,4 +57,14 @@ export const ButtonFixed = styled.div`
     left: 0;
     z-index: 1;
     display: ${({join}) => join ? 'flex' : 'block'};
+    @media (min-width: 768px) {
+        position: initial;
+        margin: 50px 0;
+    }
+` 
+
+export const HiddenSm = styled.div`
+    @media (min-width: 768px) {
+        display: none;
+    }
 ` 

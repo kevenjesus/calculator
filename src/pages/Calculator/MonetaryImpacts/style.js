@@ -20,4 +20,5 @@ export const MonetaryType = styled.small`
 export const Label = styled.label`
     font-size: 18px;
     font-weight: 700;
+    margin-bottom: 10px;
 ` 

@@ -49,4 +49,14 @@ export const BarMenu = styled.button`
     width: 25px;
     height: 25px;
     cursor: pointer;
+    @media (min-width: 768px) {
+        display: none;
+    }
 `
+
+export const MenuShow = styled.div`
+    display: none;
+    @media (min-width: 768px) {
+        display: flex;
+    }
+` 

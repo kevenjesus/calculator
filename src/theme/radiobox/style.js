@@ -5,8 +5,11 @@ import radioBoxChecked from 'assets/icons/radio-checked.svg'
 
 export const LabelContainer = styled.label`
     display: inline-block;
-    height: 30px;
+    height: 40px;
     margin: 0 20px 15px 0;
+    @media (min-width: 768px) {
+      margin: 8px 20px 0 0;
+    }
 ` 
 
 export const Text = styled.span`

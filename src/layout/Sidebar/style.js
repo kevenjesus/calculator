@@ -12,6 +12,9 @@ export const Container = styled.div`
     z-index: 2;
     padding: 15px;
     transition: right .2s;
+    @media (min-width: 768px) {
+        display: none;
+    }
 ` 
 
 export const Overlay = styled.div`
@@ -36,11 +39,17 @@ export const Language = styled.button`
     display: flex;
     align-items: center;
     margin-bottom: 15px;
+    @media (min-width: 768px) {
+        margin-right: 15px;
+    }
 ` 
 
 export const LanguageLabel = styled.span`
     font-size: 12px;
     margin-left: 10px;
+    @media (min-width: 768px) {
+        display: none;
+    }
 ` 
 
 export const Menuitem = styled.a`

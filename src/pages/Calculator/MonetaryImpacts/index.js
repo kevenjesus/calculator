@@ -3,11 +3,10 @@ import { Link, useHistory } from 'react-router-dom'
 import { Button, Checkbox } from 'theme'
 import { Grid, Row, Col } from 'react-flexbox-grid'
 import { OPPORTUNITY_COST, REPLACEMENT_COST_OF_AREA_RECOVERY, DEFORESTATION, MERCURY_IMPACTED, PIT_DEPTH } from 'pages/Calculator/Form/consts'
-import { Container, Menu, MenuItem, Headline, ButtonFixed } from 'pages/Calculator/ImpactsStyles'
+import { Container, Menu, MenuItem, Headline, ButtonFixed, HiddenSm } from 'pages/Calculator/ImpactsStyles'
 import { Monetary, MonetaryType, Label, FormGroup } from './style'
 import Alert from 'components/Alert'
 import Chart from 'components/Chart'
-
 
 const dataimpactCategories = [
     {
@@ -121,52 +120,59 @@ const MonetaryImpacts = () => {
     return (
         <Container>
             <Grid fluid>
-                <Menu>
-                    <Link to="/impacts/deforestation">
-                        <MenuItem>Desmatamento</MenuItem>
-                    </Link>
-                    <Link to="/impacts/silting-of-rivers">
-                        <MenuItem>Assoreamento dos rios</MenuItem>
-                    </Link>
-                    <Link to="/impacts/mercury-contamination">
-                        <MenuItem>Contaminação por mercúrio</MenuItem>
-                    </Link>
-                    <MenuItem active last>Impactos monetários</MenuItem>
-                    
-                </Menu>
-
-                <Headline>Impactos monetários</Headline>
                 <Row>
-                    <Col xs={12}>
-                        <FormGroup>
-                            <Label style={{marginBottom: 0}}>Valor total monetário</Label>
-                            <Monetary>R$ 1.500.000,00</Monetary>
-                            <MonetaryType>*Por 1000 gramas de ouro</MonetaryType>
-                        </FormGroup>
+                    <Col xs={12} sm={4}>
+                        <Menu>
+                            <Link to="/impacts/deforestation">
+                                <MenuItem>Desmatamento</MenuItem>
+                            </Link>
+                            <Link to="/impacts/silting-of-rivers">
+                                <MenuItem>Assoreamento dos rios</MenuItem>
+                            </Link>
+                            <Link to="/impacts/mercury-contamination">
+                                <MenuItem>Contaminação por mercúrio</MenuItem>
+                            </Link>
+                            <MenuItem active last>Impactos monetários</MenuItem>
+                        </Menu>
                     </Col>
-                    <Col xs={12}>
-                        <FormGroup>
-                            <Label>Método de valoração</Label>
-                            <select name="valuationMethod" value={valuatioMethod} onChange={handleValuationMethod}>
-                                <option value={OPPORTUNITY_COST}>Custo de oportunidade</option>
-                                <option value={REPLACEMENT_COST_OF_AREA_RECOVERY}>Custo de reposição ou recuperação de área</option>
-                            </select>
-                        </FormGroup>
-                    </Col>
-                    <Col xs={12}>
-                        <Label>Categorias de impacto</Label>
-                        <CheckboxConditional state={impactedCategories} setState={handleImpactedCategories} />
-                    </Col>
-                    <Col xs={12}>
-                        <Label>Visualização de impactos</Label>
-                        <CheckboxConditional state={impactedVisuaization} setState={handleImpactedVisualization} />
+                    <Col xs={12} sm={8}>
+                        <Headline>Impactos monetários</Headline>
+                        <Row>
+                            <Col xs={12} sm={6}>
+                                <FormGroup>
+                                    <Label>Método de valoração</Label>
+                                    <select name="valuationMethod" value={valuatioMethod} onChange={handleValuationMethod}>
+                                        <option value={OPPORTUNITY_COST}>Custo de oportunidade</option>
+                                        <option value={REPLACEMENT_COST_OF_AREA_RECOVERY}>Custo de reposição ou recuperação de área</option>
+                                    </select>
+                                </FormGroup>
+                            </Col>
+                            <Col xs={12} sm={6}>
+                                <FormGroup>
+                                    <Label>Valor total monetário</Label>
+                                    <Monetary>R$ 1.500.000,00</Monetary>
+                                    <MonetaryType>*Por 1000 gramas de ouro</MonetaryType>
+                                </FormGroup>
+                            </Col>
+                            
+                            <Col xs={12}>
+                                <Label>Categorias de impacto</Label>
+                                <CheckboxConditional state={impactedCategories} setState={handleImpactedCategories} />
+                            </Col>
+                            <HiddenSm>
+                                <Col xs={12}>
+                                    <Label>Visualização de impactos</Label>
+                                    <CheckboxConditional state={impactedVisuaization} setState={handleImpactedVisualization} />
+                                </Col>
+                            </HiddenSm>
+                        </Row>
+                        <HiddenSm>
+                            <Alert>
+                                É possivel apenas visualizar 4 impactos por vez no smartphone.
+                            </Alert>
+                        </HiddenSm>
                     </Col>
                 </Row>
-
-                <Alert>
-                É possivel apenas visualizar 4 impactos por vez no smartphone.
-                </Alert>
-
                 <Chart />
                 
                 <ButtonFixed join>

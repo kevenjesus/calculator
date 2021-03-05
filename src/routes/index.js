@@ -7,8 +7,8 @@ import SiltingOfRivers from 'pages/Calculator/SiltingOfRivers'
 import MercuryContamination from 'pages/Calculator/MercuryContamination'
 import MonetaryImpacts from 'pages/Calculator/MonetaryImpacts'
 
-import Header from 'Layout/Header'
-import Footer from 'Layout/Footer'
+import Header from 'layout/Header'
+import Footer from 'layout/Footer'
 
 
 const Routes = () => {

@@ -180,11 +180,15 @@ const Form = () => {
     return (
         <Container>
             <Grid fluid>
-                <label>Você sabe a localização do garimpo?</label>
-                <RadioBoxCondicional state={regionList} setState={handleRegion} />
+                <Row>
+                    <Col xs={12}>
+                        <label>Você sabe a localização do garimpo?</label>
+                        <RadioBoxCondicional state={regionList} setState={handleRegion} />
+                    </Col>
+                </Row>
                 <Conditional check={knowRegion}>
                     <Row>
-                        <Col xs={12}>
+                        <Col xs={12} sm={6}>
                             <label>Região</label>
                             <select name="state" value={state} onChange={handleState}>
                             {
@@ -194,7 +198,7 @@ const Form = () => {
                             }
                             </select>
                         </Col>
-                        <Col xs={12}>
+                        <Col xs={12} sm={6}>
                             <label>Municipio</label>
                             <select name="state" value={country} onChange={handleCountry}>
                                 {
@@ -207,19 +211,19 @@ const Form = () => {
                     </Row>
                 </Conditional>
                 <Row>
-                    <Col xs={6}>
+                    <Col xs={6} sm={4}>
                         <label>Unidade de analise</label>
                         <select name="analysisUnit" value={analysisUnit} onChange={handleAnalysisUnit}>
                             <option value={IMPACTED_AREA}>Área impactada</option>
                             <option value={AMOUNT_GOLD}>Quantidade de ouro </option>
                         </select>
                     </Col>
-                    <Col xs={6}>
+                    <Col xs={6} sm={3}>
                         <label>Valor</label>
                         <input type="text" name="valor" placeholder={analysisUnit === IMPACTED_AREA ? 'Hectares' : 'Gramas'} />
                     </Col>
                     <Conditional check={knowRegion}>
-                        <Col xs={12}>
+                        <Col xs={12} sm={5}>
                             <label>Houve Transbordamento?</label>
                             <RadioBoxCondicional state={overflowList} setState={handleOverflow} />
                         </Col>
@@ -227,7 +231,7 @@ const Form = () => {
                 </Row>
                 <Row>
                     <Conditional check={knowRegion}>
-                        <Col xs={12}>
+                        <Col xs={12} sm={6}>
                             <label>Profundidade da cava</label>
                             <select name="pitdepth" value={pitDepth} onChange={handlePitDepth}>
                                 {
@@ -236,7 +240,7 @@ const Form = () => {
                             </select>
                         </Col>
                     </Conditional>
-                    <Col xs={12}>
+                    <Col xs={12} sm={6}>
                         <label>Método de valoração</label>
                         <select name="valuationMethod" value={valuatioMethod} onChange={handleValuationMethod}>
                             <option value={OPPORTUNITY_COST}>Custo de oportunidade</option>
@@ -246,7 +250,11 @@ const Form = () => {
                 </Row>
                 
                 <ButtonFixed>
-                    <Button onClick={() => history.push('/loading')}>Calcular impactos</Button>
+                    <Row>
+                        <Col xs={12} smOffset={4} sm={4}>
+                            <Button onClick={() => history.push('/loading')}>Calcular impactos</Button>
+                        </Col>
+                    </Row>
                 </ButtonFixed>
                 
 

@@ -1,6 +1,8 @@
+import { useEffect } from 'react';
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { colors } from 'theme/colors'
-const data = [
+
+let data = [
   {
     name: 'Impacto 01',
     valor: 700000,
@@ -25,8 +27,27 @@ const data = [
 
 const Chart = () => {
 
+    useEffect(() => {
+  
+      if(window.innerWidth >= 768 && data.length === 4) {
+        data.push({
+          name: 'Impacto 05',
+          valor: 700000,
+          amt: 2500000,
+        })
+        data.push({
+          name: 'Impacto 06',
+          valor: 700000,
+          amt: 2500000,
+        })
+      }else {
+        data.splice(5, 1);
+        data.splice(4, 1);
+      }
+    }, [])
+
     return (
-      <div style={{width: '100%', height: 300}}>
+      <div style={{width: '100%', height: 300, marginTop: 30}}>
       <ResponsiveContainer width="100%" height="100%">
         <BarChart
           width={500}
