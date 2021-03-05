@@ -1,4 +1,3 @@
-import { useLayoutEffect } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Form from 'pages/Calculator/Form'
 import Loading from 'pages/Calculator/Loading'

@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import { colors } from 'theme/colors'
-import breakpoints from 'theme/breakpoints'
 
 export const Container = styled.div`
     width: 100%;

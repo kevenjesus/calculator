@@ -100,7 +100,7 @@ const Form = () => {
     const [overflow, setOverflow] = useState(NO);
     const [pitDepth, setPitDepth] = useState(2.5);
     const [valuatioMethod, setValuationMethod] = useState(OPPORTUNITY_COST)
-
+    console.log(overflow)
     const history = useHistory();
     
     const getCounties = useCallback(async (uf) => {

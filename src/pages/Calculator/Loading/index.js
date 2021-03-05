@@ -7,10 +7,10 @@ import ImageLoading  from 'assets/images/image-loading.png'
 const Loading = () => {
     const history = useHistory();
     useEffect(() => {
-        const timer = setTimeout(() => {
+        setTimeout(() => {
             history.push('/impacts/deforestation')
         }, 2000);
-    }, [])
+    }, [history])
     return (
         <Container>
             <AjustDesktop>
