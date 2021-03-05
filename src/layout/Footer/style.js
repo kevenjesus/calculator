@@ -7,6 +7,14 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    @media (min-width: 1366px) {
+        width: 1280px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 15px;
+        flex-direction: row;
+        justify-content: space-between;
+    }
 `
 
 export const SocialMedia = styled.div`
@@ -17,5 +25,5 @@ export const SocialMedia = styled.div`
 
 export const MediaLink = styled.a`
     text-decoration: none;
-    margin-left: 5px;
+    margin-left: 10px;
 ` 

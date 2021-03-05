@@ -121,7 +121,7 @@ const MonetaryImpacts = () => {
         <Container>
             <Grid fluid>
                 <Row>
-                    <Col xs={12} sm={4}>
+                    <Col xs={12} sm={4} md={3}>
                         <Menu>
                             <Link to="/impacts/deforestation">
                                 <MenuItem>Desmatamento</MenuItem>
@@ -135,7 +135,7 @@ const MonetaryImpacts = () => {
                             <MenuItem active last>Impactos monetários</MenuItem>
                         </Menu>
                     </Col>
-                    <Col xs={12} sm={8}>
+                    <Col xs={12} sm={8} md={9}>
                         <Headline>Impactos monetários</Headline>
                         <Row>
                             <Col xs={12} sm={6}>
@@ -176,12 +176,15 @@ const MonetaryImpacts = () => {
                 <Chart />
                 
                 <ButtonFixed join>
-                    <Button onClick={() => history.push('/')}>fazer novo calculo</Button>
-                    <Button variant="secondary" onClick={() => window.print()}>imprimir relatórios</Button>
+                    <Row style={{width: '100%'}}>
+                        <Col xs={12} mdOffset={3} md={3}>
+                            <Button onClick={() => history.push('/')}>fazer novo calculo</Button>
+                        </Col>
+                        <Col xs={12} md={3}>
+                            <Button variant="secondary" onClick={() => window.print()}>imprimir relatórios</Button>
+                        </Col>
+                    </Row>
                 </ButtonFixed>
-
-               
-                
             </Grid> 
         </Container>
     )

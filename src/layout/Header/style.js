@@ -8,6 +8,11 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @media (min-width: 1366px) {
+        width: 1280px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 ` 
 
 export const ContainerHeader = styled.header`

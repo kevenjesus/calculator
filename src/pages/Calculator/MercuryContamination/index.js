@@ -10,7 +10,7 @@ const MercuryContamination = () => {
         <Container>
             <Grid fluid>
                 <Row>
-                    <Col xs={12} sm={4}>
+                    <Col xs={12} sm={4} md={3}>
                         <Menu>
                             <Link to="/impacts/deforestation">
                                 <MenuItem>Desmatamento</MenuItem>
@@ -24,7 +24,7 @@ const MercuryContamination = () => {
                             </Link>
                         </Menu>
                     </Col>
-                    <Col xs={12} sm={8}>
+                    <Col xs={12} sm={8} md={9}>
                         <Headline>Contaminação por mercúrio</Headline>
                         <Text>
                         O mercúrio é um elemento presente na natureza, com concentrações que podem variar, por exemplo, dependendo da cor dos rios e do nível de desmatamento.                

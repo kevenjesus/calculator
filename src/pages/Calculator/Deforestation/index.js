@@ -9,7 +9,7 @@ const Deforestation = () => {
         <Container>
             <Grid fluid>
                 <Row>
-                    <Col xs={12} sm={4}>
+                    <Col xs={12} sm={4} md={3}>
                         <Menu>
                             <MenuItem active>Desmatamento</MenuItem>
                             <Link to="/impacts/silting-of-rivers">
@@ -23,7 +23,7 @@ const Deforestation = () => {
                             </Link>
                         </Menu>
                     </Col>
-                    <Col xs={12} sm={8}>
+                    <Col xs={12} sm={8} md={9}>
                         <Headline>Desmatamento</Headline>
                         <Text>
                             A extração de <strong>1000 kg de ouro</strong> gera o desmatamento de <strong>5 hectares</strong>, em média.

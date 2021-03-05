@@ -7,6 +7,10 @@ export const LabelContainer = styled.label`
     display: flex;
     align-items: center;
     height: 30px;
+    @media (min-width: 768px) {
+      display: inline-block;
+      margin-right: 10px;
+    }
 ` 
 
 export const Text = styled.span`

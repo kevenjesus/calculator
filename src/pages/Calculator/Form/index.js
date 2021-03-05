@@ -240,7 +240,7 @@ const Form = () => {
                             </select>
                         </Col>
                     </Conditional>
-                    <Col xs={12} sm={6}>
+                    <Col xs={12} sm={!knowRegion ? 7 : 6}>
                         <label>Método de valoração</label>
                         <select name="valuationMethod" value={valuatioMethod} onChange={handleValuationMethod}>
                             <option value={OPPORTUNITY_COST}>Custo de oportunidade</option>
@@ -251,7 +251,7 @@ const Form = () => {
                 
                 <ButtonFixed>
                     <Row>
-                        <Col xs={12} smOffset={4} sm={4}>
+                        <Col xs={12} smOffset={4} mdOffset={0} sm={4} md={3}>
                             <Button onClick={() => history.push('/loading')}>Calcular impactos</Button>
                         </Col>
                     </Row>

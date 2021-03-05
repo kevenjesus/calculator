@@ -10,7 +10,7 @@ const SiltingOfRivers = () => {
         <Container>
             <Grid fluid>
                 <Row>
-                    <Col xs={12} sm={4}>
+                    <Col xs={12} sm={4} md={3}>
                         <Menu>
                             <Link to="/impacts/deforestation">
                                 <MenuItem>Desmatamento</MenuItem>
@@ -24,7 +24,7 @@ const SiltingOfRivers = () => {
                             </Link>
                         </Menu>
                     </Col>
-                    <Col xs={12} sm={8}>
+                    <Col xs={12} sm={8} md={9}>
                         <Headline>Assoreamento dos rios</Headline>
                         <Text>
                         A extraçã o de <strong>1000 kg de ouro</strong> gera o assoreamento de <strong>150 m³</strong>, em média
