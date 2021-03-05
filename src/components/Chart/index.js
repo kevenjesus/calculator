@@ -58,7 +58,7 @@ const Chart = () => {
     }, [])
 
     return (
-      <div style={{width: '100%', height: window.innerWidth >= 1366 ? 500 : 300, marginTop: 30}}>
+      <div style={{width: '100%', height: window.innerWidth >= 1366 ? 500 : 300, marginTop: 50}}>
       <ResponsiveContainer width="100%" height="100%">
         <BarChart
           width={500}

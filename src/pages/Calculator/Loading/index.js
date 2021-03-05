@@ -9,7 +9,7 @@ const Loading = () => {
     useEffect(() => {
         setTimeout(() => {
             history.push('/impacts/deforestation')
-        }, 2000);
+        }, 2500);
     }, [history])
     return (
         <Container>

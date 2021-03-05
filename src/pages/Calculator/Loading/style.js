@@ -5,6 +5,9 @@ export const Container = styled.div`
     width: 100%;
     margin-top: 30px;
     @media (min-width: 1366px) {
+        width: 1280px;
+        margin-left: auto;
+        margin-right: auto;
         display: flex;
         align-items: center;
     }

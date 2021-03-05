@@ -5,6 +5,11 @@ import arrowRight from 'assets/icons/arrow-right.svg'
 export const Container = styled.div`
     width: 100%;
     margin-top: 30px;
+    @media (min-width: 1366px) {
+        width: 1280px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 ` 
 
 export const Menu = styled.aside`
@@ -34,6 +39,11 @@ export const MenuItem = styled.a`
     @media (min-width: 768px) {
         font-size: 12px;
     }
+
+    @media (min-width: 1366px) {
+         font-size: 15px;
+    }
+    
 `
 
 export const Headline = styled.h1`
@@ -41,12 +51,19 @@ export const Headline = styled.h1`
     font-size: 30px;
     color: ${colors.blacks.normal};
     margin-bottom: 15px;
+    @media (min-width: 1366px) {
+         font-size: 45px;
+    }
 `
 
 export const Text = styled.p`
     font-size: 15px;
     line-height: 30px;
     color: ${colors.blacks.normal};
+    @media (min-width: 1366px) {
+         font-size: 20px;
+         line-height: 40px;
+    }
 ` 
 
 export const ButtonFixed = styled.div`
