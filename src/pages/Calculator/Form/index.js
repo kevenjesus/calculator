@@ -146,7 +146,7 @@ const Form = () => {
     const handleQtdAnalysis = useCallback((e) => {
         const { value } = e.target;
         setQtdAnalysis(value)
-    })
+    }, [setQtdAnalysis])
 
     const handleOverflow = useCallback((e) => {
         const { value } = e.target;
@@ -299,6 +299,9 @@ const Form = () => {
           
           const CustoTotalGarimpeiros = CustoTotalDALYGarimpeiros+CustoTratamentoNeuroGarimpeiros 
 
+          console.log(totalBioprospeccao, totalCarbono, totalValorUso, totalRecreacao, totalValorExistencia, nascidosVivosAfetados, desavioPadraoMedioMercurio, beta, totalDalyPerdaQI, CustoTotalGarimpeiros)
+        
+          history.push('/loading')
           
         }
 

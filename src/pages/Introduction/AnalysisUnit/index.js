@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react'
 import { Row, Col } from 'react-flexbox-grid'
-import { Headline, Text } from 'pages/Introduction/style'
+import { Headline } from 'pages/Introduction/style'
 import { ItemType, Title, Paragraphy, Thumbnail } from './style'
 import Image from 'assets/images/example2.svg'
 

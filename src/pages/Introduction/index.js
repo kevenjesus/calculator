@@ -135,7 +135,7 @@ const Introduction = () => {
         }else {
             setStep(step+1)
         }
-    }, [step, setStep]);
+    }, [step, setStep, history]);
 
     const PreviosStep = useCallback(() => {
         setStep(step+-1);
