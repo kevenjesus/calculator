@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import { ContainerHeader, Container, LogoContainer, LogoName, LogoSlogan, BarMenu, MenuShow } from './style'
 import { Language, LanguageLabel, Menuitem } from 'layout/Sidebar/style'
 import { ReactComponent as Logo } from 'assets/images/logo.svg'
@@ -10,6 +11,19 @@ import { ReactComponent as Usa } from 'assets/icons/usa.svg'
 
 const Header = () => {
     const [visibleSidebar, setVisibleSidebar] = useState(false);
+    const [notRender, setNoteRender] = useState(false);
+    const location = useLocation();
+    
+    useEffect(() => {
+        const { pathname } = location;
+        const isRender = ['/introduction'].findIndex(a => a === pathname);
+        setNoteRender(isRender);
+    }, [location])
+
+    if(!notRender) {
+        return null;
+    }
+    
     return (
         <>
         <ContainerHeader>

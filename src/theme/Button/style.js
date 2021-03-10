@@ -13,6 +13,6 @@ export const ButtonComponent = styled.button`
     font-size: 15px;
     font-family: 'Fjalla One', sans-serif;
     text-transform: uppercase;
-    color: #fff;
+    color: ${({variant}) => variant === 'default' ? '#000' : '#fff'};
     margin-bottom: 15px;
 ` 

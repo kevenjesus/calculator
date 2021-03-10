@@ -7,3 +7,4 @@ export const REPLACEMENT_COST_OF_AREA_RECOVERY = 0;
 export const DEFORESTATION = 1;
 export const MERCURY_IMPACTED = 2;
 export const PIT_DEPTH = 3;
+export const TX_PREVALENCE_MAX = 0.343;
