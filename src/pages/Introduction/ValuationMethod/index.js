@@ -13,7 +13,11 @@ const ValuationMethod = () => {
                 Existem diferentes perspectivas econômicas para o cálculo  valor dos impactos sociais e ambientais. Elas se baseiam em:
             </Text>
 
-            <label>* Escolha uma opção</label>
+            
+            <Row center="sm">
+                <Col md={8}>
+
+                <label style={{textAlign: 'left'}}>* Escolha uma opção</label>
             <Row>
                 <Col xs={6}>
                     <ItemType active={state === 0} onClick={() => setState(0)}>
@@ -33,6 +37,8 @@ const ValuationMethod = () => {
                         </Paragraphy>
                     </ItemType>
                 </Col>
+            </Row>
+            </Col>
             </Row>
         </>
     )

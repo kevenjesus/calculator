@@ -174,10 +174,10 @@ const Introduction = () => {
             <ButtonsFixed>
                 <Grid>
                     <Row between="sm">
-                        <Col xs={6} sm={4}>
+                        <Col xs={6} sm={4} md={3}>
                             <Button variant="default">Pular introdução</Button>
                         </Col>
-                        <Col xs={6} sm={4}>
+                        <Col xs={6} sm={4} md={3}>
                             <Button onClick={NextStep}>Prosseguir</Button>
                         </Col>
                     </Row>

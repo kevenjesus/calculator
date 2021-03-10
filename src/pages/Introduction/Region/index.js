@@ -17,7 +17,7 @@ const Region = ({knowRegion, regionList, stateList, state, country, counties, ha
             </div>
             <Conditional check={knowRegion}>
                 <Row center="sm">
-                    <Col sm={8}>
+                    <Col sm={8} md={6}>
                         <Row>
                             <Col xs={12} sm={6}>
                                 <label style={{textAlign: 'left'}}>Região</label>

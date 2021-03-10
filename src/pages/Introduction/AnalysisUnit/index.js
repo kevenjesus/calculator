@@ -17,7 +17,10 @@ const AnalysisUnit = () => {
     return (
         <>
             <Headline>Qual base de informação você usará para o cálculo de impacto?</Headline>
-            <label>* Escolha uma opção</label>
+            
+            <Row center="sm">
+                <Col md={8}>
+                <label style={{textAlign: 'left'}}>* Escolha uma opção</label>
             <Row>
                 <Col xs={6}>
                     <ItemType active={state === 0} onClick={() => handleState(0)}>
@@ -38,9 +41,11 @@ const AnalysisUnit = () => {
                     </ItemType>
                 </Col>
                 <Col xs={12} sm={4}>
-                    <label ref={ref}>* Digite o valor em {state === 0 ? 'gramas' : 'hectares'}</label>
+                    <label ref={ref} style={{textAlign: 'left'}}>* Digite o valor em {state === 0 ? 'gramas' : 'hectares'}</label>
                     <input type="text" placeholder={state === 0 ? 'quantidade de gramas' : 'quantos hectares'} />
                 </Col>
+            </Row>
+            </Col>
             </Row>
         </>
     )

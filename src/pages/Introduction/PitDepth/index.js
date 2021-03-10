@@ -60,7 +60,7 @@ const PitDepth = () => {
             </div>
 
             <Row center="sm">
-                <Col sm={6}> 
+                <Col sm={6} md={4}> 
                     <label>* Selecione a profundidade da cava</label>
                     <select name="pitdepth" value={pitDepth} onChange={handlePitDepth}>
                         {
