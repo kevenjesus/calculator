@@ -1,43 +1,14 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useEffect, useCallback, useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Grid, Row, Col } from 'react-flexbox-grid'
-import { Button } from 'theme'
+import { Button, TextField } from 'theme'
 import { Container } from './style'
 import { ButtonFixed } from 'pages/Calculator/ImpactsStyles'
-import { YES, NO, IMPACTED_AREA, AMOUNT_GOLD, OPPORTUNITY_COST, REPLACEMENT_COST_OF_AREA_RECOVERY, TX_PREVALENCE_MAX } from './consts'
+import { YES, IMPACTED_AREA, AMOUNT_GOLD, OPPORTUNITY_COST, REPLACEMENT_COST_OF_AREA_RECOVERY } from './consts'
 import Conditional from 'components/Conditional'
 import RadioBoxConditional from 'components/RadioBoxConditional'
 import axios from 'axios'
-
-const dataRegion = [
-    {
-        name: 'region',
-        label: 'Sim',
-        value: YES,
-        checked: true
-    },
-    {
-        name: 'region',
-        label: 'Não',
-        value: NO,
-        checked: false
-    },
-]
-
-const dataOverflow = [
-    {
-        name: 'overflow',
-        label: 'Sim',
-        value: YES,
-        checked: true
-    },
-    {
-        name: 'overflow',
-        label: 'Não',
-        value: NO,
-        checked: false
-    },
-]
+import { AppContext, stateTypes } from 'utils/AppContext'
 
 const dataPitDepth = [
     {
@@ -76,41 +47,43 @@ const dataPitDepth = [
 
 
 const Form = () => {
-    const [regionList, setRegionList] = useState(dataRegion)
-    const [knowRegion, setKnowRegion] = useState(true);
-    const [stateList, setStateList] = useState([]);
-    const [state, setState] = useState('');
-    const [counties, setCounties] = useState([]);
-    const [country, setCountry] = useState('');
-    const [analysisUnit, setAnalysisUnit] = useState(IMPACTED_AREA);
-    const [qtdAnalysis, setQtdAnalysis] = useState("1000");
-    const [overflowList, setOverflowList] = useState(dataOverflow);
-    const [overflow, setOverflow] = useState(NO);
-    const [pitDepth, setPitDepth] = useState(2.5);
-    const [valuatioMethod, setValuationMethod] = useState(OPPORTUNITY_COST)
-    const [txPrevalencia, setTxPrevalencia] = useState(TX_PREVALENCE_MAX)
-
+    const {state: stateContext, dispatch} = useContext(AppContext);
+    const { calculator } = stateContext;
+    const { 
+        regionList, 
+        knowRegion, 
+        stateList, 
+        state, 
+        counties, 
+        country,
+        analysisUnit,
+        qtdAnalysis,
+        overflowList,
+        overflow,
+        pitDepth,
+        valuatioMethod,
+        txPrevalence  } = calculator;    
     const history = useHistory();
     
     const getCounties = useCallback(async (uf) => {
         await axios.get(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${uf}/municipios`)
           .then(({data}) => {
-            setCounties(data)
-            setCountry(data[0].id)
+            dispatch({type: stateTypes.SET_COUNTIES, payload: data})
+            dispatch({type: stateTypes.SET_COUNTRY, payload: data[0].id})
           })
-    }, [])
+    }, [dispatch])
 
     useEffect(() => {
         const getStates = async () => {
             await axios.get('https://servicodados.ibge.gov.br/api/v1/localidades/regioes/1/estados')
               .then(({data}) => {
-                setStateList(data)
-                setState(data[0].id)
+                dispatch({type: stateTypes.SET_STATE_LIST, payload: data})
+                dispatch({type: stateTypes.SET_STATE, payload: data[0].id})
                 getCounties(data[0].id)
               })
           }
           getStates();
-    }, [getCounties])
+    }, [getCounties, dispatch])
 
 
     const handleRegion = useCallback((e) => {
@@ -122,31 +95,31 @@ const Form = () => {
             }
             return r;
         })
-        setRegionList(regionListUpdate)
-        setKnowRegion(Number(value) === YES);
-    }, [setRegionList, setKnowRegion, regionList])
+        dispatch({type: stateTypes.SET_REGION_LIST, payload: regionListUpdate})
+        dispatch({type: stateTypes.SET_KNOW_REGION, payload: Number(value) === YES})
+    }, [dispatch, regionList])
 
     const handleState = useCallback((e) => {
         const { value } = e.target;
         getCounties(value)
-        setState(value)
+        dispatch({type: stateTypes.SET_STATE, payload: value})
         
-    }, [getCounties]);
+    }, [getCounties, dispatch]);
 
     const handleCountry = useCallback((e) => {
         const { value } = e.target;
-        setCountry(value)
-    }, [])
+        dispatch({type: stateTypes.SET_COUNTRY, payload: value})
+    }, [dispatch])
 
     const handleAnalysisUnit = useCallback((e) => {
         const { value } = e.target;
-        setAnalysisUnit(Number(value));
-    }, [])
+        dispatch({type: stateTypes.SET_ANALYS_UNIT, payload: Number(value) })
+    }, [dispatch])
 
     const handleQtdAnalysis = useCallback((e) => {
         const { value } = e.target;
-        setQtdAnalysis(value)
-    }, [setQtdAnalysis])
+        dispatch({type: stateTypes.SET_QTD_ANALYS_UNIT, payload: { value, error: value === '' }})
+    }, [dispatch])
 
     const handleOverflow = useCallback((e) => {
         const { value } = e.target;
@@ -157,24 +130,24 @@ const Form = () => {
             }
             return r;
         })
-        setOverflowList(overflowListUpdate)
-        setOverflow(Number(value) === YES);
-    }, [setOverflowList, setOverflow, overflowList])
+        dispatch({type: stateTypes.SET_OVERFLOW_LIST, payload: overflowListUpdate})
+        dispatch({type: stateTypes.SET_OVERFLOW, payload: Number(value) === YES})
+    }, [dispatch, overflowList])
 
     const handlePitDepth = useCallback((e) => {
         const { value } = e.target;
-        setPitDepth(Number(value))
-    }, []);
+        dispatch({type: stateTypes.SET_PITDEPTH, payload: Number(value)})
+    }, [dispatch]);
 
     const handleValuationMethod = useCallback((e) => {
         const { value } = e.target;
-        setValuationMethod(Number(value))
-    }, [])
+        dispatch({type: stateTypes.SET_VALUATION_METHOD, payload: Number(value)})
+    }, [dispatch])
 
-    const handleTxPrevalencia = useCallback((e) => {
+    const handleTxPrevalance = useCallback((e) => {
         const { value } = e.target;
-        setTxPrevalencia(Number(value));
-    }, [])
+        dispatch({type: stateTypes.SET_TX_PREVALENCE, payload: Number(value)})
+    }, [dispatch])
 
     
   const submitCalc = () => {
@@ -294,7 +267,7 @@ const Form = () => {
 
           const PesoIncapacidadeNeuroGarimpeiros = 0.368;
           const PesoIncapacidadeNeuroGarimpeirosQtdGarimpeiros = PesoIncapacidadeNeuroGarimpeiros * QtdeGarimpeirosTotal;
-          const DALYAnosGarimpeiro = txPrevalencia*PesoIncapacidadeNeuroGarimpeirosQtdGarimpeiros;
+          const DALYAnosGarimpeiro = txPrevalence*PesoIncapacidadeNeuroGarimpeirosQtdGarimpeiros;
           const CustoTotalDALYGarimpeiros = UmDalyReais*DALYAnosGarimpeiro
           
           const CustoTotalGarimpeiros = CustoTotalDALYGarimpeiros+CustoTratamentoNeuroGarimpeiros 
@@ -305,6 +278,7 @@ const Form = () => {
           
         }
 
+    console.log(qtdAnalysis)
     return (
         <Container>
             <Grid fluid>
@@ -341,14 +315,19 @@ const Form = () => {
                 <Row>
                     <Col xs={6} sm={4}>
                         <label>Unidade de analise</label>
-                        <select name="analysisUnit" value={analysisUnit} onChange={handleAnalysisUnit}>
+                        <select name="analysisUnit" value={calculator.analysisUnit} onChange={handleAnalysisUnit}>
                             <option value={IMPACTED_AREA}>Área impactada</option>
                             <option value={AMOUNT_GOLD}>Quantidade de ouro </option>
                         </select>
                     </Col>
                     <Col xs={6} sm={3}>
-                        <label>Valor</label>
-                        <input type="text" value={qtdAnalysis} onChange={handleQtdAnalysis} name="valor" placeholder={analysisUnit === IMPACTED_AREA ? 'Hectares' : 'Gramas'} />
+                        <TextField 
+                            label="Valor" 
+                            error={qtdAnalysis.error} 
+                            type="number" 
+                            value={qtdAnalysis.value} 
+                            onChange={handleQtdAnalysis} 
+                            name="valor" placeholder={analysisUnit === IMPACTED_AREA ? 'Hectares' : 'Gramas'} />
                     </Col>
                     <Conditional check={knowRegion}>
                         <Col xs={12} sm={5}>
@@ -375,9 +354,9 @@ const Form = () => {
                             <option value={REPLACEMENT_COST_OF_AREA_RECOVERY}>Custo de reposição ou recuperação de área</option>
                         </select>
                     </Col>
-                    <Col xs={12}>
+                    <Col xs={12} sm={!knowRegion ? 7 : 12}>
                         <label>Taxa de prevalência</label>
-                        <select name="txPrevalencia" value={txPrevalencia} onChange={handleTxPrevalencia}>
+                        <select name="txPrevalencia" value={txPrevalence} onChange={handleTxPrevalance}>
                             <option value="0.237">Minimo</option>
                             <option value="0.29">Médio</option>
                             <option value="0.343">Máximo</option>
