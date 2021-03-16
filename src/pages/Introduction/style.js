@@ -4,6 +4,7 @@ import { colors } from 'theme/colors'
 export const Container = styled.div`
     width: 100%;
     padding: 20px 15px;
+    overflow-x: hidden;
     @media (min-width: 1366px) {
         width: 1280px;
         margin: 0 auto;
