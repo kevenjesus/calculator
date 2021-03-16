@@ -87,6 +87,8 @@ const Form = () => {
             })
         })
 
+        
+
         dispatch({type: stateTypes.SET_COUNTIES, payload: dataCountries});
         dispatch({type: stateTypes.SET_COUNTRY, payload: dataCountries[0].id});
         
@@ -99,8 +101,11 @@ const Form = () => {
              dispatch({type: stateTypes.SET_STATE, payload: data[0]})
              getCounties(data[0].id)
           }
-          getStates();
-    }, [getCounties, dispatch])
+          if(state === '' && country === '') {
+            getStates();
+        }
+          
+    }, [getCounties, dispatch, state, country])
 
 
     const handleRegion = useCallback((e) => {
@@ -404,11 +409,13 @@ const Form = () => {
                 </Row>
                 
                 <ButtonFixed>
-                    <Row>
-                        <Col xs={12} smOffset={4} mdOffset={0} sm={4} md={3}>
-                            <Button onClick={submitCalc}>{calculatorForm.labels.btnCalulator}</Button>
-                        </Col>
-                    </Row>
+                    <Grid>
+                        <Row>
+                            <Col xs={12} smOffset={4} mdOffset={0} sm={4} md={3}>
+                                <Button onClick={submitCalc}>{calculatorForm.labels.btnCalulator}</Button>
+                            </Col>
+                        </Row>
+                    </Grid>
                 </ButtonFixed>
                 
 

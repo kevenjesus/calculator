@@ -56,7 +56,7 @@ const AnalysisUnit = () => {
                         ref={ref}
                         error={stateContext.calculator.qtdAnalysis.error}
                         label={`* Digite o valor em ${state === AMOUNT_GOLD ? 'gramas' : 'hectares'}`} 
-                        type="text" 
+                        type="number" 
                         placeholder={state === AMOUNT_GOLD ? 'quantidade de gramas' : 'quantos hectares'}
                         onChange={handleQtdAnalysis}
                         value={stateContext.calculator.qtdAnalysis.value} />
