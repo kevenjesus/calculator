@@ -32,7 +32,7 @@ const Form = () => {
         valuatioMethod,
         txPrevalence  } = calculator;    
     const { calculatorForm } = language;
-    //const history = useHistory();
+    const history = useHistory();
     
     const dataPitDepth = [
         {
@@ -90,7 +90,7 @@ const Form = () => {
         dispatch({type: stateTypes.SET_COUNTIES, payload: dataCountries});
         dispatch({type: stateTypes.SET_COUNTRY, payload: dataCountries[0].id});
         
-    }, [])
+    }, [dispatch])
 
     useEffect(() => {
         const getStates = () => {
@@ -314,7 +314,7 @@ const Form = () => {
 
           console.log(totalBioprospeccao, totalCarbono, totalValorUso, totalRecreacao, totalValorExistencia, nascidosVivosAfetados, desavioPadraoMedioMercurio, beta, totalDalyPerdaQI, CustoTotalGarimpeiros)
         
-          //history.push('/loading')
+          history.push('/loading')
           
         }
 

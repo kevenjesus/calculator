@@ -1,4 +1,4 @@
-import { useState, useCallback, useContext, useEffect } from 'react'
+import { useState, useCallback, useContext } from 'react'
 import { useHistory } from 'react-router-dom';
 import { ABOUT, INTRODUCTION, CONTEXT_VALUATION, HOW_USE_CALCULATOR, REGION, OVERFLOW, VALUATION_METHOD, ANALYSIS_UNIT, PIT_DEPTH } from './consts'
 import { Container, Header, Language, LanguageContainer, ButtonsFixed, Go } from './style'
@@ -20,7 +20,6 @@ import AnalysisUnit from './AnalysisUnit'
 import PitDepth from './PitDepth'
 import Overflow from './Overflow'
 import { AppContext, stateTypes } from 'utils/AppContext';
-import { NO } from 'pages/Calculator/Form/consts'
 
 
 const Content = ({step}) => {
