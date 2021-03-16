@@ -33,6 +33,7 @@ const GlobalStyle = createGlobalStyle`
         font-size: 14px;
         font-weight: 600;
         margin: 15px 0;
+        text-align: left;
     }
 
     h1,h2,h3,h4,h5 {

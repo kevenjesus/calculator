@@ -67,16 +67,31 @@ export const Text = styled.p`
 ` 
 
 export const ButtonFixed = styled.div`
+   display: flex;
     width: 100%;
     height: 50px;
     position: fixed;
-    bottom: 0;
     left: 0;
-    z-index: 1;
-    display: ${({join}) => join ? 'flex' : 'block'};
+    bottom: 0;
+    > div {
+        width: 100%;
+        > div {
+            > div {
+                padding: 0;
+            }
+        }
+    }
     @media (min-width: 768px) {
         position: initial;
-        margin: 50px 0;
+        margin-top: 80px;
+        > div {
+            width: 100%;
+            > div {
+                > div {
+                    padding: 0 8px;
+                }
+            }
+        }
     }
 ` 
 

@@ -1,6 +1,6 @@
 import { createContext, useReducer  } from 'react'
 import { IMPACTED_AREA, NO, YES, OPPORTUNITY_COST, TX_PREVALENCE_MAX } from 'pages/Calculator/Form/consts'
-
+import ptBR from 'utils/pt_BR'
 
 const dataRegion = [
     {
@@ -47,7 +47,7 @@ export const stateTypes = {
     SET_PITDEPTH: 'SET_PITDEPTH',
     SET_VALUATION_METHOD: 'SET_VALUATION_METHOD',
     SET_TX_PREVALENCE: 'SET_TX_PREVALENCE',
-    SET_FORM_VALIDATE: 'SET_FORM_VALIDATE'
+    SET_LANGUAGE: 'SET_LANGUAGE'
 }
 
 const initialState = {
@@ -68,8 +68,8 @@ const initialState = {
         pitDepth: 2.5,
         valuatioMethod: OPPORTUNITY_COST,
         txPrevalence: TX_PREVALENCE_MAX,
-        formValidate: false
-    }
+    },
+    language: ptBR
 }
 
 
@@ -101,15 +101,23 @@ const calculatorReducer = (state, action) => {
             return {...state, valuatioMethod: action.payload};
         case stateTypes.SET_TX_PREVALENCE:
             return {...state, txPrevalence: action.payload};
-        case stateTypes.SET_FORM_VALIDATE:
-            return {...state, formValidate: action.payload};
         default:
             return state;
     }
 };
 
-const combineReducers = ({calculator}, action) => ({
-    calculator: calculatorReducer(calculator, action)
+const languageReducer = (state, action) => {
+    switch(action.type) {
+        case stateTypes.SET_LANGUAGE:
+            return action.payload
+        default:
+            return state;
+    }
+}
+
+const combineReducers = ({calculator, language}, action) => ({
+    calculator: calculatorReducer(calculator, action),
+    language: languageReducer(language, action)
 })
 
 export const AppContext = createContext({

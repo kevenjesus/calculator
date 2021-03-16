@@ -1,20 +1,20 @@
-import { useEffect, useState } from 'react' 
+import { forwardRef, useEffect, useRef } from 'react' 
 import { colors } from 'theme/colors'
 
-const TextField = ({ error, label, ...rest }) => {
-    const [focus, setFocus] = useState(false);
+const TextField = forwardRef((props, ref) => {
+    const { error, label, ...rest} = props;
+    const refInput = useRef();
     useEffect(() => {
         if(error) {
-            setFocus(true);
+            refInput.current.focus();
         }
-    }, [error])
-    console.log('error', error)
+    }, [refInput, error])
     return (
         <>
-            <label style={{color: error ? 'red' : colors.blacks.normal}}>{label}</label>
-            <input {...rest} autoFocus={focus} style={{borderColor: error ? 'red' : colors.blacks.medium}} />
+            <label ref={ref} style={{color: error ? 'red' : colors.blacks.normal}}>{label}</label>
+            <input {...rest} ref={refInput} style={{borderColor: error ? 'red' : colors.blacks.medium}} />
         </>
     )
-}
+})
 
 export default TextField;

@@ -5,50 +5,18 @@ import { Button, TextField } from 'theme'
 import { Container } from './style'
 import { ButtonFixed } from 'pages/Calculator/ImpactsStyles'
 import { YES, IMPACTED_AREA, AMOUNT_GOLD, OPPORTUNITY_COST, REPLACEMENT_COST_OF_AREA_RECOVERY } from './consts'
+import { AppContext, stateTypes } from 'utils/AppContext'
 import Conditional from 'components/Conditional'
 import RadioBoxConditional from 'components/RadioBoxConditional'
-import axios from 'axios'
-import { AppContext, stateTypes } from 'utils/AppContext'
-
-const dataPitDepth = [
-    {
-        label: '2,5 metros',
-        value: 2.5
-    },
-    {
-        label: '5 metros',
-        value: 5
-    },
-    {
-        label: '7,5 metros',
-        value: 7.5
-    },
-    {
-        label: '10 metros',
-        value: 10
-    },
-    {
-        label: '12,5 metros',
-        value: 12.5
-    },
-    {
-        label: '15 metros',
-        value: 15
-    },
-    {
-        label: '17,5 metros',
-        value: 17.5
-    },
-    {
-        label: '20 metros',
-        value: 20
-    },
-]
+import normDist from 'utils/normDist'
+import mockStates from 'mocks/state.json'
+import mockCountries from 'mocks/countries.json'
+import mockContry from 'mocks/country.json'
 
 
 const Form = () => {
     const {state: stateContext, dispatch} = useContext(AppContext);
-    const { calculator } = stateContext;
+    const { calculator, language } = stateContext;
     const { 
         regionList, 
         knowRegion, 
@@ -63,24 +31,73 @@ const Form = () => {
         pitDepth,
         valuatioMethod,
         txPrevalence  } = calculator;    
-    const history = useHistory();
+    const { calculatorForm } = language;
+    //const history = useHistory();
     
-    const getCounties = useCallback(async (uf) => {
-        await axios.get(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${uf}/municipios`)
-          .then(({data}) => {
-            dispatch({type: stateTypes.SET_COUNTIES, payload: data})
-            dispatch({type: stateTypes.SET_COUNTRY, payload: data[0].id})
-          })
-    }, [dispatch])
+    const dataPitDepth = [
+        {
+            label: '2,5 '+calculatorForm.values.pitDepth.meters+'',
+            value: 2.5
+        },
+        {
+            label: '5 '+calculatorForm.values.pitDepth.meters+'',
+            value: 5
+        },
+        {
+            label: '7,5 '+calculatorForm.values.pitDepth.meters+'',
+            value: 7.5
+        },
+        {
+            label: '10 '+calculatorForm.values.pitDepth.meters+'',
+            value: 10
+        },
+        {
+            label: '12,5 '+calculatorForm.values.pitDepth.meters+'',
+            value: 12.5
+        },
+        {
+            label: '15 '+calculatorForm.values.pitDepth.meters+'',
+            value: 15
+        },
+        {
+            label: '17,5 '+calculatorForm.values.pitDepth.meters+'',
+            value: 17.5
+        },
+        {
+            label: '20 '+calculatorForm.values.pitDepth.meters+'',
+            value: 20
+        },
+    ]
+
+    
+    const getCounties = useCallback((uf) => {
+        let dataCountries = [];
+        mockCountries.forEach(m => {
+            if(m.microrregiao.mesorregiao.UF.id === Number(uf)) {
+                dataCountries.push(m);
+            }
+        })
+
+        mockContry.forEach(country => {
+            dataCountries.forEach(countries => {
+                if(country.id === countries.id) {
+                    countries.densidadePop2010 = country.densidadePop2010;
+                    countries.densidadePop2060 = country.densidadePop2060;
+                }
+            })
+        })
+
+        dispatch({type: stateTypes.SET_COUNTIES, payload: dataCountries});
+        dispatch({type: stateTypes.SET_COUNTRY, payload: dataCountries[0].id});
+        
+    }, [])
 
     useEffect(() => {
-        const getStates = async () => {
-            await axios.get('https://servicodados.ibge.gov.br/api/v1/localidades/regioes/1/estados')
-              .then(({data}) => {
-                dispatch({type: stateTypes.SET_STATE_LIST, payload: data})
-                dispatch({type: stateTypes.SET_STATE, payload: data[0].id})
-                getCounties(data[0].id)
-              })
+        const getStates = () => {
+             const data = mockStates
+             dispatch({type: stateTypes.SET_STATE_LIST, payload: data })
+             dispatch({type: stateTypes.SET_STATE, payload: data[0]})
+             getCounties(data[0].id)
           }
           getStates();
     }, [getCounties, dispatch])
@@ -149,15 +166,27 @@ const Form = () => {
         dispatch({type: stateTypes.SET_TX_PREVALENCE, payload: Number(value)})
     }, [dispatch])
 
+    const checkFormIsInvalid = useCallback(() => {
+        if(qtdAnalysis.value === '') {
+            dispatch({type: stateTypes.SET_QTD_ANALYS_UNIT, payload: {...qtdAnalysis, error: true}});
+            return true;
+        } 
+        return false;
+    }, [dispatch, qtdAnalysis])
+
     
   const submitCalc = () => {
+    
+    if(checkFormIsInvalid()) {
+        return false;
+    }
     
     // Metodo de valoração
     //--- custo de oportunidade
 
     // sem transboardamento = 1
     // com transboardamento = 12
-    const multOverflow = overflow === '0' ? 12 : 1;
+    const multOverflow = overflow === YES ? 12 : 1;
 
     function calcImpacto(valor, price) {
       const toHectare = (valor * multOverflow) * 0.0001907
@@ -240,7 +269,18 @@ const Form = () => {
           const beta = 0.04;
           const bplusr = -0.07;
           const duracaoDaIncapacidade = 72;
-          const TxIncidencia = 4.13564; // fixo aguardando distnorm
+
+          const valuesNormDist = [];
+          const reducer = (accumulator, currentValue) => accumulator + currentValue;
+        
+          for(let i = 0; i <= 36; i++) {
+            if(i % 2 === 0) {
+                valuesNormDist.push(normDist(i, concentracaoMedoaMercurioCabelo, desavioPadraoMedioMercurio, 1))
+            }
+          }
+
+
+          const TxIncidencia = valuesNormDist.reduce(reducer); // 4.13564 fixo aguardando distnorm
           //const incidencia = TxIncidencia*(nascidosVivosAfetados/1000);
           const incidencia = TxIncidencia*(0.145088113/1000);
           const incidenciaTotalHomemeMulher = incidencia*2;
@@ -274,24 +314,23 @@ const Form = () => {
 
           console.log(totalBioprospeccao, totalCarbono, totalValorUso, totalRecreacao, totalValorExistencia, nascidosVivosAfetados, desavioPadraoMedioMercurio, beta, totalDalyPerdaQI, CustoTotalGarimpeiros)
         
-          history.push('/loading')
+          //history.push('/loading')
           
         }
 
-    console.log(qtdAnalysis)
     return (
         <Container>
             <Grid fluid>
                 <Row>
                     <Col xs={12}>
-                        <label>Você sabe a localização do garimpo?</label>
+                        <label>{calculatorForm.labels.knowRegion}</label>
                         <RadioBoxConditional state={regionList} setState={handleRegion} />
                     </Col>
                 </Row>
                 <Conditional check={knowRegion}>
                     <Row>
                         <Col xs={12} sm={6}>
-                            <label>Região</label>
+                            <label>{calculatorForm.labels.state}</label>
                             <select name="state" value={state} onChange={handleState}>
                             {
                                 stateList.map(({sigla, id}) => (
@@ -301,8 +340,8 @@ const Form = () => {
                             </select>
                         </Col>
                         <Col xs={12} sm={6}>
-                            <label>Municipio</label>
-                            <select name="state" value={country} onChange={handleCountry}>
+                            <label>{calculatorForm.labels.country}</label>
+                            <select name="country" value={country} onChange={handleCountry}>
                                 {
                                     counties.map(({nome, id}) => (
                                         <option key={id} value={id}>{nome}</option>
@@ -314,10 +353,10 @@ const Form = () => {
                 </Conditional>
                 <Row>
                     <Col xs={6} sm={4}>
-                        <label>Unidade de analise</label>
+                        <label>{calculatorForm.labels.analysisUnit}</label>
                         <select name="analysisUnit" value={calculator.analysisUnit} onChange={handleAnalysisUnit}>
-                            <option value={IMPACTED_AREA}>Área impactada</option>
-                            <option value={AMOUNT_GOLD}>Quantidade de ouro </option>
+                            <option value={IMPACTED_AREA}>{calculatorForm.values.analysisUnit.impactedArea}</option>
+                            <option value={AMOUNT_GOLD}>{calculatorForm.values.analysisUnit.amountOfGold}</option>
                         </select>
                     </Col>
                     <Col xs={6} sm={3}>
@@ -327,11 +366,11 @@ const Form = () => {
                             type="number" 
                             value={qtdAnalysis.value} 
                             onChange={handleQtdAnalysis} 
-                            name="valor" placeholder={analysisUnit === IMPACTED_AREA ? 'Hectares' : 'Gramas'} />
+                            name="valor" placeholder={analysisUnit === IMPACTED_AREA ? calculatorForm.values.qtdAnalysisUnit.hactare : calculatorForm.values.qtdAnalysisUnit.grams} />
                     </Col>
                     <Conditional check={knowRegion}>
                         <Col xs={12} sm={5}>
-                            <label>Houve Transbordamento?</label>
+                            <label>{calculatorForm.labels.overflow}</label>
                             <RadioBoxConditional state={overflowList} setState={handleOverflow} />
                         </Col>
                     </Conditional>
@@ -339,7 +378,7 @@ const Form = () => {
                 <Row>
                     <Conditional check={knowRegion}>
                         <Col xs={12} sm={6}>
-                            <label>Profundidade da cava</label>
+                            <label>{calculatorForm.labels.pitDepth}</label>
                             <select name="pitdepth" value={pitDepth} onChange={handlePitDepth}>
                                 {
                                     dataPitDepth.map(({label, value}) => <option key={value} value={value}>{label}</option>)
@@ -348,18 +387,18 @@ const Form = () => {
                         </Col>
                     </Conditional>
                     <Col xs={12} sm={!knowRegion ? 7 : 6}>
-                        <label>Método de valoração</label>
+                        <label>{calculatorForm.labels.valuatioMethod}</label>
                         <select name="valuationMethod" value={valuatioMethod} onChange={handleValuationMethod}>
-                            <option value={OPPORTUNITY_COST}>Custo de oportunidade</option>
-                            <option value={REPLACEMENT_COST_OF_AREA_RECOVERY}>Custo de reposição ou recuperação de área</option>
+                            <option value={OPPORTUNITY_COST}>{calculatorForm.values.valuatioMethod.opportunityCost}</option>
+                            <option value={REPLACEMENT_COST_OF_AREA_RECOVERY}>{calculatorForm.values.valuatioMethod.replacementCostOrAreaRecovery}</option>
                         </select>
                     </Col>
                     <Col xs={12} sm={!knowRegion ? 7 : 12}>
-                        <label>Taxa de prevalência</label>
+                        <label>{calculatorForm.labels.txPrevalence}</label>
                         <select name="txPrevalencia" value={txPrevalence} onChange={handleTxPrevalance}>
-                            <option value="0.237">Minimo</option>
-                            <option value="0.29">Médio</option>
-                            <option value="0.343">Máximo</option>
+                            <option value="0.237">{calculatorForm.values.txPrevalence.minimum}</option>
+                            <option value="0.29">{calculatorForm.values.txPrevalence.medium}</option>
+                            <option value="0.343">{calculatorForm.values.txPrevalence.maximum}</option>
                         </select>
                     </Col>
                 </Row>
@@ -367,7 +406,7 @@ const Form = () => {
                 <ButtonFixed>
                     <Row>
                         <Col xs={12} smOffset={4} mdOffset={0} sm={4} md={3}>
-                            <Button onClick={submitCalc}>Calcular impactos</Button>
+                            <Button onClick={submitCalc}>{calculatorForm.labels.btnCalulator}</Button>
                         </Col>
                     </Row>
                 </ButtonFixed>

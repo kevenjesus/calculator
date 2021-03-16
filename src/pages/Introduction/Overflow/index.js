@@ -1,28 +1,17 @@
-import { useState } from 'react'
-import { YES, NO } from 'pages/Calculator/Form/consts'
+import { useContext, useCallback } from 'react'
 import { Headline, Text } from 'pages/Introduction/style'
+import { AppContext, stateTypes } from 'utils/AppContext'
+import { YES } from 'pages/Calculator/Form/consts'
 import ImgExample from 'assets/images/example2.svg'
 import RadioBoxConditional from 'components/RadioBoxConditional'
 
-const dataOverflow = [
-    {
-        name: 'overflow',
-        label: 'Sim',
-        value: YES,
-        checked: true
-    },
-    {
-        name: 'overflow',
-        label: 'Não',
-        value: NO,
-        checked: false
-    },
-]
 
 const Overflow = () => {
-    const [overflowList, setOverflowList] = useState(dataOverflow);
+    const {state, dispatch} = useContext(AppContext);
+    const { calculator } = state;
+    const { overflowList } = calculator
 
-    const handleOverflow = (e) => {
+    const handleOverflow = useCallback((e) => {
         const { value } = e.target;
         const overflowListUpdate = overflowList.map(r => {
             r.checked = false;
@@ -31,8 +20,10 @@ const Overflow = () => {
             }
             return r;
         })
-        setOverflowList(overflowListUpdate)
-    }
+        dispatch({type: stateTypes.SET_OVERFLOW_LIST, payload: overflowListUpdate})
+        dispatch({type: stateTypes.SET_OVERFLOW, payload: Number(value) === YES})
+    }, [dispatch, overflowList])
+
     return (
         <>
             <Headline>Transbordamento de desmatamento</Headline>

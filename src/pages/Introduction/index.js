@@ -1,7 +1,6 @@
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback, useContext, useEffect } from 'react'
 import { useHistory } from 'react-router-dom';
 import { ABOUT, INTRODUCTION, CONTEXT_VALUATION, HOW_USE_CALCULATOR, REGION, OVERFLOW, VALUATION_METHOD, ANALYSIS_UNIT, PIT_DEPTH } from './consts'
-import { YES, NO } from 'pages/Calculator/Form/consts'
 import { Container, Header, Language, LanguageContainer, ButtonsFixed, Go } from './style'
 import { Button } from 'theme'
 import { Grid, Row, Col } from 'react-flexbox-grid'
@@ -20,25 +19,11 @@ import ValuationMethod from './ValuationMethod'
 import AnalysisUnit from './AnalysisUnit'
 import PitDepth from './PitDepth'
 import Overflow from './Overflow'
+import { AppContext, stateTypes } from 'utils/AppContext';
+import { NO } from 'pages/Calculator/Form/consts'
 
-import axios from 'axios'
 
-const dataRegion = [
-    {
-        name: 'region',
-        label: 'Sim',
-        value: YES,
-        checked: true
-    },
-    {
-        name: 'region',
-        label: 'Não',
-        value: NO,
-        checked: false
-    },
-]
-
-const Content = ({step, knowRegion, regionList, stateList, state, country, counties, handleRegion, handleState, handleCountry}) => {
+const Content = ({step}) => {
     switch(step) {
         case ABOUT:
         default:
@@ -50,16 +35,7 @@ const Content = ({step, knowRegion, regionList, stateList, state, country, count
         case HOW_USE_CALCULATOR:
             return <HowUseCalculator />
         case REGION:
-            return <Region 
-                    knowRegion={knowRegion}
-                    regionList={regionList}
-                    stateList={stateList}
-                    state={state}
-                    country={country}
-                    counties={counties} 
-                    handleRegion={handleRegion}
-                    handleState={handleState}
-                    handleCountry={handleCountry} />
+            return <Region />
         case VALUATION_METHOD:
             return <ValuationMethod />
         case ANALYSIS_UNIT:
@@ -74,72 +50,37 @@ const Content = ({step, knowRegion, regionList, stateList, state, country, count
 
 const Introduction = () => {
     const [step, setStep] = useState(ABOUT);
-    const [regionList, setRegionList] = useState(dataRegion)
-    const [knowRegion, setKnowRegion] = useState(true);
-    const [stateList, setStateList] = useState([]);
-    const [state, setState] = useState('');
-    const [counties, setCounties] = useState([]);
-    const [country, setCountry] = useState('');
+    const {state, dispatch} = useContext(AppContext) 
+    const {calculator} = state;
+    
     const history = useHistory();
 
-    const getCounties = useCallback(async (uf) => {
-        await axios.get(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${uf}/municipios`)
-          .then(({data}) => {
-            setCounties(data)
-            setCountry(data[0].id)
-          })
-    }, [])
-
-    useEffect(() => {
-        const getStates = async () => {
-            await axios.get('https://servicodados.ibge.gov.br/api/v1/localidades/regioes/1/estados')
-              .then(({data}) => {
-                setStateList(data)
-                setState(data[0].id)
-                getCounties(data[0].id)
-              })
-          }
-          getStates();
-    }, [getCounties])
-
-
-    const handleRegion = useCallback((e) => {
-        const { value } = e.target;
-        const regionListUpdate = regionList.map(r => {
-            r.checked = false;
-            if(r.value === Number(value)) {
-                r.checked = !r.checked
-            }
-            return r;
-        })
-        setRegionList(regionListUpdate)
-        setKnowRegion(Number(value) === YES);
-    }, [setRegionList, setKnowRegion, regionList])
-
-    const handleState = useCallback((e) => {
-        const { value } = e.target;
-        getCounties(value)
-        setState(value)
-        
-    }, [getCounties]);
-
-    const handleCountry = useCallback((e) => {
-        const { value } = e.target;
-        setCountry(value)
-    }, [])
-
     const NextStep = useCallback(() => {
-        if(step === 8) {
+        if(step === ANALYSIS_UNIT) {
+            if(calculator.qtdAnalysis.value === '') {
+                dispatch({type: stateTypes.SET_QTD_ANALYS_UNIT, payload: {...calculator.qtdAnalysis, error: true}});
+            }else if(!calculator.knowRegion) {
+                localStorage.setItem("introduction", true)
+                history.push('/loading')
+            }else {
+                setStep(step+1)
+            }
+        }else if(step === OVERFLOW ) {
             localStorage.setItem("introduction", true)
             history.push('/loading')
         }else {
             setStep(step+1)
         }
-    }, [step, setStep, history]);
+    }, [step, setStep, history, dispatch, calculator]);
 
     const PreviosStep = useCallback(() => {
         setStep(step+-1);
     }, [step, setStep]);
+
+    const SkipIntroduction = useCallback(() => {
+        localStorage.setItem("introduction", true)
+        history.push('/')
+    }, [history])
     
     return (
         <Container>
@@ -161,28 +102,18 @@ const Introduction = () => {
                 </LanguageContainer>
             </Header>
             <Content 
-                step={step} 
-                knowRegion={knowRegion}
-                regionList={regionList} 
-                stateList={stateList} 
-                state={state} 
-                counties={counties} 
-                country={country} 
-                handleRegion={handleRegion} 
-                handleState={handleState} 
-                handleCountry={handleCountry} />
+                step={step} />
             <ButtonsFixed>
                 <Grid>
                     <Row between="sm">
                         <Col xs={6} sm={4} md={3}>
-                            <Button variant="default">Pular introdução</Button>
+                            <Button variant="default" onClick={SkipIntroduction}>Pular introdução</Button>
                         </Col>
                         <Col xs={6} sm={4} md={3}>
                             <Button onClick={NextStep}>Prosseguir</Button>
                         </Col>
                     </Row>
                 </Grid>
-                
                 
             </ButtonsFixed>
         </Container>

@@ -1,50 +1,54 @@
-import { useState } from 'react'
+import { useContext, useCallback } from 'react'
 import { Headline, Text } from 'pages/Introduction/style'
 import ImageExample from 'assets/images/example2.svg'
 import { Row, Col } from 'react-flexbox-grid';
-
-const dataPitDepth = [
-    {
-        label: '2,5 metros',
-        value: 2.5
-    },
-    {
-        label: '5 metros',
-        value: 5
-    },
-    {
-        label: '7,5 metros',
-        value: 7.5
-    },
-    {
-        label: '10 metros',
-        value: 10
-    },
-    {
-        label: '12,5 metros',
-        value: 12.5
-    },
-    {
-        label: '15 metros',
-        value: 15
-    },
-    {
-        label: '17,5 metros',
-        value: 17.5
-    },
-    {
-        label: '20 metros',
-        value: 20
-    },
-]
+import { AppContext, stateTypes } from 'utils/AppContext';
 
 const PitDepth = () => {
-    const [pitDepth, setPitDepth] = useState(2.5);
+    const { state, dispatch } = useContext(AppContext);
+    const { calculator, language } = state;
+    const { pitDepth } = calculator;
+    const { calculatorForm } = language
+    
+    const dataPitDepth = [
+        {
+            label: '2,5 '+calculatorForm.values.pitDepth.meters+'',
+            value: 2.5
+        },
+        {
+            label: '5 '+calculatorForm.values.pitDepth.meters+'',
+            value: 5
+        },
+        {
+            label: '7,5 '+calculatorForm.values.pitDepth.meters+'',
+            value: 7.5
+        },
+        {
+            label: '10 '+calculatorForm.values.pitDepth.meters+'',
+            value: 10
+        },
+        {
+            label: '12,5 '+calculatorForm.values.pitDepth.meters+'',
+            value: 12.5
+        },
+        {
+            label: '15 '+calculatorForm.values.pitDepth.meters+'',
+            value: 15
+        },
+        {
+            label: '17,5 '+calculatorForm.values.pitDepth.meters+'',
+            value: 17.5
+        },
+        {
+            label: '20 '+calculatorForm.values.pitDepth.meters+'',
+            value: 20
+        },
+    ]
 
-    const handlePitDepth = (e) => {
+    const handlePitDepth = useCallback((e) => {
         const { value } = e.target;
-        setPitDepth(Number(value));
-    }
+        dispatch({type: stateTypes.SET_PITDEPTH, payload: Number(value)})
+    }, [dispatch]);
     return (
         <>
             <Headline>Profundidade da cava</Headline>

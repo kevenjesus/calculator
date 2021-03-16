@@ -1,18 +1,29 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useContext, useCallback } from 'react'
 import { Row, Col } from 'react-flexbox-grid'
 import { Headline } from 'pages/Introduction/style'
 import { ItemType, Title, Paragraphy, Thumbnail } from './style'
+import { AppContext, stateTypes } from 'utils/AppContext'
+import { IMPACTED_AREA, AMOUNT_GOLD } from 'pages/Calculator/Form/consts'
+import { TextField } from 'theme'
 import Image from 'assets/images/example2.svg'
 
 const AnalysisUnit = () => {
-    const [state, setState] = useState(0);
+    const [state, setState] = useState(IMPACTED_AREA);
+    const {state: stateContext, dispatch} = useContext(AppContext);
     const ref = useRef();
     
-    const handleState = (go) => {
+    const handleState = useCallback((go) => {
         setState(go);
+        dispatch({type: stateTypes.SET_ANALYS_UNIT, payload: go })
+
         const refTop = ref.current.getBoundingClientRect().top;
         window.scrollTo(refTop, 1000);
-    }
+    },[dispatch]);
+
+    const handleQtdAnalysis = useCallback((e) => {
+        const { value } = e.target;
+        dispatch({type: stateTypes.SET_QTD_ANALYS_UNIT, payload: { value, error: value === '' }})
+    }, [dispatch])
 
     return (
         <>
@@ -20,10 +31,10 @@ const AnalysisUnit = () => {
             
             <Row center="sm">
                 <Col md={8}>
-                <label style={{textAlign: 'left'}}>* Escolha uma opção</label>
+                <label>* Escolha uma opção</label>
             <Row>
                 <Col xs={6}>
-                    <ItemType active={state === 0} onClick={() => handleState(0)}>
+                    <ItemType active={state === AMOUNT_GOLD} onClick={() => handleState(AMOUNT_GOLD)}>
                         <Title>Quantidade de ouro</Title>
                         <Thumbnail src={Image} alt="" />
                         <Paragraphy>
@@ -32,7 +43,7 @@ const AnalysisUnit = () => {
                     </ItemType>
                 </Col>
                 <Col xs={6}>
-                    <ItemType active={state === 1} onClick={() => handleState(1)}>
+                    <ItemType active={state === IMPACTED_AREA} onClick={() => handleState(IMPACTED_AREA)}>
                         <Title>Tamanho do garimpo</Title>
                         <Thumbnail src={Image} alt="" />
                         <Paragraphy>
@@ -41,8 +52,14 @@ const AnalysisUnit = () => {
                     </ItemType>
                 </Col>
                 <Col xs={12} sm={4}>
-                    <label ref={ref} style={{textAlign: 'left'}}>* Digite o valor em {state === 0 ? 'gramas' : 'hectares'}</label>
-                    <input type="text" placeholder={state === 0 ? 'quantidade de gramas' : 'quantos hectares'} />
+                    <TextField 
+                        ref={ref}
+                        error={stateContext.calculator.qtdAnalysis.error}
+                        label={`* Digite o valor em ${state === AMOUNT_GOLD ? 'gramas' : 'hectares'}`} 
+                        type="text" 
+                        placeholder={state === AMOUNT_GOLD ? 'quantidade de gramas' : 'quantos hectares'}
+                        onChange={handleQtdAnalysis}
+                        value={stateContext.calculator.qtdAnalysis.value} />
                 </Col>
             </Row>
             </Col>

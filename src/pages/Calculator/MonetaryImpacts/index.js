@@ -175,15 +175,17 @@ const MonetaryImpacts = () => {
                 </Row>
                 <Chart />
                 
-                <ButtonFixed join>
-                    <Row style={{width: '100%'}}>
-                        <Col xs={12} mdOffset={3} md={3}>
-                            <Button onClick={() => history.push('/')}>fazer novo calculo</Button>
-                        </Col>
-                        <Col xs={12} md={3}>
-                            <Button variant="secondary" onClick={() => window.print()}>imprimir relatórios</Button>
-                        </Col>
-                    </Row>
+                <ButtonFixed>
+                    <Grid>
+                        <Row between="sm" start="md">
+                            <Col xs={6} mdOffset={3} md={3}>
+                                <Button onClick={() => history.push('/')}>fazer novo calculo</Button>
+                            </Col>
+                            <Col xs={6} md={3}>
+                                <Button variant="secondary" onClick={() => window.print()}>imprimir relatórios</Button>
+                            </Col>
+                        </Row>
+                    </Grid>
                 </ButtonFixed>
             </Grid> 
         </Container>
