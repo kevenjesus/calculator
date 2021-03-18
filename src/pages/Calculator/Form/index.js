@@ -83,6 +83,7 @@ const Form = () => {
                 if(country.id === countries.id) {
                     countries.densidadePop2010 = country.densidadePop2010;
                     countries.densidadePop2060 = country.densidadePop2060;
+                    countries.densidadePop2060 = country.densidadePop2060;
                 }
             })
         })
@@ -182,9 +183,9 @@ const Form = () => {
     
   const submitCalc = () => {
     
-    if(checkFormIsInvalid()) {
+    /*if(checkFormIsInvalid()) {
         return false;
-    }
+    }*/
     
     // Metodo de valoração
     //--- custo de oportunidade
@@ -196,6 +197,10 @@ const Form = () => {
     function calcImpacto(valor, price) {
       const toHectare = (valor * multOverflow) * 0.0001907
       return toHectare * price
+    }
+
+    function goldToHectare () {
+
     }
 
     // taxa, periodo, 
@@ -237,12 +242,33 @@ const Form = () => {
     //console.log('total metilado', toMetilado)
 
     ///// Parte 02: Consumo total de mercúrio do mesmo indivíduo
-          const pesoMedioIndividuo = 62.41;
+          const proporcaoRural = 0.61;
+          const proporcaoUrbano = 0.39;
+          const pesoIndividuoRural = 59.1;
+          const pesoIndividuoUrbano = 70;
+          const pesoMedioIndividuo = (proporcaoRural*pesoIndividuoRural)+(proporcaoUrbano*pesoIndividuoUrbano);
           const gramasMercurio = (0.98/10000000);
-          const diasEm50Anos = (365*50);
+          const anos = 50
+          const diasEm50Anos = (365*anos);
           const qtdGramasIndividuoDiaria = gramasMercurio*pesoMedioIndividuo
-
           const ingestaoDiaria = qtdGramasIndividuoDiaria*diasEm50Anos
+        
+          const nivelMedioContaminacaoPeixes = 0.5;
+          const consumoMedioPeixePorDiaEmGramasRural = 144.5;
+          const consumoMedioPeixePorDiaEmGramasUrbano = 57;
+          const ingestaoMediaDiariaMicrogramaMercurioUrbano = (consumoMedioPeixePorDiaEmGramasUrbano*nivelMedioContaminacaoPeixes)/pesoIndividuoUrbano;
+          const ingestaoMediaDiariaMicrogramaMercurioRural = (consumoMedioPeixePorDiaEmGramasRural*nivelMedioContaminacaoPeixes)/pesoIndividuoRural;
+          const ingestaoMediaMercurioDiaria1IndividuoEmMicrogramasporkg = (proporcaoRural*ingestaoMediaDiariaMicrogramaMercurioRural)+(proporcaoUrbano*ingestaoMediaDiariaMicrogramaMercurioUrbano);
+          const ingestaoMediaMercurioDiaria1IndividuoEmGramasporKg = ingestaoMediaMercurioDiaria1IndividuoEmMicrogramasporkg/1000000;
+          const ingestaoMediaDiariaIndividuoEmGramaPorDia = ingestaoMediaMercurioDiaria1IndividuoEmGramasporKg*pesoMedioIndividuo;
+          const ingestaoMediaMercurioEmAnos = (365*anos)*ingestaoMediaDiariaIndividuoEmGramaPorDia;
+          
+          console.log('pesoMedioIndividuo', pesoMedioIndividuo)
+          console.log('ingestaoMediaDiariaMicrogramaMercurioUrbano', ingestaoMediaDiariaMicrogramaMercurioUrbano)
+          console.log('ingestaoMediaDiariaMicrogramaMercurioRural', ingestaoMediaDiariaMicrogramaMercurioRural)
+          console.log('ingestaoMediaMercurioDiaria1IndividuoEmMicrogramasporkg', ingestaoMediaMercurioDiaria1IndividuoEmMicrogramasporkg)
+          console.log('ingestaoMediaMercurioDiaria1IndividuoEmGramasporKg', ingestaoMediaMercurioDiaria1IndividuoEmGramasporKg)
+          console.log('ingestaoMediaMercurioEmAnos', ingestaoMediaMercurioEmAnos)
 
     //// Parte 03: Populaçao afetada
           const PI = 3.14;
@@ -259,8 +285,13 @@ const Form = () => {
           const taxaNatalidade = 18.8/1000;
           const nascidosVivosAfetados = totalPopulacaoAfetada*taxaNatalidade
 
-          const concentracaoMedoaMercurioCabelo = ingestaoDiaria/0.1;
-          const desavioPadraoMedioMercurio = concentracaoMedoaMercurioCabelo/2;
+          
+
+          const concentracaoMediaMercurioCabelo = ingestaoMediaMercurioEmAnos/0.1;
+          const desavioPadraoMedioMercurio = concentracaoMediaMercurioCabelo/2;
+
+          console.log('concentracaoMediaMercurioCabelo', concentracaoMediaMercurioCabelo)
+          console.log('concentracaoMediaMercurioCabelo', desavioPadraoMedioMercurio)
 
           // valores fixos
           // valor final disnorm (0, 5.9, 2.95) = 0.022750132
@@ -277,17 +308,18 @@ const Form = () => {
 
           const valuesNormDist = [];
           const reducer = (accumulator, currentValue) => accumulator + currentValue;
-        
+
           for(let i = 0; i <= 36; i++) {
             if(i % 2 === 0) {
-                valuesNormDist.push(normDist(i, concentracaoMedoaMercurioCabelo, desavioPadraoMedioMercurio, 1))
+                valuesNormDist.push(normDist(i, concentracaoMediaMercurioCabelo, desavioPadraoMedioMercurio, 1))
             }
           }
 
 
+
           const TxIncidencia = valuesNormDist.reduce(reducer); // 4.13564 fixo aguardando distnorm
-          //const incidencia = TxIncidencia*(nascidosVivosAfetados/1000);
-          const incidencia = TxIncidencia*(0.145088113/1000);
+          const incidencia = TxIncidencia*(nascidosVivosAfetados/1000);
+          //const incidencia = TxIncidencia*(0.145088113/1000);
           const incidenciaTotalHomemeMulher = incidencia*2;
           const PesoDaIncapacidadePorIncidencia = incidenciaTotalHomemeMulher*pesoDaIncapacidade;
           const calculo1 = (constante*Math.exp(txDesconto*anoIniciodaIncapacidade))/(Math.pow(bplusr,2))
@@ -317,9 +349,40 @@ const Form = () => {
           
           const CustoTotalGarimpeiros = CustoTotalDALYGarimpeiros+CustoTratamentoNeuroGarimpeiros 
 
-          console.log(totalBioprospeccao, totalCarbono, totalValorUso, totalRecreacao, totalValorExistencia, nascidosVivosAfetados, desavioPadraoMedioMercurio, beta, totalDalyPerdaQI, CustoTotalGarimpeiros)
+          //Custo de4 aterramento de cava
+          const ProdutividadeGramaPorToneladaMineiro = 0.4
+          const CustoFrete1escavadeiraMunicipio = 100 //aqui teremos um custo diferente para cada município. Usamos procv etc. Precisamos ver como incluir depois. Enquanto isso, botamos um valor qualquer
+
+          const RelacaoMinerioEsteril = 7
+          const DensidadeOuro = 2.76
+          const PerdaOuroEscavacao = 2
+          const ProfundidadeMediaTerraFertil = 0.4
+          const CustoAterramentoCavaNormal = 1
+          const CustoAterramentoCavaFertil = 13
+          const QtdeEscavadeiraM3porHora = 160
+          const HorasEscavadeiraDia = 10
+          const DiasAno = 365
+
+          const TonSoloRevolvida = qtdAnalysis / ProdutividadeGramaPorToneladaMineiro
+          const TonEsterilRevolvida = TonSoloRevolvida * RelacaoMinerioEsteril
+          const TotalSoloRevolvida = TonSoloRevolvida + TonEsterilRevolvida
+          const VolumeSemPerda = TotalSoloRevolvida / DensidadeOuro
+          const VolumeComPerda = VolumeSemPerda * PerdaOuroEscavacao
+          const Areaafetadam2 = VolumeComPerda / pitDepth
+          const Areaafetadaha = Areaafetadam2 / 10000
+          const GramadeOuroporHectare = qtdAnalysis / Areaafetadaha
+          const KgdeOuroporHectare = GramadeOuroporHectare / 1000
+          const ProfundidadeMediaTerraNormal = pitDepth - ProfundidadeMediaTerraFertil
+          const VolumeTerraNormal = ProfundidadeMediaTerraNormal * Areaafetadaha
+          const VolumeTerraFertil = ProfundidadeMediaTerraFertil * Areaafetadaha
+          const CustoTotalAterramentoTerraNormal = VolumeTerraNormal * CustoAterramentoCavaNormal
+          const QtdeEscavadeiraM3porano = DiasAno * HorasEscavadeiraDia * QtdeEscavadeiraM3porHora
+          const VolumeEscavadeiraNoAno = VolumeTerraNormal-QtdeEscavadeiraM3porano
+          const DiferencaVolumeEscavadeiraNoAno = VolumeEscavadeiraNoAno < 0 ? 0 : VolumeEscavadeiraNoAno
+
+         // console.log(totalBioprospeccao, totalCarbono, totalValorUso, totalRecreacao, totalValorExistencia, nascidosVivosAfetados, desavioPadraoMedioMercurio, beta, totalDalyPerdaQI, CustoTotalGarimpeiros)
         
-          history.push('/loading')
+          //history.push('/loading')
           
         }
 

@@ -1,6 +1,6 @@
-import { useState, useCallback, useContext } from 'react'
+import { useState, useCallback, useContext, useEffect } from 'react'
 import { useHistory } from 'react-router-dom';
-import { ABOUT, INTRODUCTION, CONTEXT_VALUATION, HOW_USE_CALCULATOR, REGION, OVERFLOW, VALUATION_METHOD, ANALYSIS_UNIT, PIT_DEPTH } from './consts'
+import { ABOUT, INTRODUCTION, HOW_USE_CALCULATOR, REGION, OVERFLOW, VALUATION_METHOD, ANALYSIS_UNIT, PIT_DEPTH } from './consts'
 import { Container, Header, Language, LanguageContainer, ButtonsFixed, Go } from './style'
 import { Button } from 'theme'
 import { Grid, Row, Col } from 'react-flexbox-grid'
@@ -12,7 +12,6 @@ import { ReactComponent as GoBack } from 'assets/icons/goBack.svg'
 
 import About from './About'
 import IntroductionPage from './Introduction'
-import ContextValue from './ContextValue'
 import HowUseCalculator from './HowUseCalculator'
 import Region from './Region'
 import ValuationMethod from './ValuationMethod'
@@ -29,8 +28,6 @@ const Content = ({step}) => {
             return <About />
         case INTRODUCTION:
             return <IntroductionPage />
-        case CONTEXT_VALUATION:
-            return <ContextValue />
         case HOW_USE_CALCULATOR:
             return <HowUseCalculator />
         case REGION:
@@ -48,24 +45,31 @@ const Content = ({step}) => {
 
 
 const Introduction = () => {
-    const [step, setStep] = useState(ABOUT);
+    const [step, setStep] = useState(null);
     const {state, dispatch} = useContext(AppContext) 
     const {calculator} = state;
-    
     const history = useHistory();
+
+    useEffect(() => {
+        const { location } = history;
+        const { state } = location
+        if(state) {
+            setStep(state.step);
+        }else {
+            setStep(ABOUT)
+        }
+    }, [history])
 
     const NextStep = useCallback(() => {
         if(step === ANALYSIS_UNIT) {
             if(calculator.qtdAnalysis.value === '') {
                 dispatch({type: stateTypes.SET_QTD_ANALYS_UNIT, payload: {...calculator.qtdAnalysis, error: true}});
             }else if(!calculator.knowRegion) {
-                localStorage.setItem("introduction", true)
                 history.push('/loading')
             }else {
                 setStep(step+1)
             }
         }else if(step === OVERFLOW ) {
-            localStorage.setItem("introduction", true)
             history.push('/loading')
         }else {
             setStep(step+1)
@@ -77,14 +81,13 @@ const Introduction = () => {
     }, [step, setStep]);
 
     const SkipIntroduction = useCallback(() => {
-        localStorage.setItem("introduction", true)
-        history.push('/')
+        history.push('/calculator')
     }, [history])
     
     return (
         <Container>
             <Header>
-                <Go hidden={step === 0} onClick={PreviosStep}>
+                <Go hidden={step === ABOUT} onClick={PreviosStep}>
                     <GoBack />
                     <span>Voltar</span>
                 </Go>
@@ -113,7 +116,6 @@ const Introduction = () => {
                         </Col>
                     </Row>
                 </Grid>
-                
             </ButtonsFixed>
         </Container>
     )

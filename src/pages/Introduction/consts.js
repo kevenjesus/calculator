@@ -1,9 +1,8 @@
 export const ABOUT = 0;
 export const INTRODUCTION = 1;
-export const CONTEXT_VALUATION = 2;
-export const HOW_USE_CALCULATOR = 3;
-export const REGION = 4;
-export const VALUATION_METHOD = 5;
-export const ANALYSIS_UNIT = 6;
-export const PIT_DEPTH = 7;
-export const OVERFLOW = 8;
+export const HOW_USE_CALCULATOR = 2;
+export const REGION = 3;
+export const VALUATION_METHOD = 4;
+export const ANALYSIS_UNIT = 5;
+export const PIT_DEPTH = 6;
+export const OVERFLOW = 7;

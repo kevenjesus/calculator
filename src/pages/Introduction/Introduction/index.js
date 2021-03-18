@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { Headline, Text, ImpactedBox } from 'pages/Introduction/style'
 import Image from 'assets/images/teste.svg'
 
@@ -30,6 +31,12 @@ const IntroductionPage = () => {
                     <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Condimentum nibh id sed habitant. Ac faucibus at </Text>
                </div>
             </ImpactedBox>
+            <Text>
+                A calculadora estima valores para cada um desses impactos. Os valores dependem do contexto.&nbsp;
+                <Link to='/introduction/context-value' style={{fontSize: 22}}>Saiba mais</Link>
+            </Text>
+            
+            
         </>
     )
 }

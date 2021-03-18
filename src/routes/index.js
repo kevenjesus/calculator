@@ -7,6 +7,7 @@ import MercuryContamination from 'pages/Calculator/MercuryContamination'
 import MonetaryImpacts from 'pages/Calculator/MonetaryImpacts'
 
 import Introduction from 'pages/Introduction'
+import ContextValue from 'pages/Introduction/ContextValue'
 
 import Header from 'layout/Header'
 import Footer from 'layout/Footer'
@@ -17,13 +18,9 @@ const Routes = () => {
         <Router>
             <Header />
             <Switch>
-                <Route path="/" exact render={() => {
-                    if(localStorage.getItem("introduction")) {
-                        return <Redirect to="/calculator" />
-                    }
-                    return <Redirect to="/introduction" />
-                }} />
+                <Route path="/" exact component={Introduction} />
                 <Route path="/introduction" exact component={Introduction} />
+                <Route path="/introduction/context-value" exact component={ContextValue} />
                 <Route path="/calculator" exact component={Form} />
                 <Route path="/loading" exact component={Loading} />
                 <Route path="/impacts/deforestation" exact component={Deforestation} />
