@@ -1,19 +1,20 @@
 import { createContext, useReducer  } from 'react'
 import { IMPACTED_AREA, NO, YES, OPPORTUNITY_COST, TX_PREVALENCE_MAX } from 'pages/Calculator/Form/consts'
 import ptBR from 'utils/pt_BR'
+import { ABOUT } from 'pages/Introduction/consts'
 
 const dataRegion = [
     {
         name: 'region',
-        label: 'Sim',
+        label: 'Impactos Específicos',
         value: YES,
-        checked: false
+        checked: true
     },
     {
         name: 'region',
-        label: 'Não',
+        label: 'Impactos Gerais Médios',
         value: NO,
-        checked: true
+        checked: false
     },
 ]
 
@@ -47,13 +48,14 @@ export const stateTypes = {
     SET_PITDEPTH: 'SET_PITDEPTH',
     SET_VALUATION_METHOD: 'SET_VALUATION_METHOD',
     SET_TX_PREVALENCE: 'SET_TX_PREVALENCE',
-    SET_LANGUAGE: 'SET_LANGUAGE'
+    SET_LANGUAGE: 'SET_LANGUAGE',
+    SET_STEP: 'SET_STEP'
 }
 
 const initialState = {
     calculator: {
         regionList: dataRegion,
-        knowRegion: false,
+        knowRegion: true,
         stateList: [],
         state: '',
         counties: [],
@@ -68,6 +70,9 @@ const initialState = {
         pitDepth: 2.5,
         valuatioMethod: OPPORTUNITY_COST,
         txPrevalence: TX_PREVALENCE_MAX,
+    },
+    introduction: {
+        step: ABOUT
     },
     language: ptBR
 }
@@ -115,9 +120,20 @@ const languageReducer = (state, action) => {
     }
 }
 
-const combineReducers = ({calculator, language}, action) => ({
+
+const introductoinReducer = (state, action) => {
+    switch(action.type) {
+        case stateTypes.SET_STEP:
+            return action.payload
+        default:
+            return state;
+    }
+}
+
+const combineReducers = ({calculator, language, introduction}, action) => ({
     calculator: calculatorReducer(calculator, action),
-    language: languageReducer(language, action)
+    language: languageReducer(language, action),
+    introduction: introductoinReducer(introduction, action)
 })
 
 export const AppContext = createContext({

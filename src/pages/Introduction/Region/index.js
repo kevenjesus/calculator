@@ -2,7 +2,8 @@ import { useContext, useEffect, useCallback } from 'react'
 import {  Row, Col } from 'react-flexbox-grid'
 import { Headline, Text } from 'pages/Introduction/style'
 import { AppContext, stateTypes } from 'utils/AppContext'
-import { YES } from 'pages/Calculator/Form/consts'
+import { YES, NO } from 'pages/Calculator/Form/consts'
+import { VALUATION_METHOD } from 'pages/Introduction/consts'
 import RadioBoxConditional from 'components/RadioBoxConditional'
 import Conditional from 'components/Conditional'
 import mockStates from 'mocks/state.json'
@@ -58,6 +59,9 @@ const Region = () => {
         })
         dispatch({type: stateTypes.SET_REGION_LIST, payload: regionListUpdate})
         dispatch({type: stateTypes.SET_KNOW_REGION, payload: Number(value) === YES})
+        if(Number(value) === NO) {
+            dispatch({type: stateTypes.SET_STEP, payload: { step: VALUATION_METHOD}});
+        }
     }, [dispatch, regionList])
 
     const handleState = useCallback((e) => {
@@ -79,7 +83,7 @@ const Region = () => {
                 As regiões apresentam diferentes características populacionais (tamanho, densidade, origem) e ambientais (cor e turbidez dos rios)
             </Text>
             <div style={{textAlign: 'center'}}>
-                <label>Você sabe a localização do garimpo?</label>
+                <label style={{textAlign: 'center'}}>Você gostaria de saber mais sobre os impactos gerais do garimpo, ou impactos de um garimpo específico do qual saiba a localização?</label>
                 <RadioBoxConditional state={regionList} setState={handleRegion} />
             </div>
             <Conditional check={knowRegion}>

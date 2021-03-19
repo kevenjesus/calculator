@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Form from 'pages/Calculator/Form'
 import Loading from 'pages/Calculator/Loading'
 import Deforestation from 'pages/Calculator/Deforestation'

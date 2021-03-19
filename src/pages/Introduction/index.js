@@ -1,4 +1,4 @@
-import { useState, useCallback, useContext, useEffect } from 'react'
+import {  useCallback, useContext, useEffect } from 'react'
 import { useHistory } from 'react-router-dom';
 import { ABOUT, INTRODUCTION, HOW_USE_CALCULATOR, REGION, OVERFLOW, VALUATION_METHOD, ANALYSIS_UNIT, PIT_DEPTH } from './consts'
 import { Container, Header, Language, LanguageContainer, ButtonsFixed, Go } from './style'
@@ -45,20 +45,21 @@ const Content = ({step}) => {
 
 
 const Introduction = () => {
-    const [step, setStep] = useState(null);
     const {state, dispatch} = useContext(AppContext) 
-    const {calculator} = state;
+    const {calculator, introduction} = state;
+    console.log(introduction)
+    const { step } = introduction
     const history = useHistory();
 
     useEffect(() => {
-        const { location } = history;
+        const { location } = history
         const { state } = location
         if(state) {
-            setStep(state.step);
+            dispatch({type: stateTypes.SET_STEP, payload: { step: state.step}});
         }else {
-            setStep(ABOUT)
+            dispatch({type: stateTypes.SET_STEP, payload: { step: ABOUT}});
         }
-    }, [history])
+    }, [history, dispatch])
 
     const NextStep = useCallback(() => {
         if(step === ANALYSIS_UNIT) {
@@ -67,22 +68,26 @@ const Introduction = () => {
             }else if(!calculator.knowRegion) {
                 history.push('/loading')
             }else {
-                setStep(step+1)
+                dispatch({type: stateTypes.SET_STEP, payload: { step: step+1}});
             }
         }else if(step === OVERFLOW ) {
             history.push('/loading')
         }else {
-            setStep(step+1)
+            dispatch({type: stateTypes.SET_STEP, payload: { step: step+1}});
         }
-    }, [step, setStep, history, dispatch, calculator]);
+    }, [step, dispatch, history, calculator]);
 
     const PreviosStep = useCallback(() => {
-        setStep(step+-1);
-    }, [step, setStep]);
+        dispatch({type: stateTypes.SET_STEP, payload: { step: step-1}});
+    }, [step, dispatch]);
 
     const SkipIntroduction = useCallback(() => {
         history.push('/calculator')
     }, [history])
+
+    if(step === null || step === undefined) {
+        return false;
+    }
     
     return (
         <Container>

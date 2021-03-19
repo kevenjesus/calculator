@@ -6,10 +6,14 @@ export const ItemType = styled.div`
     background: ${({active}) => active ? '#F7FDFB' : '#fff'};
     padding: 15px;
     cursor: pointer;
+    margin-bottom: 20px;
+    @media (min-width: 768px) {
+        margin-bottom: 0;
+    }
 ` 
 
 export const Title = styled.h2`
-    font-size: 18px;
+    font-size: 22px;
     margin-bottom: 15px;
     text-align: center;
     height: 90px;
@@ -17,16 +21,16 @@ export const Title = styled.h2`
 
 export const Paragraphy = styled.p`
     font-size: 12px;
+    text-align: center;
     @media (min-width: 768px) {
         font-size: 20px;
         line-height: 44px;
+        text-align: left;
     }
 ` 
 
 export const Thumbnail = styled.img`
     max-width: 100%;
-    @media (min-width: 768px) {
-        display: block;
-        margin: 0 auto;
-    }
+    display: block;
+    margin: 0 auto;
 ` 

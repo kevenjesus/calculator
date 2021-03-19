@@ -13,7 +13,7 @@ import { ReactComponent as Usa } from 'assets/icons/usa.svg'
 
 const Header = () => {
     const [visibleSidebar, setVisibleSidebar] = useState(false);
-    const [notRender, setNoteRender] = useState(false);
+    const [notRender, setNoteRender] = useState(-1);
     const {state} = useContext(AppContext)
     const location = useLocation();
     const { language } = state;
@@ -21,11 +21,11 @@ const Header = () => {
     
     useEffect(() => {
         const { pathname } = location;
-        const isRender = ['/introduction'].findIndex(a => a === pathname);
+        const isRender = ['/calculator'].findIndex(a => a === pathname);
         setNoteRender(isRender);
     }, [location])
 
-    if(!notRender) {
+    if(notRender < 0) {
         return null;
     }
     
