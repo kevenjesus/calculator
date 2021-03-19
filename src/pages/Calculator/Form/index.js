@@ -26,8 +26,6 @@ const Form = () => {
         country,
         analysisUnit,
         qtdAnalysis,
-        overflowList,
-        overflow,
         pitDepth,
         valuatioMethod,
         txPrevalence  } = calculator;    
@@ -144,18 +142,6 @@ const Form = () => {
         dispatch({type: stateTypes.SET_QTD_ANALYS_UNIT, payload: { value, error: value === '' }})
     }, [dispatch])
 
-    const handleOverflow = useCallback((e) => {
-        const { value } = e.target;
-        const overflowListUpdate = overflowList.map(r => {
-            r.checked = false;
-            if(r.value === Number(value)) {
-                r.checked = !r.checked
-            }
-            return r;
-        })
-        dispatch({type: stateTypes.SET_OVERFLOW_LIST, payload: overflowListUpdate})
-        dispatch({type: stateTypes.SET_OVERFLOW, payload: Number(value) === YES})
-    }, [dispatch, overflowList])
 
     const handlePitDepth = useCallback((e) => {
         const { value } = e.target;
@@ -183,25 +169,23 @@ const Form = () => {
     
   const submitCalc = () => {
     
-    /*if(checkFormIsInvalid()) {
+    if(checkFormIsInvalid()) {
         return false;
-    }*/
+    }
     
     // Metodo de valoração
     //--- custo de oportunidade
 
     // sem transboardamento = 1
     // com transboardamento = 12
-    const multOverflow = overflow === YES ? 12 : 1;
+    const overflow = 12
 
     function calcImpacto(valor, price) {
-      const toHectare = (valor * multOverflow) * 0.0001907
+      const toHectare = (valor * overflow) * 0.0001907
       return toHectare * price
     }
 
-    function goldToHectare () {
-
-    }
+  
 
     // taxa, periodo, 
     function ValorPresente(rate, nper, pmt) {
@@ -351,14 +335,14 @@ const Form = () => {
 
           //Custo de4 aterramento de cava
           const ProdutividadeGramaPorToneladaMineiro = 0.4
-          const CustoFrete1escavadeiraMunicipio = 100 //aqui teremos um custo diferente para cada município. Usamos procv etc. Precisamos ver como incluir depois. Enquanto isso, botamos um valor qualquer
+         // const CustoFrete1escavadeiraMunicipio = 100 //aqui teremos um custo diferente para cada município. Usamos procv etc. Precisamos ver como incluir depois. Enquanto isso, botamos um valor qualquer
 
           const RelacaoMinerioEsteril = 7
           const DensidadeOuro = 2.76
           const PerdaOuroEscavacao = 2
           const ProfundidadeMediaTerraFertil = 0.4
           const CustoAterramentoCavaNormal = 1
-          const CustoAterramentoCavaFertil = 13
+         // const CustoAterramentoCavaFertil = 13
           const QtdeEscavadeiraM3porHora = 160
           const HorasEscavadeiraDia = 10
           const DiasAno = 365
@@ -380,9 +364,9 @@ const Form = () => {
           const VolumeEscavadeiraNoAno = VolumeTerraNormal-QtdeEscavadeiraM3porano
           const DiferencaVolumeEscavadeiraNoAno = VolumeEscavadeiraNoAno < 0 ? 0 : VolumeEscavadeiraNoAno
 
-         // console.log(totalBioprospeccao, totalCarbono, totalValorUso, totalRecreacao, totalValorExistencia, nascidosVivosAfetados, desavioPadraoMedioMercurio, beta, totalDalyPerdaQI, CustoTotalGarimpeiros)
+          console.log(KgdeOuroporHectare, VolumeTerraFertil,CustoTotalAterramentoTerraNormal,DiferencaVolumeEscavadeiraNoAno, totalBioprospeccao, totalCarbono, totalValorUso, totalRecreacao, totalValorExistencia, nascidosVivosAfetados, desavioPadraoMedioMercurio, beta, totalDalyPerdaQI, CustoTotalGarimpeiros)
         
-          //history.push('/loading')
+          history.push('/loading')
           
         }
 
@@ -420,7 +404,7 @@ const Form = () => {
                     </Row>
                 </Conditional>
                 <Row>
-                    <Col xs={6} sm={4}>
+                    <Col xs={6} sm={9}>
                         <label>{calculatorForm.labels.analysisUnit}</label>
                         <select name="analysisUnit" value={calculator.analysisUnit} onChange={handleAnalysisUnit}>
                             <option value={IMPACTED_AREA}>{calculatorForm.values.analysisUnit.impactedArea}</option>
@@ -436,12 +420,6 @@ const Form = () => {
                             onChange={handleQtdAnalysis} 
                             name="valor" placeholder={analysisUnit === IMPACTED_AREA ? calculatorForm.values.qtdAnalysisUnit.hactare : calculatorForm.values.qtdAnalysisUnit.grams} />
                     </Col>
-                    <Conditional check={knowRegion}>
-                        <Col xs={12} sm={5}>
-                            <label>{calculatorForm.labels.overflow}</label>
-                            <RadioBoxConditional state={overflowList} setState={handleOverflow} />
-                        </Col>
-                    </Conditional>
                 </Row>
                 <Row>
                     <Conditional check={knowRegion}>

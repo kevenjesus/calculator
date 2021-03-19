@@ -16,7 +16,7 @@ const ptBR = {
             analysisUnit: 'Unidade de analise',
             overflow: 'Houve transbordamento?',
             pitDepth: 'Profundidade da cava',
-            valuatioMethod: 'Método de valoração',
+            valuatioMethod: 'Tipo de garimpo',
             txPrevalence: 'Taxa de prevalência',
             btnCalulator: 'Calcular impactos'
         },

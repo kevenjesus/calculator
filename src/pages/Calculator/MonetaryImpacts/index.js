@@ -19,13 +19,13 @@ const dataimpactCategories = [
         name: 'impactCategory',
         label: 'Impactos do mercúrio',
         value: MERCURY_IMPACTED,
-        checked: false
+        checked: true
     },
     {
         name: 'impactCategory',
         label: 'Escavação / Abertura de cava',
         value: PIT_DEPTH,
-        checked: false
+        checked: true
     },
 ]
 

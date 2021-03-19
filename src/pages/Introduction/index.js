@@ -1,6 +1,6 @@
 import {  useCallback, useContext, useEffect } from 'react'
 import { useHistory } from 'react-router-dom';
-import { ABOUT, INTRODUCTION, HOW_USE_CALCULATOR, REGION, OVERFLOW, VALUATION_METHOD, ANALYSIS_UNIT, PIT_DEPTH } from './consts'
+import { ABOUT, INTRODUCTION, HOW_USE_CALCULATOR, REGION, VALUATION_METHOD, ANALYSIS_UNIT, PIT_DEPTH } from './consts'
 import { Container, Header, Language, LanguageContainer, ButtonsFixed, Go } from './style'
 import { Button } from 'theme'
 import { Grid, Row, Col } from 'react-flexbox-grid'
@@ -17,7 +17,6 @@ import Region from './Region'
 import ValuationMethod from './ValuationMethod'
 import AnalysisUnit from './AnalysisUnit'
 import PitDepth from './PitDepth'
-import Overflow from './Overflow'
 import { AppContext, stateTypes } from 'utils/AppContext';
 
 
@@ -38,8 +37,6 @@ const Content = ({step}) => {
             return <AnalysisUnit />
         case PIT_DEPTH:
             return <PitDepth />
-        case OVERFLOW:
-            return <Overflow />
     }
 }
 
@@ -70,7 +67,7 @@ const Introduction = () => {
             }else {
                 dispatch({type: stateTypes.SET_STEP, payload: { step: step+1}});
             }
-        }else if(step === OVERFLOW ) {
+        }else if(step === PIT_DEPTH ) {
             history.push('/loading')
         }else {
             dispatch({type: stateTypes.SET_STEP, payload: { step: step+1}});

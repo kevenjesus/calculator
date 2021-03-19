@@ -5,4 +5,3 @@ export const REGION = 3;
 export const VALUATION_METHOD = 4;
 export const ANALYSIS_UNIT = 5;
 export const PIT_DEPTH = 6;
-export const OVERFLOW = 7;

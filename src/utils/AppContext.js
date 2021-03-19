@@ -66,7 +66,7 @@ const initialState = {
             error: false
         },
         overflowList: dataOverflow,
-        overflow: NO,
+        overflow: YES,
         pitDepth: 2.5,
         valuatioMethod: ALLUVIUM,
         txPrevalence: TX_PREVALENCE_MAX,
