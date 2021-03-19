@@ -17,7 +17,7 @@ const ptBR = {
             overflow: 'Houve transbordamento?',
             pitDepth: 'Profundidade da cava',
             valuatioMethod: 'Tipo de garimpo',
-            txPrevalence: 'Taxa de prevalência',
+            txPrevalence: 'hipóteses sobre valores',
             btnCalulator: 'Calcular impactos'
         },
         values: {
@@ -38,9 +38,8 @@ const ptBR = {
                 pit: 'Poço',
             },
             txPrevalence: {
-                minimum: 'Minimo',
-                medium: 'Médio',
-                maximum: 'Máximo'
+                medium: 'Conservador',
+                maximum: 'Princípio da precaução'
             }
         }
         
