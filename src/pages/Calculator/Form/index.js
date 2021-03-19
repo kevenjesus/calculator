@@ -443,7 +443,6 @@ const Form = () => {
                     <Col xs={12} sm={!knowRegion ? 7 : 12}>
                         <label>{calculatorForm.labels.txPrevalence}</label>
                         <select name="txPrevalencia" value={txPrevalence} onChange={handleTxPrevalance}>
-                            <option value="0.237">{calculatorForm.values.txPrevalence.minimum}</option>
                             <option value="0.29">{calculatorForm.values.txPrevalence.medium}</option>
                             <option value="0.343">{calculatorForm.values.txPrevalence.maximum}</option>
                         </select>
