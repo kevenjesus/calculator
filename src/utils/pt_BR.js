@@ -33,8 +33,9 @@ const ptBR = {
                 meters: 'metros'
             },
             valuatioMethod: {
-                opportunityCost: 'Custo de oportunidade',
-                replacementCostOrAreaRecovery: 'Custo de reposição ou recuperação de área'
+                alluvium: 'Aluvião',
+                ferry: 'Balsa',
+                pit: 'Poço',
             },
             txPrevalence: {
                 minimum: 'Minimo',

@@ -22,7 +22,9 @@ const AnalysisUnit = () => {
 
     const handleQtdAnalysis = useCallback((e) => {
         const { value } = e.target;
-        dispatch({type: stateTypes.SET_QTD_ANALYS_UNIT, payload: { value, error: value === '' }})
+        if(value === '' || Number(value) > 0) {
+            dispatch({type: stateTypes.SET_QTD_ANALYS_UNIT, payload: { value, error: value === '' }})
+        }
     }, [dispatch])
 
     return (

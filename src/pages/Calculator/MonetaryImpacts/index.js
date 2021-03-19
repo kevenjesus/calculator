@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { Button, Checkbox } from 'theme'
 import { Grid, Row, Col } from 'react-flexbox-grid'
-import { OPPORTUNITY_COST, REPLACEMENT_COST_OF_AREA_RECOVERY, DEFORESTATION, MERCURY_IMPACTED, PIT_DEPTH } from 'pages/Calculator/Form/consts'
+import { DEFORESTATION, MERCURY_IMPACTED, PIT_DEPTH } from 'pages/Calculator/Form/consts'
 import { Container, Menu, MenuItem, Headline, ButtonFixed, HiddenSm } from 'pages/Calculator/ImpactsStyles'
 import { Monetary, MonetaryType, Label, FormGroup } from './style'
 import Alert from 'components/Alert'
@@ -84,14 +84,9 @@ const CheckboxConditional = ({state, setState}) => {
 
 
 const MonetaryImpacts = () => {
-    const [valuatioMethod, setValuationMethod] = useState(OPPORTUNITY_COST)
     const [impactedCategories, setImpactedCategories] = useState(dataimpactCategories)
     const [impactedVisuaization, setImpactedVisualization] = useState(dataImpactedVisualization)
     const history = useHistory();
-    const handleValuationMethod = useCallback((e) => {
-        const { value } = e.target;
-        setValuationMethod(Number(value))
-    }, [setValuationMethod])
 
     const handleImpactedCategories = useCallback((e) => {
         const { value } = e.target;
@@ -138,15 +133,7 @@ const MonetaryImpacts = () => {
                     <Col xs={12} sm={8} md={9}>
                         <Headline>Impactos monetários</Headline>
                         <Row>
-                            <Col xs={12} sm={6}>
-                                <FormGroup>
-                                    <Label>Método de valoração</Label>
-                                    <select name="valuationMethod" value={valuatioMethod} onChange={handleValuationMethod}>
-                                        <option value={OPPORTUNITY_COST}>Custo de oportunidade</option>
-                                        <option value={REPLACEMENT_COST_OF_AREA_RECOVERY}>Custo de reposição ou recuperação de área</option>
-                                    </select>
-                                </FormGroup>
-                            </Col>
+                        
                             <Col xs={12} sm={6}>
                                 <FormGroup>
                                     <Label>Valor total monetário</Label>

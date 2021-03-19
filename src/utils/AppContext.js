@@ -1,5 +1,5 @@
 import { createContext, useReducer  } from 'react'
-import { IMPACTED_AREA, NO, YES, OPPORTUNITY_COST, TX_PREVALENCE_MAX } from 'pages/Calculator/Form/consts'
+import { IMPACTED_AREA, NO, YES, ALLUVIUM, TX_PREVALENCE_MAX } from 'pages/Calculator/Form/consts'
 import ptBR from 'utils/pt_BR'
 import { ABOUT } from 'pages/Introduction/consts'
 
@@ -68,7 +68,7 @@ const initialState = {
         overflowList: dataOverflow,
         overflow: NO,
         pitDepth: 2.5,
-        valuatioMethod: OPPORTUNITY_COST,
+        valuatioMethod: ALLUVIUM,
         txPrevalence: TX_PREVALENCE_MAX,
     },
     introduction: {

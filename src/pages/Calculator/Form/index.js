@@ -4,7 +4,7 @@ import { Grid, Row, Col } from 'react-flexbox-grid'
 import { Button, TextField } from 'theme'
 import { Container } from './style'
 import { ButtonFixed } from 'pages/Calculator/ImpactsStyles'
-import { YES, IMPACTED_AREA, AMOUNT_GOLD, OPPORTUNITY_COST, REPLACEMENT_COST_OF_AREA_RECOVERY } from './consts'
+import { YES, IMPACTED_AREA, AMOUNT_GOLD, ALLUVIUM, FERRY, PIT } from './consts'
 import { AppContext, stateTypes } from 'utils/AppContext'
 import Conditional from 'components/Conditional'
 import RadioBoxConditional from 'components/RadioBoxConditional'
@@ -457,8 +457,9 @@ const Form = () => {
                     <Col xs={12} sm={!knowRegion ? 7 : 6}>
                         <label>{calculatorForm.labels.valuatioMethod}</label>
                         <select name="valuationMethod" value={valuatioMethod} onChange={handleValuationMethod}>
-                            <option value={OPPORTUNITY_COST}>{calculatorForm.values.valuatioMethod.opportunityCost}</option>
-                            <option value={REPLACEMENT_COST_OF_AREA_RECOVERY}>{calculatorForm.values.valuatioMethod.replacementCostOrAreaRecovery}</option>
+                            <option value={ALLUVIUM}>{calculatorForm.values.valuatioMethod.alluvium}</option>
+                            <option value={FERRY}>{calculatorForm.values.valuatioMethod.ferry}</option>
+                            <option value={PIT}>{calculatorForm.values.valuatioMethod.pit}</option>
                         </select>
                     </Col>
                     <Col xs={12} sm={!knowRegion ? 7 : 12}>

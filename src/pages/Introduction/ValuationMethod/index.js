@@ -1,15 +1,21 @@
-import { useState } from 'react'
+import { useCallback, useContext } from 'react'
 import { Row, Col } from 'react-flexbox-grid'
 import { Headline, Text } from 'pages/Introduction/style'
 import { ItemType, Title, Paragraphy, Thumbnail } from './style'
+import { AppContext, stateTypes } from 'utils/AppContext'
 import Image from 'assets/images/example2.svg'
-
-const ALLUVIUM = 'ALLUVIUM'
-const FERRY = 'FERRY';
-const PIT = 'PIT';
+import { ALLUVIUM, FERRY, PIT } from 'pages/Calculator/Form/consts'
 
 const ValuationMethod = () => {
-    const [state, setState] = useState(ALLUVIUM);
+    const {state, dispatch} = useContext(AppContext);
+    const { calculator } = state
+
+    const handleOption = useCallback((value) => {
+        dispatch({type: stateTypes.SET_VALUATION_METHOD, payload: value})
+    }, [dispatch])
+
+    console.log(calculator.valuatioMethod)
+
     return (
         <>
             <Headline>Tipo de garimpo</Headline>
@@ -20,7 +26,7 @@ const ValuationMethod = () => {
                 <label style={{textAlign: 'left'}}>* Escolha uma opção</label>
             <Row>
                 <Col md={4}>
-                    <ItemType active={state === ALLUVIUM} onClick={() => setState(ALLUVIUM)}>
+                    <ItemType active={calculator.valuatioMethod === ALLUVIUM} onClick={() => handleOption(ALLUVIUM)}>
                         <Title>Aluvião</Title>
                         <Thumbnail src={Image} alt="" />
                         <Paragraphy>
@@ -29,7 +35,7 @@ const ValuationMethod = () => {
                     </ItemType>
                 </Col>
                 <Col md={4}>
-                    <ItemType active={state === FERRY} onClick={() => setState(FERRY)}>
+                    <ItemType active={calculator.valuatioMethod === FERRY} onClick={() => handleOption(FERRY)}>
                         <Title>Balsa</Title>
                         <Thumbnail src={Image} alt="" />
                         <Paragraphy>
@@ -38,7 +44,7 @@ const ValuationMethod = () => {
                     </ItemType>
                 </Col>
                 <Col md={4}>
-                    <ItemType active={state === PIT} onClick={() => setState(PIT)}>
+                    <ItemType active={calculator.valuatioMethod === PIT} onClick={() => handleOption(PIT)}>
                         <Title>Poço</Title>
                         <Thumbnail src={Image} alt="" />
                         <Paragraphy>
