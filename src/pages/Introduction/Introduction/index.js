@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import { Headline, Text, ImpactedBox } from 'pages/Introduction/style'
 import Image from 'assets/images/teste.svg'
+import { Button } from 'theme'
+import { Col, Row } from 'react-flexbox-grid'
 
 const IntroductionPage = () => {
     return (
@@ -33,8 +35,15 @@ const IntroductionPage = () => {
             </ImpactedBox>
             <Text>
                 A calculadora estima valores para cada um desses impactos. Os valores dependem do contexto.&nbsp;
-                <Link to='/introduction/context-value' style={{fontSize: 22}}>Saiba mais</Link>
             </Text>
+            <Row>
+                <Col sm={5}>
+                    <Link to='/introduction/context-value'>
+                        <Button variant="secondary">Saiba mais (contexto e valor)</Button>
+                    </Link>
+                </Col>
+            </Row>
+            
             
             
         </>
