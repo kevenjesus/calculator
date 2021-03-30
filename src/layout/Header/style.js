@@ -28,17 +28,34 @@ export const LogoContainer = styled.div`
     flex-wrap: wrap;
 ` 
 
+export const LogoBase = styled.div`
+    margin-left: 10px;
+    display: inline-block;
+    flex-wrap: wrap;
+    align-items: center;
+    @media (min-width: 768px) {
+        display: flex;
+    }
+` 
+
 export const LogoName = styled.span`
     display: block;
+    width: 100%;
     font-family: 'Fjalla One', sans-serif;
-    font-size: 30px;
+    font-size: ${({isPtBR}) => isPtBR ? '15px' : '30px'};
     color: ${colors.blacks.normal};
     text-transform: uppercase;
+    @media (min-width: 768px ) {
+        font-size: ${({isPtBR}) => isPtBR ? '20px' : '25px'};
+    }
+    @media (min-width: 1200px ) {
+        font-size: 30px
+    }
 `
 
 export const LogoSlogan = styled.span`
     display: block;
-    text-align: right;
+    width: 100%;
     font-size: 12px;
     color: ${colors.blacks.normal};
 `   

@@ -1,7 +1,7 @@
 const ptBR = {
     header: {
         naming: 'calculadora',
-        slogan: 'impactos do garimpo',
+        slogan: 'impactos do garimpo ilegal de ouro',
         linkWebsite: 'ir para o site'
     },
     calculatorForm: {
@@ -10,39 +10,42 @@ const ptBR = {
             no: 'Não'
         },
         labels: {
-            knowRegion: 'você sabe a localização do garimpo?',
+            knowRegion: 'Você gostaria de aprender sobre os impactos gerais do garimpo de ouro ou dos impactos de um garimpo específico?',
             state: 'Região',
             country: 'Municipio',
-            analysisUnit: 'Unidade de analise',
-            overflow: 'Houve transbordamento?',
+            analysisUnit: 'Unidade de análise',
             pitDepth: 'Profundidade da cava',
-            valuatioMethod: 'Tipo de garimpo',
-            txPrevalence: 'hipóteses sobre valores',
+            extractionType: 'Tipo de garimpo',
+            valueHypothesis: 'Hipóteses de valores' ,
             btnCalulator: 'Calcular impactos'
         },
         values: {
             analysisUnit: {
-                impactedArea: 'Área impactada',
+                impactedArea: 'Tamanho da área impactada',
                 amountOfGold: 'Quantidade de ouro'
             },
             qtdAnalysisUnit: {
-                hactare: 'Hectare',
-                grams: 'Gramas'
+                hactare: 'Hectares',
+                grams: 'Gramas de ouro'
             },
             pitDepth: {
                 meters: 'metros'
             },
-            valuatioMethod: {
-                alluvium: 'Aluvião',
-                ferry: 'Balsa',
-                pit: 'Poço',
+            extractionType: {
+                openPit: 'Aluvião (beira de rio)',
+                boat: 'Balsa (flutuante)',
+		        pitMine: 'Poço (subterrâneo)'
+            },
+            valueHypothesis: {
+                conservative: 'Conservador (Valores médios)',
+                precautionaryPrinciple: 'Princípio da precaução (Valores máximos)'            
             },
             txPrevalence: {
-                medium: 'Conservador',
-                maximum: 'Princípio da precaução'
+                minimum: 'Minimo',
+                medium: 'Médio',
+                maximum: 'Máximo'
             }
         }
-        
     },
     loading: {
         text: 'Calculando impactos...'
@@ -50,8 +53,8 @@ const ptBR = {
     impacts: {
         menu: {
             deforestation: 'desmatamento',
-            siltingOfRivers: 'Assoreamento dos rios',
-            mercuryContamination: 'Contaminação por mercurio',
+            siltingOfRivers: 'Assoreamento de rios',
+            mercuryContamination: 'Contaminação por mercúrio',
             monetaryImpacts: 'impactos monetários'
         },
         deforestation: {
@@ -61,7 +64,7 @@ const ptBR = {
             headline: 'Assoreamento dos rios'
         },
         mercuryContamination: {
-            headline: 'Contaminação por mercurio'
+            headline: 'Contaminação por mercúrio'
         },
         monetaryImpacts: {
             headline: 'Impactos monetários',
@@ -79,11 +82,11 @@ const ptBR = {
             }
         },
         buttons: {
-            references: 'Referencias',
-            hypotheses: 'Hipoteses',
+            references: 'Referências',
+            hypotheses: 'Hipóteses',
             next: 'Prosseguir',
             newCalculation: 'Fazer novo calculo',
-            printReports: 'Imprimir relatorios'
+            printReports: 'Imprimir relatório'
         }
     }
 

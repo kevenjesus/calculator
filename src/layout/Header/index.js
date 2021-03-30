@@ -1,9 +1,12 @@
-import { useState, useEffect, useContext } from 'react'
+import { useState, useEffect, useContext, useCallback } from 'react'
 import { useLocation, Link } from 'react-router-dom'
-import { ContainerHeader, Container, LogoContainer, LogoName, LogoSlogan, BarMenu, MenuShow } from './style'
+import { ContainerHeader, Container, LogoContainer, LogoName, LogoSlogan, BarMenu, MenuShow, LogoBase } from './style'
 import { Language, LanguageLabel, Menuitem } from 'layout/Sidebar/style'
-import { AppContext } from 'utils/AppContext';
+import { AppContext, stateTypes } from 'utils/AppContext';
 import Sidebar from 'layout/Sidebar'
+import ptBR from 'utils/pt_BR'
+import enUS from 'utils/en_US'
+import esES from 'utils/es_ES'
 
 import { ReactComponent as Logo } from 'assets/images/logo.svg'
 import { ReactComponent as Bar } from 'assets/icons/bar.svg'
@@ -14,7 +17,8 @@ import { ReactComponent as Usa } from 'assets/icons/usa.svg'
 const Header = () => {
     const [visibleSidebar, setVisibleSidebar] = useState(false);
     const [notRender, setNoteRender] = useState(-1);
-    const {state} = useContext(AppContext)
+    const [lang, setLanguage] = useState('pt');
+    const {state, dispatch} = useContext(AppContext)
     const location = useLocation();
     const { language } = state;
     const { header } = language;
@@ -30,6 +34,11 @@ const Header = () => {
         setNoteRender(isRender);
     }, [location])
 
+    const handleRegion = useCallback((langString, file) => {
+        setLanguage(langString)
+        dispatch({type: stateTypes.SET_LANGUAGE, payload: file })
+    }, [dispatch])
+
 
     if(notRender >= 0) {
         return null;
@@ -43,22 +52,22 @@ const Header = () => {
                     <Link to="/calculator">
                         <Logo />
                     </Link>
-                    <div style={{marginLeft: '10px'}}>
-                        <LogoName>{header.naming}</LogoName>
+                    <LogoBase>
+                        <LogoName isPtBR={lang === 'en'}>{header.naming}</LogoName>
                         <LogoSlogan>{header.slogan}</LogoSlogan>
-                    </div>
+                    </LogoBase>
                 </LogoContainer>
 
                 <MenuShow>
-                <Language>
+                <Language onClick={() => handleRegion('pt', ptBR)}>
                     <Portuguese />
                     <LanguageLabel>Português</LanguageLabel>
                 </Language>
-                <Language>
+                <Language onClick={() => handleRegion('es', esES)}>
                     <Spanish />
                     <LanguageLabel>Espanol</LanguageLabel>
                 </Language>
-                <Language>
+                <Language onClick={() => handleRegion('en', enUS)}>
                     <Usa />
                     <LanguageLabel>English</LanguageLabel>
                 </Language>

@@ -434,19 +434,19 @@ const Form = () => {
                             </select>
                         </Col>
                     </Conditional>
-                    <Col xs={12} sm={!knowRegion ? 7 : 6}>
-                        <label>{calculatorForm.labels.valuatioMethod}</label>
+                    <Col xs={12} sm={!knowRegion ? 6 : 6}>
+                        <label>{calculatorForm.labels.extractionType}</label>
                         <select name="valuationMethod" value={valuatioMethod} onChange={handleValuationMethod}>
-                            <option value={ALLUVIUM}>{calculatorForm.values.valuatioMethod.alluvium}</option>
-                            <option value={FERRY}>{calculatorForm.values.valuatioMethod.ferry}</option>
-                            <option value={PIT}>{calculatorForm.values.valuatioMethod.pit}</option>
+                            <option value={ALLUVIUM}>{calculatorForm.values.extractionType.openPit}</option>
+                            <option value={FERRY}>{calculatorForm.values.extractionType.boat}</option>
+                            <option value={PIT}>{calculatorForm.values.extractionType.pitMine}</option>
                         </select>
                     </Col>
-                    <Col xs={12} sm={!knowRegion ? 7 : 12}>
-                        <label>{calculatorForm.labels.txPrevalence}</label>
+                    <Col xs={12} sm={!knowRegion ? 6 : 12}>
+                        <label>{calculatorForm.labels.valueHypothesis}</label>
                         <select name="txPrevalencia" value={txPrevalence} onChange={handleTxPrevalance}>
-                            <option value="0.29">{calculatorForm.values.txPrevalence.medium}</option>
-                            <option value="0.343">{calculatorForm.values.txPrevalence.maximum}</option>
+                            <option value="0.29">{calculatorForm.values.valueHypothesis.conservative}</option>
+                            <option value="0.343">{calculatorForm.values.valueHypothesis.precautionaryPrinciple}</option>
                         </select>
                     </Col>
                 </Row>
