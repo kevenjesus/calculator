@@ -19,9 +19,7 @@ const ValuationMethod = () => {
     return (
         <>
             <Headline>Tipo de garimpo</Headline>
-            <Text>
-                Existem diferentes perspectivas econômicas para o cálculo  valor dos impactos sociais e ambientais. Elas se baseiam em:
-            </Text>
+          
 
                 <label style={{textAlign: 'left'}}>* Escolha uma opção</label>
             <Row>
@@ -53,6 +51,9 @@ const ValuationMethod = () => {
                     </ItemType>
                 </Col>
             </Row>
+            <Text>
+                caso não seja especificado o tipo, serão considerados os impactos do tipo de garimpo mais comum na Amazônia, o garimpo de aluvião
+            </Text>
         </>
     )
 }
