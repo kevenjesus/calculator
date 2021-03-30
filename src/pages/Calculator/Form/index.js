@@ -81,12 +81,14 @@ const Form = () => {
                 if(country.id === countries.id) {
                     countries.densidadePop2010 = country.densidadePop2010;
                     countries.densidadePop2060 = country.densidadePop2060;
-                    countries.densidadePop2060 = country.densidadePop2060;
+                    countries.popUrbMunicipio = country.PopUrbMunicipio;
+                    countries.popRuralMunicipio = country.PopRuralMunicipio;
+                    countries.distanciaGarimpoCentro = country.Distancia_Garimpo_Centro;
                 }
             })
         })
 
-        
+        console.log('dataCountries', dataCountries)
 
         dispatch({type: stateTypes.SET_COUNTIES, payload: dataCountries});
         dispatch({type: stateTypes.SET_COUNTRY, payload: dataCountries[0].id});

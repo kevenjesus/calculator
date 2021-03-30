@@ -1,5 +1,7 @@
 import { Headline, Text } from 'pages/Introduction/style'
-import { ReactComponent as ImageExample } from 'assets/images/example.svg'
+import { ContainerPartner } from './style'
+import LogoMPF from 'assets/images/mpf.png'
+import LogoConservationStrategy from 'assets/images/logo.svg'
 
 const About = () => {
     return (
@@ -8,7 +10,10 @@ const About = () => {
             <Text>
             A calculadora de impactos é fruto de uma parceria entre <strong>CSF</strong> e <strong>MPF</strong> com o objetivo de tornar-se uma ferramenta analítica e pedagógica que descreve os <strong>impactos do garimpo ilegal de ouro</strong> e o passo-a-passo para sua mensuração.
             </Text>
-            <ImageExample width="400" height="350" style={{display: 'block', margin: '50px auto'}} />
+            <ContainerPartner>
+                <img src={LogoMPF} width="150" alt="" />
+                <img src={LogoConservationStrategy} width="150" alt="" />
+            </ContainerPartner>
         </>
     )
 }

@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, Link } from 'react-router-dom'
 import { ContainerHeader, Container, LogoContainer, LogoName, LogoSlogan, BarMenu, MenuShow } from './style'
 import { Language, LanguageLabel, Menuitem } from 'layout/Sidebar/style'
 import { AppContext } from 'utils/AppContext';
@@ -21,11 +21,17 @@ const Header = () => {
     
     useEffect(() => {
         const { pathname } = location;
-        const isRender = ['/calculator'].findIndex(a => a === pathname);
+        const paths = [
+            '/introduction',
+            '/introduction/context-value'
+        ];
+
+        const isRender = paths.findIndex(a => a === pathname);
         setNoteRender(isRender);
     }, [location])
 
-    if(notRender < 0) {
+
+    if(notRender >= 0) {
         return null;
     }
     
@@ -34,7 +40,9 @@ const Header = () => {
         <ContainerHeader>
             <Container>
                 <LogoContainer>
-                    <Logo />
+                    <Link to="/calculator">
+                        <Logo />
+                    </Link>
                     <div style={{marginLeft: '10px'}}>
                         <LogoName>{header.naming}</LogoName>
                         <LogoSlogan>{header.slogan}</LogoSlogan>
