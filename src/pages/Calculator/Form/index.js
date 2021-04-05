@@ -4,7 +4,7 @@ import { Grid, Row, Col } from 'react-flexbox-grid'
 import { Button, TextField } from 'theme'
 import { Container } from './style'
 import { ButtonFixed } from 'pages/Calculator/ImpactsStyles'
-import { YES, IMPACTED_AREA, AMOUNT_GOLD, ALLUVIUM, FERRY, PIT } from './consts'
+import { YES, IMPACTED_AREA, AMOUNT_GOLD, ALLUVIUM, FERRY, PIT, CATEGORY_DEFORESTATION, CATEGORY_MERCURY } from './consts'
 import { AppContext, stateTypes } from 'utils/AppContext'
 import Conditional from 'components/Conditional'
 import RadioBoxConditional from 'components/RadioBoxConditional'
@@ -170,6 +170,8 @@ const Form = () => {
 
     
   const submitCalc = () => {
+
+    const impacts = [];
     
     if(checkFormIsInvalid()) {
         return false;
@@ -198,24 +200,29 @@ const Form = () => {
     // impacto 1: bioprospeccao
     const bioprospeccao = calcImpacto(Number(qtdAnalysis), 56.52)
     const totalBioprospeccao = ValorPresente(0.03, 30, bioprospeccao)
+    impacts.push({label: 'BioProspecção', displayName: 'BioProspecção', category: CATEGORY_DEFORESTATION, value: totalBioprospeccao});
     //console.log('valor bioproespecção', totalBioprospeccao)
 
     // impacto 2: carbono
     const totalCarbono = calcImpacto(Number(qtdAnalysis), 25*200)
+    impacts.push({label: 'Carbono', displayName: 'Carbono', category: CATEGORY_DEFORESTATION, value: totalCarbono});
     //console.log('valor carbono',totalCarbono)
 
     // impacto 3: valor de uso
     const totalValorUso = calcImpacto(Number(qtdAnalysis), 59*17.75)
+    impacts.push({label: 'Valor uso', displayName: 'Valor uso', category: CATEGORY_DEFORESTATION, value: totalValorUso});
     //console.log('valor de uso',totalValorUso)
 
     // impacto 4: Recreação
     const recreacao = calcImpacto(Number(qtdAnalysis), 10.2)
     const totalRecreacao = ValorPresente(0.03, 30, recreacao)
+    impacts.push({label: 'Recreação', displayName: 'Recreação', category: CATEGORY_DEFORESTATION, value: totalRecreacao});
    // console.log('valor de recreação ', totalRecreacao)
 
     // impacto 5: Valor de existencia
     const valorExistencia = calcImpacto(Number(qtdAnalysis), 13.07)
     const totalValorExistencia = ValorPresente(0.03, 30, valorExistencia)
+    impacts.push({label: 'Valor existencia', displayName: 'Valor existencia', category: CATEGORY_DEFORESTATION, value: totalRecreacao});
    // console.log('valor de valor de existencia', totalValorExistencia)
 
     // impacto 6: Perda de QI (mercurio na saude humana)
@@ -248,13 +255,7 @@ const Form = () => {
           const ingestaoMediaMercurioDiaria1IndividuoEmGramasporKg = ingestaoMediaMercurioDiaria1IndividuoEmMicrogramasporkg/1000000;
           const ingestaoMediaDiariaIndividuoEmGramaPorDia = ingestaoMediaMercurioDiaria1IndividuoEmGramasporKg*pesoMedioIndividuo;
           const ingestaoMediaMercurioEmAnos = (365*anos)*ingestaoMediaDiariaIndividuoEmGramaPorDia;
-          
-          console.log('pesoMedioIndividuo', pesoMedioIndividuo)
-          console.log('ingestaoMediaDiariaMicrogramaMercurioUrbano', ingestaoMediaDiariaMicrogramaMercurioUrbano)
-          console.log('ingestaoMediaDiariaMicrogramaMercurioRural', ingestaoMediaDiariaMicrogramaMercurioRural)
-          console.log('ingestaoMediaMercurioDiaria1IndividuoEmMicrogramasporkg', ingestaoMediaMercurioDiaria1IndividuoEmMicrogramasporkg)
-          console.log('ingestaoMediaMercurioDiaria1IndividuoEmGramasporKg', ingestaoMediaMercurioDiaria1IndividuoEmGramasporKg)
-          console.log('ingestaoMediaMercurioEmAnos', ingestaoMediaMercurioEmAnos)
+
 
     //// Parte 03: Populaçao afetada
           const PI = 3.14;
@@ -271,13 +272,8 @@ const Form = () => {
           const taxaNatalidade = 18.8/1000;
           const nascidosVivosAfetados = totalPopulacaoAfetada*taxaNatalidade
 
-          
-
           const concentracaoMediaMercurioCabelo = ingestaoMediaMercurioEmAnos/0.1;
           const desavioPadraoMedioMercurio = concentracaoMediaMercurioCabelo/2;
-
-          console.log('concentracaoMediaMercurioCabelo', concentracaoMediaMercurioCabelo)
-          console.log('concentracaoMediaMercurioCabelo', desavioPadraoMedioMercurio)
 
           // valores fixos
           // valor final disnorm (0, 5.9, 2.95) = 0.022750132
@@ -291,23 +287,61 @@ const Form = () => {
           const beta = 0.04;
           const bplusr = -0.07;
           const duracaoDaIncapacidade = 72;
+  
+          // 0, 2, 4, 6, 8....36
+          const disnorm0 = normDist(0, concentracaoMediaMercurioCabelo, desavioPadraoMedioMercurio, 1);
+          const disnorm2 = normDist(2, concentracaoMediaMercurioCabelo, desavioPadraoMedioMercurio, 1);
+          const disnorm4 = normDist(4, concentracaoMediaMercurioCabelo, desavioPadraoMedioMercurio, 1);
+          const disnorm6 = normDist(6, concentracaoMediaMercurioCabelo, desavioPadraoMedioMercurio, 1);
+          const disnorm8 = normDist(8, concentracaoMediaMercurioCabelo, desavioPadraoMedioMercurio, 1);
+          const disnorm10 = normDist(10, concentracaoMediaMercurioCabelo, desavioPadraoMedioMercurio, 1);
+          const disnorm12 = normDist(12, concentracaoMediaMercurioCabelo, desavioPadraoMedioMercurio, 1);
+          const disnorm14 = normDist(14, concentracaoMediaMercurioCabelo, desavioPadraoMedioMercurio, 1);
+          const disnorm16 = normDist(16, concentracaoMediaMercurioCabelo, desavioPadraoMedioMercurio, 1);
+          const disnorm18 = normDist(18, concentracaoMediaMercurioCabelo, desavioPadraoMedioMercurio, 1);
+          const disnorm20 = normDist(20, concentracaoMediaMercurioCabelo, desavioPadraoMedioMercurio, 1);
+          const disnorm22 = normDist(22, concentracaoMediaMercurioCabelo, desavioPadraoMedioMercurio, 1);
+          const disnorm24 = normDist(24, concentracaoMediaMercurioCabelo, desavioPadraoMedioMercurio, 1);
+          const disnorm26 = normDist(26, concentracaoMediaMercurioCabelo, desavioPadraoMedioMercurio, 1);
+          const disnorm28 = normDist(28, concentracaoMediaMercurioCabelo, desavioPadraoMedioMercurio, 1);
+          const disnorm30 = normDist(30, concentracaoMediaMercurioCabelo, desavioPadraoMedioMercurio, 1);
+          const disnorm32 = normDist(32, concentracaoMediaMercurioCabelo, desavioPadraoMedioMercurio, 1);
+          const disnorm34 = normDist(34, concentracaoMediaMercurioCabelo, desavioPadraoMedioMercurio, 1);
+          const disnorm36 = normDist(36, concentracaoMediaMercurioCabelo, desavioPadraoMedioMercurio, 1);
+          const disnorm38 = normDist(38, concentracaoMediaMercurioCabelo, desavioPadraoMedioMercurio, 1);
+          const disnorm40 = normDist(40, concentracaoMediaMercurioCabelo, desavioPadraoMedioMercurio, 1);
+  
+  
+          const distNorm0ate2 = ((1 - disnorm0) - (1 - disnorm2)) * 1000 * 0.0005;
+          const distNorm2ate4 = ((1 - disnorm2) - (1 - disnorm4)) * 1000 * 0.0022;
+          const distNorm4ate6 = ((1 - disnorm4) - (1 - disnorm6)) * 1000 * 0.0034;
+          const distNorm6ate8 = ((1 - disnorm6) - (1 - disnorm8)) * 1000 * 0.0046;
+          const distNorm8ate10 = ((1 - disnorm8) - (1 - disnorm10)) * 1000 * 0.0066;
+          const distNorm10ate12 = ((1 - disnorm10) - (1 - disnorm12)) * 1000 * 0.0079;
+          const distNorm12ate14 = ((1 - disnorm12) - (1 - disnorm14)) * 1000 * 0.0101;
+          const distNorm14ate16 = ((1 - disnorm14) - (1 - disnorm16)) * 1000 * 0.0116;
+          const distNorm16ate18 = ((1 - disnorm16) - (1 - disnorm18)) * 1000 * 0.0131;
+          const distNorm18ate20 = ((1 - disnorm18) - (1 - disnorm20)) * 1000 * 0.0156;
+          const distNorm20ate22 = ((1 - disnorm20) - (1 - disnorm22)) * 1000 * 0.0173;
+          const distNorm22ate24 = ((1 - disnorm22) - (1 - disnorm24)) * 1000 * 0.0199;
+          const distNorm24ate26 = ((1 - disnorm24) - (1 - disnorm26)) * 1000 * 0.0218;
+          const distNorm26ate28 = ((1 - disnorm26) - (1 - disnorm28)) * 1000 * 0.0237;
+          const distNorm28ate30 = ((1 - disnorm28) - (1 - disnorm30)) * 1000 * 0.0267;
+          const distNorm30ate32 = ((1 - disnorm30) - (1 - disnorm32)) * 1000 * 0.0288;
+          const distNorm32ate34 = ((1 - disnorm32) - (1 - disnorm34)) * 1000 * 0.032;
+          const distNorm34ate36 = ((1 - disnorm34) - (1 - disnorm36)) * 1000 * 0.0343;
+          const distNorm36ate38 = ((1 - disnorm36) - (1 - disnorm38)) * 1000 * 0.0366;
+          const distNorm38ate40 = ((1 - disnorm38) - (1 - disnorm40)) * 1000 * 0.0402;
+  
+          const txIncidencia = distNorm0ate2 + distNorm2ate4 + distNorm4ate6 + distNorm6ate8 + distNorm8ate10 + distNorm10ate12 + distNorm12ate14 +
+              distNorm14ate16 + distNorm16ate18 + distNorm18ate20 + distNorm20ate22 + distNorm22ate24 + distNorm24ate26 + distNorm26ate28 +
+              distNorm28ate30 + distNorm30ate32 + distNorm32ate34 + distNorm34ate36 + distNorm36ate38 + distNorm38ate40
+  
+  
+          const incidencia = txIncidencia * (nascidosVivosAfetados / 1000)
+          const incidenciaHomemMulher = incidencia * 2
 
-          const valuesNormDist = [];
-          const reducer = (accumulator, currentValue) => accumulator + currentValue;
-
-          for(let i = 0; i <= 36; i++) {
-            if(i % 2 === 0) {
-                valuesNormDist.push(normDist(i, concentracaoMediaMercurioCabelo, desavioPadraoMedioMercurio, 1))
-            }
-          }
-
-
-
-          const TxIncidencia = valuesNormDist.reduce(reducer); // 4.13564 fixo aguardando distnorm
-          const incidencia = TxIncidencia*(nascidosVivosAfetados/1000);
-          //const incidencia = TxIncidencia*(0.145088113/1000);
-          const incidenciaTotalHomemeMulher = incidencia*2;
-          const PesoDaIncapacidadePorIncidencia = incidenciaTotalHomemeMulher*pesoDaIncapacidade;
+          const PesoDaIncapacidadePorIncidencia = incidenciaHomemMulher*pesoDaIncapacidade;
           const calculo1 = (constante*Math.exp(txDesconto*anoIniciodaIncapacidade))/(Math.pow(bplusr,2))
           const calculo2 = bplusr*(duracaoDaIncapacidade+anoIniciodaIncapacidade);
           const calculo3 = bplusr*(duracaoDaIncapacidade+anoIniciodaIncapacidade)-1;
@@ -316,7 +350,8 @@ const Form = () => {
           const calculo6 = (1-Math.exp(-txDesconto*duracaoDaIncapacidade));
           const daly = PesoDaIncapacidadePorIncidencia*(agwt*calculo1*((Math.exp(calculo2)*calculo3)-calculo4)+calculo5*calculo6);
           const UmDalyReais = 103599;
-          const totalDalyPerdaQI = daly*UmDalyReais;
+          const totalPerdaQIFetos = daly*UmDalyReais;
+          impacts.push({label: 'Perda de Qi em Fetos', displayName: 'Perda de Qi em Fetos', category: CATEGORY_MERCURY, value: totalPerdaQIFetos});
 
           // TRATAMENTO - sintomas neuropscicológicos em garimpeiros
           const QtdGramasGarimpeiroAno = 150.45;
@@ -366,8 +401,9 @@ const Form = () => {
           const VolumeEscavadeiraNoAno = VolumeTerraNormal-QtdeEscavadeiraM3porano
           const DiferencaVolumeEscavadeiraNoAno = VolumeEscavadeiraNoAno < 0 ? 0 : VolumeEscavadeiraNoAno
 
-          console.log(KgdeOuroporHectare, VolumeTerraFertil,CustoTotalAterramentoTerraNormal,DiferencaVolumeEscavadeiraNoAno, totalBioprospeccao, totalCarbono, totalValorUso, totalRecreacao, totalValorExistencia, nascidosVivosAfetados, desavioPadraoMedioMercurio, beta, totalDalyPerdaQI, CustoTotalGarimpeiros)
-        
+
+
+
           history.push('/loading')
           
         }

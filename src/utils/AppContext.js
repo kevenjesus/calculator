@@ -49,7 +49,10 @@ export const stateTypes = {
     SET_VALUATION_METHOD: 'SET_VALUATION_METHOD',
     SET_TX_PREVALENCE: 'SET_TX_PREVALENCE',
     SET_LANGUAGE: 'SET_LANGUAGE',
-    SET_STEP: 'SET_STEP'
+    SET_STEP: 'SET_STEP',
+    ADD_VALUE: 'ADD_VALUE',
+    CHANGE_TOTALVALUE: 'CHANGE_TOTALVALUE'
+
 }
 
 const initialState = {
@@ -70,6 +73,8 @@ const initialState = {
         pitDepth: 2.5,
         valuatioMethod: ALLUVIUM,
         txPrevalence: TX_PREVALENCE_MAX,
+        values: [],
+        totalValue: 0
     },
     introduction: {
         step: ABOUT
@@ -106,6 +111,10 @@ const calculatorReducer = (state, action) => {
             return {...state, valuatioMethod: action.payload};
         case stateTypes.SET_TX_PREVALENCE:
             return {...state, txPrevalence: action.payload};
+        case stateTypes.ADD_VALUE:
+            return {...state, values: action.payload};
+        case stateTypes.CHANGE_TOTALVALUE:
+            return {...state, totalValue: action.payload};
         default:
             return state;
     }
