@@ -26,7 +26,9 @@ const cavaGroundingCost = (CustoFrete1escavadeiraMunicipio, pitDepth, qtdAnalysi
     const VolumeTerraFertil = ProfundidadeMediaTerraFertil * Areaafetadaha;
     const CustoTotalAterramentoTerraNormal = VolumeTerraNormal * CustoAterramentoCavaNormal;
     const QtdeEscavadeiraM3porano = DiasAno * HorasEscavadeiraDia * QtdeEscavadeiraM3porHora;
+    const QtdeEscavadeirasNormal = parseInt(VolumeTerraNormal / QtdeEscavadeiraM3porano)
     const VolumeEscavadeiraNoAno = VolumeTerraNormal-QtdeEscavadeiraM3porano;
+
     const DiferencaVolumeEscavadeiraNoAno = VolumeEscavadeiraNoAno < 0 ? 0 : VolumeEscavadeiraNoAno;
     const CustoTotalFreteAterramentoNormal = CustoFrete1escavadeiraMunicipio * QtdeEscavadeirasNormal;
     const CustoTotalAterramentoNormalComFrete = CustoTotalFreteAterramentoNormal + CustoTotalAterramentoTerraNormal;
