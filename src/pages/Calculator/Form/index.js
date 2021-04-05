@@ -84,6 +84,7 @@ const Form = () => {
                     countries.popUrbMunicipio = country.PopUrbMunicipio;
                     countries.popRuralMunicipio = country.PopRuralMunicipio;
                     countries.distanciaGarimpoCentro = country.Distancia_Garimpo_Centro;
+                    countries.especies = country.Especies_por_Municipio;
                 }
             })
         })
