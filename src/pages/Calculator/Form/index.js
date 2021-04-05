@@ -371,7 +371,7 @@ const Form = () => {
           
           const CustoTotalGarimpeiros = CustoTotalDALYGarimpeiros+CustoTratamentoNeuroGarimpeiros 
 
-          //Custo de4 aterramento de cava
+          //Custo de aterramento de cava
           const ProdutividadeGramaPorToneladaMineiro = 0.4
          // const CustoFrete1escavadeiraMunicipio = 100 //aqui teremos um custo diferente para cada município. Usamos procv etc. Precisamos ver como incluir depois. Enquanto isso, botamos um valor qualquer
 
