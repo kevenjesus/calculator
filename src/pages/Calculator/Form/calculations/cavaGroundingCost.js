@@ -1,12 +1,6 @@
- 
- 
- 
- //Custo de aterramento de cava
-
-const cavaGroundingCost = (CustoFrete1escavadeiraMunicipio, pitDepth) => {
+const cavaGroundingCost = (CustoFrete1escavadeiraMunicipio, pitDepth, qtdAnalysis) => {
 
     const ProdutividadeGramaPorToneladaMineiro = 0.4;
-    const CustoFrete1escavadeiraMunicipio = 100;//aqui teremos um custo diferente para cada município. Usamos procv etc. Precisamos ver como incluir depois. Enquanto isso, botamos um valor qualquer
 
     const RelacaoMinerioEsteril = 7;
     const DensidadeOuro = 2.76;
@@ -32,7 +26,9 @@ const cavaGroundingCost = (CustoFrete1escavadeiraMunicipio, pitDepth) => {
     const VolumeTerraFertil = ProfundidadeMediaTerraFertil * Areaafetadaha;
     const CustoTotalAterramentoTerraNormal = VolumeTerraNormal * CustoAterramentoCavaNormal;
     const QtdeEscavadeiraM3porano = DiasAno * HorasEscavadeiraDia * QtdeEscavadeiraM3porHora;
+    const QtdeEscavadeirasNormal = parseInt(VolumeTerraNormal / QtdeEscavadeiraM3porano)
     const VolumeEscavadeiraNoAno = VolumeTerraNormal-QtdeEscavadeiraM3porano;
+
     const DiferencaVolumeEscavadeiraNoAno = VolumeEscavadeiraNoAno < 0 ? 0 : VolumeEscavadeiraNoAno;
     const CustoTotalFreteAterramentoNormal = CustoFrete1escavadeiraMunicipio * QtdeEscavadeirasNormal;
     const CustoTotalAterramentoNormalComFrete = CustoTotalFreteAterramentoNormal + CustoTotalAterramentoTerraNormal;
@@ -40,4 +36,6 @@ const cavaGroundingCost = (CustoFrete1escavadeiraMunicipio, pitDepth) => {
     return CustoTotalAterramentoNormalComFrete
 
 }
+
+export default cavaGroundingCost
  
