@@ -1,11 +1,12 @@
 import presentValue from 'utils/presentValue' 
 import calcImpact from 'utils/calcImpact'
 
-const bioprospecting = (qtdAnalysis) => { 
-    
-     const bioprospecting = calcImpact(Number(qtdAnalysis), 56.52);
-     const toBioprospecting = presentValue(0.03, 30, bioprospecting);
-     return toBioprospecting
+const CONSERVATIVE = 0.29
+
+const bioprospecting = (hectare, valueHypothesis) => { 
+   const CustoBioprospeccaoporHaBRL = valueHypothesis === CONSERVATIVE ? 68.19 : 116.95
+   const CustoTotalBioprospeccaoBRL = CustoBioprospeccaoporHaBRL * hectare * 12 * 1
+   return CustoTotalBioprospeccaoBRL;
 }
 
 export default bioprospecting

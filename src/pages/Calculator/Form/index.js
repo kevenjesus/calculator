@@ -12,9 +12,10 @@ import normDist from 'utils/normDist'
 import mockStates from 'mocks/state.json'
 import mockCountries from 'mocks/countries.json'
 import mockContry from 'mocks/country.json'
-import bioprospecting from './calculations/bioprospeccao'
 import hectareToGold from 'utils/hactareToGold'
 import goldToHecatere from 'utils/GoldToHectare'
+import bioprospecting from './calculations/bioprospeccao'
+import carbon from './calculations/carbon'
 
 
 const Form = () => {
@@ -174,10 +175,18 @@ const Form = () => {
 
     
   const submitCalc = () => {
-     const auToGold = hectareToGold(36, pitDepth);
-     const goldToAu = goldToHecatere(1000, pitDepth);
-     console.log('1 hectare vale', auToGold, ' gramas de ouro')
-     console.log('1000 gramas de ouro vale ', goldToAu, ' hectares')
+     const impacts = []
+     const hectareValue = calculator.analysisUnit === AMOUNT_GOLD ? goldToHecatere(Number(qtdAnalysis.value), pitDepth) : Number(qtdAnalysis.value);
+     const goldValue = calculator.analysisUnit === IMPACTED_AREA ? hectareToGold(Number(qtdAnalysis.value), pitDepth) : Number(qtdAnalysis.value);
+     
+     const totalBio = bioprospecting(hectareValue, txPrevalence);
+     impacts.push({label: 'BioProspecção', displayName: 'BioProspecção', category: CATEGORY_DEFORESTATION, value: totalBio});
+
+     const totalCarbon = carbon(hectareValue);
+     console.log(totalCarbon)
+     
+
+     //history.push('/loading')
   }
 
     return (
