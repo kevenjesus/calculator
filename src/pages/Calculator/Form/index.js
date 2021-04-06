@@ -16,6 +16,9 @@ import hectareToGold from 'utils/hactareToGold'
 import goldToHecatere from 'utils/GoldToHectare'
 import bioprospecting from './calculations/bioprospeccao'
 import carbon from './calculations/carbon'
+import woodAndNonWoodProducts from './calculations/woodAndNonWoodProducts'
+import recreation from './calculations/recreation'
+import culturedAndSpecies from './calculations/culturedAndSpecies'
 
 
 const Form = () => {
@@ -183,10 +186,22 @@ const Form = () => {
      impacts.push({label: 'BioProspecção', displayName: 'BioProspecção', category: CATEGORY_DEFORESTATION, value: totalBio});
 
      const totalCarbon = carbon(hectareValue);
-     console.log(totalCarbon)
-     
+     impacts.push({label: 'Carbono', displayName: 'Carbono', category: CATEGORY_DEFORESTATION, value: totalCarbon});
 
-     //history.push('/loading')
+     const totalPMNM = woodAndNonWoodProducts(hectareValue);
+     impacts.push({label: 'PMNM', displayName: 'Produtos não-madeireiros e madeireiros', category: CATEGORY_DEFORESTATION, value: totalPMNM});
+     
+     const currentCountry = counties.find(c => c.id === Number(country));
+     const especie = currentCountry.especies <= 0 ? state.especie : currentCountry.especies;
+
+     const totalRecreation = recreation(hectareValue, currentCountry.densidadePop2010, especie);
+     impacts.push({label: 'Recreação', displayName: 'Recreação', category: CATEGORY_DEFORESTATION, value: totalRecreation});
+
+     const totalCulturedAndSpecies = culturedAndSpecies(hectareValue, currentCountry.densidadePop2010, especie);
+     impacts.push({label: 'Cultural / Espécies', displayName: 'Cultural / Espécies', category: CATEGORY_DEFORESTATION, value: totalCulturedAndSpecies});
+
+     dispatch({type: stateTypes.ADD_VALUE, payload: impacts});
+     history.push('/loading')
   }
 
     return (

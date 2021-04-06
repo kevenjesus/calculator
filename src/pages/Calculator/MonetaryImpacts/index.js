@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useContext, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { Button, Checkbox } from 'theme'
 import { Grid, Row, Col } from 'react-flexbox-grid'
@@ -7,6 +7,7 @@ import { Container, Menu, MenuItem, Headline, ButtonFixed, HiddenSm } from 'page
 import { Monetary, MonetaryType, Label, FormGroup } from './style'
 import Alert from 'components/Alert'
 import Chart from 'components/Chart'
+import { AppContext } from 'utils/AppContext'
 
 const dataimpactCategories = [
     {
@@ -86,7 +87,13 @@ const CheckboxConditional = ({state, setState}) => {
 const MonetaryImpacts = () => {
     const [impactedCategories, setImpactedCategories] = useState(dataimpactCategories)
     const [impactedVisuaization, setImpactedVisualization] = useState(dataImpactedVisualization)
+    const {state} = useContext(AppContext);
     const history = useHistory();
+
+
+    useEffect(() => {
+        
+    }, [state])
 
     const handleImpactedCategories = useCallback((e) => {
         const { value } = e.target;
@@ -160,13 +167,13 @@ const MonetaryImpacts = () => {
                         </HiddenSm>
                     </Col>
                 </Row>
-                <Chart />
+                <Chart data={state.calculator.values} />
                 
                 <ButtonFixed>
                     <Grid>
                         <Row between="sm" start="md">
                             <Col xs={6} mdOffset={3} md={3}>
-                                <Button onClick={() => history.push('/')}>fazer novo calculo</Button>
+                                <Button onClick={() => history.push('/calculator')}>fazer novo calculo</Button>
                             </Col>
                             <Col xs={6} md={3}>
                                 <Button variant="secondary" onClick={() => window.print()}>imprimir relatórios</Button>

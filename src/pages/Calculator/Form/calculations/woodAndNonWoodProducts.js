@@ -1,12 +1,10 @@
 
 import calcImpact from 'utils/calcImpact'
 
-const woodAndNonWoodProducts = (qtdAnalysis) => {
-    // impacto 3: valor de uso
-    const toWoodAndNonWoodProducts = calcImpact(Number(qtdAnalysis), 59*17.75);
-    return toWoodAndNonWoodProducts
-    
-    //console.log('valor de uso',totalWoodAndNonWoodProducts)
+const woodAndNonWoodProducts = (hectare) => {
+    const CustoPMNMporHaAnoBRL = 764.00
+    const CustoTotalPMNMURLANO = CustoPMNMporHaAnoBRL * hectare * 12 * 1
+    return CustoTotalPMNMURLANO;
 }
 
 export default woodAndNonWoodProducts

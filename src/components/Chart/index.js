@@ -25,38 +25,8 @@ let data = [
   }
 ];
 
-const Chart = () => {
-
-    useEffect(() => {
-  
-      if(window.innerWidth >= 768 && data.length === 4) {
-        data.push({
-          name: 'Impacto 05',
-          valor: 700000,
-          amt: 2500000,
-        })
-        data.push({
-          name: 'Impacto 06',
-          valor: 700000,
-          amt: 2500000,
-        })
-      }else if (window.innerWidth >= 1366 && data.length <= 6) {
-        data.push({
-          name: 'Impacto 07',
-          valor: 700000,
-          amt: 2500000,
-        })
-        data.push({
-          name: 'Impacto 08',
-          valor: 700000,
-          amt: 2500000,
-        })
-      }else {
-        data.splice(5, 1);
-        data.splice(4, 1);
-      }
-    }, [])
-
+const Chart = ({data}) => {
+  console.log('data', data)
     return (
       <div style={{width: '100%', height: window.innerWidth >= 1366 ? 500 : 300, marginTop: 50}}>
       <ResponsiveContainer width="100%" height="100%">
@@ -72,7 +42,7 @@ const Chart = () => {
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" fontSize={10} interval={0} />
+          <XAxis dataKey="label" fontSize={10} interval={0} />
           <YAxis />
           <Tooltip />
           <Bar barSize={window.innerWidth >= 1366 ? 50 : (window.innerWidth >= 768 ? 30 : 20)} dataKey="valor" fill={colors.primary} />
