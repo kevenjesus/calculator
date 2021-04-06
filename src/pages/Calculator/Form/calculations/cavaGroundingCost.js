@@ -21,6 +21,7 @@ const cavaGroundingCost = (CustoFrete1escavadeiraMunicipio, pitDepth, qtdAnalysi
     const Areaafetadaha = Areaafetadam2 / 10000;
     const GramadeOuroporHectare = qtdAnalysis / Areaafetadaha;
     const KgdeOuroporHectare = GramadeOuroporHectare / 1000;
+    
     const ProfundidadeMediaTerraNormal = pitDepth - ProfundidadeMediaTerraFertil;
     const VolumeTerraNormal = ProfundidadeMediaTerraNormal * Areaafetadaha;
     const VolumeTerraFertil = ProfundidadeMediaTerraFertil * Areaafetadaha;
