@@ -4,7 +4,7 @@ import { Grid, Row, Col } from 'react-flexbox-grid'
 import { Button, TextField } from 'theme'
 import { Container } from './style'
 import { ButtonFixed } from 'pages/Calculator/ImpactsStyles'
-import { YES, IMPACTED_AREA, AMOUNT_GOLD, ALLUVIUM, FERRY, PIT, CATEGORY_DEFORESTATION, CATEGORY_MERCURY } from './consts'
+import { YES, IMPACTED_AREA, AMOUNT_GOLD, ALLUVIUM, FERRY, PIT, CATEGORY_DEFORESTATION, CATEGORY_MERCURY, CATEGORY_SILTING_RIVERS } from './consts'
 import { AppContext, stateTypes } from 'utils/AppContext'
 import Conditional from 'components/Conditional'
 import RadioBoxConditional from 'components/RadioBoxConditional'
@@ -206,40 +206,32 @@ function Form() {
         impacts.push({ label: 'Recreação', displayName: 'Recreação', category: CATEGORY_DEFORESTATION, value: totalRecreation })
 
         const totalCulturedAndSpecies = culturedAndSpecies(hectareValue, currentCountry.densidadePop2010, especie)
-        impacts.push({ label: 'Cultural / Espécies', displayName: 'Cultural / Espécies', category: CATEGORY_DEFORESTATION, value: totalCulturedAndSpecies })
+        impacts.push({ label: 'Cultural/Espécies', displayName: 'Cultural / Espécies', category: CATEGORY_DEFORESTATION, value: totalCulturedAndSpecies })
 
         const totalCavaGroundingCostAuFertile = cavaGroundingCostAuFertile(hectareValue, currentCountry.distanciaGarimpoCentro)
-        //console.log('Custo de aterramento de cava Au Fértil', totalCavaGroundingCostAuFertile)
-
-        const totalCavaGroundingCostHaFertile = cavaGroundingCostHaFertile(hectareValue, currentCountry.distanciaGarimpoCentro)
-        //console.log('Custo de aterramento de cava Ha Fértil', totalCavaGroundingCostHaFertile)
-
         const totalCavaGroundingCostAuNorm = cavaGroundingCostAuNorm(hectareValue, pitDepth, currentCountry.distanciaGarimpoCentro)
-        //console.log('Custo total aterranmento de cava NORMAL',totalCavaGroundingCostAuNorm)
+        impacts.push({ label: 'Aterramento de cava', displayName: 'Aterramento de cava', category: CATEGORY_SILTING_RIVERS, value: (totalCavaGroundingCostAuFertile+totalCavaGroundingCostAuNorm) })
 
 
         const totalRecoveryOfTopsoil = recoveryOfTopsoil(hectareValue, txPrevalence, currentCountry.distanciaGarimpoCentro)
-        //console.log('Custo de recuperaçãoo superficie do solo', totalRecoveryOfTopsoil)
-
+        impacts.push({ label: 'Recuperação do solo', displayName: 'Recuperação da camada superficial do solo', category: CATEGORY_SILTING_RIVERS, value: totalRecoveryOfTopsoil })
 
         const totalDredgingAndRiverSediments = dredgingAndRiverSediments(hectareValue, pitDepth, currentCountry.distanciaGarimpoCentro)
-        //console.log('dragagem', totalDredgingAndRiverSediments)
+        impacts.push({ label: 'Dragagem no rio', displayName: 'Dragagem de sedimentos no rio', category: CATEGORY_SILTING_RIVERS, value: totalDredgingAndRiverSediments })
 
         const totalErosionSiltingUp = erosionSiltingUp(hectareValue, txPrevalence)
-        //console.log('totalErosionSiltingUp', totalErosionSiltingUp)
+        //impacts.push({ label: 'Erosão/Assoreamento', displayName: 'Erosão/Assoreamento', category: CATEGORY_SILTING_RIVERS, value: totalErosionSiltingUp })
 
         const totalNeuroSymptomsGarimpeiro = neuroSymptomsGarimpeiro(goldValue, txPrevalence)
-        //console.log('totalNeuroSymptomsGarimpeiro', totalNeuroSymptomsGarimpeiro)
+        impacts.push({ label: 'Sintomas neuropsicológicos', displayName: 'Sintomas neuropsicológicos em garimpeiros', category: CATEGORY_MERCURY, value: totalNeuroSymptomsGarimpeiro })
 
 
         const totalLossQI = lossQI(goldValue, currentCountry.popRuralMunicipio, currentCountry.popUrbMunicipio, txPrevalence)
-        console.log('totalLossQI', totalLossQI)
+        impacts.push({ label: 'Perda de Qi em Fetos', displayName: 'Perda de Qi em Fetos', category: CATEGORY_MERCURY, value: totalLossQI })
 
-
-        
 
         dispatch({ type: stateTypes.ADD_VALUE, payload: impacts })
-        //history.push('/loading')
+        history.push('/loading')
     }
 
     return (

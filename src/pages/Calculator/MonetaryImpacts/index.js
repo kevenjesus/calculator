@@ -90,11 +90,6 @@ const MonetaryImpacts = () => {
     const {state} = useContext(AppContext);
     const history = useHistory();
 
-
-    useEffect(() => {
-        
-    }, [state])
-
     const handleImpactedCategories = useCallback((e) => {
         const { value } = e.target;
         const impactedCategoriesUpdate = impactedCategories.map(r => {

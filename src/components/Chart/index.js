@@ -1,39 +1,20 @@
-import { useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { colors } from 'theme/colors'
 
-let data = [
-  {
-    name: 'Impacto 01',
-    valor: 700000,
-    amt: 500000,
-  },
-  {
-    name: 'Impacto 02',
-    valor: 1000000,
-    amt: 1000000,
-  },
-  {
-    name: 'Impacto 03',
-    valor: 1500000,
-    amt: 2500000,
-  },
-  {
-    name: 'Impacto 04',
-    valor: 700000,
-    amt: 2500000,
-  }
-];
-
 const Chart = ({data}) => {
-  console.log('data', data)
+    const items = data.map(d => {
+      return {...d, value: Math.round(d.value * 100) / 100}
+    })
+
+    console.log(items)
+
     return (
       <div style={{width: '100%', height: window.innerWidth >= 1366 ? 500 : 300, marginTop: 50}}>
       <ResponsiveContainer width="100%" height="100%">
         <BarChart
           width={500}
           height={window.innerWidth >= 1366 ? 500 : 300}
-          data={data}
+          data={items}
           margin={{
             top: 5,
             right: 0,
@@ -45,7 +26,7 @@ const Chart = ({data}) => {
           <XAxis dataKey="label" fontSize={10} interval={0} />
           <YAxis />
           <Tooltip />
-          <Bar barSize={window.innerWidth >= 1366 ? 50 : (window.innerWidth >= 768 ? 30 : 20)} dataKey="valor" fill={colors.primary} />
+          <Bar barSize={window.innerWidth >= 1366 ? 50 : (window.innerWidth >= 768 ? 30 : 20)} dataKey="value" fill={colors.primary} />
         </BarChart>
       </ResponsiveContainer>
       </div>
