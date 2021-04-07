@@ -1,5 +1,6 @@
 const culturedAndSpecies = (hectare, densidadePop2010, riquezaEspecie ) => {
 
+
         const PIBpercapitaBrasil2019USD = 8717.18;
         const temperaturaCelsius = 26.8;
         const txCambio = 5;

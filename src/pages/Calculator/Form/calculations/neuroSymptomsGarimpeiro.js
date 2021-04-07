@@ -1,9 +1,11 @@
 
-const neuroSymptomsGarimpeiro = (qtdAnalysis, txPrevalence, UmDalyReais) => {
+const neuroSymptomsGarimpeiro = (gold, txPrevalence) => {
+
+    const UmDalyReais = 103599
 
     // TRATAMENTO - sintomas neuropscicológicos em garimpeiros
     const qtdGramsGoldDiggerYear = 150.45;
-    const qtdTotalGoldMiners = (qtdAnalysis / qtdGramsGoldDiggerYear);
+    const qtdTotalGoldMiners = gold / qtdGramsGoldDiggerYear;
     const neuroGoldDiggersProblems = 0.72;
     const qtdOfMinersAffected = neuroGoldDiggersProblems * qtdTotalGoldMiners;
     const neuroTreatmentByGoldDigger  = 2244;

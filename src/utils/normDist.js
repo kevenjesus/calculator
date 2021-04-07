@@ -74,11 +74,11 @@ function _getNDistCDF(x, mean, stdev)
   return value;
 }
 
-function normDIst(x, mean, stdev, cumulative)
+function normDist(x, mean, stdev, cumulative)
 {
   return cumulative 
       ? _getNDistCDF(x, mean, stdev)
       : _getNDistPDF(x, mean, stdev);
 }
 
-export default normDIst
+export default normDist

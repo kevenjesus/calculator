@@ -19,190 +19,228 @@ import carbon from './calculations/carbon'
 import woodAndNonWoodProducts from './calculations/woodAndNonWoodProducts'
 import recreation from './calculations/recreation'
 import culturedAndSpecies from './calculations/culturedAndSpecies'
+import cavaGroundingCostAuFertile from './calculations/cavaGroundingCostAuFertile'
+import cavaGroundingCostHaFertile from './calculations/cavaGroundingCostHaFertile'
+import recoveryOfTopsoil from './calculations/recoverOfTopsoil'
+import cavaGroundingCostAuNorm from './calculations/cavaGroundingCostAuNorm'
+import dredgingAndRiverSediments from './calculations/dredgingAndRiverSediments'
+import erosionSiltingUp from './calculations/erosionSiltingUp'
+import neuroSymptomsGarimpeiro from './calculations/neuroSymptomsGarimpeiro'
+import lossQI from './calculations/lossQI'
 
 
-const Form = () => {
-    const {state: stateContext, dispatch} = useContext(AppContext);
-    const { calculator, language } = stateContext;
-    const { 
-        regionList, 
-        knowRegion, 
-        stateList, 
-        state, 
-        counties, 
+function Form() {
+    const { state: stateContext, dispatch } = useContext(AppContext)
+    const { calculator, language } = stateContext
+    const {
+        regionList,
+        knowRegion,
+        stateList,
+        state,
+        counties,
         country,
         analysisUnit,
         qtdAnalysis,
         pitDepth,
         valuatioMethod,
-        txPrevalence  } = calculator;    
-    const { calculatorForm } = language;
-    const history = useHistory();
-    
+        txPrevalence } = calculator
+    const { calculatorForm } = language
+    const history = useHistory()
+
     const dataPitDepth = [
         {
-            label: '2,5 '+calculatorForm.values.pitDepth.meters+'',
+            label: '2,5 ' + calculatorForm.values.pitDepth.meters + '',
             value: 2.5
         },
         {
-            label: '5 '+calculatorForm.values.pitDepth.meters+'',
+            label: '5 ' + calculatorForm.values.pitDepth.meters + '',
             value: 5
         },
         {
-            label: '7,5 '+calculatorForm.values.pitDepth.meters+'',
+            label: '7,5 ' + calculatorForm.values.pitDepth.meters + '',
             value: 7.5
         },
         {
-            label: '10 '+calculatorForm.values.pitDepth.meters+'',
+            label: '10 ' + calculatorForm.values.pitDepth.meters + '',
             value: 10
         },
         {
-            label: '12,5 '+calculatorForm.values.pitDepth.meters+'',
+            label: '12,5 ' + calculatorForm.values.pitDepth.meters + '',
             value: 12.5
         },
         {
-            label: '15 '+calculatorForm.values.pitDepth.meters+'',
+            label: '15 ' + calculatorForm.values.pitDepth.meters + '',
             value: 15
         },
         {
-            label: '17,5 '+calculatorForm.values.pitDepth.meters+'',
+            label: '17,5 ' + calculatorForm.values.pitDepth.meters + '',
             value: 17.5
         },
         {
-            label: '20 '+calculatorForm.values.pitDepth.meters+'',
+            label: '20 ' + calculatorForm.values.pitDepth.meters + '',
             value: 20
         },
     ]
 
-    
+
     const getCounties = useCallback((uf) => {
-        let dataCountries = [];
+        let dataCountries = []
         mockCountries.forEach(m => {
-            if(m.microrregiao.mesorregiao.UF.id === Number(uf)) {
-                dataCountries.push(m);
+            if (m.microrregiao.mesorregiao.UF.id === Number(uf)) {
+                dataCountries.push(m)
             }
         })
 
         mockContry.forEach(country => {
             dataCountries.forEach(countries => {
-                if(country.id === countries.id) {
-                    countries.densidadePop2010 = country.densidadePop2010;
-                    countries.densidadePop2060 = country.densidadePop2060;
-                    countries.popUrbMunicipio = country.PopUrbMunicipio;
-                    countries.popRuralMunicipio = country.PopRuralMunicipio;
-                    countries.distanciaGarimpoCentro = country.Distancia_Garimpo_Centro;
-                    countries.especies = country.Especies_por_Municipio;
+                if (country.id === countries.id) {
+                    countries.densidadePop2010 = country.densidadePop2010
+                    countries.densidadePop2060 = country.densidadePop2060
+                    countries.popUrbMunicipio = country.PopUrbMunicipio
+                    countries.popRuralMunicipio = country.PopRuralMunicipio
+                    countries.distanciaGarimpoCentro = country.Distancia_Garimpo_Centro
+                    countries.especies = country.Especies_por_Municipio
                 }
             })
         })
 
-        console.log('dataCountries', dataCountries)
+        dispatch({ type: stateTypes.SET_COUNTIES, payload: dataCountries })
+        dispatch({ type: stateTypes.SET_COUNTRY, payload: dataCountries[0].id })
 
-        dispatch({type: stateTypes.SET_COUNTIES, payload: dataCountries});
-        dispatch({type: stateTypes.SET_COUNTRY, payload: dataCountries[0].id});
-        
     }, [dispatch])
 
     useEffect(() => {
         const getStates = () => {
-             const data = mockStates
-             dispatch({type: stateTypes.SET_STATE_LIST, payload: data })
-             dispatch({type: stateTypes.SET_STATE, payload: data[0]})
-             getCounties(data[0].id)
-          }
-          if(state === '' && country === '') {
-            getStates();
+            const data = mockStates
+            dispatch({ type: stateTypes.SET_STATE_LIST, payload: data })
+            dispatch({ type: stateTypes.SET_STATE, payload: data[0] })
+            getCounties(data[0].id)
         }
-          
+        if (state === '' && country === '') {
+            getStates()
+        }
+
     }, [getCounties, dispatch, state, country])
 
 
     const handleRegion = useCallback((e) => {
-        const { value } = e.target;
+        const { value } = e.target
         const regionListUpdate = regionList.map(r => {
-            r.checked = false;
-            if(r.value === Number(value)) {
+            r.checked = false
+            if (r.value === Number(value)) {
                 r.checked = !r.checked
             }
-            return r;
+            return r
         })
-        dispatch({type: stateTypes.SET_REGION_LIST, payload: regionListUpdate})
-        dispatch({type: stateTypes.SET_KNOW_REGION, payload: Number(value) === YES})
+        dispatch({ type: stateTypes.SET_REGION_LIST, payload: regionListUpdate })
+        dispatch({ type: stateTypes.SET_KNOW_REGION, payload: Number(value) === YES })
     }, [dispatch, regionList])
 
     const handleState = useCallback((e) => {
-        const { value } = e.target;
+        const { value } = e.target
         getCounties(value)
-        dispatch({type: stateTypes.SET_STATE, payload: value})
-        
-    }, [getCounties, dispatch]);
+        dispatch({ type: stateTypes.SET_STATE, payload: value })
+
+    }, [getCounties, dispatch])
 
     const handleCountry = useCallback((e) => {
-        const { value } = e.target;
-        dispatch({type: stateTypes.SET_COUNTRY, payload: value})
+        const { value } = e.target
+        dispatch({ type: stateTypes.SET_COUNTRY, payload: value })
     }, [dispatch])
 
     const handleAnalysisUnit = useCallback((e) => {
-        const { value } = e.target;
-        dispatch({type: stateTypes.SET_ANALYS_UNIT, payload: Number(value) })
+        const { value } = e.target
+        dispatch({ type: stateTypes.SET_ANALYS_UNIT, payload: Number(value) })
     }, [dispatch])
 
     const handleQtdAnalysis = useCallback((e) => {
-        const { value } = e.target;
-        dispatch({type: stateTypes.SET_QTD_ANALYS_UNIT, payload: { value, error: value === '' }})
+        const { value } = e.target
+        dispatch({ type: stateTypes.SET_QTD_ANALYS_UNIT, payload: { value, error: value === '' } })
     }, [dispatch])
 
 
     const handlePitDepth = useCallback((e) => {
-        const { value } = e.target;
-        dispatch({type: stateTypes.SET_PITDEPTH, payload: Number(value)})
-    }, [dispatch]);
+        const { value } = e.target
+        dispatch({ type: stateTypes.SET_PITDEPTH, payload: Number(value) })
+    }, [dispatch])
 
     const handleValuationMethod = useCallback((e) => {
-        const { value } = e.target;
-        dispatch({type: stateTypes.SET_VALUATION_METHOD, payload: Number(value)})
+        const { value } = e.target
+        dispatch({ type: stateTypes.SET_VALUATION_METHOD, payload: Number(value) })
     }, [dispatch])
 
     const handleTxPrevalance = useCallback((e) => {
-        const { value } = e.target;
-        dispatch({type: stateTypes.SET_TX_PREVALENCE, payload: Number(value)})
+        const { value } = e.target
+        dispatch({ type: stateTypes.SET_TX_PREVALENCE, payload: Number(value) })
     }, [dispatch])
 
     const checkFormIsInvalid = useCallback(() => {
-        if(qtdAnalysis.value === '') {
-            dispatch({type: stateTypes.SET_QTD_ANALYS_UNIT, payload: {...qtdAnalysis, error: true}});
-            return true;
-        } 
-        return false;
+        if (qtdAnalysis.value === '') {
+            dispatch({ type: stateTypes.SET_QTD_ANALYS_UNIT, payload: { ...qtdAnalysis, error: true } })
+            return true
+        }
+        return false
     }, [dispatch, qtdAnalysis])
 
-    
-  const submitCalc = () => {
-     const impacts = []
-     const hectareValue = calculator.analysisUnit === AMOUNT_GOLD ? goldToHecatere(Number(qtdAnalysis.value), pitDepth) : Number(qtdAnalysis.value);
-     const goldValue = calculator.analysisUnit === IMPACTED_AREA ? hectareToGold(Number(qtdAnalysis.value), pitDepth) : Number(qtdAnalysis.value);
-     
-     const totalBio = bioprospecting(hectareValue, txPrevalence);
-     impacts.push({label: 'BioProspecção', displayName: 'BioProspecção', category: CATEGORY_DEFORESTATION, value: totalBio});
 
-     const totalCarbon = carbon(hectareValue);
-     impacts.push({label: 'Carbono', displayName: 'Carbono', category: CATEGORY_DEFORESTATION, value: totalCarbon});
+    const submitCalc = () => {
+        const impacts = []
+        const hectareValue = calculator.analysisUnit === AMOUNT_GOLD ? goldToHecatere(Number(qtdAnalysis.value), pitDepth) : Number(qtdAnalysis.value)
+        const goldValue = calculator.analysisUnit === IMPACTED_AREA ? hectareToGold(Number(qtdAnalysis.value), pitDepth) : Number(qtdAnalysis.value)
+        const currentCountry = counties.find(c => c.id === Number(country))
 
-     const totalPMNM = woodAndNonWoodProducts(hectareValue);
-     impacts.push({label: 'PMNM', displayName: 'Produtos não-madeireiros e madeireiros', category: CATEGORY_DEFORESTATION, value: totalPMNM});
-     
-     const currentCountry = counties.find(c => c.id === Number(country));
-     const especie = currentCountry.especies <= 0 ? state.especie : currentCountry.especies;
+        const totalBio = bioprospecting(hectareValue, txPrevalence)
+        impacts.push({ label: 'BioProspecção', displayName: 'BioProspecção', category: CATEGORY_DEFORESTATION, value: totalBio })
 
-     const totalRecreation = recreation(hectareValue, currentCountry.densidadePop2010, especie);
-     impacts.push({label: 'Recreação', displayName: 'Recreação', category: CATEGORY_DEFORESTATION, value: totalRecreation});
+        const totalCarbon = carbon(hectareValue)
+        impacts.push({ label: 'Carbono', displayName: 'Carbono', category: CATEGORY_DEFORESTATION, value: totalCarbon })
 
-     const totalCulturedAndSpecies = culturedAndSpecies(hectareValue, currentCountry.densidadePop2010, especie);
-     impacts.push({label: 'Cultural / Espécies', displayName: 'Cultural / Espécies', category: CATEGORY_DEFORESTATION, value: totalCulturedAndSpecies});
+        const totalPMNM = woodAndNonWoodProducts(hectareValue)
+        impacts.push({ label: 'PMNM', displayName: 'Produtos não-madeireiros e madeireiros', category: CATEGORY_DEFORESTATION, value: totalPMNM })
 
-     dispatch({type: stateTypes.ADD_VALUE, payload: impacts});
-     history.push('/loading')
-  }
+
+        const especie = currentCountry.especies <= 0 ? state.especie : currentCountry.especies
+        
+
+        const totalRecreation = recreation(hectareValue, currentCountry.densidadePop2010, especie)
+        impacts.push({ label: 'Recreação', displayName: 'Recreação', category: CATEGORY_DEFORESTATION, value: totalRecreation })
+
+        const totalCulturedAndSpecies = culturedAndSpecies(hectareValue, currentCountry.densidadePop2010, especie)
+        impacts.push({ label: 'Cultural / Espécies', displayName: 'Cultural / Espécies', category: CATEGORY_DEFORESTATION, value: totalCulturedAndSpecies })
+
+        const totalCavaGroundingCostAuFertile = cavaGroundingCostAuFertile(hectareValue, currentCountry.distanciaGarimpoCentro)
+        //console.log('Custo de aterramento de cava Au Fértil', totalCavaGroundingCostAuFertile)
+
+        const totalCavaGroundingCostHaFertile = cavaGroundingCostHaFertile(hectareValue, currentCountry.distanciaGarimpoCentro)
+        //console.log('Custo de aterramento de cava Ha Fértil', totalCavaGroundingCostHaFertile)
+
+        const totalCavaGroundingCostAuNorm = cavaGroundingCostAuNorm(hectareValue, pitDepth, currentCountry.distanciaGarimpoCentro)
+        //console.log('Custo total aterranmento de cava NORMAL',totalCavaGroundingCostAuNorm)
+
+
+        const totalRecoveryOfTopsoil = recoveryOfTopsoil(hectareValue, txPrevalence, currentCountry.distanciaGarimpoCentro)
+        //console.log('Custo de recuperaçãoo superficie do solo', totalRecoveryOfTopsoil)
+
+
+        const totalDredgingAndRiverSediments = dredgingAndRiverSediments(hectareValue, pitDepth, currentCountry.distanciaGarimpoCentro)
+        //console.log('dragagem', totalDredgingAndRiverSediments)
+
+        const totalErosionSiltingUp = erosionSiltingUp(hectareValue, txPrevalence)
+        //console.log('totalErosionSiltingUp', totalErosionSiltingUp)
+
+        const totalNeuroSymptomsGarimpeiro = neuroSymptomsGarimpeiro(goldValue, txPrevalence)
+        //console.log('totalNeuroSymptomsGarimpeiro', totalNeuroSymptomsGarimpeiro)
+
+
+        const totalLossQI = lossQI(goldValue, currentCountry.popRuralMunicipio, currentCountry.popUrbMunicipio, txPrevalence)
+        console.log('totalLossQI', totalLossQI)
+
+
+        
+
+        dispatch({ type: stateTypes.ADD_VALUE, payload: impacts })
+        //history.push('/loading')
+    }
 
     return (
         <Container>
@@ -218,21 +256,17 @@ const Form = () => {
                         <Col xs={12} sm={6}>
                             <label>{calculatorForm.labels.state}</label>
                             <select name="state" value={state} onChange={handleState}>
-                            {
-                                stateList.map(({sigla, id}) => (
+                                {stateList.map(({ sigla, id }) => (
                                     <option key={id} value={id}>{sigla}</option>
-                                ))
-                            }
+                                ))}
                             </select>
                         </Col>
                         <Col xs={12} sm={6}>
                             <label>{calculatorForm.labels.country}</label>
                             <select name="country" value={country} onChange={handleCountry}>
-                                {
-                                    counties.map(({nome, id}) => (
-                                        <option key={id} value={id}>{nome}</option>
-                                    ))
-                                }
+                                {counties.map(({ nome, id }) => (
+                                    <option key={id} value={id}>{nome}</option>
+                                ))}
                             </select>
                         </Col>
                     </Row>
@@ -246,12 +280,12 @@ const Form = () => {
                         </select>
                     </Col>
                     <Col xs={6} sm={3}>
-                        <TextField 
-                            label="Valor" 
-                            error={qtdAnalysis.error} 
-                            type="number" 
-                            value={qtdAnalysis.value} 
-                            onChange={handleQtdAnalysis} 
+                        <TextField
+                            label="Valor"
+                            error={qtdAnalysis.error}
+                            type="number"
+                            value={qtdAnalysis.value}
+                            onChange={handleQtdAnalysis}
                             name="valor" placeholder={analysisUnit === IMPACTED_AREA ? calculatorForm.values.qtdAnalysisUnit.hactare : calculatorForm.values.qtdAnalysisUnit.grams} />
                     </Col>
                 </Row>
@@ -260,9 +294,7 @@ const Form = () => {
                         <Col xs={12} sm={6}>
                             <label>{calculatorForm.labels.pitDepth}</label>
                             <select name="pitdepth" value={pitDepth} onChange={handlePitDepth}>
-                                {
-                                    dataPitDepth.map(({label, value}) => <option key={value} value={value}>{label}</option>)
-                                }
+                                {dataPitDepth.map(({ label, value }) => <option key={value} value={value}>{label}</option>)}
                             </select>
                         </Col>
                     </Conditional>
@@ -282,7 +314,7 @@ const Form = () => {
                         </select>
                     </Col>
                 </Row>
-                
+
                 <ButtonFixed>
                     <Grid>
                         <Row>
@@ -292,10 +324,10 @@ const Form = () => {
                         </Row>
                     </Grid>
                 </ButtonFixed>
-                
+
 
             </Grid>
-       </Container>
+        </Container>
     )
 }
 

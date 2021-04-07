@@ -1,24 +1,29 @@
+import normDist from 'utils/normDist'
+
+const CONSERVATIVE = 0.29
 
 // impacto 6: Perda de QI (mercury na saude humana)
     ////// Parte 01: grama de mercúrio que é metilado
 
-const lossQI = (qtdAnalysis) => {
+const lossQI = (gold, ruralProportion, urbanProportion, txPrevalence) => {
+
+
+    const perdaPorcentHgnaAgua = txPrevalence === CONSERVATIVE ? 0.13 : 0.21
+    const metilacaoPorcent = txPrevalence === CONSERVATIVE ? 0.11 : 0.22
     
 
-    const toMercury = (Number(qtdAnalysis) * 1 * 2.6)
-    const toMethylatedWater = toMercury * 0.072;
-    const toMethylated = toMethylatedWater * 0.03;
 
 
+    const grHgLiberadonaAgua = perdaPorcentHgnaAgua * 2.6 * gold;
+    const toMethylatedWater = metilacaoPorcent * grHgLiberadonaAgua;
 
+    
     //console.log('total metilado', toMethylated)
 
     ///// Parte 02: Consumo total de mercúrio do mesmo indivíduo
 
-    const ruralProportion = 0.61; //country.json
-    const urbanProportion = 0.39; //country.json
-    const ruralIndividualWeight = 59.1; //country.json
-    const urbanindividualWeight = 70; //country.json
+    const ruralIndividualWeight = 59.1;
+    const urbanindividualWeight = 70;
     const individualAverageWeight = (ruralProportion*ruralIndividualWeight)+(urbanProportion*urbanindividualWeight);
     const mercuryGrams = (0.98/10000000);
     const Years = 50
@@ -44,18 +49,17 @@ const lossQI = (qtdAnalysis) => {
 
     const PI = 3.14;
     
-
-    const IndividualAffected = toMethylated/dailyIntake; 
-
     const densityPopulationalRegionNorth = 6.00696;
     const areaAt500km = PI*Math.pow(500,2)
     const populationAffectedIn500km2 = densityPopulationalRegionNorth*areaAt500km;
-   
-    const toPopulationAffected = IndividualAffected < populationAffectedIn500km2 ? IndividualAffected : populationAffectedIn500km2;
+    const pessoasAfetadas = (toMethylatedWater/ingestionMediaMercuryEmYears);
+    const toPopulationAffected = pessoasAfetadas < populationAffectedIn500km2 ? pessoasAfetadas : populationAffectedIn500km2
+    
 
-    const birthRate = 18.8/1000;
-    const affectedLiveBirths = toPopulationAffected*birthRate
-
+    const birthRate = 18.8;
+    const affectedLiveBirths = toPopulationAffected*birthRate;
+    const popNascVivos = affectedLiveBirths/1000;
+    
     const concentrationMediaMercuryHair = ingestionMediaMercuryEmYears/0.1;
     const deflectionPatternAverageMercury = concentrationMediaMercuryHair/2;
 
@@ -123,9 +127,11 @@ const lossQI = (qtdAnalysis) => {
     const txIncidence = distNorm0ate2 + distNorm2ate4 + distNorm4ate6 + distNorm6ate8 + distNorm8ate10 + distNorm10ate12 + distNorm12ate14 +
   distNorm14ate16 + distNorm16ate18 + distNorm18ate20 + distNorm20ate22 + distNorm22ate24 + distNorm24ate26 + distNorm26ate28 +
   distNorm28ate30 + distNorm30ate32 + distNorm32ate34 + distNorm34ate36 + distNorm36ate38 + distNorm38ate40
+
+  console.log('txIncidence', txIncidence)
   
   
-    const incidence = txIncidence * (affectedLiveBirths / 1000)
+    const incidence = txIncidence * (popNascVivos / 1000)
     const incidenceManWoman = incidence * 2
 
     const weightOfDisabilityPorincidence = incidenceManWoman*weightOfDisability;
