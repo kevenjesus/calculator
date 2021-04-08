@@ -27,6 +27,9 @@ import dredgingAndRiverSediments from './calculations/dredgingAndRiverSediments'
 import erosionSiltingUp from './calculations/erosionSiltingUp'
 import neuroSymptomsGarimpeiro from './calculations/neuroSymptomsGarimpeiro'
 import lossQI from './calculations/lossQI'
+import heartAttack from './calculations/heartAttack'
+import hypertension from './calculations/hypertension'
+import remediacaoMercurioSolo from './calculations/remediacaoMercurioSolo'
 
 
 function Form() {
@@ -46,6 +49,8 @@ function Form() {
         txPrevalence } = calculator
     const { calculatorForm } = language
     const history = useHistory()
+
+    
 
     const dataPitDepth = [
         {
@@ -209,31 +214,38 @@ function Form() {
         impacts.push({ label: 'Cultural / Espécies', displayName: 'Cultural / Espécies', category: CATEGORY_DEFORESTATION, value: totalCulturedAndSpecies })
 
         const totalCavaGroundingCostAuFertile = cavaGroundingCostAuFertile(hectareValue, currentCountry.distanciaGarimpoCentro)
-        //console.log('Custo de aterramento de cava Au Fértil', totalCavaGroundingCostAuFertile)
-
-        const totalCavaGroundingCostHaFertile = cavaGroundingCostHaFertile(hectareValue, currentCountry.distanciaGarimpoCentro)
-        //console.log('Custo de aterramento de cava Ha Fértil', totalCavaGroundingCostHaFertile)
+        console.log('Custo de aterramento de cava Au Fértil', totalCavaGroundingCostAuFertile)
 
         const totalCavaGroundingCostAuNorm = cavaGroundingCostAuNorm(hectareValue, pitDepth, currentCountry.distanciaGarimpoCentro)
-        //console.log('Custo total aterranmento de cava NORMAL',totalCavaGroundingCostAuNorm)
-
+        console.log('Custo total aterranmento de cava NORMAL',totalCavaGroundingCostAuNorm)
 
         const totalRecoveryOfTopsoil = recoveryOfTopsoil(hectareValue, txPrevalence, currentCountry.distanciaGarimpoCentro)
-        //console.log('Custo de recuperaçãoo superficie do solo', totalRecoveryOfTopsoil)
-
+        console.log('Custo de recuperaçãoo superficie do solo', totalRecoveryOfTopsoil)
 
         const totalDredgingAndRiverSediments = dredgingAndRiverSediments(hectareValue, pitDepth, currentCountry.distanciaGarimpoCentro)
-        //console.log('dragagem', totalDredgingAndRiverSediments)
+        console.log('dragagem', totalDredgingAndRiverSediments)
 
         const totalErosionSiltingUp = erosionSiltingUp(hectareValue, txPrevalence)
-        //console.log('totalErosionSiltingUp', totalErosionSiltingUp)
+        console.log('totalErosionSiltingUp', totalErosionSiltingUp)
 
         const totalNeuroSymptomsGarimpeiro = neuroSymptomsGarimpeiro(goldValue, txPrevalence)
-        //console.log('totalNeuroSymptomsGarimpeiro', totalNeuroSymptomsGarimpeiro)
+        console.log('totalNeuroSymptomsGarimpeiro', totalNeuroSymptomsGarimpeiro)
 
 
-        const totalLossQI = lossQI(goldValue, currentCountry.popRuralMunicipio, currentCountry.popUrbMunicipio, txPrevalence)
+        //console.log(currentCountry)
+        const totalLossQI = lossQI(goldValue, currentCountry.popRuralMunicipio, currentCountry.popUrbMunicipio, txPrevalence, currentCountry.densidadePop2060, knowRegion)
         console.log('totalLossQI', totalLossQI)
+
+        const totalHeartAttack = heartAttack(goldValue, currentCountry.popRuralMunicipio, currentCountry.popUrbMunicipio, txPrevalence, currentCountry.densidadePop2060, knowRegion)
+        console.log('totalHeartAttack', totalHeartAttack)
+
+        const totalHypertension = hypertension(goldValue, currentCountry.popRuralMunicipio, currentCountry.popUrbMunicipio, txPrevalence, currentCountry.densidadePop2060, knowRegion)
+        console.log('totalHypertension', totalHypertension)
+
+        const totalRemediacaoMercurioSolo = remediacaoMercurioSolo(goldValue, txPrevalence)
+        console.log('totalRemediacaoMercurioSolo', totalRemediacaoMercurioSolo)
+
+
 
 
         
