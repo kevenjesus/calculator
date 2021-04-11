@@ -27,6 +27,9 @@ import dredgingAndRiverSediments from './calculations/dredgingAndRiverSediments'
 import erosionSiltingUp from './calculations/erosionSiltingUp'
 import neuroSymptomsGarimpeiro from './calculations/neuroSymptomsGarimpeiro'
 import lossQI from './calculations/lossQI'
+import heartAttack from './calculations/heartAttack'
+import hypertension from './calculations/hypertension'
+import remediacaoMercurioSolo from './calculations/remediacaoMercurioSolo'
 
 
 function Form() {
@@ -46,6 +49,8 @@ function Form() {
         txPrevalence } = calculator
     const { calculatorForm } = language
     const history = useHistory()
+
+    
 
     const dataPitDepth = [
         {
@@ -210,30 +215,40 @@ function Form() {
 
         const totalCavaGroundingCostAuFertile = cavaGroundingCostAuFertile(hectareValue, currentCountry.distanciaGarimpoCentro)
         const totalCavaGroundingCostAuNorm = cavaGroundingCostAuNorm(hectareValue, pitDepth, currentCountry.distanciaGarimpoCentro)
-        impacts.push({ label: 'Aterramento de cava', displayName: 'Aterramento de cava', category: CATEGORY_SILTING_RIVERS, value: (totalCavaGroundingCostAuFertile+totalCavaGroundingCostAuNorm) })
-
+        impacts.push({ label: 'Aterramento de cava', displayName: 'Aterramento de cava', category: CATEGORY_SILTING_RIVERS, value:(totalCavaGroundingCostAuFertile+totalCavaGroundingCostAuNorm)})
 
         const totalRecoveryOfTopsoil = recoveryOfTopsoil(hectareValue, txPrevalence, currentCountry.distanciaGarimpoCentro)
-        impacts.push({ label: 'Recuperação do solo', displayName: 'Recuperação da camada superficial do solo', category: CATEGORY_SILTING_RIVERS, value: totalRecoveryOfTopsoil })
+        impacts.push({ label: 'Recuperaçãoo superficie do solo', displayName: 'Recuperaçãoo superficie do solo', category: CATEGORY_DEFORESTATION, value: totalRecoveryOfTopsoil })
 
         const totalDredgingAndRiverSediments = dredgingAndRiverSediments(hectareValue, pitDepth, currentCountry.distanciaGarimpoCentro)
-        impacts.push({ label: 'Dragagem no rio', displayName: 'Dragagem de sedimentos no rio', category: CATEGORY_SILTING_RIVERS, value: totalDredgingAndRiverSediments })
+        impacts.push({ label: 'Dragagem de sedimentos no rio', displayName: 'Dragagem de sedimentos no rio', category: CATEGORY_SILTING_RIVERS, value: totalDredgingAndRiverSediments })
 
         const totalErosionSiltingUp = erosionSiltingUp(hectareValue, txPrevalence)
-        //impacts.push({ label: 'Erosão/Assoreamento', displayName: 'Erosão/Assoreamento', category: CATEGORY_SILTING_RIVERS, value: totalErosionSiltingUp })
+        impacts.push({ label: 'Erosão', displayName: 'Erosão', category: CATEGORY_SILTING_RIVERS, value: totalErosionSiltingUp })
 
         const totalNeuroSymptomsGarimpeiro = neuroSymptomsGarimpeiro(goldValue, txPrevalence)
-        impacts.push({ label: 'Sintomas neuropsicológicos', displayName: 'Sintomas neuropsicológicos em garimpeiros', category: CATEGORY_MERCURY, value: totalNeuroSymptomsGarimpeiro })
+        impacts.push({ label: 'Sintomas neuropsicológicos em garimpeiros', displayName: 'Sintomas neuropsicológicos em garimpeiros', category: CATEGORY_MERCURY, value: totalNeuroSymptomsGarimpeiro })
 
 
-        const totalLossQI = lossQI(goldValue, currentCountry.popRuralMunicipio, currentCountry.popUrbMunicipio, txPrevalence)
+        //console.log(currentCountry)
+        const totalLossQI = lossQI(goldValue, currentCountry.popRuralMunicipio, currentCountry.popUrbMunicipio, txPrevalence, currentCountry.densidadePop2060, knowRegion)
         impacts.push({ label: 'Perda de Qi em Fetos', displayName: 'Perda de Qi em Fetos', category: CATEGORY_MERCURY, value: totalLossQI })
+        
+
+        const totalHeartAttack = heartAttack(goldValue, currentCountry.popRuralMunicipio, currentCountry.popUrbMunicipio, txPrevalence, currentCountry.densidadePop2060, knowRegion)
+        impacts.push({ label: 'Doenças cardiovasculares (HIPERTENSAO + INFARTO)', displayName: 'Doenças cardiovasculares (HIPERTENSAO + INFARTO)', category: CATEGORY_MERCURY, value: totalHeartAttack })
+
+        const totalHypertension = hypertension(goldValue, currentCountry.popRuralMunicipio, currentCountry.popUrbMunicipio, txPrevalence, currentCountry.densidadePop2060, knowRegion)
+        impacts.push({ label: 'Hipertensão', displayName: 'Hipertensão', category: CATEGORY_MERCURY, value: totalHypertension })
+
+        const totalRemediacaoMercurioSolo = remediacaoMercurioSolo(goldValue, txPrevalence)
+        impacts.push({ label: 'Remediação de mercúrio no solo', displayName: 'Remediação de mercúrio no solo', category: CATEGORY_MERCURY, value: totalRemediacaoMercurioSolo })
+
+        const reducer = ((acc, current) => acc+current.value);
+        const totalValue = impacts.reduce(reducer, 0);
 
 
-        const reducer = (accum, obj) => accum + obj.value;
-        const totalValue = impacts.reduce(reducer, 0)
-
-
+        console.log('total', totalValue, impacts)
 
         dispatch({ type: stateTypes.ADD_VALUE, payload: impacts })
         dispatch({ type: stateTypes.CHANGE_TOTALVALUE, payload: totalValue.toLocaleString("pt-BR", { minimumFractionDigits: 2 , style: 'currency', currency: 'BRL' }) })

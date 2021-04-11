@@ -1,5 +1,6 @@
 
 const neuroSymptomsGarimpeiro = (gold, txPrevalence) => {
+    
 
     const UmDalyReais = 103599
 
@@ -18,8 +19,10 @@ const neuroSymptomsGarimpeiro = (gold, txPrevalence) => {
     const dalyYearsProspectors = txPrevalence * weightDisabilityNeuroProspectorsQtdGoldDiggers;
     const toCostDALYGoldDigger = UmDalyReais * dalyYearsProspectors;
     
-    const toGoldMinersCost = toCostDALYGoldDigger + neuroGoldMinersTreatmentCost ;
+    const toGoldMinersCost = toCostDALYGoldDigger + neuroGoldMinersTreatmentCost;
+    //console.log('toGoldMinersCost', toGoldMinersCost)
     return toGoldMinersCost
+    console.log(toGoldMinersCost)
 
    //console.log('total custo garimpeiros', toGoldMinersCost)
 
