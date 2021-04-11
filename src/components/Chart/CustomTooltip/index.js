@@ -2,7 +2,7 @@ import React from 'react'
 import { Container, Item, Value } from './style'
 
 const CustomTooltip = (props) => {
-  const { active, payload, label } = props;
+  const { active, payload } = props;
     if (active && payload && payload.length) {
       const { value, displayName } = payload[0].payload
       const total = Math.round(value * 100) / 100

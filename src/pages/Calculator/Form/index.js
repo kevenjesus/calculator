@@ -8,7 +8,6 @@ import { YES, IMPACTED_AREA, AMOUNT_GOLD, ALLUVIUM, FERRY, PIT, CATEGORY_DEFORES
 import { AppContext, stateTypes } from 'utils/AppContext'
 import Conditional from 'components/Conditional'
 import RadioBoxConditional from 'components/RadioBoxConditional'
-import normDist from 'utils/normDist'
 import mockStates from 'mocks/state.json'
 import mockCountries from 'mocks/countries.json'
 import mockContry from 'mocks/country.json'
@@ -20,7 +19,6 @@ import woodAndNonWoodProducts from './calculations/woodAndNonWoodProducts'
 import recreation from './calculations/recreation'
 import culturedAndSpecies from './calculations/culturedAndSpecies'
 import cavaGroundingCostAuFertile from './calculations/cavaGroundingCostAuFertile'
-import cavaGroundingCostHaFertile from './calculations/cavaGroundingCostHaFertile'
 import recoveryOfTopsoil from './calculations/recoverOfTopsoil'
 import cavaGroundingCostAuNorm from './calculations/cavaGroundingCostAuNorm'
 import dredgingAndRiverSediments from './calculations/dredgingAndRiverSediments'
@@ -189,6 +187,9 @@ function Form() {
 
 
     const submitCalc = () => {
+        if(checkFormIsInvalid()) {
+            return;
+        }
         const impacts = []
         const hectareValue = calculator.analysisUnit === AMOUNT_GOLD ? goldToHecatere(Number(qtdAnalysis.value), pitDepth) : Number(qtdAnalysis.value)
         const goldValue = calculator.analysisUnit === IMPACTED_AREA ? hectareToGold(Number(qtdAnalysis.value), pitDepth) : Number(qtdAnalysis.value)

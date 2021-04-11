@@ -1,6 +1,3 @@
-import presentValue from 'utils/presentValue' 
-import calcImpact from 'utils/calcImpact'
-
 const CONSERVATIVE = 0.29
 
 const bioprospecting = (hectare, valueHypothesis) => { 
