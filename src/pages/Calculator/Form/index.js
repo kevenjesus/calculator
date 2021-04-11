@@ -230,7 +230,13 @@ function Form() {
         impacts.push({ label: 'Perda de Qi em Fetos', displayName: 'Perda de Qi em Fetos', category: CATEGORY_MERCURY, value: totalLossQI })
 
 
+        const reducer = (accum, obj) => accum + obj.value;
+        const totalValue = impacts.reduce(reducer, 0)
+
+
+
         dispatch({ type: stateTypes.ADD_VALUE, payload: impacts })
+        dispatch({ type: stateTypes.CHANGE_TOTALVALUE, payload: totalValue.toLocaleString("pt-BR", { minimumFractionDigits: 2 , style: 'currency', currency: 'BRL' }) })
         history.push('/loading')
     }
 

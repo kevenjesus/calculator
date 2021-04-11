@@ -114,6 +114,8 @@ const MonetaryImpacts = () => {
 
     window.scrollTo(0,0)
 
+    const valueTotal = state.calculator.totalValue
+
     return (
         <Container>
             <Grid fluid>
@@ -139,7 +141,7 @@ const MonetaryImpacts = () => {
                             <Col xs={12} sm={6}>
                                 <FormGroup>
                                     <Label>Valor total monetário</Label>
-                                    <Monetary>R$ 1.500.000,00</Monetary>
+                                    <Monetary>{valueTotal}</Monetary>
                                     <MonetaryType>*Por 1000 gramas de ouro</MonetaryType>
                                 </FormGroup>
                             </Col>
