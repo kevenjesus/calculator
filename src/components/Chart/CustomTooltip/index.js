@@ -6,7 +6,6 @@ const CustomTooltip = (props) => {
     if (active && payload && payload.length) {
       const { value, displayName } = payload[0].payload
       const total = Math.round(value * 100) / 100
-      console.log(payload[0])
       return (
         <Container>
           <Item>{displayName}</Item>

@@ -1,7 +1,6 @@
 const CONSERVATIVE = 0.29
 
 const erosionSiltingUp = (hectare, txPrevalence) => {
-  console.log(hectare)
 
   const PIBpercapitaBrasil2019USD = 8717.18
 

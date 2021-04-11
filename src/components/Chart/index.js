@@ -2,6 +2,10 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContaine
 import CustomTooltip from './CustomTooltip'
 import { colors } from 'theme/colors'
 
+const ToBRL = (value) => {
+  return (Math.round(value * 100) / 100).toLocaleString("pt-BR", { minimumFractionDigits: 2 , style: 'currency', currency: 'BRL' })
+}
+
 const Chart = ({data}) => {
     const items = data.map(d => {
       return {...d, value: Math.round(d.value * 100) / 100}
@@ -23,7 +27,7 @@ const Chart = ({data}) => {
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="label" fontSize={10} interval={0} />
-          <YAxis />
+          <YAxis domain={['dataMin', 'dataMax']} allowDecimals tickFormatter={ToBRL} />
           <Tooltip content={CustomTooltip} />
           <Bar barSize={window.innerWidth >= 1366 ? 50 : (window.innerWidth >= 768 ? 30 : 20)} dataKey="value" fill={colors.primary} />
         </BarChart>

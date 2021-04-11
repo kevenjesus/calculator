@@ -44,7 +44,6 @@ const Content = ({step}) => {
 const Introduction = () => {
     const {state, dispatch} = useContext(AppContext) 
     const {calculator, introduction} = state;
-    console.log(introduction)
     const { step } = introduction
     const history = useHistory();
 

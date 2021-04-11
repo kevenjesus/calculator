@@ -47,22 +47,12 @@ const heartAttack = (gold, popRuralMunicipio, popUrbMunicipio, txPrevalence, den
     const toPopulationAffectedMercuryHair = pessoasAfetadas < TamanhoPop100kmRaio ? pessoasAfetadas : TamanhoPop100kmRaio;
     
     const PopHomensAcima40AnosnaRegiao = toPopulationAffectedMercuryHair * proHomensAcima40AnosporPopTotal;
-    //console.log('PopHomensAcima40AnosnaRegiao', PopHomensAcima40AnosnaRegiao)
     
     const PopHomensAcima40AnosnaRegiaocomInfarto = PopHomensAcima40AnosnaRegiao * PropHomensAcima40AnosporComInfarto;
-    //console.log('PopHomensAcima40AnosnaRegiaocomInfarto', PopHomensAcima40AnosnaRegiaocomInfarto)
     const HomensAcima40AnosnaRegiaoComInfartoMercurio = PopHomensAcima40AnosnaRegiaocomInfarto * FracaoAtribuivelInfarto;
-    //console.log('HomensAcima40AnosnaRegiaoComInfartoMercurio', HomensAcima40AnosnaRegiaoComInfartoMercurio)
     const HomensAcima40aAnosNaRegiaoEm32Anos = HomensAcima40AnosnaRegiaoComInfartoMercurio * DuracaoIncapacidadeInfarto;
-    //console.log('HomensAcima40aAnosNaRegiaoEm32Anos', HomensAcima40aAnosNaRegiaoEm32Anos)
     const TxIncidenciaInfarto = (HomensAcima40aAnosNaRegiaoEm32Anos * 1000)/  toPopulationAffectedMercuryHair;
-    //console.log('TxIncidenciaInfarto', TxIncidenciaInfarto)
     const IncidenciaInfarto = (TxIncidenciaInfarto * toPopulationAffectedMercuryHair) / 1000;
-    //console.log('IncidenciaInfarto', IncidenciaInfarto)
-
-
-    //const calculo0 = (IncidenciaInfarto * 2) * PesoDaIncapacidadeInfarto
-    
     
     const sub1Calc1 = Math.pow(bplusr,2);
     const sub1Calc2 = Math.exp(TxDesconto*AnoIniciodaIncapacidadeInfarto);
@@ -76,30 +66,15 @@ const heartAttack = (gold, popRuralMunicipio, popUrbMunicipio, txPrevalence, den
     const calculo7 = (agwt*calculo1*((Math.exp(calculo2)*calculo3)-calculo4)+calculo5*calculo6);
     
     const DALYInfarto =  IncidenciaInfarto * PesoDaIncapacidadeInfarto * calculo7
-    //console.log('calculo7', calculo7)
-    //console.log('IncidenciaInfarto', IncidenciaInfarto)
-    //console.log('PesoDaIncapacidadeInfarto', PesoDaIncapacidadeInfarto)
 
-
-    //console.log('DALYInfarto', DALYInfarto)
-    
     const DALYInfartoemBRL = DALY1CustoInfarto * DALYInfarto;
 
-    //console.log('Infarto', DALYInfartoemBRL)
-
-
-    //Tratamento Infarto se houver
     const CustoAnualTratamentoInfarto = 2300;
     const IncidenciaInfartoTratamento = (TxIncidenciaInfarto * toPopulationAffectedMercuryHair) /1000;
     const CustoTotalTratamentoInfartoAnos = IncidenciaInfartoTratamento * DuracaoIncapacidadeInfarto * CustoAnualTratamentoInfarto;
     const CustoTotalDALYeTratamentoInfarto = CustoTotalTratamentoInfartoAnos + DALYInfartoemBRL;
 
     return CustoTotalDALYeTratamentoInfarto
-
-    
-
-
-
 }
 
 export default heartAttack

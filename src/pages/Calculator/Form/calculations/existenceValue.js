@@ -9,8 +9,6 @@ const existenceValue = (qtdAnalysis) => {
     const toExistenceValue = presentValue(0.03, 30, existenceValue);
     return toExistenceValue
 
-
-    // console.log('valor de valor de existencia', totalexistenceValue)
 }
 
 export default existenceValue

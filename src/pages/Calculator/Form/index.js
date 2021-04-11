@@ -194,6 +194,7 @@ function Form() {
         const hectareValue = calculator.analysisUnit === AMOUNT_GOLD ? goldToHecatere(Number(qtdAnalysis.value), pitDepth) : Number(qtdAnalysis.value)
         const goldValue = calculator.analysisUnit === IMPACTED_AREA ? hectareToGold(Number(qtdAnalysis.value), pitDepth) : Number(qtdAnalysis.value)
         const currentCountry = counties.find(c => c.id === Number(country))
+        const especie = currentCountry.especies <= 0 ? state.especie : currentCountry.especies
 
         const totalBio = bioprospecting(hectareValue, txPrevalence)
         impacts.push({ label: 'BioProspecção', displayName: 'BioProspecção', category: CATEGORY_DEFORESTATION, value: totalBio })
@@ -203,10 +204,6 @@ function Form() {
 
         const totalPMNM = woodAndNonWoodProducts(hectareValue)
         impacts.push({ label: 'PMNM', displayName: 'Produtos não-madeireiros e madeireiros', category: CATEGORY_DEFORESTATION, value: totalPMNM })
-
-
-        const especie = currentCountry.especies <= 0 ? state.especie : currentCountry.especies
-        
 
         const totalRecreation = recreation(hectareValue, currentCountry.densidadePop2010, especie)
         impacts.push({ label: 'Recreação', displayName: 'Recreação', category: CATEGORY_DEFORESTATION, value: totalRecreation })
@@ -230,8 +227,6 @@ function Form() {
         const totalNeuroSymptomsGarimpeiro = neuroSymptomsGarimpeiro(goldValue, txPrevalence)
         impacts.push({ label: 'Sintomas neuropsicológicos em garimpeiros', displayName: 'Sintomas neuropsicológicos em garimpeiros', category: CATEGORY_MERCURY, value: totalNeuroSymptomsGarimpeiro })
 
-
-        //console.log(currentCountry)
         const totalLossQI = lossQI(goldValue, currentCountry.popRuralMunicipio, currentCountry.popUrbMunicipio, txPrevalence, currentCountry.densidadePop2060, knowRegion)
         impacts.push({ label: 'Perda de Qi em Fetos', displayName: 'Perda de Qi em Fetos', category: CATEGORY_MERCURY, value: totalLossQI })
         
@@ -247,9 +242,6 @@ function Form() {
 
         const reducer = ((acc, current) => acc+current.value);
         const totalValue = impacts.reduce(reducer, 0);
-
-
-        console.log('total', totalValue, impacts)
 
         dispatch({ type: stateTypes.ADD_VALUE, payload: impacts })
         dispatch({ type: stateTypes.CHANGE_TOTALVALUE, payload: totalValue.toLocaleString("pt-BR", { minimumFractionDigits: 2 , style: 'currency', currency: 'BRL' }) })

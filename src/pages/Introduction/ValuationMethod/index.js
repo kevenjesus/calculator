@@ -13,9 +13,6 @@ const ValuationMethod = () => {
     const handleOption = useCallback((value) => {
         dispatch({type: stateTypes.SET_VALUATION_METHOD, payload: value})
     }, [dispatch])
-
-    console.log(calculator.valuatioMethod)
-
     return (
         <>
             <Headline>Tipo de garimpo</Headline>
