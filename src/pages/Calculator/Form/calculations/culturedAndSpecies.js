@@ -1,9 +1,14 @@
-const culturedAndSpecies = (hectare, densidadePop2010, riquezaEspecie ) => {
+import calcMontante from "utils/calcMontante";
+import vpl from "utils/vpl";
+import { FERRY, PIT } from "../consts";
+
+const culturedAndSpecies = (hectare, densidadePop2010, riquezaEspecie,tipoGarimpo ) => {
 
 
         const PIBpercapitaBrasil2019USD = 8717.18;
         const temperaturaCelsius = 26.8;
         const txCambio = 5;
+        const TxDesconto = 0.03;
 
         const calc1 = 0.643 * Math.log(densidadePop2010);
         const calc2 = 1.655 * Math.log(PIBpercapitaBrasil2019USD);
@@ -13,9 +18,22 @@ const culturedAndSpecies = (hectare, densidadePop2010, riquezaEspecie ) => {
         const calc6 = calc5 - 20.85;
         const custoEspeciesporHaUSD = Math.exp(calc6);
         const custoEspeciesporHaBRL = custoEspeciesporHaUSD * txCambio;
-        const custoTotalEspeciesBRL = custoEspeciesporHaBRL * hectare * 12;
+        
+        
+        const montantes = calcMontante(custoEspeciesporHaBRL)
+        const VPLHectareCulturedAndSpecies = vpl(TxDesconto, montantes)
 
-        return custoTotalEspeciesBRL  
+        let toCulturedAndSpecies;
+
+        if(tipoGarimpo === FERRY) {
+          toCulturedAndSpecies = 0
+        }else if (tipoGarimpo === PIT) {
+          toCulturedAndSpecies = VPLHectareCulturedAndSpecies * 0.31 * 12
+        }else {
+          toCulturedAndSpecies = VPLHectareCulturedAndSpecies * hectare * 12
+        }
+        return toCulturedAndSpecies
+           
 }
 
 export default culturedAndSpecies

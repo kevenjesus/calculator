@@ -1,8 +1,23 @@
 //import presentValue from 'utils/presentValue'
 
+import { FERRY, PIT } from "../consts";
+
 const CONSERVATIVE = 0.29
 
-const recoveryOfTopsoil = (hectare, valueHypothesis, DistanciaGarimpoCentroUrbanoFrete) => {
+const recoveryOfTopsoil = (valueHypothesis, DistanciaGarimpoCentroUrbanoFrete, gold, tipoGarimpo) => {
+
+
+
+
+    let hectare;
+        if(tipoGarimpo === FERRY) {
+          hectare = 0
+        }else if (tipoGarimpo === PIT) {
+          hectare = 0.31
+        }else {
+          hectare = gold 
+        }
+        
     
     const PrecoRecupSuperficialSoloporHa = valueHypothesis === CONSERVATIVE ? 14690 : 23400;
 

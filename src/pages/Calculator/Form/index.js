@@ -28,6 +28,7 @@ import lossQI from './calculations/lossQI'
 import heartAttack from './calculations/heartAttack'
 import hypertension from './calculations/hypertension'
 import remediacaoMercurioSolo from './calculations/remediacaoMercurioSolo'
+import ToBRL from 'utils/toBRL'
 
 
 function Form() {
@@ -215,7 +216,7 @@ function Form() {
         const totalCavaGroundingCostAuNorm = cavaGroundingCostAuNorm(hectareValue, pitDepth, currentCountry.distanciaGarimpoCentro)
         impacts.push({ label: 'Aterramento de cava', displayName: 'Aterramento de cava', category: CATEGORY_SILTING_RIVERS, value:(totalCavaGroundingCostAuFertile+totalCavaGroundingCostAuNorm)})
 
-        const totalRecoveryOfTopsoil = recoveryOfTopsoil(hectareValue, txPrevalence, currentCountry.distanciaGarimpoCentro)
+        const totalRecoveryOfTopsoil = recoveryOfTopsoil(txPrevalence, currentCountry.distanciaGarimpoCentro, goldValue)
         impacts.push({ label: 'Recuperaçãoo superficie do solo', displayName: 'Recuperaçãoo superficie do solo', category: CATEGORY_DEFORESTATION, value: totalRecoveryOfTopsoil })
 
         const totalDredgingAndRiverSediments = dredgingAndRiverSediments(hectareValue, pitDepth, currentCountry.distanciaGarimpoCentro)
@@ -230,13 +231,11 @@ function Form() {
         const totalLossQI = lossQI(goldValue, currentCountry.popRuralMunicipio, currentCountry.popUrbMunicipio, txPrevalence, currentCountry.densidadePop2060, knowRegion)
         impacts.push({ label: 'Perda de Qi em Fetos', displayName: 'Perda de Qi em Fetos', category: CATEGORY_MERCURY, value: totalLossQI })
         
-
-        const totalHeartAttack = heartAttack(goldValue, currentCountry.popRuralMunicipio, currentCountry.popUrbMunicipio, txPrevalence, currentCountry.densidadePop2060, knowRegion)
-        impacts.push({ label: 'Doenças cardiovasculares (HIPERTENSAO + INFARTO)', displayName: 'Doenças cardiovasculares (HIPERTENSAO + INFARTO)', category: CATEGORY_MERCURY, value: totalHeartAttack })
-
         const totalHypertension = hypertension(goldValue, currentCountry.popRuralMunicipio, currentCountry.popUrbMunicipio, txPrevalence, currentCountry.densidadePop2060, knowRegion)
-        impacts.push({ label: 'Hipertensão', displayName: 'Hipertensão', category: CATEGORY_MERCURY, value: totalHypertension })
+        const totalHeartAttack = heartAttack(goldValue, currentCountry.popRuralMunicipio, currentCountry.popUrbMunicipio, txPrevalence, currentCountry.densidadePop2060, knowRegion)
+        impacts.push({ label: 'Doenças cardiovasculares', displayName: 'Doenças cardiovasculares (HIPERTENSAO + INFARTO)', category: CATEGORY_MERCURY, value: (totalHeartAttack+totalHypertension) })
 
+       
         const totalRemediacaoMercurioSolo = remediacaoMercurioSolo(goldValue, txPrevalence)
         impacts.push({ label: 'Remediação de mercúrio no solo', displayName: 'Remediação de mercúrio no solo', category: CATEGORY_MERCURY, value: totalRemediacaoMercurioSolo })
 
@@ -244,7 +243,7 @@ function Form() {
         const totalValue = impacts.reduce(reducer, 0);
 
         dispatch({ type: stateTypes.ADD_VALUE, payload: impacts })
-        dispatch({ type: stateTypes.CHANGE_TOTALVALUE, payload: totalValue.toLocaleString("pt-BR", { minimumFractionDigits: 2 , style: 'currency', currency: 'BRL' }) })
+        dispatch({ type: stateTypes.CHANGE_TOTALVALUE, payload: ToBRL(totalValue) })
         history.push('/loading')
     }
 
