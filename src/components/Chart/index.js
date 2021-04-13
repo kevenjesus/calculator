@@ -1,10 +1,7 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import CustomTooltip from './CustomTooltip'
 import { colors } from 'theme/colors'
-
-const ToBRL = (value) => {
-  return (Math.round(value * 100) / 100).toLocaleString("pt-BR", { minimumFractionDigits: 2 , style: 'currency', currency: 'BRL' })
-}
+import ToBRL from 'utils/toBRL';
 
 const Chart = ({data}) => {
     const items = data.map(d => {
@@ -26,8 +23,8 @@ const Chart = ({data}) => {
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="label" fontSize={10} interval={0} />
-          <YAxis domain={['dataMin', 'dataMax']} allowDecimals tickFormatter={ToBRL} />
+          <XAxis dataKey="label" fontSize={12} interval={0} />
+          <YAxis width={150} domain={['dataMin', 'dataMax']} allowDecimals tickFormatter={ToBRL} />
           <Tooltip content={CustomTooltip} />
           <Bar barSize={window.innerWidth >= 1366 ? 50 : (window.innerWidth >= 768 ? 30 : 20)} dataKey="value" fill={colors.primary} />
         </BarChart>

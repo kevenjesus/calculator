@@ -2,12 +2,13 @@ import { useState, useCallback, useContext, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { Button, Checkbox } from 'theme'
 import { Grid, Row, Col } from 'react-flexbox-grid'
-import { DEFORESTATION, MERCURY_IMPACTED, PIT_DEPTH } from 'pages/Calculator/Form/consts'
+import { CATEGORY_DEFORESTATION, CATEGORY_MERCURY, CATEGORY_SILTING_RIVERS, DEFORESTATION, MERCURY_IMPACTED, PIT_DEPTH } from 'pages/Calculator/Form/consts'
 import { Container, Menu, MenuItem, Headline, ButtonFixed, HiddenSm } from 'pages/Calculator/ImpactsStyles'
-import { Monetary, MonetaryType, Label, FormGroup } from './style'
+import { Monetary, MonetaryType, Label, FormGroup, Card } from './style'
 import Alert from 'components/Alert'
 import Chart from 'components/Chart'
 import { AppContext } from 'utils/AppContext'
+import ToBRL from 'utils/toBRL'
 
 const dataimpactCategories = [
     {
@@ -83,6 +84,26 @@ const CheckboxConditional = ({state, setState}) => {
     )
 }
 
+const DataChart = ({impact}) => {
+    const { total, data } = impact
+    return (
+        <Card>
+            <Row>
+                <Col xs={8}>
+                    <h2>Desmatamento</h2>
+                </Col>
+                <Col xs={4} style={{textAlign: 'right'}}>
+                    <Label style={{textAlign: 'right', display: 'inline-block', marginRight: 10}}>Valor monetário</Label>
+                    <Monetary style={{display: 'inline-block'}}>{total}</Monetary>
+                </Col>
+                <Col xs={12}>
+                    <Chart data={data} />
+                </Col>
+            </Row>
+        </Card>
+    )
+}
+
 
 const MonetaryImpacts = () => {
     const [impactedCategories, setImpactedCategories] = useState(dataimpactCategories)
@@ -115,6 +136,28 @@ const MonetaryImpacts = () => {
     window.scrollTo(0,0)
 
     const valueTotal = state.calculator.totalValue
+    const impacts = state.calculator.values
+
+    const reducer = ((acc, current) => acc + current.value)
+    const sumTotal = (item) => ToBRL(item.reduce(reducer, 0))
+
+    const dataDesforestation = impacts.filter(i => i.category === CATEGORY_DEFORESTATION)
+    const dataSiltingRivers = impacts.filter(i => i.category === CATEGORY_SILTING_RIVERS)
+    const dataMercury = impacts.filter(i => i.category === CATEGORY_MERCURY)
+    
+
+    const impactsDesforestation = {
+        data: dataDesforestation,
+        total: sumTotal(dataDesforestation)
+    }
+    const impactsSiltingRivers = {
+        data: dataSiltingRivers,
+        total: sumTotal(dataSiltingRivers)
+    }
+    const impactsMercury = {
+        data: dataMercury,
+        total: sumTotal(dataMercury)
+    }
 
     return (
         <Container>
@@ -164,7 +207,17 @@ const MonetaryImpacts = () => {
                         </HiddenSm>
                     </Col>
                 </Row>
-                <Chart data={state.calculator.values} />
+                <Row>
+                    <Col xs={12}>
+                        <Label>Todos impactos</Label>
+                        <Chart data={impacts} />
+                    </Col>
+                </Row>
+
+               <DataChart impact={impactsDesforestation} />
+               <DataChart impact={impactsSiltingRivers} />
+               <DataChart impact={impactsMercury} />
+
                 
                 <ButtonFixed>
                     <Grid>
