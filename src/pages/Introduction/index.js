@@ -64,7 +64,7 @@ const Introduction = () => {
         }else {
             dispatch({type: stateTypes.SET_STEP, payload: { step: step+1}});
         }
-    }, [step, dispatch, history, calculator]);
+    }, [state, step, dispatch, history, calculator]);
 
     const PreviosStep = useCallback(() => {
         dispatch({type: stateTypes.SET_STEP, payload: { step: step-1}});
