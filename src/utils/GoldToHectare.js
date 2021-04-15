@@ -1,9 +1,9 @@
-const goldToHecatere = (grs, pitDepth) => {
+const goldToHecatere = (gold, pitDepth) => {
     const RelacaoMinerioEsteril = 7;
     const DensidadeOuro = 2.76;
     const PerdaOuroEscavacao = 2;
     const produtividadeMediaCava = 0.4;
-    const TonSoloRevolvida = grs / produtividadeMediaCava;
+    const TonSoloRevolvida = gold / produtividadeMediaCava;
     const TonEsterilRevolvida = TonSoloRevolvida * RelacaoMinerioEsteril;
     const TotalSoloRevolvida = TonSoloRevolvida + TonEsterilRevolvida;
     const VolumeSemPerda = TotalSoloRevolvida / DensidadeOuro;

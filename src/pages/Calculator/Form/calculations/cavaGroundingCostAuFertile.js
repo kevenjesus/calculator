@@ -1,5 +1,12 @@
-const cavaGroundingCostAuFertile = (hectare, DistanciaGarimpoCentroUrbanoFrete) => {
+import { FERRY } from "../consts";
+
+const cavaGroundingCostAuFertile = (hectare, DistanciaGarimpoCentroUrbanoFrete, tipoGarimpo) => {
     
+    if (tipoGarimpo === FERRY) {
+        const CustoTotalAterramentoFertilComFrete = 0
+        return CustoTotalAterramentoFertilComFrete
+        
+    }else {
 
     const ProfundidadeMediaTerraFertil = 0.4;
     const CustoAterramentoCavaFertil = 12.7;
@@ -28,6 +35,8 @@ const cavaGroundingCostAuFertile = (hectare, DistanciaGarimpoCentroUrbanoFrete) 
     const CustoTotalAterramentoFertilComFrete = CustoTotalFreteAterramentoFertilFinal + CustoTotalAterramentoTerraFertilSemFrete;
 
     return Math.round(CustoTotalAterramentoFertilComFrete * 100) / 100
+
+    }
 
 
 }

@@ -1,22 +1,57 @@
 import normDist from 'utils/normDist'
+import { ALLUVIUM, FERRY, PIT } from '../consts';
 
 const CONSERVATIVE = 0.29
 
 // impacto 6: Perda de QI (mercury na saude humana)
     ////// Parte 01: grama de mercúrio que é metilado
 
-const lossQI = (gold, popRuralMunicipio, popUrbMunicipio, txPrevalence, densidadePop2060, isRegion) => {
+const lossQI = (gold, popRuralMunicipio, popUrbMunicipio, txPrevalence, densidadePop2060, isRegion, tipoGarimpo, AnosGarimpoPoço, MesesGarimpoBalsa) => {
 
+  const methyladPercent = txPrevalence === CONSERVATIVE ? 0.11 : 0.22;
+
+    let grHgLiberadonaAgua;
+
+    if (tipoGarimpo === PIT) { //input anos de garimpo
+      const perdaPercentHgNaAgua = txPrevalence === CONSERVATIVE ? 0.13 : 0.21;
+      const QtdeGramasOuroAnoPoço = 23.700;
+      const ProporçãoHgAu = 2.6;
+      
+      const QtdeOuroTotalPoço = QtdeGramasOuroAnoPoço * AnosGarimpoPoço
+      const grHgLiberadonaAgua = perdaPercentHgNaAgua * ProporçãoHgAu * QtdeOuroTotalPoço;
+      return grHgLiberadonaAgua
+
+    }else if(tipoGarimpo === FERRY) { //input Meses de garimpo
+      const perdaPercentHgNaAgua = txPrevalence === CONSERVATIVE ? 0.22 : 0.35;
+      const ProdOuroMesBalsa = 302;
+      const ProporçãoHgAu = 2.6;
+
+      const ProdOuroTotalBalsa = MesesGarimpoBalsa * ProdOuroMesBalsa;
+      const grHgLiberadonaAgua = perdaPercentHgNaAgua * ProporçãoHgAu * ProdOuroTotalBalsa;
+      return grHgLiberadonaAgua
+
+    }else if(tipoGarimpo === FERRY) { //input gramas de ouro
+      const perdaPercentHgNaAgua = txPrevalence === CONSERVATIVE ? 0.22 : 0.35;
+      const ProporçãoHgAu = 2.6;
+      const grHgLiberadonaAgua = perdaPercentHgNaAgua * ProporçãoHgAu * gold;
+      return grHgLiberadonaAgua
+
+    }else if(tipoGarimpo === ALLUVIUM) { //input gramas de ouro
+      const perdaPercentHgNaAgua = txPrevalence === CONSERVATIVE ? 0.13 : 0.21;
+      const ProporçãoHgAu = 2.6;
+      const grHgLiberadonaAgua = perdaPercentHgNaAgua * ProporçãoHgAu * gold;
+      return grHgLiberadonaAgua
+
+    }else if(tipoGarimpo === PIT) { //input gramas de ouro
+      const perdaPercentHgNaAgua = txPrevalence === CONSERVATIVE ? 0.13 : 0.21;
+      const ProporçãoHgAu = 2.6;
+      const grHgLiberadonaAgua = perdaPercentHgNaAgua * ProporçãoHgAu * gold;
+      return grHgLiberadonaAgua
+    }
     
-    const perdaPercentHgNaAgua = txPrevalence === CONSERVATIVE ? 0.13 : 0.21;
-    const methyladPercent = txPrevalence === CONSERVATIVE ? 0.11 : 0.22;
-
-    const proportionHgToAu = 2.6;
     
 
-
-
-    const grHgLiberadonaAgua = perdaPercentHgNaAgua * proportionHgToAu * gold;
+    //const grHgLiberadonaAgua = perdaPercentHgNaAgua * proportionHgToAu * gold;
     const toMethylatedWater = methyladPercent * grHgLiberadonaAgua;
 
     ///// Parte 02: Consumo total de mercúrio do mesmo indivíduo
@@ -32,11 +67,6 @@ const lossQI = (gold, popRuralMunicipio, popUrbMunicipio, txPrevalence, densidad
     const PI = 3.14;
 
     const individualAverageWeight = (popRuralMunicipio*ruralIndividualWeight)+(popUrbMunicipio*urbanindividualWeight);
-    //const mercuryGrams = (0.98/10000000);
-    //const daysIn50Years = (365*Years);
-    //const qtdGramsindividualDaily = mercuryGrams*individualAverageWeight
-    //const dailyIntake = qtdGramsindividualDaily*daysIn50Years
-  
     
     const ingestionMediaDailyMicrogramMercuryUrban = (consumptionMediumFishByDayInGramsUrban * levelMediumContaminationFish) / urbanindividualWeight;
     const ingestionMediaDailyMicrogramMercuryRural = (AverageFishConsumptionPerDayInRuralGrams * levelMediumContaminationFish) / ruralIndividualWeight;

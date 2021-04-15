@@ -197,38 +197,38 @@ function Form() {
         const currentCountry = counties.find(c => c.id === Number(country))
         const especie = currentCountry.especies <= 0 ? state.especie : currentCountry.especies
 
-        const totalBio = bioprospecting(hectareValue, txPrevalence)
+        const totalBio = bioprospecting(hectareValue, txPrevalence, ALLUVIUM)
         impacts.push({ label: 'BioProspecção', displayName: 'BioProspecção', category: CATEGORY_DEFORESTATION, value: totalBio })
 
-        const totalCarbon = carbon(hectareValue)
+        const totalCarbon = carbon(hectareValue, ALLUVIUM)
         impacts.push({ label: 'Carbono', displayName: 'Carbono', category: CATEGORY_DEFORESTATION, value: totalCarbon })
 
-        const totalPMNM = woodAndNonWoodProducts(hectareValue)
+        const totalPMNM = woodAndNonWoodProducts(hectareValue, ALLUVIUM)
         impacts.push({ label: 'PMNM', displayName: 'Produtos não-madeireiros e madeireiros', category: CATEGORY_DEFORESTATION, value: totalPMNM })
 
-        const totalRecreation = recreation(hectareValue, currentCountry.densidadePop2010, especie)
+        const totalRecreation = recreation(hectareValue, currentCountry.densidadePop2010, especie, ALLUVIUM)
         impacts.push({ label: 'Recreação', displayName: 'Recreação', category: CATEGORY_DEFORESTATION, value: totalRecreation })
 
-        const totalCulturedAndSpecies = culturedAndSpecies(hectareValue, currentCountry.densidadePop2010, especie)
+        const totalCulturedAndSpecies = culturedAndSpecies(hectareValue, currentCountry.densidadePop2010, especie, ALLUVIUM)
         impacts.push({ label: 'Cultural/Espécies', displayName: 'Cultural / Espécies', category: CATEGORY_DEFORESTATION, value: totalCulturedAndSpecies })
 
-        const totalCavaGroundingCostAuFertile = cavaGroundingCostAuFertile(hectareValue, currentCountry.distanciaGarimpoCentro)
-        const totalCavaGroundingCostAuNorm = cavaGroundingCostAuNorm(hectareValue, pitDepth, currentCountry.distanciaGarimpoCentro)
+        const totalCavaGroundingCostAuFertile = cavaGroundingCostAuFertile(hectareValue, currentCountry.distanciaGarimpoCentro, ALLUVIUM)
+        const totalCavaGroundingCostAuNorm = cavaGroundingCostAuNorm(hectareValue, pitDepth, currentCountry.distanciaGarimpoCentro, ALLUVIUM, 1)
         impacts.push({ label: 'Aterramento de cava', displayName: 'Aterramento de cava', category: CATEGORY_SILTING_RIVERS, value:(totalCavaGroundingCostAuFertile+totalCavaGroundingCostAuNorm)})
 
-        const totalRecoveryOfTopsoil = recoveryOfTopsoil(txPrevalence, currentCountry.distanciaGarimpoCentro, goldValue)
+        const totalRecoveryOfTopsoil = recoveryOfTopsoil(txPrevalence, currentCountry.distanciaGarimpoCentro, goldValue, ALLUVIUM)
         impacts.push({ label: 'Recuperaçãoo superficie do solo', displayName: 'Recuperaçãoo superficie do solo', category: CATEGORY_DEFORESTATION, value: totalRecoveryOfTopsoil })
 
-        const totalDredgingAndRiverSediments = dredgingAndRiverSediments(hectareValue, pitDepth, currentCountry.distanciaGarimpoCentro)
+        const totalDredgingAndRiverSediments = dredgingAndRiverSediments(hectareValue, pitDepth, currentCountry.distanciaGarimpoCentro, goldValue, ALLUVIUM)
         impacts.push({ label: 'Dragagem de sedimentos no rio', displayName: 'Dragagem de sedimentos no rio', category: CATEGORY_SILTING_RIVERS, value: totalDredgingAndRiverSediments })
 
-        const totalErosionSiltingUp = erosionSiltingUp(hectareValue, txPrevalence)
+        const totalErosionSiltingUp = erosionSiltingUp(hectareValue, txPrevalence, ALLUVIUM)
         impacts.push({ label: 'Erosão', displayName: 'Erosão', category: CATEGORY_SILTING_RIVERS, value: totalErosionSiltingUp })
 
-        const totalNeuroSymptomsGarimpeiro = neuroSymptomsGarimpeiro(goldValue, txPrevalence)
+        const totalNeuroSymptomsGarimpeiro = neuroSymptomsGarimpeiro(goldValue, txPrevalence, ALLUVIUM)
         impacts.push({ label: 'Sintomas neuropsicológicos em garimpeiros', displayName: 'Sintomas neuropsicológicos em garimpeiros', category: CATEGORY_MERCURY, value: totalNeuroSymptomsGarimpeiro })
-
-        const totalLossQI = lossQI(goldValue, currentCountry.popRuralMunicipio, currentCountry.popUrbMunicipio, txPrevalence, currentCountry.densidadePop2060, knowRegion)
+        
+        const totalLossQI = lossQI(goldValue, currentCountry.popRuralMunicipio, currentCountry.popUrbMunicipio, txPrevalence, currentCountry.densidadePop2060, knowRegion, ALLUVIUM)
         impacts.push({ label: 'Perda de Qi em Fetos', displayName: 'Perda de Qi em Fetos', category: CATEGORY_MERCURY, value: totalLossQI })
         
         const totalHypertension = hypertension(goldValue, currentCountry.popRuralMunicipio, currentCountry.popUrbMunicipio, txPrevalence, currentCountry.densidadePop2060, knowRegion)
@@ -236,7 +236,7 @@ function Form() {
         impacts.push({ label: 'Doenças cardiovasculares', displayName: 'Doenças cardiovasculares (HIPERTENSAO + INFARTO)', category: CATEGORY_MERCURY, value: (totalHeartAttack+totalHypertension) })
 
        
-        const totalRemediacaoMercurioSolo = remediacaoMercurioSolo(goldValue, txPrevalence)
+        const totalRemediacaoMercurioSolo = remediacaoMercurioSolo(goldValue, txPrevalence, ALLUVIUM, 1)
         impacts.push({ label: 'Remediação de mercúrio no solo', displayName: 'Remediação de mercúrio no solo', category: CATEGORY_MERCURY, value: totalRemediacaoMercurioSolo })
 
         const reducer = ((acc, current) => acc+current.value);

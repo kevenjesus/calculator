@@ -34,7 +34,7 @@ const recreation = (hectare, densidadePop2010, riquezaEspecie, tipoGarimpo) => {
         toRecration = VPLHectareRecreacao * 0.31 * 12
     }else {
         toRecration = VPLHectareRecreacao * hectare * 12
-    }
+    } 
     return toRecration
 
 }

@@ -55,7 +55,7 @@ const erosionSiltingUp = (hectare, txPrevalence, tipoGarimpo) => {
     }
 
 
-}
+} 
 
 export default erosionSiltingUp
 
