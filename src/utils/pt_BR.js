@@ -20,6 +20,10 @@ const ptBR = {
             btnCalulator: 'Calcular impactos'
         },
         values: {
+            knowRegion: {
+                yes: 'Impactos Específicos',
+                no: 'Impactos Gerais Médios'
+            },
             analysisUnit: {
                 impactedArea: 'Tamanho da área impactada',
                 amountOfGold: 'Quantidade de ouro'
@@ -34,7 +38,7 @@ const ptBR = {
             extractionType: {
                 openPit: 'Aluvião (beira de rio)',
                 boat: 'Balsa (flutuante)',
-		pitMine: 'Poço (subterrâneo)'
+		        pitMine: 'Poço (subterrâneo)'
             },
             valueHypothesis: {
                 conservative: 'Conservador (Valores médios)',
@@ -105,6 +109,18 @@ const ptBR = {
         about: {
             headline: 'Introdução',
             text: 'A calculadora de impactos é fruto de uma parceria entre CSF e MPF, uma ferramenta analítica e pedagógica que descreve os <strong>impactos do garimpo ilegal de ouro</strong>, seus valores monetários e o passo-a-passo para sua mensuração.'
+        },
+        analysisUnit: {
+            headline: 'Qual base de informação você usará para o cálculo de impacto?',
+            chooseOption: '* Escolha uma opção',
+            goldType: {
+                headline: 'Quantidade de ouro',
+                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Condimentum nibh id sed habitant. Ac faucibus at rutrum feugiat eu lobortis nibh eu. Tortor nisl turpis pretium tincidunt luctus quam eu purus, sit. Accumsan, phasellus gravida aliquam dolor'
+            },
+            goldMiningSize: {
+                headline: 'Tamanho do garimpo',
+                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Condimentum nibh id sed habitant. Ac faucibus at rutrum feugiat eu lobortis nibh eu. Tortor nisl turpis pretium tincidunt luctus quam eu purus, sit. Accumsan, phasellus gravida aliquam dolor'
+            }
         },
         contextValue: {
             headline: 'O valor do impacto depende do contexto',

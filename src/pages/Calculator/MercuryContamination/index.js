@@ -2,9 +2,14 @@ import { Link } from 'react-router-dom'
 import { Button } from 'theme'
 import { Grid, Row, Col } from 'react-flexbox-grid'
 import { Container, Menu, MenuItem, Headline, Text } from 'pages/Calculator/ImpactsStyles'
-import { ReactComponent as ImageExample } from 'assets/images/example.svg';
+import { ReactComponent as ImageExample } from 'assets/images/[calculadora]infografico3.svg';
+import { AppContext } from 'utils/AppContext';
+import { useContext } from 'react';
 
 const MercuryContamination = () => {
+    const {state} = useContext(AppContext)
+    const { language } = state
+    const { impacts } = language
     window.scrollTo(0,0)
     return (
         <Container>
@@ -13,47 +18,36 @@ const MercuryContamination = () => {
                     <Col xs={12} sm={4} md={3}>
                         <Menu>
                             <Link to="/impacts/deforestation">
-                                <MenuItem>Desmatamento</MenuItem>
+                                <MenuItem>{impacts.menu.deforestation}</MenuItem>
                             </Link>
                             <Link to="/impacts/silting-of-rivers">
-                                <MenuItem>Assoreamento dos rios</MenuItem>
+                                <MenuItem>{impacts.menu.siltingOfRivers}</MenuItem>
                             </Link>
-                            <MenuItem active>Contaminação por mercúrio</MenuItem>
+                            <MenuItem active>{impacts.menu.mercuryContamination}</MenuItem>
                             <Link to="/impacts/monetary-impacts">
-                                <MenuItem last>Impactos monetários</MenuItem>
+                                <MenuItem last>{impacts.menu.monetaryImpacts}</MenuItem>
                             </Link>
                         </Menu>
                     </Col>
                     <Col xs={12} sm={8} md={9}>
-                        <Headline>Contaminação por mercúrio</Headline>
+                        <Headline>{impacts.mercuryContamination.headline}</Headline>
                         <Text>
-                        O mercúrio é um elemento presente na natureza, com concentrações que podem variar, por exemplo, dependendo da cor dos rios e do nível de desmatamento.                
+                        {impacts.mercuryContamination.paragraphy_01}
                         </Text>
                         <Text>
-                        Entretanto, o garimpo despeja toneladas de mercúrio nos rios, contaminando ecossistêmas, peixes e humanos.                
-                        </Text>
-                        <Text>
-                        A extração de 1000 kg de ouro despeja 6000 kg (14%), em media nos rios.
-        Destes, 3% é metilada, caindo na cadeia alimentar – sendo estocada principalmente em peixes carnívoros.
-                        </Text>
-                        <Text>
-                        Em média, 0,42% do mercúrio despejado, ao longo de 100 anos de ciclo de vida, acabará sendo consumido por humanos.
-        Em média, a população dentro da área de influência do garimpo tem uma contaminação aumentada de 2ug/g para 6ug/g
+                        {impacts.mercuryContamination.paragraphy_02}              
                         </Text>
                         <ImageExample style={{display: 'block', margin: '50px auto'}} />
                     </Col>
                 </Row>
                 
                 <Row>
-                    <Col xs={12} smOffset={3} sm={3}>
-                        <Button variant="secondary">Referencias</Button>
+                <Col xs={12} smOffset={3} sm={3}>
+                        <Button variant="secondary">{impacts.buttons.references}</Button>
                     </Col>
                     <Col xs={12} sm={3}>
-                        <Button variant="secondary">Hipoteses</Button>
-                    </Col>
-                    <Col xs={12} sm={3}>
-                        <Link to="/impacts/monetary-impacts">
-                            <Button>Prosseguir</Button>
+                        <Link to="/impacts/silting-of-rivers">
+                            <Button>{impacts.buttons.next}</Button>
                         </Link>
                     </Col>
                 </Row>

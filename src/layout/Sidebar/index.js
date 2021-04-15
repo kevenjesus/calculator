@@ -3,8 +3,20 @@ import { ReactComponent as Close } from 'assets/icons/close.svg'
 import { ReactComponent as Portuguese } from 'assets/icons/portuguese.svg'
 import { ReactComponent as Spanish } from 'assets/icons/spanish.svg'
 import { ReactComponent as Usa } from 'assets/icons/usa.svg'
+import { useCallback, useContext } from 'react'
+import { AppContext, stateTypes } from 'utils/AppContext'
+import ptBR from 'utils/pt_BR'
+import es_ES from 'utils/es_ES'
+import en_US from 'utils/en_US'
 
 const Sidebar = ({visible, onClose}) => {
+    const {state, dispatch} = useContext(AppContext)
+    const { language } = state;
+    const { header } = language;
+
+    const handleRegion = useCallback((file) => {
+        dispatch({type: stateTypes.SET_LANGUAGE, payload: file })
+    }, [dispatch])
     return (
         <>
             <Container visible={visible}>
@@ -12,19 +24,19 @@ const Sidebar = ({visible, onClose}) => {
                     <Close />
                 </CloseButton>
 
-                <Language>
+                <Language onClick={() => handleRegion(ptBR)}>
                     <Portuguese />
                     <LanguageLabel>Português</LanguageLabel>
                 </Language>
-                <Language>
+                <Language onClick={() => handleRegion(es_ES)}>
                     <Spanish />
                     <LanguageLabel>Espanol</LanguageLabel>
                 </Language>
-                <Language>
+                <Language onClick={() => handleRegion(en_US)}>
                     <Usa />
                     <LanguageLabel>English</LanguageLabel>
                 </Language>
-                <Menuitem href="https://www.conservation-strategy.org/" target="_blank">Ir para o site</Menuitem>
+                <Menuitem href="https://www.conservation-strategy.org/" target="_blank">{header.linkWebsite}</Menuitem>
             </Container>
             <Overlay visible={visible} onClick={onClose} />
         </>

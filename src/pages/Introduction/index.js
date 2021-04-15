@@ -1,23 +1,20 @@
 import {  useCallback, useContext, useEffect } from 'react'
 import { useHistory } from 'react-router-dom';
-import { ABOUT, INTRODUCTION, HOW_USE_CALCULATOR, REGION, VALUATION_METHOD, ANALYSIS_UNIT, PIT_DEPTH } from './consts'
-import { Container, Header, Language, LanguageContainer, ButtonsFixed, Go } from './style'
+import { ABOUT, INTRODUCTION, HOW_USE_CALCULATOR, REGION, EXTRATION_TYPE, ANALYSIS_UNIT } from './consts'
+import { Container, Header, ButtonsFixed, Go } from './style'
 import { Button } from 'theme'
 import { Grid, Row, Col } from 'react-flexbox-grid'
 
-import { ReactComponent as Portuguese } from 'assets/icons/portuguese.svg'
-import { ReactComponent as Spanish } from 'assets/icons/spanish.svg'
-import { ReactComponent as Usa } from 'assets/icons/usa.svg'
 import { ReactComponent as GoBack } from 'assets/icons/goBack.svg'
 
 import About from './About'
 import IntroductionPage from './Introduction'
 import HowUseCalculator from './HowUseCalculator'
 import Region from './Region'
-import ValuationMethod from './ValuationMethod'
+import ExtrationType from './ExtractionType'
 import AnalysisUnit from './AnalysisUnit'
-import PitDepth from './PitDepth'
 import { AppContext, stateTypes } from 'utils/AppContext';
+import calcResults from 'pages/Calculator/Form/calcResults';
 
 
 const Content = ({step}) => {
@@ -31,19 +28,17 @@ const Content = ({step}) => {
             return <HowUseCalculator />
         case REGION:
             return <Region />
-        case VALUATION_METHOD:
-            return <ValuationMethod />
+        case EXTRATION_TYPE:
+            return <ExtrationType />
         case ANALYSIS_UNIT:
             return <AnalysisUnit />
-        case PIT_DEPTH:
-            return <PitDepth />
     }
 }
 
 
 const Introduction = () => {
     const {state, dispatch} = useContext(AppContext) 
-    const {calculator, introduction} = state;
+    const {calculator, introduction, language} = state;
     const { step } = introduction
     const history = useHistory();
 
@@ -61,13 +56,11 @@ const Introduction = () => {
         if(step === ANALYSIS_UNIT) {
             if(calculator.qtdAnalysis.value === '') {
                 dispatch({type: stateTypes.SET_QTD_ANALYS_UNIT, payload: {...calculator.qtdAnalysis, error: true}});
-            }else if(!calculator.knowRegion) {
-                history.push('/loading')
             }else {
-                dispatch({type: stateTypes.SET_STEP, payload: { step: step+1}});
+                const results = calcResults(state, dispatch)
+                console.log(results)
+                history.push('/loading')
             }
-        }else if(step === PIT_DEPTH ) {
-            history.push('/loading')
         }else {
             dispatch({type: stateTypes.SET_STEP, payload: { step: step+1}});
         }
@@ -92,17 +85,6 @@ const Introduction = () => {
                     <GoBack />
                     <span>Voltar</span>
                 </Go>
-                <LanguageContainer>
-                    <Language>
-                        <Portuguese />
-                    </Language>
-                    <Language>
-                        <Spanish />
-                    </Language>
-                    <Language>
-                        <Usa />
-                    </Language>
-                </LanguageContainer>
             </Header>
             <Content 
                 step={step} />
@@ -110,10 +92,10 @@ const Introduction = () => {
                 <Grid>
                     <Row between="sm">
                         <Col xs={6} sm={4} md={3}>
-                            <Button variant="default" onClick={SkipIntroduction}>Pular introdução</Button>
+                            <Button variant="default" onClick={SkipIntroduction}>{language.introduction.buttons.skip}</Button>
                         </Col>
                         <Col xs={6} sm={4} md={3}>
-                            <Button onClick={NextStep}>Prosseguir</Button>
+                            <Button onClick={NextStep}>{language.introduction.buttons.next}</Button>
                         </Col>
                     </Row>
                 </Grid>

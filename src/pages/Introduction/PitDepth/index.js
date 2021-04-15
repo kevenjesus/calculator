@@ -8,7 +8,7 @@ const PitDepth = () => {
     const { state, dispatch } = useContext(AppContext);
     const { calculator, language } = state;
     const { pitDepth } = calculator;
-    const { calculatorForm } = language
+    const { calculatorForm, introduction } = language
     
     const dataPitDepth = [
         {
@@ -51,9 +51,9 @@ const PitDepth = () => {
     }, [dispatch]);
     return (
         <>
-            <Headline>Profundidade da cava</Headline>
+            <Headline>{introduction.pitDepth.headline}</Headline>
             <Text>
-                Qual é a profundidade média das cavas (valas) do garimpo em questão?            
+                {introduction.pitDepth.paragraphy_01}           
             </Text>
             
             <div>

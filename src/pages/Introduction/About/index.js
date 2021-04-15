@@ -2,13 +2,18 @@ import { Headline, Text } from 'pages/Introduction/style'
 import { ContainerPartner } from './style'
 import LogoMPF from 'assets/images/mpf.png'
 import LogoConservationStrategy from 'assets/images/logo.svg'
+import { useContext } from 'react'
+import { AppContext } from 'utils/AppContext'
 
 const About = () => {
+    const { state } = useContext(AppContext)
+    const { language } = state
+    const { introduction } = language
     return (
         <>
-            <Headline>Sobre</Headline>
+            <Headline>{introduction.about.headline}</Headline>
             <Text>
-            A calculadora de impactos é fruto de uma parceria entre <strong>CSF</strong> e <strong>MPF</strong> com o objetivo de tornar-se uma ferramenta analítica e pedagógica que descreve os <strong>impactos do garimpo ilegal de ouro</strong> e o passo-a-passo para sua mensuração.
+                {introduction.about.text}
             </Text>
             <ContainerPartner>
                 <img src={LogoMPF} width="150" alt="" />

@@ -1,12 +1,16 @@
-import { useCallback } from 'react'
+import { useCallback, useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Headline, Text } from 'pages/Introduction/style'
 import { Button } from 'theme'
 import { Grid, Row, Col } from 'react-flexbox-grid'
 import { Container, ButtonsFixed } from '../style'
 import { HOW_USE_CALCULATOR } from '../consts'
+import { AppContext } from 'utils/AppContext'
 
 const ContextValue = () => {
+    const { state } = useContext(AppContext)
+    const { language } = state
+    const { introduction } = language
     const history = useHistory();
     const SkipIntroduction = useCallback(() => {
         history.push('/calculator')
@@ -21,34 +25,34 @@ const ContextValue = () => {
 
     return (
         <Container>
-            <Headline>Valor e contexto</Headline>
+            <Headline>{introduction.contextValue.headline}</Headline>
             <Text>
-            A calculadora estima valores para cada um destes impactos. O conceito de “valor” se refere à importância social de uma variação na qualidade ambiental sobre o nível de bem-estar da população.
+            {introduction.contextValue.paragraphy_01}            
             </Text>
             <Text>
-                Por exemplo:
+            {introduction.contextValue.paragraphy_02} 
             </Text>
             <Text>
-                <strong>- Com e sem poluição</strong>
+                <strong>{introduction.contextValue.paragraphy_03} </strong>
             </Text>
             <Text>
-                <strong>- Variação biofísica (ecossistema, peixes, clima)</strong>
+                <strong>{introduction.contextValue.paragraphy_04} </strong>
             </Text>
             <Text>
-                <strong>- Variação no bem-estar social</strong>
+                <strong>{introduction.contextValue.paragraphy_05} </strong>
             </Text>
             <Text>
-            A importância da variação de um impacto depende do contexto em que ocorre. Quanto mais pessoas deixam de usar um recurso natural, maior será o valor de sua perda. Quanto mais escasso o recurso natural, maior o seu valor
+            {introduction.contextValue.paragraphy_06} 
             </Text>
 
             <ButtonsFixed>
                 <Grid>
                     <Row between="sm">
                         <Col xs={6} sm={4} md={3}>
-                            <Button variant="default" onClick={SkipIntroduction}>Pular introdução</Button>
+                            <Button variant="default" onClick={SkipIntroduction}>{introduction.buttons.skip}</Button>
                         </Col>
                         <Col xs={6} sm={4} md={3}>
-                            <Button onClick={NextStep}>Prosseguir</Button>
+                            <Button onClick={NextStep}>{introduction.buttons.next}</Button>
                         </Col>
                     </Row>
                 </Grid>

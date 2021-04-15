@@ -1,14 +1,37 @@
 import { Headline, Text } from 'pages/Introduction/style'
+import { useContext } from 'react';
+import { AppContext } from 'utils/AppContext';
 
 const HowUseCalculator = () => {
+    const { state } = useContext(AppContext)
+    const { language } = state
+    const { introduction } = language 
     return (
         <>
-            <Headline>Como utilizar a calculadora</Headline>
+            <Headline>{introduction.howUseCalculator.headline}</Headline>
             <Text>
-                Precisamos que você inclua algumas informações sobre o contexto para que a calculadora possa estimar o valor dos impactos de forma mais precisa
+                {introduction.howUseCalculator.paragraphy_01}            
             </Text>
             <Text>
-                Caso não tenha informações específicas, não tem problema, serão incluídos automaticamente valores médios de contexto e impacto e resultados e suas explicações serão gerados na sequencia.
+                {introduction.howUseCalculator.paragraphy_02}   
+            </Text>
+            <Text>
+                <strong>{introduction.howUseCalculator.paragraphy_03}</strong>
+            </Text>
+            <Text>
+                <strong>{introduction.howUseCalculator.paragraphy_04}</strong>
+            </Text>
+            <Text>
+                <strong>{introduction.howUseCalculator.paragraphy_05}</strong>
+            </Text>
+            <Text>
+                {introduction.howUseCalculator.paragraphy_06}
+            </Text>
+            <Text>
+                {introduction.howUseCalculator.paragraphy_07}
+            </Text>
+            <Text>
+                {introduction.howUseCalculator.paragraphy_08}
             </Text>
         </>
     )

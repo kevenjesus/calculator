@@ -1,51 +1,58 @@
 import { Link } from 'react-router-dom'
 import { Headline, Text, ImpactedBox } from 'pages/Introduction/style'
-import Image from 'assets/images/teste.svg'
+import Btn01 from 'assets/images/[calculadora]botões_finais-01.svg'
+import Btn02 from 'assets/images/[calculadora]botões_finais-02.svg'
+import Btn03 from 'assets/images/[calculadora]botões_finais-03.svg'
 import { Button } from 'theme'
 import { Col, Row } from 'react-flexbox-grid'
+import { useContext } from 'react'
+import { AppContext } from 'utils/AppContext'
 
 const IntroductionPage = () => {
+    const { state } = useContext(AppContext)
+    const { language } = state
+    const { introduction } = language
     return (
         <>
-            <Headline>Introdução</Headline>
+            <Headline>{introduction.introduction.headline}</Headline>
             <Text>
-                O <strong>garimpo ilegal</strong> na Amazônia vem crescendo nos últimos anos, puxado pela alta do preço do ouro no mercado internacional.
+                {introduction.introduction.paragraphy_01}
              </Text>
-             <Text>A atividade gera impactos sobre:</Text>
+             <Text>{introduction.introduction.paragraphy_02}</Text>
             <ImpactedBox>
-                <img src={Image} alt="" />
+                <img src={Btn03} alt="" width="275" style={{marginTop: "-30px"}} />
                 <div style={{marginLeft: '30px'}}>
-                    <h2>Desmatamento</h2>
-                    <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Condimentum nibh id sed habitant. Ac faucibus at </Text>
+                    <h2>{introduction.introduction.impacts[0].headline}</h2>
+                    <Text>{introduction.introduction.impacts[0].text}</Text>
                </div>
             </ImpactedBox>
             <ImpactedBox>
-                <img src={Image} alt="" />
+                <img src={Btn02} alt="" width="275" style={{marginTop: "-30px"}} />
                 <div style={{marginLeft: '30px'}}>
-                    <h2>Assoreamento dos rios</h2>
-                    <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Condimentum nibh id sed habitant. Ac faucibus at </Text>
+                    <h2>{introduction.introduction.impacts[1].headline}</h2>
+                    <Text>{introduction.introduction.impacts[1].text}</Text>
                </div>
             </ImpactedBox>
             <ImpactedBox>
-                <img src={Image} alt="" />
+                <img src={Btn01} alt="" width="275" style={{marginTop: "-30px"}} />
                 <div style={{marginLeft: '30px'}}>
-                    <h2>Contaminação por mercurio</h2>
-                    <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Condimentum nibh id sed habitant. Ac faucibus at </Text>
+                    <h2>{introduction.introduction.impacts[2].headline}</h2>
+                    <Text>{introduction.introduction.impacts[2].text}</Text>
                </div>
             </ImpactedBox>
             <Text>
-                A calculadora estima valores para cada um desses impactos. Os valores dependem do contexto.&nbsp;
+                {introduction.introduction.paragraphy_03}
+            </Text>
+            <Text>
+                {introduction.introduction.paragraphy_04}
             </Text>
             <Row>
                 <Col sm={5}>
                     <Link to='/introduction/context-value'>
-                        <Button variant="secondary">Saiba mais (contexto e valor)</Button>
+                        <Button variant="secondary">{introduction.buttons.moreContextValue}</Button>
                     </Link>
                 </Col>
             </Row>
-            
-            
-            
         </>
     )
 }

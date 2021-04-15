@@ -2,9 +2,14 @@ import { Link } from 'react-router-dom'
 import { Button } from 'theme'
 import { Grid, Row, Col } from 'react-flexbox-grid'
 import { Container, Menu, MenuItem, Headline, Text } from 'pages/Calculator/ImpactsStyles'
-import { ReactComponent as ImageExample } from 'assets/images/example.svg';
+import { ReactComponent as ImageExample } from 'assets/images/[calculadora]infografico2.svg';
+import { useContext } from 'react';
+import { AppContext } from 'utils/AppContext';
 
 const SiltingOfRivers = () => {
+    const {state} = useContext(AppContext)
+    const { language } = state
+    const { impacts } = language
     window.scrollTo(0,0)
     return (
         <Container>
@@ -13,38 +18,35 @@ const SiltingOfRivers = () => {
                     <Col xs={12} sm={4} md={3}>
                         <Menu>
                             <Link to="/impacts/deforestation">
-                                <MenuItem>Desmatamento</MenuItem>
+                                <MenuItem>{impacts.menu.deforestation}</MenuItem>
                             </Link>
-                            <MenuItem active>Assoreamento dos rios</MenuItem>
+                                <MenuItem active>{impacts.menu.siltingOfRivers}</MenuItem>
                             <Link to="/impacts/mercury-contamination">
-                                <MenuItem>Contaminação por mercúrio</MenuItem>
+                                <MenuItem>{impacts.menu.mercuryContamination}</MenuItem>
                             </Link>
                             <Link to="/impacts/monetary-impacts">
-                                <MenuItem last>Impactos monetários</MenuItem>
+                                <MenuItem last>{impacts.menu.monetaryImpacts}</MenuItem>
                             </Link>
                         </Menu>
                     </Col>
                     <Col xs={12} sm={8} md={9}>
-                        <Headline>Assoreamento dos rios</Headline>
+                        <Headline>{impacts.siltingOfRivers.headline}</Headline>
                         <Text>
-                        A extraçã o de <strong>1000 kg de ouro</strong> gera o assoreamento de <strong>150 m³</strong>, em média
+                            {impacts.siltingOfRivers.paragraphy_01}
                         </Text>
                         <Text>
-                            O assoreamento de <strong>5 hectares</strong> leva a perdas de oportunidade de realização de outras atividades sustentáveis, como pesca e turismo.
+                        {impacts.siltingOfRivers.paragraphy_02}
                         </Text>
                         <ImageExample style={{display: 'block', margin: '50px auto'}} />
                     </Col>
                 </Row>
                 <Row>
-                    <Col xs={12} smOffset={3} sm={3}>
-                        <Button variant="secondary">Referencias</Button>
+                <Col xs={12} smOffset={3} sm={3}>
+                        <Button variant="secondary">{impacts.buttons.references}</Button>
                     </Col>
                     <Col xs={12} sm={3}>
-                        <Button variant="secondary">Hipoteses</Button>
-                    </Col>
-                    <Col xs={12} sm={3}>
-                        <Link to="/impacts/mercury-contamination">
-                            <Button>Prosseguir</Button>
+                        <Link to="/impacts/silting-of-rivers">
+                            <Button>{impacts.buttons.next}</Button>
                         </Link>
                     </Col>
                 </Row>

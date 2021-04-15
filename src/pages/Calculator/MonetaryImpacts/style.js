@@ -24,7 +24,7 @@ export const Label = styled.label`
 ` 
 
 export const Card = styled.div`
-    margin-top: 50px;
-    padding: 12px;
-    box-shadow: 1px 1px 1px rgba(0,0,0,.4)
+    margin-top: 60px;
+    padding: 16px;
+    box-shadow: 0 0 7px 0 rgba(0,0,0,.54);
 ` 

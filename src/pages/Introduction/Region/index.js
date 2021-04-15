@@ -3,7 +3,7 @@ import {  Row, Col } from 'react-flexbox-grid'
 import { Headline, Text } from 'pages/Introduction/style'
 import { AppContext, stateTypes } from 'utils/AppContext'
 import { YES, NO } from 'pages/Calculator/Form/consts'
-import { VALUATION_METHOD } from 'pages/Introduction/consts'
+import { EXTRATION_TYPE } from 'pages/Introduction/consts'
 import RadioBoxConditional from 'components/RadioBoxConditional'
 import Conditional from 'components/Conditional'
 import mockStates from 'mocks/state.json'
@@ -13,7 +13,8 @@ import mockContry from 'mocks/country.json'
 
 const Region = () => {
     const { state: stateContext, dispatch } = useContext(AppContext)
-    const { calculator } = stateContext;
+    const { calculator, language } = stateContext;
+    const { calculatorForm, introduction } = language
     const { knowRegion, regionList, stateList, state, country, counties } = calculator;
 
     const getCounties = useCallback((uf) => {
@@ -27,8 +28,12 @@ const Region = () => {
         mockContry.forEach(country => {
             dataCountries.forEach(countries => {
                 if(country.id === countries.id) {
-                    countries.densidadePop2010 = country.densidadePop2010;
-                    countries.densidadePop2060 = country.densidadePop2060;
+                    countries.densidadePop2010 = country.densidadePop2010
+                    countries.densidadePop2060 = country.densidadePop2060
+                    countries.popUrbMunicipio = country.PopUrbMunicipio
+                    countries.popRuralMunicipio = country.PopRuralMunicipio
+                    countries.distanciaGarimpoCentro = country.Distancia_Garimpo_Centro
+                    countries.especies = country.Especies_por_Municipio
                 }
             })
         })
@@ -60,7 +65,7 @@ const Region = () => {
         dispatch({type: stateTypes.SET_REGION_LIST, payload: regionListUpdate})
         dispatch({type: stateTypes.SET_KNOW_REGION, payload: Number(value) === YES})
         if(Number(value) === NO) {
-            dispatch({type: stateTypes.SET_STEP, payload: { step: VALUATION_METHOD}});
+            dispatch({type: stateTypes.SET_STEP, payload: { step: EXTRATION_TYPE}});
         }
     }, [dispatch, regionList])
 
@@ -78,12 +83,12 @@ const Region = () => {
 
     return (
         <>
-            <Headline>Região</Headline>
+            <Headline>{introduction.region.headline}</Headline>
             <Text>
-                As regiões apresentam diferentes características populacionais (tamanho, densidade, origem) e ambientais (cor e turbidez dos rios)
+                {introduction.region.text}
             </Text>
             <div style={{textAlign: 'center'}}>
-                <label style={{textAlign: 'center'}}>Você gostaria de saber mais sobre os impactos gerais do garimpo, ou impactos de um garimpo específico do qual saiba a localização?</label>
+                <label style={{textAlign: 'center'}}>{calculatorForm.labels.knowRegion}</label>
                 <RadioBoxConditional state={regionList} setState={handleRegion} />
             </div>
             <Conditional check={knowRegion}>
@@ -91,7 +96,7 @@ const Region = () => {
                     <Col sm={8} md={6}>
                         <Row>
                             <Col xs={12} sm={6}>
-                                <label>Região</label>
+                                <label>{calculatorForm.labels.state}</label>
                                 <select name="state" value={state} onChange={handleState}>
                                 {
                                     stateList.map(({sigla, id}) => (
@@ -101,7 +106,7 @@ const Region = () => {
                                 </select>
                             </Col>
                             <Col xs={12} sm={6}>
-                                <label>Municipio</label>
+                                <label>{calculatorForm.labels.country}</label>
                                 <select name="state" value={country} onChange={handleCountry}>
                                     {
                                         counties.map(({nome, id}) => (
