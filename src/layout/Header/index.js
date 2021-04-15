@@ -25,10 +25,7 @@ const Header = () => {
     
     useEffect(() => {
         const { pathname } = location;
-        const paths = [
-            '/introduction',
-            '/introduction/context-value'
-        ];
+        const paths = [];
 
         const isRender = paths.findIndex(a => a === pathname);
         setNoteRender(isRender);

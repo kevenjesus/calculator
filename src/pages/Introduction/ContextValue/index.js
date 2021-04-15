@@ -6,6 +6,7 @@ import { Grid, Row, Col } from 'react-flexbox-grid'
 import { Container, ButtonsFixed } from '../style'
 import { HOW_USE_CALCULATOR } from '../consts'
 import { AppContext } from 'utils/AppContext'
+import { ReactComponent as Image } from 'assets/images/[calculadora]ilustra1.svg'
 
 const ContextValue = () => {
     const { state } = useContext(AppContext)
@@ -22,6 +23,8 @@ const ContextValue = () => {
             state: {step: HOW_USE_CALCULATOR }
         })
     }, [history])
+
+    window.scrollTo(0,0)
 
     return (
         <Container>
@@ -44,6 +47,8 @@ const ContextValue = () => {
             <Text>
             {introduction.contextValue.paragraphy_06} 
             </Text>
+
+            <Image />
 
             <ButtonsFixed>
                 <Grid>
