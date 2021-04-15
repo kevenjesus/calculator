@@ -11,6 +11,7 @@ import ContextValue from 'pages/Introduction/ContextValue'
 
 import Header from 'layout/Header'
 import Footer from 'layout/Footer'
+import Home from 'pages/Home';
 
 
 const Routes = () => {
@@ -18,7 +19,7 @@ const Routes = () => {
         <Router>
             <Header />
             <Switch>
-                <Route path="/" exact component={Introduction} />
+                <Route path="/" exact component={Home} />
                 <Route path="/introduction" exact component={Introduction} />
                 <Route path="/introduction/context-value" exact component={ContextValue} />
                 <Route path="/calculator" exact component={Form} />

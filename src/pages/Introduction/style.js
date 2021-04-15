@@ -14,12 +14,12 @@ export const Container = styled.div`
 export const Headline = styled.h1`
     font-size: 45px;
     font-family: 'Fjalla One';
-    color: ${colors.secondary};
+    color: ${({color}) => color ? color : colors.secondary};
 ` 
 
 export const Text = styled.p`
     font-size: 20px;
-    color: ${colors.blacks.normal};
+    color: ${({color}) => color ? color : colors.blacks.normal};
     line-height: 44px;
 ` 
 

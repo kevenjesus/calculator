@@ -108,7 +108,7 @@ const ptBR = {
         },
         about: {
             headline: 'Introdução',
-            text: 'A calculadora de impactos é fruto de uma parceria entre CSF e MPF, uma ferramenta analítica e pedagógica que descreve os <strong>impactos do garimpo ilegal de ouro</strong>, seus valores monetários e o passo-a-passo para sua mensuração.'
+            text: 'A calculadora de impactos é fruto de uma parceria entre CSF e MPF, uma ferramenta analítica e pedagógica que descreve os impactos do garimpo ilegal de ouro, seus valores monetários e o passo-a-passo para sua mensuração.'
         },
         analysisUnit: {
             headline: 'Qual base de informação você usará para o cálculo de impacto?',
