@@ -1,12 +1,54 @@
+import { ALLUVIUM, FERRY, PIT } from "../consts";
+
 const CONSERVATIVE = 0.29;
 
-const heartAttack = (gold, popRuralMunicipio, popUrbMunicipio, txPrevalence, densidadePop2060, isRegion) => {
-    const perdaPercentHgNaAgua = txPrevalence === CONSERVATIVE ? 0.13 : 0.21;
+const heartAttack = (gold, popRuralMunicipio, popUrbMunicipio, txPrevalence, densidadePop2060, isRegion, tipoGarimpo, AnosGarimpoPoço, MesesGarimpoBalsa) => {
+
+    if (tipoGarimpo === PIT) { //Input Anos de Garimpo
+
+        const perdaPercentHgNaAgua = txPrevalence === CONSERVATIVE ? 0.13 : 0.21;
+
+        const QtdeGramasOuroAnoPoço = 23700;
+        const ProporçãoHgAu = 2.6;
+        const QtdeOuroTotalPoço = QtdeGramasOuroAnoPoço * AnosGarimpoPoço;
+        const GrHgLiberadonaÁgua = perdaPercentHgNaAgua * ProporçãoHgAu * QtdeOuroTotalPoço
+        return GrHgLiberadonaÁgua
+
+    }else if (tipoGarimpo === FERRY) { //input Meses de garimpo de balsa
+
+        const perdaPercentHgNaAgua = txPrevalence === CONSERVATIVE ? 0.22 : 0.35;
+
+        const ProdOuroMesBalsa = 302;
+        const ProporçãoHgAu = 2.6;
+        const ProdOuroTotalBalsa = MesesGarimpoBalsa * ProdOuroMesBalsa;
+        const GrHgLiberadonaÁgua = perdaPercentHgNaAgua * ProporçãoHgAu * ProdOuroTotalBalsa;
+        return GrHgLiberadonaÁgua
+
+    }else if (tipoGarimpo === FERRY) { //input Ouro/Hectare
+
+        const perdaPercentHgNaAgua = txPrevalence === CONSERVATIVE ? 0.22 : 0.35;
+
+        const ProporçãoHgAu = 2.6;
+        const GrHgLiberadonaÁgua = perdaPercentHgNaAgua * ProporçãoHgAu * gold;
+        return GrHgLiberadonaÁgua
+
+    }else if (tipoGarimpo === ALLUVIUM) { //input Ouro/Hectare
+
+        const perdaPercentHgNaAgua = txPrevalence === CONSERVATIVE ? 0.13 : 0.21;
+        const ProporçãoHgAu = 2.6;
+        const GrHgLiberadonaÁgua = perdaPercentHgNaAgua * ProporçãoHgAu * gold;
+        return GrHgLiberadonaÁgua
+
+    }else if (tipoGarimpo === PIT) { //input Ouro/Hectare
+        
+        const perdaPercentHgNaAgua = txPrevalence === CONSERVATIVE ? 0.13 : 0.21;
+        const ProporçãoHgAu = 2.6;
+        const GrHgLiberadonaÁgua = perdaPercentHgNaAgua * ProporçãoHgAu * gold;
+        return GrHgLiberadonaÁgua
+    }
+
     const methyladPercent = txPrevalence === CONSERVATIVE ? 0.11 : 0.22;
-   
-    const proportionHgToAu = 2.6;
-    const grHgLiberadonaAgua = perdaPercentHgNaAgua * proportionHgToAu * gold;
-    const toMethylatedWater = methyladPercent * grHgLiberadonaAgua;
+    const toMethylatedWater = methyladPercent * GrHgLiberadonaÁgua;
     
     const Years = 50;
     const ruralIndividualWeight = 59.1;

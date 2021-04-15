@@ -231,8 +231,8 @@ function Form() {
         const totalLossQI = lossQI(goldValue, currentCountry.popRuralMunicipio, currentCountry.popUrbMunicipio, txPrevalence, currentCountry.densidadePop2060, knowRegion, ALLUVIUM)
         impacts.push({ label: 'Perda de Qi em Fetos', displayName: 'Perda de Qi em Fetos', category: CATEGORY_MERCURY, value: totalLossQI })
         
-        const totalHypertension = hypertension(goldValue, currentCountry.popRuralMunicipio, currentCountry.popUrbMunicipio, txPrevalence, currentCountry.densidadePop2060, knowRegion)
-        const totalHeartAttack = heartAttack(goldValue, currentCountry.popRuralMunicipio, currentCountry.popUrbMunicipio, txPrevalence, currentCountry.densidadePop2060, knowRegion)
+        const totalHypertension = hypertension(goldValue, currentCountry.popRuralMunicipio, currentCountry.popUrbMunicipio, txPrevalence, currentCountry.densidadePop2060, knowRegion, ALLUVIUM)
+        const totalHeartAttack = heartAttack(goldValue, currentCountry.popRuralMunicipio, currentCountry.popUrbMunicipio, txPrevalence, currentCountry.densidadePop2060, knowRegion, ALLUVIUM)
         impacts.push({ label: 'Doenças cardiovasculares', displayName: 'Doenças cardiovasculares (HIPERTENSAO + INFARTO)', category: CATEGORY_MERCURY, value: (totalHeartAttack+totalHypertension) })
 
        
