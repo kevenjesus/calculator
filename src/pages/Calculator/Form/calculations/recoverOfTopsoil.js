@@ -1,11 +1,8 @@
-import { gramadeOuroporHectare } from "utils/hactareToGold";
 import { FERRY, PIT } from "../consts";
 
 const CONSERVATIVE = 0.29
 
-const recoveryOfTopsoil = (valueHypothesis, DistanciaGarimpoCentroUrbanoFrete, gold, tipoGarimpo) => {
-  console.log(valueHypothesis, DistanciaGarimpoCentroUrbanoFrete, gold, tipoGarimpo)
-  
+const recoveryOfTopsoil = (valueHypothesis, DistanciaGarimpoCentroUrbanoFrete, gold, gramadeOuroporHectare, tipoGarimpo) => {
   
     let hectare;
     if(tipoGarimpo === FERRY) {
@@ -13,10 +10,9 @@ const recoveryOfTopsoil = (valueHypothesis, DistanciaGarimpoCentroUrbanoFrete, g
     }else if (tipoGarimpo === PIT) {
       hectare = 0.31
     }else {
-      hectare = gramadeOuroporHectare*gold
+      hectare = gramadeOuroporHectare * gold
     }
-
-    console.log(gramadeOuroporHectare)
+  
 
     const PrecoRecupSuperficialSoloporHa = valueHypothesis === CONSERVATIVE ? 14690 : 23400;
 

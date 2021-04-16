@@ -11,7 +11,7 @@ import RadioBoxConditional from 'components/RadioBoxConditional'
 import mockStates from 'mocks/state.json'
 import mockCountries from 'mocks/countries.json'
 import mockContry from 'mocks/country.json'
-import hectareToGold from 'utils/hactareToGold'
+import hectareToGold, { gramadeOuroporHectare } from 'utils/hactareToGold'
 import goldToHecatere from 'utils/GoldToHectare'
 import bioprospecting from './calculations/bioprospeccao'
 import carbon from './calculations/carbon'
@@ -194,50 +194,68 @@ function Form() {
         const impacts = []
         const hectareValue = calculator.analysisUnit === AMOUNT_GOLD ? goldToHecatere(Number(qtdAnalysis.value), pitDepth) : Number(qtdAnalysis.value)
         const goldValue = calculator.analysisUnit === IMPACTED_AREA ? hectareToGold(Number(qtdAnalysis.value), pitDepth) : Number(qtdAnalysis.value)
+        const gramadeOuroporHe = gramadeOuroporHectare(hectareValue, goldValue)
         const currentCountry = counties.find(c => c.id === Number(country))
         const especie = currentCountry.especies <= 0 ? state.especie : currentCountry.especies
 
+
+
         const totalBio = bioprospecting(hectareValue, txPrevalence, ALLUVIUM)
         impacts.push({ label: 'BioProspecção', displayName: 'BioProspecção', category: CATEGORY_DEFORESTATION, value: totalBio })
+        console.log('totalBio', totalBio)
 
         const totalCarbon = carbon(hectareValue, ALLUVIUM)
         impacts.push({ label: 'Carbono', displayName: 'Carbono', category: CATEGORY_DEFORESTATION, value: totalCarbon })
+        console.log('totalCarbon',totalCarbon) 
 
         const totalPMNM = woodAndNonWoodProducts(hectareValue, ALLUVIUM)
         impacts.push({ label: 'PMNM', displayName: 'Produtos não-madeireiros e madeireiros', category: CATEGORY_DEFORESTATION, value: totalPMNM })
+        console.log('totalPMNM', totalPMNM)
 
         const totalRecreation = recreation(hectareValue, currentCountry.densidadePop2010, especie, ALLUVIUM)
         impacts.push({ label: 'Recreação', displayName: 'Recreação', category: CATEGORY_DEFORESTATION, value: totalRecreation })
+        console.log('totalRecreation', totalRecreation)
 
         const totalCulturedAndSpecies = culturedAndSpecies(hectareValue, currentCountry.densidadePop2010, especie, ALLUVIUM)
         impacts.push({ label: 'Cultural/Espécies', displayName: 'Cultural / Espécies', category: CATEGORY_DEFORESTATION, value: totalCulturedAndSpecies })
+        console.log('totalCulturedAndSpecies', totalCulturedAndSpecies)
 
         const totalCavaGroundingCostAuFertile = cavaGroundingCostAuFertile(hectareValue, currentCountry.distanciaGarimpoCentro, ALLUVIUM)
-        const totalCavaGroundingCostAuNorm = cavaGroundingCostAuNorm(hectareValue, pitDepth, currentCountry.distanciaGarimpoCentro, ALLUVIUM, 1)
+        const totalCavaGroundingCostAuNorm = cavaGroundingCostAuNorm(hectareValue, pitDepth, currentCountry.distanciaGarimpoCentro, ALLUVIUM)
         impacts.push({ label: 'Aterramento de cava', displayName: 'Aterramento de cava', category: CATEGORY_SILTING_RIVERS, value:(totalCavaGroundingCostAuFertile+totalCavaGroundingCostAuNorm)})
+        console.log('totalCavaGroundingCostAuFertile', totalCavaGroundingCostAuFertile)
+        console.log('totalCavaGroundingCostAuNorm', totalCavaGroundingCostAuNorm)
 
-        const totalRecoveryOfTopsoil = recoveryOfTopsoil(txPrevalence, currentCountry.distanciaGarimpoCentro, goldValue, ALLUVIUM)
+        const totalRecoveryOfTopsoil = recoveryOfTopsoil(txPrevalence, currentCountry.distanciaGarimpoCentro, goldValue, gramadeOuroporHe, ALLUVIUM)
         impacts.push({ label: 'Recuperaçãoo superficie do solo', displayName: 'Recuperaçãoo superficie do solo', category: CATEGORY_DEFORESTATION, value: totalRecoveryOfTopsoil })
+        console.log('totalRecoveryOfTopsoil', totalRecoveryOfTopsoil)
 
         const totalDredgingAndRiverSediments = dredgingAndRiverSediments(hectareValue, pitDepth, currentCountry.distanciaGarimpoCentro, goldValue, ALLUVIUM)
         impacts.push({ label: 'Dragagem de sedimentos no rio', displayName: 'Dragagem de sedimentos no rio', category: CATEGORY_SILTING_RIVERS, value: totalDredgingAndRiverSediments })
+        console.log('totalDredgingAndRiverSediments', totalDredgingAndRiverSediments)
 
         const totalErosionSiltingUp = erosionSiltingUp(hectareValue, txPrevalence, ALLUVIUM)
         impacts.push({ label: 'Erosão', displayName: 'Erosão', category: CATEGORY_SILTING_RIVERS, value: totalErosionSiltingUp })
+        console.log('totalErosionSiltingUp', totalErosionSiltingUp)
 
         const totalNeuroSymptomsGarimpeiro = neuroSymptomsGarimpeiro(goldValue, txPrevalence, ALLUVIUM)
         impacts.push({ label: 'Sintomas neuropsicológicos em garimpeiros', displayName: 'Sintomas neuropsicológicos em garimpeiros', category: CATEGORY_MERCURY, value: totalNeuroSymptomsGarimpeiro })
-        
+        console.log('totalNeuroSymptomsGarimpeiro', totalNeuroSymptomsGarimpeiro)
+
         const totalLossQI = lossQI(goldValue, currentCountry.popRuralMunicipio, currentCountry.popUrbMunicipio, txPrevalence, currentCountry.densidadePop2060, knowRegion, ALLUVIUM)
         impacts.push({ label: 'Perda de Qi em Fetos', displayName: 'Perda de Qi em Fetos', category: CATEGORY_MERCURY, value: totalLossQI })
-        
+        console.log('totalLossQI', totalLossQI)
+
         const totalHypertension = hypertension(goldValue, currentCountry.popRuralMunicipio, currentCountry.popUrbMunicipio, txPrevalence, currentCountry.densidadePop2060, knowRegion, ALLUVIUM)
+        console.log('totalHypertension', totalHypertension)
         const totalHeartAttack = heartAttack(goldValue, currentCountry.popRuralMunicipio, currentCountry.popUrbMunicipio, txPrevalence, currentCountry.densidadePop2060, knowRegion, ALLUVIUM)
+        console.log('totalHeartAttack', totalHeartAttack)
         impacts.push({ label: 'Doenças cardiovasculares', displayName: 'Doenças cardiovasculares (HIPERTENSAO + INFARTO)', category: CATEGORY_MERCURY, value: (totalHeartAttack+totalHypertension) })
 
        
-        const totalRemediacaoMercurioSolo = remediacaoMercurioSolo(goldValue, txPrevalence, ALLUVIUM, 1)
+        const totalRemediacaoMercurioSolo = remediacaoMercurioSolo(goldValue, txPrevalence, ALLUVIUM)
         impacts.push({ label: 'Remediação de mercúrio no solo', displayName: 'Remediação de mercúrio no solo', category: CATEGORY_MERCURY, value: totalRemediacaoMercurioSolo })
+        console.log('totalRemediacaoMercurioSolo', totalRemediacaoMercurioSolo)
 
         const reducer = ((acc, current) => acc+current.value);
         const totalValue = impacts.reduce(reducer, 0);

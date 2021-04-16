@@ -6,52 +6,46 @@ const CONSERVATIVE = 0.29
 // impacto 6: Perda de QI (mercury na saude humana)
     ////// Parte 01: grama de mercúrio que é metilado
 
-const lossQI = (gold, popRuralMunicipio, popUrbMunicipio, txPrevalence, densidadePop2060, isRegion, tipoGarimpo, AnosGarimpoPoço, MesesGarimpoBalsa) => {
+const lossQI = (gold, popRuralMunicipio, popUrbMunicipio, txPrevalence, densidadePop2060, isRegion, tipoGarimpo, tempoGarimpo) => {
 
   const methyladPercent = txPrevalence === CONSERVATIVE ? 0.11 : 0.22;
-
+  const ProporçãoHgAu = 2.6;
+  
     let grHgLiberadonaAgua;
 
-    if (tipoGarimpo === PIT) { //input anos de garimpo
+    if (tipoGarimpo === PIT && tempoGarimpo) { //input anos de garimpo
       const perdaPercentHgNaAgua = txPrevalence === CONSERVATIVE ? 0.13 : 0.21;
       const QtdeGramasOuroAnoPoço = 23.700;
-      const ProporçãoHgAu = 2.6;
       
-      const QtdeOuroTotalPoço = QtdeGramasOuroAnoPoço * AnosGarimpoPoço
-      const grHgLiberadonaAgua = perdaPercentHgNaAgua * ProporçãoHgAu * QtdeOuroTotalPoço;
-      return grHgLiberadonaAgua
-
-    }else if(tipoGarimpo === FERRY) { //input Meses de garimpo
+      const QtdeOuroTotalPoço = QtdeGramasOuroAnoPoço * tempoGarimpo
+      grHgLiberadonaAgua = perdaPercentHgNaAgua * ProporçãoHgAu * QtdeOuroTotalPoço;
+      
+    }else if(tipoGarimpo === FERRY && tempoGarimpo) { //input Meses de garimpo
       const perdaPercentHgNaAgua = txPrevalence === CONSERVATIVE ? 0.22 : 0.35;
       const ProdOuroMesBalsa = 302;
-      const ProporçãoHgAu = 2.6;
 
-      const ProdOuroTotalBalsa = MesesGarimpoBalsa * ProdOuroMesBalsa;
-      const grHgLiberadonaAgua = perdaPercentHgNaAgua * ProporçãoHgAu * ProdOuroTotalBalsa;
-      return grHgLiberadonaAgua
-
-    }else if(tipoGarimpo === FERRY) { //input gramas de ouro
+      const ProdOuroTotalBalsa = tempoGarimpo * ProdOuroMesBalsa;
+      grHgLiberadonaAgua = perdaPercentHgNaAgua * ProporçãoHgAu * ProdOuroTotalBalsa;
+      
+    }else if(tipoGarimpo === FERRY && gold) { //input gramas de ouro
       const perdaPercentHgNaAgua = txPrevalence === CONSERVATIVE ? 0.22 : 0.35;
-      const ProporçãoHgAu = 2.6;
-      const grHgLiberadonaAgua = perdaPercentHgNaAgua * ProporçãoHgAu * gold;
-      return grHgLiberadonaAgua
+      grHgLiberadonaAgua = perdaPercentHgNaAgua * ProporçãoHgAu * gold;
+      
+    }else if(tipoGarimpo === ALLUVIUM && gold) { //input gramas de ouro
 
-    }else if(tipoGarimpo === ALLUVIUM) { //input gramas de ouro
       const perdaPercentHgNaAgua = txPrevalence === CONSERVATIVE ? 0.13 : 0.21;
-      const ProporçãoHgAu = 2.6;
-      const grHgLiberadonaAgua = perdaPercentHgNaAgua * ProporçãoHgAu * gold;
-      return grHgLiberadonaAgua
+      grHgLiberadonaAgua = perdaPercentHgNaAgua * ProporçãoHgAu * gold;
+      
+    }else if(tipoGarimpo === PIT && gold) { //input gramas de ouro
 
-    }else if(tipoGarimpo === PIT) { //input gramas de ouro
       const perdaPercentHgNaAgua = txPrevalence === CONSERVATIVE ? 0.13 : 0.21;
-      const ProporçãoHgAu = 2.6;
-      const grHgLiberadonaAgua = perdaPercentHgNaAgua * ProporçãoHgAu * gold;
-      return grHgLiberadonaAgua
+      grHgLiberadonaAgua = perdaPercentHgNaAgua * ProporçãoHgAu * gold;
+          
     }
     
     
 
-    //const grHgLiberadonaAgua = perdaPercentHgNaAgua * proportionHgToAu * gold;
+    //grHgLiberadonaAgua = perdaPercentHgNaAgua * proportionHgToAu * gold;
     const toMethylatedWater = methyladPercent * grHgLiberadonaAgua;
 
     ///// Parte 02: Consumo total de mercúrio do mesmo indivíduo
@@ -67,20 +61,22 @@ const lossQI = (gold, popRuralMunicipio, popUrbMunicipio, txPrevalence, densidad
     const PI = 3.14;
 
     const individualAverageWeight = (popRuralMunicipio*ruralIndividualWeight)+(popUrbMunicipio*urbanindividualWeight);
-    
     const ingestionMediaDailyMicrogramMercuryUrban = (consumptionMediumFishByDayInGramsUrban * levelMediumContaminationFish) / urbanindividualWeight;
     const ingestionMediaDailyMicrogramMercuryRural = (AverageFishConsumptionPerDayInRuralGrams * levelMediumContaminationFish) / ruralIndividualWeight;
     const ingestionMediaMercuryDaily1IndividualInMicrogramsPerKG = (popRuralMunicipio * ingestionMediaDailyMicrogramMercuryRural) + (popUrbMunicipio * ingestionMediaDailyMicrogramMercuryUrban);
-    const ingestionMediaMercuryDaily1IndividualInGramsPerKG = ingestionMediaMercuryDaily1IndividualInMicrogramsPerKG/1000000;
-    const ingestionMediaDailyIndividualInGramsPerDaily = ingestionMediaMercuryDaily1IndividualInGramsPerKG*individualAverageWeight;
-    const ingestionMediaMercuryEmYears = (365*Years)*ingestionMediaDailyIndividualInGramsPerDaily;
-    const concentrationMediaMercuryHair = ingestionMediaMercuryEmYears/0.1;
+    const ingestionMediaMercuryDaily1IndividualInGramsPerKGperDay = ingestionMediaMercuryDaily1IndividualInMicrogramsPerKG/1000000;
+    const ingestionMediaDailyIndividualInGramsPerDaily = ingestionMediaMercuryDaily1IndividualInGramsPerKGperDay * individualAverageWeight;
+    const ingestionMediaMercuryEm50Years = (365*Years)* ingestionMediaDailyIndividualInGramsPerDaily;
+    
+    const concentrationMediaMercuryHair = ingestionMediaMercuryDaily1IndividualInMicrogramsPerKG/0.1;
     const deflectionPatternAverageMercury = concentrationMediaMercuryHair/2;
 
     const TamanhoPop100kmRaio = isRegion ? (densidadePop2060 * Math.pow((PI * 100), 2)) : (densityPopulationalRegionNorth2060 * Math.pow((PI * 100), 2));
-    const pessoasAfetadas = (toMethylatedWater/ingestionMediaMercuryEmYears);
+    const pessoasAfetadas = (toMethylatedWater/ingestionMediaMercuryEm50Years);
+
     const toPopulationAffectedMercuryHair = pessoasAfetadas < TamanhoPop100kmRaio ? pessoasAfetadas : TamanhoPop100kmRaio;
-    const affectedLiveBirths = toPopulationAffectedMercuryHair*birthRate;
+    //console.log('Mercurio no Cabelo', toPopulationAffectedMercuryHair)
+    const affectedLiveBirths = toPopulationAffectedMercuryHair * birthRate;
     const popNascVivos = affectedLiveBirths/1000;
   
     // valor final disnorm (0, 5.9, 2.95) = 0.022750132
@@ -92,7 +88,6 @@ const lossQI = (gold, popRuralMunicipio, popUrbMunicipio, txPrevalence, densidad
     const constant = 0.1658;
     const discountRate = 0.03;
     const yearStarOfDisability = 0;
-    //const beta = 0.04;
     const bplusr = -0.07;
     const durationOfDisability = 72;
   
@@ -121,6 +116,7 @@ const lossQI = (gold, popRuralMunicipio, popUrbMunicipio, txPrevalence, densidad
   
   
     const distNorm0ate2 = ((1 - disnorm0) - (1 - disnorm2)) * 1000 * 0.0005;
+    //console.log('distNorm0ate2', distNorm0ate2)
     const distNorm2ate4 = ((1 - disnorm2) - (1 - disnorm4)) * 1000 * 0.0022;
     const distNorm4ate6 = ((1 - disnorm4) - (1 - disnorm6)) * 1000 * 0.0034;
     const distNorm6ate8 = ((1 - disnorm6) - (1 - disnorm8)) * 1000 * 0.0046;
@@ -144,12 +140,12 @@ const lossQI = (gold, popRuralMunicipio, popUrbMunicipio, txPrevalence, densidad
     const txIncidence = distNorm0ate2 + distNorm2ate4 + distNorm4ate6 + distNorm6ate8 + distNorm8ate10 + distNorm10ate12 + distNorm12ate14 +
   distNorm14ate16 + distNorm16ate18 + distNorm18ate20 + distNorm20ate22 + distNorm22ate24 + distNorm24ate26 + distNorm26ate28 +
   distNorm28ate30 + distNorm30ate32 + distNorm32ate34 + distNorm34ate36 + distNorm36ate38 + distNorm38ate40
+    
   
   
     const incidence = txIncidence * (popNascVivos / 1000)
-    const incidenceManWoman = incidence * 2
 
-    const weightOfDisabilityPorincidence = incidenceManWoman*weightOfDisability;
+    const weightOfDisabilityPorincidence = incidence*weightOfDisability;
     const calculo1 = (constant*Math.exp(discountRate*yearStarOfDisability))/(Math.pow(bplusr,2))
     const calculo2 = bplusr*(durationOfDisability+yearStarOfDisability);
     const calculo3 = bplusr*(durationOfDisability+yearStarOfDisability)-1;

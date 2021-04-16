@@ -1,9 +1,6 @@
 import { ALLUVIUM, FERRY, PIT } from "../consts";
 
-const cavaGroundingCostAuNorm = (hectare , pitDepth, DistanciaGarimpoCentroUrbanoFrete, tipoGarimpo, AnosGarimpoPoço) => {
-
-    let cavaGroundingCostAuNorm;
-        if ( tipoGarimpo === ALLUVIUM ) { // Input por Ouro/Hectare
+const cavaGroundingCostAuNorm = (hectare , pitDepth, DistanciaGarimpoCentroUrbanoFrete, tipoGarimpo, tempoGarimpo) => {
 
         const ProfundidadeMediaTerraFertil = 0.4;
         const CustoAterramentoCavaNormal = 1;
@@ -14,6 +11,17 @@ const cavaGroundingCostAuNorm = (hectare , pitDepth, DistanciaGarimpoCentroUrban
         const SalarioMedioMotoristaFreteporKm = 2.22;
         const PreçoLitroDiesel = 3.24;
         const DiasAno = 365;
+        const RelacaoMinerioEsteril = 7;
+        const PerdaOuroEscavacao = 2;
+        const DensidadeOuro = 2.76;
+        const ProfundidadeMediaCava = 10;
+        const QtdeGramasOuroPorAnoPoço = 23700;
+
+
+
+    let cavaGroundingCostAuNorm;
+        if ( tipoGarimpo === ALLUVIUM && hectare) { // Input por Ouro/Hectare
+
 
 
         const ProfundidadeMediaTerraNormal = pitDepth - ProfundidadeMediaTerraFertil;
@@ -32,18 +40,9 @@ const cavaGroundingCostAuNorm = (hectare , pitDepth, DistanciaGarimpoCentroUrban
         const CustoTotalAterramentoNormalComFrete = CustoTotalFreteAterramentoNormalFinal + CustoTotalAterramentoTerraNormalSemFrete;
         return CustoTotalAterramentoNormalComFrete
 
-        }else if (tipoGarimpo === PIT) { // Input por Ouro
+        }else if (tipoGarimpo === PIT && hectare) { // Input por Ouro
 
-        const ProfundidadeMediaTerraFertil = 0.4;
-        const CustoAterramentoCavaNormal = 1;
-        const QtdeEscavadeiraM3porHora = 160;
-        const CustoEscavadeiraporKm = 3.8;
-        const HorasEscavadeiraDia = 10;
-        const KmRodadoporLitro = 2.5;
-        const SalarioMedioMotoristaFreteporKm = 2.22;
-        const PreçoLitroDiesel = 3.24;
-        const DiasAno = 365;
-        const ProfundidadeMediaCava = 10;
+       
 
 
         const ProfundidadeMediaTerraNormal = ProfundidadeMediaCava - ProfundidadeMediaTerraFertil;
@@ -62,24 +61,11 @@ const cavaGroundingCostAuNorm = (hectare , pitDepth, DistanciaGarimpoCentroUrban
         const CustoTotalAterramentoNormalComFrete = CustoTotalFreteAterramentoNormalFinal + CustoTotalAterramentoTerraNormalSemFrete;
         return CustoTotalAterramentoNormalComFrete
 
-        }else if (tipoGarimpo === PIT)  { //Input Anos de Garimpo
+        }else if (tipoGarimpo === PIT && tempoGarimpo)  { //Input Anos de Garimpo
 
-        const ProfundidadeMediaTerraFertil = 0.4;
-        const CustoAterramentoCavaNormal = 1;
-        const QtdeEscavadeiraM3porHora = 160;
-        const CustoEscavadeiraporKm = 3.8;
-        const HorasEscavadeiraDia = 10;
-        const KmRodadoporLitro = 2.5;
-        const SalarioMedioMotoristaFreteporKm = 2.22;
-        const PreçoLitroDiesel = 3.24;
-        const RelacaoMinerioEsteril = 7;
-        const PerdaOuroEscavacao = 2;
-        const DensidadeOuro = 2.76;
-        const DiasAno = 365;
-        const ProfundidadeMediaCava = 10;
-        const QtdeGramasOuroPorAnoPoço = 23700;
+        
 
-        const QtdeGramasOuroTotalPoço = QtdeGramasOuroPorAnoPoço * AnosGarimpoPoço;
+        const QtdeGramasOuroTotalPoço = QtdeGramasOuroPorAnoPoço * tempoGarimpo;
         const TonSoloRevolvida = QtdeGramasOuroTotalPoço /  ProfundidadeMediaCava;
         const TonEsterilRevolvida = TonSoloRevolvida * RelacaoMinerioEsteril;
         const TotalSoloRevolvida = TonSoloRevolvida + TonEsterilRevolvida;

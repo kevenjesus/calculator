@@ -4,6 +4,7 @@ import { FERRY, PIT } from "../consts"
 
 const carbon = (hectare, tipoGarimpo) => {
 
+
     const TxDesconto = 0.03;
     const CustoCarbonoporHaUSD = 10.00
     const TxCambio = 5
@@ -11,6 +12,7 @@ const carbon = (hectare, tipoGarimpo) => {
     
     const montantes = calcMontante(CustoCarbonoporHaBRL)
       const VPLCarbono = vpl(TxDesconto, montantes)
+      console.log('VPLCarbono',VPLCarbono)
 
       let toCarbon;
         if(tipoGarimpo === FERRY) {

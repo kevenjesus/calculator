@@ -1,76 +1,61 @@
 import { FERRY, PIT } from "../consts";
 
-const neuroSymptomsGarimpeiro = (gold, txPrevalence, tipoGarimpo, MesesGarimpoBalsa, AnosGarimpoPoco) => {
+const neuroSymptomsGarimpeiro = (gold, txPrevalence, tipoGarimpo, tempoGarimpo) => {
+
+    const Custo1DALY = 103599;
+    const PesoIncapacidadeNeuroGarimpeiros = 0.368;
+    const QtdGramasGarimpeiroAno = 150.45;
+    const ProbNeuroGarimpeiros = 0.72;
+    const CustoTratamentoNeuroporGarimpeiro = 2244;
+    const GramaOuroporAnoPoco = 23700;
+    const GramaOuroporMesBalsa = 302;
     
-        if (tipoGarimpo === PIT) { //Input Anos de garimpo
-            const UmDalyReais = 103599;
 
-            // TRATAMENTO - sintomas neuropscicológicos em garimpeiros
-            const GramaOuroporAnoPoco = 23700;
-            const GramaDeOuro = GramaOuroporAnoPoco * AnosGarimpoPoco;
-            const qtdGramsGoldDiggerYear = 150.45;
-            const qtdTotalGoldMiners = GramaDeOuro / qtdGramsGoldDiggerYear;
-            const neuroGoldDiggersProblems = 0.72;
-            const qtdOfMinersAffected = neuroGoldDiggersProblems * qtdTotalGoldMiners;
-            const neuroTreatmentByGoldDigger  = 2244;
-            const neuroGoldMinersTreatmentCost = neuroTreatmentByGoldDigger * qtdOfMinersAffected;
 
-            // DALY - sintomas neuropscicológicos em garimpeiros	
+    if (tipoGarimpo === PIT && tempoGarimpo) { //Input Anos de garimpo
+        
+        // TRATAMENTO - sintomas neuropscicológicos em garimpeiros
+        const GramaDeOuro = GramaOuroporAnoPoco * tempoGarimpo;
+        const qtdTotalGoldMiners = GramaDeOuro / QtdGramasGarimpeiroAno;
+        const qtdOfMinersAffected = ProbNeuroGarimpeiros * qtdTotalGoldMiners;
+        const neuroGoldMinersTreatmentCost = CustoTratamentoNeuroporGarimpeiro * qtdOfMinersAffected;
 
-            const weightDisabilityNeuroProspectors = 0.368;
-            const weightDisabilityNeuroProspectorsQtdGoldDiggers = weightDisabilityNeuroProspectors * qtdTotalGoldMiners;
-            const dalyYearsProspectors = txPrevalence * weightDisabilityNeuroProspectorsQtdGoldDiggers;
-            const toCostDALYGoldDigger = UmDalyReais * dalyYearsProspectors;
-            
-            const toGoldMinersCost = toCostDALYGoldDigger + neuroGoldMinersTreatmentCost;
+        // DALY - sintomas neuropscicológicos em garimpeiros	
+        const PesoIncapacidadeNeuroGarimpeirosQtdGoldDiggers = PesoIncapacidadeNeuroGarimpeiros * qtdTotalGoldMiners;
+        const dalyYearsProspectors = txPrevalence * PesoIncapacidadeNeuroGarimpeirosQtdGoldDiggers;
+        const toCostDALYGoldDigger = Custo1DALY * dalyYearsProspectors;
+        const toGoldMinersCost = toCostDALYGoldDigger + neuroGoldMinersTreatmentCost;
         return toGoldMinersCost
 
-        }else if (tipoGarimpo === FERRY) { //Input Meses de garimpo
+    }else if (tipoGarimpo === FERRY && tempoGarimpo) { //Input Meses de garimpo
 
-            //TRATAMENTO - sintomas neuropscicológicos em garimpeiros
-            const GramaOuroporMesBalsa = 302;
-            const QtdGramasGarimpeiroAno = 150.45;
-            const ProbNeuroGarimpeiros = 0.72;
-            const CustoTratamentoNeuroporGarimpeiro = 2244;
-            const Custo1DALY = 103599;
+        //TRATAMENTO - sintomas neuropscicológicos em garimpeiros
+        const GramaDeOuro = GramaOuroporMesBalsa * tempoGarimpo;
+        const QtdeGarimpeirosTotal = GramaDeOuro / QtdGramasGarimpeiroAno;
+        const QtdeGarimpeirosAfetados = ProbNeuroGarimpeiros * QtdeGarimpeirosTotal;
+        const CustoTratamentoNeuroGarimpeiros = CustoTratamentoNeuroporGarimpeiro * QtdeGarimpeirosAfetados;
 
-            const GramaDeOuro = GramaOuroporMesBalsa * MesesGarimpoBalsa;
-            const QtdeGarimpeirosTotal = GramaDeOuro / QtdGramasGarimpeiroAno;
-            const QtdeGarimpeirosAfetados = ProbNeuroGarimpeiros * QtdeGarimpeirosTotal;
-            const CustoTratamentoNeuroGarimpeiros = CustoTratamentoNeuroporGarimpeiro * QtdeGarimpeirosAfetados;
+        //DALY - sintomas neuropscicológicos em garimpeiros
+        const PesoIncapacidadeNeuroGarimpeiros_QtdGarimpeiros = PesoIncapacidadeNeuroGarimpeiros  * QtdeGarimpeirosTotal;
+        const DALYAnosGarimpeiro = txPrevalence * PesoIncapacidadeNeuroGarimpeiros_QtdGarimpeiros;
+        const CustoTotalDALYGarimpeiros =  Custo1DALY  * DALYAnosGarimpeiro;
+        const CustoTotalGarimpeiros = CustoTotalDALYGarimpeiros  + CustoTratamentoNeuroGarimpeiros;
+        return CustoTotalGarimpeiros
 
-            //DALY - sintomas neuropscicológicos em garimpeiros
+    }else {
+        // TRATAMENTO - sintomas neuropscicológicos em garimpeiros
+        const qtdTotalGoldMiners = gold / QtdGramasGarimpeiroAno;
+        const qtdOfMinersAffected = qtdTotalGoldMiners * ProbNeuroGarimpeiros;
+        const neuroGoldMinersTreatmentCost = qtdOfMinersAffected * CustoTratamentoNeuroporGarimpeiro;
 
-            const PesoIncapacidadeNeuroGarimpeiros = 0.368;
-            const PesoIncapacidadeNeuroGarimpeiros_QtdGarimpeiros = PesoIncapacidadeNeuroGarimpeiros  * QtdeGarimpeirosTotal;
-            const DALYAnosGarimpeiro = txPrevalence * PesoIncapacidadeNeuroGarimpeiros_QtdGarimpeiros;
-            const CustoTotalDALYGarimpeiros =  Custo1DALY  * DALYAnosGarimpeiro;
-
-            const CustoTotalGarimpeiros = CustoTotalDALYGarimpeiros  + CustoTratamentoNeuroGarimpeiros;
-            return CustoTotalGarimpeiros
-
-        }else {
-            const UmDalyReais = 103599;
-
-            // TRATAMENTO - sintomas neuropscicológicos em garimpeiros
-            const qtdGramsGoldDiggerYear = 150.45;
-            const qtdTotalGoldMiners = gold / qtdGramsGoldDiggerYear;
-            const neuroGoldDiggersProblems = 0.72;
-            const qtdOfMinersAffected = neuroGoldDiggersProblems * qtdTotalGoldMiners;
-            const neuroTreatmentByGoldDigger  = 2244;
-            const neuroGoldMinersTreatmentCost = neuroTreatmentByGoldDigger * qtdOfMinersAffected;
-
-            // DALY - sintomas neuropscicológicos em garimpeiros	
-
-            const weightDisabilityNeuroProspectors = 0.368;
-            const weightDisabilityNeuroProspectorsQtdGoldDiggers = weightDisabilityNeuroProspectors * qtdTotalGoldMiners;
-            const dalyYearsProspectors = txPrevalence * weightDisabilityNeuroProspectorsQtdGoldDiggers;
-            const toCostDALYGoldDigger = UmDalyReais * dalyYearsProspectors;
-            
-            const toGoldMinersCost = toCostDALYGoldDigger + neuroGoldMinersTreatmentCost;
+        // DALY - sintomas neuropscicológicos em garimpeiros	
+        const PesoIncapacidadeNeuroGarimpeirosQtdGoldDiggers = PesoIncapacidadeNeuroGarimpeiros * qtdTotalGoldMiners;
+        const dalyYearsProspectors = txPrevalence * PesoIncapacidadeNeuroGarimpeirosQtdGoldDiggers;
+        const toCostDALYGoldDigger = dalyYearsProspectors * Custo1DALY;
+        const toGoldMinersCost = toCostDALYGoldDigger + neuroGoldMinersTreatmentCost;
         return toGoldMinersCost
 
-        }
+    }
 
 }
 

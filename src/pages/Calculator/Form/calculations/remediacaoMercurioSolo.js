@@ -2,17 +2,17 @@ import { FERRY, PIT } from "../consts";
 
 const CONSERVATIVE = 0.29
 
-const remediacaoMercurioSolo = (gold, txPrevalence, tipoGarimpo, AnosGarimpoPoço) => {
+const remediacaoMercurioSolo = (gold, txPrevalence, tipoGarimpo, tempoGarimpo) => {
     
 
-    if (tipoGarimpo === PIT) { //Input anos de garimpo
+    if (tipoGarimpo === PIT && tempoGarimpo) { //Input anos de garimpo
         const QtdeGramasOuroAnoPoço = 23.700;
         const ProporçãoHgAu = 2.6;
         const PerdaPorcentHgnoSolo = 0.088;
         const HgContidoSoloemGramaporTonelada = 0.24;
         const CustoRemediacaoR$porToneladaSolo = 1750;
 
-        const QtdeOuroTotalPoço = QtdeGramasOuroAnoPoço * AnosGarimpoPoço;
+        const QtdeOuroTotalPoço = QtdeGramasOuroAnoPoço * tempoGarimpo;
         const QtdeHgDespejadoSoloporOuro = PerdaPorcentHgnoSolo * ProporçãoHgAu;
         const QtdeTotalHgDespejadoSolo = QtdeHgDespejadoSoloporOuro * QtdeOuroTotalPoço;
         const ToneladaSoloContaminada = QtdeTotalHgDespejadoSolo* HgContidoSoloemGramaporTonelada;
