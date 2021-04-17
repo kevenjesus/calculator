@@ -2,7 +2,7 @@ import calcMontante from "utils/calcMontante";
 import vpl from "utils/vpl";
 import { FERRY, PIT } from "../consts";
 
-const culturedAndSpecies = (hectare, densidadePop2010, riquezaEspecie, tipoGarimpo) => {
+const culturedAndSpecies = (hectare, densidadePop2010, riquezaEspecie, tipoGarimpo, tempoGarimpo) => {
 
 
         const PIBpercapitaBrasil2019USD = 8717.18;
@@ -27,7 +27,9 @@ const culturedAndSpecies = (hectare, densidadePop2010, riquezaEspecie, tipoGarim
 
         if(tipoGarimpo === FERRY) { 
           toCulturedAndSpecies = 0
-        }else if (tipoGarimpo === PIT) {
+        }else if (tipoGarimpo === PIT && hectare) {
+          toCulturedAndSpecies = VPLHectareCulturedAndSpecies * 0.31 * 12
+        }else if (tipoGarimpo === PIT && tempoGarimpo) {
           toCulturedAndSpecies = VPLHectareCulturedAndSpecies * 0.31 * 12
         }else {
           toCulturedAndSpecies = VPLHectareCulturedAndSpecies * hectare * 12

@@ -6,17 +6,18 @@ const remediacaoMercurioSolo = (gold, txPrevalence, tipoGarimpo, tempoGarimpo) =
     
 
     if (tipoGarimpo === PIT && tempoGarimpo) { //Input anos de garimpo
-        const QtdeGramasOuroAnoPoço = 23.700;
-        const ProporçãoHgAu = 2.6;
+        const QtdeGramasOuroAnoPoço = 23700;
+        const ProporcaoHgAu = 2.6;
         const PerdaPorcentHgnoSolo = 0.088;
         const HgContidoSoloemGramaporTonelada = 0.24;
-        const CustoRemediacaoR$porToneladaSolo = 1750;
+        const CustoRemediacaoBRLporToneladaSolo = 1750;
 
         const QtdeOuroTotalPoço = QtdeGramasOuroAnoPoço * tempoGarimpo;
-        const QtdeHgDespejadoSoloporOuro = PerdaPorcentHgnoSolo * ProporçãoHgAu;
-        const QtdeTotalHgDespejadoSolo = QtdeHgDespejadoSoloporOuro * QtdeOuroTotalPoço;
-        const ToneladaSoloContaminada = QtdeTotalHgDespejadoSolo* HgContidoSoloemGramaporTonelada;
-        const CustoTotalRemediacaoHgSolo = CustoRemediacaoR$porToneladaSolo * ToneladaSoloContaminada;
+        const QtdeHgDespejadoSoloporOuro = PerdaPorcentHgnoSolo * ProporcaoHgAu;
+        const QtdeHgDespejadoSoloporOuroemgramas = QtdeHgDespejadoSoloporOuro * QtdeOuroTotalPoço;
+        console.log('QtdeHgDespejadoSoloporOuroemgramas', QtdeHgDespejadoSoloporOuroemgramas)
+        const ToneladaSoloContaminada = QtdeHgDespejadoSoloporOuroemgramas * HgContidoSoloemGramaporTonelada;
+        const CustoTotalRemediacaoHgSolo = CustoRemediacaoBRLporToneladaSolo * ToneladaSoloContaminada;
         return CustoTotalRemediacaoHgSolo
 
     }else if (tipoGarimpo === FERRY) {

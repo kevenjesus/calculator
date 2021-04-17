@@ -2,16 +2,20 @@ import { FERRY, PIT } from "../consts";
 
 const CONSERVATIVE = 0.29
 
-const recoveryOfTopsoil = (valueHypothesis, DistanciaGarimpoCentroUrbanoFrete, gold, gramadeOuroporHectare, tipoGarimpo) => {
+const recoveryOfTopsoil = (valueHypothesis, DistanciaGarimpoCentroUrbanoFrete, gold, gramadeOuroporHectare, tipoGarimpo, tempoGarimpo) => {
   
-    let hectare;
+    let hectare; 
     if(tipoGarimpo === FERRY) {
       hectare = 0
     }else if (tipoGarimpo === PIT) {
       hectare = 0.31
+    }else if (tipoGarimpo === PIT && tempoGarimpo) {
+      hectare = 0.31
     }else {
       hectare = gramadeOuroporHectare * gold
     }
+
+    //console.log('hectare', hectare)
   
 
     const PrecoRecupSuperficialSoloporHa = valueHypothesis === CONSERVATIVE ? 14690 : 23400;

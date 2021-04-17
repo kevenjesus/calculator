@@ -65,17 +65,23 @@ const cavaGroundingCostAuNorm = (hectare , pitDepth, DistanciaGarimpoCentroUrban
 
         
 
-        const QtdeGramasOuroTotalPoço = QtdeGramasOuroPorAnoPoço * tempoGarimpo;
-        const TonSoloRevolvida = QtdeGramasOuroTotalPoço /  ProfundidadeMediaCava;
-        const TonEsterilRevolvida = TonSoloRevolvida * RelacaoMinerioEsteril;
-        const TotalSoloRevolvida = TonSoloRevolvida + TonEsterilRevolvida;
-        const VolumeSemPerda = TotalSoloRevolvida / DensidadeOuro;
-        const VolumeComPerda = VolumeSemPerda * PerdaOuroEscavacao;
-        const Areaafetadam2 = VolumeComPerda / ProfundidadeMediaCava;
+            const QtdeGramasOuroTotalPoço = QtdeGramasOuroPorAnoPoço * tempoGarimpo;
+            const TonSoloRevolvida = QtdeGramasOuroTotalPoço / 0.4;
+    
+            const TonEsterilRevolvida = TonSoloRevolvida * RelacaoMinerioEsteril;
+            const TotalSoloRevolvida = TonEsterilRevolvida + TonSoloRevolvida;
+            const VolumeSemPerda = TotalSoloRevolvida / DensidadeOuro;
+            const VolumeComPerda = VolumeSemPerda * PerdaOuroEscavacao;
+            const Areaafetadam2 = VolumeComPerda / ProfundidadeMediaCava;
+            console.log('Areaafetadam2', Areaafetadam2)
+            
+       
 
         const ProfundidadeMediaTerraNormal = ProfundidadeMediaCava - ProfundidadeMediaTerraFertil;
-        const VolumeTerraNormal = ProfundidadeMediaTerraNormal * Areaafetadam2;
-        const CustoTotalAterramentoTerraNormalSemFrete = VolumeTerraNormal * CustoAterramentoCavaNormal;
+        const VolumeTerraNormal = ProfundidadeMediaTerraNormal * Areaafetadam2
+        console.log('Areaafetadam2', Areaafetadam2)
+        const CustoTotalAterramentoTerraNormalSemFrete = CustoAterramentoCavaNormal * ProfundidadeMediaTerraNormal * Areaafetadam2;
+        console.log('CustoTotalAterramentoTerraNormalSemFrete',CustoTotalAterramentoTerraNormalSemFrete)
         const QtdeEscavadeiraM3porano = DiasAno * HorasEscavadeiraDia * QtdeEscavadeiraM3porHora;
         const QtdeEscavadeirasNormal =(VolumeTerraNormal / QtdeEscavadeiraM3porano) < 1 ? 1 : Math.ceil(VolumeTerraNormal / QtdeEscavadeiraM3porano);
         const CustoTransporteFreteTotalEscavadeiraNormal = DistanciaGarimpoCentroUrbanoFrete * CustoEscavadeiraporKm;

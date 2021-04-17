@@ -4,7 +4,7 @@ import { FERRY, PIT } from "../consts";
 
 const CONSERVATIVE = 0.29
 
-const erosionSiltingUp = (hectare, txPrevalence, tipoGarimpo) => {
+const erosionSiltingUp = (hectare, txPrevalence, tipoGarimpo, tempoGarimpo) => {
 
   const PIBpercapitaBrasil2019USD = 8717.18
 
@@ -18,8 +18,11 @@ const erosionSiltingUp = (hectare, txPrevalence, tipoGarimpo) => {
       let toErosion;
         if(tipoGarimpo === FERRY) {
           toErosion = 0
-        }else if (tipoGarimpo === PIT) {
+        }else if (tipoGarimpo === PIT && hectare) {
           toErosion = VPLHectareAssoreamento * 0.31 * 12
+        
+        }else if (tipoGarimpo === PIT && tempoGarimpo) {
+        toErosion = VPLHectareAssoreamento * 0.31 * 12
         }else {
           toErosion = VPLHectareAssoreamento * hectare * 12
         }

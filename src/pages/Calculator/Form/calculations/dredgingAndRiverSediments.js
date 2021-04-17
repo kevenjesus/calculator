@@ -16,17 +16,14 @@ const dredgingAndRiverSediments = (hectare, pitDepth, DistanciaGarimpoCentroUrba
 
     }else if(tipoGarimpo === FERRY && tempoGarimpo) {//input meses de garimpo
 
-        //const ProdOuroKgporMes = 0.00604;
-        //const ProdutividadeBalsa = 0.0022;
-        //const PotenciaMediaMotor = 54.4;
+        const ProdOuroKgporMes = 0.00604;
+        const PotenciaMediaMotor = 54.4;
         const ProducaoSedimentoViraPlumaTonporMes = 37.82;
-        //const SedimentoViraPlumaTonporMes = 6.262;
         const ErosaoEquivalenteTonporHaporAno = 12.54;
-        const ControleErosaoR$ = 66.42;
-        //const ProdOuroTotalBalsaDragagem = PotenciaMediaMotor * tempoGarimpo * ProdOuroKgporMes;
-        const ProducaoSedimentoViraPlumaTon = ProducaoSedimentoViraPlumaTonporMes * gold * tempoGarimpo;
+        const ControleErosaoBRL = 66.42;
+        const ProducaoSedimentoViraPlumaTon = ProducaoSedimentoViraPlumaTonporMes * PotenciaMediaMotor * tempoGarimpo;
         const EquivalenciaHaImpactados = ProducaoSedimentoViraPlumaTon / ErosaoEquivalenteTonporHaporAno;
-        const ValorDanoDragagemBalsa = EquivalenciaHaImpactados * ControleErosaoR$
+        const ValorDanoDragagemBalsa = EquivalenciaHaImpactados * ControleErosaoBRL
         return ValorDanoDragagemBalsa
     
 

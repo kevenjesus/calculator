@@ -4,7 +4,7 @@ import { FERRY, PIT } from "../consts";
 
 const CONSERVATIVE = 0.29
 
-const bioprospecting = (hectare, valueHypothesis, tipoGarimpo) => { 
+const bioprospecting = (hectare, valueHypothesis, tipoGarimpo, tempoGarimpo) => { 
    const CustoBioprospeccaoporHaBRL = valueHypothesis === CONSERVATIVE ? 68.19 : 116.95
 
    const TxDesconto = 0.03;
@@ -15,9 +15,11 @@ const bioprospecting = (hectare, valueHypothesis, tipoGarimpo) => {
       let toBioprospeccao;
         if(tipoGarimpo === FERRY) {
           toBioprospeccao = 0
-        }else if (tipoGarimpo === PIT) {
+        }else if (tipoGarimpo === PIT && hectare) {
           toBioprospeccao = VPLBioprospeccao * 0.31 * 12
-        }else {
+        }else if (tipoGarimpo === PIT && tempoGarimpo)
+          toBioprospeccao = VPLBioprospeccao * 0.31 * 12
+        else {
           toBioprospeccao = VPLBioprospeccao * hectare * 12
         }
         return toBioprospeccao

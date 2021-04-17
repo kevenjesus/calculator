@@ -23,7 +23,7 @@ const hypertension = (gold, popRuralMunicipio, popUrbMunicipio, txPrevalence, de
         const perdaPercentHgNaAgua = txPrevalence === CONSERVATIVE ? 0.13 : 0.21;
         GrHgLiberadonaAgua = perdaPercentHgNaAgua * ProporçãoHgAu * gold;
 
-    }else if (tipoGarimpo === FERRY && tipoGarimpo) { //input Meses de garimpo de balsa
+    }else if (tipoGarimpo === FERRY && tempoGarimpo) { //input Meses de garimpo de balsa
         //console.log ('gold', gold,'tempoGarimpoFERRYm', tempoGarimpo)
 
         const perdaPercentHgNaAgua = txPrevalence === CONSERVATIVE ? 0.22 : 0.35;

@@ -22,7 +22,7 @@ const heartAttack = (gold, popRuralMunicipio, popUrbMunicipio, txPrevalence, den
         const perdaPercentHgNaAgua = txPrevalence === CONSERVATIVE ? 0.13 : 0.21;
         GrHgLiberadonaAgua = perdaPercentHgNaAgua * ProporçãoHgAu * gold;
 
-    }else if (tipoGarimpo === FERRY && tipoGarimpo) { //input Meses de garimpo de balsa
+    }else if (tipoGarimpo === FERRY && tempoGarimpo) { //input Meses de garimpo de balsa
         //console.log ('gold', gold,'tempoGarimpoFERRYm', tempoGarimpo)
 
         const perdaPercentHgNaAgua = txPrevalence === CONSERVATIVE ? 0.22 : 0.35;
@@ -94,6 +94,8 @@ const heartAttack = (gold, popRuralMunicipio, popUrbMunicipio, txPrevalence, den
     const TxIncidenciaInfarto = (HomensAcima40aAnosNaRegiaoEm32Anos * 1000)/  toPopulationAffectedMercuryHair;
     //console.log('TxIncidenciaInfarto', TxIncidenciaInfarto)
     const IncidenciaInfarto = (TxIncidenciaInfarto * toPopulationAffectedMercuryHair) / 1000;
+
+    //console.log('Incidencia Infarto', IncidenciaInfarto)
     
     
     const calculo0 = IncidenciaInfarto * PesoDaIncapacidadeInfarto;
@@ -104,15 +106,14 @@ const heartAttack = (gold, popRuralMunicipio, popUrbMunicipio, txPrevalence, den
     const calculo5 = (1-agwt)/TxDesconto;
     const calculo6 = (1-Math.exp(-TxDesconto*DuracaoIncapacidadeInfarto));
 
-    console.log('calculo6',calculo6)
+    //console.log('calculo6',calculo6)
 
-
-    const dalyInfarInfarto = calculo0 *(agwt*calculo1*((Math.exp(calculo2)*calculo3)-calculo4)+calculo5*calculo6);
+    const dalyInfarInfarto = calculo0 * (agwt*calculo1*((Math.exp(calculo2)*calculo3)-calculo4)+calculo5*calculo6);
+    //console.log('daly Infar Infarto', dalyInfarInfarto)
     
     const DALYInfarto =  dalyInfarInfarto * DALY1CustoInfarto;
 
-    console.log('dalyInfarInfarto', dalyInfarInfarto)
-
+    
     const CustoAnualTratamentoInfarto = 2300;
     const IncidenciaInfartoTratamento = (TxIncidenciaInfarto * toPopulationAffectedMercuryHair) /1000;
     const CustoTotalTratamentoInfartoAnos = IncidenciaInfartoTratamento * DuracaoIncapacidadeInfarto * CustoAnualTratamentoInfarto;
