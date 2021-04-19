@@ -2,7 +2,12 @@ import calcMontante from "utils/calcMontante";
 import vpl from "utils/vpl";
 import { FERRY, PIT } from "../consts";
 
-const recreation = (hectare, densidadePop2010, riquezaEspecie, tipoGarimpo, tempoGarimpo) => {
+const recreation = (hectare, tipoGarimpo, tempoGarimpo) => { // densidadePop2010, riquezaEspecie,
+
+    const densidadePop2010 = 4.12;
+    const riquezaEspecie = 69;
+
+    
     
     const PIBpercapitaBrasil2019USD = 8717.18;
     const temperaturaCelsius = 26.8;

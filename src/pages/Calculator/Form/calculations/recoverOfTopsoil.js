@@ -5,9 +5,7 @@ const CONSERVATIVE = 0.29
 const recoveryOfTopsoil = (valueHypothesis, DistanciaGarimpoCentroUrbanoFrete, gold, gramadeOuroporHectare, tipoGarimpo, tempoGarimpo) => {
   
     let hectare; 
-    if(tipoGarimpo === FERRY) {
-      hectare = 0
-    }else if (tipoGarimpo === PIT) {
+    if(tipoGarimpo === PIT) {
       hectare = 0.31
     }else if (tipoGarimpo === PIT && tempoGarimpo) {
       hectare = 0.31
@@ -17,7 +15,10 @@ const recoveryOfTopsoil = (valueHypothesis, DistanciaGarimpoCentroUrbanoFrete, g
 
     //console.log('hectare', hectare)
   
-
+    if(tipoGarimpo === FERRY) {
+      const CustoTotalRecSuperficialComFrete = 0
+      return CustoTotalRecSuperficialComFrete
+    }
     const PrecoRecupSuperficialSoloporHa = valueHypothesis === CONSERVATIVE ? 14690 : 23400;
 
     const CapacidadeCargaCaminhaoNumeroMudas = 2700;

@@ -15,7 +15,6 @@ const remediacaoMercurioSolo = (gold, txPrevalence, tipoGarimpo, tempoGarimpo) =
         const QtdeOuroTotalPoço = QtdeGramasOuroAnoPoço * tempoGarimpo;
         const QtdeHgDespejadoSoloporOuro = PerdaPorcentHgnoSolo * ProporcaoHgAu;
         const QtdeHgDespejadoSoloporOuroemgramas = QtdeHgDespejadoSoloporOuro * QtdeOuroTotalPoço;
-        console.log('QtdeHgDespejadoSoloporOuroemgramas', QtdeHgDespejadoSoloporOuroemgramas)
         const ToneladaSoloContaminada = QtdeHgDespejadoSoloporOuroemgramas * HgContidoSoloemGramaporTonelada;
         const CustoTotalRemediacaoHgSolo = CustoRemediacaoBRLporToneladaSolo * ToneladaSoloContaminada;
         return CustoTotalRemediacaoHgSolo

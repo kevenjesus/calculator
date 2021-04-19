@@ -30,7 +30,7 @@ const dredgingAndRiverSediments = (hectare, pitDepth, DistanciaGarimpoCentroUrba
     }else if (tipoGarimpo === PIT && gold) { //input ouro
 
         const PorcentagemAssoreamento = 0.15;
-        const CustoDragagemporM3 = 28;
+        const CustoDragagemporM3 = 28.13;
         const QtdeSedimentopor1DragaM3porhora = 300;
         const HorasTrabalhadasporDragapordia = 24;
         const DiasAno = 365;
@@ -38,13 +38,21 @@ const dredgingAndRiverSediments = (hectare, pitDepth, DistanciaGarimpoCentroUrba
         const KmRodadoporLitro = 2.5;
         const PreçoLitroDiesel = 3.24;
         const SalarioMedioMotoristaFreteporKm = 2.22;
-        const profundidadeDaCava = 10;
+        const produtividadeMediaCava = 0.4;
+        const PerdaOuroEscavacao = 2;
+        const DensidadeOuro = 2.76;
+        const RelacaoMinerioEsteril = 7;
+
+        
     
-        const Áreaafetada_m2 = hectare*10000
+        const TonSoloRevolvida = gold / produtividadeMediaCava;
+        const TonEsterilRevolvida = TonSoloRevolvida * RelacaoMinerioEsteril;
+        const TotalSoloRevolvida = TonSoloRevolvida + TonEsterilRevolvida;
+        const VolumeSemPerda = TotalSoloRevolvida / DensidadeOuro;
+        const VolumeComPerda = VolumeSemPerda * PerdaOuroEscavacao;
+        
     
-        const VolumeComPerda = profundidadeDaCava * Áreaafetada_m2
-    
-        const VolumeTerraAssoreamentoRio = PorcentagemAssoreamento * VolumeComPerda;
+        const VolumeTerraAssoreamentoRio = VolumeComPerda * PorcentagemAssoreamento;
         const CustoDragagemSemFrete = CustoDragagemporM3 * VolumeTerraAssoreamentoRio;
         const QtdeSedimentopor1DragaM3porano = DiasAno * HorasTrabalhadasporDragapordia * QtdeSedimentopor1DragaM3porhora;
         const QtdeDragas1ano = (VolumeTerraAssoreamentoRio/QtdeSedimentopor1DragaM3porano) < 1 ? 1 : Math.round(VolumeTerraAssoreamentoRio/QtdeSedimentopor1DragaM3porano);
@@ -113,11 +121,8 @@ const dredgingAndRiverSediments = (hectare, pitDepth, DistanciaGarimpoCentroUrba
         const TotalSoloRevolvida = TonEsterilRevolvida + TonSoloRevolvida;
         const VolumeSemPerda = TotalSoloRevolvida / DensidadeOuro;
         const VolumeComPerda = VolumeSemPerda * PerdaOuroEscavacao;
-        //const Áreaafetada_m2 = VolumeComPerda / ProfundidadeMediaCava
-        //const VolumeComPerda = profundidadeDaCava * Áreaafetada_m2
-        //const VolumeSemPerda = VolumeComPerda / PerdaOuroEscavacao
+       
 
-        
         const VolumeTerraAssoreamentoRio = PorcentagemAssoreamento * VolumeComPerda;
         const CustoDragagemSemFrete = CustoDragagemporM3 * VolumeTerraAssoreamentoRio;
         const QtdeSedimentopor1DragaM3porano = DiasAno * HorasTrabalhadasporDragapordia * QtdeSedimentopor1DragaM3porhora;
