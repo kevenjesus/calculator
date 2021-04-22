@@ -1,141 +1,97 @@
 import { ALLUVIUM, FERRY, PIT } from "../consts";
 
-const dredgingAndRiverSediments = (hectare, pitDepth, DistanciaGarimpoCentroUrbanoFrete, gold, tipoGarimpo, tempoGarimpo) => {
-     
-
-    if(tipoGarimpo === FERRY && gold) {//input ouro
-
-        const ProducaoSedimentoViraPlumaTonporMes =	6.262;
-        const ProducaoSedimentoViraPlumaTon =	ProducaoSedimentoViraPlumaTonporMes * gold;
-        const ErosaoEquivalenteTonporHaporAno =	12.54;
-        const ControleErosaoBRL = 66.42;
-        const EquivalenciaHaImpactados = ProducaoSedimentoViraPlumaTon / ErosaoEquivalenteTonporHaporAno;
-        const ValorDanoDragagemBalsa = EquivalenciaHaImpactados * ControleErosaoBRL;
-        return ValorDanoDragagemBalsa
-
-
-    }else if(tipoGarimpo === FERRY && tempoGarimpo) {//input meses de garimpo
-
-        const ProdOuroKgporMes = 0.00604;
-        const PotenciaMediaMotor = 54.4;
-        const ProducaoSedimentoViraPlumaTonporMes = 37.82;
-        const ErosaoEquivalenteTonporHaporAno = 12.54;
-        const ControleErosaoBRL = 66.42;
-        const ProducaoSedimentoViraPlumaTon = ProducaoSedimentoViraPlumaTonporMes * PotenciaMediaMotor * tempoGarimpo;
-        const EquivalenciaHaImpactados = ProducaoSedimentoViraPlumaTon / ErosaoEquivalenteTonporHaporAno;
-        const ValorDanoDragagemBalsa = EquivalenciaHaImpactados * ControleErosaoBRL
-        return ValorDanoDragagemBalsa
+const dredgingAndRiverSediments = (hectare, pitDepth, distancePanningCenterUrbanFreight, gold, likeMining, panningTime) => {
     
+    const productionSedimentTurnsFeatherTonnesPerMonthGold = 6.262;
+    const equivalentErosionTonPerHaPerYear = 12.54;
+    const erosionControlBRL = 66.42;
+    const averageMotorPower = 54.4;
+    const productionSedimentTurnsFeatherTonnesPerMonth = 37.82;
+    const siltingPercentage = 0.15;
+    const dredgingCostPerM3 = 28.13;
+    const theAmountOfSedimentPer1DredgeM3PerHour = 300;
+    const hoursWorkedByDredgePerDay = 24;
+    const daysInTheYear = 365;
+    const transportCost1DredgeBRL = 3.8;
+    const kmRotatedPerLiter = 2.5;
+    const priceLiterDiesel = 3.24;
+    const averageDriverSalaryFreightPerKm = 2.22;
+    const cavaAverageProductivity = 0.4;
+    const excavationGoldLoss = 2;
+    const densityGold = 2.76;
+    const relationshipWithSterileOre = 7;
+    const quantityOfGoldGramsPerYearWell = 23700;
 
-    }else if (tipoGarimpo === PIT && gold) { //input ouro
+    if(likeMining === FERRY && gold) {//input ouro
+    const productionSedimentturnsTonFeather =	productionSedimentTurnsFeatherTonnesPerMonthGold * gold;
+    const equivalenceHaImpacted = productionSedimentturnsTonFeather / equivalentErosionTonPerHaPerYear;
+    const ferryDredgingDamageValue = equivalenceHaImpacted * erosionControlBRL;
+    return ferryDredgingDamageValue
 
-        const PorcentagemAssoreamento = 0.15;
-        const CustoDragagemporM3 = 28.13;
-        const QtdeSedimentopor1DragaM3porhora = 300;
-        const HorasTrabalhadasporDragapordia = 24;
-        const DiasAno = 365;
-        const CustoTransporte1DragaBRLporkm = 3.8;
-        const KmRodadoporLitro = 2.5;
-        const PreçoLitroDiesel = 3.24;
-        const SalarioMedioMotoristaFreteporKm = 2.22;
-        const produtividadeMediaCava = 0.4;
-        const PerdaOuroEscavacao = 2;
-        const DensidadeOuro = 2.76;
-        const RelacaoMinerioEsteril = 7;
+    }else if(likeMining === FERRY && panningTime) {//input meses de garimpo
+    const productionSedimentturnsTonFeather = productionSedimentTurnsFeatherTonnesPerMonth * averageMotorPower * panningTime;
+    const equivalenceHaImpacted = productionSedimentturnsTonFeather / equivalentErosionTonPerHaPerYear;
+    const ferryDredgingDamageValue = equivalenceHaImpacted * erosionControlBRL
+    return ferryDredgingDamageValue
 
-        
-    
-        const TonSoloRevolvida = gold / produtividadeMediaCava;
-        const TonEsterilRevolvida = TonSoloRevolvida * RelacaoMinerioEsteril;
-        const TotalSoloRevolvida = TonSoloRevolvida + TonEsterilRevolvida;
-        const VolumeSemPerda = TotalSoloRevolvida / DensidadeOuro;
-        const VolumeComPerda = VolumeSemPerda * PerdaOuroEscavacao;
-        
-    
-        const VolumeTerraAssoreamentoRio = VolumeComPerda * PorcentagemAssoreamento;
-        const CustoDragagemSemFrete = CustoDragagemporM3 * VolumeTerraAssoreamentoRio;
-        const QtdeSedimentopor1DragaM3porano = DiasAno * HorasTrabalhadasporDragapordia * QtdeSedimentopor1DragaM3porhora;
-        const QtdeDragas1ano = (VolumeTerraAssoreamentoRio/QtdeSedimentopor1DragaM3porano) < 1 ? 1 : Math.round(VolumeTerraAssoreamentoRio/QtdeSedimentopor1DragaM3porano);
-        const CustoTransporteDragaBRL = DistanciaGarimpoCentroUrbanoFrete * CustoTransporte1DragaBRLporkm;
-        const QtdeLitrosDieselConsumidoDragagem = DistanciaGarimpoCentroUrbanoFrete / KmRodadoporLitro;
-        const CustoCombustívelFreteDragagem = PreçoLitroDiesel * QtdeLitrosDieselConsumidoDragagem;
-        const CustoFretecomMotoristaDragagem = SalarioMedioMotoristaFreteporKm * DistanciaGarimpoCentroUrbanoFrete;
-        const CustoTotalFreteDragagemIda = CustoFretecomMotoristaDragagem + CustoCombustívelFreteDragagem + CustoTransporteDragaBRL;
-        const CustoTotalFreteDragagemIdaeVolta = CustoTotalFreteDragagemIda * 2;
-        const CustoTotalFreteDragagemFinal = CustoTotalFreteDragagemIdaeVolta * QtdeDragas1ano;
-        const CustoTotalDragagemComFrete = CustoTotalFreteDragagemFinal + CustoDragagemSemFrete;
-        return CustoTotalDragagemComFrete
+    }else if (likeMining === PIT && gold) { //input ouro
+    const upturnedGroundTon = gold / cavaAverageProductivity;
+    const revolvedSterileTon = upturnedGroundTon * relationshipWithSterileOre;
+    const toSoloRevolved = upturnedGroundTon + revolvedSterileTon;
+    const losslesVolume = toSoloRevolved / densityGold;
+    const volumeWithLoss = losslesVolume * excavationGoldLoss;
+    const volumeLandSiltingRiver = volumeWithLoss * siltingPercentage;
+    const dredgingCostWithoutFreight = dredgingCostPerM3 * volumeLandSiltingRiver;
+    const amountOfSedimentPer1M3DredgePerYear = daysInTheYear * hoursWorkedByDredgePerDay * theAmountOfSedimentPer1DredgeM3PerHour;
+    const dredgerQuantity1Year = (volumeLandSiltingRiver/amountOfSedimentPer1M3DredgePerYear) < 1 ? 1 : Math.round(volumeLandSiltingRiver/amountOfSedimentPer1M3DredgePerYear);
+    const shippingCostDredgeBRL = distancePanningCenterUrbanFreight * transportCost1DredgeBRL;
+    const quantityOfLitersConsumedDiesel = distancePanningCenterUrbanFreight / kmRotatedPerLiter;
+    const fuelCostFreightDredging = priceLiterDiesel * quantityOfLitersConsumedDiesel;
+    const shippingCostWithDredgingDriver = averageDriverSalaryFreightPerKm * distancePanningCenterUrbanFreight;
+    const toCostShippingDredgingOneWay = shippingCostWithDredgingDriver + fuelCostFreightDredging + shippingCostDredgeBRL;
+    const toCostShippingDredgingOneWayAndReturn = toCostShippingDredgingOneWay * 2;
+    const toCostShippingFinalDredging = toCostShippingDredgingOneWayAndReturn * dredgerQuantity1Year;
+    const toDredgingCostWithFreight = toCostShippingFinalDredging + dredgingCostWithoutFreight;
+    return toDredgingCostWithFreight
 
-    }else if (tipoGarimpo === ALLUVIUM && gold){ // input ouro/hectare
+    }else if (likeMining === ALLUVIUM && gold){ // input ouro/hectare
+    const affectedAreaM2 = hectare * 10000
+    const volumeWithLoss = pitDepth * affectedAreaM2
+    const volumeLandSiltingRiver = siltingPercentage * volumeWithLoss;
+    const dredgingCostWithoutFreight = dredgingCostPerM3 * volumeLandSiltingRiver;
+    const amountOfSedimentPer1M3DredgePerYear = daysInTheYear * hoursWorkedByDredgePerDay * theAmountOfSedimentPer1DredgeM3PerHour;
+    const dredgerQuantity1Year = (volumeLandSiltingRiver/amountOfSedimentPer1M3DredgePerYear) < 1 ? 1 : Math.round(volumeLandSiltingRiver/amountOfSedimentPer1M3DredgePerYear);
+    const shippingCostDredgeBRL = distancePanningCenterUrbanFreight * transportCost1DredgeBRL;
+    const quantityOfLitersConsumedDiesel = distancePanningCenterUrbanFreight / kmRotatedPerLiter;
+    const fuelCostFreightDredging = priceLiterDiesel * quantityOfLitersConsumedDiesel;
+    const shippingCostWithDredgingDriver = averageDriverSalaryFreightPerKm * distancePanningCenterUrbanFreight;
+    const toCostShippingDredgingOneWay = shippingCostWithDredgingDriver + fuelCostFreightDredging + shippingCostDredgeBRL;
+    const toCostShippingDredgingOneWayAndReturn = toCostShippingDredgingOneWay * 2;
+    const toCostShippingFinalDredging = toCostShippingDredgingOneWayAndReturn * dredgerQuantity1Year;
+    const toDredgingCostWithFreight = toCostShippingFinalDredging + dredgingCostWithoutFreight;
+    return toDredgingCostWithFreight
 
-        const PorcentagemAssoreamento = 0.15;
-        const CustoDragagemporM3 = 28;
-        const QtdeSedimentopor1DragaM3porhora = 300;
-        const HorasTrabalhadasporDragapordia = 24;
-        const DiasAno = 365;
-        const CustoTransporte1DragaBRLporkm = 3.8;
-        const KmRodadoporLitro = 2.5;
-        const PreçoLitroDiesel = 3.24 ;
-        const SalarioMedioMotoristaFreteporKm = 2.22;
-    
-        const Áreaafetada_m2 = hectare*10000
-        
-    
-        const VolumeComPerda = pitDepth * Áreaafetada_m2
-    
-        const VolumeTerraAssoreamentoRio = PorcentagemAssoreamento * VolumeComPerda;
-        const CustoDragagemSemFrete = CustoDragagemporM3 * VolumeTerraAssoreamentoRio;
-        const QtdeSedimentopor1DragaM3porano = DiasAno * HorasTrabalhadasporDragapordia * QtdeSedimentopor1DragaM3porhora;
-        const QtdeDragas1ano = (VolumeTerraAssoreamentoRio/QtdeSedimentopor1DragaM3porano) < 1 ? 1 : Math.round(VolumeTerraAssoreamentoRio/QtdeSedimentopor1DragaM3porano);
-        const CustoTransporteDragaBRL = DistanciaGarimpoCentroUrbanoFrete * CustoTransporte1DragaBRLporkm;
-        const QtdeLitrosDieselConsumidoDragagem = DistanciaGarimpoCentroUrbanoFrete / KmRodadoporLitro;
-        const CustoCombustívelFreteDragagem = PreçoLitroDiesel * QtdeLitrosDieselConsumidoDragagem;
-        const CustoFretecomMotoristaDragagem = SalarioMedioMotoristaFreteporKm * DistanciaGarimpoCentroUrbanoFrete;
-        const CustoTotalFreteDragagemIda = CustoFretecomMotoristaDragagem + CustoCombustívelFreteDragagem + CustoTransporteDragaBRL;
-        const CustoTotalFreteDragagemIdaeVolta = CustoTotalFreteDragagemIda * 2;
-        const CustoTotalFreteDragagemFinal = CustoTotalFreteDragagemIdaeVolta * QtdeDragas1ano;
-        const CustoTotalDragagemComFrete = CustoTotalFreteDragagemFinal + CustoDragagemSemFrete;
-        return CustoTotalDragagemComFrete
+    }else if (likeMining === PIT && panningTime){ //anos de garimpo no poço
 
-    }else if (tipoGarimpo === PIT && tempoGarimpo){ //anos de garimpo no poço
-
-        const PorcentagemAssoreamento = 0.15;
-        const CustoDragagemporM3 = 28;
-        const QtdeSedimentopor1DragaM3porhora = 300;
-        const HorasTrabalhadasporDragapordia = 24;
-        const DiasAno = 365;
-        const CustoTransporte1DragaBRLporkm = 3.8;
-        const KmRodadoporLitro = 2.5;
-        const PreçoLitroDiesel = 3.24 ;
-        const SalarioMedioMotoristaFreteporKm = 2.22;
-        //const profundidadeDaCava = 10;
-        const produtividadeMediaCava = 0.4;
-        const QtdeGramasOuroPorAnoPoço = 23700;
-        const RelacaoMinerioEsteril = 7;
-        const DensidadeOuro = 2.76;
-        const PerdaOuroEscavacao = 2;
-
-        const QtdeGramasOuroTotalPoço = QtdeGramasOuroPorAnoPoço * tempoGarimpo;
-        const TonSoloRevolvida = QtdeGramasOuroTotalPoço /  produtividadeMediaCava;
-        const TonEsterilRevolvida = TonSoloRevolvida * RelacaoMinerioEsteril;
-        const TotalSoloRevolvida = TonEsterilRevolvida + TonSoloRevolvida;
-        const VolumeSemPerda = TotalSoloRevolvida / DensidadeOuro;
-        const VolumeComPerda = VolumeSemPerda * PerdaOuroEscavacao;
-       
-
-        const VolumeTerraAssoreamentoRio = PorcentagemAssoreamento * VolumeComPerda;
-        const CustoDragagemSemFrete = CustoDragagemporM3 * VolumeTerraAssoreamentoRio;
-        const QtdeSedimentopor1DragaM3porano = DiasAno * HorasTrabalhadasporDragapordia * QtdeSedimentopor1DragaM3porhora;
-        const QtdeDragas1ano = (VolumeTerraAssoreamentoRio/QtdeSedimentopor1DragaM3porano) < 1 ? 1 : Math.round(VolumeTerraAssoreamentoRio/QtdeSedimentopor1DragaM3porano);
-        const CustoTransporteDragaBRL = DistanciaGarimpoCentroUrbanoFrete * CustoTransporte1DragaBRLporkm;
-        const QtdeLitrosDieselConsumidoDragagem = DistanciaGarimpoCentroUrbanoFrete / KmRodadoporLitro;
-        const CustoCombustívelFreteDragagem = PreçoLitroDiesel * QtdeLitrosDieselConsumidoDragagem;
-        const CustoFretecomMotoristaDragagem = SalarioMedioMotoristaFreteporKm * DistanciaGarimpoCentroUrbanoFrete;
-        const CustoTotalFreteDragagemIda = CustoFretecomMotoristaDragagem + CustoCombustívelFreteDragagem + CustoTransporteDragaBRL;
-        const CustoTotalFreteDragagemIdaeVolta = CustoTotalFreteDragagemIda * 2;
-        const CustoTotalFreteDragagemFinal = CustoTotalFreteDragagemIdaeVolta * QtdeDragas1ano;
-        const CustoTotalDragagemComFrete = CustoTotalFreteDragagemFinal + CustoDragagemSemFrete;
-        return CustoTotalDragagemComFrete
+    const quantityOfGramsGoldTotalWell = quantityOfGoldGramsPerYearWell * panningTime;
+    const upturnedGroundTon = quantityOfGramsGoldTotalWell /  cavaAverageProductivity;
+    const revolvedSterileTon = upturnedGroundTon * relationshipWithSterileOre;
+    const toSoloRevolved = revolvedSterileTon + upturnedGroundTon;
+    const losslesVolume = toSoloRevolved / densityGold;
+    const volumeWithLoss = losslesVolume * excavationGoldLoss;
+    const volumeLandSiltingRiver = siltingPercentage * volumeWithLoss;
+    const dredgingCostWithoutFreight = dredgingCostPerM3 * volumeLandSiltingRiver;
+    const amountOfSedimentPer1M3DredgePerYear = daysInTheYear * hoursWorkedByDredgePerDay * theAmountOfSedimentPer1DredgeM3PerHour;
+    const dredgerQuantity1Year = (volumeLandSiltingRiver/amountOfSedimentPer1M3DredgePerYear) < 1 ? 1 : Math.round(volumeLandSiltingRiver/amountOfSedimentPer1M3DredgePerYear);
+    const shippingCostDredgeBRL = distancePanningCenterUrbanFreight * transportCost1DredgeBRL;
+    const quantityOfLitersConsumedDiesel = distancePanningCenterUrbanFreight / kmRotatedPerLiter;
+    const fuelCostFreightDredging = priceLiterDiesel * quantityOfLitersConsumedDiesel;
+    const shippingCostWithDredgingDriver = averageDriverSalaryFreightPerKm * distancePanningCenterUrbanFreight;
+    const toCostShippingDredgingOneWay = shippingCostWithDredgingDriver + fuelCostFreightDredging + shippingCostDredgeBRL;
+    const toCostShippingDredgingOneWayAndReturn = toCostShippingDredgingOneWay * 2;
+    const toCostShippingFinalDredging = toCostShippingDredgingOneWayAndReturn * dredgerQuantity1Year;
+    const toDredgingCostWithFreight = toCostShippingFinalDredging + dredgingCostWithoutFreight;
+    return toDredgingCostWithFreight
 
     }
     return dredgingAndRiverSediments

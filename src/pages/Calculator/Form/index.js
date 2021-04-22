@@ -11,7 +11,7 @@ import RadioBoxConditional from 'components/RadioBoxConditional'
 import mockStates from 'mocks/state.json'
 import mockCountries from 'mocks/countries.json'
 import mockContry from 'mocks/country.json'
-import hectareToGold, { gramadeOuroporHectare } from 'utils/hactareToGold'
+import hectareToGold, { goldenGramForHectare } from 'utils/hactareToGold'
 import goldToHecatere from 'utils/GoldToHectare'
 import bioprospecting from './calculations/bioprospeccao'
 import carbon from './calculations/carbon'
@@ -27,7 +27,7 @@ import neuroSymptomsGarimpeiro from './calculations/neuroSymptomsGarimpeiro'
 import lossQI from './calculations/lossQI'
 import heartAttack from './calculations/heartAttack'
 import hypertension from './calculations/hypertension'
-import remediacaoMercurioSolo from './calculations/remediacaoMercurioSolo'
+import soilMercuryRemediation from './calculations/soilMercuryRemediation'
 import ToBRL from 'utils/toBRL'
 
 
@@ -194,7 +194,7 @@ function Form() {
         const impacts = []
         const hectareValue = calculator.analysisUnit === AMOUNT_GOLD ? goldToHecatere(Number(qtdAnalysis.value), pitDepth) : Number(qtdAnalysis.value)
         const goldValue = calculator.analysisUnit === IMPACTED_AREA ? hectareToGold(Number(qtdAnalysis.value), pitDepth) : Number(qtdAnalysis.value)
-        const gramadeOuroporHe = gramadeOuroporHectare(hectareValue, goldValue)
+        const gramadeOuroporHe = goldenGramForHectare(hectareValue, goldValue)
         const currentCountry = counties.find(c => c.id === Number(country))
         const especie = currentCountry.especies <= 0 ? state.especie : currentCountry.especies
 
@@ -252,9 +252,9 @@ function Form() {
         //console.log('totalHeartAttack', totalHeartAttack)
         impacts.push({ label: 'Doenças cardiovasculares', displayName: 'Doenças cardiovasculares (HIPERTENSAO + INFARTO)', category: CATEGORY_MERCURY, value: (totalHeartAttack+totalHypertension) })
 
-        const totalRemediacaoMercurioSolo = remediacaoMercurioSolo(goldValue, txPrevalence, PIT)//gold
-        impacts.push({ label: 'Remediação de mercúrio no solo', displayName: 'Remediação de mercúrio no solo', category: CATEGORY_MERCURY, value: totalRemediacaoMercurioSolo })
-        //console.log('totalRemediacaoMercurioSolo', totalRemediacaoMercurioSolo)
+        const totalsoilMercuryRemediation = soilMercuryRemediation(goldValue, txPrevalence, PIT)//gold
+        impacts.push({ label: 'Remediação de mercúrio no solo', displayName: 'Remediação de mercúrio no solo', category: CATEGORY_MERCURY, value: totalsoilMercuryRemediation })
+        //console.log('totalsoilMercuryRemediation', totalsoilMercuryRemediation)
 
         const reducer = ((acc, current) => acc+current.value);
         const totalValue = impacts.reduce(reducer, 0);

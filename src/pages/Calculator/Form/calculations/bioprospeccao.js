@@ -4,25 +4,25 @@ import { FERRY, PIT } from "../consts";
 
 const CONSERVATIVE = 0.29
 
-const bioprospecting = (hectare, valueHypothesis, tipoGarimpo, tempoGarimpo) => { 
-   const CustoBioprospeccaoporHaBRL = valueHypothesis === CONSERVATIVE ? 68.19 : 116.95
+const bioprospecting = (hectare, valueHypothesis, likeMining, panningTime) => { 
 
-   const TxDesconto = 0.03;
+  const bioprospectingCostByBRL = valueHypothesis === CONSERVATIVE ? 68.19 : 116.95
+  const txDiscount = 0.03;
 
-   const montantes = calcMontante(CustoBioprospeccaoporHaBRL)
-      const VPLBioprospeccao = vpl(TxDesconto, montantes)
+  const amounts = calcMontante(bioprospectingCostByBRL)
+  const VPLBioprospecting = vpl(txDiscount, amounts)
 
-      let toBioprospeccao;
-        if(tipoGarimpo === FERRY) {
-          toBioprospeccao = 0
-        }else if (tipoGarimpo === PIT && hectare) {
-          toBioprospeccao = VPLBioprospeccao * 0.31 * 12
-        }else if (tipoGarimpo === PIT && tempoGarimpo)
-          toBioprospeccao = VPLBioprospeccao * 0.31 * 12
-        else {
-          toBioprospeccao = VPLBioprospeccao * hectare * 12
-        }
-        return toBioprospeccao
+    let toBioprospecting;
+      if(likeMining === FERRY) {
+        toBioprospecting = 0
+      }else if (likeMining === PIT && hectare) {
+        toBioprospecting = VPLBioprospecting * 0.31 * 12
+      }else if (likeMining === PIT && panningTime)
+        toBioprospecting = VPLBioprospecting * 0.31 * 12
+      else {
+        toBioprospecting = VPLBioprospecting * hectare * 12
+      }
+    return toBioprospecting
 }
 
 export default bioprospecting

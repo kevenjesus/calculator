@@ -2,29 +2,25 @@ import calcMontante from "utils/calcMontante"
 import vpl from "utils/vpl"
 import { FERRY, PIT } from "../consts"
 
-const carbon = (hectare, tipoGarimpo, tempoGarimpo) => {
+const carbon = (hectare, likeMinning, panningTime) => {
 
-
-    const TxDesconto = 0.03;
-    const CustoCarbonoporHaBRL = 887.74;
+    const txDiscount = 0.03;
+    const carbonCostPerHaBRL = 887.74;
     
-    const montantes = calcMontante(CustoCarbonoporHaBRL)
-      const VPLCarbono = vpl(TxDesconto, montantes)
+    const amounts = calcMontante(carbonCostPerHaBRL)
+    const VPLCarbon = vpl(txDiscount, amounts)
 
-
-      let toCarbon;
-        if(tipoGarimpo === FERRY) {
-          toCarbon = 0
-        }else if (tipoGarimpo === PIT && tempoGarimpo) {
-          toCarbon = VPLCarbono * 0.31 * 12
-        }else if (tipoGarimpo === PIT && hectare) {
-          toCarbon = VPLCarbono * 0.31 * 12
-        }
-        else {
-          toCarbon = VPLCarbono * hectare * 12
-        }
-        return toCarbon
-
+    let toCarbon;
+      if(likeMinning === FERRY) {
+        toCarbon = 0
+      }else if (likeMinning === PIT && panningTime) {
+        toCarbon = VPLCarbon * 0.31 * 12
+      }else if (likeMinning === PIT && hectare) {
+        toCarbon = VPLCarbon * 0.31 * 12
+      }else{
+        toCarbon = VPLCarbon * hectare * 12
+      }
+      return toCarbon
 } 
 
 export default carbon
