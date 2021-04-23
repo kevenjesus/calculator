@@ -45,7 +45,7 @@ const SiltingOfRivers = () => {
                         <Button variant="secondary">{impacts.buttons.references}</Button>
                     </Col>
                     <Col xs={12} sm={3}>
-                        <Link to="/impacts/silting-of-rivers">
+                        <Link to="/impacts/mercury-contamination">
                             <Button>{impacts.buttons.next}</Button>
                         </Link>
                     </Col>
