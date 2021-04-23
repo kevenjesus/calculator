@@ -72,13 +72,13 @@ export const ButtonsFixed = styled.div`
 export const ImpactedBox = styled.div`
     width: 100%;
     text-align: center;
-    margin-top: 50px;
+    padding: 15px 70px;
     @media (min-width: 768px) {
         display: flex;
         text-align: left;
-        margin-top: 45px;
         > img {
             order: 3;
+            margin-left: 20px;
         }
     }
 ` 

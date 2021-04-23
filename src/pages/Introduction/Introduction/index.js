@@ -20,26 +20,26 @@ const IntroductionPage = () => {
             <Text>
                 {introduction.introduction.paragraphy_01}
              </Text>
-             <img src={Image} style={{width: 1000, display: 'block', margin: '50px auto', maxWidth: '100%'}} alt="" />
+             <img src={Image} style={{width: 1000, display: 'block', margin: '40px auto', maxWidth: '100%'}} alt="" />
              <Text>{introduction.introduction.paragraphy_02}</Text>
              
             <ImpactedBox>
-                <img src={Btn03} alt="" width="275" style={{marginTop: "-30px"}} />
-                <div style={{marginLeft: '30px'}}>
+                <img src={Btn03} alt="" width="220" style={{marginTop: "-30px"}} />
+                <div>
                     <h2>{introduction.introduction.impacts[0].headline}</h2>
                     <Text>{introduction.introduction.impacts[0].text}</Text>
                </div>
             </ImpactedBox>
             <ImpactedBox>
-                <img src={Btn02} alt="" width="275" style={{marginTop: "-30px"}} />
-                <div style={{marginLeft: '30px'}}>
+                <img src={Btn02} alt="" width="220" style={{marginTop: "-30px"}} />
+                <div>
                     <h2>{introduction.introduction.impacts[1].headline}</h2>
                     <Text>{introduction.introduction.impacts[1].text}</Text>
                </div>
             </ImpactedBox>
             <ImpactedBox>
-                <img src={Btn01} alt="" width="275" style={{marginTop: "-30px"}} />
-                <div style={{marginLeft: '30px'}}>
+                <img src={Btn01} alt="" width="220" style={{marginTop: "-30px"}} />
+                <div>
                     <h2>{introduction.introduction.impacts[2].headline}</h2>
                     <Text>{introduction.introduction.impacts[2].text}</Text>
                </div>

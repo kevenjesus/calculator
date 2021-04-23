@@ -7,7 +7,6 @@ import { Grid, Row, Col } from 'react-flexbox-grid'
 
 import { ReactComponent as GoBack } from 'assets/icons/goBack.svg'
 
-import About from './About'
 import IntroductionPage from './Introduction'
 import HowUseCalculator from './HowUseCalculator'
 import Region from './Region'
