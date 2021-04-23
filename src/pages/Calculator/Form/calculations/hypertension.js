@@ -1,99 +1,98 @@
+import { ALLUVIUM, FERRY, PIT } from "../consts";
+
 const CONSERVATIVE = 0.29
 
-const hypertension = (gold, popRuralMunicipio, popUrbMunicipio, txPrevalence, densidadePop2060, isRegion) => {
 
-    const perdaPercentHgNaAgua = txPrevalence === CONSERVATIVE ? 0.13 : 0.21;
-    const methyladPercent = txPrevalence === CONSERVATIVE ? 0.11 : 0.22;
-   
-    const proportionHgToAu = 2.6;
-    const grHgLiberadonaAgua = perdaPercentHgNaAgua * proportionHgToAu * gold;
-    const toMethylatedWater = methyladPercent * grHgLiberadonaAgua;
+const hypertension = (gold, municipalRuralPop, municipalUrbanPop, txPrevalence, popDensity2060, isRegion, likeMining, panningTime) => {
     
-    const Years = 50;
+    const HgAuRatio = 2.6;
+    
+    let gramsHgReleasedInWater
+    if (likeMining === PIT && panningTime) { //Input Anos de Garimpo
+        const lossPercentHgInWater = txPrevalence === CONSERVATIVE ? 0.132 : 0.21;
+        const quantityOfGramsGoldYearWell = 23700;
+        const amountOfTotalGoldWell = quantityOfGramsGoldYearWell * panningTime;
+        gramsHgReleasedInWater = lossPercentHgInWater * HgAuRatio * amountOfTotalGoldWell
+
+    }else if (likeMining === PIT && gold) { //input Ouro/Hectare
+        const lossPercentHgInWater = txPrevalence === CONSERVATIVE ? 0.132 : 0.21;
+        gramsHgReleasedInWater = lossPercentHgInWater * HgAuRatio * gold;
+
+    }else if (likeMining === FERRY && panningTime) { //input Meses de garimpo de balsa
+        const lossPercentHgInWater = txPrevalence === CONSERVATIVE ? 0.22 : 0.35;
+        const prodGoldMonthFerry = 302;
+        const toFerryGoldProductivity = panningTime * prodGoldMonthFerry;
+        gramsHgReleasedInWater = lossPercentHgInWater * HgAuRatio * toFerryGoldProductivity;
+
+    }else if (likeMining === FERRY && gold) { //input Ouro/Hectare
+        const lossPercentHgInWater = txPrevalence === CONSERVATIVE ? 0.22 : 0.35;
+        gramsHgReleasedInWater = lossPercentHgInWater * HgAuRatio * gold;
+
+    }else if (likeMining === ALLUVIUM && gold) { //input Ouro/Hectare
+        const lossPercentHgInWater = txPrevalence === CONSERVATIVE ? 0.132 : 0.21;
+        gramsHgReleasedInWater = lossPercentHgInWater * HgAuRatio * gold;
+    }
+
+    const methyladPercent = txPrevalence === CONSERVATIVE ? 0.11 : 0.22;
+    const toMethylatedWater = methyladPercent * gramsHgReleasedInWater;
+    
+    const years = 50;
     const ruralIndividualWeight = 59.1;
     const urbanindividualWeight = 70;
     const levelMediumContaminationFish = 0.5;
     const AverageFishConsumptionPerDayInRuralGrams = 144.5;
     const consumptionMediumFishByDayInGramsUrban = 57;
     const densityPopulationalRegionNorth2060 = 6.00696;
-    //const Beta = 0.04;
-    const PI = 3.14;
-    const PropPessoasAcima20AnosporPopTotal = 0.58;
-    const PropPessoasAcima20AnosporComHipertensao = 0.0009;
-    const FracaoAtribuivelHipertensao = 0.26;
+    const propOfPeopleOver20YearsOfAgeByTotalPop = 0.58;
+    const accumulatedRiskMercuryHypertension = 0.0121;
+    const durationOfDisabilityHypertension = 52;
+    const weightOgDisabilityHypertension = 0.246;
     const agwt = 1;
-    const TxDesconto = 0.03;
+    const discountRate = 0.03;
     const bplusr = -0.07;
-    const DALY1CustoInfarto = 103599;
-    const AnoIniciodaIncapacidadeHipertensao = 46;
-    const constante = 0.1658;
-    const DuracaoDaIncapacidadeHipertensao = 26;
-    const PesoDaIncapacidadeHipertensao = 0.246;
+    const DALY1Hypertension = 103599;
+    const yearBeginningOfDisabilityHyertension = 20;
+    const constant = 0.1658;
     
-    const individualAverageWeight = (popRuralMunicipio*ruralIndividualWeight) + (popUrbMunicipio*urbanindividualWeight);
-    const daysIn50Years = (365*Years);
+    const individualAverageWeight = (municipalRuralPop*ruralIndividualWeight) + (municipalUrbanPop*urbanindividualWeight);
+    const daysIn50years = (365*years);
     
     const ingestionMediaDailyMicrogramMercuryUrban = (consumptionMediumFishByDayInGramsUrban * levelMediumContaminationFish) / urbanindividualWeight;
     const ingestionMediaDailyMicrogramMercuryRural = (AverageFishConsumptionPerDayInRuralGrams * levelMediumContaminationFish) / ruralIndividualWeight;
-    const ingestionMediaMercuryDaily1IndividualInMicrogramsPerKG = (popRuralMunicipio * ingestionMediaDailyMicrogramMercuryRural) + (popUrbMunicipio * ingestionMediaDailyMicrogramMercuryUrban);
+    const ingestionMediaMercuryDaily1IndividualInMicrogramsPerKG = (municipalRuralPop * ingestionMediaDailyMicrogramMercuryRural) + (municipalUrbanPop * ingestionMediaDailyMicrogramMercuryUrban);
     const ingestionMediaMercuryDaily1IndividualInGramsPerKG = ingestionMediaMercuryDaily1IndividualInMicrogramsPerKG/1000000;
     const ingestionMediaDailyIndividualInGramsPerDaily = ingestionMediaMercuryDaily1IndividualInGramsPerKG*individualAverageWeight;
-    const ingestionMediaMercuryEmYears = daysIn50Years * ingestionMediaDailyIndividualInGramsPerDaily;
-    
-    const TamanhoPop100kmRaio = isRegion ? (densidadePop2060 * Math.pow((PI * 100), 2)) : (densityPopulationalRegionNorth2060 * Math.pow((PI * 100), 2));
+    const ingestionMediaMercuryEmyears = daysIn50years * ingestionMediaDailyIndividualInGramsPerDaily;
 
+    const popSize100kmRadius = isRegion ? (popDensity2060 * Math.pow((Math.PI * 100), 2)) : (densityPopulationalRegionNorth2060 * Math.pow((Math.PI * 100), 2));
     
+    const affectedPeople = (toMethylatedWater/ingestionMediaMercuryEmyears);
+    const toPopulationAffectedMercuryHair = affectedPeople < popSize100kmRadius ? affectedPeople : popSize100kmRadius;
+    const popPeopleAbove20YearsOldinTheRegion = toPopulationAffectedMercuryHair * propOfPeopleOver20YearsOfAgeByTotalPop;
+    const peopleAbove20YearsoldInTheRegionIn52Years = accumulatedRiskMercuryHypertension * popPeopleAbove20YearsOldinTheRegion;
+    const hypertensionIncidenceRate = (peopleAbove20YearsoldInTheRegionIn52Years * 1000)/  toPopulationAffectedMercuryHair;
+    
+    const hypertensionIncidence = (hypertensionIncidenceRate * toPopulationAffectedMercuryHair) / 1000;
 
-    const pessoasAfetadas = (toMethylatedWater/ingestionMediaMercuryEmYears);
-    const toPopulationAffectedMercuryHair = pessoasAfetadas < TamanhoPop100kmRaio ? pessoasAfetadas : TamanhoPop100kmRaio;
-    const PopPessoasAcima20AnosnaRegiao = toPopulationAffectedMercuryHair * PropPessoasAcima20AnosporPopTotal;
-    
-    const PopPessoasAcima20AnosnaRegiaocomInfarto = PopPessoasAcima20AnosnaRegiao * PropPessoasAcima20AnosporComHipertensao;
-    const PessoasAcima20AnosnaRegiaoComHipertensaoMercurio = PopPessoasAcima20AnosnaRegiaocomInfarto * FracaoAtribuivelHipertensao;
-    const PessoasAcima20AnosNaRegiaoEm32Anos = PessoasAcima20AnosnaRegiaoComHipertensaoMercurio * DuracaoDaIncapacidadeHipertensao;
-    const TxIncidenciaHipertensao = (PessoasAcima20AnosNaRegiaoEm32Anos * 1000)/  toPopulationAffectedMercuryHair;
-    const IncidenciaHipertensao = (TxIncidenciaHipertensao * toPopulationAffectedMercuryHair) / 1000;
-    //const calculo0 = (IncidenciaHipertensao * 2) * PesoDaIncapacidadeHipertensao
-    
-    const sub1Calc1 = Math.pow(bplusr,2);
-    const sub1Calc2 = Math.exp(TxDesconto*AnoIniciodaIncapacidadeHipertensao);
-    const calculo1 = (constante * sub1Calc2)/ sub1Calc1;
-    const calculo2 = bplusr*(DuracaoDaIncapacidadeHipertensao + AnoIniciodaIncapacidadeHipertensao);
-    const calculo3 = bplusr*(DuracaoDaIncapacidadeHipertensao + AnoIniciodaIncapacidadeHipertensao)-1;
-    const sub4Calc1 = Math.exp(bplusr*AnoIniciodaIncapacidadeHipertensao);
-    const calculo4 = sub4Calc1 * (bplusr*AnoIniciodaIncapacidadeHipertensao-1);
-    const calculo5 = (1-agwt)/TxDesconto;
-    const calculo6 = (1-Math.exp(-TxDesconto*DuracaoDaIncapacidadeHipertensao));
-    const calculo7 = (agwt*calculo1*((Math.exp(calculo2)*calculo3)-calculo4)+calculo5*calculo6);
-    
-    const DALY1CustoHipertensao =  IncidenciaHipertensao * PesoDaIncapacidadeHipertensao * calculo7
-    const DALY1CustoHipertensaoemBRL = DALY1CustoInfarto * DALY1CustoHipertensao;
+    const calculation1 = (constant*Math.exp(discountRate*yearBeginningOfDisabilityHyertension))/(Math.pow(bplusr,2))
+    const calculation2 = (bplusr*(durationOfDisabilityHypertension + yearBeginningOfDisabilityHyertension));
+    const calculation3 = (bplusr*(durationOfDisabilityHypertension + yearBeginningOfDisabilityHyertension)-1);
+    const calculation4 = (Math.exp(bplusr*yearBeginningOfDisabilityHyertension)*(bplusr*yearBeginningOfDisabilityHyertension-1));
+    const calculation5 = ((1-agwt)/discountRate);
+    const calculation6 = (1-Math.exp(-discountRate*durationOfDisabilityHypertension));
+    const calculation7 = (agwt*calculation1*((Math.exp(calculation2)*calculation3)-calculation4)+calculation5*calculation6);
+   
+    const dalyHypertension = hypertensionIncidence * weightOgDisabilityHypertension * calculation7;
+    const DALY1HypertensionCost = dalyHypertension * DALY1Hypertension;
 
-    
-    const CustoAnualTratamentoHipertensao = 293;
-    const IncidenciaHipertensaoTratamento = (IncidenciaHipertensao * toPopulationAffectedMercuryHair) /1000;
-    const CustoTotalTratamentoHipertensaoAnos = IncidenciaHipertensaoTratamento * DuracaoDaIncapacidadeHipertensao * CustoAnualTratamentoHipertensao;
-    const CustoTotalDALYeTratamentoHipertensao = CustoTotalTratamentoHipertensaoAnos + DALY1CustoHipertensaoemBRL;
+    const AnnualHypertensionCostTreatament = 292;
+    const incidenceHypertensionTreatament = (hypertensionIncidence * toPopulationAffectedMercuryHair) /1000;
+    const toCostHypertensionTreatamentInYears = incidenceHypertensionTreatament * durationOfDisabilityHypertension * AnnualHypertensionCostTreatament;
+    const toDALYCostAndHypertensionTreatment = toCostHypertensionTreatamentInYears + DALY1HypertensionCost;
 
-    return CustoTotalDALYeTratamentoHipertensao
+    return toDALYCostAndHypertensionTreatment
 
 
 }
 
 export default hypertension
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,9 +1,26 @@
-const carbon = (hectare) => {
-    const CustocarbonoporHaUSD = 10.00
-    const TxCambio = 5
-    const CustoCarbonoporHaBRL = TxCambio * CustocarbonoporHaUSD
-    const CustoTotalCarbonoBRL = CustoCarbonoporHaBRL * hectare * 12 * 348
-    return CustoTotalCarbonoBRL;
+import calcMontante from "utils/calcMontante"
+import vpl from "utils/vpl"
+import { FERRY, PIT } from "../consts"
+
+const carbon = (hectare, likeMinning, panningTime) => {
+
+    const txDiscount = 0.03;
+    const carbonCostPerHaBRL = 887.74;
+    
+    const amounts = calcMontante(carbonCostPerHaBRL)
+    const VPLCarbon = vpl(txDiscount, amounts)
+
+    let toCarbon;
+      if(likeMinning === FERRY) {
+        toCarbon = 0
+      }else if (likeMinning === PIT && panningTime) {
+        toCarbon = VPLCarbon * 0.31 * 12
+      }else if (likeMinning === PIT && hectare) {
+        toCarbon = VPLCarbon * 0.31 * 12
+      }else{
+        toCarbon = VPLCarbon * hectare * 12
+      }
+      return toCarbon
 } 
 
 export default carbon
