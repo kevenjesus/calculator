@@ -19,8 +19,10 @@ export const ContainerHeader = styled.header`
     align-items: center;
     width: 100%;
     height: 123px;
-    background: #fff;
+    background: ${({theme}) => theme === 'white' ? '#fff' : '#000' };
     box-shadow: 0px 2px 10px -3px #3F3D56;
+    position: relative;
+    z-index: 1;
 `
 
 export const LogoContainer = styled.div`
@@ -43,7 +45,7 @@ export const LogoName = styled.span`
     width: 100%;
     font-family: 'Fjalla One', sans-serif;
     font-size: ${({isPtBR}) => isPtBR ? '15px' : '30px'};
-    color: ${colors.blacks.normal};
+    color: ${({theme}) => theme === 'white' ? colors.blacks.normal : '#fff'};
     text-transform: uppercase;
     @media (min-width: 768px ) {
         font-size: ${({isPtBR}) => isPtBR ? '20px' : '25px'};
@@ -57,7 +59,7 @@ export const LogoSlogan = styled.span`
     display: block;
     width: 100%;
     font-size: 12px;
-    color: ${colors.blacks.normal};
+    color: ${({theme}) => theme === 'white' ? colors.blacks.normal : '#fff'};
 `   
 
 export const BarMenu = styled.button`

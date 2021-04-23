@@ -57,5 +57,5 @@ export const Menuitem = styled.a`
     font-family: 'Fjalla One', sans-serif;
     font-size: 20px;
     text-transform: uppercase;
-    color: ${colors.blacks.normal};
+    color: ${({theme}) => theme === 'white' ? colors.blacks.normal : '#fff'};
 ` 

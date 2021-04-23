@@ -47,7 +47,7 @@ const IntroductionPage = () => {
                 {introduction.introduction.paragraphy_04}
             </Text>
             <Row>
-                <Col sm={5}>
+                <Col sm={3}>
                     <Link to='/introduction/context-value'>
                         <Button variant="secondary">{introduction.buttons.moreContextValue}</Button>
                     </Link>

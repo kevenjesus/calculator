@@ -1,3 +1,4 @@
+import Header from 'layout/Header'
 import { Headline, Text } from 'pages/Introduction/style'
 import { useContext } from 'react'
 import { Col, Row } from 'react-flexbox-grid'
@@ -12,6 +13,7 @@ const Home = () => {
     const { introduction } = language
     return (
         <ContainerBackground>
+            <Header theme="dark" />
             <Overlay />
             <Container>
             <Headline color="white">{introduction.about.headline}</Headline>

@@ -14,7 +14,7 @@ import { ReactComponent as Portuguese } from 'assets/icons/portuguese.svg'
 import { ReactComponent as Spanish } from 'assets/icons/spanish.svg'
 import { ReactComponent as Usa } from 'assets/icons/usa.svg'
 
-const Header = () => {
+const Header = ({theme = 'white'}) => {
     const [visibleSidebar, setVisibleSidebar] = useState(false);
     const [notRender, setNoteRender] = useState(-1);
     const [lang, setLanguage] = useState('pt');
@@ -43,15 +43,15 @@ const Header = () => {
     
     return (
         <>
-        <ContainerHeader>
+        <ContainerHeader theme={theme}>
             <Container>
                 <LogoContainer>
                     <Link to="/calculator">
                         <Logo />
                     </Link>
                     <LogoBase>
-                        <LogoName isPtBR={lang === 'en'}>{header.naming}</LogoName>
-                        <LogoSlogan>{header.slogan}</LogoSlogan>
+                        <LogoName theme={theme} isPtBR={lang === 'en'}>{header.naming}</LogoName>
+                        <LogoSlogan theme={theme}>{header.slogan}</LogoSlogan>
                     </LogoBase>
                 </LogoContainer>
 
@@ -68,7 +68,7 @@ const Header = () => {
                     <Usa />
                     <LanguageLabel>English</LanguageLabel>
                 </Language>
-                <Menuitem href="https://www.conservation-strategy.org/" target="_blank">{header.linkWebsite}</Menuitem>
+                <Menuitem theme={theme} href="https://www.conservation-strategy.org/" target="_blank">{header.linkWebsite}</Menuitem>
                 </MenuShow>
                 <BarMenu onClick={() => setVisibleSidebar(true)}>
                     <Bar />
