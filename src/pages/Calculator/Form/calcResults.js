@@ -17,7 +17,7 @@ import recoveryOfTopsoil from "./calculations/recoverOfTopsoil"
 import recreation from "./calculations/recreation"
 import soilMercuryRemediation from "./calculations/soilMercuryRemediation"
 import woodAndNonWoodProducts from "./calculations/woodAndNonWoodProducts"
-import { AMOUNT_GOLD, CATEGORY_DEFORESTATION, CATEGORY_MERCURY, CATEGORY_SILTING_RIVERS, IMPACTED_AREA, PIT } from "./consts"
+import { AMOUNT_GOLD, CATEGORY_DEFORESTATION, CATEGORY_MERCURY, CATEGORY_SILTING_RIVERS, IMPACTED_AREA, MONTHS_OF_MINING, PIT } from "./consts"
 
 const calcResults = (state, dispatch) => {
     const { calculator } = state
@@ -37,8 +37,13 @@ const calcResults = (state, dispatch) => {
         const gramadeOuroporHe = goldenGramForHectare(hectareValue, goldValue)
         const currentCountry = counties.find(c => c.id === Number(country))
         const especie = currentCountry.especies <= 0 ? state.especie : currentCountry.especies
+        const likeMining = valuatioMethod // FERRY, PIT or ALLUVION
+        const valueLikeMining = qtdAnalysis.value // gold, hactare, months, years
+        const typeValueLikeMining = calculator.analysisUnit // AMOUNT_GOLD // IMPACTED_AREA / YEARS_OF_MINING / MONTHS_OF_MINING
 
-
+        // tipo de garimpo = valuatioMethod
+        // valor do tipo de garimpo = qtdAnalysis.value (ouro, hectere, tempo)
+        // tipo de valor do garimpo = calculator.analysisUnit 
 
         const totalBio = bioprospecting(hectareValue, txPrevalence, valuatioMethod)
         impacts.push({ label: 'BioProspecção', displayName: 'BioProspecção', category: CATEGORY_DEFORESTATION, value: totalBio })

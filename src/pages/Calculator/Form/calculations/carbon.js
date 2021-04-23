@@ -2,7 +2,7 @@ import calcMontante from "utils/calcMontante"
 import vpl from "utils/vpl"
 import { FERRY, PIT } from "../consts"
 
-const carbon = (hectare, likeMinning, panningTime) => {
+const carbon = (hectare, likeMinning) => {
 
     const txDiscount = 0.03;
     const carbonCostPerHaBRL = 887.74;
@@ -13,10 +13,10 @@ const carbon = (hectare, likeMinning, panningTime) => {
     let toCarbon;
       if(likeMinning === FERRY) {
         toCarbon = 0
-      }else if (likeMinning === PIT && panningTime) {
+
+      }else if (likeMinning === PIT) {
         toCarbon = VPLCarbon * 0.31 * 12
-      }else if (likeMinning === PIT && hectare) {
-        toCarbon = VPLCarbon * 0.31 * 12
+
       }else{
         toCarbon = VPLCarbon * hectare * 12
       }

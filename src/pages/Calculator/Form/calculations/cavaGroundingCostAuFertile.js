@@ -1,7 +1,7 @@
 
-import { FERRY, PIT } from "../consts";
+import { AMOUNT_GOLD, FERRY, MONTHS_OF_MINING, PIT } from "../consts";
 
-const cavaGroundingCostAuFertile = (hectare, gold, pitDepth, DistanciaGarimpoCentroUrbanoFrete, tipoGarimpo, tempoGarimpo) => {
+const cavaGroundingCostAuFertile = (typeValueLikeMining, valueLikeMining, pitDepth, distanceFromUrbanCenterToFreight, likeMining) => {
 
         const fertileEarthMediumDepth = 0.4;
         const groundingCostFertilePit = 12.7;
@@ -20,13 +20,13 @@ const cavaGroundingCostAuFertile = (hectare, gold, pitDepth, DistanciaGarimpoCen
         const amountOfGoldGramsPerYearWell = 23700;
         const hollowMediumDepth = 10;
 
-    if (tipoGarimpo === FERRY) {
+    if (likeMining === FERRY) {
         const toCostOfFertileGroundingWithFreight = 0
         return toCostOfFertileGroundingWithFreight
         
-    }else if (tipoGarimpo === PIT && tempoGarimpo) {
+    }else if (likeMining === PIT && typeValueLikeMining === MONTHS_OF_MINING) {
         
-        const toGoldGramQuantityWell = amountOfGoldGramsPerYearWell * tempoGarimpo;
+        const toGoldGramQuantityWell = amountOfGoldGramsPerYearWell * valueLikeMining;
         const revolvedSoloTon = toGoldGramQuantityWell / productivityGoldMiningTon;
 
         const upturnedSterileTon = revolvedSoloTon * sterileOreEnhancement;
@@ -39,10 +39,10 @@ const cavaGroundingCostAuFertile = (hectare, gold, pitDepth, DistanciaGarimpoCen
         const toCostGroundingFertileLandWithoutFreight = fertileLandVolume * groundingCostFertilePit; 
         const excavatorQuantityM3PerYearFertileLand = daysInTheYear * excavatorHoursPerDay * qtExtractedInM3PerExcavatorHour;
         const excavatornsQuantityFertil = (fertileLandVolume / excavatorQuantityM3PerYearFertileLand) < 1 ? 1 : Math.ceil(fertileLandVolume / excavatorQuantityM3PerYearFertileLand); //ok
-        const transportCostTotalFreightFertileExcavator = DistanciaGarimpoCentroUrbanoFrete * excavatorCostPerKM;
-        const qtLitersDieselConsumedFertil = DistanciaGarimpoCentroUrbanoFrete / kmRotatedPerLiter;
+        const transportCostTotalFreightFertileExcavator = distanceFromUrbanCenterToFreight * excavatorCostPerKM;
+        const qtLitersDieselConsumedFertil = distanceFromUrbanCenterToFreight / kmRotatedPerLiter;
         const fuelCostFertileFreight =	dieselLiterPrice * qtLitersDieselConsumedFertil;
-        const freightCostWithFertilDriver = avaregeWageDriverFreightPerKm * DistanciaGarimpoCentroUrbanoFrete;
+        const freightCostWithFertilDriver = avaregeWageDriverFreightPerKm * distanceFromUrbanCenterToFreight;
         const totalCostShippingFertileOneWay = freightCostWithFertilDriver + fuelCostFertileFreight + transportCostTotalFreightFertileExcavator;
         const toCostShippingGroundFertilityRoundtrip = totalCostShippingFertileOneWay * 2;
         const toCostFreightFinalFertileGrounding = toCostShippingGroundFertilityRoundtrip * excavatornsQuantityFertil;
@@ -50,9 +50,9 @@ const cavaGroundingCostAuFertile = (hectare, gold, pitDepth, DistanciaGarimpoCen
 
         return Math.round(toCostOfFertileGroundingWithFreight * 100) / 100
 
-    }else if (tipoGarimpo === PIT && hectare){
+    }else if (likeMining === PIT && typeValueLikeMining === AMOUNT_GOLD){
 
-        const revolvedSoloTon = gold / pitProductivity;
+        const revolvedSoloTon = valueLikeMining / pitProductivity;
         const upturnedSterileTon = revolvedSoloTon * sterileOreEnhancement;
         const toUpturnedSoil = revolvedSoloTon + upturnedSterileTon;
         const losslessVolume = toUpturnedSoil / goldDensity;
@@ -63,10 +63,10 @@ const cavaGroundingCostAuFertile = (hectare, gold, pitDepth, DistanciaGarimpoCen
         const toCostGroundingFertileLandWithoutFreight = fertileLandVolume * groundingCostFertilePit;
         const excavatorQuantityM3PerYearFertileLand = daysInTheYear * excavatorHoursPerDay * qtExtractedInM3PerExcavatorHour;
         const excavatornsQuantityFertil = (fertileLandVolume / excavatorQuantityM3PerYearFertileLand) < 1 ? 1 : Math.ceil(fertileLandVolume / excavatorQuantityM3PerYearFertileLand); //ok
-        const transportCostTotalFreightFertileExcavator = DistanciaGarimpoCentroUrbanoFrete * excavatorCostPerKM;
-        const qtLitersDieselConsumedFertil = DistanciaGarimpoCentroUrbanoFrete / kmRotatedPerLiter;
+        const transportCostTotalFreightFertileExcavator = distanceFromUrbanCenterToFreight * excavatorCostPerKM;
+        const qtLitersDieselConsumedFertil = distanceFromUrbanCenterToFreight / kmRotatedPerLiter;
         const fuelCostFertileFreight =	dieselLiterPrice * qtLitersDieselConsumedFertil;
-        const freightCostWithFertilDriver = avaregeWageDriverFreightPerKm * DistanciaGarimpoCentroUrbanoFrete;
+        const freightCostWithFertilDriver = avaregeWageDriverFreightPerKm * distanceFromUrbanCenterToFreight;
         const totalCostShippingFertileOneWay = freightCostWithFertilDriver + fuelCostFertileFreight + transportCostTotalFreightFertileExcavator;
         const toCostShippingGroundFertilityRoundtrip = totalCostShippingFertileOneWay * 2;
         const toCostFreightFinalFertileGrounding = toCostShippingGroundFertilityRoundtrip * excavatornsQuantityFertil;
@@ -76,7 +76,7 @@ const cavaGroundingCostAuFertile = (hectare, gold, pitDepth, DistanciaGarimpoCen
 
     }else { 
         
-        const revolvedSoloTon = gold / pitProductivity;
+        const revolvedSoloTon = valueLikeMining / pitProductivity;
         const upturnedSterileTon = revolvedSoloTon * sterileOreEnhancement;
         const toUpturnedSoil = revolvedSoloTon + upturnedSterileTon;
         const losslessVolume = toUpturnedSoil / goldDensity;
@@ -87,10 +87,10 @@ const cavaGroundingCostAuFertile = (hectare, gold, pitDepth, DistanciaGarimpoCen
         const toCostGroundingFertileLandWithoutFreight = fertileLandVolume * groundingCostFertilePit;
         const excavatorQuantityM3PerYearFertileLand = daysInTheYear * excavatorHoursPerDay * qtExtractedInM3PerExcavatorHour;
         const excavatornsQuantityFertil = (fertileLandVolume / excavatorQuantityM3PerYearFertileLand) < 1 ? 1 : Math.ceil(fertileLandVolume / excavatorQuantityM3PerYearFertileLand); //ok
-        const transportCostTotalFreightFertileExcavator = DistanciaGarimpoCentroUrbanoFrete * excavatorCostPerKM;
-        const qtLitersDieselConsumedFertil = DistanciaGarimpoCentroUrbanoFrete / kmRotatedPerLiter;
+        const transportCostTotalFreightFertileExcavator = distanceFromUrbanCenterToFreight * excavatorCostPerKM;
+        const qtLitersDieselConsumedFertil = distanceFromUrbanCenterToFreight / kmRotatedPerLiter;
         const fuelCostFertileFreight =	dieselLiterPrice * qtLitersDieselConsumedFertil;
-        const freightCostWithFertilDriver = avaregeWageDriverFreightPerKm * DistanciaGarimpoCentroUrbanoFrete;
+        const freightCostWithFertilDriver = avaregeWageDriverFreightPerKm * distanceFromUrbanCenterToFreight;
         const totalCostShippingFertileOneWay = freightCostWithFertilDriver + fuelCostFertileFreight + transportCostTotalFreightFertileExcavator;
         const toCostShippingGroundFertilityRoundtrip = totalCostShippingFertileOneWay * 2;
         const toCostFreightFinalFertileGrounding = toCostShippingGroundFertilityRoundtrip * excavatornsQuantityFertil;
