@@ -19,10 +19,8 @@ import calcResults from 'pages/Calculator/Form/calcResults';
 
 const Content = ({step}) => {
     switch(step) {
-        case ABOUT:
-        default:
-            return <About />
         case INTRODUCTION:
+        default:
             return <IntroductionPage />
         case HOW_USE_CALCULATOR:
             return <HowUseCalculator />
