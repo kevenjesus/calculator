@@ -1,8 +1,9 @@
-import { FERRY, PIT } from "../consts";
+import { FERRY, PIT, YEARS_OF_MINING } from "../consts";
 
 const CONSERVATIVE = 0.29
 
-const soilMercuryRemediation = (gold, txPrevalence, likeMining, panningTime) => {
+const soilMercuryRemediation = (likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, gold) => {
+    
 
     const quantityOfGramsGoldYearWell = 23700;
     const HgAuRatio = 2.6;
@@ -10,8 +11,8 @@ const soilMercuryRemediation = (gold, txPrevalence, likeMining, panningTime) => 
     const HgContainedSoilinGrassPerTon = 0.24;
     const remediationCostBRLPerTonOfSoil = 1750;
 
-    if (likeMining === PIT && panningTime) { //Input anos de garimpo
-        const amountOfTotalGoldWell = quantityOfGramsGoldYearWell * panningTime;
+    if (likeMining === PIT && typeValueLikeMining === YEARS_OF_MINING) { //Input anos de garimpo
+        const amountOfTotalGoldWell = quantityOfGramsGoldYearWell * valueLikeMining;
         const amountOfHgDumpedintoSoilerGold = lossPercentHgInSoil * HgAuRatio;
         const amountOfHgDumpedintoSoilerGoldInGrams = amountOfHgDumpedintoSoilerGold * amountOfTotalGoldWell;
         const contaminatedSoilTon = amountOfHgDumpedintoSoilerGoldInGrams * HgContainedSoilinGrassPerTon;

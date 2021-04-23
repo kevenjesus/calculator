@@ -2,22 +2,22 @@ import { FERRY, PIT } from "../consts";
 
 const CONSERVATIVE = 0.29
 
-const recoveryOfTopsoil = (valueHypothesis, miningDistanceUrbanCenterFreight, gold, goldenGramPerHa, likeMining, panningTime) => {
+const recoveryOfTopsoil = (likeMining, distanceanningCenter, gold, goldenGramPerHa, txPrevalence) => {
   
     let hectare; 
     if(likeMining === PIT) {
       hectare = 0.31
-    }else if (likeMining === PIT && panningTime) {
-      hectare = 0.31
+
     }else {
       hectare = goldenGramPerHa * gold
+
     }
 
     if(likeMining === FERRY) {
       const toSurfaceRecoveryCostWithFreight = 0
       return toSurfaceRecoveryCostWithFreight
     }
-    const soilSurfaceRecPerHa = valueHypothesis === CONSERVATIVE ? 14690 : 23400;
+    const soilSurfaceRecPerHa = txPrevalence === CONSERVATIVE ? 14690 : 23400;
 
     const capacityLoadTruckNumberOfSeedlings = 2700;
     const superficialSeedlingsPerHa = 1667;
@@ -28,10 +28,10 @@ const recoveryOfTopsoil = (valueHypothesis, miningDistanceUrbanCenterFreight, go
 
     const surfaceSoilRecoveryWithoutFreight = soilSurfaceRecPerHa * hectare * 12;
     const numberOfPathsSuperficialSeddlindRecovery = ((hectare*superficialSeedlingsPerHa)/capacityLoadTruckNumberOfSeedlings) < 0.9999999999999 ? 1 : Math.ceil((hectare*superficialSeedlingsPerHa)/capacityLoadTruckNumberOfSeedlings);
-    const totalSurfaceFreightCostChances = miningDistanceUrbanCenterFreight * transportCostChangesPerKm;
-    const quantityOfLitersConsumedDieselSurfaceRecovery =	miningDistanceUrbanCenterFreight / kmRotatedPerLiter;
+    const totalSurfaceFreightCostChances = distanceanningCenter * transportCostChangesPerKm;
+    const quantityOfLitersConsumedDieselSurfaceRecovery =	distanceanningCenter / kmRotatedPerLiter;
     const fuelCostFreightSurfaceRecovery =	priceLiterDiesel * quantityOfLitersConsumedDieselSurfaceRecovery;
-    const costFreightWithDriverSurfaceRecovery =    averageDriverSalaryFreightPerKm * miningDistanceUrbanCenterFreight;
+    const costFreightWithDriverSurfaceRecovery =    averageDriverSalaryFreightPerKm * distanceanningCenter;
     const toSurfaceFreightCostOneWay =   costFreightWithDriverSurfaceRecovery+ fuelCostFreightSurfaceRecovery + totalSurfaceFreightCostChances;
     const toSurfaceFreightCostRoundTrip =	toSurfaceFreightCostOneWay * 2;
     const toCostFreightFinalSurfaceRecovery =	toSurfaceFreightCostRoundTrip * numberOfPathsSuperficialSeddlindRecovery;

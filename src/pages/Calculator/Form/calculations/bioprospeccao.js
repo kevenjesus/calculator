@@ -4,9 +4,9 @@ import { FERRY, PIT } from "../consts";
 
 const CONSERVATIVE = 0.29
 
-const bioprospecting = (hectare, valueHypothesis, likeMining) => { 
+const bioprospecting = (likeMining, txPrevalence, hectare) => { 
 
-  const bioprospectingCostByBRL = valueHypothesis === CONSERVATIVE ? 68.19 : 116.95
+  const bioprospectingCostByBRL = txPrevalence === CONSERVATIVE ? 68.19 : 116.95
   const txDiscount = 0.03;
 
   const amounts = calcMontante(bioprospectingCostByBRL)
@@ -17,7 +17,7 @@ const bioprospecting = (hectare, valueHypothesis, likeMining) => {
         toBioprospecting = 0
       }else if (likeMining === PIT) {
         toBioprospecting = VPLBioprospecting * 0.31 * 12
-      }else {
+      }else{
         toBioprospecting = VPLBioprospecting * hectare * 12
       }
     return toBioprospecting

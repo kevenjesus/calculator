@@ -4,27 +4,24 @@ import { FERRY, PIT } from "../consts";
 
 const CONSERVATIVE = 0.29
 
-const erosionSiltingUp = (hectare, txPrevalence, likemining, panningTime) => {
-
+const erosionSiltingUp = (likeMining, txPrevalence, hectare) => {
+ 
   const GDPperCapitaBrazil2019USD = 8717.18
 
   if(txPrevalence === CONSERVATIVE) {
     const discountRate = 0.03;
-    const siltingUppCostPerHaBRL = 66.42;
+    const siltingUpCostPerHaBRL = 66.42;
 
-    const amounts = calcMontante(siltingUppCostPerHaBRL)
+    const amounts = calcMontante(siltingUpCostPerHaBRL)
     const VPLhectareSilting = vpl(discountRate, amounts)
     
     let toErosion;
-    if(likemining === FERRY) {
+    if(likeMining === FERRY) {
       toErosion = 0
       
-    }else if (likemining === PIT && hectare) {
+    }else if (likeMining === PIT) {
       toErosion = VPLhectareSilting * 0.31 * 12
     
-    }else if (likemining === PIT && panningTime) {
-      toErosion = VPLhectareSilting * 0.31 * 12
-
     }else{
       toErosion = VPLhectareSilting * hectare * 12
 
@@ -40,16 +37,16 @@ const erosionSiltingUp = (hectare, txPrevalence, likemining, panningTime) => {
       const calc3 = 13.32 * calc1;
       const calc4 = 0.623 * calc2;
       const calc5 = calc3 - 65.64 - calc4;
-      const CustoAssoreamentoporHaUSD = Math.exp(calc5);
-      const siltingUppCostPerHaBRL = CustoAssoreamentoporHaUSD * txCambio;
+      const siltingUpCostPerHaUSD = Math.exp(calc5);
+      const siltingUpCostPerHaBRL = siltingUpCostPerHaUSD * txCambio;
 
-      const amounts = calcMontante(siltingUppCostPerHaBRL)
+      const amounts = calcMontante(siltingUpCostPerHaBRL)
       const VPLhectareSilting = vpl(discountRate, amounts)
 
       let toErosion;
-        if(likemining === FERRY) {
+        if(likeMining === FERRY) {
           toErosion = 0
-        }else if (likemining === PIT) {
+        }else if (likeMining === PIT) {
           toErosion = VPLhectareSilting * 0.31 * 12
         }else {
           toErosion = VPLhectareSilting * hectare * 12

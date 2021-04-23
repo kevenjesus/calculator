@@ -1,34 +1,35 @@
-import { ALLUVIUM, FERRY, PIT } from "../consts";
+import { ALLUVIUM, AMOUNT_GOLD, FERRY, MONTHS_OF_MINING, PIT, YEARS_OF_MINING } from "../consts";
 
 const CONSERVATIVE = 0.29
 
 
-const hypertension = (gold, municipalRuralPop, municipalUrbanPop, txPrevalence, popDensity2060, isRegion, likeMining, panningTime) => {
+const hypertension = (likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, urbanPopMunicipality, ruralPopMunicipality, popDensity2060, gold, isRegion) => {
+    
     
     const HgAuRatio = 2.6;
     
     let gramsHgReleasedInWater
-    if (likeMining === PIT && panningTime) { //Input Anos de Garimpo
+    if (likeMining === PIT && typeValueLikeMining === YEARS_OF_MINING) { //Input Anos de Garimpo
         const lossPercentHgInWater = txPrevalence === CONSERVATIVE ? 0.132 : 0.21;
         const quantityOfGramsGoldYearWell = 23700;
-        const amountOfTotalGoldWell = quantityOfGramsGoldYearWell * panningTime;
+        const amountOfTotalGoldWell = quantityOfGramsGoldYearWell * valueLikeMining;
         gramsHgReleasedInWater = lossPercentHgInWater * HgAuRatio * amountOfTotalGoldWell
 
-    }else if (likeMining === PIT && gold) { //input Ouro/Hectare
+    }else if (likeMining === PIT && typeValueLikeMining === AMOUNT_GOLD) { //input Ouro
         const lossPercentHgInWater = txPrevalence === CONSERVATIVE ? 0.132 : 0.21;
-        gramsHgReleasedInWater = lossPercentHgInWater * HgAuRatio * gold;
+        gramsHgReleasedInWater = lossPercentHgInWater * HgAuRatio * valueLikeMining;
 
-    }else if (likeMining === FERRY && panningTime) { //input Meses de garimpo de balsa
+    }else if (likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING) { //input Meses de garimpo de balsa
         const lossPercentHgInWater = txPrevalence === CONSERVATIVE ? 0.22 : 0.35;
         const prodGoldMonthFerry = 302;
-        const toFerryGoldProductivity = panningTime * prodGoldMonthFerry;
+        const toFerryGoldProductivity = valueLikeMining * prodGoldMonthFerry;
         gramsHgReleasedInWater = lossPercentHgInWater * HgAuRatio * toFerryGoldProductivity;
 
-    }else if (likeMining === FERRY && gold) { //input Ouro/Hectare
+    }else if (likeMining === FERRY && typeValueLikeMining === AMOUNT_GOLD) { //input Ouro
         const lossPercentHgInWater = txPrevalence === CONSERVATIVE ? 0.22 : 0.35;
-        gramsHgReleasedInWater = lossPercentHgInWater * HgAuRatio * gold;
+        gramsHgReleasedInWater = lossPercentHgInWater * HgAuRatio * valueLikeMining;
 
-    }else if (likeMining === ALLUVIUM && gold) { //input Ouro/Hectare
+    }else if (likeMining === ALLUVIUM) { //input Ouro/Hectare
         const lossPercentHgInWater = txPrevalence === CONSERVATIVE ? 0.132 : 0.21;
         gramsHgReleasedInWater = lossPercentHgInWater * HgAuRatio * gold;
     }
@@ -54,12 +55,12 @@ const hypertension = (gold, municipalRuralPop, municipalUrbanPop, txPrevalence, 
     const yearBeginningOfDisabilityHyertension = 20;
     const constant = 0.1658;
     
-    const individualAverageWeight = (municipalRuralPop*ruralIndividualWeight) + (municipalUrbanPop*urbanindividualWeight);
+    const individualAverageWeight = (ruralPopMunicipality*ruralIndividualWeight) + (urbanPopMunicipality*urbanindividualWeight);
     const daysIn50years = (365*years);
     
     const ingestionMediaDailyMicrogramMercuryUrban = (consumptionMediumFishByDayInGramsUrban * levelMediumContaminationFish) / urbanindividualWeight;
     const ingestionMediaDailyMicrogramMercuryRural = (AverageFishConsumptionPerDayInRuralGrams * levelMediumContaminationFish) / ruralIndividualWeight;
-    const ingestionMediaMercuryDaily1IndividualInMicrogramsPerKG = (municipalRuralPop * ingestionMediaDailyMicrogramMercuryRural) + (municipalUrbanPop * ingestionMediaDailyMicrogramMercuryUrban);
+    const ingestionMediaMercuryDaily1IndividualInMicrogramsPerKG = (ruralPopMunicipality * ingestionMediaDailyMicrogramMercuryRural) + (urbanPopMunicipality * ingestionMediaDailyMicrogramMercuryUrban);
     const ingestionMediaMercuryDaily1IndividualInGramsPerKG = ingestionMediaMercuryDaily1IndividualInMicrogramsPerKG/1000000;
     const ingestionMediaDailyIndividualInGramsPerDaily = ingestionMediaMercuryDaily1IndividualInGramsPerKG*individualAverageWeight;
     const ingestionMediaMercuryEmyears = daysIn50years * ingestionMediaDailyIndividualInGramsPerDaily;

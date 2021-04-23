@@ -1,35 +1,37 @@
-import { ALLUVIUM, FERRY, PIT } from "../consts";
+import { ALLUVIUM, AMOUNT_GOLD, FERRY, MONTHS_OF_MINING, PIT, YEARS_OF_MINING } from "../consts";
 
 const CONSERVATIVE = 0.29;
 
-const heartAttack = (gold, ruralPopMunicipality, urbanPopMunicipality, txPrevalence, densityPop2060, isRegion, likeMining, panningTime) => {
+const heartAttack = (likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, urbanPopMunicipality, ruralPopMunicipality, popDensity2060, gold, isRegion)=> {
+    console.log('txPrevalence',txPrevalence)
 
     const HgAuRatio = 2.6;
     
     let HgGrassReleasedInWater
-    if (likeMining === PIT && panningTime) { //Input Anos de Garimpo
+    if (likeMining === PIT && typeValueLikeMining === YEARS_OF_MINING) { //Input Anos de Garimpo
         const lossPercentHgInWater = txPrevalence === CONSERVATIVE ? 0.132 : 0.21;
         const quantityOgGramsgoldYearWell = 23700;
-        const amountOfTotalGoldWell = quantityOgGramsgoldYearWell * panningTime;
+        const amountOfTotalGoldWell = quantityOgGramsgoldYearWell * valueLikeMining;
         HgGrassReleasedInWater = lossPercentHgInWater * HgAuRatio * amountOfTotalGoldWell
 
-    }else if (likeMining === PIT && gold) { //input Ouro/Hectare
+    }else if (likeMining === PIT && typeValueLikeMining === AMOUNT_GOLD) { //input Ouro/Hectare
         const lossPercentHgInWater = txPrevalence === CONSERVATIVE ? 0.132 : 0.21;
-        HgGrassReleasedInWater = lossPercentHgInWater * HgAuRatio * gold;
+        HgGrassReleasedInWater = lossPercentHgInWater * HgAuRatio * valueLikeMining;
 
-    }else if (likeMining === FERRY && panningTime) { //input Meses de garimpo de balsa
+    }else if (likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING) { //input Meses de garimpo de balsa
         const lossPercentHgInWater = txPrevalence === CONSERVATIVE ? 0.22 : 0.35;
         const goldProductionMonthFerry = 302;
-        const toGoldFerryProduction = panningTime * goldProductionMonthFerry;
+        const toGoldFerryProduction = valueLikeMining * goldProductionMonthFerry;
         HgGrassReleasedInWater = lossPercentHgInWater * HgAuRatio * toGoldFerryProduction;
 
-    }else if (likeMining === FERRY && gold) { //input Ouro/Hectare
+    }else if (likeMining === FERRY && typeValueLikeMining === AMOUNT_GOLD) { //input Ouro
         const lossPercentHgInWater = txPrevalence === CONSERVATIVE ? 0.22 : 0.35;
-        HgGrassReleasedInWater = lossPercentHgInWater * HgAuRatio * gold;
+        HgGrassReleasedInWater = lossPercentHgInWater * HgAuRatio * valueLikeMining;
 
-    }else if (likeMining === ALLUVIUM && gold) { //input Ouro/Hectare
+    }else if (likeMining === ALLUVIUM) { //input Ouro/Hectare
         const lossPercentHgInWater = txPrevalence === CONSERVATIVE ? 0.132 : 0.21;
         HgGrassReleasedInWater = lossPercentHgInWater * HgAuRatio * gold;
+       
     }
     
     const methyladPercent = txPrevalence === CONSERVATIVE ? 0.11 : 0.22;
@@ -63,7 +65,7 @@ const heartAttack = (gold, ruralPopMunicipality, urbanPopMunicipality, txPrevale
     const ingestionMediaDaily1IndividualInGrams = ingestionMediaMercuryDaily1IndividualInGramsPerKGDay*individualAverageWeight;
     const ingestionMediaMercuryEmyears = daysIn50years * ingestionMediaDaily1IndividualInGrams;
     
-    const popSize100kmRadius = isRegion ? (densityPop2060 * Math.pow((Math.PI * 100), 2)) : (densityPopulationalRegionNorth2060 * Math.pow((Math.PI * 100), 2));
+    const popSize100kmRadius = isRegion ? (popDensity2060 * Math.pow((Math.PI * 100), 2)) : (densityPopulationalRegionNorth2060 * Math.pow((Math.PI * 100), 2));
 
     const affectedPeople = (toMethylatedWater/ingestionMediaMercuryEmyears);
     const toPopulationAffectedMercuryHair = affectedPeople < popSize100kmRadius ? affectedPeople : popSize100kmRadius;
@@ -89,6 +91,7 @@ const heartAttack = (gold, ruralPopMunicipality, urbanPopMunicipality, txPrevale
     const infarctionIncidenceTreatment = (infarctionIncidenceRate * toPopulationAffectedMercuryHair) /1000;
     const toCostOfInfarctionTreatmentYears = infarctionIncidenceTreatment * durationDisabilityInfarction * annualInfarctTreatmentCost;
     const toDALYCostAndInfarctionTreatment = toCostOfInfarctionTreatmentYears + DALYInfarction;
+    console.log('toDALYCostAndInfarctionTreatment', toDALYCostAndInfarctionTreatment)
 
     return toDALYCostAndInfarctionTreatment
 }

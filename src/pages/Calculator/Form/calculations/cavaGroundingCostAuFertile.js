@@ -1,7 +1,7 @@
 
 import { AMOUNT_GOLD, FERRY, MONTHS_OF_MINING, PIT } from "../consts";
 
-const cavaGroundingCostAuFertile = (typeValueLikeMining, valueLikeMining, pitDepth, distanceFromUrbanCenterToFreight, likeMining) => {
+const cavaGroundingCostAuFertile = (likeMining, typeValueLikeMining, valueLikeMining, pitDepth, distanceFromUrbanCenterToFreight, gold) => {
 
         const fertileEarthMediumDepth = 0.4;
         const groundingCostFertilePit = 12.7;
@@ -47,9 +47,8 @@ const cavaGroundingCostAuFertile = (typeValueLikeMining, valueLikeMining, pitDep
         const toCostShippingGroundFertilityRoundtrip = totalCostShippingFertileOneWay * 2;
         const toCostFreightFinalFertileGrounding = toCostShippingGroundFertilityRoundtrip * excavatornsQuantityFertil;
         const toCostOfFertileGroundingWithFreight = toCostFreightFinalFertileGrounding + toCostGroundingFertileLandWithoutFreight;
-
-        return Math.round(toCostOfFertileGroundingWithFreight * 100) / 100
-
+        return toCostOfFertileGroundingWithFreight
+        
     }else if (likeMining === PIT && typeValueLikeMining === AMOUNT_GOLD){
 
         const revolvedSoloTon = valueLikeMining / pitProductivity;
@@ -71,12 +70,11 @@ const cavaGroundingCostAuFertile = (typeValueLikeMining, valueLikeMining, pitDep
         const toCostShippingGroundFertilityRoundtrip = totalCostShippingFertileOneWay * 2;
         const toCostFreightFinalFertileGrounding = toCostShippingGroundFertilityRoundtrip * excavatornsQuantityFertil;
         const toCostOfFertileGroundingWithFreight = toCostFreightFinalFertileGrounding + toCostGroundingFertileLandWithoutFreight;
-
-        return Math.round(toCostOfFertileGroundingWithFreight * 100) / 100
+        return toCostOfFertileGroundingWithFreight
 
     }else { 
         
-        const revolvedSoloTon = valueLikeMining / pitProductivity;
+        const revolvedSoloTon = gold / pitProductivity;
         const upturnedSterileTon = revolvedSoloTon * sterileOreEnhancement;
         const toUpturnedSoil = revolvedSoloTon + upturnedSterileTon;
         const losslessVolume = toUpturnedSoil / goldDensity;
@@ -96,8 +94,10 @@ const cavaGroundingCostAuFertile = (typeValueLikeMining, valueLikeMining, pitDep
         const toCostFreightFinalFertileGrounding = toCostShippingGroundFertilityRoundtrip * excavatornsQuantityFertil;
         const toCostOfFertileGroundingWithFreight = toCostFreightFinalFertileGrounding + toCostGroundingFertileLandWithoutFreight;
         return toCostOfFertileGroundingWithFreight
+        
 
     }
 }
+
 
 export default cavaGroundingCostAuFertile

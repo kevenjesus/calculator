@@ -2,7 +2,7 @@ import calcMontante from 'utils/calcMontante'
 import vpl from 'utils/vpl'
 import { FERRY, PIT } from '../consts'
 
-const woodAndNonWoodProducts = (hectare, likeMining, panningTime) => {
+const woodAndNonWoodProducts = (likeMining, hectare) => {
 
   const costPMNMPerHaYearBRL = 764.00
   const discountRate = 0.03;
@@ -13,9 +13,7 @@ const woodAndNonWoodProducts = (hectare, likeMining, panningTime) => {
   let toWoodAndNonWoodProducts;
     if(likeMining === FERRY) {
       toWoodAndNonWoodProducts = 0
-    }else if (likeMining === PIT && hectare) {
-      toWoodAndNonWoodProducts = VPLwoodAndNonWoodProducts * 0.31 * 12
-    }else if (likeMining === PIT && panningTime) {
+    }else if (likeMining === PIT) {
       toWoodAndNonWoodProducts = VPLwoodAndNonWoodProducts * 0.31 * 12
     }
     else {

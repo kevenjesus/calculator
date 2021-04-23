@@ -1,7 +1,7 @@
-import { FERRY, PIT } from "../consts";
+import { FERRY, MONTHS_OF_MINING, PIT, YEARS_OF_MINING } from "../consts";
 
-const neuroSymptomsGarimpeiro = (gold, txPrevalence, likeMining, panningTime) => {
-
+const neuroSymptomsGarimpeiro = (likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, gold) => {
+    
     const DALY1Cost = 103599;
     const weightNeuroDisabilityGoldminers = 0.368;
     const amountOfGoldminersYear = 150.45;
@@ -10,8 +10,8 @@ const neuroSymptomsGarimpeiro = (gold, txPrevalence, likeMining, panningTime) =>
     const gramGoldByYearWell = 23700;
     const goldenGrassPerMonthFerry = 302;
     
-    if (likeMining === PIT && panningTime) { //Input Anos de garimpo
-        const goldenGrass = gramGoldByYearWell * panningTime;
+    if (likeMining === PIT && typeValueLikeMining === YEARS_OF_MINING) { //Input Anos de garimpo
+        const goldenGrass = gramGoldByYearWell * valueLikeMining;
         const qtdTotalGoldMiners = goldenGrass / amountOfGoldminersYear;
         const qtdOfMinersAffected = neuroGoldminersProblems * qtdTotalGoldMiners;
         const neuroGoldMinersTreatmentCost = neuroTreatmentCostPerGoldMiner * qtdOfMinersAffected;
@@ -22,8 +22,8 @@ const neuroSymptomsGarimpeiro = (gold, txPrevalence, likeMining, panningTime) =>
         const toGoldMinersCost = toCostDALYGoldDigger + neuroGoldMinersTreatmentCost;
         return toGoldMinersCost
 
-    }else if (likeMining === FERRY && panningTime) { //Input Meses de garimpo
-        const goldenGrass = goldenGrassPerMonthFerry * panningTime;
+    }else if (likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING) { //Input Meses de garimpo
+        const goldenGrass = goldenGrassPerMonthFerry * valueLikeMining;
         const tonumberOfGoldMiners = goldenGrass / amountOfGoldminersYear;
         const numberOfMinersAffected = neuroGoldminersProblems * tonumberOfGoldMiners;
         const neuroGoldMinersTreatmentCost = neuroTreatmentCostPerGoldMiner * numberOfMinersAffected;

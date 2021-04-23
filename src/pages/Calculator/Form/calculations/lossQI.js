@@ -1,42 +1,43 @@
 import normDist from 'utils/normDist'
-import { ALLUVIUM, FERRY, PIT } from '../consts';
+import { ALLUVIUM, AMOUNT_GOLD, FERRY, MONTHS_OF_MINING, PIT, YEARS_OF_MINING } from '../consts';
 
 const CONSERVATIVE = 0.29
 
 // impacto 6: Perda de QI (mercury na saude humana)
     ////// Parte 01: grama de mercúrio que é metilado
 
-const lossQI = (gold, municipalRuralPop, municipalUrbanPop, txPrevalence, popDensity2060, isRegion, likeMining, panningTime) => {
+const lossQI =  (likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, urbanPopMunicipality, ruralPopMunicipality, popDensity2060, gold, isRegion) => {
+ 
 
   const methyladPercent = txPrevalence === CONSERVATIVE ? 0.11 : 0.22;
   const HgAuRatio = 2.6;
   
   let gramsHgReleasedinWater;
 
-  if (likeMining === PIT && panningTime) { //input anos de garimpo
+  if (likeMining === PIT && typeValueLikeMining === YEARS_OF_MINING) { //input anos de garimpo
     const percentLossHgInWater = txPrevalence === CONSERVATIVE ? 0.132 : 0.21;
     const quantityOfGramsGoldYearWell = 23700;
-    const amountOfTotalGoldWell = quantityOfGramsGoldYearWell * panningTime
+    const amountOfTotalGoldWell = quantityOfGramsGoldYearWell * valueLikeMining
     gramsHgReleasedinWater = percentLossHgInWater * HgAuRatio * amountOfTotalGoldWell;
     
-  }else if(likeMining === FERRY && panningTime) { //input Meses de garimpo
+  }else if(likeMining === PIT && typeValueLikeMining === AMOUNT_GOLD) { //input gramas de ouro
+    const percentLossHgInWater = txPrevalence === CONSERVATIVE ? 0.132 : 0.21;
+    gramsHgReleasedinWater = percentLossHgInWater * HgAuRatio * valueLikeMining;
+        
+  }else if(likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING) { //input Meses de garimpo
     const percentLossHgInWater = txPrevalence === CONSERVATIVE ? 0.22 : 0.35;
     const prodGoldMonthFerry = 302;
-    const toFerryGoldProductivy = panningTime * prodGoldMonthFerry;
+    const toFerryGoldProductivy = valueLikeMining * prodGoldMonthFerry;
     gramsHgReleasedinWater = percentLossHgInWater * HgAuRatio * toFerryGoldProductivy;
     
-  }else if(likeMining === FERRY && gold) { //input gramas de ouro
+  }else if(likeMining === FERRY && typeValueLikeMining === AMOUNT_GOLD) { //input gramas de ouro
     const percentLossHgInWater = txPrevalence === CONSERVATIVE ? 0.22 : 0.35;
-    gramsHgReleasedinWater = percentLossHgInWater * HgAuRatio * gold;
+    gramsHgReleasedinWater = percentLossHgInWater * HgAuRatio * valueLikeMining;
     
-  }else if(likeMining === ALLUVIUM && gold) { //input gramas de ouro
+  }else if(likeMining === ALLUVIUM) { //input gramas de ouro/hectare
     const percentLossHgInWater = txPrevalence === CONSERVATIVE ? 0.132 : 0.21;
     gramsHgReleasedinWater = percentLossHgInWater * HgAuRatio * gold;
     
-  }else if(likeMining === PIT && gold) { //input gramas de ouro
-    const percentLossHgInWater = txPrevalence === CONSERVATIVE ? 0.132 : 0.21;
-    gramsHgReleasedinWater = percentLossHgInWater * HgAuRatio * gold;
-        
   }
   
   const toMethylatedWater = methyladPercent * gramsHgReleasedinWater;
@@ -50,10 +51,10 @@ const lossQI = (gold, municipalRuralPop, municipalUrbanPop, txPrevalence, popDen
   const consumptionMediumFishByDayInGramsUrban = 57;
   const densityPopulationalRegionNorth2060 = 6.00696;
 
-  const individualAverageWeight = (municipalRuralPop*ruralIndividualWeight)+(municipalUrbanPop*urbanindividualWeight);
+  const individualAverageWeight = (ruralPopMunicipality*ruralIndividualWeight)+(urbanPopMunicipality*urbanindividualWeight);
   const ingestionMediaDailyMicrogramMercuryUrban = (consumptionMediumFishByDayInGramsUrban * levelMediumContaminationFish) / urbanindividualWeight;
   const ingestionMediaDailyMicrogramMercuryRural = (AverageFishConsumptionPerDayInRuralGrams * levelMediumContaminationFish) / ruralIndividualWeight;
-  const ingestionMediaMercuryDaily1IndividualInMicrogramsPerKG = (municipalRuralPop * ingestionMediaDailyMicrogramMercuryRural) + (municipalUrbanPop * ingestionMediaDailyMicrogramMercuryUrban);
+  const ingestionMediaMercuryDaily1IndividualInMicrogramsPerKG = (ruralPopMunicipality * ingestionMediaDailyMicrogramMercuryRural) + (urbanPopMunicipality * ingestionMediaDailyMicrogramMercuryUrban);
   const ingestionMediaMercuryDaily1IndividualInGramsPerKGperDay = ingestionMediaMercuryDaily1IndividualInMicrogramsPerKG/1000000;
   const ingestionMediaDailyIndividualInGramsPerDaily = ingestionMediaMercuryDaily1IndividualInGramsPerKGperDay * individualAverageWeight;
   const ingestionMediaMercuryIn50years = (365*years)* ingestionMediaDailyIndividualInGramsPerDaily;
