@@ -36,7 +36,11 @@ const calcResults = (state, dispatch) => {
         const goldValue = calculator.analysisUnit === IMPACTED_AREA ? hectareToGold(Number(qtdAnalysis.value), pitDepth) : Number(qtdAnalysis.value)
         const gramadeOuroporHe = goldenGramForHectare(hectareValue, goldValue)
         const currentCountry = counties.find(c => c.id === Number(country))
-        const especie = currentCountry.especies <= 0 ? state.especie : currentCountry.especies
+        const densidadePop2010 = knowRegion ? currentCountry.densidadePop2010 : 4.12;
+        const densidadePop2060 = knowRegion ? currentCountry.densidadePop2060  : 6.0;
+        const popUrbMunicipio = knowRegion ? currentCountry.popUrbMunicipio : 73.53;
+        const popRuralMunicipio = knowRegion ? currentCountry.popRuralMunicipio : 212.74
+        const especie = knowRegion ? (currentCountry.especies <= 0 ? state.especie : currentCountry.especies) : 69.21
 
 
 
