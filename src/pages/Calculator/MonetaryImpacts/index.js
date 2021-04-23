@@ -88,11 +88,11 @@ const DataChart = ({impact, headline, hiddenMonetary, txtTotalNonetary}) => {
     return (
         <Card>
             <Row>
-                <Col xs={8}>
+                <Col xs={12} md={8}>
                     <h2>{headline}</h2>
                 </Col>
                 {!hiddenMonetary ?
-                <Col xs={4} style={{textAlign: 'right'}}>
+                <Col xs={12} md={4} style={{textAlign: 'right'}}>
                     <Label style={{textAlign: 'right', display: 'inline-block', marginRight: 10}}>{txtTotalNonetary}</Label>
                      <Monetary style={{display: 'inline-block'}}>{total}</Monetary> 
                 </Col>

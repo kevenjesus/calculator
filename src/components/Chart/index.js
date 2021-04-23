@@ -8,6 +8,8 @@ const Chart = ({data}) => {
       return {...d, value: Math.round(d.value * 100) / 100}
     })
 
+    const size = window.innerWidth;
+
     return (
       <div style={{width: '100%', height: window.innerWidth >= 1366 ? 500 : 300, marginTop: 50}}>
       <ResponsiveContainer width="100%" height="100%">
@@ -24,7 +26,11 @@ const Chart = ({data}) => {
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="label" fontSize={12} interval={0} />
-          <YAxis width={150} domain={['dataMin', 'dataMax']} allowDecimals tickFormatter={ToBRL} />
+          {
+            size > 768 ? (
+              <YAxis width={150} domain={[0, 'dataMax']} allowDecimals tickFormatter={ToBRL} />
+            ) : null
+          }
           <Tooltip content={CustomTooltip} />
           <Bar barSize={window.innerWidth >= 1366 ? 50 : (window.innerWidth >= 768 ? 30 : 20)} dataKey="value" fill={colors.primary} />
         </BarChart>
