@@ -39,7 +39,8 @@ const calcResults = (state, dispatch) => {
         const densidadePop2010 = knowRegion ? currentCountry.densidadePop2010 : 4.12;
         const densidadePop2060 = knowRegion ? currentCountry.densidadePop2060  : 6.0;
         const popUrbMunicipio = knowRegion ? currentCountry.popUrbMunicipio : 73.53;
-        const popRuralMunicipio = knowRegion ? currentCountry.popRuralMunicipio : 212.74
+        const popRuralMunicipio = knowRegion ? currentCountry.popRuralMunicipio : 26.47
+        const distanciaGarimpoCentro = knowRegion ? currentCountry.distanciaGarimpoCentro : 212.74
         const especie = knowRegion ? (currentCountry.especies <= 0 ? state.especie : currentCountry.especies) : 69.21
 
 
