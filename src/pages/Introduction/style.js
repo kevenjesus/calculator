@@ -21,6 +21,9 @@ export const Text = styled.p`
     font-size: 20px;
     color: ${({color}) => color ? color : colors.blacks.normal};
     line-height: 44px;
+    @media (min-width: 1200px) {
+        font-size: 22.5px;
+    }
 ` 
 
 export const LanguageContainer = styled.div`

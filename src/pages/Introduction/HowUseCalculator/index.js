@@ -1,7 +1,6 @@
 import { Headline, Text } from 'pages/Introduction/style'
 import { useContext } from 'react';
 import { AppContext } from 'utils/AppContext';
-import Image from 'assets/images/(PT)Mapa_700dpi.jpeg'
 
 const HowUseCalculator = () => {
     const { state } = useContext(AppContext)
@@ -35,7 +34,7 @@ const HowUseCalculator = () => {
                 {introduction.howUseCalculator.paragraphy_08}
             </Text>
 
-           <img src={Image} style={{maxWidth: '100%', marginTop: 50}} alt="" />
+           
         </>
     )
 }

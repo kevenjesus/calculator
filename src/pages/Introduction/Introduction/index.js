@@ -8,6 +8,8 @@ import { Col, Row } from 'react-flexbox-grid'
 import { useContext } from 'react'
 import { AppContext } from 'utils/AppContext'
 
+import Image from 'assets/images/(PT)Mapa_700dpi.jpeg'
+
 const IntroductionPage = () => {
     const { state } = useContext(AppContext)
     const { language } = state
@@ -18,7 +20,9 @@ const IntroductionPage = () => {
             <Text>
                 {introduction.introduction.paragraphy_01}
              </Text>
+             <img src={Image} style={{width: 1000, display: 'block', margin: '50px auto', maxWidth: '100%'}} alt="" />
              <Text>{introduction.introduction.paragraphy_02}</Text>
+             
             <ImpactedBox>
                 <img src={Btn03} alt="" width="275" style={{marginTop: "-30px"}} />
                 <div style={{marginLeft: '30px'}}>
