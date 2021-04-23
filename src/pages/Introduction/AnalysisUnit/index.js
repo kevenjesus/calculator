@@ -105,7 +105,7 @@ const AnalysisUnit = () => {
                     <TextField 
                         ref={ref}
                         error={stateContext.calculator.qtdAnalysis.error}
-                        label={`* Digite o valor em ${state === AMOUNT_GOLD ? calculatorForm.values.qtdAnalysisUnit.grams : calculatorForm.values.qtdAnalysisUnit.hactare}`} 
+                        label={`* Digite o valor em ${placeholder}`} 
                         type="number" 
                         placeholder={placeholder}
                         onChange={handleQtdAnalysis}
