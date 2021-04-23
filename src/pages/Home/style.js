@@ -3,14 +3,16 @@ import Image from 'assets/images/capa.jpg'
 
 export const ContainerBackground = styled.div`
     width: 100%;
-    height: 100%;
+    height: auto;
     background: url(${Image}) center top no-repeat;
-    background-size: cover;
+    background-size: 100% 100%;
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 0;
     top: 0;
+    @media (min-width: 768px) {
+        bottom: 0;
+    }
 ` 
 
 export const Overlay = styled.div`

@@ -71,7 +71,7 @@ const Header = ({theme = 'white'}) => {
                 <Menuitem theme={theme} href="https://www.conservation-strategy.org/" target="_blank">{header.linkWebsite}</Menuitem>
                 </MenuShow>
                 <BarMenu onClick={() => setVisibleSidebar(true)}>
-                    <Bar />
+                    <Bar stroke={theme === 'white' ? '#000': '#fff'} />
                 </BarMenu>
             </Container>
         </ContainerHeader>

@@ -9,7 +9,7 @@ export const Container = styled.div`
     top: 0;
     bottom: 0;
     right: ${({visible}) => visible ? '0' : '-80%'};
-    z-index: 2;
+    z-index: 999;
     padding: 15px;
     transition: right .2s;
     @media (min-width: 768px) {
@@ -25,6 +25,7 @@ export const Overlay = styled.div`
     top: 0;
     bottom: 0;
     background: rgba(0,0,0,.4);
+    z-index: 99;
 ` 
 
 export const CloseButton = styled.button`

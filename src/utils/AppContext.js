@@ -50,9 +50,10 @@ export const stateTypes = {
     SET_TX_PREVALENCE: 'SET_TX_PREVALENCE',
     SET_LANGUAGE: 'SET_LANGUAGE',
     SET_STEP: 'SET_STEP',
+    SET_LIKE_MINING: 'SET_LIKE_MINING',
+    SET_PANNING_TIME: 'SET_PANNING_TIME',
     ADD_VALUE: 'ADD_VALUE',
     CHANGE_TOTALVALUE: 'CHANGE_TOTALVALUE'
-
 }
 
 const initialState = {
@@ -73,6 +74,8 @@ const initialState = {
         pitDepth: 2.5,
         valuatioMethod: ALLUVIUM,
         txPrevalence: TX_PREVALENCE_MAX,
+        likeMining: ALLUVIUM,
+        panningTime: null,
         values: [],
         totalValue: 0
     },

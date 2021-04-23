@@ -16,29 +16,27 @@ const Home = () => {
             <Header theme="dark" />
             <Overlay />
             <Container>
-            <Headline color="white">{introduction.about.headline}</Headline>
-            <Text color="white">
-                {introduction.about.text}
-            </Text>
+                <Headline color="white">{introduction.about.headline}</Headline>
+                <Text color="white">
+                    {introduction.about.text}
+                </Text>
                 <Row>
-                    <Col sm={3}>
+                    <Col sm={3} md={4}>
                         <label style={{color: 'white'}}>Ainda não conheço</label>
                         <Link to="/introduction">
                             <Button variant="secondary">Me leva para o passo-a-passo</Button>
                         </Link>
                         
                     </Col>
-                    </Row>
-                    <Row>
-                        <Col sm={3}>
-                            <label style={{color: 'white'}}>Ainda não conheço</label>
-                            <Link to="/calculator">
+                </Row>
+                <Row>
+                    <Col sm={3} md={4}>
+                        <label style={{color: 'white'}}>Ainda não conheço</label>
+                        <Link to="/calculator">
                             <Button variant="default">me leva para a versão resumida</Button>
-                            </Link>
-                        </Col>
-                    </Row>
-            
-            
+                        </Link>
+                    </Col>
+                </Row>
             </Container>
         </ContainerBackground>
     )
