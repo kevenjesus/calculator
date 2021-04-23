@@ -1,7 +1,9 @@
 export const YES = 1;
 export const NO = 0;
 export const IMPACTED_AREA = 1;
-export const AMOUNT_GOLD = 0;
+export const AMOUNT_GOLD = 2;
+export const YEARS_OF_MINING = 3;
+export const MONTHS_OF_MINING = 4;
 export const ALLUVIUM = 0;
 export const FERRY = 1;
 export const PIT = 2

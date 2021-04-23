@@ -25,7 +25,9 @@ const es_ES = {
             },
             qtdAnalysisUnit: {
                 hactare: 'Hectáreas',
-                grams: 'Gramos de oro'
+                grams: 'Gramos de oro',
+                months: 'Meses',
+                years: 'Anos'
             },
             pitDepth: {
                 meters: 'metros'
@@ -107,6 +109,26 @@ const es_ES = {
         about: {
             headline: 'Introducción',
             text: 'La calculadora de impactos es un resultado de la colaboración entre CSF y MPF, una herramienta analítica y pedagógica que describe los <strong>impactos de la minería ilegal de oro</strong>, sus valores monetarios y el paso a paso para su medición',
+        },
+        analysisUnit: {
+            headline: 'Qual base de informação você usará para o cálculo de impacto?',
+            chooseOption: '* Escolha uma opção',
+            goldType: {
+                headline: 'Quantidade de ouro',
+                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Condimentum nibh id sed habitant. Ac faucibus at rutrum feugiat eu lobortis nibh eu. Tortor nisl turpis pretium tincidunt luctus quam eu purus, sit. Accumsan, phasellus gravida aliquam dolor'
+            },
+            goldMiningSize: {
+                headline: 'Tamanho do garimpo',
+                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Condimentum nibh id sed habitant. Ac faucibus at rutrum feugiat eu lobortis nibh eu. Tortor nisl turpis pretium tincidunt luctus quam eu purus, sit. Accumsan, phasellus gravida aliquam dolor'
+            },
+            yearsMining: {
+                headline: 'Anos de garimpo',
+                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Condimentum nibh id sed habitant. Ac faucibus at rutrum feugiat eu lobortis nibh eu. Tortor nisl turpis pretium tincidunt luctus quam eu purus, sit. Accumsan, phasellus gravida aliquam dolor'
+            },
+            monthsMining: {
+                headline: 'Meses de garimpo',
+                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Condimentum nibh id sed habitant. Ac faucibus at rutrum feugiat eu lobortis nibh eu. Tortor nisl turpis pretium tincidunt luctus quam eu purus, sit. Accumsan, phasellus gravida aliquam dolor'
+            },
         },
         contextValue: {
             headline: 'El valor del impacto depende del contexto',

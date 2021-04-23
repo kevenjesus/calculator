@@ -6,6 +6,7 @@ export const ItemType = styled.div`
     background: ${({active}) => active ? '#F7FDFB' : '#fff'};
     padding: 15px;
     cursor: pointer;
+    margin-bottom: 15px;
 ` 
 
 export const Title = styled.h2`

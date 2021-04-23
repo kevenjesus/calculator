@@ -45,7 +45,7 @@ const Introduction = () => {
         if(state) {
             dispatch({type: stateTypes.SET_STEP, payload: { step: state.step}});
         }else {
-            dispatch({type: stateTypes.SET_STEP, payload: { step: ABOUT}});
+            dispatch({type: stateTypes.SET_STEP, payload: { step: INTRODUCTION}});
         }
     }, [history, dispatch])
 
@@ -70,6 +70,8 @@ const Introduction = () => {
     const SkipIntroduction = useCallback(() => {
         history.push('/calculator')
     }, [history])
+
+    console.log('step', step)
 
     if(step === null || step === undefined) {
         return false;

@@ -30,7 +30,9 @@ const ptBR = {
             },
             qtdAnalysisUnit: {
                 hactare: 'Hectares',
-                grams: 'Gramas de ouro'
+                grams: 'Gramas de ouro',
+                months: 'Meses',
+                years: 'Anos'
             },
             pitDepth: {
                 meters: 'metros'
@@ -120,7 +122,15 @@ const ptBR = {
             goldMiningSize: {
                 headline: 'Tamanho do garimpo',
                 text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Condimentum nibh id sed habitant. Ac faucibus at rutrum feugiat eu lobortis nibh eu. Tortor nisl turpis pretium tincidunt luctus quam eu purus, sit. Accumsan, phasellus gravida aliquam dolor'
-            }
+            },
+            yearsMining: {
+                headline: 'Anos de garimpo',
+                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Condimentum nibh id sed habitant. Ac faucibus at rutrum feugiat eu lobortis nibh eu. Tortor nisl turpis pretium tincidunt luctus quam eu purus, sit. Accumsan, phasellus gravida aliquam dolor'
+            },
+            monthsMining: {
+                headline: 'Meses de garimpo',
+                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Condimentum nibh id sed habitant. Ac faucibus at rutrum feugiat eu lobortis nibh eu. Tortor nisl turpis pretium tincidunt luctus quam eu purus, sit. Accumsan, phasellus gravida aliquam dolor'
+            },
         },
         contextValue: {
             headline: 'O valor do impacto depende do contexto',

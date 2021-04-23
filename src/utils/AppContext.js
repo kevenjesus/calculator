@@ -1,7 +1,7 @@
 import { createContext, useReducer  } from 'react'
 import { IMPACTED_AREA, NO, YES, ALLUVIUM, TX_PREVALENCE_MAX } from 'pages/Calculator/Form/consts'
 import ptBR from 'utils/pt_BR'
-import { ABOUT } from 'pages/Introduction/consts'
+import { INTRODUCTION } from 'pages/Introduction/consts'
 
 const dataRegion = [
     {
@@ -51,7 +51,6 @@ export const stateTypes = {
     SET_LANGUAGE: 'SET_LANGUAGE',
     SET_STEP: 'SET_STEP',
     SET_LIKE_MINING: 'SET_LIKE_MINING',
-    SET_PANNING_TIME: 'SET_PANNING_TIME',
     ADD_VALUE: 'ADD_VALUE',
     CHANGE_TOTALVALUE: 'CHANGE_TOTALVALUE'
 }
@@ -74,13 +73,11 @@ const initialState = {
         pitDepth: 2.5,
         valuatioMethod: ALLUVIUM,
         txPrevalence: TX_PREVALENCE_MAX,
-        likeMining: ALLUVIUM,
-        panningTime: null,
         values: [],
         totalValue: 0
     },
     introduction: {
-        step: ABOUT
+        step: INTRODUCTION
     },
     language: ptBR
 }

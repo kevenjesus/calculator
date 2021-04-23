@@ -1,24 +1,22 @@
-import { useState, useRef, useContext, useCallback } from 'react'
+import { useState, useRef, useContext, useCallback, useEffect } from 'react'
 import { Row, Col } from 'react-flexbox-grid'
 import { Headline } from 'pages/Introduction/style'
-import { ItemType, Title, Paragraphy, Thumbnail } from './style'
 import { AppContext, stateTypes } from 'utils/AppContext'
-import { IMPACTED_AREA, AMOUNT_GOLD } from 'pages/Calculator/Form/consts'
+import { IMPACTED_AREA, AMOUNT_GOLD, YEARS_OF_MINING, ALLUVIUM, FERRY, MONTHS_OF_MINING } from 'pages/Calculator/Form/consts'
 import { TextField } from 'theme'
-import Image from 'assets/images/example2.svg'
+import ExtractionType from './ExtractionType'
 
 
 const AnalysisUnit = () => {
     const [ state, setState ] = useState(IMPACTED_AREA);
     const { state: stateContext, dispatch} = useContext(AppContext);
     const { language, calculator} = stateContext
-    const { pitDepth } = calculator;
+    const { pitDepth, valuatioMethod } = calculator;
     const {introduction, calculatorForm} = language
     const ref = useRef();
-    
     const dataPitDepth = [
         {
-            label: '2,5 '+calculatorForm.values.pitDepth.meters+'',
+            label: '2,5 '+calculatorForm.values.pitDepth.meters+' (valor padrão)',
             value: 2.5
         },
         {
@@ -71,6 +69,27 @@ const AnalysisUnit = () => {
         }
     }, [dispatch])
 
+    useEffect(() => {
+        if(valuatioMethod === ALLUVIUM) {
+            setState(IMPACTED_AREA)
+        }else if(valuatioMethod === FERRY) {
+            setState(MONTHS_OF_MINING)
+        }else {
+            setState(YEARS_OF_MINING)
+        }
+    }, [valuatioMethod])
+
+    let placeholder;
+    if(state === AMOUNT_GOLD) {
+        placeholder = calculatorForm.values.qtdAnalysisUnit.grams
+    }else if(state === IMPACTED_AREA) {
+        placeholder = calculatorForm.values.qtdAnalysisUnit.hactare
+    }else if (state === YEARS_OF_MINING) {
+        placeholder = calculatorForm.values.qtdAnalysisUnit.years
+    }else {
+        placeholder = calculatorForm.values.qtdAnalysisUnit.months
+    }
+
     return (
         <>
             <Headline>{introduction.analysisUnit.headline}</Headline>
@@ -79,24 +98,7 @@ const AnalysisUnit = () => {
                 <Col md={8}>
                 <label>{introduction.analysisUnit.chooseOption}</label>
             <Row>
-                <Col xs={6}>
-                    <ItemType active={state === AMOUNT_GOLD} onClick={() => handleState(AMOUNT_GOLD)}>
-                        <Title>{introduction.analysisUnit.goldType.headline}</Title>
-                        <Thumbnail src={Image} alt="" />
-                        <Paragraphy>
-                            {introduction.analysisUnit.goldType.text}
-                        </Paragraphy>
-                    </ItemType>
-                </Col>
-                <Col xs={6}>
-                    <ItemType active={state === IMPACTED_AREA} onClick={() => handleState(IMPACTED_AREA)}>
-                    <Title>{introduction.analysisUnit.goldMiningSize.headline}</Title>
-                        <Thumbnail src={Image} alt="" />
-                        <Paragraphy>
-                            {introduction.analysisUnit.goldMiningSize.text}
-                        </Paragraphy>
-                    </ItemType>
-                </Col>
+                <ExtractionType type={valuatioMethod} state={state} translate={introduction} handleState={handleState} />
             
                 <Col xs={12} smOffset={2} sm={4}>
                     <br />
@@ -105,7 +107,7 @@ const AnalysisUnit = () => {
                         error={stateContext.calculator.qtdAnalysis.error}
                         label={`* Digite o valor em ${state === AMOUNT_GOLD ? calculatorForm.values.qtdAnalysisUnit.grams : calculatorForm.values.qtdAnalysisUnit.hactare}`} 
                         type="number" 
-                        placeholder={state === AMOUNT_GOLD ? calculatorForm.values.qtdAnalysisUnit.grams : calculatorForm.values.qtdAnalysisUnit.hactare}
+                        placeholder={placeholder}
                         onChange={handleQtdAnalysis}
                         value={stateContext.calculator.qtdAnalysis.value} />
                 </Col>
