@@ -26,7 +26,7 @@ const ptBR = {
             },
             analysisUnit: {
                 impactedArea: 'Tamanho da área impactada',
-                amountOfGold: 'Quantidade de ouro'
+                amountOfGold: 'Quantidade de ouro',
             },
             qtdAnalysisUnit: {
                 hactare: 'Hectares',

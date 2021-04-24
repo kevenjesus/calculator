@@ -4,7 +4,7 @@ import { Grid, Row, Col } from 'react-flexbox-grid'
 import { Button, TextField } from 'theme'
 import { Container } from './style'
 import { ButtonFixed } from 'pages/Calculator/ImpactsStyles'
-import { YES, IMPACTED_AREA, AMOUNT_GOLD, ALLUVIUM, FERRY, PIT} from './consts'
+import { YES, IMPACTED_AREA, AMOUNT_GOLD, ALLUVIUM, FERRY, PIT, YEARS_OF_MINING, MONTHS_OF_MINING} from './consts'
 import { AppContext, stateTypes } from 'utils/AppContext'
 import Conditional from 'components/Conditional'
 import RadioBoxConditional from 'components/RadioBoxConditional'
@@ -12,6 +12,7 @@ import mockStates from 'mocks/state.json'
 import mockCountries from 'mocks/countries.json'
 import mockContry from 'mocks/country.json'
 import calcResults from './calcResults'
+import ExtrationTypeOptions from './ExtrationTypeOptions'
 
 
 function Form() {
@@ -29,14 +30,14 @@ function Form() {
         pitDepth,
         valuatioMethod,
         txPrevalence } = calculator
-    const { calculatorForm } = language
+    const { calculatorForm, introduction } = language
     const history = useHistory()
 
     
 
     const dataPitDepth = [
         {
-            label: '2,5 ' + calculatorForm.values.pitDepth.meters + '',
+            label: '2,5 ' + calculatorForm.values.pitDepth.meters + ' (Valor padrão)',
             value: 2.5
         },
         {
@@ -109,6 +110,16 @@ function Form() {
 
     }, [getCounties, dispatch, state, country])
 
+    useEffect(() => {
+        if(valuatioMethod === ALLUVIUM) {
+            dispatch({ type: stateTypes.SET_ANALYS_UNIT, payload: IMPACTED_AREA })
+        }else if(valuatioMethod === FERRY) {
+            dispatch({ type: stateTypes.SET_ANALYS_UNIT, payload: MONTHS_OF_MINING })
+        }else {
+            dispatch({ type: stateTypes.SET_ANALYS_UNIT, payload: YEARS_OF_MINING })
+        }
+    }, [valuatioMethod, dispatch])
+
 
     const handleRegion = useCallback((e) => {
         const { value } = e.target
@@ -178,6 +189,17 @@ function Form() {
         history.push('/loading')
     }
 
+    let placeholder;
+    if(calculator.analysisUnit === AMOUNT_GOLD) {
+        placeholder = calculatorForm.values.qtdAnalysisUnit.grams
+    }else if(calculator.analysisUnit === IMPACTED_AREA) {
+        placeholder = calculatorForm.values.qtdAnalysisUnit.hactare
+    }else if (calculator.analysisUnit === YEARS_OF_MINING) {
+        placeholder = calculatorForm.values.qtdAnalysisUnit.years
+    }else {
+        placeholder = calculatorForm.values.qtdAnalysisUnit.months
+    }
+
     return (
         <Container>
             <Grid fluid>
@@ -208,33 +230,7 @@ function Form() {
                     </Row>
                 </Conditional>
                 <Row>
-                    <Col xs={6} sm={9}>
-                        <label>{calculatorForm.labels.analysisUnit}</label>
-                        <select name="analysisUnit" value={calculator.analysisUnit} onChange={handleAnalysisUnit}>
-                            <option value={IMPACTED_AREA}>{calculatorForm.values.analysisUnit.impactedArea}</option>
-                            <option value={AMOUNT_GOLD}>{calculatorForm.values.analysisUnit.amountOfGold}</option>
-                        </select>
-                    </Col>
-                    <Col xs={6} sm={3}>
-                        <TextField
-                            label="Valor"
-                            error={qtdAnalysis.error}
-                            type="number"
-                            value={qtdAnalysis.value}
-                            onChange={handleQtdAnalysis}
-                            name="valor" placeholder={analysisUnit === IMPACTED_AREA ? calculatorForm.values.qtdAnalysisUnit.hactare : calculatorForm.values.qtdAnalysisUnit.grams} />
-                    </Col>
-                </Row>
-                <Row>
-                    <Conditional check={knowRegion}>
-                        <Col xs={12} sm={6}>
-                            <label>{calculatorForm.labels.pitDepth}</label>
-                            <select name="pitdepth" value={pitDepth} onChange={handlePitDepth}>
-                                {dataPitDepth.map(({ label, value }) => <option key={value} value={value}>{label}</option>)}
-                            </select>
-                        </Col>
-                    </Conditional>
-                    <Col xs={12} sm={!knowRegion ? 6 : 6}>
+                <Col xs={6}>
                         <label>{calculatorForm.labels.extractionType}</label>
                         <select name="valuationMethod" value={valuatioMethod} onChange={handleValuationMethod}>
                             <option value={ALLUVIUM}>{calculatorForm.values.extractionType.openPit}</option>
@@ -242,7 +238,33 @@ function Form() {
                             <option value={PIT}>{calculatorForm.values.extractionType.pitMine}</option>
                         </select>
                     </Col>
-                    <Col xs={12} sm={!knowRegion ? 6 : 12}>
+                    <Col xs={6}>
+                        <label>{calculatorForm.labels.analysisUnit}</label>
+                        <select name="analysisUnit" value={calculator.analysisUnit} onChange={handleAnalysisUnit}>
+                            <ExtrationTypeOptions type={valuatioMethod} translate={introduction} />
+                        </select>
+                    </Col>
+                    <Col xs={6} lg={4}>
+                        <TextField
+                            label={placeholder}
+                            error={qtdAnalysis.error}
+                            type="number"
+                            value={qtdAnalysis.value}
+                            onChange={handleQtdAnalysis}
+                            name="valor" placeholder={placeholder} />
+                    </Col>
+                    
+                        <Col xs={6} lg={8}>
+                            <label>{calculatorForm.labels.pitDepth}</label>
+                            <select name="pitdepth" value={pitDepth} onChange={handlePitDepth}>
+                                {dataPitDepth.map(({ label, value }) => <option key={value} value={value}>{label}</option>)}
+                            </select>
+                        </Col>
+                </Row>
+                <Row>
+                    
+                    
+                    <Col xs={12}>
                         <label>{calculatorForm.labels.valueHypothesis}</label>
                         <select name="txPrevalencia" value={txPrevalence} onChange={handleTxPrevalance}>
                             <option value="0.29">{calculatorForm.values.valueHypothesis.conservative}</option>
