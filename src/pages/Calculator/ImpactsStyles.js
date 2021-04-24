@@ -62,7 +62,6 @@ export const Text = styled.p`
     color: ${colors.blacks.normal};
     @media (min-width: 1366px) {
          font-size: 20px;
-         line-height: 40px;
     }
 ` 
 
@@ -99,4 +98,39 @@ export const HiddenSm = styled.div`
     @media (min-width: 768px) {
         display: none;
     }
+` 
+
+export const Table = styled.table`
+    width: 100%;
+` 
+
+export const Thead = styled.thead`
+    
+    
+` 
+
+export const Tbody = styled.tbody`
+` 
+
+export const Tr = styled.tr`
+    display: flex;
+` 
+
+export const Th = styled.th`
+    width: 50%;
+    height: 40px;
+    background-color: ${colors.primary};
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+   
+`
+
+export const Td = styled.td`
+    width: 50%;
+    border: 1px solid #ccc;
+    padding: 10px;
+  
 ` 

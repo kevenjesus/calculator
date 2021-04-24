@@ -12,6 +12,9 @@ import ContextValue from 'pages/Introduction/ContextValue'
 import Header from 'layout/Header'
 import Footer from 'layout/Footer'
 import Home from 'pages/Home';
+import DeforestationReferences from 'pages/Calculator/Deforestation/references';
+import SiltingRiversReferences from 'pages/Calculator/SiltingOfRivers/references';
+import MercuryReferences from 'pages/Calculator/MercuryContamination/references';
 
 
 const Routes = () => {
@@ -25,8 +28,11 @@ const Routes = () => {
                 <Route path="/calculator" exact component={Form} />
                 <Route path="/loading" exact component={Loading} />
                 <Route path="/impacts/deforestation" exact component={Deforestation} />
+                <Route path="/impacts/deforestation/references" exact component={DeforestationReferences} />
                 <Route path="/impacts/silting-of-rivers" exact component={SiltingOfRivers} />
+                <Route path="/impacts/silting-of-rivers/references" exact component={SiltingRiversReferences} />
                 <Route path="/impacts/mercury-contamination" exact component={MercuryContamination} />
+                <Route path="/impacts/mercury-contamination/references" exact component={MercuryReferences} />
                 <Route path="/impacts/monetary-impacts" exact component={MonetaryImpacts} />
             </Switch>
             <Footer />

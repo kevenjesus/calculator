@@ -41,7 +41,9 @@ const Deforestation = () => {
                 </Row>
                 <Row>
                     <Col xs={12} smOffset={3} sm={3}>
-                        <Button variant="secondary">{impacts.buttons.references}</Button>
+                        <Link to="/impacts/deforestation/references">
+                            <Button variant="secondary">{impacts.buttons.references}</Button>
+                        </Link>
                     </Col>
                     <Col xs={12} sm={3}>
                         <Link to="/impacts/silting-of-rivers">
