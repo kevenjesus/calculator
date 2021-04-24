@@ -5,6 +5,7 @@ import { AppContext, stateTypes } from 'utils/AppContext'
 import { IMPACTED_AREA, AMOUNT_GOLD, YEARS_OF_MINING, ALLUVIUM, FERRY, MONTHS_OF_MINING } from 'pages/Calculator/Form/consts'
 import { TextField } from 'theme'
 import ExtractionType from './ExtractionType'
+import Conditional from 'components/Conditional'
 
 
 const AnalysisUnit = () => {
@@ -90,6 +91,8 @@ const AnalysisUnit = () => {
         placeholder = calculatorForm.values.qtdAnalysisUnit.months
     }
 
+    console.log('e ai',valuatioMethod)
+
     return (
         <>
             <Headline>{introduction.analysisUnit.headline}</Headline>
@@ -100,7 +103,7 @@ const AnalysisUnit = () => {
             <Row>
                 <ExtractionType type={valuatioMethod} state={state} translate={introduction} handleState={handleState} />
             
-                <Col xs={12} smOffset={2} sm={4}>
+                <Col xs={12} smOffset={valuatioMethod === ALLUVIUM ? 2 : 0} sm={4}>
                     <br />
                     <TextField 
                         ref={ref}
@@ -111,15 +114,17 @@ const AnalysisUnit = () => {
                         onChange={handleQtdAnalysis}
                         value={stateContext.calculator.qtdAnalysis.value} />
                 </Col>
-                <Col xs={12} sm={4}> 
-                    <br />
-                    <label>* {introduction.pitDepth.headline}</label>
-                    <select name="pitdepth" value={pitDepth} onChange={handlePitDepth}>
-                        {
-                            dataPitDepth.map(({label, value}) => <option key={value} value={value}>{label}</option>)
-                        }
-                    </select>
-                </Col>
+                <Conditional check={valuatioMethod === ALLUVIUM}>
+                    <Col xs={12} sm={4}> 
+                        <br />
+                        <label>* {introduction.pitDepth.headline}</label>
+                        <select name="pitdepth" value={pitDepth} onChange={handlePitDepth}>
+                            {
+                                dataPitDepth.map(({label, value}) => <option key={value} value={value}>{label}</option>)
+                            }
+                        </select>
+                    </Col>
+                </Conditional>
             </Row>
             </Col>
             </Row>
