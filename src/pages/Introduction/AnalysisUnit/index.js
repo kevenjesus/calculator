@@ -91,8 +91,6 @@ const AnalysisUnit = () => {
         placeholder = calculatorForm.values.qtdAnalysisUnit.months
     }
 
-    console.log('e ai',valuatioMethod)
-
     return (
         <>
             <Headline>{introduction.analysisUnit.headline}</Headline>

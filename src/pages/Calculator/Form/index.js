@@ -243,7 +243,7 @@ function Form() {
                             <ExtrationTypeOptions type={valuatioMethod} translate={introduction} />
                         </select>
                     </Col>
-                    <Col xs={6} lg={4}>
+                    <Col xs={valuatioMethod === ALLUVIUM ? 6 : 12} lg={valuatioMethod === ALLUVIUM ? 4 : 12}>
                         <TextField
                             label={placeholder}
                             error={qtdAnalysis.error}
@@ -252,6 +252,8 @@ function Form() {
                             onChange={handleQtdAnalysis}
                             name="valor" placeholder={placeholder} />
                     </Col>
+
+                    <Conditional check={valuatioMethod === ALLUVIUM}>
                     
                         <Col xs={6} lg={8}>
                             <label>{calculatorForm.labels.pitDepth}</label>
@@ -259,6 +261,7 @@ function Form() {
                                 {dataPitDepth.map(({ label, value }) => <option key={value} value={value}>{label}</option>)}
                             </select>
                         </Col>
+                        </Conditional>
                 </Row>
                 <Row>
                     
