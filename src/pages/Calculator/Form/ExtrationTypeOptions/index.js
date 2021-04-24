@@ -12,14 +12,14 @@ const ExtrationTypeOptions = ({type, translate}) => {
     }else if (type === FERRY) {
         return (
             <>
-                <option value={YEARS_OF_MINING}>{translate.analysisUnit.yearsMining.headline}</option>
+                <option value={MONTHS_OF_MINING}>{translate.analysisUnit.monthsMining.headline}</option>
                 <option value={AMOUNT_GOLD}>{translate.analysisUnit.goldType.headline}</option>
             </>
         )
     }else {
         return (
             <>
-                <option value={MONTHS_OF_MINING}>{translate.analysisUnit.monthsMining.headline}</option>
+                <option value={YEARS_OF_MINING}>{translate.analysisUnit.yearsMining.headline}</option>
                 <option value={AMOUNT_GOLD}>{translate.analysisUnit.goldType.headline}</option>
             </>
         )
