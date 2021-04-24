@@ -5,7 +5,7 @@ import { Button } from 'theme'
 import { ReactComponent as GoBack } from 'assets/icons/goBack.svg'
 const DeforestationReferences = () => {
     const history = useHistory();
-   
+    window.scrollTo(0,0)
     return (
         <div style={{padding: '0 15px'}}>
         <Container>
