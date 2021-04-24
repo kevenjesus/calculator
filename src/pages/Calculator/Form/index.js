@@ -25,7 +25,6 @@ function Form() {
         state,
         counties,
         country,
-        analysisUnit,
         qtdAnalysis,
         pitDepth,
         valuatioMethod,

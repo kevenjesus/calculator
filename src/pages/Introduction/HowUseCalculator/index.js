@@ -25,13 +25,13 @@ const HowUseCalculator = () => {
                 <strong>{introduction.howUseCalculator.paragraphy_05}</strong>
             </Text>
             <Text>
-                {introduction.howUseCalculator.paragraphy_06}
+            <strong>{introduction.howUseCalculator.paragraphy_06}</strong>
             </Text>
             <Text>
-                {introduction.howUseCalculator.paragraphy_07}
+            <strong>{introduction.howUseCalculator.paragraphy_07}</strong>
             </Text>
             <Text>
-                {introduction.howUseCalculator.paragraphy_08}
+            {introduction.howUseCalculator.paragraphy_08}
             </Text>
 
            

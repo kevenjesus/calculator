@@ -31,7 +31,7 @@ const Home = () => {
                 </Row>
                 <Row>
                     <Col sm={3} md={4}>
-                        <label style={{color: 'white'}}>Ainda não conheço</label>
+                        <label style={{color: 'white'}}>Ja conheço</label>
                         <Link to="/calculator">
                             <Button variant="default">me leva para a versão resumida</Button>
                         </Link>
