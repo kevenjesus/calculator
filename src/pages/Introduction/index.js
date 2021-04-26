@@ -14,6 +14,7 @@ import ExtrationType from './ExtractionType'
 import AnalysisUnit from './AnalysisUnit'
 import { AppContext, stateTypes } from 'utils/AppContext';
 import calcResults from 'pages/Calculator/Form/calcResults';
+import { useAlert } from 'react-alert';
 
 
 const Content = ({step}) => {
@@ -38,6 +39,7 @@ const Introduction = () => {
     const {calculator, introduction, language} = state;
     const { step } = introduction
     const history = useHistory();
+    const alert = useAlert();
 
     useEffect(() => {
         const { location } = history
@@ -51,8 +53,10 @@ const Introduction = () => {
 
     const NextStep = useCallback(() => {
         if(step === ANALYSIS_UNIT) {
+            alert.removeAll()
             if(calculator.qtdAnalysis.value === '') {
                 dispatch({type: stateTypes.SET_QTD_ANALYS_UNIT, payload: {...calculator.qtdAnalysis, error: true}});
+                alert.error(<span style={{textTransform: 'initial'}}>Por favor. Preencha o valor de unidade</span>)
             }else {
                 const results = calcResults(state, dispatch)
                 console.log(results)
@@ -61,7 +65,7 @@ const Introduction = () => {
         }else {
             dispatch({type: stateTypes.SET_STEP, payload: { step: step+1}});
         }
-    }, [state, step, dispatch, history, calculator]);
+    }, [state, step, dispatch, history, calculator, alert]);
 
     const PreviosStep = useCallback(() => {
         dispatch({type: stateTypes.SET_STEP, payload: { step: step-1}});

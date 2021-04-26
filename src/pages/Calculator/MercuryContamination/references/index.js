@@ -13,7 +13,7 @@ const MercuryReferences = () => {
                     <GoBack />
                     <span>Voltar</span>
                 </Go>
-            <Headline>Impactos do mercurio / Hipoteses e referências </Headline>
+            <Headline>Impactos do mercurio / Hipóteses e referências </Headline>
             <Text><strong> &raquo; Erosão – Assoreamentos</strong></Text>
             
             <Table>
@@ -48,7 +48,7 @@ const MercuryReferences = () => {
                                 Impacto cardiovascular se dividem em infarto do miocárdio e hipertensão, tendo tanto custo de tratamento quanto dias vividos com incapacidade (DALY)
                             </Text>
                         </Td>
-                        <Td style={{borderLeft: 0}}>
+                        <Td>
                             <Text>Castilhos & Domingos (2018)</Text>
                             <Text>Vasconcellos (2015)</Text>
                             <Text>Lopez & Cólon, 2010</Text>
@@ -98,7 +98,7 @@ const MercuryReferences = () => {
                                 Os sintomas neuropsicológicos são avaliados tanto pelo custo de tratamento destes sintomas, como pela perda de bem-estar gerada ao viver com tal incapacidade (DALY).
                             </Text>
                         </Td>
-                        <Td style={{borderLeft: 0}}>
+                        <Td>
                             <Text>Steckling et al (2014)</Text>
                             <Text>Steckling et al (2019)</Text>
                         </Td>
@@ -135,7 +135,7 @@ const MercuryReferences = () => {
                                 Hipótese de concentração média de mercúrio nos solos de 0,24 gramas de ouro por tonelada de sedimento.
                             </Text>
                         </Td>
-                        <Td style={{borderLeft: 0}}>
+                        <Td>
                             <Text>Miranda (2019) Kahhat et al (2019)</Text>
                         </Td>
                     </Tr>

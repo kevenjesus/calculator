@@ -6,6 +6,8 @@ import { IMPACTED_AREA, AMOUNT_GOLD, YEARS_OF_MINING, ALLUVIUM, FERRY, MONTHS_OF
 import { TextField } from 'theme'
 import ExtractionType from './ExtractionType'
 import Conditional from 'components/Conditional'
+import { useAlert } from 'react-alert'
+
 
 
 const AnalysisUnit = () => {
@@ -15,6 +17,7 @@ const AnalysisUnit = () => {
     const { pitDepth, valuatioMethod } = calculator;
     const {introduction, calculatorForm} = language
     const ref = useRef();
+    const alert = useAlert()
     const dataPitDepth = [
         {
             label: '2,5 '+calculatorForm.values.pitDepth.meters+' (valor padrão)',
@@ -65,10 +68,12 @@ const AnalysisUnit = () => {
 
     const handleQtdAnalysis = useCallback((e) => {
         const { value } = e.target;
+        alert.removeAll()
         if(value === '' || Number(value) > 0) {
             dispatch({type: stateTypes.SET_QTD_ANALYS_UNIT, payload: { value, error: value === '' }})
+            alert.error(<span style={{textTransform: 'initial'}}>Por favor. Preencha o valor de unidade</span>)
         }
-    }, [dispatch])
+    }, [dispatch, alert])
 
     useEffect(() => {
         if(valuatioMethod === ALLUVIUM) {

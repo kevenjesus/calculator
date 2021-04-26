@@ -13,7 +13,7 @@ const DeforestationReferences = () => {
                     <GoBack />
                     <span>Voltar</span>
                 </Go>
-            <Headline>Desmatamento / Hipoteses e referências </Headline>
+            <Headline>Desmatamento / Hipóteses e referências</Headline>
             <Text><strong> &raquo; Bioprospecção</strong></Text>
             
             <Table>
@@ -24,7 +24,7 @@ const DeforestationReferences = () => {
                 </Thead>
                 <Tbody>
                     <Tr>
-                        <Td style={{borderLeft: 0, width: '100%'}}>
+                        <Td>
                             <Text>Andersen (1997)</Text>
                             <Text>May et al (2013)</Text>
                             <Text>Groot et al (2012)</Text>
@@ -53,7 +53,7 @@ const DeforestationReferences = () => {
                             Estoque de carbono por hectare na amâzônia de 347 tCO2/ha
                             </Text>
                         </Td>
-                        <Td style={{borderLeft: 0}}>
+                        <Td>
                             <Text>World Bank (2020)</Text>
                             <Text>Fearnside (2018)</Text>
                         </Td>
@@ -82,7 +82,7 @@ const DeforestationReferences = () => {
                             Valor dos produtos não madeireiros foi obtida a partir do consórcio de café, cacau, guaraná, açaí e banana
                             </Text>
                         </Td>
-                        <Td style={{borderLeft: 0}}>
+                        <Td>
                             <Text>Rodrigues (2016)</Text>
                             <Text>CSF (2019)</Text>
                         </Td>
@@ -109,7 +109,7 @@ const DeforestationReferences = () => {
                             Meta-análise que os valores variam em função da densidade demográfica, do PIB per capita e da riqueza de espécies
                             </Text>
                         </Td>
-                        <Td style={{borderLeft: 0}}>
+                        <Td>
                             <Text>Siikamaki et al (2015)</Text>
                         </Td>
                     </Tr>
@@ -156,7 +156,7 @@ const DeforestationReferences = () => {
                             Considera-se o custo de frete de mudas a partir da distância média dos pontos de garimpo nos municípios (RAISG e IBAMA) e a localização de centros urbanos.
                             </Text>
                         </Td>
-                        <Td style={{borderLeft: 0}}>
+                        <Td>
                             <Text>IBAMA (2019)</Text>
                             <Text>Sonter et al (2017)</Text>
                             <Text>RAISG – Rede Amazônica de informação Socioambiental</Text>

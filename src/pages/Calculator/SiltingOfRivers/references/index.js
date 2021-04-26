@@ -13,7 +13,7 @@ const SiltingRiversReferences = () => {
                     <GoBack />
                     <span>Voltar</span>
                 </Go>
-            <Headline>Assoreamento dos rios / Hipoteses e referências </Headline>
+            <Headline>Assoreamento dos rios / Hipóteses e referências </Headline>
             <Text><strong> &raquo; Erosão – Assoreamento</strong></Text>
             
             <Table>
@@ -33,7 +33,7 @@ const SiltingRiversReferences = () => {
                             Tais valores são perdidos integralmente com o garimpo, podendo ser recuperados anualmente. Assume-se a hipótese de que tais atividades retomarão 80% do que eram em 30 anos.
                             </Text>
                         </Td>
-                        <Td style={{borderLeft: 0}}>
+                        <Td>
                             <Text>De Groot et al (2012)</Text>
                             <Text>Constanza et al (1997)</Text>
                         </Td>
@@ -66,7 +66,7 @@ const SiltingRiversReferences = () => {
                                 Assume-se que 15% do sedimento movimentado pelo garimpo de aluvião é direcionado aos rios e precisam ser dragados. Utiliza-se como referência estudo que calcula o custo para uma draga de sucção entre 8” à 12” (polegadas)
                             </Text>
                         </Td>
-                        <Td style={{borderLeft: 0}}>
+                        <Td>
                             <Text>Costa (2016)</Text>
                         </Td>
                     </Tr>
@@ -97,7 +97,7 @@ const SiltingRiversReferences = () => {
                             Uma draga tem a capacidade de movimentar 300 m3 por hora
                             </Text>
                         </Td>
-                        <Td style={{borderLeft: 0}}>
+                        <Td>
                             <Text>CID PUCESE (2011)</Text>
                             <Text>Tonietto & Silva, (2011)</Text>
                             <Text>Polícia Federal (2018)</Text>

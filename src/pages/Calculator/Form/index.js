@@ -13,6 +13,7 @@ import mockCountries from 'mocks/countries.json'
 import mockContry from 'mocks/country.json'
 import calcResults from './calcResults'
 import ExtrationTypeOptions from './ExtrationTypeOptions'
+import { useAlert } from 'react-alert'
 
 
 function Form() {
@@ -31,6 +32,7 @@ function Form() {
         txPrevalence } = calculator
     const { calculatorForm, introduction } = language
     const history = useHistory()
+    const alert = useAlert()
 
     
 
@@ -172,12 +174,14 @@ function Form() {
     }, [dispatch])
 
     const checkFormIsInvalid = useCallback(() => {
+        alert.removeAll()
         if (qtdAnalysis.value === '') {
             dispatch({ type: stateTypes.SET_QTD_ANALYS_UNIT, payload: { ...qtdAnalysis, error: true } })
+            alert.error(<span style={{textTransform: 'initial'}}>Por favor. Preencha o valor de unidade</span>)
             return true
         }
         return false
-    }, [dispatch, qtdAnalysis])
+    }, [dispatch, qtdAnalysis, alert])
 
 
     const submitCalc = () => {
