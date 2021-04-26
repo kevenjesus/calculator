@@ -28,12 +28,12 @@ const Region = () => {
         mockContry.forEach(country => {
             dataCountries.forEach(countries => {
                 if(country.id === countries.id) {
-                    countries.densidadePop2010 = country.densidadePop2010
-                    countries.densidadePop2060 = country.densidadePop2060
-                    countries.popUrbMunicipio = country.PopUrbMunicipio
-                    countries.popRuralMunicipio = country.PopRuralMunicipio
-                    countries.distanciaGarimpoCentro = country.Distancia_Garimpo_Centro
-                    countries.especies = country.Especies_por_Municipio
+                    countries.popDensity2010 = country.densidadePop2010
+                    countries.popDensity2060 = country.densidadePop2060
+                    countries.urbanPopMunicipality = country.PopUrbMunicipio
+                    countries.ruralPopMunicipality = country.PopRuralMunicipio
+                    countries.distanceanningCenter = country.Distancia_Garimpo_Centro
+                    countries.species = country.Especies_por_Municipio
                 }
             })
         })

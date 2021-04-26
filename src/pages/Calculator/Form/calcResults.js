@@ -48,6 +48,8 @@ const calcResults = (state, dispatch) => {
         const distanceanningCenter = knowRegion ? currentCountry.distanceanningCenter : 212.74
         const species = knowRegion ? (currentCountry.species <= 0 ? StateCity.species : currentCountry.species) : 69.21
 
+        console.log('valueLikeMining', valueLikeMining,'popDensity2010', popDensity2010, 'popDensity2060', popDensity2060, 'urbanPopMunicipality', urbanPopMunicipality, 'ruralPopMunicipality', ruralPopMunicipality, 'distanceanningCenter', 'species', species)
+
 
         // tipo de garimpo = valuatioMethod
         // valor do tipo de garimpo = qtdAnalysis.value (ouro, hectere, tempo)
