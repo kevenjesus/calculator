@@ -13,7 +13,7 @@ const SiltingRiversReferences = () => {
                     <GoBack />
                     <span>Voltar</span>
                 </Go>
-            <Headline>Assoreamento dos rios / Hipoteses e referenias </Headline>
+            <Headline>Assoreamento dos rios / Hipoteses e referências </Headline>
             <Text><strong> &raquo; Erosão – Assoreamento</strong></Text>
             
             <Table>

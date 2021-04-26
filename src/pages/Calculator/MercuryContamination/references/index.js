@@ -13,7 +13,7 @@ const MercuryReferences = () => {
                     <GoBack />
                     <span>Voltar</span>
                 </Go>
-            <Headline>Impactos do mercurio / Hipoteses e referenias </Headline>
+            <Headline>Impactos do mercurio / Hipoteses e referências </Headline>
             <Text><strong> &raquo; Erosão – Assoreamentos</strong></Text>
             
             <Table>
