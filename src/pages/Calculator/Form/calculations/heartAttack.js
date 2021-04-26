@@ -3,7 +3,6 @@ import { ALLUVIUM, AMOUNT_GOLD, FERRY, MONTHS_OF_MINING, PIT, YEARS_OF_MINING } 
 const CONSERVATIVE = 0.29;
 
 const heartAttack = (likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, urbanPopMunicipality, ruralPopMunicipality, popDensity2060, gold, isRegion)=> {
-    console.log('txPrevalence',txPrevalence)
 
     const HgAuRatio = 2.6;
     
@@ -91,7 +90,6 @@ const heartAttack = (likeMining, typeValueLikeMining, valueLikeMining, txPrevale
     const infarctionIncidenceTreatment = (infarctionIncidenceRate * toPopulationAffectedMercuryHair) /1000;
     const toCostOfInfarctionTreatmentYears = infarctionIncidenceTreatment * durationDisabilityInfarction * annualInfarctTreatmentCost;
     const toDALYCostAndInfarctionTreatment = toCostOfInfarctionTreatmentYears + DALYInfarction;
-    console.log('toDALYCostAndInfarctionTreatment', toDALYCostAndInfarctionTreatment)
 
     return toDALYCostAndInfarctionTreatment
 }

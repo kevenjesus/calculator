@@ -13,7 +13,7 @@ const DeforestationReferences = () => {
                     <GoBack />
                     <span>Voltar</span>
                 </Go>
-            <Headline>Desmatamento / Hipoteses e referenias </Headline>
+            <Headline>Desmatamento / Hipoteses e referências </Headline>
             <Text><strong> &raquo; Bioprospecção</strong></Text>
             
             <Table>
