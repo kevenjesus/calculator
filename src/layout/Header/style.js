@@ -23,6 +23,10 @@ export const ContainerHeader = styled.header`
     box-shadow: 0px 2px 10px -3px #3F3D56;
     position: relative;
     z-index: 1;
+    @media print {
+        background: transparent;
+        box-shadow: none;
+    }
 `
 
 export const LogoContainer = styled.div`
@@ -73,6 +77,9 @@ export const BarMenu = styled.button`
     height: 25px;
     cursor: pointer;
     @media (min-width: 768px) {
+        display: none;
+    }
+    @media print {
         display: none;
     }
 `

@@ -27,4 +27,7 @@ export const Card = styled.div`
     margin-top: 60px;
     padding: 16px;
     box-shadow: 0 0 7px 0 rgba(0,0,0,.54);
+    @media print {
+        break-inside: avoid;
+    }
 ` 

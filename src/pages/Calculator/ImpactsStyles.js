@@ -134,3 +134,9 @@ export const Td = styled.td`
     padding: 10px;
   
 ` 
+
+export const HiddenPrint = styled.div`
+    @media print {
+        display: none;
+    }
+` 

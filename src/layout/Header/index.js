@@ -40,6 +40,8 @@ const Header = ({theme = 'white'}) => {
     if(notRender >= 0) {
         return null;
     }
+
+    document.title = `${header.naming} ${header.slogan ? `- ${header.slogan}`: '' }`;
     
     return (
         <>

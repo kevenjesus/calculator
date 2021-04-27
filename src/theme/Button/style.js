@@ -15,4 +15,7 @@ export const ButtonComponent = styled.button`
     text-transform: uppercase;
     color: ${({variant}) => variant === 'default' ? '#000' : '#fff'};
     margin-bottom: 15px;
+    @media print {
+        display: none;
+    }
 ` 

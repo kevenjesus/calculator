@@ -21,6 +21,9 @@ export const SocialMedia = styled.div`
     display: flex;
     align-items: center;
     height: 50px;
+    @media print {
+        display: none;
+    }
 ` 
 
 export const MediaLink = styled.a`

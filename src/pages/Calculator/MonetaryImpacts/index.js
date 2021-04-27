@@ -2,8 +2,8 @@ import {  useContext } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { Button } from 'theme'
 import { Grid, Row, Col } from 'react-flexbox-grid'
-import { CATEGORY_DEFORESTATION, CATEGORY_MERCURY, CATEGORY_SILTING_RIVERS } from 'pages/Calculator/Form/consts'
-import { Container, Menu, MenuItem, Headline, ButtonFixed } from 'pages/Calculator/ImpactsStyles'
+import { AMOUNT_GOLD, CATEGORY_DEFORESTATION, CATEGORY_MERCURY, CATEGORY_SILTING_RIVERS, IMPACTED_AREA, YEARS_OF_MINING } from 'pages/Calculator/Form/consts'
+import { Container, Menu, MenuItem, Headline, ButtonFixed, HiddenPrint } from 'pages/Calculator/ImpactsStyles'
 import { Monetary, MonetaryType, Label, FormGroup, Card } from './style'
 import Chart from 'components/Chart'
 import { AppContext } from 'utils/AppContext'
@@ -110,31 +110,9 @@ const MonetaryImpacts = () => {
     // const [impactedCategories, setImpactedCategories] = useState(dataimpactCategories)
     // const [impactedVisuaization, setImpactedVisualization] = useState(dataImpactedVisualization)
     const {state} = useContext(AppContext);
-    const {language} = state
+    const {language, calculator} = state
     const {impacts} = language
     const history = useHistory();
-
-    // const handleImpactedCategories = useCallback((e) => {
-    //     const { value } = e.target;
-    //     const impactedCategoriesUpdate = impactedCategories.map(r => {
-    //         if(r.value === Number(value)) {
-    //             r.checked = !r.checked
-    //         }
-    //         return r;
-    //     })
-    //     setImpactedCategories(impactedCategoriesUpdate);
-    // }, [setImpactedCategories, impactedCategories])
-
-    // const handleImpactedVisualization = useCallback((e) => {
-    //     const { value } = e.target;
-    //     const impactedVisualizationUpdate = impactedVisuaization.map(r => {
-    //         if(r.value === Number(value)) {
-    //             r.checked = !r.checked
-    //         }
-    //         return r;
-    //     })
-    //     setImpactedVisualization(impactedVisualizationUpdate);
-    // }, [setImpactedVisualization, impactedVisuaization])
 
     window.scrollTo(0,0)
 
@@ -184,11 +162,24 @@ const MonetaryImpacts = () => {
         total: sumTotal(dataMercury)
     }
 
+    let typeAnalysis;
+    if(calculator.analysisUnit === IMPACTED_AREA) {
+        typeAnalysis = language.calculatorForm.values.qtdAnalysisUnit.hactare
+    }else if (calculator.analysisUnit === AMOUNT_GOLD) {
+        typeAnalysis = language.calculatorForm.values.qtdAnalysisUnit.grams
+    }else if (calculator.analysisUnit === YEARS_OF_MINING) {
+        typeAnalysis = language.calculatorForm.values.qtdAnalysisUnit.years
+    }else {
+        typeAnalysis = language.calculatorForm.values.qtdAnalysisUnit.months
+    }
+
     return (
         <Container>
             <Grid fluid>
                 <Row>
+                    
                     <Col xs={12} sm={4} md={3}>
+                    <HiddenPrint>
                     <Menu>
                             <Link to="/impacts/deforestation">
                                 <MenuItem>{impacts.menu.deforestation}</MenuItem>
@@ -201,7 +192,9 @@ const MonetaryImpacts = () => {
                             </Link>
                             <MenuItem last active>{impacts.menu.monetaryImpacts}</MenuItem>
                         </Menu>
+                        </HiddenPrint>
                     </Col>
+                    
                     <Col xs={12} sm={8} md={9}>
                         <Headline>{impacts.monetaryImpacts.headline}</Headline>
                         <Row>
@@ -210,7 +203,7 @@ const MonetaryImpacts = () => {
                                 <FormGroup>
                                     <Label>{impacts.monetaryImpacts.labels.finalValue}</Label>
                                     <Monetary>{valueTotal}</Monetary>
-                                    <MonetaryType>{`${impacts.monetaryImpacts.labels.typeText} 1000 ${impacts.monetaryImpacts.labels.typeGold}`}</MonetaryType>
+                                    <MonetaryType>{`${impacts.monetaryImpacts.labels.typeText} ${calculator.qtdAnalysis.value} ${typeAnalysis}`}</MonetaryType>
                                 </FormGroup>
                             </Col>
                           
@@ -229,7 +222,7 @@ const MonetaryImpacts = () => {
                     <Grid>
                         <Row between="sm" start="md">
                             <Col xs={6} mdOffset={3} md={3}>
-                                <Button onClick={() => history.push('/calculator')}>{impacts.buttons.newCalculation}</Button>
+                                <Button onClick={() => history.push('/')}>{impacts.buttons.newCalculation}</Button>
                             </Col>
                             <Col xs={6} md={3}>
                                 <Button variant="secondary" onClick={() => window.print()}>{impacts.buttons.printReports}</Button>
