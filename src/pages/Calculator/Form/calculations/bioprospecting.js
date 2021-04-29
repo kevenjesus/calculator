@@ -4,10 +4,12 @@ import { FERRY, PIT } from "../consts";
 
 const CONSERVATIVE = 0.29
 
-const bioprospecting = (likeMining, txPrevalence, hectare) => { 
+const bioprospecting = (likeMining, hectare, txPrevalence) => { 
 
   const bioprospectingCostByBRL = txPrevalence === CONSERVATIVE ? 68.19 : 116.95
   const txDiscount = 0.03;
+
+  
 
   const amounts = calcMontante(bioprospectingCostByBRL)
   const VPLBioprospecting = vpl(txDiscount, amounts)
