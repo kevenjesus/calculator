@@ -5,7 +5,7 @@ import { ALLUVIUM, AMOUNT_GOLD, FERRY, IMPACTED_AREA, PIT } from "../consts";
 const CONSERVATIVE = 0.29
 
 const bioprospecting = (likeMining, typeValueLikeMining, txPrevalence, hectare) => { 
-
+  
   const bioprospectingCostByBRL = txPrevalence === CONSERVATIVE ? 68.19 : 116.95
   const txDiscount = 0.03;
 
