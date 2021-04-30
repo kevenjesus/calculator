@@ -1,8 +1,8 @@
 import calcMontante from "utils/calcMontante";
 import vpl from "utils/vpl";
-import { FERRY, PIT } from "../consts";
+import { ALLUVIUM, AMOUNT_GOLD, FERRY, IMPACTED_AREA, PIT } from "../consts";
 
-const culturedAndSpecies = (likeMining, popDensity2010, species, hectare) => {
+const culturedAndSpecies = (likeMining, popDensity2010, species, typeValueLikeMining, hectare) => {
   
   const GDPperCapitaBrazil2019USD = 8717.18;
   const celsiusTemperature = 26.8;
@@ -23,12 +23,14 @@ const culturedAndSpecies = (likeMining, popDensity2010, species, hectare) => {
 
   let toCulturedAndSpecies;
 
-  if(likeMining === FERRY) { 
+  if(likeMining === FERRY)  { 
     toCulturedAndSpecies = 0
   }else if (likeMining === PIT) {
     toCulturedAndSpecies = VPLHectareCulturedAndSpecies * 0.31 * 12
-  }else {
+  }else if(likeMining === ALLUVIUM && typeValueLikeMining === AMOUNT_GOLD){
     toCulturedAndSpecies = VPLHectareCulturedAndSpecies * hectare * 12
+  }else if(likeMining === ALLUVIUM && typeValueLikeMining === IMPACTED_AREA){
+    toCulturedAndSpecies = VPLHectareCulturedAndSpecies * hectare
   }
   return toCulturedAndSpecies
            

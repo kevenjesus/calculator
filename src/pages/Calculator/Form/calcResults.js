@@ -40,7 +40,7 @@ const calcResults = (state, dispatch) => {
         const currentCountry = counties.find(c => c.id === Number(country))
         const likeMining = valuatioMethod // FERRY, PIT or ALLUVION
         const valueLikeMining = qtdAnalysis.value // gold, hactare, months, years
-        const typeValueLikeMining = calculator.analysisUnit // AMOUNT_GOLD // IMPACTED_AREA / YEARS_OF_MINING / MONTHS_OF_MINING
+        const typeValueLikeMining = calculator.analysisUnit // AMOUNT_GOLD / IMPACTED_AREA / YEARS_OF_MINING / MONTHS_OF_MINING
         const popDensity2010 = knowRegion ? currentCountry.popDensity2010 : 4.12;
         const popDensity2060 = knowRegion ? currentCountry.popDensity2060  : 6.0;
         const urbanPopMunicipality = knowRegion ? currentCountry.urbanPopMunicipality : 0.7353;
@@ -55,23 +55,23 @@ const calcResults = (state, dispatch) => {
         // valor do tipo de garimpo = qtdAnalysis.value (ouro, hectere, tempo)
         // tipo de valor do garimpo = calculator.analysisUnit 
 
-        const totalBio = bioprospecting(likeMining, hectareValue, txPrevalence)
+        const totalBio = bioprospecting(likeMining, typeValueLikeMining, txPrevalence, hectareValue)
         impacts.push({ label: 'BioProspecção', displayName: 'BioProspecção', category: CATEGORY_DEFORESTATION, value: totalBio })
         //console.log('totalBio', totalBio)
 
-        const totalCarbon = carbon(likeMining, hectareValue)
+        const totalCarbon = carbon(likeMining, typeValueLikeMining, hectareValue)
         impacts.push({ label: 'Carbono', displayName: 'Carbono', category: CATEGORY_DEFORESTATION, value: totalCarbon })
         //console.log('totalCarbon',totalCarbon) 
 
-        const totalPMNM = woodAndNonWoodProducts(likeMining, hectareValue)
+        const totalPMNM = woodAndNonWoodProducts(likeMining, typeValueLikeMining, hectareValue)
         impacts.push({ label: 'PMNM', displayName: 'Produtos não-madeireiros e madeireiros', category: CATEGORY_DEFORESTATION, value: totalPMNM })
         //console.log('totalPMNM', totalPMNM)
 
-        const totalRecreation = recreation(likeMining, popDensity2010, species, hectareValue)
+        const totalRecreation = recreation(likeMining, popDensity2010, species, typeValueLikeMining, hectareValue)
         impacts.push({ label: 'Recreação', displayName: 'Recreação', category: CATEGORY_DEFORESTATION, value: totalRecreation })
         //console.log('totalRecreation', totalRecreation)
 
-        const totalCulturedAndSpecies = culturedAndSpecies(likeMining, popDensity2010, species, hectareValue)
+        const totalCulturedAndSpecies = culturedAndSpecies(likeMining, popDensity2010, species, typeValueLikeMining, hectareValue)
         impacts.push({ label: 'Cultural/Espécies', displayName: 'Cultural / Espécies', category: CATEGORY_DEFORESTATION, value: totalCulturedAndSpecies })
         //console.log('totalCulturedAndSpecies', totalCulturedAndSpecies)
         
@@ -89,7 +89,7 @@ const calcResults = (state, dispatch) => {
         impacts.push({ label: 'Dragagem de sedimentos no rio', displayName: 'Dragagem de sedimentos no rio', category: CATEGORY_SILTING_RIVERS, value: totalDredgingAndRiverSediments })
         //console.log('totalDredgingAndRiverSediments', totalDredgingAndRiverSediments)
         
-        const totalErosionSiltingUp = erosionSiltingUp(likeMining, txPrevalence, hectareValue)
+        const totalErosionSiltingUp = erosionSiltingUp(likeMining, txPrevalence, typeValueLikeMining, hectareValue)
         impacts.push({ label: 'Erosão', displayName: 'Erosão', category: CATEGORY_SILTING_RIVERS, value: totalErosionSiltingUp })
         //console.log('totalErosionSiltingUp', totalErosionSiltingUp)
     

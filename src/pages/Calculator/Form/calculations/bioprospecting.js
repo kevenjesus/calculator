@@ -1,10 +1,10 @@
 import calcMontante from "utils/calcMontante";
 import vpl from "utils/vpl";
-import { FERRY, PIT } from "../consts";
+import { ALLUVIUM, AMOUNT_GOLD, FERRY, IMPACTED_AREA, PIT } from "../consts";
 
 const CONSERVATIVE = 0.29
 
-const bioprospecting = (likeMining, hectare, txPrevalence) => { 
+const bioprospecting = (likeMining, typeValueLikeMining, txPrevalence, hectare) => { 
 
   const bioprospectingCostByBRL = txPrevalence === CONSERVATIVE ? 68.19 : 116.95
   const txDiscount = 0.03;
@@ -15,12 +15,14 @@ const bioprospecting = (likeMining, hectare, txPrevalence) => {
   const VPLBioprospecting = vpl(txDiscount, amounts)
 
     let toBioprospecting;
-      if(likeMining === FERRY) {
+      if(likeMining === FERRY)  {
         toBioprospecting = 0
-      }else if (likeMining === PIT) {
+      }else if(likeMining === PIT) {
         toBioprospecting = VPLBioprospecting * 0.31 * 12
-      }else{
+      }else if(likeMining === ALLUVIUM && typeValueLikeMining === AMOUNT_GOLD){
         toBioprospecting = VPLBioprospecting * hectare * 12
+      }else if(likeMining === ALLUVIUM && typeValueLikeMining === IMPACTED_AREA){
+        toBioprospecting = VPLBioprospecting * hectare
       }
     return toBioprospecting
 }

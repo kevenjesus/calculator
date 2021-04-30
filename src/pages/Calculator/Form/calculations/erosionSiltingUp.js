@@ -1,10 +1,10 @@
 import calcMontante from "utils/calcMontante";
 import vpl from "utils/vpl";
-import { FERRY, PIT } from "../consts";
+import { ALLUVIUM, AMOUNT_GOLD, FERRY, IMPACTED_AREA, PIT } from "../consts";
 
 const CONSERVATIVE = 0.29
 
-const erosionSiltingUp = (likeMining, txPrevalence, hectare) => {
+const erosionSiltingUp = (likeMining, txPrevalence, typeValueLikeMining, hectare) => {
  
   const GDPperCapitaBrazil2019USD = 8717.18
 
@@ -19,13 +19,17 @@ const erosionSiltingUp = (likeMining, txPrevalence, hectare) => {
     if(likeMining === FERRY) {
       toErosion = 0
       
-    }else if (likeMining === PIT) {
+    }else if (likeMining === PIT)  {
       toErosion = VPLhectareSilting * 0.31 * 12
     
-    }else{
+    }else if(likeMining === ALLUVIUM && typeValueLikeMining === AMOUNT_GOLD){
       toErosion = VPLhectareSilting * hectare * 12
 
+    }else if(likeMining === ALLUVIUM && typeValueLikeMining === IMPACTED_AREA){
+      toErosion = VPLhectareSilting * hectare
+
     }
+
     return toErosion
       
     }else{
@@ -48,8 +52,13 @@ const erosionSiltingUp = (likeMining, txPrevalence, hectare) => {
           toErosion = 0
         }else if (likeMining === PIT) {
           toErosion = VPLhectareSilting * 0.31 * 12
-        }else {
+          
+        }else if(likeMining === ALLUVIUM && typeValueLikeMining === AMOUNT_GOLD){
           toErosion = VPLhectareSilting * hectare * 12
+    
+        }else if(likeMining === ALLUVIUM && typeValueLikeMining === IMPACTED_AREA){
+          toErosion = VPLhectareSilting * hectare
+    
         }
         return toErosion
     }
