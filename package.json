@@ -31,6 +31,9 @@
       "react-app/jest"
     ]
   },
+  "hooks": {
+    "pre-commit": "yarn test"
+  },
   "browserslist": {
     "production": [
       ">0.2%",
