@@ -48,7 +48,7 @@ const Header = ({theme = 'white'}) => {
         <ContainerHeader theme={theme}>
             <Container>
                 <LogoContainer>
-                    <Link to="/calculator">
+                    <Link to="/">
                         <Logo />
                     </Link>
                     <LogoBase>

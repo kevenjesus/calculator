@@ -3,7 +3,9 @@ import { Row, Col } from 'react-flexbox-grid'
 import { Headline, Text } from 'pages/Introduction/style'
 import { ItemType, Title, Paragraphy, Thumbnail } from './style'
 import { AppContext, stateTypes } from 'utils/AppContext'
-import Image from 'assets/images/example2.svg'
+import Aluviao from 'assets/images/aluviao-min.jpg'
+import Poco from 'assets/images/poco-min.jpg'
+import Balsa from 'assets/images/Balsa-min.jpg'
 import { ALLUVIUM, FERRY, PIT } from 'pages/Calculator/Form/consts'
 
 const ExtrationType = () => {
@@ -24,7 +26,7 @@ const ExtrationType = () => {
                 <Col md={4}>
                     <ItemType active={calculator.valuatioMethod === ALLUVIUM} onClick={() => handleOption(ALLUVIUM)}>
                         <Title>{introduction.extractionType.values[0].type}</Title>
-                        <Thumbnail src={Image} alt="" />
+                        <Thumbnail src={Aluviao} alt="" />
                         <Paragraphy>
                         {introduction.extractionType.values[0].text}
                         </Paragraphy>
@@ -33,7 +35,7 @@ const ExtrationType = () => {
                 <Col md={4}>
                     <ItemType active={calculator.valuatioMethod === FERRY} onClick={() => handleOption(FERRY)}>
                     <Title>{introduction.extractionType.values[1].type}</Title>
-                        <Thumbnail src={Image} alt="" />
+                        <Thumbnail src={Balsa} alt="" />
                         <Paragraphy>
                         {introduction.extractionType.values[1].text}
                         </Paragraphy>
@@ -42,7 +44,7 @@ const ExtrationType = () => {
                 <Col md={4}>
                     <ItemType active={calculator.valuatioMethod === PIT} onClick={() => handleOption(PIT)}>
                     <Title>{introduction.extractionType.values[2].type}</Title>
-                        <Thumbnail src={Image} alt="" />
+                        <Thumbnail src={Poco} alt="" />
                         <Paragraphy>
                         {introduction.extractionType.values[2].text}
                         </Paragraphy>

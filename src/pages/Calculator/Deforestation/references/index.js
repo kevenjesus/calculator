@@ -3,7 +3,12 @@ import { Go } from 'pages/Introduction/style'
 import { Link, useHistory } from 'react-router-dom'
 import { Button } from 'theme'
 import { ReactComponent as GoBack } from 'assets/icons/goBack.svg'
+import { useContext } from 'react'
+import { AppContext } from 'utils/AppContext'
 const DeforestationReferences = () => {
+    const {state} = useContext(AppContext)
+    const {language} = state
+    const {hypothesesReferences} = language
     const history = useHistory();
     window.scrollTo(0,0)
     return (
@@ -11,23 +16,23 @@ const DeforestationReferences = () => {
         <Container>
             <Go onClick={() => history.push('/impacts/deforestation')}>
                     <GoBack />
-                    <span>Voltar</span>
+                    <span>{language.comeBack}</span>
                 </Go>
-            <Headline>Desmatamento / Hipóteses e referências</Headline>
-            <Text><strong> &raquo; Bioprospecção</strong></Text>
+            <Headline>{hypothesesReferences.deforestation.headline}</Headline>
+            <Text><strong> &raquo; {hypothesesReferences.deforestation.bioprospecting}</strong></Text>
             
             <Table>
                 <Thead>
                     <Tr>
-                        <Th style={{width: '100%'}}>Referências</Th> 
+                        <Th style={{width: '100%'}}>{language.references}</Th> 
                     </Tr>                   
                 </Thead>
                 <Tbody>
                     <Tr>
                         <Td>
-                            <Text>Andersen (1997)</Text>
-                            <Text>May et al (2013)</Text>
-                            <Text>Groot et al (2012)</Text>
+                            <Text>{hypothesesReferences.deforestation.bio_ref_line1}</Text>
+                            <Text>{hypothesesReferences.deforestation.bio_ref_line2}</Text>
+                            <Text>{hypothesesReferences.deforestation.bio_ref_line3}</Text>
                         </Td>
                     </Tr>
                 </Tbody>
@@ -38,24 +43,24 @@ const DeforestationReferences = () => {
             <hr />
             <br />
 
-            <Text><strong> &raquo; Carbono</strong></Text>
+            <Text><strong> &raquo; {hypothesesReferences.deforestation.carbon}</strong></Text>
             <Table>
                 <Thead>
                     <Tr>
-                        <Th>Hipóteses</Th>
-                        <Th>Referências</Th> 
+                        <Th>{language.hypotheses}</Th>
+                        <Th>{language.references}</Th> 
                     </Tr>                   
                 </Thead>
                 <Tbody>
                     <Tr>
                         <Td>
                             <Text>
-                            Estoque de carbono por hectare na amâzônia de 347 tCO2/ha
+                            {hypothesesReferences.deforestation.carbon_hypotheses}
                             </Text>
                         </Td>
                         <Td>
-                            <Text>World Bank (2020)</Text>
-                            <Text>Fearnside (2018)</Text>
+                            <Text>{hypothesesReferences.deforestation.carbon_ref_line1}</Text>
+                            <Text>{hypothesesReferences.deforestation.carbon_ref_line2}</Text>
                         </Td>
                     </Tr>
                 </Tbody>
@@ -64,27 +69,27 @@ const DeforestationReferences = () => {
             <br />
             <hr />
             <br />
-            <Text><strong> &raquo; Produtos não-madeireiros e madeireiros</strong></Text>
+            <Text><strong> &raquo; {hypothesesReferences.deforestation.woodNonwoodProducts}</strong></Text>
             <Table>
                 <Thead>
                     <Tr>
-                        <Th>Hipóteses</Th>
-                        <Th>Referências</Th> 
+                        <Th>{language.hypotheses}</Th>
+                        <Th>{language.references}</Th> 
                     </Tr>                   
                 </Thead>
                 <Tbody>
                     <Tr>
                         <Td>
                             <Text>
-                            Valor dos produtos madeireiros foi obtido em estudos de concessão florestal na Amazônia. 
+                            {hypothesesReferences.deforestation.woodNonwoodProducts_hypotheses_line1} 
                             </Text>
                             <Text>
-                            Valor dos produtos não madeireiros foi obtida a partir do consórcio de café, cacau, guaraná, açaí e banana
+                            {hypothesesReferences.deforestation.woodNonwoodProducts_hypotheses_line2} 
                             </Text>
                         </Td>
                         <Td>
-                            <Text>Rodrigues (2016)</Text>
-                            <Text>CSF (2019)</Text>
+                            <Text>{hypothesesReferences.deforestation.woodNonwoodProducts_ref_line1}</Text>
+                            <Text>{hypothesesReferences.deforestation.woodNonwoodProducts_ref_line2}</Text>
                         </Td>
                     </Tr>
                 </Tbody>
@@ -94,23 +99,23 @@ const DeforestationReferences = () => {
             <br />
             <hr />
             <br />
-            <Text><strong> &raquo; Recreação / Cultural / Espécies</strong></Text>
+            <Text><strong> &raquo; {hypothesesReferences.deforestation.recreation_culture_species}</strong></Text>
             <Table>
                 <Thead>
                     <Tr>
-                        <Th>Hipóteses</Th>
-                        <Th>Referências</Th> 
+                        <Th>{language.hypotheses}</Th>
+                        <Th>{language.references}</Th> 
                     </Tr>                   
                 </Thead>
                 <Tbody>
                     <Tr>
                         <Td>
                             <Text>
-                            Meta-análise que os valores variam em função da densidade demográfica, do PIB per capita e da riqueza de espécies
+                            {hypothesesReferences.deforestation.recreation_culture_species_hypotheses}
                             </Text>
                         </Td>
                         <Td>
-                            <Text>Siikamaki et al (2015)</Text>
+                            <Text>{hypothesesReferences.deforestation.recreation_culture_species_ref}</Text>
                         </Td>
                     </Tr>
                 </Tbody>
@@ -118,64 +123,62 @@ const DeforestationReferences = () => {
 
 
             <Text>
-                <strong>* Observações</strong>
+                <strong>* {language.observation}</strong>
             </Text>
             <Text>
-            A perda da floresta em pé pode ser mensurada a partir do custo de oportunidade, ou seja, observa-se na literatura qual a rentabilidade média por hectare para as diferentes atividades foram excluídas com o desmatamento. 
- 
+                {hypothesesReferences.deforestation.recreation_culture_comments_line1} 
             </Text>
             <Text>
-            Todos estes valores são perdidos integralmente com o garimpo, podendo ser recuperados anualmente. Assume-se a hipótese de que tais atividades retomarão 80% do que eram em 30 anos. 
-
+                {hypothesesReferences.deforestation.recreation_culture_comments_line2} 
             </Text>
 
             <br />
             <hr />
             <br />
-            <Text><strong> &raquo; Recuperação da camada superficial do solo</strong></Text>
+            <Text><strong> &raquo; {hypothesesReferences.deforestation.superficialSoilRecovery}</strong></Text>
             <Table>
                 <Thead>
                     <Tr>
-                        <Th>Hipóteses</Th>
-                        <Th>Referências</Th> 
+                        <Th>{language.hypotheses}</Th>
+                        <Th>{language.references}</Th> 
                     </Tr>                   
                 </Thead>
                 <Tbody>
                     <Tr>
                         <Td>
                             <Text>
-                            A recuperação da camada superficial do solo tem como diferentes técnicas aplicadas como, por exemplo, a aplicação de semeadura direta. 
+                                {hypothesesReferences.deforestation.superficialSoilRecovery_hypotheses_line1}
                             </Text>
                             <Text>
-                            O impacto do desmatamento causado pelo garimpo pode gerar uma extensão até 12 vezes maior para construção de pistas de pouso, estradas, etc.
+                                {hypothesesReferences.deforestation.superficialSoilRecovery_hypotheses_line2}
                             </Text>
                             <Text>
-                            Assume-se hipótese de que tal recuperação é realizada em 1 ano.
+                                {hypothesesReferences.deforestation.superficialSoilRecovery_hypotheses_line3}
                             </Text>
                             <Text>
-                            Considera-se o custo de frete de mudas a partir da distância média dos pontos de garimpo nos municípios (RAISG e IBAMA) e a localização de centros urbanos.
+                                {hypothesesReferences.deforestation.superficialSoilRecovery_hypotheses_line4}
                             </Text>
                         </Td>
                         <Td>
-                            <Text>IBAMA (2019)</Text>
-                            <Text>Sonter et al (2017)</Text>
-                            <Text>RAISG – Rede Amazônica de informação Socioambiental</Text>
-                            <Text>IBGE (2015)</Text>
+                            <Text>{hypothesesReferences.deforestation.superficialSoilRecovery_ref_line1}</Text>
+                            <Text>{hypothesesReferences.deforestation.superficialSoilRecovery_ref_line2}</Text>
+                            <Text>{hypothesesReferences.deforestation.superficialSoilRecovery_ref_line3}</Text>
+                            <Text>{hypothesesReferences.deforestation.superficialSoilRecovery_ref_line4}</Text>
                         </Td>
                     </Tr>
                 </Tbody>
             </Table>
 
             <Text>
-                <strong>* Observações</strong>
+                <strong>* {language.observation}</strong>
             </Text>
             <Text>
-             Um dos primeiros impactos do garimpo é a perda de cobertura florestal na camada superficial que posteriormente precisa ser recuperada.
+                {hypothesesReferences.deforestation.superficialSoilRecovery_comments}
             </Text>
 
 
             <Link to='/impacts/deforestation'>
-                <Button style={{width: 200}}>Voltar</Button>
+                <Button style={{width: 200}}>{language.comeBack}</Button>
             </Link>
         </Container>
         </div>
