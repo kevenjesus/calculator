@@ -32,8 +32,10 @@
       "react-app/jest"
     ]
   },
-  "hooks": {
-    "pre-commit": "lint-staged"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
     "*.spec.js": [
