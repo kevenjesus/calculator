@@ -7,6 +7,7 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
+    "cross-env": "^7.0.3",
     "react": "^17.0.1",
     "react-alert": "^7.0.2",
     "react-alert-template-basic": "^1.0.0",
@@ -21,7 +22,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "cross-env CI = true react-scripts test --passWithNoTests",
     "eject": "react-scripts eject",
     "prepare": "husky install"
   },
@@ -32,8 +33,13 @@
     ]
   },
   "hooks": {
-    "pre-commit": "yarn test"
+    "pre-commit": "lint-staged"
   },
+  "lint-staged": {
+    "*.spec.js": [
+      "cross-env CI=true yarn test --bail --findRelatedTests"
+    ]
+  }
   "browserslist": {
     "production": [
       ">0.2%",
@@ -47,6 +53,7 @@
     ]
   },
   "devDependencies": {
-    "husky": "^6.0.0"
+    "husky": "^6.0.0",
+    "lint-staged": "^10.5.4"
   }
 }
