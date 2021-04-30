@@ -25,8 +25,13 @@ const Header = ({theme = 'white'}) => {
 
     useLayoutEffect(() => {
         const languageStorage = localStorage.getItem('@calculate/language')
+        const formStorage = localStorage.getItem('@Calculator/form')
+
         if(languageStorage) {
             dispatch({type: stateTypes.SET_LANGUAGE, payload: JSON.parse(languageStorage)})
+        }
+        if(formStorage) {
+            dispatch({type: stateTypes.SET_CALCULATEFORM, payload: JSON.parse(formStorage)})
         }
     }, [dispatch])
     

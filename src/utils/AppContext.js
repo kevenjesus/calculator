@@ -117,7 +117,7 @@ const calculatorReducer = (state, action) => {
         case stateTypes.CHANGE_TOTALVALUE:
             return {...state, totalValue: action.payload};
         case stateTypes.SET_CALCULATEFORM:
-            return {...state, calculator: action.payload}
+            return action.payload
         default:
             return state;
     }
