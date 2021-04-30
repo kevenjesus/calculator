@@ -5,6 +5,9 @@ const ptBR = {
         linkWebsite: 'ir para o site'
     },
     defaultValue: "Valor padrão",
+    more: 'Saiba mais',
+    knowRegionYes: 'Impactos em lugar específico',
+    knowRegionNo: 'Impactos Gerais Médios',
     calculatorForm: {
         commons: {
             yes: 'Sim',

@@ -4,7 +4,10 @@ const en_US = {
         slogan: '',
         linkWebsite: 'go to website'
     },
-    defaultValue: "Valor predeterminado",
+    defaultValue: "Default value",
+    more: 'Learn more',
+    knowRegionYes: 'Impacts in a specific location',
+    knowRegionNo: 'General average impacts',
     calculatorForm: {
         commons: {
             yes: 'Yes',
@@ -116,15 +119,15 @@ const en_US = {
             text: 'The impacts calculator is the result of a partnership between CSF and MPF, an analytical and pedagogical tool that describes the impacts of illegal gold mining, their monetary values and the steps for measuring them.',
         },
         analysisUnit: {
-            headline: 'Qual base de informação você usará para o cálculo de impacto?',
-            chooseOption: '* Escolha uma opção',
+            headline: 'What baseline information will you use for the impact calculation?',
+            chooseOption: '* Select an alternative',
             goldType: {
-                headline: 'Quantidade de ouro',
-                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Condimentum nibh id sed habitant. Ac faucibus at rutrum feugiat eu lobortis nibh eu. Tortor nisl turpis pretium tincidunt luctus quam eu purus, sit. Accumsan, phasellus gravida aliquam dolor'
+                headline: 'Amount of gold',
+                text: 'Considers the average context of productivity and impact of garimpo in the Amazon. Used when illegal gold is apprehended and its origin is unknown.'
             },
             goldMiningSize: {
-                headline: 'Tamanho do garimpo',
-                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Condimentum nibh id sed habitant. Ac faucibus at rutrum feugiat eu lobortis nibh eu. Tortor nisl turpis pretium tincidunt luctus quam eu purus, sit. Accumsan, phasellus gravida aliquam dolor'
+                headline: 'Impacted area size',
+                text: 'The size of the mine is defined by multiplying its area by the average depth of the pits. Used when the location of illegal mining site is known, with the possibility of detailing the context with specific parameters.'
             },
             yearsMining: {
                 headline: 'Anos de garimpo',
