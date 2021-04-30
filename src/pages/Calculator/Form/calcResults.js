@@ -47,14 +47,12 @@ const calcResults = (state, dispatch) => {
         const ruralPopMunicipality = knowRegion ? currentCountry.ruralPopMunicipality : 0.2647
         const distanceanningCenter = knowRegion ? currentCountry.distanceanningCenter : 212.74
         const species = knowRegion ? (currentCountry.species <= 0 ? StateCity.species : currentCountry.species) : 69.21
-        console.log('typeValueLikeMining', typeValueLikeMining)
 
         console.log('valueLikeMining', valueLikeMining,'popDensity2010', popDensity2010, 'popDensity2060', popDensity2060, 'urbanPopMunicipality', urbanPopMunicipality, 'ruralPopMunicipality', ruralPopMunicipality, 'distanceanningCenter', 'species', species)
 
-
-        // tipo de garimpo = valuatioMethod
-        // valor do tipo de garimpo = qtdAnalysis.value (ouro, hectere, tempo)
-        // tipo de valor do garimpo = calculator.analysisUnit 
+        // tipo de garimpo = likeMining
+        // valor do tipo de garimpo = valueLikeMining
+        // tipo de valor do garimpo = typeValueLikeMining
 
         const totalBio = bioprospecting(likeMining, typeValueLikeMining, txPrevalence, hectareValue)
         impacts.push({ label: 'BioProspecção', displayName: 'BioProspecção', category: CATEGORY_DEFORESTATION, value: totalBio })
@@ -88,7 +86,7 @@ const calcResults = (state, dispatch) => {
  
         const totalDredgingAndRiverSediments = dredgingAndRiverSediments(likeMining, typeValueLikeMining, valueLikeMining, distanceanningCenter, pitDepth, hectareValue)
         impacts.push({ label: 'Dragagem de sedimentos no rio', displayName: 'Dragagem de sedimentos no rio', category: CATEGORY_SILTING_RIVERS, value: totalDredgingAndRiverSediments })
-        //console.log('totalDredgingAndRiverSediments', totalDredgingAndRiverSediments)
+        console.log('totalDredgingAndRiverSediments', totalDredgingAndRiverSediments)
         
         const totalErosionSiltingUp = erosionSiltingUp(likeMining, txPrevalence, typeValueLikeMining, hectareValue)
         impacts.push({ label: 'Erosão', displayName: 'Erosão', category: CATEGORY_SILTING_RIVERS, value: totalErosionSiltingUp })

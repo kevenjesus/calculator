@@ -31,7 +31,7 @@ const dredgingAndRiverSediments = (likeMining, typeValueLikeMining, valueLikeMin
     }else if(likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING) {//input meses de garimpo
     const productionSedimentturnsTonFeather = productionSedimentTurnsFeatherTonnesPerMonth * averageMotorPower * valueLikeMining;
     const equivalenceHaImpacted = productionSedimentturnsTonFeather / equivalentErosionTonPerHaPerYear;
-    const ferryDredgingDamageValue = equivalenceHaImpacted * erosionControlBRL
+    const ferryDredgingDamageValue = equivalenceHaImpacted * erosionControlBRL;
     return ferryDredgingDamageValue
 
     }else if (likeMining === PIT && typeValueLikeMining === AMOUNT_GOLD) { //input ouro
@@ -92,7 +92,6 @@ const dredgingAndRiverSediments = (likeMining, typeValueLikeMining, valueLikeMin
     const toDredgingCostWithFreight = toCostShippingFinalDredging + dredgingCostWithoutFreight;
     return toDredgingCostWithFreight
     }
-    return dredgingAndRiverSediments
 }
 
 export default dredgingAndRiverSediments

@@ -2,7 +2,7 @@
 import { AMOUNT_GOLD, FERRY, PIT, YEARS_OF_MINING } from "../consts";
 
 const cavaGroundingCostAuFertile = (likeMining, typeValueLikeMining, valueLikeMining, pitDepth, distanceFromUrbanCenterToFreight, gold) => {
-    
+     
         const fertileEarthMediumDepth = 0.4;
         const groundingCostFertilePit = 12.7;
         const qtExtractedInM3PerExcavatorHour = 160;
