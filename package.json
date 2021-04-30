@@ -39,7 +39,7 @@
     "*.spec.js": [
       "cross-env CI=true yarn test --bail --findRelatedTests"
     ]
-  }
+  },
   "browserslist": {
     "production": [
       ">0.2%",
