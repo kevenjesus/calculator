@@ -2,16 +2,6 @@
   "name": "calculator",
   "version": "0.1.0",
   "private": true,
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.js": [
-      "cross-env CI=true yarn test"
-    ]
-  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -55,7 +45,6 @@
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
-    "husky": "^6.0.0",
-    "lint-staged": "^10.5.4"
+    "husky": "^6.0.0"
   }
 }
