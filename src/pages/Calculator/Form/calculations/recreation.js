@@ -1,8 +1,8 @@
 import calcMontante from "utils/calcMontante";
 import vpl from "utils/vpl";
-import { FERRY, PIT } from "../consts";
+import { ALLUVIUM, AMOUNT_GOLD, FERRY, IMPACTED_AREA, PIT } from "../consts";
 
-const recreation = (likeMining, popDensity2010, species, hectare) => {
+const recreation = (likeMining, popDensity2010, species, typeValueLikeMining, hectare) => {
 
     const GDPperCapitaBrazilUSD = 8717.18;
     const celciusTemperature = 26.8;
@@ -24,12 +24,14 @@ const recreation = (likeMining, popDensity2010, species, hectare) => {
 
     let toRecration;
 
-    if(likeMining === FERRY) {
+    if(likeMining === FERRY)  {
         toRecration = 0
     }else if (likeMining === PIT) {
         toRecration = VPLHaRecreation * 0.31 * 12
-    }else {
+    }else if(likeMining === ALLUVIUM && typeValueLikeMining === AMOUNT_GOLD){
         toRecration = VPLHaRecreation * hectare * 12
+    }else if(likeMining === ALLUVIUM && typeValueLikeMining === IMPACTED_AREA){
+        toRecration = VPLHaRecreation * hectare
     } 
     return toRecration
 

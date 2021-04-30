@@ -1,8 +1,8 @@
 
-import { AMOUNT_GOLD, FERRY, MONTHS_OF_MINING, PIT } from "../consts";
+import { AMOUNT_GOLD, FERRY, PIT, YEARS_OF_MINING } from "../consts";
 
 const cavaGroundingCostAuFertile = (likeMining, typeValueLikeMining, valueLikeMining, pitDepth, distanceFromUrbanCenterToFreight, gold) => {
-
+     
         const fertileEarthMediumDepth = 0.4;
         const groundingCostFertilePit = 12.7;
         const qtExtractedInM3PerExcavatorHour = 160;
@@ -24,7 +24,7 @@ const cavaGroundingCostAuFertile = (likeMining, typeValueLikeMining, valueLikeMi
         const toCostOfFertileGroundingWithFreight = 0
         return toCostOfFertileGroundingWithFreight
         
-    }else if (likeMining === PIT && typeValueLikeMining === MONTHS_OF_MINING) {
+    }else if (likeMining === PIT && typeValueLikeMining === YEARS_OF_MINING) {
         
         const toGoldGramQuantityWell = amountOfGoldGramsPerYearWell * valueLikeMining;
         const revolvedSoloTon = toGoldGramQuantityWell / productivityGoldMiningTon;
