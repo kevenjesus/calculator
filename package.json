@@ -9,7 +9,7 @@
   },
   "lint-staged": {
     "*.js": [
-      "CI=true yarn test --bail --findRelatedTests"
+      "cross-env CI=true yarn test"
     ]
   },
   "dependencies": {
@@ -31,7 +31,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "cross-env CI = true react-scripts test --passWithNoTests",
+    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "prepare": "husky install"
   },
