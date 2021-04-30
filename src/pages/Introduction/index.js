@@ -1,6 +1,6 @@
 import {  useCallback, useContext, useEffect } from 'react'
 import { useHistory } from 'react-router-dom';
-import { ABOUT, INTRODUCTION, HOW_USE_CALCULATOR, REGION, EXTRATION_TYPE, ANALYSIS_UNIT } from './consts'
+import { ABOUT, INTRODUCTION, HOW_USE_CALCULATOR, EXTRATION_TYPE, ANALYSIS_UNIT } from './consts'
 import { Container, Header, ButtonsFixed, Go } from './style'
 import { Button } from 'theme'
 import { Grid, Row, Col } from 'react-flexbox-grid'
@@ -9,7 +9,6 @@ import { ReactComponent as GoBack } from 'assets/icons/goBack.svg'
 
 import IntroductionPage from './Introduction'
 import HowUseCalculator from './HowUseCalculator'
-import Region from './Region'
 import ExtrationType from './ExtractionType'
 import AnalysisUnit from './AnalysisUnit'
 import { AppContext, stateTypes } from 'utils/AppContext';
@@ -24,8 +23,6 @@ const Content = ({step}) => {
             return <IntroductionPage />
         case HOW_USE_CALCULATOR:
             return <HowUseCalculator />
-        case REGION:
-            return <Region />
         case EXTRATION_TYPE:
             return <ExtrationType />
         case ANALYSIS_UNIT:
@@ -75,7 +72,7 @@ const Introduction = () => {
         history.push('/calculator')
     }, [history])
 
-    console.log('step', step)
+    console.log(step)
 
     if(step === null || step === undefined) {
         return false;
