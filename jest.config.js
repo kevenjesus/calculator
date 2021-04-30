@@ -1,3 +1,3 @@
 module.exports = {
-    testMatch: [ '**/*.test.tsx' ]
+    testMatch: [ '**/*.spec.tsx' ]
 };
