@@ -35,4 +35,10 @@ export const Container = styled.div`
         width: 1280px;
         margin: 0 auto;
     }
+    @media (min-width: 1440px) {
+        width: 1366px;
+    }
+    @media (min-width: 1600px) {
+        width: 1440px;
+    }
 ` 

@@ -20,7 +20,7 @@ const IntroductionPage = () => {
             <Text>
                 {introduction.introduction.paragraphy_01}
              </Text>
-             <img src={Image} style={{width: 1000, display: 'block', margin: '40px auto', maxWidth: '100%'}} alt="" />
+             <img src={Image} style={{width: 850, display: 'block', margin: '40px auto', maxWidth: '100%'}} alt="" />
              <Text>{introduction.introduction.paragraphy_02}</Text>
              
             <ImpactedBox>
@@ -51,7 +51,7 @@ const IntroductionPage = () => {
                 {introduction.introduction.paragraphy_04}
             </Text>
             <Row>
-                <Col sm={3}>
+                <Col sm={3} lg={2}>
                     <Link to='/introduction/context-value'>
                         <Button variant="secondary">{introduction.buttons.moreContextValue}</Button>
                     </Link>

@@ -6,7 +6,6 @@ import Image from 'assets/images/example2.svg'
 import React from 'react'
 
 const ExtractionType = ({type, state, translate, handleState}) => {
-    console.log('valor', state, AMOUNT_GOLD)
     if(type === ALLUVIUM) {
         return (
             <>
