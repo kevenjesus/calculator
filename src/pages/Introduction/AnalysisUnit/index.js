@@ -55,7 +55,6 @@ const AnalysisUnit = () => {
 
     const handlePitDepth = useCallback((e) => {
         const { value } = e.target;
-        console.log('qual', value)
         dispatch({type: stateTypes.SET_PITDEPTH, payload: Number(value)})
     }, [dispatch]);
 

@@ -55,8 +55,7 @@ const Introduction = () => {
                 dispatch({type: stateTypes.SET_QTD_ANALYS_UNIT, payload: {...calculator.qtdAnalysis, error: true}});
                 alert.error(<span style={{textTransform: 'initial'}}>Por favor. Preencha o valor de unidade</span>)
             }else {
-                const results = calcResults(state, dispatch)
-                console.log(results)
+                calcResults(state, dispatch)
                 history.push('/loading')
             }
         }else {
@@ -71,8 +70,6 @@ const Introduction = () => {
     const SkipIntroduction = useCallback(() => {
         history.push('/calculator')
     }, [history])
-
-    console.log(step)
 
     if(step === null || step === undefined) {
         return false;
