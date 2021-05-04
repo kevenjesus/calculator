@@ -28,7 +28,7 @@ const ExtrationType = () => {
             <Headline>{introduction.extractionType.headline}</Headline>
           
 
-            <label style={{textAlign: 'left'}}>* Escolha uma opção</label>
+            <label style={{textAlign: 'left'}}>{introduction.analysisUnit.chooseOption}</label>
             <Row>
                 <Col md={4}>
                     <ItemType active={calculator.valuatioMethod === ALLUVIUM} onClick={() => handleOption(ALLUVIUM)}>
