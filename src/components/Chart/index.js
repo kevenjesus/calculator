@@ -4,13 +4,13 @@ import { colors } from 'theme/colors'
 import ToBRL from 'utils/toBRL';
 import { WrapperPrint } from './style';
 
-const CustomizedLabel = ({x, y, width, height, offset, value }) => {
+const CustomizedLabel = ({x, y, width, value }) => {
   return (
           <text 
-            x={x + width - 25} 
+            x={x + width - (window.innerWidth > 768 ? 25 : 15)} 
             y={y - 10}
             dy={-6} 
-            fontSize='16' 
+            fontSize={window.innerWidth > 768 ? 14 : 10} 
             fontFamily='sans-serif'
             fontWeight='bold'
             margin={100}
