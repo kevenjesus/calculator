@@ -1,10 +1,13 @@
 import Header from 'layout/Header'
+import { ContainerPartner } from 'pages/Introduction/About/style'
 import { Headline, Text } from 'pages/Introduction/style'
 import { useContext } from 'react'
 import { Col, Row } from 'react-flexbox-grid'
 import { Link } from 'react-router-dom'
 import { Button } from 'theme'
 import { AppContext } from 'utils/AppContext'
+import LogoMPF from 'assets/images/mpf-logo-ministerio-publico-federal.png'
+import LogoConservationStrategy from 'assets/images/logo.svg'
 import { Container, ContainerBackground, Overlay } from './style'
 
 const Home = () => {
@@ -20,6 +23,11 @@ const Home = () => {
                 <Text color="white">
                     {introduction.about.text}
                 </Text>
+                
+                <ContainerPartner>
+                    <img src={LogoMPF} width="150" alt="" />
+                    <img src={LogoConservationStrategy} width="150" alt="" />
+                </ContainerPartner>
                 <Row>
                     <Col sm={3} md={4}>
                         <label style={{color: 'white'}}>Ainda não conheço</label>

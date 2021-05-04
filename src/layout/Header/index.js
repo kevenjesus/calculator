@@ -8,7 +8,7 @@ import ptBR from 'utils/pt_BR'
 import enUS from 'utils/en_US'
 import esES from 'utils/es_ES'
 
-import { ReactComponent as Logo } from 'assets/images/logo.svg'
+import { ReactComponent as Logo } from 'assets/images/logo-original.svg'
 import { ReactComponent as Bar } from 'assets/icons/bar.svg'
 import { ReactComponent as Portuguese } from 'assets/icons/portuguese.svg'
 import { ReactComponent as Spanish } from 'assets/icons/spanish.svg'
@@ -62,7 +62,7 @@ const Header = ({theme = 'white'}) => {
             <Container>
                 <LogoContainer>
                     <Link to="/">
-                        <Logo />
+                        <Logo  />
                     </Link>
                     <LogoBase>
                         <LogoName theme={theme} isPtBR={lang === 'en'}>{header.naming}</LogoName>

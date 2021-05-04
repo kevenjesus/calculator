@@ -203,7 +203,7 @@ const MonetaryImpacts = () => {
                                 <FormGroup>
                                     <Label>{impacts.monetaryImpacts.labels.finalValue}</Label>
                                     <Monetary>{valueTotal}</Monetary>
-                                    <MonetaryType>{`${impacts.monetaryImpacts.labels.typeText} ${calculator.qtdAnalysis.value} ${typeAnalysis}`}</MonetaryType>
+                                    <MonetaryType>{`${impacts.monetaryImpacts.labels.typeText} ${calculator.qtdAnalysis.value} ${typeAnalysis.toLowerCase()}`}</MonetaryType>
                                 </FormGroup>
                             </Col>
                           

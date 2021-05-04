@@ -4,11 +4,11 @@ export const ContainerPartner = styled.div`
     display: flex;
     justify-content: space-between;
     height: 100px;
-    margin: 50px 0;
+    margin: 60px 0;
     @media (min-width: 768px) {
-        justify-content: center;
+        justify-content: flex-start;
         > img {
-            margin-left: 30px;
+            margin-right: 30px;
         }
     }
 ` 

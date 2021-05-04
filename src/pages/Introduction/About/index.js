@@ -16,8 +16,8 @@ const About = () => {
                 {introduction.about.text}
             </Text>
             <ContainerPartner>
-                <img src={LogoMPF} width="150" alt="" />
-                <img src={LogoConservationStrategy} width="150" alt="" />
+                <img src={LogoMPF} width="200" alt="" />
+                <img src={LogoConservationStrategy} width="200" alt="" />
             </ContainerPartner>
         </>
     )
