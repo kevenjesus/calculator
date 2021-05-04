@@ -3,6 +3,7 @@ import { Button } from 'theme'
 import { Grid, Row, Col } from 'react-flexbox-grid'
 import { Container, Menu, MenuItem, Headline, Text } from 'pages/Calculator/ImpactsStyles'
 import { ReactComponent as ImageExample } from 'assets/images/[calculadora]infografico2.svg';
+import { ReactComponent as ImageExampleUS } from 'assets/images/[calculadora]infografico2_INGLES.svg';
 import { useContext } from 'react';
 import { AppContext } from 'utils/AppContext';
 
@@ -37,7 +38,7 @@ const SiltingOfRivers = () => {
                         <Text>
                         {impacts.siltingOfRivers.paragraphy_02}
                         </Text>
-                        <ImageExample style={{display: 'block', margin: '50px auto'}} />
+                        { language.type === 'enUS' ? <ImageExampleUS style={{display: 'block', margin: '50px auto'}} /> : <ImageExample style={{display: 'block', margin: '50px auto'}} />}
                     </Col>
                 </Row>
                 <Row>

@@ -1,4 +1,5 @@
 const en_US = {
+    type: 'enUS',
     header: {
         naming: 'mining impacts calculator',
         slogan: '',

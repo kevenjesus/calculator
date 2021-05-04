@@ -1,4 +1,5 @@
 const ptBR = {
+    type: 'ptBR',
     header: {
         naming: 'calculadora',
         slogan: 'impactos do garimpo ilegal de ouro',

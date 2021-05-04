@@ -1,4 +1,5 @@
 const es_ES = {
+    type: 'esES',
     header: {
         naming: 'calculadora',
         slogan: 'impactos de la minería artesanal de oro',
