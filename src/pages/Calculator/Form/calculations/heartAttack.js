@@ -3,7 +3,6 @@ import { ALLUVIUM, AMOUNT_GOLD, FERRY, MONTHS_OF_MINING, PIT, YEARS_OF_MINING } 
 const CONSERVATIVE = 0.29;
 
 const heartAttack = (likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, urbanPopMunicipality, ruralPopMunicipality, popDensity2060, gold, isRegion)=> {
-
     const HgAuRatio = 2.6;
     
     let HgGrassReleasedInWater
@@ -13,11 +12,11 @@ const heartAttack = (likeMining, typeValueLikeMining, valueLikeMining, txPrevale
         const amountOfTotalGoldWell = quantityOgGramsgoldYearWell * valueLikeMining;
         HgGrassReleasedInWater = lossPercentHgInWater * HgAuRatio * amountOfTotalGoldWell
 
-    }else if (likeMining === PIT && typeValueLikeMining === AMOUNT_GOLD) { //input Ouro/Hectare
+    }else if (likeMining === PIT && typeValueLikeMining === AMOUNT_GOLD) { //input Ouro
         const lossPercentHgInWater = txPrevalence === CONSERVATIVE ? 0.132 : 0.21;
         HgGrassReleasedInWater = lossPercentHgInWater * HgAuRatio * valueLikeMining;
 
-    }else if (likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING) { //input Meses de garimpo de balsa
+    }else if (likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING) { //input Meses de garimpo
         const lossPercentHgInWater = txPrevalence === CONSERVATIVE ? 0.22 : 0.35;
         const goldProductionMonthFerry = 302;
         const toGoldFerryProduction = valueLikeMining * goldProductionMonthFerry;
@@ -65,7 +64,6 @@ const heartAttack = (likeMining, typeValueLikeMining, valueLikeMining, txPrevale
     const ingestionMediaMercuryEmyears = daysIn50years * ingestionMediaDaily1IndividualInGrams;
     
     const popSize100kmRadius = isRegion ? (popDensity2060 * Math.pow((Math.PI * 100), 2)) : (densityPopulationalRegionNorth2060 * Math.pow((Math.PI * 100), 2));
-
     const affectedPeople = (toMethylatedWater/ingestionMediaMercuryEmyears);
     const toPopulationAffectedMercuryHair = affectedPeople < popSize100kmRadius ? affectedPeople : popSize100kmRadius;
     const popMenOver40inTheRegion = toPopulationAffectedMercuryHair * proMenOver40ByPopTotal;
@@ -90,6 +88,7 @@ const heartAttack = (likeMining, typeValueLikeMining, valueLikeMining, txPrevale
     const infarctionIncidenceTreatment = (infarctionIncidenceRate * toPopulationAffectedMercuryHair) /1000;
     const toCostOfInfarctionTreatmentYears = infarctionIncidenceTreatment * durationDisabilityInfarction * annualInfarctTreatmentCost;
     const toDALYCostAndInfarctionTreatment = toCostOfInfarctionTreatmentYears + DALYInfarction;
+   
 
     return toDALYCostAndInfarctionTreatment
 }

@@ -44,9 +44,9 @@ const calcResults = (state, dispatch) => {
         const popDensity2010 = knowRegion ? currentCountry.popDensity2010 : 4.12;
         const popDensity2060 = knowRegion ? currentCountry.popDensity2060  : 6.0;
         const urbanPopMunicipality = knowRegion ? currentCountry.urbanPopMunicipality : 0.7353;
-        const ruralPopMunicipality = knowRegion ? currentCountry.ruralPopMunicipality : 0.2647
-        const distanceanningCenter = knowRegion ? currentCountry.distanceanningCenter : 212.74
-        const species = knowRegion ? (currentCountry.species <= 0 ? StateCity.species : currentCountry.species) : 69.21
+        const ruralPopMunicipality = knowRegion ? currentCountry.ruralPopMunicipality : 0.2647;
+        const distanceanningCenter = knowRegion ? currentCountry.distanceanningCenter : 212.74;
+        const species = knowRegion ? (currentCountry.species <= 0 ? StateCity.species : currentCountry.species) : 69.21;
 
         //console.log('valueLikeMining', valueLikeMining,'popDensity2010', popDensity2010, 'popDensity2060', popDensity2060, 'urbanPopMunicipality', urbanPopMunicipality, 'ruralPopMunicipality', ruralPopMunicipality, 'distanceanningCenter', 'species', species)
 
@@ -80,7 +80,7 @@ const calcResults = (state, dispatch) => {
         //console.log('totalCavaGroundingCostAuFertile', totalCavaGroundingCostAuFertile)
         //console.log('totalCavaGroundingCostAuNorm', totalCavaGroundingCostAuNorm)
 
-        const totalRecoveryOfTopsoil = recoveryOfTopsoil(likeMining, distanceanningCenter, goldValue, gramadeOuroporHe, txPrevalence)
+        const totalRecoveryOfTopsoil = recoveryOfTopsoil(likeMining, distanceanningCenter, goldValue, gramadeOuroporHe, txPrevalence, typeValueLikeMining)
         impacts.push({ label: 'Recuperaçãoo superficie do solo', displayName: 'Recuperaçãoo superficie do solo', category: CATEGORY_DEFORESTATION, value: totalRecoveryOfTopsoil })
         //console.log('totalRecoveryOfTopsoil', totalRecoveryOfTopsoil)
  
