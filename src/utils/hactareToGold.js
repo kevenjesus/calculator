@@ -14,7 +14,7 @@ const hectareToGold = (hectare, pitdepth) => {
 }
 
 export const goldenGramForHectare = (hectare, gold) => {
-    console.log('hectare', hectare)
+    console.log('hectare', hectare, 'gold', gold)
     const goldenGramForHectare = hectare / gold;
     return goldenGramForHectare
 

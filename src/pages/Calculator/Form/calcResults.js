@@ -86,7 +86,7 @@ const calcResults = (state, dispatch) => {
  
         const totalDredgingAndRiverSediments = dredgingAndRiverSediments(likeMining, typeValueLikeMining, valueLikeMining, distanceanningCenter, pitDepth, hectareValue)
         impacts.push({ label: 'Dragagem de sedimentos no rio', displayName: 'Dragagem de sedimentos no rio', category: CATEGORY_SILTING_RIVERS, value: totalDredgingAndRiverSediments })
-        console.log('totalDredgingAndRiverSediments', totalDredgingAndRiverSediments)
+        //console.log('totalDredgingAndRiverSediments', totalDredgingAndRiverSediments)
         
         const totalErosionSiltingUp = erosionSiltingUp(likeMining, txPrevalence, typeValueLikeMining, hectareValue)
         impacts.push({ label: 'Erosão', displayName: 'Erosão', category: CATEGORY_SILTING_RIVERS, value: totalErosionSiltingUp })
