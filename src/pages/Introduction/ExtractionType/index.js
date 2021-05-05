@@ -14,14 +14,21 @@ const ExtrationType = () => {
     const { introduction } = language
 
     const handleOption = useCallback((value) => {
+        const form = JSON.parse(localStorage.getItem("@Calculator/form"))
         dispatch({type: stateTypes.SET_VALUATION_METHOD, payload: value})
+
+        if(form.analysisUnit) {
+            const newForm = {...form, analysisUnit: null}
+            localStorage.removeItem('@Calculator/form')
+            localStorage.setItem('@Calculator/form', JSON.stringify(newForm))
+        }
     }, [dispatch])
     return (
         <>
             <Headline>{introduction.extractionType.headline}</Headline>
           
 
-            <label style={{textAlign: 'left'}}>* Escolha uma opção</label>
+            <label style={{textAlign: 'left'}}>{introduction.analysisUnit.chooseOption}</label>
             <Row>
                 <Col md={4}>
                     <ItemType active={calculator.valuatioMethod === ALLUVIUM} onClick={() => handleOption(ALLUVIUM)}>

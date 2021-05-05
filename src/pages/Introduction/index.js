@@ -1,15 +1,14 @@
 import {  useCallback, useContext, useEffect } from 'react'
 import { useHistory } from 'react-router-dom';
-import { ABOUT, INTRODUCTION, HOW_USE_CALCULATOR, REGION, EXTRATION_TYPE, ANALYSIS_UNIT } from './consts'
+import { ABOUT, INTRODUCTION, HOW_USE_CALCULATOR, EXTRATION_TYPE, ANALYSIS_UNIT } from './consts'
 import { Container, Header, ButtonsFixed, Go } from './style'
 import { Button } from 'theme'
-import { Grid, Row, Col } from 'react-flexbox-grid'
+import { Row, Col } from 'react-flexbox-grid'
 
 import { ReactComponent as GoBack } from 'assets/icons/goBack.svg'
 
 import IntroductionPage from './Introduction'
 import HowUseCalculator from './HowUseCalculator'
-import Region from './Region'
 import ExtrationType from './ExtractionType'
 import AnalysisUnit from './AnalysisUnit'
 import { AppContext, stateTypes } from 'utils/AppContext';
@@ -24,8 +23,6 @@ const Content = ({step}) => {
             return <IntroductionPage />
         case HOW_USE_CALCULATOR:
             return <HowUseCalculator />
-        case REGION:
-            return <Region />
         case EXTRATION_TYPE:
             return <ExtrationType />
         case ANALYSIS_UNIT:
@@ -58,8 +55,7 @@ const Introduction = () => {
                 dispatch({type: stateTypes.SET_QTD_ANALYS_UNIT, payload: {...calculator.qtdAnalysis, error: true}});
                 alert.error(<span style={{textTransform: 'initial'}}>Por favor. Preencha o valor de unidade</span>)
             }else {
-                const results = calcResults(state, dispatch)
-                console.log(results)
+                calcResults(state, dispatch)
                 history.push('/loading')
             }
         }else {
@@ -74,8 +70,6 @@ const Introduction = () => {
     const SkipIntroduction = useCallback(() => {
         history.push('/calculator')
     }, [history])
-
-    console.log('step', step)
 
     if(step === null || step === undefined) {
         return false;
@@ -92,16 +86,14 @@ const Introduction = () => {
             <Content 
                 step={step} />
             <ButtonsFixed>
-                <Grid>
-                    <Row between="sm">
-                        <Col xs={6} sm={4} md={3}>
-                            <Button variant="default" onClick={SkipIntroduction}>{language.introduction.buttons.skip}</Button>
-                        </Col>
-                        <Col xs={6} sm={4} md={3}>
-                            <Button onClick={NextStep}>{language.introduction.buttons.next}</Button>
-                        </Col>
-                    </Row>
-                </Grid>
+                <Row between="sm">
+                    <Col xs={6} sm={4} md={3}>
+                        <Button variant="default" onClick={SkipIntroduction}>{language.introduction.buttons.skip}</Button>
+                    </Col>
+                    <Col xs={6} sm={4} md={3}>
+                        <Button onClick={NextStep}>{language.introduction.buttons.next}</Button>
+                    </Col>
+                </Row>
             </ButtonsFixed>
         </Container>
     )

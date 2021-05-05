@@ -76,12 +76,29 @@ const AnalysisUnit = () => {
     }, [dispatch, alert])
 
     useEffect(() => {
+        const form = JSON.parse(localStorage.getItem('@Calculator/form'))
+        
         if(valuatioMethod === ALLUVIUM) {
-            setState(IMPACTED_AREA)
+            if(form && form.analysisUnit) {
+                setState(form.analysisUnit)
+            }else {
+                setState(IMPACTED_AREA)
+            }
+            
         }else if(valuatioMethod === FERRY) {
-            setState(MONTHS_OF_MINING)
+            if(form && form.analysisUnit) {
+                setState(form.analysisUnit)
+            }else {
+                setState(MONTHS_OF_MINING)
+            }
+            
         }else {
-            setState(YEARS_OF_MINING)
+            if(form && form.analysisUnit) {
+                setState(form.analysisUnit)
+            }else {
+                setState(YEARS_OF_MINING)
+            }
+            
         }
     }, [valuatioMethod])
 

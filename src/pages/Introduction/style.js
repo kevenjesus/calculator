@@ -9,6 +9,12 @@ export const Container = styled.div`
         width: 1280px;
         margin: 0 auto;
     }
+    @media (min-width: 1440px) {
+        width: 1366px;
+    }
+    @media (min-width: 1600px) {
+        width: 1440px;
+    }
 ` 
 
 export const Headline = styled.h1`
@@ -72,7 +78,9 @@ export const ButtonsFixed = styled.div`
 export const ImpactedBox = styled.div`
     width: 100%;
     text-align: center;
-    padding: 15px 70px;
+    padding: 15px 70px 0 70px;
+    border: 2px solid #ccc;
+    margin-bottom: 32px;
     @media (min-width: 768px) {
         display: flex;
         text-align: left;

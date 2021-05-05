@@ -1,4 +1,5 @@
 const ptBR = {
+    type: 'ptBR',
     header: {
         naming: 'calculadora',
         slogan: 'impactos do garimpo ilegal de ouro',
@@ -154,8 +155,8 @@ const ptBR = {
             paragraphy_03: '-Densidade e tamanho da população afetada',
             paragraphy_04: '-Média de consumo de peixe',
             paragraphy_05: '-Custo de transporte para recuperação de áreas',  
-            paragraphy_06: 'Tipo de garimpo',
-            paragraphy_07: 'Unidade de medida',           
+            paragraphy_06: '-Tipo de garimpo',
+            paragraphy_07: '-Unidade de medida',           
             paragraphy_08: 'Caso não tenha informações específicas, não tem problema, serão incluídos automaticamente valores médios de contexto e impacto e resultados e suas explicações serão gerados na sequencia.'
         },
         introduction: {

@@ -12,6 +12,12 @@ export const Container = styled.div`
         margin-left: auto;
         margin-right: auto;
     }
+    @media (min-width: 1440px) {
+        width: 1366px;
+    }
+    @media (min-width: 1600px) {
+        width: 1440px;
+    }
 ` 
 
 export const ContainerHeader = styled.header`
