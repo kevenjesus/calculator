@@ -3,7 +3,12 @@ import { Go } from 'pages/Introduction/style'
 import { Link, useHistory } from 'react-router-dom'
 import { Button } from 'theme'
 import { ReactComponent as GoBack } from 'assets/icons/goBack.svg'
+import { useContext } from 'react'
+import { AppContext } from 'utils/AppContext'
 const SiltingRiversReferences = () => {
+    const {state} = useContext(AppContext)
+    const {language} = state
+    const {hypothesesReferences} = language
     const history = useHistory();
     window.scrollTo(0,0)
     return (
@@ -11,63 +16,63 @@ const SiltingRiversReferences = () => {
         <Container>
             <Go onClick={() => history.push('/impacts/silting-of-rivers')}>
                     <GoBack />
-                    <span>Voltar</span>
+                    <span>{language.comeBack}</span>
                 </Go>
-            <Headline>Assoreamento dos rios / Hipóteses e referências </Headline>
-            <Text><strong> &raquo; Erosão – Assoreamento</strong></Text>
+            <Headline>{hypothesesReferences.siltingOfRivers.headline}</Headline>
+            <Text><strong> &raquo; {hypothesesReferences.siltingOfRivers.erosion_Silting}</strong></Text>
             
             <Table>
                 <Thead>
                     <Tr>
-                        <Th>Hipóteses</Th>
-                        <Th>Referências</Th> 
+                        <Th>{language.hypotheses}</Th>
+                        <Th>{language.references}</Th> 
                     </Tr>                   
                 </Thead>
                 <Tbody>
                     <Tr>
                         <Td>
                             <Text>
-                            Estudos demonstram qual a importância monetária do controle de erosão por hectare que foi perdido com o garimpo.
+                            {hypothesesReferences.siltingOfRivers.erosion_Silting_hypotheses_line1}
                             </Text>
                             <Text>
-                            Tais valores são perdidos integralmente com o garimpo, podendo ser recuperados anualmente. Assume-se a hipótese de que tais atividades retomarão 80% do que eram em 30 anos.
+                            {hypothesesReferences.siltingOfRivers.erosion_Silting_hypotheses_line2}
                             </Text>
                         </Td>
                         <Td>
-                            <Text>De Groot et al (2012)</Text>
-                            <Text>Constanza et al (1997)</Text>
+                            <Text>{hypothesesReferences.siltingOfRivers.erosion_Silting_ref_line1}</Text>
+                            <Text>{hypothesesReferences.siltingOfRivers.erosion_Silting_ref_line2}</Text>
                         </Td>
                     </Tr>
                 </Tbody>
             </Table>
             <Text>
-                <strong>* Observações</strong>
+                <strong>* {language.observation}</strong>
             </Text>
             <Text>
-            A presença do garimpo pode causar impactos significativos na camada profunda do solo, afetando serviços ecossistêmicos como a controle de erosão.  
+            {hypothesesReferences.siltingOfRivers.erosion_Silting_comments}  
             </Text>
 
             <br />
             <hr />
             <br />
 
-            <Text><strong> &raquo; Dragagem de sedimentos no rio</strong></Text>
+            <Text><strong> &raquo; {hypothesesReferences.siltingOfRivers.dredging_sediments_in_the_river} </strong></Text>
             <Table>
                 <Thead>
                     <Tr>
-                        <Th>Hipóteses</Th>
-                        <Th>Referências</Th> 
+                        <Th>{language.hypotheses}</Th>
+                        <Th>{language.references}</Th> 
                     </Tr>                   
                 </Thead>
                 <Tbody>
                     <Tr>
                         <Td>
                             <Text>
-                                Assume-se que 15% do sedimento movimentado pelo garimpo de aluvião é direcionado aos rios e precisam ser dragados. Utiliza-se como referência estudo que calcula o custo para uma draga de sucção entre 8” à 12” (polegadas)
+                            {hypothesesReferences.siltingOfRivers.dredging_hypotheses_line1}
                             </Text>
                         </Td>
                         <Td>
-                            <Text>Costa (2016)</Text>
+                            <Text>{hypothesesReferences.siltingOfRivers.dredging_ref_line1}</Text>
                         </Td>
                     </Tr>
                 </Tbody>
@@ -76,51 +81,51 @@ const SiltingRiversReferences = () => {
             <br />
             <hr />
             <br />
-            <Text><strong> &raquo; Estabilização de solo</strong></Text>
+            <Text><strong> &raquo; {hypothesesReferences.siltingOfRivers.soil_stabilization}</strong></Text>
             <Table>
                 <Thead>
                     <Tr>
-                        <Th>Hipóteses</Th>
-                        <Th>Referências</Th> 
+                        <Th>{language.hypotheses}</Th>
+                        <Th>{language.references}</Th> 
                     </Tr>                   
                 </Thead>
                 <Tbody>
                     <Tr>
                         <Td>
                             <Text>
-                            A camada profunda de solo é dividida em camada fértil (40 cm) e o restante como terra que possuem custos de transporte diferentes para o aterramento.
+                            {hypothesesReferences.siltingOfRivers.soil_stabilization_hypotheses_line1}
                             </Text>
                             <Text>
-                            Uma retroescavadeira tem a capacidade de mobilizar 160 m3 por hora
+                            {hypothesesReferences.siltingOfRivers.soil_stabilization_hypotheses_line2}
                             </Text>
                             <Text>
-                            Uma draga tem a capacidade de movimentar 300 m3 por hora
+                            {hypothesesReferences.siltingOfRivers.soil_stabilization_hypotheses_line3}
                             </Text>
                         </Td>
                         <Td>
-                            <Text>CID PUCESE (2011)</Text>
-                            <Text>Tonietto & Silva, (2011)</Text>
-                            <Text>Polícia Federal (2018)</Text>
-                            <Text>Cardoso, (2002)</Text>
+                            <Text>{hypothesesReferences.siltingOfRivers.soil_stabilization_ref_line1}</Text>
+                            <Text>{hypothesesReferences.siltingOfRivers.soil_stabilization_ref_line2}</Text>
+                            <Text>{hypothesesReferences.siltingOfRivers.soil_stabilization_ref_line3}</Text>
+                            <Text>{hypothesesReferences.siltingOfRivers.soil_stabilization_ref_line4}</Text>
                         </Td>
                     </Tr>
                 </Tbody>
             </Table>
             <Text>
-                <strong>* Observações</strong>
+                <strong>* {language.observation}</strong>
             </Text>
             <Text>
-                Assume-se hipótese de que tal recuperação é realizada em 1 ano.
+            {hypothesesReferences.siltingOfRivers.soil_stabilization_dredging_sediments_comments_line1}
             </Text>
             <Text>
-                A revisão de literatura sobre produtividades médias de garimpo foram realizadas para o cálculo do sedimento médio movimentado. 
+            {hypothesesReferences.siltingOfRivers.soil_stabilization_dredging_sediments_comments_line2}
             </Text>
 
 
 
 
             <Link to='/impacts/silting-of-rivers'>
-                <Button style={{width: 200}}>Voltar</Button>
+                <Button style={{width: 200}}>{language.comeBack}</Button>
             </Link>
         </Container>
         </div>

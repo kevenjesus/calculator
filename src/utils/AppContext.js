@@ -52,7 +52,8 @@ export const stateTypes = {
     SET_STEP: 'SET_STEP',
     SET_LIKE_MINING: 'SET_LIKE_MINING',
     ADD_VALUE: 'ADD_VALUE',
-    CHANGE_TOTALVALUE: 'CHANGE_TOTALVALUE'
+    CHANGE_TOTALVALUE: 'CHANGE_TOTALVALUE',
+    SET_CALCULATEFORM: 'SET_CALCULATEFORM'
 }
 
 const initialState = {
@@ -115,6 +116,8 @@ const calculatorReducer = (state, action) => {
             return {...state, values: action.payload};
         case stateTypes.CHANGE_TOTALVALUE:
             return {...state, totalValue: action.payload};
+        case stateTypes.SET_CALCULATEFORM:
+            return {...state, calculator: action.payload}
         default:
             return state;
     }
@@ -123,6 +126,7 @@ const calculatorReducer = (state, action) => {
 const languageReducer = (state, action) => {
     switch(action.type) {
         case stateTypes.SET_LANGUAGE:
+            localStorage.setItem('@calculate/language', JSON.stringify(action.payload))
             return action.payload
         default:
             return state;

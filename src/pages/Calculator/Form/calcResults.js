@@ -115,6 +115,7 @@ const calcResults = (state, dispatch) => {
 
         dispatch({ type: stateTypes.ADD_VALUE, payload: impacts })
         dispatch({ type: stateTypes.CHANGE_TOTALVALUE, payload: ToBRL(totalValue) })
+        
 
         return {
             impacts,

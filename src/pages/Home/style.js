@@ -1,11 +1,11 @@
 import styled from 'styled-components'
-import Image from 'assets/images/capa.jpg'
+import Image from 'assets/images/Capa-min.jpg'
 
 export const ContainerBackground = styled.div`
     width: 100%;
     height: auto;
-    background: url(${Image}) center top no-repeat;
-    background-size: 100% 100%;
+    background: url(${Image}) center center no-repeat;
+    background-size: cover;
     position: absolute;
     left: 0;
     right: 0;

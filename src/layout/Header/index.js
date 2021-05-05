@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext, useCallback } from 'react'
+import { useState, useEffect, useContext, useCallback, useLayoutEffect } from 'react'
 import { useLocation, Link } from 'react-router-dom'
 import { ContainerHeader, Container, LogoContainer, LogoName, LogoSlogan, BarMenu, MenuShow, LogoBase } from './style'
 import { Language, LanguageLabel, Menuitem } from 'layout/Sidebar/style'
@@ -22,9 +22,17 @@ const Header = ({theme = 'white'}) => {
     const location = useLocation();
     const { language } = state;
     const { header } = language;
+
+    useLayoutEffect(() => {
+        const languageStorage = localStorage.getItem('@calculate/language')
+        if(languageStorage) {
+            dispatch({type: stateTypes.SET_LANGUAGE, payload: JSON.parse(languageStorage)})
+        }
+    }, [dispatch])
     
     useEffect(() => {
         const { pathname } = location;
+
         const paths = [];
 
         const isRender = paths.findIndex(a => a === pathname);
@@ -48,7 +56,7 @@ const Header = ({theme = 'white'}) => {
         <ContainerHeader theme={theme}>
             <Container>
                 <LogoContainer>
-                    <Link to="/calculator">
+                    <Link to="/">
                         <Logo />
                     </Link>
                     <LogoBase>
