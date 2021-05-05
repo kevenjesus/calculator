@@ -10,19 +10,19 @@ const Footer = () => {
         <Container>
             © CSF All rights reserved
             <SocialMedia>
-                <MediaLink href="#" target="_blank" title="Seguir no facebook">
+                <MediaLink href="https://www.facebook.com/conservationstrategyfund" target="_blank" title="Seguir no facebook">
                     <Facebook />
                 </MediaLink>
-                <MediaLink href="#" target="_blank" title="Seguir no twitter">
+                <MediaLink href="https://twitter.com/numbers4nature" target="_blank" title="Seguir no twitter">
                     <Twitter />
                 </MediaLink>
-                <MediaLink href="#" target="_blank" title="seguir no Youtube">
+                <MediaLink href="https://www.youtube.com/user/numbers4nature" target="_blank" title="seguir no Youtube">
                     <Youtube />
                 </MediaLink>
-                <MediaLink href="#" target="_blank" title="Seguir no instagram">
+                <MediaLink href="https://www.instagram.com/conservationstrategyfund/" target="_blank" title="Seguir no instagram">
                     <Instagram />
                 </MediaLink>
-                <MediaLink href="#" target="_blank" title="Seguir no linkedin">
+                <MediaLink href="https://www.linkedin.com/company/conservation-strategy-fund/" target="_blank" title="Seguir no linkedin">
                     <Linkedin />
                 </MediaLink>
             </SocialMedia>
