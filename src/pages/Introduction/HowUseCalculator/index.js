@@ -2,13 +2,12 @@ import { Headline, Text } from 'pages/Introduction/style'
 import { useCallback, useContext, useEffect } from 'react';
 import {  Row, Col } from 'react-flexbox-grid'
 import { AppContext, stateTypes } from 'utils/AppContext';
-import { EXTRATION_TYPE } from 'pages/Introduction/consts'
 import RadioBoxConditional from 'components/RadioBoxConditional'
 import Conditional from 'components/Conditional'
 import mockStates from 'mocks/state.json'
 import mockCountries from 'mocks/countries.json'
 import mockContry from 'mocks/country.json'
-import { NO, YES } from 'pages/Calculator/Form/consts';
+import { YES } from 'pages/Calculator/Form/consts';
 
 const HowUseCalculator = () => {
     const { state: stateContext, dispatch } = useContext(AppContext)
@@ -63,9 +62,6 @@ const HowUseCalculator = () => {
         })
         dispatch({type: stateTypes.SET_REGION_LIST, payload: regionListUpdate})
         dispatch({type: stateTypes.SET_KNOW_REGION, payload: Number(value) === YES})
-        if(Number(value) === NO) {
-            dispatch({type: stateTypes.SET_STEP, payload: { step: EXTRATION_TYPE}});
-        }
     }, [dispatch, regionList])
 
     const handleState = useCallback((e) => {

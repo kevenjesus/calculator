@@ -15,6 +15,12 @@ export const Container = styled.div`
         flex-direction: row;
         justify-content: space-between;
     }
+    @media (min-width: 1440px) {
+        width: 1366px;
+    }
+    @media (min-width: 1600px) {
+        width: 1440px;
+    }
 `
 
 export const SocialMedia = styled.div`
