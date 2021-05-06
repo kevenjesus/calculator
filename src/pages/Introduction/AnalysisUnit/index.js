@@ -20,7 +20,7 @@ const AnalysisUnit = () => {
     const alert = useAlert()
     const dataPitDepth = [
         {
-            label: '2,5 '+calculatorForm.values.pitDepth.meters+' (valor padrão)',
+            label: '2,5 '+calculatorForm.values.pitDepth.meters+' ('+language.defaultValue+')',
             value: 2.5
         },
         {

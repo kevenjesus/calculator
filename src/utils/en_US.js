@@ -5,10 +5,16 @@ const en_US = {
         slogan: '',
         linkWebsite: 'go to website'
     },
+    resume: 'Resume',
+    comeBack: 'Back',
+    iDontKnowYet: "I don't know it",
     defaultValue: "Default value",
     more: 'Learn more',
     knowRegionYes: 'Impacts in a specific location',
     knowRegionNo: 'General average impacts',
+    iAlreadyKnow: 'I know it already',
+    buttonIntroduction: 'Take me to the walkthrough',
+    buttonResumeCalculator: 'Take me to the short version',
     calculatorForm: {
         commons: {
             yes: 'Yes',
@@ -40,7 +46,7 @@ const en_US = {
             
             },
             extractionType: {
-                openPit: 'Alluvial (open pit)',
+                openPit: 'Alluvial (riverside)',
                 boat: 'Dredging (on boats)',
 		        pitMine: 'Underground (pit)'
             },
@@ -132,11 +138,11 @@ const en_US = {
             },
             yearsMining: {
                 headline: 'Anos de garimpo',
-                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Condimentum nibh id sed habitant. Ac faucibus at rutrum feugiat eu lobortis nibh eu. Tortor nisl turpis pretium tincidunt luctus quam eu purus, sit. Accumsan, phasellus gravida aliquam dolor'
+                text: 'The age of the mining site can be used to estimate the size, amount of gold mined and mercury used'
             },
             monthsMining: {
                 headline: 'Meses de garimpo',
-                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Condimentum nibh id sed habitant. Ac faucibus at rutrum feugiat eu lobortis nibh eu. Tortor nisl turpis pretium tincidunt luctus quam eu purus, sit. Accumsan, phasellus gravida aliquam dolor'
+                text: 'The operating time of the boat can be used as an approximation of the amount of gold mined and mercury dumped into the environment'
             },
         },
         contextValue: {
@@ -212,7 +218,6 @@ const en_US = {
     hypotheses: 'Hipoteses',
     references: 'Referências',
     observation: 'Observações',
-    comeBack: 'Voltar',
     hypothesesReferences: {
         deforestation: {
             headline: 'Deforestation/ Hypotheses and references',

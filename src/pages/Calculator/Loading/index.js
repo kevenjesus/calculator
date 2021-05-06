@@ -6,18 +6,18 @@ import { AppContext } from 'utils/AppContext'
 
 const Loading = () => {
     const {state} = useContext(AppContext)
-    const {calculator} = state
+    const {calculator, language} = state
     const history = useHistory();
     useEffect(() => {
         localStorage.setItem('@Calculator/form', JSON.stringify(calculator))
         setTimeout(() => {
-            //history.push('/impacts/deforestation')
+            history.push('/impacts/deforestation')
         }, 2500);
     }, [history, calculator])
     return (
         <Container>
             <LoadingIcon width="40" height="40" />
-            <Text>Calculando impactos...</Text>
+            <Text>{language.loading.text}...</Text>
         </Container>
     )
 }

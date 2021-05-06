@@ -5,7 +5,16 @@ const es_ES = {
         slogan: 'impactos de la minería artesanal de oro',
         linkWebsite: 'ir para el sitio web'
     },
-    defaultValue: "Valor padrão",
+    resume: 'Resumen',
+    comeBack: 'Volver',
+    iDontKnowYet: "No lo conozco",
+    defaultValue: "Valor estándar",
+    more: 'Más información',
+    knowRegionYes: 'Impactos en un lugar específico',
+    knowRegionNo: 'Impactos generales promedio',
+    iAlreadyKnow: 'Ya lo sé',
+    buttonIntroduction: 'Llévame a la guía',
+    buttonResumeCalculator: 'Llévame a la versión corta',
     calculatorForm: {
         commons: {
             yes: 'Sí',
@@ -115,22 +124,22 @@ const es_ES = {
         
         analysisUnit: {
             headline: 'Qual base de informação você usará para o cálculo de impacto?',
-            chooseOption: '* Escolha uma opção',
+            chooseOption: '* Elige una opción',
             goldType: {
-                headline: 'Quantidade de ouro',
-                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Condimentum nibh id sed habitant. Ac faucibus at rutrum feugiat eu lobortis nibh eu. Tortor nisl turpis pretium tincidunt luctus quam eu purus, sit. Accumsan, phasellus gravida aliquam dolor'
+                headline: 'Cantidad de oro',
+                text: 'Considera el contexto medio de la productividad y el impacto del garimpo en el Amazonas. Se utiliza cuando se produce la aprehensión de oro ilegal sin conocer su origen exacto.'
             },
             goldMiningSize: {
-                headline: 'Tamanho do garimpo',
-                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Condimentum nibh id sed habitant. Ac faucibus at rutrum feugiat eu lobortis nibh eu. Tortor nisl turpis pretium tincidunt luctus quam eu purus, sit. Accumsan, phasellus gravida aliquam dolor'
+                headline: 'Tamaño del área impactada',
+                text: 'El tamaño del garimpo viene dado por la multiplicación de su superficie por la profundidad media de las fosas. Se utiliza cuando se conoce la ubicación de la mina ilegal, con la posibilidad de detallar el contexto con parámetros específicos.'
             },
             yearsMining: {
-                headline: 'Anos de garimpo',
-                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Condimentum nibh id sed habitant. Ac faucibus at rutrum feugiat eu lobortis nibh eu. Tortor nisl turpis pretium tincidunt luctus quam eu purus, sit. Accumsan, phasellus gravida aliquam dolor'
+                headline: 'Años de minería ilegal',
+                text: 'La edad del garimpo puede servir de aproximación al tamaño, cantidad de oro extraído y mercurio utilizado'
             },
             monthsMining: {
-                headline: 'Meses de garimpo',
-                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Condimentum nibh id sed habitant. Ac faucibus at rutrum feugiat eu lobortis nibh eu. Tortor nisl turpis pretium tincidunt luctus quam eu purus, sit. Accumsan, phasellus gravida aliquam dolor'
+                headline: 'Meses de minería ilegal',
+                text: 'El tiempo de funcionamiento de la balsa puede utilizarse como una aproximación a la cantidad de oro extraído y de mercurio descargado en el medio ambiente'
             },
         },
         contextValue: {
@@ -206,7 +215,6 @@ const es_ES = {
     hypotheses: 'Hipoteses',
     references: 'Referências',
     observation: 'Observações',
-    comeBack: 'Voltar',
     hypothesesReferences: {
         deforestation: {
             headline: 'Deforestación / Hipótesis y referencias',
