@@ -1,6 +1,6 @@
 import { stateTypes } from "utils/AppContext"
 import goldToHecatere from "utils/GoldToHectare"
-import hectareToGold, { goldenGramForHectare } from "utils/hactareToGold"
+import hectareToGold, { goldenGramForHectare } from "utils/hectareToGold"
 import ToBRL from "utils/toBRL"
 import bioprospecting from "./calculations/bioprospecting"
 import carbon from "./calculations/carbon"
@@ -81,7 +81,7 @@ const calcResults = (state, dispatch) => {
         //console.log('totalCavaGroundingCostAuNorm', totalCavaGroundingCostAuNorm)
 
         const totalRecoveryOfTopsoil = recoveryOfTopsoil(likeMining, distanceanningCenter, goldValue, gramadeOuroporHe, txPrevalence, typeValueLikeMining)
-        impacts.push({ label: 'Recuperaçãoo superficie do solo', displayName: 'Recuperaçãoo superficie do solo', category: CATEGORY_DEFORESTATION, value: totalRecoveryOfTopsoil })
+        impacts.push({ label: 'Recuperação superficie do solo', displayName: 'Recuperação superficie do solo', category: CATEGORY_DEFORESTATION, value: totalRecoveryOfTopsoil })
         //console.log('totalRecoveryOfTopsoil', totalRecoveryOfTopsoil)
  
         const totalDredgingAndRiverSediments = dredgingAndRiverSediments(likeMining, typeValueLikeMining, valueLikeMining, distanceanningCenter, pitDepth, hectareValue)
