@@ -4,7 +4,7 @@ import { Grid, Row, Col } from 'react-flexbox-grid'
 import { Button, TextField } from 'theme'
 import { Container } from './style'
 import { ButtonFixed } from 'pages/Calculator/ImpactsStyles'
-import { YES, IMPACTED_AREA, AMOUNT_GOLD, ALLUVIUM, FERRY, PIT, YEARS_OF_MINING, MONTHS_OF_MINING} from './consts'
+import { YES, IMPACTED_AREA, AMOUNT_GOLD, ALLUVIUM, FERRY, PIT, YEARS_OF_MINING, MONTHS_OF_MINING, NO} from './consts'
 import { AppContext, stateTypes } from 'utils/AppContext'
 import Conditional from 'components/Conditional'
 import RadioBoxConditional from 'components/RadioBoxConditional'
@@ -34,11 +34,26 @@ function Form() {
     const history = useHistory()
     const alert = useAlert()
 
+    const dataRegion = [
+        {
+            name: 'region',
+            label: language.knowRegionYes,
+            value: YES,
+            checked: true
+        },
+        {
+            name: 'region',
+            label: language.knowRegionNo,
+            value: NO,
+            checked: false
+        },
+    ]
+
     
 
     const dataPitDepth = [
         {
-            label: '2,5 ' + calculatorForm.values.pitDepth.meters + ' (Valor padrão)',
+            label: '2,5 ' + calculatorForm.values.pitDepth.meters + ' ('+language.defaultValue+')',
             value: 2.5
         },
         {
@@ -108,8 +123,14 @@ function Form() {
         if (state === '' && country === '') {
             getStates()
         }
+       
 
     }, [getCounties, dispatch, state, country])
+
+    useEffect(() => {
+        dispatch({type: stateTypes.SET_REGION_LIST, payload: dataRegion})
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     useEffect(() => {
         if(valuatioMethod === ALLUVIUM) {

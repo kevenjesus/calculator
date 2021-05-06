@@ -25,23 +25,23 @@ const Home = () => {
                 </Text>
                 
                 <ContainerPartner>
-                    <img src={LogoMPF} width="150" alt="" />
-                    <img src={LogoConservationStrategy} width="150" alt="" />
+                    <img src={LogoMPF} width="150" height="80" alt="" />
+                    <img src={LogoConservationStrategy} width="120"  alt="" />
                 </ContainerPartner>
                 <Row>
                     <Col sm={3} md={4}>
-                        <label style={{color: 'white'}}>Ainda não conheço</label>
+                        <label style={{color: 'white'}}>{language.iDontKnowYet}</label>
                         <Link to="/introduction">
-                            <Button variant="secondary">Me leva para o passo-a-passo</Button>
+                            <Button variant="secondary">{language.buttonIntroduction}</Button>
                         </Link>
                         
                     </Col>
                 </Row>
                 <Row>
                     <Col sm={3} md={4}>
-                        <label style={{color: 'white'}}>Já conheço</label>
+                        <label style={{color: 'white'}}>{language.iAlreadyKnow}</label>
                         <Link to="/calculator">
-                            <Button variant="default">me leva para a versão resumida</Button>
+                            <Button variant="default">{language.buttonResumeCalculator}</Button>
                         </Link>
                     </Col>
                 </Row>

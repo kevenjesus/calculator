@@ -5,9 +5,15 @@ const ptBR = {
         slogan: 'impactos do garimpo ilegal de ouro',
         linkWebsite: 'ir para o site'
     },
+    resume: 'Resumo',
+    comeBack: 'Voltar',
     defaultValue: "Valor padrão",
+    iDontKnowYet: 'Ainda não conheço',
     more: 'Saiba mais',
     knowRegionYes: 'Impactos em lugar específico',
+    iAlreadyKnow: 'Já conheço',
+    buttonIntroduction: 'Me leva para o passo-a-passo',
+    buttonResumeCalculator: 'Me leva para versão resumida',
     knowRegionNo: 'Impactos Gerais Médios',
     calculatorForm: {
         commons: {
@@ -129,12 +135,12 @@ const ptBR = {
                 text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Condimentum nibh id sed habitant. Ac faucibus at rutrum feugiat eu lobortis nibh eu. Tortor nisl turpis pretium tincidunt luctus quam eu purus, sit. Accumsan, phasellus gravida aliquam dolor'
             },
             yearsMining: {
-                headline: 'Anos de garimpo',
-                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Condimentum nibh id sed habitant. Ac faucibus at rutrum feugiat eu lobortis nibh eu. Tortor nisl turpis pretium tincidunt luctus quam eu purus, sit. Accumsan, phasellus gravida aliquam dolor'
+                headline: 'Anos de exploração do garimpo',
+                text: 'A idade do garimpo pode ser utilizada como uma aproximação do tamanho, quantidade de ouro extraído e de mercúrio utilizado'
             },
             monthsMining: {
                 headline: 'Meses de garimpo',
-                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Condimentum nibh id sed habitant. Ac faucibus at rutrum feugiat eu lobortis nibh eu. Tortor nisl turpis pretium tincidunt luctus quam eu purus, sit. Accumsan, phasellus gravida aliquam dolor'
+                text: 'O tempo de funcionamento da balsa pode ser utilizado como uma aproximação da quantidade de ouro extraído e mercúrio despejado no ambiente'
             },
         },
         contextValue: {
@@ -210,7 +216,6 @@ const ptBR = {
     hypotheses: 'Hipoteses',
     references: 'Referências',
     observation: 'Observações',
-    comeBack: 'Voltar',
     hypothesesReferences: {
         deforestation: {
             headline: 'Desmatamento / Hipoteses e referências',

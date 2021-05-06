@@ -80,7 +80,7 @@ const Introduction = () => {
             <Header>
                 <Go hidden={step === ABOUT} onClick={PreviosStep}>
                     <GoBack />
-                    <span>Voltar</span>
+                    <span>{language.comeBack}</span>
                 </Go>
             </Header>
             <Content 

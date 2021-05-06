@@ -83,7 +83,7 @@ import ToBRL from 'utils/toBRL'
 //     )
 // }
 
-const DataChart = ({impact, headline, hiddenMonetary, txtTotalNonetary}) => {
+export const DataChart = ({impact, headline, hiddenMonetary, txtTotalNonetary}) => {
     const { total, data } = impact
     return (
         <Card>
@@ -212,7 +212,7 @@ const MonetaryImpacts = () => {
                 </Row>
            
 
-               <DataChart impact={allImpacts} headline="Resumo" hiddenMonetary />
+               <DataChart impact={allImpacts} headline={language.resume} hiddenMonetary />
                <DataChart impact={impactsDesforestation} headline={impacts.deforestation.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
                <DataChart impact={impactsSiltingRivers} headline={impacts.siltingOfRivers.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
                <DataChart impact={impactsMercury} headline={impacts.mercuryContamination.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />

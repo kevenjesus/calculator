@@ -3,20 +3,6 @@ import { IMPACTED_AREA, NO, YES, ALLUVIUM, TX_PREVALENCE_MAX } from 'pages/Calcu
 import ptBR from 'utils/pt_BR'
 import { INTRODUCTION } from 'pages/Introduction/consts'
 
-const dataRegion = [
-    {
-        name: 'region',
-        label: 'Impactos Específicos',
-        value: YES,
-        checked: true
-    },
-    {
-        name: 'region',
-        label: 'Impactos Gerais Médios',
-        value: NO,
-        checked: false
-    },
-]
 
 const dataOverflow = [
     {
@@ -58,7 +44,7 @@ export const stateTypes = {
 
 const initialState = {
     calculator: {
-        regionList: dataRegion,
+        regionList: [],
         knowRegion: true,
         stateList: [],
         state: '',

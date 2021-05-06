@@ -6,11 +6,26 @@ import { ReactComponent as ImageExample } from 'assets/images/[calculadora]Infog
 import { ReactComponent as ImageExampleUS } from 'assets/images/[calculadora]Infográfico1_INGLES.svg';
 import { useContext } from 'react';
 import { AppContext } from 'utils/AppContext';
+import ToBRL from 'utils/toBRL';
+import { CATEGORY_DEFORESTATION } from '../Form/consts';
+import { DataChart } from 'pages/Calculator/MonetaryImpacts' 
 const Deforestation = () => {
     const {state} = useContext(AppContext)
     const { language } = state
     const { impacts } = language
     window.scrollTo(0,0)
+
+    const impactsValues = state.calculator.values
+
+    const reducer = ((acc, current) => acc + current.value)
+    const sumTotal = (item) => ToBRL(item.reduce(reducer, 0))
+
+    const dataDesforestation = impactsValues.filter(i => i.category === CATEGORY_DEFORESTATION)
+    const impactsDesforestation = {
+        data: dataDesforestation,
+        total: sumTotal(dataDesforestation)
+    }
+    
     return (
         <Container>
             <Grid fluid>
@@ -41,6 +56,11 @@ const Deforestation = () => {
                             language.type === 'enUS' ? (<ImageExampleUS style={{display: 'block', margin: '50px auto'}} />) : (<ImageExample style={{display: 'block', margin: '50px auto'}} />)
                         }
                         
+                    </Col>
+                </Row>
+                <Row>
+                    <Col xs={!2}>
+                        <DataChart impact={impactsDesforestation} headline={impacts.deforestation.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
                     </Col>
                 </Row>
                 <Row>
