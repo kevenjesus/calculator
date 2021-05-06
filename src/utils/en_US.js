@@ -118,7 +118,7 @@ const en_US = {
     introduction: {
         buttons: {
             skip: 'Skip introduction',
-            next: 'Skip',
+            next: 'Next',
             moreContextValue: 'More'
         },
         about: {
