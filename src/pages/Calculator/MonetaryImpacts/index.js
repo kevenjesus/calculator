@@ -83,7 +83,7 @@ import ToBRL from 'utils/toBRL'
 //     )
 // }
 
-const DataChart = ({impact, headline, hiddenMonetary, txtTotalNonetary}) => {
+export const DataChart = ({impact, headline, hiddenMonetary, txtTotalNonetary}) => {
     const { total, data } = impact
     return (
         <Card>

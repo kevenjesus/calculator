@@ -6,12 +6,27 @@ import { ReactComponent as ImageExample } from 'assets/images/[calculadora]infog
 import { ReactComponent as ImageExampleUS } from 'assets/images/[calculadora]infografico2_INGLES.svg';
 import { useContext } from 'react';
 import { AppContext } from 'utils/AppContext';
+import ToBRL from 'utils/toBRL';
+import { CATEGORY_SILTING_RIVERS } from '../Form/consts';
+import { DataChart } from '../MonetaryImpacts';
 
 const SiltingOfRivers = () => {
     const {state} = useContext(AppContext)
     const { language } = state
     const { impacts } = language
     window.scrollTo(0,0)
+
+    const impactsValues = state.calculator.values
+
+    const reducer = ((acc, current) => acc + current.value)
+    const sumTotal = (item) => ToBRL(item.reduce(reducer, 0))
+
+    const dataSiltingRivers = impactsValues.filter(i => i.category === CATEGORY_SILTING_RIVERS)
+
+    const impactsSiltingRivers = {
+        data: dataSiltingRivers,
+        total: sumTotal(dataSiltingRivers)
+    }
     return (
         <Container>
             <Grid fluid>
@@ -39,6 +54,11 @@ const SiltingOfRivers = () => {
                         {impacts.siltingOfRivers.paragraphy_02}
                         </Text>
                         { language.type === 'enUS' ? <ImageExampleUS style={{display: 'block', margin: '50px auto'}} /> : <ImageExample style={{display: 'block', margin: '50px auto'}} />}
+                    </Col>
+                </Row>
+                <Row>
+                    <Col xs={12}>
+                        <DataChart impact={impactsSiltingRivers} headline={impacts.siltingOfRivers.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
                     </Col>
                 </Row>
                 <Row>

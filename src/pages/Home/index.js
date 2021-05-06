@@ -25,8 +25,8 @@ const Home = () => {
                 </Text>
                 
                 <ContainerPartner>
-                    <img src={LogoMPF} width="150" alt="" />
-                    <img src={LogoConservationStrategy} width="150" alt="" />
+                    <img src={LogoMPF} width="150" height="80" alt="" />
+                    <img src={LogoConservationStrategy} width="120"  alt="" />
                 </ContainerPartner>
                 <Row>
                     <Col sm={3} md={4}>
