@@ -1,5 +1,5 @@
 const vpl =(discountRate, amounts) => {   
-    console.log(discountRate, amounts) 
+    
         let ret = amounts[0];
         
         for (let i=1; i<amounts.length; i++) {
