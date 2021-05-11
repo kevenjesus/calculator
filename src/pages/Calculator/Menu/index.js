@@ -21,29 +21,30 @@ const MenuImpacts = ({active, hidden = []}) => {
     const {language} = state
     const {impacts} = language
 
-    const items = [
-        {
-            link: "/impacts/deforestation",
-            label: impacts.menu.deforestation
-        },
-        {
-            link: "/impacts/silting-of-rivers",
-            label: impacts.menu.siltingOfRivers
-        },
-        {
-            link: "/impacts/mercury-contamination",
-            label: impacts.menu.mercuryContamination
-        },
-        {
-            link: "/impacts/monetary-impacts",
-            label: impacts.menu.monetaryImpacts
-        }
-    ]
-    const [data, setData] = useState(items)
+    
+    const [data, setData] = useState([])
 
 
     useEffect(() => {
-        const dataFilter = data.filter(item => {
+        const items = [
+            {
+                link: "/impacts/deforestation",
+                label: impacts.menu.deforestation
+            },
+            {
+                link: "/impacts/silting-of-rivers",
+                label: impacts.menu.siltingOfRivers
+            },
+            {
+                link: "/impacts/mercury-contamination",
+                label: impacts.menu.mercuryContamination
+            },
+            {
+                link: "/impacts/monetary-impacts",
+                label: impacts.menu.monetaryImpacts
+            }
+        ]
+        const dataFilter = items.filter(item => {
             const find = hidden.find(i => i.toLowerCase() === item.label.toLowerCase())
             if(find) {
                 return false

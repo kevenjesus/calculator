@@ -263,7 +263,7 @@ function Form() {
                     <Col xs={6}>
                         <label>{calculatorForm.labels.analysisUnit}</label>
                         <select name="analysisUnit" value={calculator.analysisUnit} onChange={handleAnalysisUnit}>
-                            <ExtrationTypeOptions type={valuatioMethod} translate={introduction} />
+                            <ExtrationTypeOptions value={calculator.analysisUnit} type={valuatioMethod} translate={introduction} />
                         </select>
                     </Col>
                     <Col xs={valuatioMethod === ALLUVIUM ? 6 : 12} lg={valuatioMethod === ALLUVIUM ? 4 : 12}>
