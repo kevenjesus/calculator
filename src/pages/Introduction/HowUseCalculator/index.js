@@ -15,21 +15,6 @@ const HowUseCalculator = () => {
     const { calculatorForm, introduction } = language
     const { knowRegion, regionList, stateList, state, country, counties } = calculator;
 
-    const dataRegion = [
-        {
-            name: 'region',
-            label: language.knowRegionYes,
-            value: YES,
-            checked: true
-        },
-        {
-            name: 'region',
-            label: language.knowRegionNo,
-            value: NO,
-            checked: false
-        },
-    ]
-
     const getCounties = useCallback((uf) => {
         let dataCountries = [];
         mockCountries.forEach(m => {
@@ -67,12 +52,27 @@ const HowUseCalculator = () => {
     }, [getCounties, dispatch])
 
     useEffect(() => {
+        const dataRegion = [
+            {
+                name: 'region',
+                label: language.knowRegionYes,
+                value: YES,
+                checked: knowRegion === false ? false : true
+            },
+            {
+                name: 'region',
+                label: language.knowRegionNo,
+                value: NO,
+                checked: knowRegion === false ? true : false
+            },
+        ]
         dispatch({type: stateTypes.SET_REGION_LIST, payload: dataRegion})
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [dataRegion])
+    }, [language])
 
     const handleRegion = useCallback((e) => {
         const { value } = e.target;
+        console.log(regionList)
         const regionListUpdate = regionList.map(r => {
             r.checked = false;
             if(r.value === Number(value)) {
@@ -82,7 +82,8 @@ const HowUseCalculator = () => {
         })
         dispatch({type: stateTypes.SET_REGION_LIST, payload: regionListUpdate})
         dispatch({type: stateTypes.SET_KNOW_REGION, payload: Number(value) === YES})
-    }, [dispatch, regionList])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     const handleState = useCallback((e) => {
         const { value } = e.target;
