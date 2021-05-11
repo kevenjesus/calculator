@@ -112,7 +112,7 @@ const calculatorReducer = (state, action) => {
 const languageReducer = (state, action) => {
     switch(action.type) {
         case stateTypes.SET_LANGUAGE:
-            localStorage.setItem('@calculate/language', JSON.stringify(action.payload))
+            sessionStorage.setItem('@calculate/language', JSON.stringify(action.payload))
             return action.payload
         default:
             return state;

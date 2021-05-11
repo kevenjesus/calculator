@@ -10,7 +10,7 @@ const Loading = () => {
     const {calculator, language} = state
     const history = useHistory();
     useEffect(() => {
-        localStorage.setItem('@Calculator/form', JSON.stringify(calculator))
+        sessionStorage.setItem('@Calculator/form', JSON.stringify(calculator))
         setTimeout(() => {
             if(calculator.valuatioMethod === FERRY) {
                 history.push('/impacts/silting-of-rivers') 

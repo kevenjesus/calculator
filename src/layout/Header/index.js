@@ -24,8 +24,8 @@ const Header = ({theme = 'white'}) => {
     const { header } = language;
 
     useLayoutEffect(() => {
-        const languageStorage = localStorage.getItem('@calculate/language')
-        const formStorage = localStorage.getItem('@Calculator/form')
+        const languageStorage = sessionStorage.getItem('@calculate/language')
+        const formStorage = sessionStorage.getItem('@Calculator/form')
 
         if(languageStorage) {
             dispatch({type: stateTypes.SET_LANGUAGE, payload: JSON.parse(languageStorage)})
