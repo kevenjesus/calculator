@@ -34,22 +34,6 @@ function Form() {
     const history = useHistory()
     const alert = useAlert()
 
-    const dataRegion = [
-        {
-            name: 'region',
-            label: language.knowRegionYes,
-            value: YES,
-            checked: true
-        },
-        {
-            name: 'region',
-            label: language.knowRegionNo,
-            value: NO,
-            checked: false
-        },
-    ]
-
-    
 
     const dataPitDepth = [
         {
@@ -128,9 +112,23 @@ function Form() {
     }, [getCounties, dispatch, state, country])
 
     useEffect(() => {
+        const dataRegion = [
+            {
+                name: 'region',
+                label: language.knowRegionYes,
+                value: YES,
+                checked: knowRegion === false ? false : true
+            },
+            {
+                name: 'region',
+                label: language.knowRegionNo,
+                value: NO,
+                checked: knowRegion === false ? true : false
+            },
+        ]
         dispatch({type: stateTypes.SET_REGION_LIST, payload: dataRegion})
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [dataRegion])
+    }, [language])
 
     useEffect(() => {
         if(valuatioMethod === ALLUVIUM) {
