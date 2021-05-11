@@ -1,18 +1,19 @@
 import { Link } from 'react-router-dom'
 import { Button } from 'theme'
 import { Grid, Row, Col } from 'react-flexbox-grid'
-import { Container, Menu, MenuItem, Headline, Text } from 'pages/Calculator/ImpactsStyles'
+import { Container, Headline, Text } from 'pages/Calculator/ImpactsStyles'
 import { ReactComponent as ImageExample } from 'assets/images/[calculadora]infografico3.svg';
 import { ReactComponent as ImageExampleUS } from 'assets/images/[calculadora]infografico3_INGLES.svg';
 import { AppContext } from 'utils/AppContext';
 import { useContext } from 'react';
-import { CATEGORY_MERCURY } from '../Form/consts';
+import { CATEGORY_MERCURY, FERRY } from '../Form/consts';
 import ToBRL from 'utils/toBRL';
 import { DataChart } from '../MonetaryImpacts';
+import MenuImpacts from '../Menu';
 
 const MercuryContamination = () => {
     const {state} = useContext(AppContext)
-    const { language } = state
+    const { language, calculator } = state
     const { impacts } = language
     window.scrollTo(0,0)
 
@@ -28,23 +29,14 @@ const MercuryContamination = () => {
         total: sumTotal(dataMercury)
     }
 
+    const hiddenMenu = calculator.valuatioMethod === FERRY ? [impacts.menu.deforestation] : []
+
     return (
         <Container>
             <Grid fluid>
                 <Row>
                     <Col xs={12} sm={4} md={3}>
-                        <Menu>
-                            <Link to="/impacts/deforestation">
-                                <MenuItem>{impacts.menu.deforestation}</MenuItem>
-                            </Link>
-                            <Link to="/impacts/silting-of-rivers">
-                                <MenuItem>{impacts.menu.siltingOfRivers}</MenuItem>
-                            </Link>
-                            <MenuItem active>{impacts.menu.mercuryContamination}</MenuItem>
-                            <Link to="/impacts/monetary-impacts">
-                                <MenuItem last>{impacts.menu.monetaryImpacts}</MenuItem>
-                            </Link>
-                        </Menu>
+                        <MenuImpacts active={impacts.menu.mercuryContamination} hidden={hiddenMenu} />
                     </Col>
                     <Col xs={12} sm={8} md={9}>
                         <Headline>{impacts.mercuryContamination.headline}</Headline>

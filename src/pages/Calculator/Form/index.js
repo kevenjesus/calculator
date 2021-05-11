@@ -130,7 +130,7 @@ function Form() {
     useEffect(() => {
         dispatch({type: stateTypes.SET_REGION_LIST, payload: dataRegion})
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [dataRegion])
 
     useEffect(() => {
         if(valuatioMethod === ALLUVIUM) {

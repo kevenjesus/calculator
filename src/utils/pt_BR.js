@@ -76,7 +76,7 @@ const ptBR = {
         },
         deforestation: {
             headline: 'Desmatamento',
-            paragraphy_01: 'A extração de 1 kg de ouro gera o desmatamento de 14 hectares, em média.',
+            paragraphy_01: 'A extração de <strong>$grams gramas de ouro</strong> gera o desmatamento de 14 hectares, em média.',
             paragraphy_02: 'O desmatamento destes 14 hectares leva a perdas de oportunidade de realização de outras atividades, como extração de produtos florestais não-madeireiros, uso recreativo, cultural, e da manutenção de serviços ecossistêmicos de regulação do clima e de controle de erosão'
         },
         siltingOfRivers: {

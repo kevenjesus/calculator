@@ -7,13 +7,28 @@ import Conditional from 'components/Conditional'
 import mockStates from 'mocks/state.json'
 import mockCountries from 'mocks/countries.json'
 import mockContry from 'mocks/country.json'
-import { YES } from 'pages/Calculator/Form/consts';
+import { NO, YES } from 'pages/Calculator/Form/consts';
 
 const HowUseCalculator = () => {
     const { state: stateContext, dispatch } = useContext(AppContext)
     const { calculator, language } = stateContext;
     const { calculatorForm, introduction } = language
     const { knowRegion, regionList, stateList, state, country, counties } = calculator;
+
+    const dataRegion = [
+        {
+            name: 'region',
+            label: language.knowRegionYes,
+            value: YES,
+            checked: true
+        },
+        {
+            name: 'region',
+            label: language.knowRegionNo,
+            value: NO,
+            checked: false
+        },
+    ]
 
     const getCounties = useCallback((uf) => {
         let dataCountries = [];
@@ -50,6 +65,11 @@ const HowUseCalculator = () => {
           }
           getStates();
     }, [getCounties, dispatch])
+
+    useEffect(() => {
+        dispatch({type: stateTypes.SET_REGION_LIST, payload: dataRegion})
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [dataRegion])
 
     const handleRegion = useCallback((e) => {
         const { value } = e.target;

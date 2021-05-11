@@ -1,17 +1,18 @@
 import { Link } from 'react-router-dom'
 import { Button } from 'theme'
 import { Grid, Row, Col } from 'react-flexbox-grid'
-import { Container, Menu, MenuItem, Headline, Text } from 'pages/Calculator/ImpactsStyles'
+import { Container, Headline, Text } from 'pages/Calculator/ImpactsStyles'
 import { ReactComponent as ImageExample } from 'assets/images/[calculadora]Infográfico1.svg';
 import { ReactComponent as ImageExampleUS } from 'assets/images/[calculadora]Infográfico1_INGLES.svg';
 import { useContext } from 'react';
 import { AppContext } from 'utils/AppContext';
 import ToBRL from 'utils/toBRL';
-import { CATEGORY_DEFORESTATION } from '../Form/consts';
+import { CATEGORY_DEFORESTATION, FERRY } from '../Form/consts';
 import { DataChart } from 'pages/Calculator/MonetaryImpacts' 
+import MenuImpacts from '../Menu';
 const Deforestation = () => {
     const {state} = useContext(AppContext)
-    const { language } = state
+    const { language, calculator } = state
     const { impacts } = language
     window.scrollTo(0,0)
 
@@ -25,29 +26,21 @@ const Deforestation = () => {
         data: dataDesforestation,
         total: sumTotal(dataDesforestation)
     }
+
+    const hiddenMenu = calculator.valuatioMethod === FERRY ? [impacts.menu.deforestation] : []
+ 
     
     return (
         <Container>
             <Grid fluid>
                 <Row>
                     <Col xs={12} sm={4} md={3}>
-                        <Menu>
-                            <MenuItem active>{impacts.menu.deforestation}</MenuItem>
-                            <Link to="/impacts/silting-of-rivers">
-                                <MenuItem>{impacts.menu.siltingOfRivers}</MenuItem>
-                            </Link>
-                            <Link to="/impacts/mercury-contamination">
-                                <MenuItem>{impacts.menu.mercuryContamination}</MenuItem>
-                            </Link>
-                            <Link to="/impacts/monetary-impacts">
-                                <MenuItem last>{impacts.menu.monetaryImpacts}</MenuItem>
-                            </Link>
-                        </Menu>
+                        <MenuImpacts active={impacts.menu.deforestation} hidden={hiddenMenu} />
                     </Col>
                     <Col xs={12} sm={8} md={9}>
                         <Headline>{impacts.deforestation.headline}</Headline>
                         <Text>
-                            {impacts.deforestation.paragraphy_01}
+                            <div dangerouslySetInnerHTML={{__html: impacts.deforestation.paragraphy_01.replace("$grams", calculator.qtdAnalysis.value)}} />
                         </Text>
                         <Text>
                         {impacts.deforestation.paragraphy_02}

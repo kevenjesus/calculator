@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { Container, Text } from './style'
 import { ReactComponent as LoadingIcon } from 'assets/icons/loading-icon.svg'
 import { AppContext } from 'utils/AppContext'
+import { FERRY } from '../Form/consts'
 
 const Loading = () => {
     const {state} = useContext(AppContext)
@@ -11,7 +12,11 @@ const Loading = () => {
     useEffect(() => {
         localStorage.setItem('@Calculator/form', JSON.stringify(calculator))
         setTimeout(() => {
-            history.push('/impacts/deforestation')
+            if(calculator.valuatioMethod === FERRY) {
+                history.push('/impacts/silting-of-rivers') 
+            }else {
+                history.push('/impacts/deforestation')
+            }
         }, 2500);
     }, [history, calculator])
     return (

@@ -1,18 +1,19 @@
 import { Link } from 'react-router-dom'
 import { Button } from 'theme'
 import { Grid, Row, Col } from 'react-flexbox-grid'
-import { Container, Menu, MenuItem, Headline, Text } from 'pages/Calculator/ImpactsStyles'
+import { Container, Headline, Text } from 'pages/Calculator/ImpactsStyles'
 import { ReactComponent as ImageExample } from 'assets/images/[calculadora]infografico2.svg';
 import { ReactComponent as ImageExampleUS } from 'assets/images/[calculadora]infografico2_INGLES.svg';
 import { useContext } from 'react';
 import { AppContext } from 'utils/AppContext';
 import ToBRL from 'utils/toBRL';
-import { CATEGORY_SILTING_RIVERS } from '../Form/consts';
+import { CATEGORY_SILTING_RIVERS, FERRY } from '../Form/consts';
 import { DataChart } from '../MonetaryImpacts';
+import MenuImpacts from '../Menu';
 
 const SiltingOfRivers = () => {
     const {state} = useContext(AppContext)
-    const { language } = state
+    const { language, calculator } = state
     const { impacts } = language
     window.scrollTo(0,0)
 
@@ -27,23 +28,13 @@ const SiltingOfRivers = () => {
         data: dataSiltingRivers,
         total: sumTotal(dataSiltingRivers)
     }
+    const hiddenMenu = calculator.valuatioMethod === FERRY ? [impacts.menu.deforestation] : []
     return (
         <Container>
             <Grid fluid>
                 <Row>
                     <Col xs={12} sm={4} md={3}>
-                        <Menu>
-                            <Link to="/impacts/deforestation">
-                                <MenuItem>{impacts.menu.deforestation}</MenuItem>
-                            </Link>
-                                <MenuItem active>{impacts.menu.siltingOfRivers}</MenuItem>
-                            <Link to="/impacts/mercury-contamination">
-                                <MenuItem>{impacts.menu.mercuryContamination}</MenuItem>
-                            </Link>
-                            <Link to="/impacts/monetary-impacts">
-                                <MenuItem last>{impacts.menu.monetaryImpacts}</MenuItem>
-                            </Link>
-                        </Menu>
+                        <MenuImpacts active={impacts.menu.siltingOfRivers} hidden={hiddenMenu} />
                     </Col>
                     <Col xs={12} sm={8} md={9}>
                         <Headline>{impacts.siltingOfRivers.headline}</Headline>
