@@ -31,6 +31,10 @@ const calcResults = (state, dispatch) => {
         txPrevalence,
         valuatioMethod } = calculator
 
+       if(!country) {
+           return
+       }
+
 
         const impacts = []
         const hectareValue = calculator.analysisUnit === AMOUNT_GOLD ? goldToHecatere(Number(qtdAnalysis.value), pitDepth) : Number(qtdAnalysis.value)

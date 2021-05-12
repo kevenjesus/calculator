@@ -76,7 +76,7 @@ const ptBR = {
         },
         deforestation: {
             headline: 'Desmatamento',
-            paragraphy_01: 'A extração de 1 kg de ouro gera o desmatamento de 14 hectares, em média.',
+            paragraphy_01: 'A extração de <strong>$grams gramas de ouro</strong> gera o desmatamento de 14 hectares, em média.',
             paragraphy_02: 'O desmatamento destes 14 hectares leva a perdas de oportunidade de realização de outras atividades, como extração de produtos florestais não-madeireiros, uso recreativo, cultural, e da manutenção de serviços ecossistêmicos de regulação do clima e de controle de erosão'
         },
         siltingOfRivers: {
@@ -128,11 +128,11 @@ const ptBR = {
             chooseOption: '* Escolha uma opção',
             goldType: {
                 headline: 'Quantidade de ouro',
-                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Condimentum nibh id sed habitant. Ac faucibus at rutrum feugiat eu lobortis nibh eu. Tortor nisl turpis pretium tincidunt luctus quam eu purus, sit. Accumsan, phasellus gravida aliquam dolor'
+                text: 'Considera o contexto médio de produtividade e impacto de garimpo na Amazônia. Utilizado quando ocorre apreensão de ouro ilegal sem que se saiba sua origem exata.'
             },
             goldMiningSize: {
                 headline: 'Tamanho do garimpo',
-                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Condimentum nibh id sed habitant. Ac faucibus at rutrum feugiat eu lobortis nibh eu. Tortor nisl turpis pretium tincidunt luctus quam eu purus, sit. Accumsan, phasellus gravida aliquam dolor'
+                text: 'O tamanho do garimpo é dado pela multiplicação de sua área pela profundidade média das cavas. Utilizado quando se conhece o local do garimpo ilegal, havendo possibilidade de detalhar o contexto com parâmetros específicos.'
             },
             yearsMining: {
                 headline: 'Anos de exploração do garimpo',

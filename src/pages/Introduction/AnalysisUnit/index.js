@@ -76,7 +76,7 @@ const AnalysisUnit = () => {
     }, [dispatch, alert])
 
     useEffect(() => {
-        const form = JSON.parse(localStorage.getItem('@Calculator/form'))
+        const form = JSON.parse(sessionStorage.getItem('@Calculator/form'))
         
         if(valuatioMethod === ALLUVIUM) {
             if(form && form.analysisUnit) {

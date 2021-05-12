@@ -1,87 +1,16 @@
-import {  useContext } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import {  useCallback, useContext, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import { Button } from 'theme'
 import { Grid, Row, Col } from 'react-flexbox-grid'
-import { AMOUNT_GOLD, CATEGORY_DEFORESTATION, CATEGORY_MERCURY, CATEGORY_SILTING_RIVERS, IMPACTED_AREA, YEARS_OF_MINING } from 'pages/Calculator/Form/consts'
-import { Container, Menu, MenuItem, Headline, ButtonFixed, HiddenPrint } from 'pages/Calculator/ImpactsStyles'
+import { AMOUNT_GOLD, CATEGORY_DEFORESTATION, CATEGORY_MERCURY, CATEGORY_SILTING_RIVERS, FERRY, IMPACTED_AREA, YEARS_OF_MINING } from 'pages/Calculator/Form/consts'
+import { Container, Headline, ButtonFixed, HiddenPrint } from 'pages/Calculator/ImpactsStyles'
 import { Monetary, MonetaryType, Label, FormGroup, Card } from './style'
 import Chart from 'components/Chart'
-import { AppContext } from 'utils/AppContext'
+import { AppContext, stateTypes } from 'utils/AppContext'
 import ToBRL from 'utils/toBRL'
+import MenuImpacts from '../Menu'
+import calcResults from '../Form/calcResults'
 
-// const dataimpactCategories = [
-//     {
-//         name: 'impactCategory',
-//         label: 'Decapeamento / desmatamento',
-//         value: DEFORESTATION,
-//         checked: true
-//     },
-//     {
-//         name: 'impactCategory',
-//         label: 'Impactos do mercúrio',
-//         value: MERCURY_IMPACTED,
-//         checked: true
-//     },
-//     {
-//         name: 'impactCategory',
-//         label: 'Escavação / Abertura de cava',
-//         value: PIT_DEPTH,
-//         checked: true
-//     },
-// ]
-
-// const dataImpactedVisualization = [
-//     {
-//         name: 'impactedVisualization',
-//         label: 'Impacto 01',
-//         value: 1,
-//         checked: true
-//     },
-//     {
-//         name: 'impactedVisualization',
-//         label: 'Impacto 01',
-//         value: 2,
-//         checked: false
-//     },
-//     {
-//         name: 'impactedVisualization',
-//         label: 'Impacto 01',
-//         value: 3,
-//         checked: false
-//     },
-//     {
-//         name: 'impactedVisualization',
-//         label: 'Impacto 04',
-//         value: 4,
-//         checked: true
-//     },
-//     {
-//         name: 'impactedVisualization',
-//         label: 'Impacto 05',
-//         value: 5,
-//         checked: true
-//     },
-//     {
-//         name: 'impactedVisualization',
-//         label: 'Impacto 6',
-//         value: 6,
-//         checked: true
-//     },
-// ]
-
-// const CheckboxConditional = ({state, setState}) => {
-//     return (
-//         <>
-//             {
-//                 state.map(({name, label, value, checked}) => (
-//                     <Checkbox key={value} name={name} checked={checked} value={value} onChange={setState}>
-//                         {label}
-//                     </Checkbox>
-//                 ))
-//             }
-//         </>
-//     )
-// }
 
 export const DataChart = ({impact, headline, hiddenMonetary, txtTotalNonetary}) => {
     const { total, data } = impact
@@ -107,10 +36,10 @@ export const DataChart = ({impact, headline, hiddenMonetary, txtTotalNonetary}) 
 
 
 const MonetaryImpacts = () => {
-    // const [impactedCategories, setImpactedCategories] = useState(dataimpactCategories)
-    // const [impactedVisuaization, setImpactedVisualization] = useState(dataImpactedVisualization)
-    const {state} = useContext(AppContext);
+    const {state, dispatch} = useContext(AppContext);
     const {language, calculator} = state
+    const { calculatorForm } = language
+    const { txPrevalence } = calculator
     const {impacts} = language
     const history = useHistory();
 
@@ -147,6 +76,17 @@ const MonetaryImpacts = () => {
         ],
         total: sumTotal(impactsValues)
     }
+
+    const handleTxPrevalance = useCallback((e) => {
+        const { value } = e.target
+        dispatch({ type: stateTypes.SET_TX_PREVALENCE, payload: Number(value) })
+    }, [dispatch])
+
+    useEffect(() => {
+    
+        calcResults(state, dispatch)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [txPrevalence])
     
 
     const impactsDesforestation = {
@@ -173,32 +113,21 @@ const MonetaryImpacts = () => {
         typeAnalysis = language.calculatorForm.values.qtdAnalysisUnit.months
     }
 
+    const hiddenMenu = calculator.valuatioMethod === FERRY ? [impacts.menu.deforestation] : []
     return (
         <Container>
             <Grid fluid>
                 <Row>
-                    
                     <Col xs={12} sm={4} md={3}>
-                    <HiddenPrint>
-                    <Menu>
-                            <Link to="/impacts/deforestation">
-                                <MenuItem>{impacts.menu.deforestation}</MenuItem>
-                            </Link>
-                            <Link to="/impacts/silting-of-rivers">
-                                <MenuItem>{impacts.menu.siltingOfRivers}</MenuItem>
-                            </Link>
-                            <Link to="/impacts/mercury-contamination">
-                                <MenuItem>{impacts.menu.mercuryContamination}</MenuItem>
-                            </Link>
-                            <MenuItem last active>{impacts.menu.monetaryImpacts}</MenuItem>
-                        </Menu>
+                        <HiddenPrint>
+                            <MenuImpacts active={impacts.menu.monetaryImpacts} hidden={hiddenMenu} />
                         </HiddenPrint>
                     </Col>
+                    
                     
                     <Col xs={12} sm={8} md={9}>
                         <Headline>{impacts.monetaryImpacts.headline}</Headline>
                         <Row>
-                        
                             <Col xs={12} sm={6}>
                                 <FormGroup>
                                     <Label>{impacts.monetaryImpacts.labels.finalValue}</Label>
@@ -206,14 +135,23 @@ const MonetaryImpacts = () => {
                                     <MonetaryType>{`${impacts.monetaryImpacts.labels.typeText} ${calculator.qtdAnalysis.value} ${typeAnalysis.toLowerCase()}`}</MonetaryType>
                                 </FormGroup>
                             </Col>
-                          
+                            <Col xs={12} sm={6}>
+                                <label>{calculatorForm.labels.valueHypothesis}</label>
+                                <select name="txPrevalencia" value={txPrevalence} onChange={handleTxPrevalance}>
+                                    <option value="0.29">{calculatorForm.values.valueHypothesis.conservative}</option>
+                                    <option value="0.343">{calculatorForm.values.valueHypothesis.precautionaryPrinciple}</option>
+                                </select>
+                            </Col>
                         </Row>
                     </Col>
                 </Row>
            
 
                <DataChart impact={allImpacts} headline={language.resume} hiddenMonetary />
-               <DataChart impact={impactsDesforestation} headline={impacts.deforestation.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
+               {
+                   !hiddenMenu && <DataChart impact={impactsDesforestation} headline={impacts.deforestation.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
+               }
+               
                <DataChart impact={impactsSiltingRivers} headline={impacts.siltingOfRivers.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
                <DataChart impact={impactsMercury} headline={impacts.mercuryContamination.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
 

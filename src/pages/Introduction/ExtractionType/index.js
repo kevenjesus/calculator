@@ -14,13 +14,13 @@ const ExtrationType = () => {
     const { introduction } = language
 
     const handleOption = useCallback((value) => {
-        const form = JSON.parse(localStorage.getItem("@Calculator/form"))
+        const form = JSON.parse(sessionStorage.getItem("@Calculator/form"))
         dispatch({type: stateTypes.SET_VALUATION_METHOD, payload: value})
 
         if(form.analysisUnit) {
             const newForm = {...form, analysisUnit: null}
-            localStorage.removeItem('@Calculator/form')
-            localStorage.setItem('@Calculator/form', JSON.stringify(newForm))
+            sessionStorage.removeItem('@Calculator/form')
+            sessionStorage.setItem('@Calculator/form', JSON.stringify(newForm))
         }
     }, [dispatch])
     return (
