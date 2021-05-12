@@ -108,7 +108,7 @@ const calcResults = (state, dispatch) => {
         //console.log('totalHypertension', totalHypertension)
         const totalHeartAttack = heartAttack(likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, urbanPopMunicipality, ruralPopMunicipality, popDensity2060, goldValue, knowRegion)//gold
         //console.log('totalHeartAttack', totalHeartAttack)
-        impacts.push({ label: 'Doenças cardiovasculares', displayName: 'Doenças cardiovasculares (HIPERTENSAO + INFARTO)', category: CATEGORY_MERCURY, value: (totalHeartAttack+totalHypertension) })
+        impacts.push({ label: 'Doenças cardiovasculares', displayName: 'Doenças cardiovasculares (HIPERTENSÃO + INFARTO)', category: CATEGORY_MERCURY, value: (totalHeartAttack+totalHypertension) })
         
         const totalsoilMercuryRemediation = soilMercuryRemediation(likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, goldValue)//gold
         impacts.push({ label: 'Remediação de mercúrio no solo', displayName: 'Remediação de mercúrio no solo', category: CATEGORY_MERCURY, value: totalsoilMercuryRemediation })
