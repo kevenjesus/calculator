@@ -35,7 +35,6 @@ const cavaGroundingCostAuFertile = (likeMining, typeValueLikeMining, valueLikeMi
         const lossyVolume = losslessVolume * excavationGoldLoss;
         const affectedAreaM2 = lossyVolume / hollowMediumDepth;
         const fertileLandVolume = fertileEarthMediumDepth * affectedAreaM2
-
         const toCostGroundingFertileLandWithoutFreight = fertileLandVolume * groundingCostFertilePit; 
         const excavatorQuantityM3PerYearFertileLand = daysInTheYear * excavatorHoursPerDay * qtExtractedInM3PerExcavatorHour;
         const excavatornsQuantityFertil = (fertileLandVolume / excavatorQuantityM3PerYearFertileLand) < 1 ? 1 : Math.ceil(fertileLandVolume / excavatorQuantityM3PerYearFertileLand); //ok
@@ -57,7 +56,7 @@ const cavaGroundingCostAuFertile = (likeMining, typeValueLikeMining, valueLikeMi
         const losslessVolume = toUpturnedSoil / goldDensity;
         const lossyVolume = losslessVolume * excavationGoldLoss;
         const affectedAreaM2 = lossyVolume / hollowMediumDepth;
-        
+
         const fertileLandVolume = fertileEarthMediumDepth * affectedAreaM2;
         const toCostGroundingFertileLandWithoutFreight = fertileLandVolume * groundingCostFertilePit;
         const excavatorQuantityM3PerYearFertileLand = daysInTheYear * excavatorHoursPerDay * qtExtractedInM3PerExcavatorHour;

@@ -7,7 +7,7 @@ describe('soilMercuryRemediation', () => {
     it('Deve calcular remediação de mercúrio no solo por tipo de garimpo ALUVIÃO com valor de hipotese conservador, considerando 8625g Au', () => {
                                         //(likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, gold)
         const remediacaoMercurioSolo = soilMercuryRemediation(ALLUVIUM, AMOUNT_GOLD, 8625, 0.29, 8625)
-        expect(remediacaoMercurioSolo).toBe(828828)
+        expect(remediacaoMercurioSolo).toBe(560083.3333333334)
     })
 })
 
@@ -15,7 +15,7 @@ describe('soilMercuryRemediation', () => {
     it('Deve calcular remediação de mercúrio no solo por tipo de garimpo ALUVIÃO com valor de hipotese princípio da precaução, considerando 8625g Au', () => {
                                         //(likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, gold)
         const remediacaoMercurioSolo = soilMercuryRemediation(ALLUVIUM, AMOUNT_GOLD, 8625, 0.343, 8625)
-        expect(remediacaoMercurioSolo).toBe(1318590.0000000002)
+        expect(remediacaoMercurioSolo).toBe(891041.6666666667)
     })
 })
 
@@ -25,7 +25,7 @@ describe('soilMercuryRemediation', () => {
     it('Deve calcular remediação de mercúrio no solo por tipo de garimpo ALUVIÃO com valor de hipotese conservador, considerando 5Ha', () => {
                                         //(likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, gold)
         const remediacaoMercurioSolo = soilMercuryRemediation(ALLUVIUM, IMPACTED_AREA, 5, 0.29, 8625)
-        expect(remediacaoMercurioSolo).toBe(828828)
+        expect(remediacaoMercurioSolo).toBe(560083.3333333334)
     })
 })
 
@@ -33,7 +33,7 @@ describe('soilMercuryRemediation', () => {
     it('Deve calcular remediação de mercúrio no solo por tipo de garimpo ALUVIÃO com valor de hipotese princípio da precaução, considerando 5Ha', () => {
                                         //(likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, gold)
         const remediacaoMercurioSolo = soilMercuryRemediation(ALLUVIUM, IMPACTED_AREA, 5, 0.343, 8625)
-        expect(remediacaoMercurioSolo).toBe(1318590.0000000002)
+        expect(remediacaoMercurioSolo).toBe(891041.6666666667)
     })
 })
 
@@ -43,7 +43,7 @@ describe('soilMercuryRemediation', () => {
     it('Deve calcular remediação de mercúrio no solo por tipo de garimpo POÇO com valor de hipotese conservador, considerando 8625g Au', () => {
                                         //(likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, gold)
         const remediacaoMercurioSolo = soilMercuryRemediation(PIT, AMOUNT_GOLD, 8625, 0.29, 8625)
-        expect(remediacaoMercurioSolo).toBe(828828)
+        expect(remediacaoMercurioSolo).toBe(560083.3333333334)
     })
 })
 
@@ -51,7 +51,7 @@ describe('soilMercuryRemediation', () => {
     it('Deve calcular remediação de mercúrio no solo por tipo de garimpo POÇO com valor de hipotese princípio da precaução, considerando 8625g Au', () => {
                                         //(likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, gold)
         const remediacaoMercurioSolo = soilMercuryRemediation(PIT, AMOUNT_GOLD, 8625, 0.343, 8625)
-        expect(remediacaoMercurioSolo).toBe(1318590.0000000002)
+        expect(remediacaoMercurioSolo).toBe(891041.6666666667)
     })
 })
 
@@ -61,7 +61,7 @@ describe('soilMercuryRemediation', () => {
     it('Deve calcular remediação de mercúrio no solo por tipo de garimpo POÇO com valor de hipotese conservador, considerando 2 anos', () => {
                                         //(likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, gold)
         const remediacaoMercurioSolo = soilMercuryRemediation(PIT, YEARS_OF_MINING, 2, 0.29, 0)
-        expect(remediacaoMercurioSolo).toBe(4554950.4)
+        expect(remediacaoMercurioSolo).toBe(3078023.188405798)
     })
 })
 
@@ -69,7 +69,7 @@ describe('soilMercuryRemediation', () => {
     it('Deve calcular remediação de mercúrio no solo por tipo de garimpo ALUVIÃO com valor de hipotese princípio da precaução, considerando 2 anos', () => {
                                         //(likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, gold)
         const remediacaoMercurioSolo = soilMercuryRemediation(PIT, YEARS_OF_MINING, 2, 0.343, 0)
-        expect(remediacaoMercurioSolo).toBe(4554950.4)
+        expect(remediacaoMercurioSolo).toBe(3078023.188405798)
     })
 })
 
