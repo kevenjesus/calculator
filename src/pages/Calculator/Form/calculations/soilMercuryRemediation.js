@@ -15,7 +15,7 @@ const soilMercuryRemediation = (likeMining, typeValueLikeMining, valueLikeMining
         const amountOfTotalGoldWell = quantityOfGramsGoldYearWell * valueLikeMining;
         const amountOfHgDumpedintoSoilerGold = lossPercentHgInSoil * HgAuRatio;
         const amountOfHgDumpedintoSoilerGoldInGrams = amountOfHgDumpedintoSoilerGold * amountOfTotalGoldWell;
-        const contaminatedSoilTon = amountOfHgDumpedintoSoilerGoldInGrams * HgContainedSoilinGrassPerTon;
+        const contaminatedSoilTon = amountOfHgDumpedintoSoilerGoldInGrams / HgContainedSoilinGrassPerTon;
         const toCostOfSoilHgRemediation = remediationCostBRLPerTonOfSoil * contaminatedSoilTon;
         return toCostOfSoilHgRemediation
 
@@ -27,7 +27,7 @@ const soilMercuryRemediation = (likeMining, typeValueLikeMining, valueLikeMining
         const lossPercentHgInSoil = txPrevalence === CONSERVATIVE ? 0.088 : 0.14;
         const amountOfHgDumpedintoSoilerGold = lossPercentHgInSoil * HgAuRatio;
         const toQuantityHgDumpedSoil = amountOfHgDumpedintoSoilerGold * gold;
-        const contaminatedSoilTon = toQuantityHgDumpedSoil * HgContainedSoilinGrassPerTon;
+        const contaminatedSoilTon = toQuantityHgDumpedSoil / HgContainedSoilinGrassPerTon;
         const toCostOfSoilHgRemediation = contaminatedSoilTon * remediationCostBRLPerTonOfSoil
         return toCostOfSoilHgRemediation
         
