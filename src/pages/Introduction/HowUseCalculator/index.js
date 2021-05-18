@@ -72,7 +72,6 @@ const HowUseCalculator = () => {
 
     const handleRegion = useCallback((e) => {
         const { value } = e.target;
-        console.log(regionList)
         const regionListUpdate = regionList.map(r => {
             r.checked = false;
             if(r.value === Number(value)) {
@@ -80,10 +79,11 @@ const HowUseCalculator = () => {
             }
             return r;
         })
+        console.log('regionList', regionList)
         dispatch({type: stateTypes.SET_REGION_LIST, payload: regionListUpdate})
         dispatch({type: stateTypes.SET_KNOW_REGION, payload: Number(value) === YES})
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [regionList])
 
     const handleState = useCallback((e) => {
         const { value } = e.target;
@@ -96,6 +96,7 @@ const HowUseCalculator = () => {
         const { value } = e.target;
         dispatch({type: stateTypes.SET_COUNTRY, payload: value})
     }, [dispatch])
+
     return (
         <>
             <Headline>{introduction.howUseCalculator.headline}</Headline>
