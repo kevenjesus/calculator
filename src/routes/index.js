@@ -15,6 +15,7 @@ import Home from 'pages/Home';
 import DeforestationReferences from 'pages/Calculator/Deforestation/references';
 import SiltingRiversReferences from 'pages/Calculator/SiltingOfRivers/references';
 import MercuryReferences from 'pages/Calculator/MercuryContamination/references';
+import Team from 'pages/Team';
 
 
 const Routes = () => {
@@ -23,6 +24,7 @@ const Routes = () => {
             <Header />
             <Switch>
                 <Route path="/" exact component={Home} />
+                <Route path="/team" exact component={Team} />
                 <Route path="/introduction" exact component={Introduction} />
                 <Route path="/introduction/context-value" exact component={ContextValue} />
                 <Route path="/calculator" exact component={Form} />

@@ -72,19 +72,28 @@ const Header = ({theme = 'white'}) => {
                 </LogoContainer>
 
                 <MenuShow>
-                <Language onClick={() => handleRegion('pt', ptBR)}>
-                    <Portuguese />
-                    <LanguageLabel>Português</LanguageLabel>
-                </Language>
-                <Language onClick={() => handleRegion('es', esES)}>
-                    <Spanish />
-                    <LanguageLabel>Espanol</LanguageLabel>
-                </Language>
-                <Language onClick={() => handleRegion('en', enUS)}>
-                    <Usa />
-                    <LanguageLabel>English</LanguageLabel>
-                </Language>
-                <Menuitem theme={theme} href="https://www.conservation-strategy.org/" target="_blank">{header.linkWebsite}</Menuitem>
+                    <Language onClick={() => handleRegion('pt', ptBR)}>
+                        <Portuguese />
+                        <LanguageLabel>Português</LanguageLabel>
+                    </Language>
+                    <Language onClick={() => handleRegion('es', esES)}>
+                        <Spanish />
+                        <LanguageLabel>Espanol</LanguageLabel>
+                    </Language>
+                    <Language onClick={() => handleRegion('en', enUS)}>
+                        <Usa />
+                        <LanguageLabel>English</LanguageLabel>
+                    </Language>
+                    
+                    
+                    
+                    <Menuitem theme={theme}>
+                        <Link to="/team">
+                        {header.team}
+                        </Link>
+                    </Menuitem>
+
+                    <Menuitem theme={theme} href="https://www.conservation-strategy.org/" target="_blank">{header.linkWebsite}</Menuitem>
                 </MenuShow>
                 <BarMenu onClick={() => setVisibleSidebar(true)}>
                     <Bar stroke={theme === 'white' ? '#000': '#fff'} />

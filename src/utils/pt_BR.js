@@ -3,7 +3,8 @@ const ptBR = {
     header: {
         naming: 'calculadora',
         slogan: 'impactos do garimpo ilegal de ouro',
-        linkWebsite: 'ir para o site'
+        linkWebsite: 'ir para o site',
+        team: 'Equipe'
     },
     resume: 'Resumo',
     comeBack: 'Voltar',

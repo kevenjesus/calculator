@@ -79,7 +79,6 @@ const HowUseCalculator = () => {
             }
             return r;
         })
-        console.log('regionList', regionList)
         dispatch({type: stateTypes.SET_REGION_LIST, payload: regionListUpdate})
         dispatch({type: stateTypes.SET_KNOW_REGION, payload: Number(value) === YES})
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -75,7 +75,7 @@ const calcResults = (state, dispatch) => {
         //console.log('totalRecreation', totalRecreation)
 
         const totalCulturedAndSpecies = culturedAndSpecies(likeMining, popDensity2010, species, typeValueLikeMining, hectareValue)
-        impacts.push({ label: 'Cultural/Espécies', displayName: 'Cultural / Espécies', category: CATEGORY_DEFORESTATION, value: totalCulturedAndSpecies })
+        impacts.push({ label: 'Espécies', displayName: 'Espécies', category: CATEGORY_DEFORESTATION, value: totalCulturedAndSpecies })
         //console.log('totalCulturedAndSpecies', totalCulturedAndSpecies)
         
         const totalCavaGroundingCostAuFertile = cavaGroundingCostAuFertile(likeMining, typeValueLikeMining, valueLikeMining, pitDepth, distanceanningCenter, goldValue)

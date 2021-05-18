@@ -59,4 +59,12 @@ export const Menuitem = styled.a`
     font-size: 20px;
     text-transform: uppercase;
     color: ${({theme}) => theme === 'white' ? colors.blacks.normal : '#fff'};
+    margin-right: 15px;
+    a {
+        text-decoration: none !important;
+        font-family: 'Fjalla One', sans-serif !important;
+        font-size: 20px !important;
+        text-transform: uppercase !important;
+        color: ${({theme}) => theme === 'white' ? colors.blacks.normal : '#fff'} !important; 
+    }
 ` 
