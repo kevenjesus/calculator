@@ -29,7 +29,7 @@ export const MenuItem = styled.a`
     display: flex;
     color: ${({active}) => active ? colors.primary : colors.blacks.normal};
     font-weight: ${({active}) => active ? 600 : 400};
-    font-size: 15px;
+    font-size: 18px;
     margin-bottom: ${({last}) => last ? 0 : '20px'};
     text-decoration: underline;
     &::before {
@@ -41,15 +41,6 @@ export const MenuItem = styled.a`
         background: ${({active}) => active ? colors.primary : colors.blacks.normal};
         mask: url(${arrowRight}) center top no-repeat;
     }
-
-    @media (min-width: 768px) {
-        font-size: 12px;
-    }
-
-    @media (min-width: 1366px) {
-         font-size: 15px;
-    }
-    
 `
 
 export const Headline = styled.h1`

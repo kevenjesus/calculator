@@ -8,7 +8,7 @@ import { Button } from 'theme'
 import { AppContext } from 'utils/AppContext'
 import LogoMPF from 'assets/images/mpf-logo-ministerio-publico-federal.png'
 import LogoConservationStrategy from 'assets/images/logo.svg'
-import { Container, ContainerBackground, Overlay } from './style'
+import { Container, ContainerBackground, Embed, Overlay } from './style'
 
 const Home = () => {
     const { state } = useContext(AppContext)
@@ -23,29 +23,28 @@ const Home = () => {
                 <Text color="white">
                     {introduction.about.text}
                 </Text>
-                
-                <ContainerPartner>
-                    <img src={LogoMPF} width="150" height="80" alt="" />
-                    <img src={LogoConservationStrategy} width="120"  alt="" />
-                </ContainerPartner>
-                <Row>
-                    <Col sm={3} md={4}>
-                        <label style={{color: 'white'}}>{language.iDontKnowYet}</label>
+
+                <Row style={{marginTop: 20}}>
+                    <Col md={4}> 
+                    <ContainerPartner>
+                        <img src={LogoMPF} width="150" height="80" alt="" />
+                        <img src={LogoConservationStrategy} width="120"  alt="" />
+                    </ContainerPartner>
+                    <label style={{color: 'white'}}>{language.iDontKnowYet}</label>
                         <Link to="/introduction">
                             <Button variant="secondary">{language.buttonIntroduction}</Button>
                         </Link>
-                        
-                    </Col>
-                </Row>
-                <Row>
-                    <Col sm={3} md={4}>
+
                         <label style={{color: 'white'}}>{language.iAlreadyKnow}</label>
                         <Link to="/calculator">
                             <Button variant="default">{language.buttonResumeCalculator}</Button>
                         </Link>
                     </Col>
-                    <Col md={6}>
-                        <div style={{border: '2px solid #fff', width: '100%', height: 480}}></div>
+                    <Col md={5} mdOffset={1}>
+                        <Embed>
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/mj8OtkFTQb8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </Embed>
+                        <Button style={{marginTop: 37}} variant="default">Ver outros videos sobre garimpo ilegal</Button>
                     </Col>
                 </Row>
             </Container>
