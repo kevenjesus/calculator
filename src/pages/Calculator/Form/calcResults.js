@@ -1,4 +1,5 @@
 import { stateTypes } from "utils/AppContext"
+import cubicMeters from "utils/cubicMeters"
 import goldToHecatere from "utils/GoldToHectare"
 import hectareToGold, { goldenGramForHectare } from "utils/hectareToGold"
 import ToBRL from "utils/toBRL"
@@ -35,12 +36,11 @@ const calcResults = (state, dispatch) => {
            return
        }
 
-
         const impacts = []
         const hectareValue = calculator.analysisUnit === AMOUNT_GOLD ? goldToHecatere(Number(qtdAnalysis.value), pitDepth) : Number(qtdAnalysis.value)
         const goldValue = calculator.analysisUnit === IMPACTED_AREA ? hectareToGold(Number(qtdAnalysis.value), pitDepth) : Number(qtdAnalysis.value)
         const gramadeOuroporHe = goldenGramForHectare(hectareValue, goldValue)
-
+    
         const currentCountry = counties.find(c => c.id === Number(country))
         const likeMining = valuatioMethod // FERRY, PIT or ALLUVION
         const valueLikeMining = qtdAnalysis.value // gold, hactare, months, years
@@ -57,6 +57,9 @@ const calcResults = (state, dispatch) => {
         // tipo de garimpo = likeMining
         // valor do tipo de garimpo = valueLikeMining
         // tipo de valor do garimpo = typeValueLikeMining
+
+        const volumeM3 = cubicMeters(likeMining, typeValueLikeMining, valueLikeMining, pitDepth)
+        impacts.push({ label: '', displayName: '', value: volumeM3 })
 
         const totalBio = bioprospecting(likeMining, typeValueLikeMining, txPrevalence, hectareValue)
         impacts.push({ label: 'BioProspecção', displayName: 'BioProspecção', category: CATEGORY_DEFORESTATION, value: totalBio })
