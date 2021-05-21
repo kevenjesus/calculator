@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-target-blank */
 import Header from 'layout/Header'
 import { ContainerPartner } from 'pages/Introduction/About/style'
 import { Headline, Text } from 'pages/Introduction/style'
@@ -44,7 +45,10 @@ const Home = () => {
                         <Embed>
                             <iframe width="560" height="315" src="https://www.youtube.com/embed/mj8OtkFTQb8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </Embed>
-                        <Button style={{marginTop: 37}} variant="default">Ver outros videos sobre garimpo ilegal</Button>
+                        <a href="https://www.youtube.com/channel/UCSUx8XzYbinaF0whJYXHU8Q" target="_blank">
+                            <Button style={{marginTop: 37}} variant="default">Ver outros videos sobre garimpo ilegal</Button>
+                        </a>
+                        
                     </Col>
                 </Row>
             </Container>

@@ -80,8 +80,8 @@ const en_US = {
         },
         siltingOfRivers: {
             headline: 'Erosion and silting',
-            paragraphy_01: 'The extraction of 1 kg of gold leads to erosion and sedimentation of 150m³ of soil, in average.',
-            paragraphy_02: 'The sedimentation of these 150 m³ leads to loss of opportunity to carry out other activities in the rivers, such as drinking water, fishing, and tourism.'
+            paragraphy_01: 'The extraction of <strong>$grams grams of gold</strong> leads to erosion and sedimentation of <strong>$volumeM3 m³</strong> of soil, in average.',
+            paragraphy_02: 'The sedimentation of these <strong>$volumeM3 m³</strong> leads to loss of opportunity to carry out other activities in the rivers, such as drinking water, fishing, and tourism.'
 
         },
         mercuryContamination: {

@@ -77,8 +77,8 @@ const es_ES = {
         },
         siltingOfRivers: {
             headline: 'Sedimentación de ríos',
-            paragraphy_01: 'La extracción de 1 kg de oro provoca la erosión y la sedimentación de 150 m³ de suelo, en promedio',
-            paragraphy_02: 'La sedimentación de estos 150 m³ provoca la pérdida de oportunidades para realizar otras actividades en los ríos, como el uso del agua para beber, la pesca y el turismo',
+            paragraphy_01: 'La extracción de <strong>$grams gramos de oro</strong> provoca la erosión y la sedimentación de <strong>$volumeM3 m³</strong> de suelo, en promedio',
+            paragraphy_02: 'La sedimentación de estos <strong>$volumeM3 m³</strong> provoca la pérdida de oportunidades para realizar otras actividades en los ríos, como el uso del agua para beber, la pesca y el turismo',
 
         },
         mercuryContamination: {

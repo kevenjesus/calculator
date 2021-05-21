@@ -42,6 +42,7 @@ const SiltingOfRivers = () => {
     const goldValue = calculator.analysisUnit === IMPACTED_AREA ? hectareToGold(Number(qtdAnalysis.value), pitDepth) : Number(qtdAnalysis.value)
     const volumeM3 = cubicMeters(likeMining, typeValueLikeMining, valueLikeMining, pitDepth)
     const paragraphy_01 = impacts.siltingOfRivers.paragraphy_01.replace("$grams", goldValue).replace("$volumeM3", Math.round(volumeM3 * 100) / 100)
+    const paragraphy_02 = impacts.siltingOfRivers.paragraphy_02.replace("$volumeM3", Math.round(volumeM3 * 100) / 100)
     return (
         <Container>
             <Grid fluid>
@@ -55,7 +56,7 @@ const SiltingOfRivers = () => {
                         <div dangerouslySetInnerHTML={{__html: paragraphy_01 }} />
                         </Text>
                         <Text>
-                        {impacts.siltingOfRivers.paragraphy_02}
+                        <div dangerouslySetInnerHTML={{__html: paragraphy_02 }} />
                         </Text>
                         { language.type === 'enUS' ? <ImageExampleUS style={{display: 'block', margin: '50px auto'}} /> : <ImageExample style={{display: 'block', margin: '50px auto'}} />}
                     </Col>

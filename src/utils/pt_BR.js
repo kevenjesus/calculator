@@ -82,7 +82,7 @@ const ptBR = {
         },
         siltingOfRivers: {
             headline: 'Assoreamento dos rios',
-            paragraphy_01: 'A extraçã o de <strong>$grams gramas de ouro</strong> gera erosão e assoreamento de <strong>$volumeM3 m³</strong> m³ de solo, em média',
+            paragraphy_01: 'A extraçã o de <strong>$grams gramas de ouro</strong> gera erosão e assoreamento de <strong>$volumeM3 m³</strong> de solo, em média',
             paragraphy_02: 'O assoreamento destes <strong>$volumeM3 m³</strong> leva a perdas de oportunidade de realização de outras atividades nos rios, como o uso da água para beber, pesca e turismo.'
         },
         mercuryContamination: {
