@@ -149,7 +149,8 @@ const MonetaryImpacts = () => {
 
                <DataChart impact={allImpacts} headline={language.resume} hiddenMonetary />
                {
-                   !hiddenMenu && <DataChart impact={impactsDesforestation} headline={impacts.deforestation.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
+                   hiddenMenu.length === 0 ? <DataChart impact={impactsDesforestation} headline={impacts.deforestation.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
+                   : null
                }
                
                <DataChart impact={impactsSiltingRivers} headline={impacts.siltingOfRivers.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
