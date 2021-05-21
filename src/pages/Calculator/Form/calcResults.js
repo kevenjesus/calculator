@@ -89,7 +89,7 @@ const calcResults = (state, dispatch) => {
         impacts.push({ label: 'Recuperação superficie do solo', displayName: 'Recuperação superficie do solo', category: CATEGORY_DEFORESTATION, value: totalRecoveryOfTopsoil })
         //console.log('totalRecoveryOfTopsoil', totalRecoveryOfTopsoil)
  
-        const { toDredgingCostWithFreight:totalDredgingAndRiverSediments  } = dredgingAndRiverSediments(likeMining, typeValueLikeMining, valueLikeMining, distanceanningCenter, pitDepth, hectareValue)
+        const totalDredgingAndRiverSediments = dredgingAndRiverSediments(likeMining, typeValueLikeMining, valueLikeMining, distanceanningCenter, pitDepth, hectareValue)
         impacts.push({ label: 'Dragagem de sedimentos no rio', displayName: 'Dragagem de sedimentos no rio', category: CATEGORY_SILTING_RIVERS, value: totalDredgingAndRiverSediments })
         //console.log('totalDredgingAndRiverSediments', totalDredgingAndRiverSediments)
         

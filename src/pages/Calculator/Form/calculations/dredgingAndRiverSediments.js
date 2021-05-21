@@ -73,7 +73,7 @@ const dredgingAndRiverSediments = (likeMining, typeValueLikeMining, valueLikeMin
     const toCostShippingDredgingOneWayAndReturn = toCostShippingDredgingOneWay * 2;
     const toCostShippingFinalDredging = toCostShippingDredgingOneWayAndReturn * dredgerQuantity1Year;
     const toDredgingCostWithFreight = toCostShippingFinalDredging + dredgingCostWithoutFreight;
-    return { toDredgingCostWithFreight, quantityOfGramsGoldTotalWell }
+    return toDredgingCostWithFreight
 
     }else if (likeMining === ALLUVIUM){ // input ouro/hectare
     const affectedAreaM2 = hectare * 10000
