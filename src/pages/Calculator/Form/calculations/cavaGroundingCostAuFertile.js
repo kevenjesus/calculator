@@ -19,6 +19,7 @@ const cavaGroundingCostAuFertile = (likeMining, typeValueLikeMining, valueLikeMi
         const productivityGoldMiningTon = 0.4;
         const amountOfGoldGramsPerYearWell = 23700;
         const hollowMediumDepth = 10;
+        
 
     if (likeMining === FERRY) {
         const toCostOfFertileGroundingWithFreight = 0
@@ -94,8 +95,6 @@ const cavaGroundingCostAuFertile = (likeMining, typeValueLikeMining, valueLikeMi
         const toCostFreightFinalFertileGrounding = toCostShippingGroundFertilityRoundtrip * excavatornsQuantityFertil;
         const toCostOfFertileGroundingWithFreight = toCostFreightFinalFertileGrounding + toCostGroundingFertileLandWithoutFreight;
         return toCostOfFertileGroundingWithFreight
-        
-
     }
 }
 

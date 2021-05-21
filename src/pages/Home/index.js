@@ -44,6 +44,9 @@ const Home = () => {
                             <Button variant="default">{language.buttonResumeCalculator}</Button>
                         </Link>
                     </Col>
+                    <Col md={6}>
+                        <div style={{border: '2px solid #fff', width: '100%', height: 480}}></div>
+                    </Col>
                 </Row>
             </Container>
         </ContainerBackground>

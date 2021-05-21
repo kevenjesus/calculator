@@ -74,8 +74,8 @@ const en_US = {
         },
         deforestation: {
             headline: 'Deforestation',
-            paragraphy_01: 'The extraction of 1 kg of gold leads to 14 hectares of deforestation, in average.',
-            paragraphy_02: 'The deforestation of these 14 hectares leads to loss of opportunities for other activities, such as extraction of non-timber forest products, recreational and cultural use, and maintenance of the ecosystem services of climate regulation and erosion control.'
+            paragraphy_01: 'The extraction of <strong>$grams grams of gold</strong> leads to <strong>$hectare hectares</strong> of deforestation, in average.',
+            paragraphy_02: 'The deforestation of these <strong>$hectare hectares</strong> leads to loss of opportunities for other activities, such as extraction of non-timber forest products, recreational and cultural use, and maintenance of the ecosystem services of climate regulation and erosion control.'
 
         },
         siltingOfRivers: {

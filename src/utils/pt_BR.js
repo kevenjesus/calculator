@@ -77,8 +77,8 @@ const ptBR = {
         },
         deforestation: {
             headline: 'Desmatamento',
-            paragraphy_01: 'A extração de <strong>$grams gramas de ouro</strong> gera o desmatamento de 14 hectares, em média.',
-            paragraphy_02: 'O desmatamento destes 14 hectares leva a perdas de oportunidade de realização de outras atividades, como extração de produtos florestais não-madeireiros, uso recreativo, cultural, e da manutenção de serviços ecossistêmicos de regulação do clima e de controle de erosão'
+            paragraphy_01: 'A extração de <strong>$grams gramas de ouro</strong> gera o desmatamento de <strong>$hectare hectares</strong>, em média.',
+            paragraphy_02: 'O desmatamento destes <strong>$hectare hectares</strong> leva a perdas de oportunidade de realização de outras atividades, como extração de produtos florestais não-madeireiros, uso recreativo, cultural, e da manutenção de serviços ecossistêmicos de regulação do clima e de controle de erosão'
         },
         siltingOfRivers: {
             headline: 'Assoreamento dos rios',

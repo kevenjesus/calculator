@@ -20,8 +20,20 @@ const Team = () => {
                     <Text>- Thaís Vilela</Text>
                 </li>
             </ul>
+            <Text><strong>Estagiários</strong></Text>
+            <ul>
+                <li>
+                    <Text>- Victor Silva Araújo</Text>
+                </li>
+                <li>
+                    <Text>- Icaro Sousa</Text>
+                </li>
+                <li>
+                    <Text>- Noah Cavalcante</Text>
+                </li>
+            </ul>
             <hr />
-            <Text><strong>Colaboradores:</strong></Text>
+            <Text><strong style={{color: 'black'}}>Colaboradores:</strong></Text>
 
             <Text><strong>Fiocruz – Saúde Pública</strong></Text>
             <ul>
@@ -98,18 +110,7 @@ const Team = () => {
                 </li>
             </ul>
 
-            <Text><strong>Estagiários</strong></Text>
-            <ul>
-                <li>
-                    <Text>- Victor Silva Araújo</Text>
-                </li>
-                <li>
-                    <Text>- Icaro Sousa</Text>
-                </li>
-                <li>
-                    <Text>- Noah Cavalcante</Text>
-                </li>
-            </ul>
+            
             
         </Container>
     )

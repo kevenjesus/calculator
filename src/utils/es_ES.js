@@ -72,8 +72,8 @@ const es_ES = {
         },
         deforestation: {
             headline: 'Deforestación',
-            paragraphy_01: 'La extracción de 1 kg de oro provoca la deforestación de 14 hectáreas, en promedio',
-            paragraphy_02: 'La deforestación de estas 14 hectáreas conlleva la pérdida de oportunidades para realizar otras actividades, como la extracción de productos forestales no maderables, el uso recreativo y cultural, y el mantenimiento de los servicios ecosistémicos para la regulación del clima y el control de la erosión'
+            paragraphy_01: 'La extracción de <strong>$grams gramos de oro</strong> provoca la deforestación de <strong>$hectare hectáreas</strong>, en promedio',
+            paragraphy_02: 'La deforestación de estas <strong>$hectare hectáreas</strong> conlleva la pérdida de oportunidades para realizar otras actividades, como la extracción de productos forestales no maderables, el uso recreativo y cultural, y el mantenimiento de los servicios ecosistémicos para la regulación del clima y el control de la erosión'
         },
         siltingOfRivers: {
             headline: 'Sedimentación de ríos',

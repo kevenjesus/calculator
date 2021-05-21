@@ -7,9 +7,11 @@ import { ReactComponent as ImageExampleUS } from 'assets/images/[calculadora]Inf
 import { useContext } from 'react';
 import { AppContext } from 'utils/AppContext';
 import ToBRL from 'utils/toBRL';
-import { CATEGORY_DEFORESTATION, FERRY } from '../Form/consts';
+import { AMOUNT_GOLD, CATEGORY_DEFORESTATION, FERRY, IMPACTED_AREA } from '../Form/consts';
 import { DataChart } from 'pages/Calculator/MonetaryImpacts' 
 import MenuImpacts from '../Menu';
+import hectareToGold from 'utils/hactareToGold';
+import goldToHecatere from 'utils/GoldToHectare';
 const Deforestation = () => {
     const {state} = useContext(AppContext)
     const { language, calculator } = state
@@ -28,7 +30,12 @@ const Deforestation = () => {
     }
 
     const hiddenMenu = calculator.valuatioMethod === FERRY ? [impacts.menu.deforestation] : []
- 
+
+    const hectareValue = calculator.analysisUnit === AMOUNT_GOLD ? goldToHecatere(Number(calculator.qtdAnalysis.value), calculator.pitDepth) : Number(calculator.qtdAnalysis.value)
+    const goldValue = calculator.analysisUnit === IMPACTED_AREA ? hectareToGold(Number(calculator.qtdAnalysis.value), calculator.pitDepth) : Number(calculator.qtdAnalysis.value)
+    
+    const paragraphy_01 = impacts.deforestation.paragraphy_01.replace("$grams", goldValue).replace("$hectare", hectareValue)
+    const paragraphy_02 = impacts.deforestation.paragraphy_02.replace("$hectare", hectareValue)
     
     return (
         <Container>
@@ -40,10 +47,10 @@ const Deforestation = () => {
                     <Col xs={12} sm={8} md={9}>
                         <Headline>{impacts.deforestation.headline}</Headline>
                         <Text>
-                            <div dangerouslySetInnerHTML={{__html: impacts.deforestation.paragraphy_01.replace("$grams", calculator.qtdAnalysis.value)}} />
+                            <div dangerouslySetInnerHTML={{__html: paragraphy_01 }} />
                         </Text>
                         <Text>
-                        {impacts.deforestation.paragraphy_02}
+                            <div dangerouslySetInnerHTML={{__html: paragraphy_02 }} />
                         </Text>
                         {
                             language.type === 'enUS' ? (<ImageExampleUS style={{display: 'block', margin: '50px auto'}} />) : (<ImageExample style={{display: 'block', margin: '50px auto'}} />)
