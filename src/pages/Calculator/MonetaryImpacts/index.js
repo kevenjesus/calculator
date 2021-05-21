@@ -177,10 +177,9 @@ const FormCalc = () => {
         if(checkFormIsInvalid()) {
             return;
         }
-        console.log('state', state)
         calcResults(state, dispatch)
-        //sessionStorage.setItem('@Calculator/form', JSON.stringify(stateContext.calculator))
-    },[checkFormIsInvalid, dispatch])
+        sessionStorage.setItem('@Calculator/form', JSON.stringify(stateContext.calculator))
+    },[checkFormIsInvalid, dispatch, stateContext.calculator])
 
 
     const handleRegion = useCallback((e) => {

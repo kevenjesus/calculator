@@ -3,7 +3,7 @@ import vpl from "utils/vpl";
 import { ALLUVIUM, AMOUNT_GOLD, FERRY, IMPACTED_AREA, PIT } from "../consts";
 
 const recreation = (likeMining, popDensity2010, species, typeValueLikeMining, hectare) => {
-
+   
     const GDPperCapitaBrazilUSD = 8717.18;
     const celciusTemperature = 26.8;
     const exchangeTax = 5;

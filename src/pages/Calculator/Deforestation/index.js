@@ -10,8 +10,8 @@ import ToBRL from 'utils/toBRL';
 import { AMOUNT_GOLD, CATEGORY_DEFORESTATION, FERRY, IMPACTED_AREA } from '../Form/consts';
 import { DataChart } from 'pages/Calculator/MonetaryImpacts' 
 import MenuImpacts from '../Menu';
-import hectareToGold from 'utils/hactareToGold';
 import goldToHecatere from 'utils/GoldToHectare';
+import hectareToGold from 'utils/hectareToGold';
 const Deforestation = () => {
     const {state} = useContext(AppContext)
     const { language, calculator } = state

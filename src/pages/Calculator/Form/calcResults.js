@@ -1,6 +1,6 @@
 import { stateTypes } from "utils/AppContext"
 import goldToHecatere from "utils/GoldToHectare"
-import hectareToGold, { goldenGramForHectare } from "utils/hactareToGold"
+import hectareToGold, { goldenGramForHectare } from "utils/hectareToGold"
 import ToBRL from "utils/toBRL"
 import bioprospecting from "./calculations/bioprospecting"
 import carbon from "./calculations/carbon"
@@ -35,12 +35,11 @@ const calcResults = (state, dispatch) => {
            return
        }
 
-
         const impacts = []
         const hectareValue = calculator.analysisUnit === AMOUNT_GOLD ? goldToHecatere(Number(qtdAnalysis.value), pitDepth) : Number(qtdAnalysis.value)
         const goldValue = calculator.analysisUnit === IMPACTED_AREA ? hectareToGold(Number(qtdAnalysis.value), pitDepth) : Number(qtdAnalysis.value)
         const gramadeOuroporHe = goldenGramForHectare(hectareValue, goldValue)
-
+    
         const currentCountry = counties.find(c => c.id === Number(country))
         const likeMining = valuatioMethod // FERRY, PIT or ALLUVION
         const valueLikeMining = qtdAnalysis.value // gold, hactare, months, years
@@ -57,6 +56,8 @@ const calcResults = (state, dispatch) => {
         // tipo de garimpo = likeMining
         // valor do tipo de garimpo = valueLikeMining
         // tipo de valor do garimpo = typeValueLikeMining
+
+
 
         const totalBio = bioprospecting(likeMining, typeValueLikeMining, txPrevalence, hectareValue)
         impacts.push({ label: 'BioProspecção', displayName: 'BioProspecção', category: CATEGORY_DEFORESTATION, value: totalBio })
@@ -85,10 +86,10 @@ const calcResults = (state, dispatch) => {
         //console.log('totalCavaGroundingCostAuNorm', totalCavaGroundingCostAuNorm)
 
         const totalRecoveryOfTopsoil = recoveryOfTopsoil(likeMining, distanceanningCenter, goldValue, gramadeOuroporHe, txPrevalence, typeValueLikeMining)
-        impacts.push({ label: 'Recuperaçãoo superficie do solo', displayName: 'Recuperaçãoo superficie do solo', category: CATEGORY_DEFORESTATION, value: totalRecoveryOfTopsoil })
+        impacts.push({ label: 'Recuperação superficie do solo', displayName: 'Recuperação superficie do solo', category: CATEGORY_DEFORESTATION, value: totalRecoveryOfTopsoil })
         //console.log('totalRecoveryOfTopsoil', totalRecoveryOfTopsoil)
  
-        const totalDredgingAndRiverSediments = dredgingAndRiverSediments(likeMining, typeValueLikeMining, valueLikeMining, distanceanningCenter, pitDepth, hectareValue)
+        const { toDredgingCostWithFreight:totalDredgingAndRiverSediments  } = dredgingAndRiverSediments(likeMining, typeValueLikeMining, valueLikeMining, distanceanningCenter, pitDepth, hectareValue)
         impacts.push({ label: 'Dragagem de sedimentos no rio', displayName: 'Dragagem de sedimentos no rio', category: CATEGORY_SILTING_RIVERS, value: totalDredgingAndRiverSediments })
         //console.log('totalDredgingAndRiverSediments', totalDredgingAndRiverSediments)
         
@@ -108,7 +109,7 @@ const calcResults = (state, dispatch) => {
         //console.log('totalHypertension', totalHypertension)
         const totalHeartAttack = heartAttack(likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, urbanPopMunicipality, ruralPopMunicipality, popDensity2060, goldValue, knowRegion)//gold
         //console.log('totalHeartAttack', totalHeartAttack)
-        impacts.push({ label: 'Doenças cardiovasculares', displayName: 'Doenças cardiovasculares (HIPERTENSAO + INFARTO)', category: CATEGORY_MERCURY, value: (totalHeartAttack+totalHypertension) })
+        impacts.push({ label: 'Doenças cardiovasculares', displayName: 'Doenças cardiovasculares (HIPERTENSÃO + INFARTO)', category: CATEGORY_MERCURY, value: (totalHeartAttack+totalHypertension) })
         
         const totalsoilMercuryRemediation = soilMercuryRemediation(likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, goldValue)//gold
         impacts.push({ label: 'Remediação de mercúrio no solo', displayName: 'Remediação de mercúrio no solo', category: CATEGORY_MERCURY, value: totalsoilMercuryRemediation })

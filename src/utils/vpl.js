@@ -1,9 +1,11 @@
-const vpl =(discountRate, amounts) => {    
+const vpl =(discountRate, amounts) => {   
+    
         let ret = amounts[0];
         
         for (let i=1; i<amounts.length; i++) {
             ret += amounts[i] / Math.pow( (1.0 + discountRate), i);
         }
+        
         return ret;
 }
 

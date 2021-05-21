@@ -3,7 +3,7 @@ import { ALLUVIUM, FERRY, IMPACTED_AREA, PIT } from "../consts";
 const CONSERVATIVE = 0.29
 
 const recoveryOfTopsoil = (likeMining, distanceanningCenter, gold, goldenGramPerHa, txPrevalence, typeValueLikeMining) => {
-
+  
   const soilSurfaceRecPerHa = txPrevalence === CONSERVATIVE ? 14690 : 23400;
 
     let hectare; 
@@ -33,7 +33,7 @@ const recoveryOfTopsoil = (likeMining, distanceanningCenter, gold, goldenGramPer
       const surfaceSoilRecoveryWithoutFreight = soilSurfaceRecPerHa * hectare;
       const toSurfaceRecoveryCostWithFreight = toCostFreightFinalSurfaceRecovery + surfaceSoilRecoveryWithoutFreight;
       return toSurfaceRecoveryCostWithFreight
-      
+
     }else if(likeMining === FERRY) {
       const toSurfaceRecoveryCostWithFreight = 0;
       return toSurfaceRecoveryCostWithFreight

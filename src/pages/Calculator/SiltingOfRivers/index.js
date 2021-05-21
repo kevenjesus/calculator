@@ -7,13 +7,16 @@ import { ReactComponent as ImageExampleUS } from 'assets/images/[calculadora]inf
 import { useContext } from 'react';
 import { AppContext } from 'utils/AppContext';
 import ToBRL from 'utils/toBRL';
-import { CATEGORY_SILTING_RIVERS, FERRY } from '../Form/consts';
+import { CATEGORY_SILTING_RIVERS, FERRY, IMPACTED_AREA } from '../Form/consts';
 import { DataChart } from '../MonetaryImpacts';
 import MenuImpacts from '../Menu';
+import cubicMeters from 'utils/cubicMeters';
+import hectareToGold from 'utils/hectareToGold';
 
 const SiltingOfRivers = () => {
     const {state} = useContext(AppContext)
     const { language, calculator } = state
+    const { valuatioMethod, qtdAnalysis, pitDepth } = calculator
     const { impacts } = language
     window.scrollTo(0,0)
 
@@ -29,6 +32,16 @@ const SiltingOfRivers = () => {
         total: sumTotal(dataSiltingRivers)
     }
     const hiddenMenu = calculator.valuatioMethod === FERRY ? [impacts.menu.deforestation] : []
+
+    
+
+    const likeMining = valuatioMethod // FERRY, PIT or ALLUVION
+    const valueLikeMining = qtdAnalysis.value // gold, hactare, months, years
+    const typeValueLikeMining = calculator.analysisUnit // AMOUNT_GOLD / IMPACTED_AREA / YEARS_OF_MINING / MONTHS_OF_MINING
+
+    const goldValue = calculator.analysisUnit === IMPACTED_AREA ? hectareToGold(Number(qtdAnalysis.value), pitDepth) : Number(qtdAnalysis.value)
+    const volumeM3 = cubicMeters(likeMining, typeValueLikeMining, valueLikeMining, pitDepth)
+    const paragraphy_01 = impacts.siltingOfRivers.paragraphy_01.replace("$grams", goldValue).replace("$volumeM3", Math.round(volumeM3 * 100) / 100)
     return (
         <Container>
             <Grid fluid>
@@ -39,7 +52,7 @@ const SiltingOfRivers = () => {
                     <Col xs={12} sm={8} md={9}>
                         <Headline>{impacts.siltingOfRivers.headline}</Headline>
                         <Text>
-                            {impacts.siltingOfRivers.paragraphy_01}
+                        <div dangerouslySetInnerHTML={{__html: paragraphy_01 }} />
                         </Text>
                         <Text>
                         {impacts.siltingOfRivers.paragraphy_02}
