@@ -8,8 +8,9 @@ import { AppContext, stateTypes } from 'utils/AppContext'
 import ptBR from 'utils/pt_BR'
 import es_ES from 'utils/es_ES'
 import en_US from 'utils/en_US'
+import { Link } from 'react-router-dom'
 
-const Sidebar = ({visible, onClose}) => {
+const Sidebar = ({visible, onClose, theme = 'white'}) => {
     const {state, dispatch} = useContext(AppContext)
     const { language } = state;
     const { header } = language;
@@ -36,7 +37,12 @@ const Sidebar = ({visible, onClose}) => {
                     <Usa />
                     <LanguageLabel>English</LanguageLabel>
                 </Language>
-                <Menuitem href="https://www.conservation-strategy.org/" target="_blank">{header.linkWebsite}</Menuitem>
+                <Menuitem theme={theme}>
+                    <Link to="/team">
+                        Equipe
+                    </Link>
+                </Menuitem>
+                <Menuitem theme={theme} href="https://www.conservation-strategy.org/" target="_blank">{header.linkWebsite}</Menuitem>
             </Container>
             <Overlay visible={visible} onClick={onClose} />
         </>

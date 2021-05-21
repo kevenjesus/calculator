@@ -84,11 +84,9 @@ const Header = ({theme = 'white'}) => {
                         <LanguageLabel>English</LanguageLabel>
                     </Language>
                     
-                    
-                    
                     <Menuitem theme={theme}>
                         <Link to="/team">
-                        {header.team}
+                            Equipe
                         </Link>
                     </Menuitem>
 
@@ -99,7 +97,7 @@ const Header = ({theme = 'white'}) => {
                 </BarMenu>
             </Container>
         </ContainerHeader>
-        <Sidebar visible={visibleSidebar} onClose={() => setVisibleSidebar(false)} />
+        <Sidebar visible={visibleSidebar} theme={theme} onClose={() => setVisibleSidebar(false)} />
         </>
     )
 }
