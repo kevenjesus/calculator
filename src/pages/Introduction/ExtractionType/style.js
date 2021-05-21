@@ -20,11 +20,9 @@ export const Title = styled.h2`
 `
 
 export const Paragraphy = styled.p`
-    font-size: 12px;
+    font-size: 18px;
     text-align: center;
     @media (min-width: 768px) {
-        font-size: 20px;
-        line-height: 44px;
         text-align: left;
     }
 ` 

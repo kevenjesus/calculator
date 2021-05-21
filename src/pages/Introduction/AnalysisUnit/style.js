@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const ItemType = styled.div`
     width: 100%;
+    height: 100%;
     border: 3px solid ${({active}) => active ? '#73B02B' : '#DDDFDB'};
     background: ${({active}) => active ? '#F7FDFB' : '#fff'};
     padding: 15px;
@@ -17,11 +18,7 @@ export const Title = styled.h2`
 `
 
 export const Paragraphy = styled.p`
-    font-size: 12px;
-    @media (min-width: 768px) {
-        font-size: 20px;
-        line-height: 44px;
-    }
+    font-size: 18px;
 ` 
 
 export const Thumbnail = styled.img`
