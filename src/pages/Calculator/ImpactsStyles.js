@@ -54,7 +54,7 @@ export const Headline = styled.h1`
 `
 
 export const Text = styled.p`
-    font-size: 15px;
+    font-size: 18px;
     line-height: 30px;
     color: ${colors.blacks.normal};
     @media (min-width: 1366px) {
