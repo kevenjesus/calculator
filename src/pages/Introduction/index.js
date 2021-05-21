@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { ABOUT, INTRODUCTION, HOW_USE_CALCULATOR, EXTRATION_TYPE, ANALYSIS_UNIT } from './consts'
 import { Container, Header, ButtonsFixed, Go } from './style'
 import { Button } from 'theme'
-import { Row, Col } from 'react-flexbox-grid'
+import { Row, Col, Grid } from 'react-flexbox-grid'
 
 import { ReactComponent as GoBack } from 'assets/icons/goBack.svg'
 
@@ -86,6 +86,7 @@ const Introduction = () => {
             <Content 
                 step={step} />
             <ButtonsFixed>
+                <Grid>
                 <Row between="sm">
                     <Col xs={6} sm={4} md={3}>
                         <Button variant="default" onClick={SkipIntroduction}>{language.introduction.buttons.skip}</Button>
@@ -94,6 +95,7 @@ const Introduction = () => {
                         <Button onClick={NextStep}>{language.introduction.buttons.next}</Button>
                     </Col>
                 </Row>
+                </Grid>
             </ButtonsFixed>
         </Container>
     )
