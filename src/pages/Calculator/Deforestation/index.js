@@ -10,8 +10,10 @@ import ToBRL from 'utils/toBRL';
 import { AMOUNT_GOLD, CATEGORY_DEFORESTATION, FERRY, IMPACTED_AREA } from '../Form/consts';
 import { DataChart } from 'pages/Calculator/MonetaryImpacts' 
 import MenuImpacts from '../Menu';
-import goldToHecatere from 'utils/GoldToHectare';
-import hectareToGold from 'utils/hectareToGold';
+//import goldToHecatere from 'utils/GoldToHectare';
+//import hectareToGold from 'utils/hectareToGold';
+import convertAllinGold from 'utils/convertAllinGold';
+import convertAllinHectare from 'utils/convertAllinHectare';
 const Deforestation = () => {
     const {state} = useContext(AppContext)
     const { language, calculator } = state
@@ -31,8 +33,8 @@ const Deforestation = () => {
 
     const hiddenMenu = calculator.valuatioMethod === FERRY ? [impacts.menu.deforestation] : []
 
-    const hectareValue = calculator.analysisUnit === AMOUNT_GOLD ? goldToHecatere(Number(calculator.qtdAnalysis.value), calculator.pitDepth) : Number(calculator.qtdAnalysis.value)
-    const goldValue = calculator.analysisUnit === IMPACTED_AREA ? hectareToGold(Number(calculator.qtdAnalysis.value), calculator.pitDepth) : Number(calculator.qtdAnalysis.value)
+    const hectareValue = calculator.analysisUnit === AMOUNT_GOLD ? convertAllinGold(Number(calculator.qtdAnalysis.value), calculator.pitDepth) : Number(calculator.qtdAnalysis.value)
+    const goldValue = calculator.analysisUnit === IMPACTED_AREA ? convertAllinHectare(Number(calculator.qtdAnalysis.value), calculator.pitDepth) : Number(calculator.qtdAnalysis.value)
     
     const paragraphy_01 = impacts.deforestation.paragraphy_01.replace("$grams", goldValue).replace("$hectare", hectareValue)
     const paragraphy_02 = impacts.deforestation.paragraphy_02.replace("$hectare", hectareValue)

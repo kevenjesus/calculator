@@ -1,4 +1,4 @@
-import { PIT, YEARS_OF_MINING, AMOUNT_GOLD, ALLUVIUM, IMPACTED_AREA } from "pages/Calculator/Form/consts";
+import { PIT, YEARS_OF_MINING, AMOUNT_GOLD, ALLUVIUM, IMPACTED_AREA, FERRY, MONTHS_OF_MINING } from "pages/Calculator/Form/consts";
 
 const cubicMeters = (likeMining, typeValueLikeMining, valueLikeMining, pitDepth) => {
 
@@ -13,6 +13,7 @@ const cubicMeters = (likeMining, typeValueLikeMining, valueLikeMining, pitDepth)
    
     if (likeMining === PIT && typeValueLikeMining === YEARS_OF_MINING) {
         const toGoldGramQuantityWell = amountOfGoldGramsPerYearWell * valueLikeMining;
+        console.log(toGoldGramQuantityWell)
         const revolvedSoloTon = toGoldGramQuantityWell / productivityGoldMiningTon;
         const upturnedSterileTon = revolvedSoloTon * sterileOreEnhancement;
         const toUpturnedSoil = upturnedSterileTon + revolvedSoloTon;
@@ -41,9 +42,18 @@ const cubicMeters = (likeMining, typeValueLikeMining, valueLikeMining, pitDepth)
         volumeM3 = pitDepth * affectedAreaM2;
         return volumeM3
 
-    }else{
-        volumeM3 = 0
-        return volumeM3
+    }else if (likeMining === FERRY && typeValueLikeMining === AMOUNT_GOLD){
+        const ProdSedimentoViraPlumaTonPorMes = 6.262;
+        const prodSedimentoViraPlumaTon = ProdSedimentoViraPlumaTonPorMes * valueLikeMining;
+        return prodSedimentoViraPlumaTon
+
+    }else if (likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING){
+        const prodOuroKgporMes = 0.00604;
+        const potenciaMediaMotor = 54.4;
+        const ProdSedimentoViraPlumaTonPorMes = 6.262;
+        const prodOuroTotalBalsaDragagem = potenciaMediaMotor * valueLikeMining * prodOuroKgporMes;
+        const prodSedimentoViraPlumaTon = ProdSedimentoViraPlumaTonPorMes * prodOuroTotalBalsaDragagem * valueLikeMining;
+        return prodSedimentoViraPlumaTon
     }
 }
 export default cubicMeters 

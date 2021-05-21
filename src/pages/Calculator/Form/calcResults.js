@@ -57,7 +57,8 @@ const calcResults = (state, dispatch) => {
         // valor do tipo de garimpo = valueLikeMining
         // tipo de valor do garimpo = typeValueLikeMining
 
-
+        const Gold = bioprospecting(likeMining, typeValueLikeMining, txPrevalence, hectareValue)
+        impacts.push({ label: '', displayName: '', value: Gold })
 
         const totalBio = bioprospecting(likeMining, typeValueLikeMining, txPrevalence, hectareValue)
         impacts.push({ label: 'BioProspecção', displayName: 'BioProspecção', category: CATEGORY_DEFORESTATION, value: totalBio })
