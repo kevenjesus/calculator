@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { Button, TextField } from 'theme'
 import { Grid, Row, Col } from 'react-flexbox-grid'
 import { ALLUVIUM, AMOUNT_GOLD, CATEGORY_DEFORESTATION, CATEGORY_MERCURY, CATEGORY_SILTING_RIVERS, FERRY, IMPACTED_AREA, MONTHS_OF_MINING, NO, PIT, YEARS_OF_MINING, YES } from 'pages/Calculator/Form/consts'
-import { Container, Headline, ButtonFixed, HiddenPrint } from 'pages/Calculator/ImpactsStyles'
+import { Container, Headline, ButtonFixed, HiddenPrint, HiddenXS, HiddenSm } from 'pages/Calculator/ImpactsStyles'
 import { Monetary, MonetaryType, Label, FormGroup, Card } from './style'
 import Chart from 'components/Chart'
 import { AppContext, stateTypes } from 'utils/AppContext'
@@ -435,12 +435,24 @@ const MonetaryImpacts = () => {
                
                <DataChart impact={impactsSiltingRivers} headline={impacts.siltingOfRivers.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
                <DataChart impact={impactsMercury} headline={impacts.mercuryContamination.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
-
+                
+                
+                <HiddenSm>
+                    <br /><br />
+                    <Button variant="secondary" onClick={() => history.push('/moral-damages')}>Danos morais</Button>
+                </HiddenSm>
                 
                 <ButtonFixed>
                     <Grid>
-                        <Row between="sm" start="md">
-                            <Col xs={6} mdOffset={3} md={3}>
+                        <Row between="sm" center="md">
+                           
+                                <Col md={3}>
+                                    <HiddenXS>
+                                        <Button variant="secondary" onClick={() => history.push('/moral-damages')}>Danos morais</Button>
+                                    </HiddenXS>
+                                </Col>
+                            
+                            <Col xs={6} md={3}>
                                 <Button onClick={() => history.push('/')}>{impacts.buttons.newCalculation}</Button>
                             </Col>
                             <Col xs={6} md={3}>

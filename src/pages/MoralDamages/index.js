@@ -12,6 +12,7 @@ const MoralDamages = () => {
     const {state} = useContext(AppContext)
     const {language} = state
     const history = useHistory()
+    window.scrollTo(0,0)
     return (
         <Container>
              <Go onClick={() => history.push('/impacts/deforestation')}>

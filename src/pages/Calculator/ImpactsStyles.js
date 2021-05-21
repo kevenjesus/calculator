@@ -91,6 +91,12 @@ export const ButtonFixed = styled.div`
     }
 ` 
 
+export const HiddenXS = styled.div`
+    @media (max-width: 460px) {
+        display: none;
+    }
+` 
+
 export const HiddenSm = styled.div`
     @media (min-width: 768px) {
         display: none;
