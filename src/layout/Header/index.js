@@ -31,7 +31,6 @@ const Header = ({theme = 'white'}) => {
             dispatch({type: stateTypes.SET_LANGUAGE, payload: JSON.parse(languageStorage)})
         }
         if(formStorage) {
-            console.log(JSON.parse(formStorage))
             dispatch({type: stateTypes.SET_CALCULATEFORM, payload: JSON.parse(formStorage)})
         }
     }, [dispatch])

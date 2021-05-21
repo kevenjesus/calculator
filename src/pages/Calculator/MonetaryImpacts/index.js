@@ -173,12 +173,14 @@ const FormCalc = () => {
         return false
     }, [alert, dispatch, qtdAnalysis])
 
-    const submitCalc = useCallback(() => {
+    const submitCalc = useCallback((state) => {
         if(checkFormIsInvalid()) {
             return;
         }
-        calcResults(stateContext, dispatch)
-    },[checkFormIsInvalid, dispatch, stateContext])
+        console.log('state', state)
+        calcResults(state, dispatch)
+        //sessionStorage.setItem('@Calculator/form', JSON.stringify(stateContext.calculator))
+    },[checkFormIsInvalid, dispatch])
 
 
     const handleRegion = useCallback((e) => {
@@ -192,52 +194,52 @@ const FormCalc = () => {
         })
         dispatch({ type: stateTypes.SET_REGION_LIST, payload: regionListUpdate })
         dispatch({ type: stateTypes.SET_KNOW_REGION, payload: Number(value) === YES })
-        setTimeout(submitCalc, 500)
-    }, [dispatch, regionList, submitCalc])
+        submitCalc({...stateContext, calculator: {...calculator, regionList:regionListUpdate, knowRegion: Number(value) === YES}})
+    }, [calculator, dispatch, regionList, stateContext, submitCalc])
 
     const handleState = useCallback((e) => {
         const { value } = e.target
         getCounties(value)
         dispatch({ type: stateTypes.SET_STATE, payload: value })
-        setTimeout(submitCalc, 500)
-    }, [getCounties, dispatch, submitCalc])
+        submitCalc({...stateContext, calculator:{...calculator, state: value}})
+    }, [getCounties, dispatch, submitCalc, stateContext, calculator])
 
     const handleCountry = useCallback((e) => {
         const { value } = e.target
         dispatch({ type: stateTypes.SET_COUNTRY, payload: value })
-        setTimeout(submitCalc, 500)
-    }, [dispatch, submitCalc])
+        submitCalc({...stateContext, calculator:{...calculator, country: value}})
+    }, [calculator, dispatch, stateContext, submitCalc])
 
     const handleAnalysisUnit = useCallback((e) => {
         const { value } = e.target
         dispatch({ type: stateTypes.SET_ANALYS_UNIT, payload: Number(value) })
-        setTimeout(submitCalc, 500)
-    }, [dispatch, submitCalc])
+        submitCalc({...stateContext, calculator:{...calculator, analysisUnit: Number(value)}})
+    }, [calculator, dispatch, stateContext, submitCalc])
 
     const handleQtdAnalysis = useCallback((e) => {
         const { value } = e.target
         dispatch({ type: stateTypes.SET_QTD_ANALYS_UNIT, payload: { value, error: value === '' } })
-        setTimeout(submitCalc, 500)
-    }, [dispatch, submitCalc])
+        submitCalc({...stateContext, calculator:{...calculator, qtdAnalysis: { value, error: value === '' }}})
+    }, [calculator, dispatch, stateContext, submitCalc])
 
 
     const handlePitDepth = useCallback((e) => {
         const { value } = e.target
         dispatch({ type: stateTypes.SET_PITDEPTH, payload: Number(value) })
-        setTimeout(submitCalc, 500)
-    }, [dispatch, submitCalc])
+        submitCalc({...stateContext, calculator:{ ...calculator, pitDepth: Number(value)}})
+    }, [calculator, dispatch, stateContext, submitCalc])
 
     const handleValuationMethod = useCallback((e) => {
         const { value } = e.target
         dispatch({ type: stateTypes.SET_VALUATION_METHOD, payload: Number(value) })
-        setTimeout(submitCalc, 500)
-    }, [dispatch, submitCalc])
+        submitCalc({...stateContext, calculator:{...calculator, valuatioMethod: Number(value)}})
+    }, [calculator, dispatch, stateContext, submitCalc])
 
     const handleTxPrevalance = useCallback((e) => {
         const { value } = e.target
         dispatch({ type: stateTypes.SET_TX_PREVALENCE, payload: Number(value) })
-        setTimeout(submitCalc, 500)
-    }, [dispatch, submitCalc])
+        submitCalc({...stateContext, calculator:{...calculator, txPrevalence: Number(value)}})
+    }, [calculator, dispatch, stateContext, submitCalc])
 
     let placeholder;
     if(calculator.analysisUnit === AMOUNT_GOLD) {

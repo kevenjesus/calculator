@@ -3,7 +3,6 @@ import { ALLUVIUM, FERRY, IMPACTED_AREA, PIT } from "../consts";
 const CONSERVATIVE = 0.29
 
 const recoveryOfTopsoil = (likeMining, distanceanningCenter, gold, goldenGramPerHa, txPrevalence, typeValueLikeMining) => {
-  console.log('likeMining',likeMining, 'distanceanningCenter', distanceanningCenter, 'gold', gold, 'goldenGramPerHa', goldenGramPerHa,'txPrevalence', txPrevalence)
 
   const soilSurfaceRecPerHa = txPrevalence === CONSERVATIVE ? 14690 : 23400;
 
