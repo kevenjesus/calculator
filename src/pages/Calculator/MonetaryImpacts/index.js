@@ -2,7 +2,7 @@ import {  useCallback, useContext, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Button, TextField } from 'theme'
 import { Grid, Row, Col } from 'react-flexbox-grid'
-import { ALLUVIUM, AMOUNT_GOLD, CATEGORY_DEFORESTATION, CATEGORY_MERCURY, CATEGORY_SILTING_RIVERS, FERRY, IMPACTED_AREA, MONTHS_OF_MINING, NO, PIT, YEARS_OF_MINING, YES } from 'pages/Calculator/Form/consts'
+import { ALLUVIUM, AMOUNT_GOLD, CATEGORY_DEFORESTATION, CATEGORY_MERCURY, CATEGORY_SILTING_RIVERS, FERRY, IMPACTED_AREA, NO, PIT, YEARS_OF_MINING, YES } from 'pages/Calculator/Form/consts'
 import { Container, Headline, ButtonFixed, HiddenPrint, HiddenXS, HiddenSm } from 'pages/Calculator/ImpactsStyles'
 import { Monetary, MonetaryType, Label, FormGroup, Card } from './style'
 import Chart from 'components/Chart'
@@ -151,17 +151,7 @@ const FormCalc = () => {
         ]
         dispatch({type: stateTypes.SET_REGION_LIST, payload: dataRegion})
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [language])
-
-    useEffect(() => {
-        if(valuatioMethod === ALLUVIUM) {
-            dispatch({ type: stateTypes.SET_ANALYS_UNIT, payload: IMPACTED_AREA })
-        }else if(valuatioMethod === FERRY) {
-            dispatch({ type: stateTypes.SET_ANALYS_UNIT, payload: MONTHS_OF_MINING })
-        }else {
-            dispatch({ type: stateTypes.SET_ANALYS_UNIT, payload: YEARS_OF_MINING })
-        }
-    }, [valuatioMethod, dispatch])
+    }, [language, knowRegion])
 
     const checkFormIsInvalid = useCallback(() => {
         alert.removeAll()
@@ -178,8 +168,14 @@ const FormCalc = () => {
             return;
         }
         calcResults(state, dispatch)
-        sessionStorage.setItem('@Calculator/form', JSON.stringify(stateContext.calculator))
-    },[checkFormIsInvalid, dispatch, stateContext.calculator])
+        const { calculator } = state
+        sessionStorage.removeItem('@Calculator/form')
+        sessionStorage.setItem('@Calculator/form', JSON.stringify(calculator))
+    },[checkFormIsInvalid, dispatch])
+
+    const updateCalc = useCallback(() => {
+        submitCalc(stateContext)
+    }, [stateContext, submitCalc])
 
 
     const handleRegion = useCallback((e) => {
@@ -218,9 +214,7 @@ const FormCalc = () => {
     const handleQtdAnalysis = useCallback((e) => {
         const { value } = e.target
         dispatch({ type: stateTypes.SET_QTD_ANALYS_UNIT, payload: { value, error: value === '' } })
-        submitCalc({...stateContext, calculator:{...calculator, qtdAnalysis: { value, error: value === '' }}})
-    }, [calculator, dispatch, stateContext, submitCalc])
-
+    }, [dispatch])
 
     const handlePitDepth = useCallback((e) => {
         const { value } = e.target
@@ -250,6 +244,7 @@ const FormCalc = () => {
     }else {
         placeholder = calculatorForm.values.qtdAnalysisUnit.months
     }
+    console.log('calculator', calculator.analysisUnit)
     return (
         <Grid fluid>
         <Row>
@@ -300,6 +295,7 @@ const FormCalc = () => {
                 type="number"
                 value={qtdAnalysis.value}
                 onChange={handleQtdAnalysis}
+                onBlur={updateCalc}
                 name="valor" placeholder={placeholder} />
         </Col>
 
@@ -439,7 +435,7 @@ const MonetaryImpacts = () => {
                 
                 <HiddenSm>
                     <br /><br />
-                    <Button variant="secondary" onClick={() => history.push('/moral-damages')}>Danos morais</Button>
+                    <Button variant="default" onClick={() => history.push('/moral-damages')}>Danos morais</Button>
                 </HiddenSm>
                 
                 <ButtonFixed>
@@ -448,7 +444,7 @@ const MonetaryImpacts = () => {
                            
                                 <Col md={3}>
                                     <HiddenXS>
-                                        <Button variant="secondary" onClick={() => history.push('/moral-damages')}>Danos morais</Button>
+                                        <Button variant="default" onClick={() => history.push('/moral-damages')}>Danos morais</Button>
                                     </HiddenXS>
                                 </Col>
                             

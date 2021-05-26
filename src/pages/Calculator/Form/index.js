@@ -4,7 +4,7 @@ import { Grid, Row, Col } from 'react-flexbox-grid'
 import { Button, TextField } from 'theme'
 import { Container } from './style'
 import { ButtonFixed } from 'pages/Calculator/ImpactsStyles'
-import { YES, IMPACTED_AREA, AMOUNT_GOLD, ALLUVIUM, FERRY, PIT, YEARS_OF_MINING, MONTHS_OF_MINING, NO} from './consts'
+import { YES, IMPACTED_AREA, AMOUNT_GOLD, ALLUVIUM, FERRY, PIT, YEARS_OF_MINING, NO} from './consts'
 import { AppContext, stateTypes } from 'utils/AppContext'
 import Conditional from 'components/Conditional'
 import RadioBoxConditional from 'components/RadioBoxConditional'
@@ -128,17 +128,7 @@ function Form() {
         ]
         dispatch({type: stateTypes.SET_REGION_LIST, payload: dataRegion})
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [language])
-
-    useEffect(() => {
-        if(valuatioMethod === ALLUVIUM) {
-            dispatch({ type: stateTypes.SET_ANALYS_UNIT, payload: IMPACTED_AREA })
-        }else if(valuatioMethod === FERRY) {
-            dispatch({ type: stateTypes.SET_ANALYS_UNIT, payload: MONTHS_OF_MINING })
-        }else {
-            dispatch({ type: stateTypes.SET_ANALYS_UNIT, payload: YEARS_OF_MINING })
-        }
-    }, [valuatioMethod, dispatch])
+    }, [language, knowRegion])
 
 
     const handleRegion = useCallback((e) => {

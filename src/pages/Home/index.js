@@ -43,7 +43,7 @@ const Home = () => {
                     </Col>
                     <Col md={5} mdOffset={1}>
                         <Embed>
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/mj8OtkFTQb8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/iRJmh62xHxU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </Embed>
                         <a href="https://www.youtube.com/channel/UCSUx8XzYbinaF0whJYXHU8Q" target="_blank">
                             <Button style={{marginTop: 37}} variant="default">Ver outros videos sobre garimpo ilegal</Button>
