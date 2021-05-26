@@ -1,8 +1,8 @@
-import {  useCallback, useContext, useEffect } from 'react'
+import {  useCallback, useContext, useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Button, TextField } from 'theme'
 import { Grid, Row, Col } from 'react-flexbox-grid'
-import { ALLUVIUM, AMOUNT_GOLD, CATEGORY_DEFORESTATION, CATEGORY_MERCURY, CATEGORY_SILTING_RIVERS, FERRY, IMPACTED_AREA, NO, PIT, YEARS_OF_MINING, YES } from 'pages/Calculator/Form/consts'
+import { ALLUVIUM, AMOUNT_GOLD, CATEGORY_DEFORESTATION, CATEGORY_MERCURY, CATEGORY_SILTING_RIVERS, FERRY, IMPACTED_AREA, MONTHS_OF_MINING, NO, PIT, YEARS_OF_MINING, YES } from 'pages/Calculator/Form/consts'
 import { Container, Headline, ButtonFixed, HiddenPrint, HiddenXS, HiddenSm } from 'pages/Calculator/ImpactsStyles'
 import { Monetary, MonetaryType, Label, FormGroup, Card } from './style'
 import Chart from 'components/Chart'
@@ -43,6 +43,7 @@ export const DataChart = ({impact, headline, hiddenMonetary, txtTotalNonetary}) 
 
 const FormCalc = () => {
     const { state: stateContext, dispatch } = useContext(AppContext)
+    const [placeholder, setPlaceholder] = useState("")
     const { calculator, language } = stateContext
     const {
         regionList,
@@ -224,7 +225,17 @@ const FormCalc = () => {
 
     const handleValuationMethod = useCallback((e) => {
         const { value } = e.target
+        const { analysisUnit } = calculator
         dispatch({ type: stateTypes.SET_VALUATION_METHOD, payload: Number(value) })
+
+        if(analysisUnit !== AMOUNT_GOLD && Number(value) === FERRY) {
+            dispatch({ type: stateTypes.SET_ANALYS_UNIT, payload: MONTHS_OF_MINING })
+        }else if(analysisUnit !== AMOUNT_GOLD && Number(value) === PIT) {
+            dispatch({ type: stateTypes.SET_ANALYS_UNIT, payload: YEARS_OF_MINING })
+        }else if(analysisUnit !== AMOUNT_GOLD && Number(value) === ALLUVIUM) {
+            dispatch({ type: stateTypes.SET_ANALYS_UNIT, payload: IMPACTED_AREA })
+        }
+
         submitCalc({...stateContext, calculator:{...calculator, valuatioMethod: Number(value)}})
     }, [calculator, dispatch, stateContext, submitCalc])
 
@@ -234,17 +245,21 @@ const FormCalc = () => {
         submitCalc({...stateContext, calculator:{...calculator, txPrevalence: Number(value)}})
     }, [calculator, dispatch, stateContext, submitCalc])
 
-    let placeholder;
-    if(calculator.analysisUnit === AMOUNT_GOLD) {
-        placeholder = calculatorForm.values.qtdAnalysisUnit.grams
-    }else if(calculator.analysisUnit === IMPACTED_AREA) {
-        placeholder = calculatorForm.values.qtdAnalysisUnit.hactare
-    }else if (calculator.analysisUnit === YEARS_OF_MINING) {
-        placeholder = calculatorForm.values.qtdAnalysisUnit.years
-    }else {
-        placeholder = calculatorForm.values.qtdAnalysisUnit.months
-    }
-    console.log('calculator', calculator.analysisUnit)
+    useEffect(() => {
+        let placeholder;
+        if(calculator.analysisUnit === AMOUNT_GOLD) {
+            placeholder = calculatorForm.values.qtdAnalysisUnit.grams
+        }else if(calculator.analysisUnit === IMPACTED_AREA) {
+            placeholder = calculatorForm.values.qtdAnalysisUnit.hactare
+        }else if (calculator.analysisUnit === YEARS_OF_MINING) {
+            placeholder = calculatorForm.values.qtdAnalysisUnit.years
+        }else {
+            placeholder = calculatorForm.values.qtdAnalysisUnit.months
+        }
+    setPlaceholder(placeholder)
+    }, [calculator.analysisUnit, calculatorForm])
+
+    
     return (
         <Grid fluid>
         <Row>
