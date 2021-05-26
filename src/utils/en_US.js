@@ -80,13 +80,12 @@ const en_US = {
         },
         siltingOfRivers: {
             headline: 'Erosion and silting',
-            paragraphy_01: 'The extraction of <strong>$grams grams of gold</strong> leads to erosion and sedimentation of <strong>$volumeM3 m³</strong> of soil, in average.',
-            paragraphy_02: 'The sedimentation of these <strong>$volumeM3 m³</strong> leads to loss of opportunity to carry out other activities in the rivers, such as drinking water, fishing, and tourism.'
-
+            paragraphy_01: 'The extraction of <strong>$grams grams of gold</strong> leads to erosion / sedimentation of <strong>$volumeM3</strong> of soil, in average.',
+            paragraphy_02: 'The erosion / sedimentation of these <strong>$volumeM3</strong> leads to loss of opportunity to carry out other activities in the rivers, such as drinking water, fishing, and tourism.'
         },
         mercuryContamination: {
             headline: 'Mercury contamination',
-            paragraphy_01: 'The extraction of 1 kg of gold utilizes 2.6 kg of mercury, which 13% are deposited in rivers. Of those, 3% are metilated, becoming even more toxic and being absorbed by fish, which can migrate up to 2000km, contaminating the people who eat them. Conservatively, we consider the dispersion radius of mercury to be 100km.',
+            paragraphy_01: 'The extraction of 1 kg of gold utilizes 2.6 kg of mercury, which 13% are deposited in rivers. Of those, 3% are metilated, becoming even more toxic and being absorbed by fish, which can migrate up to 2000km, contaminating the people who eat them. Conservatively, we consider the dispersion radius of mercury to be 100km which has <strong>$people peoples</strong> due to exposure to mercury from mining.',
             paragraphy_02: 'Depending on the level of fish consumption, an individual will have an average increase in mercury level between 4ug/g and 15ug/g, leading to neuropsychological, cognitive and cardiac problems.'
 
         },
