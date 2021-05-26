@@ -19,13 +19,11 @@ const convertAllinHectare = (likeMining, typeValueLikeMining, valueLikeMining, p
         const affectedAreaM2 = lossyVolume / pitDepth;
         const hectare = affectedAreaM2 / 10000;
         const hectareOverflow = hectare * overflow;
-        console.log('hectareOverflow', hectareOverflow)
         return hectareOverflow
         
     }else if(likeMining === PIT && AMOUNT_GOLD){ 
         const hectare = 0.31;
         const hectareOverflow = hectare * overflow;
-        console.log('hectareOverflow', hectareOverflow)
         return hectareOverflow
 
     }else if (typeValueLikeMining === AMOUNT_GOLD){
@@ -37,12 +35,13 @@ const convertAllinHectare = (likeMining, typeValueLikeMining, valueLikeMining, p
         const affectedAreaM2 = lossyVolume / pitDepth;
         const hectare = affectedAreaM2 / 10000;
         const hectareOverflow = hectare * overflow;
-        console.log('hectareOverflow', hectareOverflow)
         return hectareOverflow
 
     }else if(likeMining === FERRY){
         const hectare = 0;
-        console.log('hectare', hectare)
+        return hectare
+    }else{
+        const hectare = valueLikeMining
         return hectare
     }
 

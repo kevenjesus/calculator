@@ -1,4 +1,5 @@
 import { stateTypes } from "utils/AppContext"
+import convertAllinGold from "utils/convertAllinGold"
 import goldToHecatere from "utils/GoldToHectare"
 import hectareToGold, { goldenGramForHectare } from "utils/hectareToGold"
 import ToBRL from "utils/toBRL"
@@ -57,7 +58,7 @@ const calcResults = (state, dispatch) => {
         // valor do tipo de garimpo = valueLikeMining
         // tipo de valor do garimpo = typeValueLikeMining
 
-        const Gold = bioprospecting(likeMining, typeValueLikeMining, txPrevalence, hectareValue)
+        const Gold = convertAllinGold(likeMining, typeValueLikeMining, valueLikeMining, pitDepth)
         impacts.push({ label: '', displayName: '', value: Gold })
 
         const totalBio = bioprospecting(likeMining, typeValueLikeMining, txPrevalence, hectareValue)

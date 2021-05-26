@@ -7,16 +7,16 @@ import { ReactComponent as ImageExampleUS } from 'assets/images/[calculadora]Inf
 import { useContext } from 'react';
 import { AppContext } from 'utils/AppContext';
 import ToBRL from 'utils/toBRL';
-import { AMOUNT_GOLD, CATEGORY_DEFORESTATION, FERRY, IMPACTED_AREA } from '../Form/consts';
+import { CATEGORY_DEFORESTATION, FERRY } from '../Form/consts';
 import { DataChart } from 'pages/Calculator/MonetaryImpacts' 
 import MenuImpacts from '../Menu';
-//import goldToHecatere from 'utils/GoldToHectare';
-//import hectareToGold from 'utils/hectareToGold';
 import convertAllinGold from 'utils/convertAllinGold';
 import convertAllinHectare from 'utils/convertAllinHectare';
 const Deforestation = () => {
     const {state} = useContext(AppContext)
     const { language, calculator } = state
+    const { valuatioMethod, qtdAnalysis, pitDepth } = calculator
+
     const { impacts } = language
     window.scrollTo(0,0)
 
@@ -31,10 +31,14 @@ const Deforestation = () => {
         total: sumTotal(dataDesforestation)
     }
 
+    const likeMining = valuatioMethod // FERRY, PIT or ALLUVION
+    const valueLikeMining = qtdAnalysis.value // gold, hactare, months, years
+    const typeValueLikeMining = calculator.analysisUnit // AMOUNT_GOLD / IMPACTED_AREA / YEARS_OF_MINING / MONTHS_OF_MINING
+
     const hiddenMenu = calculator.valuatioMethod === FERRY ? [impacts.menu.deforestation] : []
 
-    const hectareValue = calculator.analysisUnit === AMOUNT_GOLD ? convertAllinGold(Number(calculator.qtdAnalysis.value), calculator.pitDepth) : Number(calculator.qtdAnalysis.value)
-    const goldValue = calculator.analysisUnit === IMPACTED_AREA ? convertAllinHectare(Number(calculator.qtdAnalysis.value), calculator.pitDepth) : Number(calculator.qtdAnalysis.value)
+    const hectareValue = convertAllinHectare(likeMining, typeValueLikeMining, valueLikeMining, pitDepth)
+    const goldValue = convertAllinGold(likeMining, typeValueLikeMining, valueLikeMining, pitDepth)
     
     const paragraphy_01 = impacts.deforestation.paragraphy_01.replace("$grams", goldValue).replace("$hectare", hectareValue)
     const paragraphy_02 = impacts.deforestation.paragraphy_02.replace("$hectare", hectareValue)

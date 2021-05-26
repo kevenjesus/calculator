@@ -7,11 +7,11 @@ import { ReactComponent as ImageExampleUS } from 'assets/images/[calculadora]inf
 import { useContext } from 'react';
 import { AppContext } from 'utils/AppContext';
 import ToBRL from 'utils/toBRL';
-import { CATEGORY_SILTING_RIVERS, FERRY, IMPACTED_AREA } from '../Form/consts';
+import { CATEGORY_SILTING_RIVERS, FERRY } from '../Form/consts';
 import { DataChart } from '../MonetaryImpacts';
 import MenuImpacts from '../Menu';
 import cubicMeters from 'utils/cubicMeters';
-import hectareToGold from 'utils/hectareToGold';
+import convertAllinGold from 'utils/convertAllinGold';
 
 const SiltingOfRivers = () => {
     const {state} = useContext(AppContext)
@@ -39,7 +39,7 @@ const SiltingOfRivers = () => {
     const valueLikeMining = qtdAnalysis.value // gold, hactare, months, years
     const typeValueLikeMining = calculator.analysisUnit // AMOUNT_GOLD / IMPACTED_AREA / YEARS_OF_MINING / MONTHS_OF_MINING
 
-    const goldValue = calculator.analysisUnit === IMPACTED_AREA ? hectareToGold(Number(qtdAnalysis.value), pitDepth) : Number(qtdAnalysis.value)
+    const goldValue = Math.round(convertAllinGold(likeMining, typeValueLikeMining, valueLikeMining, pitDepth))
     const volumeM3 = cubicMeters(likeMining, typeValueLikeMining, valueLikeMining, pitDepth)
     const paragraphy_01 = impacts.siltingOfRivers.paragraphy_01.replace("$grams", goldValue).replace("$volumeM3", Math.round(volumeM3 * 100) / 100)
     const paragraphy_02 = impacts.siltingOfRivers.paragraphy_02.replace("$volumeM3", Math.round(volumeM3 * 100) / 100)
