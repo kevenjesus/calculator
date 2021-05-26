@@ -1,10 +1,10 @@
-import { useEffect, useCallback, useContext } from 'react'
+import { useEffect, useCallback, useContext, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Grid, Row, Col } from 'react-flexbox-grid'
 import { Button, TextField } from 'theme'
 import { Container } from './style'
 import { ButtonFixed } from 'pages/Calculator/ImpactsStyles'
-import { YES, IMPACTED_AREA, AMOUNT_GOLD, ALLUVIUM, FERRY, PIT, YEARS_OF_MINING, NO} from './consts'
+import { YES, IMPACTED_AREA, AMOUNT_GOLD, ALLUVIUM, FERRY, PIT, YEARS_OF_MINING, NO, MONTHS_OF_MINING} from './consts'
 import { AppContext, stateTypes } from 'utils/AppContext'
 import Conditional from 'components/Conditional'
 import RadioBoxConditional from 'components/RadioBoxConditional'
@@ -18,6 +18,7 @@ import { useAlert } from 'react-alert'
 
 function Form() {
     const { state: stateContext, dispatch } = useContext(AppContext)
+    const [placeholder, setPlaceholder] = useState('')
     const { calculator, language } = stateContext
     const {
         regionList,
@@ -174,8 +175,18 @@ function Form() {
 
     const handleValuationMethod = useCallback((e) => {
         const { value } = e.target
+        const { analysisUnit } = calculator
         dispatch({ type: stateTypes.SET_VALUATION_METHOD, payload: Number(value) })
-    }, [dispatch])
+
+        if(analysisUnit !== AMOUNT_GOLD && Number(value) === FERRY) {
+            dispatch({ type: stateTypes.SET_ANALYS_UNIT, payload: MONTHS_OF_MINING })
+        }else if(analysisUnit !== AMOUNT_GOLD && Number(value) === PIT) {
+            dispatch({ type: stateTypes.SET_ANALYS_UNIT, payload: YEARS_OF_MINING })
+        }else if(analysisUnit !== AMOUNT_GOLD && Number(value) === ALLUVIUM) {
+            dispatch({ type: stateTypes.SET_ANALYS_UNIT, payload: IMPACTED_AREA })
+        }
+
+    }, [calculator, dispatch])
 
     const handleTxPrevalance = useCallback((e) => {
         const { value } = e.target
@@ -201,17 +212,19 @@ function Form() {
         history.push('/loading')
     }
 
-    let placeholder;
-    if(calculator.analysisUnit === AMOUNT_GOLD) {
-        placeholder = calculatorForm.values.qtdAnalysisUnit.grams
-    }else if(calculator.analysisUnit === IMPACTED_AREA) {
-        placeholder = calculatorForm.values.qtdAnalysisUnit.hactare
-    }else if (calculator.analysisUnit === YEARS_OF_MINING) {
-        placeholder = calculatorForm.values.qtdAnalysisUnit.years
-    }else {
-        placeholder = calculatorForm.values.qtdAnalysisUnit.months
-    }
-
+    useEffect(() => {
+        let placeholder;
+        if(calculator.analysisUnit === AMOUNT_GOLD) {
+            placeholder = calculatorForm.values.qtdAnalysisUnit.grams
+        }else if(calculator.analysisUnit === IMPACTED_AREA) {
+            placeholder = calculatorForm.values.qtdAnalysisUnit.hactare
+        }else if (calculator.analysisUnit === YEARS_OF_MINING) {
+            placeholder = calculatorForm.values.qtdAnalysisUnit.years
+        }else {
+            placeholder = calculatorForm.values.qtdAnalysisUnit.months
+        }
+    setPlaceholder(placeholder)
+    }, [calculator.analysisUnit, calculatorForm])
     return (
         <Container>
             <Grid fluid>
