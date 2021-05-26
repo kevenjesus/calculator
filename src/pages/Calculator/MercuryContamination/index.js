@@ -10,10 +10,12 @@ import { CATEGORY_MERCURY, FERRY } from '../Form/consts';
 import ToBRL from 'utils/toBRL';
 import { DataChart } from '../MonetaryImpacts';
 import MenuImpacts from '../Menu';
+import popSize100kmRadius from 'utils/popSize100kmRadius';
 
 const MercuryContamination = () => {
     const {state} = useContext(AppContext)
     const { language, calculator } = state
+    const { counties, country, knowRegion } = calculator
     const { impacts } = language
     window.scrollTo(0,0)
 
@@ -30,6 +32,10 @@ const MercuryContamination = () => {
     }
 
     const hiddenMenu = calculator.valuatioMethod === FERRY ? [impacts.menu.deforestation] : []
+    const currentCountry = counties.find(c => c.id === Number(country))
+    const popDensity2060 = knowRegion ? currentCountry.popDensity2060  : 6.0;
+    const people = Math.round(popSize100kmRadius(knowRegion, popDensity2060))
+    const paragraphy_01 = impacts.mercuryContamination.paragraphy_01.replace("$people", people)
 
     return (
         <Container>
@@ -41,10 +47,11 @@ const MercuryContamination = () => {
                     <Col xs={12} sm={8} md={9}>
                         <Headline>{impacts.mercuryContamination.headline}</Headline>
                         <Text>
-                        {impacts.mercuryContamination.paragraphy_01}
+                        <div dangerouslySetInnerHTML={{__html: paragraphy_01 }} />  
+                        
                         </Text>
                         <Text>
-                        {impacts.mercuryContamination.paragraphy_02}              
+                        {impacts.mercuryContamination.paragraphy_02} 
                         </Text>
                         { language.type === 'enUS' ? <ImageExampleUS style={{display: 'block', margin: '50px auto'}} /> : <ImageExample style={{display: 'block', margin: '50px auto'}} />}
                     </Col>

@@ -82,12 +82,12 @@ const ptBR = {
         },
         siltingOfRivers: {
             headline: 'Assoreamento dos rios',
-            paragraphy_01: 'A extraçã o de <strong>$grams gramas de ouro</strong> gera erosão e assoreamento de <strong>$volumeM3 m³</strong> de solo, em média',
-            paragraphy_02: 'O assoreamento destes <strong>$volumeM3 m³</strong> leva a perdas de oportunidade de realização de outras atividades nos rios, como o uso da água para beber, pesca e turismo.'
+            paragraphy_01: 'A extração de <strong>$grams gramas de ouro</strong> gera erosão/sedimentação de <strong>$volumeM3</strong> de solo, em média',
+            paragraphy_02: 'O assoreamento/sedimentação destes <strong>$volumeM3</strong> leva a perdas de oportunidade de realização de outras atividades nos rios, como o uso da água para beber, pesca e turismo.'
         },
         mercuryContamination: {
             headline: 'Contaminação por mercúrio',
-            paragraphy_01: 'A extraçã o de 1 kg de ouro utiliza 2,6kg de mercúrio, dos quais 13% são despejados nos rios. Destes, 3% são metilados, se tornando ainda mais tóxicos e sendo absorvidos por peixes, que podem migrar por até 2000km, contaminando as pessoas que se alimentam deles. De modo conservador, consideramos que o raio de dispersão do mercúrio é de 100km.',
+            paragraphy_01: 'A extração de 1 kg de ouro utiliza 2,6kg de mercúrio, dos quais 13% são despejados nos rios. Destes, 3% são metilados, se tornando ainda mais tóxicos e sendo absorvidos por peixes, que podem migrar por até 2000km, contaminando as pessoas que se alimentam deles. De modo conservador, consideramos que o raio de dispersão do mercúrio é de 100km que possui <strong>$people pessoas</strong> devido a exposição ao mercúrio oriundo do garimpo.',
             paragraphy_02: 'Dependendo do nível de consumo de peixes, um indivíduo terá um aumento médio do nível de mercúrio entre 4ug/g e 15ug/g, levando a problemas neuropsicológicos, cognitivos e cardíacos.'
         },
         monetaryImpacts: {

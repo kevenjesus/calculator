@@ -37,8 +37,8 @@ const Deforestation = () => {
 
     const hiddenMenu = calculator.valuatioMethod === FERRY ? [impacts.menu.deforestation] : []
 
-    const hectareValue = convertAllinHectare(likeMining, typeValueLikeMining, valueLikeMining, pitDepth)
-    const goldValue = convertAllinGold(likeMining, typeValueLikeMining, valueLikeMining, pitDepth)
+    const hectareValue = Math.round(convertAllinHectare(likeMining, typeValueLikeMining, valueLikeMining, pitDepth) * 100) / 100
+    const goldValue = Math.round(convertAllinGold(likeMining, typeValueLikeMining, valueLikeMining, pitDepth))
     
     const paragraphy_01 = impacts.deforestation.paragraphy_01.replace("$grams", goldValue).replace("$hectare", hectareValue)
     const paragraphy_02 = impacts.deforestation.paragraphy_02.replace("$hectare", hectareValue)

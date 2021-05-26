@@ -19,7 +19,7 @@ const cubicMeters = (likeMining, typeValueLikeMining, valueLikeMining, pitDepth)
         const toUpturnedSoil = upturnedSterileTon + revolvedSoloTon;
         const losslessVolume = toUpturnedSoil / goldDensity;
         volumeM3 = losslessVolume * excavationGoldLoss;
-        return volumeM3
+        return `${Math.round(volumeM3)} m³`
 
     }else if (likeMining === PIT && typeValueLikeMining === AMOUNT_GOLD){
         const revolvedSoloTon = valueLikeMining / pitProductivity;
@@ -27,7 +27,7 @@ const cubicMeters = (likeMining, typeValueLikeMining, valueLikeMining, pitDepth)
         const toUpturnedSoil = revolvedSoloTon + upturnedSterileTon;
         const losslessVolume = toUpturnedSoil / goldDensity;
         volumeM3 = losslessVolume * excavationGoldLoss;
-        return volumeM3
+        return `${Math.round(volumeM3 * 100) / 100} m³`
 
     }else if (likeMining === ALLUVIUM && typeValueLikeMining === AMOUNT_GOLD){
         const revolvedSoloTon = valueLikeMining / pitProductivity;
@@ -35,25 +35,26 @@ const cubicMeters = (likeMining, typeValueLikeMining, valueLikeMining, pitDepth)
         const toUpturnedSoil = revolvedSoloTon + upturnedSterileTon;
         const losslessVolume = toUpturnedSoil / goldDensity;
         volumeM3 = losslessVolume * excavationGoldLoss;
-        return volumeM3
+        return `${Math.round(volumeM3 * 100) / 100} m³`
 
     }else if (likeMining === ALLUVIUM && typeValueLikeMining === IMPACTED_AREA){
         const affectedAreaM2 = valueLikeMining * 10000;
         volumeM3 = pitDepth * affectedAreaM2;
-        return volumeM3
+        return `${Math.round(volumeM3 * 100) / 100} m³` 
 
     }else if (likeMining === FERRY && typeValueLikeMining === AMOUNT_GOLD){
         const ProdSedimentoViraPlumaTonPorMes = 6.262;
         const prodSedimentoViraPlumaTon = ProdSedimentoViraPlumaTonPorMes * valueLikeMining;
-        return prodSedimentoViraPlumaTon
+        return `${Math.round(prodSedimentoViraPlumaTon * 100) / 100} ton` 
 
     }else if (likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING){
         const prodOuroKgporMes = 0.00604;
+        const prodOuroGrporMes = prodOuroKgporMes * 1000;
         const potenciaMediaMotor = 54.4;
         const ProdSedimentoViraPlumaTonPorMes = 6.262;
-        const prodOuroTotalBalsaDragagem = potenciaMediaMotor * valueLikeMining * prodOuroKgporMes;
+        const prodOuroTotalBalsaDragagem = potenciaMediaMotor * valueLikeMining * prodOuroGrporMes;
         const prodSedimentoViraPlumaTon = ProdSedimentoViraPlumaTonPorMes * prodOuroTotalBalsaDragagem * valueLikeMining;
-        return prodSedimentoViraPlumaTon
+        return `${Math.round(prodSedimentoViraPlumaTon * 100) / 100} ton`
     }
 }
 export default cubicMeters 

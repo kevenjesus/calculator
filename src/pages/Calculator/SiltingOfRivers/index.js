@@ -41,8 +41,8 @@ const SiltingOfRivers = () => {
 
     const goldValue = Math.round(convertAllinGold(likeMining, typeValueLikeMining, valueLikeMining, pitDepth))
     const volumeM3 = cubicMeters(likeMining, typeValueLikeMining, valueLikeMining, pitDepth)
-    const paragraphy_01 = impacts.siltingOfRivers.paragraphy_01.replace("$grams", goldValue).replace("$volumeM3", Math.round(volumeM3 * 100) / 100)
-    const paragraphy_02 = impacts.siltingOfRivers.paragraphy_02.replace("$volumeM3", Math.round(volumeM3 * 100) / 100)
+    const paragraphy_01 = impacts.siltingOfRivers.paragraphy_01.replace("$grams", goldValue).replace("$volumeM3", volumeM3)
+    const paragraphy_02 = impacts.siltingOfRivers.paragraphy_02.replace("$volumeM3", volumeM3)
     return (
         <Container>
             <Grid fluid>

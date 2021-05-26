@@ -64,7 +64,6 @@ const heartAttack = (likeMining, typeValueLikeMining, valueLikeMining, txPrevale
     const ingestionMediaMercuryEmyears = daysIn50years * ingestionMediaDaily1IndividualInGrams;
     
     const popSize100kmRadius = isRegion ? (popDensity2060 * Math.pow((Math.PI * 100), 2)) : (densityPopulationalRegionNorth2060 * Math.pow((Math.PI * 100), 2));
-    console.log('popSize100kmRadius',popSize100kmRadius)
     const affectedPeople = (toMethylatedWater/ingestionMediaMercuryEmyears);
     const toPopulationAffectedMercuryHair = affectedPeople < popSize100kmRadius ? affectedPeople : popSize100kmRadius;
     const popMenOver40inTheRegion = toPopulationAffectedMercuryHair * proMenOver40ByPopTotal;
