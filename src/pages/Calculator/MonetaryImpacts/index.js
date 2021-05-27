@@ -235,9 +235,12 @@ const FormCalc = () => {
         }else if(analysisUnit !== AMOUNT_GOLD && Number(value) === ALLUVIUM) {
             dispatch({ type: stateTypes.SET_ANALYS_UNIT, payload: IMPACTED_AREA })
         }
+    }, [calculator, dispatch])
 
-        submitCalc({...stateContext, calculator:{...calculator, valuatioMethod: Number(value)}})
-    }, [calculator, dispatch, stateContext, submitCalc])
+    useEffect(() => {
+        updateCalc();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [valuatioMethod])
 
     const handleTxPrevalance = useCallback((e) => {
         const { value } = e.target
