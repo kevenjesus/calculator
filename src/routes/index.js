@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import Form from 'pages/Calculator/Form'
 import Loading from 'pages/Calculator/Loading'
 import Deforestation from 'pages/Calculator/Deforestation'
@@ -21,7 +21,7 @@ import MoralDamages from 'pages/MoralDamages';
 
 const Routes = () => {
     return (
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
             <Header />
             <Switch>
                 <Route path="/" exact component={Home} />
