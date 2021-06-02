@@ -83,7 +83,7 @@ const es_ES = {
         },
         mercuryContamination: {
             headline: 'Contaminación por mercurio',
-            paragraphy_01: 'La extracción de 1 kg de oro utiliza 2,6 kg de mercurio, de los cuales el 13% se descargan en los ríos. De los cuales, el 3% se metila, volviéndose aún más tóxico y siendo absorbido por los peces, que pueden migrar hasta 2000 km, contaminando a las personas que se alimentan de ellos. Siendo conservadores, consideramos que el radio de dispersión del mercurio es de 100 km que tiene <strong>$people personas</strong> debido a la exposición al mercurio de la minería.',
+            paragraphy_01: 'La extracción de 1 kg de oro utiliza 2,6 kg de mercurio, de los cuales el 13% se descargan en los ríos. De los cuales, el 3% se metila, volviéndose aún más tóxico y siendo absorbido por los peces, que pueden migrar hasta 2000 km, contaminando a las personas que se alimentan de ellos. Siendo conservadores, consideramos que el radio de dispersión del mercurio es de 100 km, que tiene <strong>$people personas</strong> expuestas al riesgo adicional por la exposición al mercurio de la minería.',
             paragraphy_02: 'Según el nivel de consumo de pescado, un individuo tendrá un aumento promedio del nivel de mercurio de entre 4ug/g y 15ug/g, lo que provocará problemas neuropsicológicos, cognitivos y cardiacos',
         },
         monetaryImpacts: {

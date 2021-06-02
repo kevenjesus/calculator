@@ -35,7 +35,7 @@ const MercuryContamination = () => {
     const currentCountry = counties.find(c => c.id === Number(country))
     const popDensity2060 = knowRegion ? currentCountry.popDensity2060  : 6.0;
     const people = Math.round(popSize100kmRadius(knowRegion, popDensity2060))
-    const paragraphy_01 = impacts.mercuryContamination.paragraphy_01.replace("$people", people)
+    const paragraphy_01 = impacts.mercuryContamination.paragraphy_01.replace("$people", people.toLocaleString('pt-BR'))
 
     return (
         <Container>

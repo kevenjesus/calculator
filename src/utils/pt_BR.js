@@ -87,7 +87,7 @@ const ptBR = {
         },
         mercuryContamination: {
             headline: 'Contaminação por mercúrio',
-            paragraphy_01: 'A extração de 1 kg de ouro utiliza 2,6kg de mercúrio, dos quais 13% são despejados nos rios. Destes, 3% são metilados, se tornando ainda mais tóxicos e sendo absorvidos por peixes, que podem migrar por até 2000km, contaminando as pessoas que se alimentam deles. De modo conservador, consideramos que o raio de dispersão do mercúrio é de 100km que possui <strong>$people pessoas</strong> devido a exposição ao mercúrio oriundo do garimpo.',
+            paragraphy_01: 'A extração de 1 kg de ouro utiliza 2,6kg de mercúrio, dos quais 13% são despejados nos rios. Destes, 3% são metilados, se tornando ainda mais tóxicos e sendo absorvidos por peixes, que podem migrar por até 2000km, contaminando as pessoas que se alimentam deles. De modo conservador, consideramos que o raio de dispersão do mercúrio é de 100km, em que, dentro dele, <strong>$people pessoas</strong> estão expostas a riscos aumentados pela exposição ao mercúrio oriundo do garimpo.',
             paragraphy_02: 'Dependendo do nível de consumo de peixes, um indivíduo terá um aumento médio do nível de mercúrio entre 4ug/g e 15ug/g, levando a problemas neuropsicológicos, cognitivos e cardíacos.'
         },
         monetaryImpacts: {
