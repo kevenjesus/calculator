@@ -83,13 +83,16 @@ const AnalysisUnit = () => {
                 setState(form.analysisUnit)
             }else {
                 setState(IMPACTED_AREA)
+                dispatch({type: stateTypes.SET_ANALYS_UNIT, payload: IMPACTED_AREA })
             }
             
         }else if(valuatioMethod === FERRY) {
+            console.log('form', form)
             if(form && form.analysisUnit) {
                 setState(form.analysisUnit)
             }else {
                 setState(MONTHS_OF_MINING)
+                dispatch({type: stateTypes.SET_ANALYS_UNIT, payload: MONTHS_OF_MINING })
             }
             
         }else {
@@ -97,10 +100,11 @@ const AnalysisUnit = () => {
                 setState(form.analysisUnit)
             }else {
                 setState(YEARS_OF_MINING)
+                dispatch({type: stateTypes.SET_ANALYS_UNIT, payload: YEARS_OF_MINING })
             }
             
         }
-    }, [valuatioMethod])
+    }, [dispatch, valuatioMethod])
 
     let placeholder;
     if(state === AMOUNT_GOLD) {
