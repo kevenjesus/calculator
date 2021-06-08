@@ -81,7 +81,7 @@ const en_US = {
         siltingOfRivers: {
             headline: 'Erosion and silting',
             paragraphy_01: 'The extraction of <strong>$grams grams of gold</strong> leads to erosion / sedimentation of <strong>$volumeM3</strong> of soil, in average.',
-            paragraphy_02: 'The erosion / sedimentation of these <strong>$volumeM3</strong> leads to loss of opportunity to carry out other activities in the rivers, such as drinking water, fishing, and tourism.'
+            paragraphy_02: 'The sedimentation of <strong>$volumeM3</strong> leads to a decline in fishing and tourism, and prevents the river from being used as a source of drinking water'
         },
         mercuryContamination: {
             headline: 'Mercury contamination',
@@ -137,7 +137,7 @@ const en_US = {
             },
             yearsMining: {
                 headline: 'Anos de garimpo',
-                text: 'The age of the mining site can be used to estimate the size, amount of gold mined and mercury used'
+                text: 'The age of the mining site can be used to estimate the size, amount of gold mined, and mercury used'
             },
             monthsMining: {
                 headline: 'Meses de garimpo',
@@ -145,19 +145,19 @@ const en_US = {
             },
         },
         contextValue: {
-            headline: 'The value of impact depends on context',
+            headline: 'The value of the impact depends on the context',
             paragraphy_01: 'The concept of "value" refers to the social importance of a variation in environmental quality on the level of well-being of the population.',
-            paragraphy_02: 'For example: The value of a piece of land or a house varies',
-            paragraphy_03: "-If it's on a polluted or non-polluted place",
-            paragraphy_04: "-If it has a nice view or not",
-            paragraphy_05: "-If it's on a noisy neighboorhood or not",
+            paragraphy_02: 'For example: The value of a plot of land or a house will vary if it is in a certain location.',
+            paragraphy_03: "-With or without pollution",
+            paragraphy_04: "-With or without a special view",
+            paragraphy_05: "-If it's in a noisy neighboorhood or not",
             paragraphy_06: 'The importance (value) of an impact depends on the context in which it occurs.',  
-            paragraphy_07: '-The more people stop using a natural resource, the greater the value of its loss.',
+            paragraphy_07: '-The fewer the people using a natural resources, the greater the value if it is lost?',
             paragraphy_08: '-The scarcer the natural resource, the higher its value.'       
         },
         howUseCalculator: {
             headline: 'How to use the calculator',
-            paragraphy_01: 'You can include some information about the context for the calculator to estimate the value of the impacts more accurately',
+            paragraphy_01: 'You can include some contextual information for the calculator to estimate the value of the impacts more accurately',
             paragraphy_02: 'The location defines other variables such as:',
             paragraphy_03: '-Density and size of the affected population',
             paragraphy_04: '-Average fish consumption',
@@ -173,15 +173,15 @@ const en_US = {
             impacts: [
                 {
                     headline: 'Deforestation',
-                    text: 'Areas are opened up for excavation and for the construction of infrastructure such as roads and landing strips '
+                    text: 'Areas are opened up for excavation and infrastructure construction, such as roads and landing strips'
                 },
                 {
                     headline: 'Sedimentation of rivers',
-                    text: 'Digging pits generates erosion and silting, while boat dredges generate river sedimentation. As a consequence, there is a worsening in water quality'
+                    text: 'Digging pits generates erosion and silting, while boat dredges generate river sedimentation. As a consequence, water quality worsens'
                 },
                 {
                     headline: 'Contamination by mercury',
-                    text: 'The mercury deposited by mining generates impacts on the environment and on human health, such as neuropsychological, cognitive, and cardiac symptoms '
+                    text: 'The mercury deposited by mining generates impacts on the environment and neuropsychological, cognitive, and cardiac problems for humans'
                 }
             ],
             paragraphy_03: 'The calculator estimates values for each of these impacts.', 
@@ -238,7 +238,7 @@ const en_US = {
             recreation_culture_species_ref: 'Siikamaki et al (2015)',
             recreation_culture_comments_line1: 'The loss of forest can be measured from the opportunity cost, that is, it is observed in the literature what is the average profitability per hectare for the different activities were excluded with deforestation.',
             recreation_culture_comments_line2: 'All the values are lost entirely to mining and can be recovered annualy. It is assumed that such activities will return to 80% of what they were in 30 years.',
-            superficialSoilRecovery: 'Recuperação da camada superficial do solo',
+            superficialSoilRecovery: 'Recovery of the topsoil layer',
             superficialSoilRecovery_hypotheses_line1: 'Topsoil recovery has different techniques applied, such as the application of direct seeding. ',
             superficialSoilRecovery_hypotheses_line2: 'Deforestation impact caused by illegal mining can produce an extension up to 12 times as much than the construction of landing roads, highways, etc. ',
             superficialSoilRecovery_hypotheses_line3: 'It is assumed that such a recovery is realized in 1 year.',
@@ -247,7 +247,7 @@ const en_US = {
             superficialSoilRecovery_ref_line2: 'Sonter et al (2017)',
             superficialSoilRecovery_ref_line3: 'RAISG – Rede Amazônica de informação Socioambiental',
             superficialSoilRecovery_ref_line4: 'IBGE (2015)',
-            superficialSoilRecovery_comments: 'One of the first impacts of mining is the loss of forest cover in the surface layer that later needs to be recovered.',
+            superficialSoilRecovery_comments: 'One of the first impacts of mining is the loss of forest cover in the surface layerlater, which needs to be recovered later.',
         },
         siltingOfRivers: {
             headline: 'Siltation of rivers / Hypotheses and references',
