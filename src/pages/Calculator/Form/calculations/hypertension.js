@@ -65,8 +65,8 @@ const hypertension = (likeMining, typeValueLikeMining, valueLikeMining, txPreval
     const ingestionMediaDailyIndividualInGramsPerDaily = ingestionMediaMercuryDaily1IndividualInGramsPerKG*individualAverageWeight;
     const ingestionMediaMercuryEmyears = daysIn50years * ingestionMediaDailyIndividualInGramsPerDaily;
 
-    const popSize100kmRadius = isRegion ? (popDensity2060 * Math.pow((Math.PI * 100), 2)) : (densityPopulationalRegionNorth2060 * Math.pow((Math.PI * 100), 2));
-    
+    const rAoQuadrado = Math.pow(100, 2)
+    const popSize100kmRadius = isRegion ? (popDensity2060 * (Math.PI * rAoQuadrado)) : (densityPopulationalRegionNorth2060 * (Math.PI * rAoQuadrado));
     const affectedPeople = (toMethylatedWater/ingestionMediaMercuryEmyears);
     const toPopulationAffectedMercuryHair = affectedPeople < popSize100kmRadius ? affectedPeople : popSize100kmRadius;
     const popPeopleAbove20YearsOldinTheRegion = toPopulationAffectedMercuryHair * propOfPeopleOver20YearsOfAgeByTotalPop;

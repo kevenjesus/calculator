@@ -61,11 +61,12 @@ const lossQI =  (likeMining, typeValueLikeMining, valueLikeMining, txPrevalence,
   
   const concentrationMediaMercuryHair = ingestionMediaMercuryDaily1IndividualInMicrogramsPerKG/0.1;
   const deflectionPatternAverageMercury = concentrationMediaMercuryHair/2;
-
-  const sizepop100kmRadius = isRegion ? (popDensity2060 * Math.pow((Math.PI * 100), 2)) : (densityPopulationalRegionNorth2060 * Math.pow((Math.PI * 100), 2));
+  const rAoQuadrado = Math.pow(100, 2)
+  const popSize100kmRadius = isRegion ? (popDensity2060 * (Math.PI * rAoQuadrado)) : (densityPopulationalRegionNorth2060 * (Math.PI * rAoQuadrado));
+  
   const affectedPeople = (toMethylatedWater/ingestionMediaMercuryIn50years);
 
-  const toPopulationAffectedMercuryHair = affectedPeople < sizepop100kmRadius ? affectedPeople : sizepop100kmRadius;
+  const toPopulationAffectedMercuryHair = affectedPeople < popSize100kmRadius ? affectedPeople : popSize100kmRadius;
   
   const affectedLiveBirths = toPopulationAffectedMercuryHair * birthRate;
   const liveBornPop = affectedLiveBirths/1000;

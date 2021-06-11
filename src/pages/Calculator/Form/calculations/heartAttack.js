@@ -62,8 +62,10 @@ const heartAttack = (likeMining, typeValueLikeMining, valueLikeMining, txPrevale
     const ingestionMediaMercuryDaily1IndividualInGramsPerKGDay = ingestionMediaMercuryDaily1IndividualInMicrogramsPerKG/1000000;
     const ingestionMediaDaily1IndividualInGrams = ingestionMediaMercuryDaily1IndividualInGramsPerKGDay*individualAverageWeight;
     const ingestionMediaMercuryEmyears = daysIn50years * ingestionMediaDaily1IndividualInGrams;
+
+    const rAoQuadrado = Math.pow(100, 2)
+    const popSize100kmRadius = isRegion ? (popDensity2060 * (Math.PI * rAoQuadrado)) : (densityPopulationalRegionNorth2060 * (Math.PI * rAoQuadrado));
     
-    const popSize100kmRadius = isRegion ? (popDensity2060 * Math.pow((Math.PI * 100), 2)) : (densityPopulationalRegionNorth2060 * Math.pow((Math.PI * 100), 2));
     const affectedPeople = (toMethylatedWater/ingestionMediaMercuryEmyears);
     const toPopulationAffectedMercuryHair = affectedPeople < popSize100kmRadius ? affectedPeople : popSize100kmRadius;
     const popMenOver40inTheRegion = toPopulationAffectedMercuryHair * proMenOver40ByPopTotal;
