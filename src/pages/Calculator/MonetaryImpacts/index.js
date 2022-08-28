@@ -17,6 +17,8 @@ import mockCountries from 'mocks/countries.json'
 import mockContry from 'mocks/country.json'
 import ExtrationTypeOptions from '../Form/ExtrationTypeOptions'
 import { useAlert } from 'react-alert'
+import html2canvas from 'html2canvas'
+import { jsPDF } from "jspdf";
 
 
 export const DataChart = ({impact, headline, hiddenMonetary, txtTotalNonetary}) => {
@@ -237,6 +239,8 @@ const FormCalc = () => {
         }
     }, [calculator, dispatch])
 
+    
+
     useEffect(() => {
         updateCalc();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -264,7 +268,7 @@ const FormCalc = () => {
 
     
     return (
-        <Grid fluid>
+        <Grid fluid id="ignorePDF">
         <Row>
             <Col xs={12}>
                 <label>{calculatorForm.labels.knowRegion}</label>
@@ -386,6 +390,32 @@ const MonetaryImpacts = () => {
         calcResults(state, dispatch)
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [txPrevalence])
+
+    const handleDownloadPDF = useCallback(() =>{
+        const input = document.getElementById('print');
+        html2canvas(input, {
+            scale: 0.45,
+            
+        })
+        .then((canvas) => {
+            const imgData = canvas.toDataURL('image/png');
+            const pdf = new jsPDF(
+                {
+                    orientation: 'p',
+                    unit: 'mm',
+                    format: 'a4',
+                    putOnlyUsedFonts:true,
+                    floatPrecision: 16
+                   }
+            );
+           
+            pdf.addImage(imgData, 'JPEG', 15, 0);
+            // pdf.output('dataurlnewwindow');
+            pdf.save("download.pdf");
+        })
+        ;
+       
+    }, [])
     
 
     const impactsDesforestation = {
@@ -439,8 +469,10 @@ const MonetaryImpacts = () => {
                 </Row>
 
                <FormCalc />
-           
 
+               <div id="print">
+
+               
                <DataChart impact={allImpacts} headline={language.resume} hiddenMonetary />
                {
                    hiddenMenu.length === 0 ? <DataChart impact={impactsDesforestation} headline={impacts.deforestation.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
@@ -449,7 +481,7 @@ const MonetaryImpacts = () => {
                
                <DataChart impact={impactsSiltingRivers} headline={impacts.siltingOfRivers.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
                <DataChart impact={impactsMercury} headline={impacts.mercuryContamination.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
-                
+               </div>
                 
                 <HiddenSm>
                     <br /><br />
@@ -470,7 +502,7 @@ const MonetaryImpacts = () => {
                                 <Button onClick={() => history.push('/')}>{impacts.buttons.newCalculation}</Button>
                             </Col>
                             <Col xs={6} md={3}>
-                                <Button variant="secondary" onClick={() => window.print()}>{impacts.buttons.printReports}</Button>
+                                <Button variant="secondary" onClick={handleDownloadPDF}>{impacts.buttons.printReports}</Button>
                             </Col>
                         </Row>
                     </Grid>
