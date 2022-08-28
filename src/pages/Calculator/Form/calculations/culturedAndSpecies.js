@@ -6,7 +6,6 @@ const culturedAndSpecies = (likeMining, popDensity2010, species, typeValueLikeMi
   
   const GDPperCapitaBrazil2019USD = 8717.18;
   const celsiusTemperature = 26.8;
-  const exchangeTax = 5;
   const discountRate = 0.03;
 
   const calc1 = 0.643 * Math.log(popDensity2010);
@@ -16,9 +15,9 @@ const culturedAndSpecies = (likeMining, popDensity2010, species, typeValueLikeMi
   const calc5 = calc1 + calc2 - calc3 + calc4;
   const calc6 = calc5 - 20.85;
   const speciesCostPerHaUSD = Math.exp(calc6);
-  const speciesCostPerHaBRL = speciesCostPerHaUSD * exchangeTax;
+  //const speciesCostPerHaBRL = speciesCostPerHaUSD * exchangeTax;
   
-  const amounts = calcMontante(speciesCostPerHaBRL)
+  const amounts = calcMontante(speciesCostPerHaUSD)
   const VPLHectareCulturedAndSpecies = vpl(discountRate, amounts)
 
   let toCulturedAndSpecies;

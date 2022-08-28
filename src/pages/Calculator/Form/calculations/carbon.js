@@ -2,12 +2,12 @@ import calcMontante from "utils/calcMontante"
 import vpl from "utils/vpl"
 import { ALLUVIUM, AMOUNT_GOLD, FERRY, IMPACTED_AREA, PIT } from "../consts"
 
-const carbon = (likeMining, typeValueLikeMining, hectare) => {
+const carbon = (country_region, likeMining, typeValueLikeMining, hectare) => {
 
     const txDiscount = 0.03;
-    const carbonCostPerHaBRL = 887.74;
+    const carbonCostPerHaUSD = 887.74;
     
-    const amounts = calcMontante(carbonCostPerHaBRL)
+    const amounts = calcMontante(carbonCostPerHaUSD)
     const VPLCarbon = vpl(txDiscount, amounts)
 
     let toCarbon;

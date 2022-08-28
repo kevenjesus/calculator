@@ -6,7 +6,6 @@ const recreation = (likeMining, popDensity2010, species, typeValueLikeMining, he
    
     const GDPperCapitaBrazilUSD = 8717.18;
     const celciusTemperature = 26.8;
-    const exchangeTax = 5;
     const discountRate = 0.03;
 
     const calculation1 = 0.562 * Math.log(popDensity2010);
@@ -16,9 +15,9 @@ const recreation = (likeMining, popDensity2010, species, typeValueLikeMining, he
     const calculation5 = calculation1 + calculation2 + calculation3 + calculation4;
     const calculation6 = calculation5 - 8.375;
     const recreationCostPerHaUSD = Math.exp(calculation6);
-    const recreationCostPerHaBRL = recreationCostPerHaUSD * exchangeTax;
+    //const recreationCostPerHaBRL = recreationCostPerHaUSD * exchangeTax;
 
-    const amounts = calcMontante(recreationCostPerHaBRL)
+    const amounts = calcMontante(recreationCostPerHaUSD)
     
     const VPLHaRecreation = vpl(discountRate, amounts)
 

@@ -42,9 +42,9 @@ const erosionSiltingUp = (likeMining, txPrevalence, typeValueLikeMining, hectare
       const calc4 = 0.623 * calc2;
       const calc5 = calc3 - 65.64 - calc4;
       const siltingUpCostPerHaUSD = Math.exp(calc5);
-      const siltingUpCostPerHaBRL = siltingUpCostPerHaUSD * txCambio;
+      //const siltingUpCostPerHaBRL = siltingUpCostPerHaUSD * txCambio;
 
-      const amounts = calcMontante(siltingUpCostPerHaBRL)
+      const amounts = calcMontante(siltingUpCostPerHaUSD)
       const VPLhectareSilting = vpl(discountRate, amounts)
 
       let toErosion;
