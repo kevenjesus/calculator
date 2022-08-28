@@ -5,23 +5,41 @@ import Btn02 from 'assets/images/[calculadora]botões_finais-02.svg'
 import Btn03 from 'assets/images/[calculadora]botões_finais-03.svg'
 import { Button } from 'theme'
 import { Col, Row } from 'react-flexbox-grid'
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { AppContext } from 'utils/AppContext'
 
 import Image from 'assets/images/(PT)Mapa_700dpi.jpeg'
+import { countries_region } from 'components/CountrySelect'
 
 const IntroductionPage = () => {
+    const [isBrazil, setIsBrazil] = useState(false)
     const { state } = useContext(AppContext)
-    const { language } = state
+    const { language, country_region } = state
     const { introduction } = language
+    
+    useEffect(() => {
+        if(country_region) {
+            const selectedBrazil = country_region.country === countries_region[0].country
+            setIsBrazil(selectedBrazil)
+        }
+    }, [state])
+
+
     return (
         <>
             <Headline>{introduction.introduction.headline}</Headline>
-            <Text>
-                {introduction.introduction.paragraphy_01}
-             </Text>
-             <img src={Image} style={{width: 850, display: 'block', margin: '40px auto', maxWidth: '100%'}} alt="" />
-             <Text>{introduction.introduction.paragraphy_02}</Text>
+            {
+                isBrazil && (
+                    <>
+                        <Text>
+                            {introduction.introduction.paragraphy_01}
+                        </Text>
+                        <img src={Image} style={{width: 850, display: 'block', margin: '40px auto', maxWidth: '100%'}} alt="" />
+                        <Text>{introduction.introduction.paragraphy_02}</Text>
+                    </>
+                )
+            }
+            
              
             <ImpactedBox>
                 <img src={Btn03} alt="" width="220" style={{marginTop: "-30px"}} />
