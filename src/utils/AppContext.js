@@ -2,7 +2,7 @@ import { createContext, useReducer  } from 'react'
 import { IMPACTED_AREA, NO, YES, ALLUVIUM, TX_PREVALENCE_MAX } from 'pages/Calculator/Form/consts'
 import ptBR from 'utils/pt_BR'
 import { INTRODUCTION } from 'pages/Introduction/consts'
-
+import { countries_region } from 'components/CountrySelect'
 
 const dataOverflow = [
     {
@@ -39,7 +39,8 @@ export const stateTypes = {
     SET_LIKE_MINING: 'SET_LIKE_MINING',
     ADD_VALUE: 'ADD_VALUE',
     CHANGE_TOTALVALUE: 'CHANGE_TOTALVALUE',
-    SET_CALCULATEFORM: 'SET_CALCULATEFORM'
+    SET_CALCULATEFORM: 'SET_CALCULATEFORM',
+    SET_COUNTRY_REGION: 'SET_COUNTRY_REGION'
 }
 
 const initialState = {
@@ -66,7 +67,8 @@ const initialState = {
     introduction: {
         step: INTRODUCTION
     },
-    language: ptBR
+    language: ptBR,
+    country_region: null,
 }
 
 
@@ -119,6 +121,15 @@ const languageReducer = (state, action) => {
     }
 }
 
+const CountryRegionReducer = (state, action) => {
+    switch(action.type) {
+        case stateTypes.SET_COUNTRY_REGION:
+            return action.payload
+        default:
+            return state;
+    }
+}
+
 
 const introductoinReducer = (state, action) => {
     switch(action.type) {
@@ -129,9 +140,10 @@ const introductoinReducer = (state, action) => {
     }
 }
 
-const combineReducers = ({calculator, language, introduction}, action) => ({
+const combineReducers = ({calculator, language, country_region, introduction}, action) => ({
     calculator: calculatorReducer(calculator, action),
     language: languageReducer(language, action),
+    country_region: CountryRegionReducer(country_region, action),
     introduction: introductoinReducer(introduction, action)
 })
 
