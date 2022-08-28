@@ -10,7 +10,6 @@ import { AppContext } from 'utils/AppContext'
 import LogoMPF from 'assets/images/mpf-logo-ministerio-publico-federal.png'
 import LogoConservationStrategy from 'assets/images/logo.svg'
 import { Container, ContainerBackground, Embed, Overlay } from './style'
-import CountrySelect from 'components/CountrySelect'
 
 const Home = () => {
     const { state } = useContext(AppContext)
@@ -18,7 +17,6 @@ const Home = () => {
     const { introduction } = language
     return (
         <>
-        <CountrySelect />
             <ContainerBackground>
                 <Header theme="dark" />
                 <Overlay />
