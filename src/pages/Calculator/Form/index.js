@@ -1,4 +1,4 @@
-import { useEffect, useCallback, useContext, useState } from 'react'
+import { useEffect, useMemo, useCallback, useContext, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Grid, Row, Col } from 'react-flexbox-grid'
 import { Button, TextField } from 'theme'
@@ -9,17 +9,21 @@ import { AppContext, stateTypes } from 'utils/AppContext'
 import Conditional from 'components/Conditional'
 import RadioBoxConditional from 'components/RadioBoxConditional'
 import mockStates from 'mocks/state.json'
+import mockStateColombia from 'mocks/countryColombia.json'
+import mockStateEquador from 'mocks/countryEquador.json'
+import mockStatePeru from 'mocks/countryPeru.json'
 import mockCountries from 'mocks/countries.json'
 import mockContry from 'mocks/country.json'
 import calcResults from './calcResults'
 import ExtrationTypeOptions from './ExtrationTypeOptions'
 import { useAlert } from 'react-alert'
+import { BRAZIL, COLOMBIA, countries_region, EQUADOR, PERU } from 'components/CountrySelect';
 
 
 function Form() {
     const { state: stateContext, dispatch } = useContext(AppContext)
     const [placeholder, setPlaceholder] = useState('')
-    const { calculator, language } = stateContext
+    const { calculator, language , country_region} = stateContext
     const {
         regionList,
         knowRegion,
@@ -34,6 +38,11 @@ function Form() {
     const { calculatorForm, introduction } = language
     const history = useHistory()
     const alert = useAlert()
+
+    const isBrazil = useMemo(() => country_region && country_region.country === countries_region[BRAZIL].country, [country_region]) 
+    const isEquador = useMemo(() => country_region && country_region.country === countries_region[EQUADOR].country, [country_region]) 
+    const isPeru = useMemo(() => country_region && country_region.country === countries_region[PERU].country, [country_region]) 
+    const isCOlombia = useMemo(() => country_region && country_region.country === countries_region[COLOMBIA].country, [country_region]) 
 
 
     const dataPitDepth = [
@@ -71,6 +80,21 @@ function Form() {
         },
     ]
 
+    const getCountiesNotBrazil = useCallback((mock) => {
+        mock.forEach((countries) => {
+            countries.popDensity2010 = countries.densidadePop2010
+            countries.popDensity2060 = countries.densidadePop2060
+            countries.urbanPopMunicipality = countries.PopUrbMunicipio
+            countries.ruralPopMunicipality = countries.PopRuralMunicipio
+            countries.distanceanningCenter = countries.Distancia_Garimpo_Centro
+            countries.species = countries.Especies_por_Municipio
+        })
+        
+        dispatch({type: stateTypes.SET_COUNTIES, payload: mock});
+        dispatch({type: stateTypes.SET_COUNTRY, payload: mock[0].id});
+
+    }, [dispatch])
+
 
     const getCounties = useCallback((uf) => {
         let dataCountries = []
@@ -100,17 +124,30 @@ function Form() {
 
     useEffect(() => {
         const getStates = () => {
-            const data = mockStates
-            dispatch({ type: stateTypes.SET_STATE_LIST, payload: data })
-            dispatch({ type: stateTypes.SET_STATE, payload: data[0] })
-            getCounties(data[0].id)
+            
+            if(isBrazil) {
+                const data = mockStates
+                dispatch({type: stateTypes.SET_STATE_LIST, payload: data })
+                dispatch({type: stateTypes.SET_STATE, payload: data[0]})
+                getCounties(data[0].id) 
+            }else if(isEquador) {
+                const data = mockStateEquador
+                getCountiesNotBrazil(data)
+            }else if(isPeru) {
+                const data = mockStatePeru
+                getCountiesNotBrazil(data)
+            }else if(isCOlombia) {
+                const data = mockStateColombia
+                getCountiesNotBrazil(data)
+            }
+             
         }
-        if (state === '' && country === '') {
+        if (state === '' || country === '') {
             getStates()
         }
        
 
-    }, [getCounties, dispatch, state, country])
+    }, [getCounties, dispatch, isBrazil, isEquador, isPeru, isCOlombia])
 
     useEffect(() => {
         const dataRegion = [
@@ -236,22 +273,43 @@ function Form() {
                 </Row>
                 <Conditional check={knowRegion}>
                     <Row>
-                        <Col xs={12} sm={6}>
-                            <label>{calculatorForm.labels.state}</label>
-                            <select name="state" value={state} onChange={handleState}>
-                                {stateList.map(({ sigla, id }) => (
-                                    <option key={id} value={id}>{sigla}</option>
-                                ))}
-                            </select>
-                        </Col>
-                        <Col xs={12} sm={6}>
-                            <label>{calculatorForm.labels.country}</label>
-                            <select name="country" value={country} onChange={handleCountry}>
-                                {counties.map(({ nome, id }) => (
-                                    <option key={id} value={id}>{nome}</option>
-                                ))}
-                            </select>
-                        </Col>
+                    {
+                                isBrazil ? (
+                                    <>
+                                        <Col xs={12} sm={6}>
+                                            <label>{calculatorForm.labels.state}</label>
+                                            <select name="state" value={state} onChange={handleState}>
+                                            {
+                                                stateList.map(({sigla, id}) => (
+                                                    <option key={id} value={id}>{sigla}</option>
+                                                ))
+                                            }
+                                            </select>
+                                        </Col>
+                                        <Col xs={12} sm={6}>
+                                            <label>{calculatorForm.labels.country}</label>
+                                            <select name="state" value={country} onChange={handleCountry}>
+                                                {
+                                                    counties.map(({nome, id}) => (
+                                                        <option key={id} value={id}>{nome}</option>
+                                                    ))
+                                                }
+                                            </select>
+                                        </Col>
+                                    </>
+                                ) : (
+                                    <Col xs={12}>
+                                            <label>{calculatorForm.labels.country}</label>
+                                        <select name="state" value={country} onChange={handleCountry}>
+                                            {
+                                                counties.map(({nome, id}) => (
+                                                    <option key={id} value={id}>{nome}</option>
+                                                ))
+                                            }
+                                        </select>
+                                    </Col>
+                                )
+                            }
                     </Row>
                 </Conditional>
                 <Row>
