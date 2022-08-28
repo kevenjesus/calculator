@@ -17,12 +17,23 @@ import SiltingRiversReferences from 'pages/Calculator/SiltingOfRivers/references
 import MercuryReferences from 'pages/Calculator/MercuryContamination/references';
 import Team from 'pages/Team';
 import MoralDamages from 'pages/MoralDamages';
+import CountrySelect from 'components/CountrySelect'
+import { useContext } from 'react';
+import { AppContext } from 'utils/AppContext';
 
 
 const Routes = () => {
+    const {state} = useContext(AppContext)
+    const { country_region } = state
     return (
         <Router basename={process.env.PUBLIC_URL}>
             <Header />
+            {
+                country_region === null ? (
+                    <CountrySelect />
+                ) : <></>
+            }
+            
             <Switch>
                 <Route path="/" exact component={Home} />
                 <Route path="/team" exact component={Team} />
