@@ -4,7 +4,7 @@ const dredgingAndRiverSediments = (likeMining, typeValueLikeMining, valueLikeMin
 
     const productionSedimentTurnsFeatherTonnesPerMonthGold = 6.262;
     const equivalentErosionTonPerHaPerYear = 12.54;
-    const erosionControlBRL = 66.42;
+    const erosionControlUSD = 66.42;
     const averageMotorPower = 54.4;
     const productionSedimentTurnsFeatherTonnesPerMonth = 37.82;
     const siltingPercentage = 0.15;
@@ -12,7 +12,7 @@ const dredgingAndRiverSediments = (likeMining, typeValueLikeMining, valueLikeMin
     const theAmountOfSedimentPer1DredgeM3PerHour = 300;
     const hoursWorkedByDredgePerDay = 24;
     const daysInTheYear = 365;
-    const transportCost1DredgeBRL = 3.8;
+    const transportCost1DredgeUSD = 3.8;
     const kmRotatedPerLiter = 2.5;
     const priceLiterDiesel = 3.24;
     const averageDriverSalaryFreightPerKm = 2.22;
@@ -25,13 +25,13 @@ const dredgingAndRiverSediments = (likeMining, typeValueLikeMining, valueLikeMin
     if(likeMining === FERRY && typeValueLikeMining === AMOUNT_GOLD) {//input ouro
     const productionSedimentturnsTonFeather =	productionSedimentTurnsFeatherTonnesPerMonthGold * valueLikeMining;
     const equivalenceHaImpacted = productionSedimentturnsTonFeather / equivalentErosionTonPerHaPerYear;
-    const ferryDredgingDamageValue = equivalenceHaImpacted * erosionControlBRL;
+    const ferryDredgingDamageValue = equivalenceHaImpacted * erosionControlUSD;
     return ferryDredgingDamageValue
 
     }else if(likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING) {//input meses de garimpo
     const productionSedimentturnsTonFeather = productionSedimentTurnsFeatherTonnesPerMonth * averageMotorPower * valueLikeMining;
     const equivalenceHaImpacted = productionSedimentturnsTonFeather / equivalentErosionTonPerHaPerYear;
-    const ferryDredgingDamageValue = equivalenceHaImpacted * erosionControlBRL;
+    const ferryDredgingDamageValue = equivalenceHaImpacted * erosionControlUSD;
     return ferryDredgingDamageValue
 
     }else if (likeMining === PIT && typeValueLikeMining === AMOUNT_GOLD) { //input ouro
@@ -44,7 +44,7 @@ const dredgingAndRiverSediments = (likeMining, typeValueLikeMining, valueLikeMin
     const dredgingCostWithoutFreight = dredgingCostPerM3 * volumeLandSiltingRiver;
     const amountOfSedimentPer1M3DredgePerYear = daysInTheYear * hoursWorkedByDredgePerDay * theAmountOfSedimentPer1DredgeM3PerHour;
     const dredgerQuantity1Year = (volumeLandSiltingRiver/amountOfSedimentPer1M3DredgePerYear) < 1 ? 1 : Math.round(volumeLandSiltingRiver/amountOfSedimentPer1M3DredgePerYear);
-    const shippingCostDredgeBRL = distanceanningCenter * transportCost1DredgeBRL;
+    const shippingCostDredgeBRL = distanceanningCenter * transportCost1DredgeUSD;
     const quantityOfLitersConsumedDiesel = distanceanningCenter / kmRotatedPerLiter;
     const fuelCostFreightDredging = priceLiterDiesel * quantityOfLitersConsumedDiesel;
     const shippingCostWithDredgingDriver = averageDriverSalaryFreightPerKm * distanceanningCenter;
@@ -65,7 +65,7 @@ const dredgingAndRiverSediments = (likeMining, typeValueLikeMining, valueLikeMin
     const dredgingCostWithoutFreight = dredgingCostPerM3 * volumeLandSiltingRiver;
     const amountOfSedimentPer1M3DredgePerYear = daysInTheYear * hoursWorkedByDredgePerDay * theAmountOfSedimentPer1DredgeM3PerHour;
     const dredgerQuantity1Year = (volumeLandSiltingRiver/amountOfSedimentPer1M3DredgePerYear) < 1 ? 1 : Math.round(volumeLandSiltingRiver/amountOfSedimentPer1M3DredgePerYear);
-    const shippingCostDredgeBRL = distanceanningCenter * transportCost1DredgeBRL;
+    const shippingCostDredgeBRL = distanceanningCenter * transportCost1DredgeUSD;
     const quantityOfLitersConsumedDiesel = distanceanningCenter / kmRotatedPerLiter;
     const fuelCostFreightDredging = priceLiterDiesel * quantityOfLitersConsumedDiesel;
     const shippingCostWithDredgingDriver = averageDriverSalaryFreightPerKm * distanceanningCenter;
@@ -82,7 +82,7 @@ const dredgingAndRiverSediments = (likeMining, typeValueLikeMining, valueLikeMin
     const dredgingCostWithoutFreight = dredgingCostPerM3 * volumeLandSiltingRiver;
     const amountOfSedimentPer1M3DredgePerYear = daysInTheYear * hoursWorkedByDredgePerDay * theAmountOfSedimentPer1DredgeM3PerHour;
     const dredgerQuantity1Year = (volumeLandSiltingRiver/amountOfSedimentPer1M3DredgePerYear) < 1 ? 1 : Math.round(volumeLandSiltingRiver/amountOfSedimentPer1M3DredgePerYear);
-    const shippingCostDredgeBRL = distanceanningCenter * transportCost1DredgeBRL;
+    const shippingCostDredgeBRL = distanceanningCenter * transportCost1DredgeUSD;
     const quantityOfLitersConsumedDiesel = distanceanningCenter / kmRotatedPerLiter;
     const fuelCostFreightDredging = priceLiterDiesel * quantityOfLitersConsumedDiesel;
     const shippingCostWithDredgingDriver = averageDriverSalaryFreightPerKm * distanceanningCenter;

@@ -86,9 +86,9 @@ const hypertension = (likeMining, typeValueLikeMining, valueLikeMining, txPreval
     const dalyHypertension = hypertensionIncidence * weightOgDisabilityHypertension * calculation7;
     const DALY1HypertensionCost = dalyHypertension * DALY1Hypertension;
 
-    const AnnualHypertensionCostTreatament = 292;
+    const AnnualHypertensionCostTreatamentUSD = 292;
     const incidenceHypertensionTreatament = (hypertensionIncidence * toPopulationAffectedMercuryHair) /1000;
-    const toCostHypertensionTreatamentInYears = incidenceHypertensionTreatament * durationOfDisabilityHypertension * AnnualHypertensionCostTreatament;
+    const toCostHypertensionTreatamentInYears = incidenceHypertensionTreatament * durationOfDisabilityHypertension * AnnualHypertensionCostTreatamentUSD;
     const toDALYCostAndHypertensionTreatment = toCostHypertensionTreatamentInYears + DALY1HypertensionCost;
 
     return toDALYCostAndHypertensionTreatment

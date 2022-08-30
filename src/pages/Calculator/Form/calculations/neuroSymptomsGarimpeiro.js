@@ -7,7 +7,7 @@ const neuroSymptomsGarimpeiro = (likeMining, typeValueLikeMining, valueLikeMinin
     const DALY1Cost = 103599;
     const weightNeuroDisabilityGoldminers = 0.368;
     const amountOfGoldminersYear = 150.45;
-    const neuroTreatmentCostPerGoldMiner = 2244;
+    const neuroTreatmentCostPerGoldMinerUSD = 2244;
     const gramGoldByYearWell = 23700;
     const goldenGrassPerMonthFerry = 302;
     
@@ -15,7 +15,7 @@ const neuroSymptomsGarimpeiro = (likeMining, typeValueLikeMining, valueLikeMinin
         const goldenGrass = gramGoldByYearWell * valueLikeMining;
         const qtdTotalGoldMiners = goldenGrass / amountOfGoldminersYear;
         const qtdOfMinersAffected = txPrevalence * qtdTotalGoldMiners;
-        const neuroGoldMinersTreatmentCost = neuroTreatmentCostPerGoldMiner * qtdOfMinersAffected;
+        const neuroGoldMinersTreatmentCost = neuroTreatmentCostPerGoldMinerUSD * qtdOfMinersAffected;
 	
         const weightNeuroDisabilityGoldminersQtdGoldDiggers = weightNeuroDisabilityGoldminers * qtdTotalGoldMiners;
         const dalyYearsProspectors = txPrevalence * weightNeuroDisabilityGoldminersQtdGoldDiggers;
@@ -27,7 +27,7 @@ const neuroSymptomsGarimpeiro = (likeMining, typeValueLikeMining, valueLikeMinin
         const goldenGrass = goldenGrassPerMonthFerry * valueLikeMining;
         const tonumberOfGoldMiners = goldenGrass / amountOfGoldminersYear;
         const numberOfMinersAffected = txPrevalence * tonumberOfGoldMiners;
-        const neuroGoldMinersTreatmentCost = neuroTreatmentCostPerGoldMiner * numberOfMinersAffected;
+        const neuroGoldMinersTreatmentCost = neuroTreatmentCostPerGoldMinerUSD * numberOfMinersAffected;
 
         const weightNeuroDisabilityGoldminers_QtdGarimpeiros = weightNeuroDisabilityGoldminers  * tonumberOfGoldMiners;
         const DALYyearsGoldMiner = txPrevalence * weightNeuroDisabilityGoldminers_QtdGarimpeiros;
@@ -38,7 +38,7 @@ const neuroSymptomsGarimpeiro = (likeMining, typeValueLikeMining, valueLikeMinin
     }else {
         const qtdTotalGoldMiners = gold / amountOfGoldminersYear;
         const qtdOfMinersAffected = qtdTotalGoldMiners * txPrevalence;
-        const neuroGoldMinersTreatmentCost = qtdOfMinersAffected * neuroTreatmentCostPerGoldMiner;
+        const neuroGoldMinersTreatmentCost = qtdOfMinersAffected * neuroTreatmentCostPerGoldMinerUSD;
 	
         const weightNeuroDisabilityGoldminersQtdGoldDiggers = weightNeuroDisabilityGoldminers * qtdTotalGoldMiners;
         const dalyYearsProspectors = txPrevalence * weightNeuroDisabilityGoldminersQtdGoldDiggers;

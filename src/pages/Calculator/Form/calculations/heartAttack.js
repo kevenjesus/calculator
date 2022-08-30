@@ -86,9 +86,9 @@ const heartAttack = (likeMining, typeValueLikeMining, valueLikeMining, txPrevale
     
     const DALYInfarction =  dalyInfarInfarto * DALY1HeartAttackCost;
 
-    const annualInfarctTreatmentCost = 2300;
+    const annualInfarctTreatmentCostUSD = 2300;
     const infarctionIncidenceTreatment = (infarctionIncidenceRate * toPopulationAffectedMercuryHair) /1000;
-    const toCostOfInfarctionTreatmentYears = infarctionIncidenceTreatment * durationDisabilityInfarction * annualInfarctTreatmentCost;
+    const toCostOfInfarctionTreatmentYears = infarctionIncidenceTreatment * durationDisabilityInfarction * annualInfarctTreatmentCostUSD;
     const toDALYCostAndInfarctionTreatment = toCostOfInfarctionTreatmentYears + DALYInfarction;
    
 

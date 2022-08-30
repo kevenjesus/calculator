@@ -136,8 +136,8 @@ distNorm28ate30 + distNorm30ate32 + distNorm32ate34 + distNorm34ate36 + distNorm
   const calculation5 = (1-agwt)/discountRate;
   const calculation6 = (1-Math.exp(-discountRate*durationOfDisability));
   const daly = weightOfDisabilityPorincidence*(agwt*calculation1*((Math.exp(calculation2)*calculation3)-calculation4)+calculation5*calculation6);
-  const aDALYBRL = 103599;
-  const toLossQIFetuses = daly*aDALYBRL;
+  const aDALYUSD = 103599;
+  const toLossQIFetuses = daly*aDALYUSD;
   
   return toLossQIFetuses
 

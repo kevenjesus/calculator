@@ -6,12 +6,13 @@ const CONSERVATIVE = 0.29
 
 const bioprospecting = (likeMining, typeValueLikeMining, txPrevalence, hectare) => { 
   
-  const bioprospectingCostByBRL = txPrevalence === CONSERVATIVE ? 68.19 : 116.95
+  //const bioprospectingCostByBRL = txPrevalence === CONSERVATIVE ? 68.19 : 116.95
+  const bioprospectingCostByUSD = txPrevalence === CONSERVATIVE ? 13.63 : 23.39
   const txDiscount = 0.03;
 
   
 
-  const amounts = calcMontante(bioprospectingCostByBRL)
+  const amounts = calcMontante(bioprospectingCostByUSD)
   const VPLBioprospecting = vpl(txDiscount, amounts)
 
     let toBioprospecting;
