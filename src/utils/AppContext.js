@@ -40,7 +40,8 @@ export const stateTypes = {
     ADD_VALUE: 'ADD_VALUE',
     CHANGE_TOTALVALUE: 'CHANGE_TOTALVALUE',
     SET_CALCULATEFORM: 'SET_CALCULATEFORM',
-    SET_COUNTRY_REGION: 'SET_COUNTRY_REGION'
+    SET_COUNTRY_REGION: 'SET_COUNTRY_REGION',
+    SET_RETORT: 'SET_RETORT'
 }
 
 const initialState = {
@@ -61,6 +62,7 @@ const initialState = {
         pitDepth: 2.5,
         valuatioMethod: ALLUVIUM,
         txPrevalence: TX_PREVALENCE_MAX,
+        retort: [],
         values: [],
         totalValue: 0
     },
@@ -106,6 +108,8 @@ const calculatorReducer = (state, action) => {
             return {...state, totalValue: action.payload};
         case stateTypes.SET_CALCULATEFORM:
             return action.payload
+        case stateTypes.SET_RETORT:
+            return {...state, retort: action.payload}
         default:
             return state;
     }
