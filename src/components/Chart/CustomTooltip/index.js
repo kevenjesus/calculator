@@ -9,7 +9,7 @@ const CustomTooltip = (props) => {
       return (
         <Container>
           <Item>{displayName}</Item>
-          <Value>{total.toLocaleString("pt-BR", { minimumFractionDigits: 2 , style: 'currency', currency: 'BRL' })}</Value>
+          <Value>{total.toLocaleString("en-US", { minimumFractionDigits: 2 , style: 'currency', currency: 'USD' })}</Value>
         </Container>
       );
     }
