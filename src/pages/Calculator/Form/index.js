@@ -34,6 +34,7 @@ function Form() {
         qtdAnalysis,
         pitDepth,
         valuatioMethod,
+        retort,
         txPrevalence } = calculator
     const { calculatorForm, introduction } = language
     const history = useHistory()
@@ -164,7 +165,22 @@ function Form() {
                 checked: knowRegion === false ? true : false
             },
         ]
+        const dataRetort = [
+            {
+                name: 'retort',
+                label: 'Sim',
+                value: YES,
+                checked: false
+            },
+            {
+                name: 'retort',
+                label: 'Não',
+                value: NO,
+                checked: true
+            },
+        ]
         dispatch({type: stateTypes.SET_REGION_LIST, payload: dataRegion})
+        dispatch({type: stateTypes.SET_RETORT, payload: dataRetort})
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [language, knowRegion])
 
@@ -181,6 +197,18 @@ function Form() {
         dispatch({ type: stateTypes.SET_REGION_LIST, payload: regionListUpdate })
         dispatch({ type: stateTypes.SET_KNOW_REGION, payload: Number(value) === YES })
     }, [dispatch, regionList])
+   
+    const handleRetort = useCallback((e) => {
+        const { value } = e.target
+        const retort_update = retort.map(r => {
+            r.checked = false
+            if (r.value === Number(value)) {
+                r.checked = !r.checked
+            }
+            return r
+        })
+        dispatch({type: stateTypes.SET_RETORT, payload: retort_update})
+    }, [dispatch])
 
     const handleState = useCallback((e) => {
         const { value } = e.target
@@ -349,14 +377,22 @@ function Form() {
                 </Row>
                 <Row>
                     
-                    
-                    <Col xs={12}>
+                    <Col xs={12} lg={knowRegion ? 6 : 12}>
                         <label>{calculatorForm.labels.valueHypothesis}</label>
                         <select name="txPrevalencia" value={txPrevalence} onChange={handleTxPrevalance}>
                             <option value="0.29">{calculatorForm.values.valueHypothesis.conservative}</option>
                             <option value="0.343">{calculatorForm.values.valueHypothesis.precautionaryPrinciple}</option>
                         </select>
                     </Col>
+                    {
+                        knowRegion ? (
+                            <Col xs={12} lg={6}>
+                                <label>Possui retorta?</label>
+                                <RadioBoxConditional state={retort} setState={handleRetort} />
+                            </Col>
+                        ) : <></>
+                    }
+                    
                 </Row>
 
                 <ButtonFixed>
