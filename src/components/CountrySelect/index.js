@@ -30,7 +30,7 @@ export const countries_region = [
 ]
 
 const CountrySelect = () => {
-    const { state, dispatch} = useContext(AppContext);
+    const {dispatch} = useContext(AppContext);
     const [modalState, setModal] = useState(true)
     const [selected, setCountry] = useState(countries_region[0])
     
@@ -40,12 +40,12 @@ const CountrySelect = () => {
         const valueSelect = select.options[select.selectedIndex].getAttribute("value")
         const value = countries_region.find(item => item.country === valueSelect)
         setCountry(value)
-    }, [setCountry, dispatch])
+    }, [setCountry])
 
     const handleNext = useCallback(() => {
         setModal(false)
         dispatch({type: stateTypes.SET_COUNTRY_REGION, payload: selected })
-    }, [setModal, selected])
+    }, [setModal, dispatch, selected])
 
     return (
         <Modal open={modalState}>
