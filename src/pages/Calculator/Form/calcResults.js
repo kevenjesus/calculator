@@ -20,7 +20,7 @@ import woodAndNonWoodProducts from "./calculations/woodAndNonWoodProducts"
 import { AMOUNT_GOLD, CATEGORY_DEFORESTATION, CATEGORY_MERCURY, CATEGORY_SILTING_RIVERS, IMPACTED_AREA } from "./consts"
 
 const calcResults = (state, dispatch) => {
-    const { calculator } = state
+    const { calculator, country_region } = state
     const {
         knowRegion,
         counties,
@@ -29,6 +29,7 @@ const calcResults = (state, dispatch) => {
         qtdAnalysis,
         pitDepth,
         txPrevalence,
+        retort,
         valuatioMethod } = calculator
 
        if(!country) {
@@ -61,7 +62,7 @@ const calcResults = (state, dispatch) => {
         impacts.push({ label: 'BioProspecção', displayName: 'BioProspecção', category: CATEGORY_DEFORESTATION, value: totalBio })
         //console.log('totalBio', totalBio)
 
-        const totalCarbon = carbon(likeMining, typeValueLikeMining, hectareValue)
+        const totalCarbon = carbon(country_region, likeMining, typeValueLikeMining, hectareValue)
         impacts.push({ label: 'Carbono', displayName: 'Carbono', category: CATEGORY_DEFORESTATION, value: totalCarbon })
         //console.log('totalCarbon',totalCarbon) 
 
@@ -77,8 +78,8 @@ const calcResults = (state, dispatch) => {
         impacts.push({ label: 'Espécies', displayName: 'Espécies', category: CATEGORY_DEFORESTATION, value: totalCulturedAndSpecies })
         //console.log('totalCulturedAndSpecies', totalCulturedAndSpecies)
         
-        const totalCavaGroundingCostAuFertile = cavaGroundingCostAuFertile(likeMining, typeValueLikeMining, valueLikeMining, pitDepth, distanceanningCenter, goldValue)
-        const totalCavaGroundingCostAuNorm = cavaGroundingCostAuNorm(likeMining, typeValueLikeMining, valueLikeMining, pitDepth, distanceanningCenter, hectareValue)
+        const totalCavaGroundingCostAuFertile = cavaGroundingCostAuFertile(country_region,likeMining, typeValueLikeMining, valueLikeMining, pitDepth, distanceanningCenter, goldValue)
+        const totalCavaGroundingCostAuNorm = cavaGroundingCostAuNorm(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth, distanceanningCenter, hectareValue)
         impacts.push({ label: 'Aterramento de cava', displayName: 'Aterramento de cava', category: CATEGORY_SILTING_RIVERS, value:(totalCavaGroundingCostAuFertile+totalCavaGroundingCostAuNorm)})
         //console.log('totalCavaGroundingCostAuFertile', totalCavaGroundingCostAuFertile)
         //console.log('totalCavaGroundingCostAuNorm', totalCavaGroundingCostAuNorm)
@@ -95,9 +96,12 @@ const calcResults = (state, dispatch) => {
         impacts.push({ label: 'Erosão', displayName: 'Erosão', category: CATEGORY_SILTING_RIVERS, value: totalErosionSiltingUp })
         //console.log('totalErosionSiltingUp', totalErosionSiltingUp)
     
-        const totalNeuroSymptomsGarimpeiro = neuroSymptomsGarimpeiro(likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, goldValue)//gold
-        impacts.push({ label: 'Sintomas neuropsicológicos em garimpeiros', displayName: 'Sintomas neuropsicológicos em garimpeiros', category: CATEGORY_MERCURY, value: totalNeuroSymptomsGarimpeiro })
-        //console.log('totalNeuroSymptomsGarimpeiro', totalNeuroSymptomsGarimpeiro)
+        if(!retort[0].checked) {
+            const totalNeuroSymptomsGarimpeiro = neuroSymptomsGarimpeiro(likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, goldValue)//gold
+            impacts.push({ label: 'Sintomas neuropsicológicos em garimpeiros', displayName: 'Sintomas neuropsicológicos em garimpeiros', category: CATEGORY_MERCURY, value: totalNeuroSymptomsGarimpeiro })
+            //console.log('totalNeuroSymptomsGarimpeiro', totalNeuroSymptomsGarimpeiro)
+        }
+        
         
         const totalLossQI = lossQI (likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, urbanPopMunicipality, ruralPopMunicipality, popDensity2060, goldValue, knowRegion)//gold
         impacts.push({ label: 'Perda de Qi em Fetos', displayName: 'Perda de Qi em Fetos', category: CATEGORY_MERCURY, value: totalLossQI })
