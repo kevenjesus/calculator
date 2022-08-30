@@ -1,11 +1,14 @@
+import fixedCalcultions from "hooks/fixedCalculations"
 import calcMontante from "utils/calcMontante"
 import vpl from "utils/vpl"
 import { ALLUVIUM, AMOUNT_GOLD, FERRY, IMPACTED_AREA, PIT } from "../consts"
 
 const carbon = (country_region, likeMining, typeValueLikeMining, hectare) => {
+    const { carbon } = fixedCalcultions(country_region)
+    const { carbonCostPerHaUSD } = carbon
 
     const txDiscount = 0.03;
-    const carbonCostPerHaUSD = 887.74;
+    //const carbonCostPerHaUSD = 887.74;
     
     const amounts = calcMontante(carbonCostPerHaUSD)
     const VPLCarbon = vpl(txDiscount, amounts)
