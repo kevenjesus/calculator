@@ -141,6 +141,7 @@ const fixedCalcultions = (country_region) => {
             general.excavatorHoursDays = 10
             general.excavatorCostPerKMUSD = 0.77
             general.hollowMediumDepth = 100
+            general.cavaAverageProductivity = 0.141
 
             carbon.carbonCostPerHaUSD = 259.73
 
@@ -154,7 +155,7 @@ const fixedCalcultions = (country_region) => {
             erosionSiltingUp.siltingUpCostPerHaUSD = 13.28
 
             dredgingAndRiverSediments.dredgingCostPerM3 = 7.51
-            dredgingAndRiverSediments.cavaAverageProductivity = 0.141
+            
             dredgingAndRiverSediments.averageMotorPower = 250
             dredgingAndRiverSediments.productionSedimentTurnsFeatherTonnesPerMonth = 37.82
             dredgingAndRiverSediments.equivalentErosionTonPerHaPerYear = 12.54
@@ -215,6 +216,7 @@ const fixedCalcultions = (country_region) => {
             general.excavatorHoursDays = 10
             general.excavatorCostPerKMUSD = 0.76
             general.hollowMediumDepth = 10
+            general.cavaAverageProductivity = 0.141
             
             carbon.carbonCostPerHaUSD = 113.39
             recoverOfTopSoll.hectare = 0.31
@@ -227,7 +229,6 @@ const fixedCalcultions = (country_region) => {
             erosionSiltingUp.siltingUpCostPerHaUSD = 13.28
 
             dredgingAndRiverSediments.dredgingCostPerM3 = 7.51
-            dredgingAndRiverSediments.cavaAverageProductivity = 0.4
             dredgingAndRiverSediments.averageMotorPower = 54.4
             dredgingAndRiverSediments.productionSedimentTurnsFeatherTonnesPerMonth = 37.82
             dredgingAndRiverSediments.equivalentErosionTonPerHaPerYear = 12.54
@@ -287,6 +288,7 @@ const fixedCalcultions = (country_region) => {
             general.excavatorHoursDays = 10
             general.excavatorCostPerKMUSD = 0.76
             general.hollowMediumDepth = 10
+            general.cavaAverageProductivity = 0.141
 
             carbon.carbonCostPerHaUSD = 277.53
             recoverOfTopSoll.hectare = 0.31
@@ -299,7 +301,6 @@ const fixedCalcultions = (country_region) => {
             erosionSiltingUp.siltingUpCostPerHaUSD = 13.28
 
             dredgingAndRiverSediments.dredgingCostPerM3 = 7.51
-            dredgingAndRiverSediments.cavaAverageProductivity = 0.2
             dredgingAndRiverSediments.averageMotorPower = 20
             dredgingAndRiverSediments.productionSedimentTurnsFeatherTonnesPerMonth = 37.82
             dredgingAndRiverSediments.equivalentErosionTonPerHaPerYear = 12.54
