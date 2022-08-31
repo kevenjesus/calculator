@@ -48,11 +48,12 @@ const fixedCalcultions = (country_region) => {
             levelMediumContaminationFish: 0.5,
             AverageFishConsumptionPerDayInRuralGrams: 144.5,
             consumptionMediumFishByDayInGramsUrban: 57,
-            densityPopulationalRegionNorth2060: 6.00696,
+            densityPopulationalRegionNorth2060: 6.00,
             aDALYUSD: 20719.8,
             excavatorHoursDays: 10,
             excavatorCostPerKMUSD: 0.76,
             cavaAverageProductivity: 0.4,
+            prodGoldMonthFerry: 302,
         }
         let carbon = {
             carbonCostPerHaUSD: 177.55
@@ -88,7 +89,6 @@ const fixedCalcultions = (country_region) => {
         }
         let lossQI = {
             birthRate: 18.8,
-            prodGoldMonthFerry: 302,
 
         }
         let neuroSymptomsGarimpeiro = {
@@ -142,6 +142,7 @@ const fixedCalcultions = (country_region) => {
             general.excavatorCostPerKMUSD = 0.77
             general.hollowMediumDepth = 100
             general.cavaAverageProductivity = 0.141
+            general.prodGoldMonthFerry = 229.33
 
             carbon.carbonCostPerHaUSD = 259.73
 
@@ -171,7 +172,7 @@ const fixedCalcultions = (country_region) => {
             cavaGroundingCostAuFertile.groundingCostFertilePitUSD = 2.86
 
             lossQI.birthRate = 17.55
-            lossQI.prodGoldMonthFerry = 229.33
+            
 
             neuroSymptomsGarimpeiro.amountOfGoldminersYear = 384
             neuroSymptomsGarimpeiro.neuroTreatmentCostPerGoldMinerUSD = 5317.83
@@ -217,6 +218,7 @@ const fixedCalcultions = (country_region) => {
             general.excavatorCostPerKMUSD = 0.76
             general.hollowMediumDepth = 10
             general.cavaAverageProductivity = 0.141
+            general.prodGoldMonthFerry = 302
             
             carbon.carbonCostPerHaUSD = 113.39
             recoverOfTopSoll.hectare = 0.31
@@ -243,7 +245,7 @@ const fixedCalcultions = (country_region) => {
             cavaGroundingCostAuFertile.groundingCostFertilePitUSD = 2.54
 
             lossQI.birthRate = 19.19
-            lossQI.prodGoldMonthFerry = 302
+            
 
             neuroSymptomsGarimpeiro.amountOfGoldminersYear = 1464.28
             neuroSymptomsGarimpeiro.neuroTreatmentCostPerGoldMinerUSD = 1921.7
@@ -289,6 +291,7 @@ const fixedCalcultions = (country_region) => {
             general.excavatorCostPerKMUSD = 0.76
             general.hollowMediumDepth = 10
             general.cavaAverageProductivity = 0.141
+            general.prodGoldMonthFerry = 2637.83
 
             carbon.carbonCostPerHaUSD = 277.53
             recoverOfTopSoll.hectare = 0.31
@@ -315,7 +318,7 @@ const fixedCalcultions = (country_region) => {
 
             lossQI.birthRate = 14.7
             lossQI.aDALYUSD = 16003.8
-            lossQI.prodGoldMonthFerry = 2637.83
+            
 
             neuroSymptomsGarimpeiro.amountOfGoldminersYear = 41.45
             neuroSymptomsGarimpeiro.neuroTreatmentCostPerGoldMinerUSD = 36636.6

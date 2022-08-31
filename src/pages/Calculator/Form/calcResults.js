@@ -1,3 +1,4 @@
+import fixedCalcultions from "hooks/fixedCalculations"
 import { stateTypes } from "utils/AppContext"
 import goldToHecatere from "utils/GoldToHectare"
 import hectareToGold, { goldenGramForHectare } from "utils/hectareToGold"
@@ -37,6 +38,8 @@ const calcResults = (state, dispatch) => {
        }
 
         const impacts = []
+        const { general } = fixedCalcultions(country_region)
+        const { densityPopulationalRegionNorth2060 } = general
         const hectareValue = calculator.analysisUnit === AMOUNT_GOLD ? goldToHecatere(Number(qtdAnalysis.value), pitDepth) : Number(qtdAnalysis.value)
         const goldValue = calculator.analysisUnit === IMPACTED_AREA ? hectareToGold(Number(qtdAnalysis.value), pitDepth) : Number(qtdAnalysis.value)
         const gramadeOuroporHe = goldenGramForHectare(hectareValue, goldValue)
@@ -46,7 +49,7 @@ const calcResults = (state, dispatch) => {
         const valueLikeMining = qtdAnalysis.value // gold, hactare, months, years
         const typeValueLikeMining = calculator.analysisUnit // AMOUNT_GOLD / IMPACTED_AREA / YEARS_OF_MINING / MONTHS_OF_MINING
         const popDensity2010 = knowRegion ? currentCountry.popDensity2010 : 4.12;
-        const popDensity2060 = knowRegion ? currentCountry.popDensity2060  : 6.0;
+        const popDensity2060 = knowRegion ? currentCountry.popDensity2060  : densityPopulationalRegionNorth2060;
         const urbanPopMunicipality = knowRegion ? currentCountry.urbanPopMunicipality : 0.7353;
         const ruralPopMunicipality = knowRegion ? currentCountry.ruralPopMunicipality : 0.2647;
         const distanceanningCenter = knowRegion ? currentCountry.distanceanningCenter : 212.74;
@@ -107,9 +110,9 @@ const calcResults = (state, dispatch) => {
         impacts.push({ label: 'Perda de Qi em Fetos', displayName: 'Perda de Qi em Fetos', category: CATEGORY_MERCURY, value: totalLossQI })
         //console.log('totalLossQI', totalLossQI)
 
-        const totalHypertension = hypertension(likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, urbanPopMunicipality, ruralPopMunicipality, popDensity2060, goldValue, knowRegion)//gold
+        const totalHypertension = hypertension(country_region, likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, urbanPopMunicipality, ruralPopMunicipality, popDensity2060, goldValue, knowRegion)//gold
         //console.log('totalHypertension', totalHypertension)
-        const totalHeartAttack = heartAttack(likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, urbanPopMunicipality, ruralPopMunicipality, popDensity2060, goldValue, knowRegion)//gold
+        const totalHeartAttack = heartAttack(country_region, likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, urbanPopMunicipality, ruralPopMunicipality, popDensity2060, goldValue, knowRegion)//gold
         //console.log('totalHeartAttack', totalHeartAttack)
         impacts.push({ label: 'Doenças cardiovasculares', displayName: 'Doenças cardiovasculares (HIPERTENSÃO + INFARTO)', category: CATEGORY_MERCURY, value: (totalHeartAttack+totalHypertension) })
         
