@@ -117,7 +117,6 @@ const heartAttack = (country_region, likeMining, typeValueLikeMining, valueLikeM
     const infarctionIncidenceTreatment = (infarctionIncidenceRate * toPopulationAffectedMercuryHair) /1000;
     const toCostOfInfarctionTreatmentYears = infarctionIncidenceTreatment * durationDisabilityInfarction * annualInfarctTreatmentCostUSD;
     const toDALYCostAndInfarctionTreatment = toCostOfInfarctionTreatmentYears + DALYInfarction;
-   console.log(toDALYCostAndInfarctionTreatment)
 
     return toDALYCostAndInfarctionTreatment
 }

@@ -18,6 +18,7 @@ import calcResults from './calcResults'
 import ExtrationTypeOptions from './ExtrationTypeOptions'
 import { useAlert } from 'react-alert'
 import { BRAZIL, COLOMBIA, countries_region, EQUADOR, PERU } from 'components/CountrySelect';
+import useExchange from 'hooks/useExchange'
 
 
 function Form() {
@@ -35,10 +36,12 @@ function Form() {
         pitDepth,
         valuatioMethod,
         retort,
+        inflation,
         txPrevalence } = calculator
     const { calculatorForm, introduction } = language
     const history = useHistory()
     const alert = useAlert()
+    const { USDtoBRL } = useExchange()
 
     const isBrazil = useMemo(() => country_region && country_region.country === countries_region[BRAZIL].country, [country_region]) 
     const isEquador = useMemo(() => country_region && country_region.country === countries_region[EQUADOR].country, [country_region]) 
@@ -232,6 +235,11 @@ function Form() {
         dispatch({ type: stateTypes.SET_QTD_ANALYS_UNIT, payload: { value, error: value === '' } })
     }, [dispatch])
 
+    const handleInflation = useCallback((e) => {
+        const { value } = e.target
+        dispatch({ type: stateTypes.SET_INFLATION, payload: value })
+    }, [dispatch])
+
 
     const handlePitDepth = useCallback((e) => {
         const { value } = e.target
@@ -269,13 +277,14 @@ function Form() {
     }, [dispatch, qtdAnalysis, alert])
 
 
-    const submitCalc = () => {
+    const submitCalc = useCallback(() => {
         if(checkFormIsInvalid()) {
             return;
         }
-        calcResults(stateContext, dispatch)
+        const dolarTOReal = Number(USDtoBRL.high)
+        calcResults(stateContext, dispatch, dolarTOReal)
         history.push('/loading')
-    }
+    }, [history, checkFormIsInvalid, stateContext, dispatch, USDtoBRL])
 
     useEffect(() => {
         let placeholder;
@@ -393,6 +402,16 @@ function Form() {
                         ) : <></>
                     }
                     
+                </Row>
+                <Row>
+                    <Col xs={12}>
+                        <TextField
+                            label="Inflação acumulada desde de 2022 %"
+                            type="number"
+                            value={inflation}
+                            onChange={handleInflation}
+                            name="valor" placeholder="Inflação" />
+                    </Col>
                 </Row>
 
                 <ButtonFixed>

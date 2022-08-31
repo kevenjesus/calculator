@@ -1,8 +1,10 @@
+import { BRAZIL, countries_region } from "components/CountrySelect"
 import fixedCalcultions from "hooks/fixedCalculations"
 import { stateTypes } from "utils/AppContext"
 import goldToHecatere from "utils/GoldToHectare"
 import hectareToGold, { goldenGramForHectare } from "utils/hectareToGold"
 import ToBRL from "utils/toBRL"
+import toUSD from "utils/toUSD"
 import bioprospecting from "./calculations/bioprospecting"
 import carbon from "./calculations/carbon"
 import cavaGroundingCostAuFertile from "./calculations/cavaGroundingCostAuFertile"
@@ -20,7 +22,7 @@ import soilMercuryRemediation from "./calculations/soilMercuryRemediation"
 import woodAndNonWoodProducts from "./calculations/woodAndNonWoodProducts"
 import { AMOUNT_GOLD, CATEGORY_DEFORESTATION, CATEGORY_MERCURY, CATEGORY_SILTING_RIVERS, IMPACTED_AREA } from "./consts"
 
-const calcResults = (state, dispatch) => {
+const calcResults = (state, dispatch, dolarTOReal) => {
     const { calculator, country_region } = state
     const {
         knowRegion,
@@ -31,11 +33,13 @@ const calcResults = (state, dispatch) => {
         pitDepth,
         txPrevalence,
         retort,
+        inflation,
         valuatioMethod } = calculator
+        const isBrazil = country_region.country === countries_region[BRAZIL].country
 
-       if(!country) {
-           return
-       }
+        if(!country) {
+            return
+        }
 
         const impacts = []
         const { general } = fixedCalcultions(country_region)
@@ -122,9 +126,14 @@ const calcResults = (state, dispatch) => {
 
         const reducer = ((acc, current) => acc+current.value);
         const totalValue = impacts.reduce(reducer, 0);
+        const inflationCalc = Number(inflation) ? (inflation/100) * totalValue : null
+        const totalInflation = inflationCalc ? totalValue+inflationCalc : totalValue
+
+        const totalConverted = isBrazil ? ToBRL(totalInflation*dolarTOReal) : toUSD(totalInflation)
+        
 
         dispatch({ type: stateTypes.ADD_VALUE, payload: impacts })
-        dispatch({ type: stateTypes.CHANGE_TOTALVALUE, payload: ToBRL(totalValue) })
+        dispatch({ type: stateTypes.CHANGE_TOTALVALUE, payload: totalConverted })
         
 
         return {

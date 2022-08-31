@@ -42,7 +42,7 @@ const Chart = ({data}) => {
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="label" fontSize={12} interval={0} />
+          <XAxis dataKey="label"  fontSize={12} interval={0} />
           <YAxis width={150} domain={[0, 'dataMax']} allowDecimals tickFormatter={ToBRL} hide={size < 768} />
           
           <Tooltip content={CustomTooltip} />

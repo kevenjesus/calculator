@@ -40,7 +40,8 @@ export const stateTypes = {
     CHANGE_TOTALVALUE: 'CHANGE_TOTALVALUE',
     SET_CALCULATEFORM: 'SET_CALCULATEFORM',
     SET_COUNTRY_REGION: 'SET_COUNTRY_REGION',
-    SET_RETORT: 'SET_RETORT'
+    SET_RETORT: 'SET_RETORT',
+    SET_INFLATION: 'SET_INFLATION'
 }
 
 const initialState = {
@@ -51,6 +52,7 @@ const initialState = {
         state: '',
         counties: [],
         country: '',
+        inflation: null,
         analysisUnit: IMPACTED_AREA,
         qtdAnalysis: {
             value: '',
@@ -109,6 +111,8 @@ const calculatorReducer = (state, action) => {
             return action.payload
         case stateTypes.SET_RETORT:
             return {...state, retort: action.payload}
+        case stateTypes.SET_INFLATION:
+            return {...state, inflation: action.payload}
         default:
             return state;
     }

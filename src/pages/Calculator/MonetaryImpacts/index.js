@@ -20,6 +20,9 @@ import { useAlert } from 'react-alert'
 import html2canvas from 'html2canvas'
 import { jsPDF } from "jspdf";
 
+import useExchange from 'hooks/useExchange'
+
+
 
 export const DataChart = ({impact, headline, hiddenMonetary, txtTotalNonetary}) => {
     const { total, data } = impact
@@ -60,6 +63,8 @@ const FormCalc = () => {
         txPrevalence } = calculator
     const { calculatorForm, introduction } = language
     const alert = useAlert()
+    const { USDtoBRL } = useExchange()
+
 
     const dataPitDepth = [
         {
@@ -166,18 +171,19 @@ const FormCalc = () => {
         return false
     }, [alert, dispatch, qtdAnalysis])
 
-    const submitCalc = useCallback((state) => {
+    const submitCalc = useCallback((state, dolarTOReal) => {
         if(checkFormIsInvalid()) {
             return;
         }
-        calcResults(state, dispatch)
+        
+        calcResults(state, dispatch, dolarTOReal)
         const { calculator } = state
         sessionStorage.removeItem('@Calculator/form')
         sessionStorage.setItem('@Calculator/form', JSON.stringify(calculator))
     },[checkFormIsInvalid, dispatch])
 
-    const updateCalc = useCallback(() => {
-        submitCalc(stateContext)
+    const updateCalc = useCallback((dolarTOReal) => {
+        submitCalc(stateContext, dolarTOReal)
     }, [stateContext, submitCalc])
 
 
@@ -190,29 +196,35 @@ const FormCalc = () => {
             }
             return r
         })
+        const dolarTOReal = Number(USDtoBRL.high)
         dispatch({ type: stateTypes.SET_REGION_LIST, payload: regionListUpdate })
         dispatch({ type: stateTypes.SET_KNOW_REGION, payload: Number(value) === YES })
-        submitCalc({...stateContext, calculator: {...calculator, regionList:regionListUpdate, knowRegion: Number(value) === YES}})
-    }, [calculator, dispatch, regionList, stateContext, submitCalc])
+        submitCalc({...stateContext, calculator: {...calculator, regionList:regionListUpdate, knowRegion: Number(value) === YES}}, dolarTOReal)
+    }, [calculator, dispatch, regionList, USDtoBRL, stateContext, submitCalc])
 
     const handleState = useCallback((e) => {
         const { value } = e.target
+        const dolarTOReal = Number(USDtoBRL.high)
         getCounties(value)
         dispatch({ type: stateTypes.SET_STATE, payload: value })
-        submitCalc({...stateContext, calculator:{...calculator, state: value}})
-    }, [getCounties, dispatch, submitCalc, stateContext, calculator])
+        submitCalc({...stateContext, calculator:{...calculator, state: value}}, dolarTOReal)
+    }, [getCounties, dispatch, USDtoBRL, submitCalc, stateContext, calculator])
 
     const handleCountry = useCallback((e) => {
         const { value } = e.target
+        const dolarTOReal = Number(USDtoBRL.high)
+
         dispatch({ type: stateTypes.SET_COUNTRY, payload: value })
-        submitCalc({...stateContext, calculator:{...calculator, country: value}})
-    }, [calculator, dispatch, stateContext, submitCalc])
+        submitCalc({...stateContext, calculator:{...calculator, country: value}}, dolarTOReal)
+    }, [calculator, dispatch, stateContext, USDtoBRL, submitCalc])
 
     const handleAnalysisUnit = useCallback((e) => {
         const { value } = e.target
+        const dolarTOReal = Number(USDtoBRL.high)
+
         dispatch({ type: stateTypes.SET_ANALYS_UNIT, payload: Number(value) })
-        submitCalc({...stateContext, calculator:{...calculator, analysisUnit: Number(value)}})
-    }, [calculator, dispatch, stateContext, submitCalc])
+        submitCalc({...stateContext, calculator:{...calculator, analysisUnit: Number(value)}}, dolarTOReal)
+    }, [calculator, dispatch, stateContext, USDtoBRL, submitCalc])
 
     const handleQtdAnalysis = useCallback((e) => {
         const { value } = e.target
@@ -221,9 +233,11 @@ const FormCalc = () => {
 
     const handlePitDepth = useCallback((e) => {
         const { value } = e.target
+        const dolarTOReal = Number(USDtoBRL.high)
+
         dispatch({ type: stateTypes.SET_PITDEPTH, payload: Number(value) })
-        submitCalc({...stateContext, calculator:{ ...calculator, pitDepth: Number(value)}})
-    }, [calculator, dispatch, stateContext, submitCalc])
+        submitCalc({...stateContext, calculator:{ ...calculator, pitDepth: Number(value)}}, dolarTOReal)
+    }, [calculator, dispatch, stateContext, USDtoBRL, submitCalc])
 
     const handleValuationMethod = useCallback((e) => {
         const { value } = e.target
@@ -242,15 +256,21 @@ const FormCalc = () => {
     
 
     useEffect(() => {
-        updateCalc();
+        if(USDtoBRL) {
+            const dolarTOReal = Number(USDtoBRL.high)
+            updateCalc(dolarTOReal);
+        }
+        
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [valuatioMethod])
+    }, [valuatioMethod, USDtoBRL])
 
     const handleTxPrevalance = useCallback((e) => {
         const { value } = e.target
+        const dolarTOReal = Number(USDtoBRL.high)
+
         dispatch({ type: stateTypes.SET_TX_PREVALENCE, payload: Number(value) })
-        submitCalc({...stateContext, calculator:{...calculator, txPrevalence: Number(value)}})
-    }, [calculator, dispatch, stateContext, submitCalc])
+        submitCalc({...stateContext, calculator:{...calculator, txPrevalence: Number(value)}}, dolarTOReal)
+    }, [calculator, dispatch, stateContext, USDtoBRL, submitCalc])
 
     useEffect(() => {
         let placeholder;
@@ -317,7 +337,7 @@ const FormCalc = () => {
                 type="number"
                 value={qtdAnalysis.value}
                 onChange={handleQtdAnalysis}
-                onBlur={updateCalc}
+                onBlur={() => updateCalc(Number(USDtoBRL.high))}
                 name="valor" placeholder={placeholder} />
         </Col>
 
@@ -350,10 +370,12 @@ const MonetaryImpacts = () => {
     const { txPrevalence } = calculator
     const {impacts} = language
     const history = useHistory();
+    const { USDtoBRL } = useExchange()
 
     window.scrollTo(0,0)
 
     const valueTotal = state.calculator.totalValue
+
     const impactsValues = state.calculator.values
 
     const reducer = ((acc, current) => acc + current.value)
@@ -386,35 +408,40 @@ const MonetaryImpacts = () => {
     }
 
     useEffect(() => {
-    
-        calcResults(state, dispatch)
+        if(USDtoBRL) {
+        const dolarTOReal = Number(USDtoBRL.high)
+        calcResults(state, dispatch, dolarTOReal)
+        }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [txPrevalence])
+    }, [txPrevalence, USDtoBRL])
 
-    const handleDownloadPDF = useCallback(() =>{
-        const input = document.getElementById('print');
-        html2canvas(input, {
-            scale: 0.45,
-            
-        })
-        .then((canvas) => {
-            const imgData = canvas.toDataURL('image/png');
-            const pdf = new jsPDF(
-                {
-                    orientation: 'p',
-                    unit: 'mm',
-                    format: 'a4',
-                    putOnlyUsedFonts:true,
-                    floatPrecision: 16
-                   }
-            );
-           
-            pdf.addImage(imgData, 'JPEG', 15, 0);
-            // pdf.output('dataurlnewwindow');
-            pdf.save("download.pdf");
-        })
-        ;
-       
+    const handleDownloadPDF = useCallback(async () =>{
+        const graphics_resume = document.getElementById('graphics_resume');
+        const graphics_total = document.getElementById('graphics_total');
+        const totalMonay = document.getElementById('totalMoney');
+        const canvasGraphics_resume = await html2canvas(graphics_resume, { scale: 0.6 })
+        const canvasGraphics_total = await html2canvas(graphics_total, { scale: 0.53 })
+        const canvasTotalMoney = await html2canvas(totalMonay, { scale: 0.7 })
+
+        const pdf = new jsPDF(
+            {
+                orientation: 'p',
+                unit: 'mm',
+                format: 'a4',
+                putOnlyUsedFonts:true,
+                floatPrecision: 16
+               }
+        );
+        pdf.setFontSize(8)
+        pdf.text('© CSF All rights reserved', pdf.internal.pageSize.width / 2, 287, { align: 'center' })
+        pdf.addImage(canvasTotalMoney.toDataURL('image/png'), 'JPEG', 10, 10);
+        pdf.addImage(canvasGraphics_resume.toDataURL('image/png'), 'JPEG', 10, 50);
+        pdf.addPage('a4', 'p')
+
+        pdf.addImage(canvasGraphics_total.toDataURL('image/png'), 'JPEG', 10, 10);
+        pdf.text('© CSF All rights reserved', pdf.internal.pageSize.width / 2, 287, { align: 'center' })
+        pdf.save("CSF-report.pdf");
+
     }, [])
     
 
@@ -454,7 +481,7 @@ const MonetaryImpacts = () => {
                     </Col>
                     
                     
-                    <Col xs={12} sm={8} md={9}>
+                    <Col xs={12} sm={8} md={9} id="totalMoney">
                         <Headline>{impacts.monetaryImpacts.headline}</Headline>
                         <Row>
                             <Col xs={12} sm={6}>
@@ -469,20 +496,17 @@ const MonetaryImpacts = () => {
                 </Row>
 
                <FormCalc />
-
-               <div id="print">
-
-               
-               <DataChart impact={allImpacts} headline={language.resume} hiddenMonetary />
-               {
-                   hiddenMenu.length === 0 ? <DataChart impact={impactsDesforestation} headline={impacts.deforestation.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
-                   : null
-               }
-               
-               <DataChart impact={impactsSiltingRivers} headline={impacts.siltingOfRivers.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
-               <DataChart impact={impactsMercury} headline={impacts.mercuryContamination.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
+               <div id="graphics_resume">
+                <DataChart impact={allImpacts} headline={language.resume} hiddenMonetary />
                </div>
-                
+               <div id="graphics_total">
+                    {
+                        hiddenMenu.length === 0 ? <DataChart impact={impactsDesforestation} headline={impacts.deforestation.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
+                        : null
+                    }
+                    <DataChart impact={impactsSiltingRivers} headline={impacts.siltingOfRivers.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
+                    <DataChart impact={impactsMercury} headline={impacts.mercuryContamination.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
+                </div>
                 <HiddenSm>
                     <br /><br />
                     <Button variant="default" onClick={() => history.push('/moral-damages')}>Danos morais</Button>
