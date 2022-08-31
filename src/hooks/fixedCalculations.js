@@ -28,8 +28,8 @@ const fixedCalcultions = (country_region) => {
             GDPperCapitaBrazilUSD: 6796.84,
             celciusTemperature: 26.8,
             kmRotatedPerLiter: 2.5,
-            priceLiterDiesel: 0.648,
-            averageDriverSalaryFreightPerKm: 0.444,
+            priceLiterDieselUSD: 0.648,
+            averageDriverSalaryFreightPerKmUSD: 0.444,
             densityGold: 2.76,
             excavationGoldLoss: 2,
             hollowMediumDepth: 0.4,
@@ -51,6 +51,8 @@ const fixedCalcultions = (country_region) => {
             densityPopulationalRegionNorth2060: 6.00696,
             aDALYUSD: 20719.8,
             excavatorHoursDays: 10,
+            excavatorCostPerKMUSD: 0.76,
+            cavaAverageProductivity: 0.4,
         }
         let carbon = {
             carbonCostPerHaUSD: 177.55
@@ -69,7 +71,6 @@ const fixedCalcultions = (country_region) => {
         }
         let dredgingAndRiverSediments = {
             dredgingCostPerM3: 5.6,
-            cavaAverageProductivity: 0.4,
             averageMotorPower: 54.4,
             productionSedimentTurnsFeatherTonnesPerMonth: 37.82,
             equivalentErosionTonPerHaPerYear: 12.54,
@@ -118,8 +119,8 @@ const fixedCalcultions = (country_region) => {
             general.GDPperCapitaBrazilUSD = 6126.9
             general.celciusTemperature = 26
             general.kmRotatedPerLiter = 5.4
-            general.priceLiterDiesel = 0.82
-            general.averageDriverSalaryFreightPerKm = 0.015
+            general.priceLiterDieselUSD = 0.82
+            general.averageDriverSalaryFreightPerKmUSD = 0.015
             general.quantityOfGoldGramsPerYearWell = 23700
             general.averageDepthOfFertileEarth = 0.4
             general.quantitOfM3ExcavatorPerHour = 70
@@ -138,6 +139,8 @@ const fixedCalcultions = (country_region) => {
             general.densityPopulationalRegionNorth2060 = 5.2
             general.aDALYUSD = 18360.7
             general.excavatorHoursDays = 10
+            general.excavatorCostPerKMUSD = 0.77
+            general.hollowMediumDepth = 100
 
             carbon.carbonCostPerHaUSD = 259.73
 
@@ -190,8 +193,8 @@ const fixedCalcultions = (country_region) => {
             general.GDPperCapitaBrazilUSD = 5600.39
             general.celciusTemperature = 24.5
             general.kmRotatedPerLiter = 2.86
-            general.priceLiterDiesel = 0.502
-            general.averageDriverSalaryFreightPerKm = 2.18
+            general.priceLiterDieselUSD = 0.502
+            general.averageDriverSalaryFreightPerKmUSD = 2.18
             general.quantityOfGoldGramsPerYearWell = 18000
             general.averageDepthOfFertileEarth = 0.4
             general.quantitOfM3ExcavatorPerHour = 160
@@ -210,6 +213,8 @@ const fixedCalcultions = (country_region) => {
             general.densityPopulationalRegionNorth2060 = 6.2
             general.aDALYUSD = 16801.17
             general.excavatorHoursDays = 10
+            general.excavatorCostPerKMUSD = 0.76
+            general.hollowMediumDepth = 10
             
             carbon.carbonCostPerHaUSD = 113.39
             recoverOfTopSoll.hectare = 0.31
@@ -261,8 +266,8 @@ const fixedCalcultions = (country_region) => {
             general.GDPperCapitaBrazilUSD = 5334.6
             general.celciusTemperature = 26.3
             general.kmRotatedPerLiter = 2.5
-            general.priceLiterDiesel = 0.75
-            general.averageDriverSalaryFreightPerKm = 0.444
+            general.priceLiterDieselUSD = 0.75
+            general.averageDriverSalaryFreightPerKmUSD = 0.444
             general.quantityOfGoldGramsPerYearWell = 3456
             general.averageDepthOfFertileEarth = 0.4
             general.quantitOfM3ExcavatorPerHour = 160
@@ -280,6 +285,8 @@ const fixedCalcultions = (country_region) => {
             general.consumptionMediumFishByDayInGramsUrban = 9.35
             general.densityPopulationalRegionNorth2060 = 2.59
             general.excavatorHoursDays = 10
+            general.excavatorCostPerKMUSD = 0.76
+            general.hollowMediumDepth = 10
 
             carbon.carbonCostPerHaUSD = 277.53
             recoverOfTopSoll.hectare = 0.31
