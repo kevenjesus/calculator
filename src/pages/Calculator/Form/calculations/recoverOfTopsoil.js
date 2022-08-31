@@ -1,36 +1,43 @@
+import fixedCalcultions from "hooks/fixedCalculations";
 import { ALLUVIUM, FERRY, IMPACTED_AREA, PIT } from "../consts";
 
 const CONSERVATIVE = 0.29
 
-const recoveryOfTopsoil = (likeMining, distanceanningCenter, gold, goldenGramPerHa, txPrevalence, typeValueLikeMining) => {
+const recoveryOfTopsoil = (country_region, likeMining, distanceanningCenter, gold, goldenGramPerHa, txPrevalence, typeValueLikeMining) => {
   
-  const soilSurfaceRecPerHa = txPrevalence === CONSERVATIVE ? 14690 : 23400;
+  const { general, recoverOfTopSoll } = fixedCalcultions(country_region)
+  const { kmRotatedPerLiter, priceLiterDieselUSD, averageDriverSalaryFreightPerKmUSD } = general 
+  const { hectare, soilSurfaceRecPerHa_conservative, soilSurfaceRecPerHa, capacityLoadTruckNumberOfSeedlings, superficialSeedlingsPerHa, transportCostChangesPerKm } = recoverOfTopSoll
 
-    let hectare; 
+
+  const soilSurfaceRecPerHaValue = txPrevalence === CONSERVATIVE ? soilSurfaceRecPerHa_conservative : soilSurfaceRecPerHa;
+
+    let hectareValue; 
     if(likeMining === PIT) {
-      hectare = 0.31
+      hectareValue = hectare
     }else {
-      hectare = goldenGramPerHa * gold
+      hectareValue = goldenGramPerHa * gold
     }
 
-    const capacityLoadTruckNumberOfSeedlings = 2700;
-    const superficialSeedlingsPerHa = 1667;
-    const transportCostChangesPerKm = 1.60;
-    const kmRotatedPerLiter = 2.5;
-    const priceLiterDiesel = 3.24;
-    const averageDriverSalaryFreightPerKm = 2.22;
+    //const capacityLoadTruckNumberOfSeedlings = 2700;
+    //const superficialSeedlingsPerHa = 1667;
+    //const transportCostChangesPerKm = 1.60;
 
-    const numberOfPathsSuperficialSeddlindRecovery = ((hectare*superficialSeedlingsPerHa)/capacityLoadTruckNumberOfSeedlings) < 0.9999999999999 ? 1 : Math.ceil((hectare*superficialSeedlingsPerHa)/capacityLoadTruckNumberOfSeedlings);
+    //const kmRotatedPerLiter = 2.5;
+    //const priceLiterDiesel = 3.24;
+    //const averageDriverSalaryFreightPerKmUSD = 2.22;
+
+    const numberOfPathsSuperficialSeddlindRecovery = ((hectareValue*superficialSeedlingsPerHa)/capacityLoadTruckNumberOfSeedlings) < 0.9999999999999 ? 1 : Math.ceil((hectareValue*superficialSeedlingsPerHa)/capacityLoadTruckNumberOfSeedlings);
     const totalSurfaceFreightCostChances = distanceanningCenter * transportCostChangesPerKm;
     const quantityOfLitersConsumedDieselSurfaceRecovery =	distanceanningCenter / kmRotatedPerLiter;
-    const fuelCostFreightSurfaceRecovery =	priceLiterDiesel * quantityOfLitersConsumedDieselSurfaceRecovery;
-    const costFreightWithDriverSurfaceRecovery = averageDriverSalaryFreightPerKm * distanceanningCenter;
+    const fuelCostFreightSurfaceRecovery =	priceLiterDieselUSD * quantityOfLitersConsumedDieselSurfaceRecovery;
+    const costFreightWithDriverSurfaceRecovery = averageDriverSalaryFreightPerKmUSD * distanceanningCenter;
     const toSurfaceFreightCostOneWay = costFreightWithDriverSurfaceRecovery+ fuelCostFreightSurfaceRecovery + totalSurfaceFreightCostChances;
     const toSurfaceFreightCostRoundTrip =	toSurfaceFreightCostOneWay * 2;
     const toCostFreightFinalSurfaceRecovery =	toSurfaceFreightCostRoundTrip * numberOfPathsSuperficialSeddlindRecovery;
     
     if(likeMining === ALLUVIUM && typeValueLikeMining === IMPACTED_AREA) {
-      const surfaceSoilRecoveryWithoutFreight = soilSurfaceRecPerHa * hectare;
+      const surfaceSoilRecoveryWithoutFreight = soilSurfaceRecPerHaValue * hectareValue;
       const toSurfaceRecoveryCostWithFreight = toCostFreightFinalSurfaceRecovery + surfaceSoilRecoveryWithoutFreight;
       return toSurfaceRecoveryCostWithFreight
 
@@ -39,7 +46,7 @@ const recoveryOfTopsoil = (likeMining, distanceanningCenter, gold, goldenGramPer
       return toSurfaceRecoveryCostWithFreight
 
     }else{
-      const surfaceSoilRecoveryWithoutFreight = soilSurfaceRecPerHa * hectare * 12;
+      const surfaceSoilRecoveryWithoutFreight = soilSurfaceRecPerHaValue * hectareValue * 12;
       const toSurfaceRecoveryCostWithFreight =	toCostFreightFinalSurfaceRecovery + surfaceSoilRecoveryWithoutFreight;
       return toSurfaceRecoveryCostWithFreight 
     }

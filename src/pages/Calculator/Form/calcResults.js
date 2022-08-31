@@ -87,7 +87,7 @@ const calcResults = (state, dispatch) => {
         //console.log('totalCavaGroundingCostAuFertile', totalCavaGroundingCostAuFertile)
         //console.log('totalCavaGroundingCostAuNorm', totalCavaGroundingCostAuNorm)
 
-        const totalRecoveryOfTopsoil = recoveryOfTopsoil(likeMining, distanceanningCenter, goldValue, gramadeOuroporHe, txPrevalence, typeValueLikeMining)
+        const totalRecoveryOfTopsoil = recoveryOfTopsoil(country_region, likeMining, distanceanningCenter, goldValue, gramadeOuroporHe, txPrevalence, typeValueLikeMining)
         impacts.push({ label: 'Recuperação superficie do solo', displayName: 'Recuperação superficie do solo', category: CATEGORY_DEFORESTATION, value: totalRecoveryOfTopsoil })
         //console.log('totalRecoveryOfTopsoil', totalRecoveryOfTopsoil)
  
