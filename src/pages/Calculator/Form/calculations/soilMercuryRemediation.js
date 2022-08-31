@@ -1,19 +1,23 @@
+import fixedCalcultions from "hooks/fixedCalculations";
 import { FERRY, PIT, YEARS_OF_MINING } from "../consts";
 
 const CONSERVATIVE = 0.29
 
-const soilMercuryRemediation = (likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, gold) => {
+const soilMercuryRemediation = (country_region, likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, gold) => {
     
+    const { general, soilMercuryRemediation } = fixedCalcultions(country_region)
+    const { quantityOfGoldGramsPerYearWell, HgAuRatio } = general
+    const { lossPercentHgInSoil, HgContainedSoilinGrassPerTon, DensidadeSolo, remediationCostUSDPerTonOfSoil } = soilMercuryRemediation
 
-    const quantityOfGramsGoldYearWell = 23700;
-    const HgAuRatio = 2.6;
-    const lossPercentHgInSoil = 0.088;
-    const HgContainedSoilinGrassPerTon = 0.24;
-    const remediationCostUSDPerTonOfSoil = 188;
-    const DensidadeSolo = 2.76;
+    //const quantityOfGoldGramsPerYearWell = 23700;
+    //const HgAuRatio = 2.6;
+    //const lossPercentHgInSoil = 0.088;
+    //const HgContainedSoilinGrassPerTon = 0.24;
+    //const remediationCostUSDPerTonOfSoil = 188;
+    //const DensidadeSolo = 2.76;
 
     if (likeMining === PIT && typeValueLikeMining === YEARS_OF_MINING) { //Input anos de garimpo
-        const amountOfTotalGoldWell = quantityOfGramsGoldYearWell * valueLikeMining;
+        const amountOfTotalGoldWell = quantityOfGoldGramsPerYearWell * valueLikeMining;
         const amountOfHgDumpedintoSoilerGold = lossPercentHgInSoil * HgAuRatio;
         const amountOfHgDumpedintoSoilerGoldInGrams = amountOfHgDumpedintoSoilerGold * amountOfTotalGoldWell;
         const contaminatedSoilTon = amountOfHgDumpedintoSoilerGoldInGrams / HgContainedSoilinGrassPerTon;
