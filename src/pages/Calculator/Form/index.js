@@ -48,6 +48,7 @@ function Form() {
     const isPeru = useMemo(() => country_region && country_region.country === countries_region[PERU].country, [country_region]) 
     const isCOlombia = useMemo(() => country_region && country_region.country === countries_region[COLOMBIA].country, [country_region]) 
 
+    console.log(calculatorForm)
 
     const dataPitDepth = [
         {
