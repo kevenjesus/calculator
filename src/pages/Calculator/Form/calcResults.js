@@ -1,6 +1,8 @@
 import { BRAZIL, countries_region } from "components/CountrySelect"
 import fixedCalcultions from "hooks/fixedCalculations"
 import { stateTypes } from "utils/AppContext"
+import calculateInflation from "utils/calculateInflation"
+import getValueToCountry from "utils/getValueToCountry"
 import goldToHecatere from "utils/GoldToHectare"
 import hectareToGold, { goldenGramForHectare } from "utils/hectareToGold"
 import ToBRL from "utils/toBRL"
@@ -21,6 +23,7 @@ import recreation from "./calculations/recreation"
 import soilMercuryRemediation from "./calculations/soilMercuryRemediation"
 import woodAndNonWoodProducts from "./calculations/woodAndNonWoodProducts"
 import { AMOUNT_GOLD, CATEGORY_DEFORESTATION, CATEGORY_MERCURY, CATEGORY_SILTING_RIVERS, IMPACTED_AREA } from "./consts"
+
 
 const calcResults = (state, dispatch, dolarTOReal) => {
     const { calculator, country_region } = state
@@ -59,77 +62,93 @@ const calcResults = (state, dispatch, dolarTOReal) => {
         const distanceanningCenter = knowRegion ? currentCountry.distanceanningCenter : 212.74;
         const species = knowRegion ? (currentCountry.species <= 0 ? StateCity.species : currentCountry.species) : 69.21;
 
-        //console.log('valueLikeMining', valueLikeMining,'popDensity2010', popDensity2010, 'popDensity2060', popDensity2060, 'urbanPopMunicipality', urbanPopMunicipality, 'ruralPopMunicipality', ruralPopMunicipality, 'distanceanningCenter', 'species', species)
-
         // tipo de garimpo = likeMining
         // valor do tipo de garimpo = valueLikeMining
         // tipo de valor do garimpo = typeValueLikeMining
 
         const totalBio = bioprospecting(likeMining, typeValueLikeMining, txPrevalence, hectareValue)
-        impacts.push({ label: 'BioProspecção', displayName: 'BioProspecção', category: CATEGORY_DEFORESTATION, value: totalBio })
-        //console.log('totalBio', totalBio)
+        const inflationBio = calculateInflation(inflation, totalBio)
+        const totalBioInflation = inflationBio+totalBio
+
+        impacts.push({ label: 'BioProspecção', displayName: 'BioProspecção', category: CATEGORY_DEFORESTATION, value: getValueToCountry(country_region, totalBioInflation, dolarTOReal) })
 
         const totalCarbon = carbon(country_region, likeMining, typeValueLikeMining, hectareValue)
-        impacts.push({ label: 'Carbono', displayName: 'Carbono', category: CATEGORY_DEFORESTATION, value: totalCarbon })
-        //console.log('totalCarbon',totalCarbon) 
+        const inflationCarbon = calculateInflation(inflation, totalCarbon)
+        const totalCarbonInflation = inflationCarbon+totalCarbon
+
+        impacts.push({ label: 'Carbono', displayName: 'Carbono', category: CATEGORY_DEFORESTATION, value: getValueToCountry(country_region, totalCarbonInflation, dolarTOReal) })
 
         const totalPMNM = woodAndNonWoodProducts(likeMining, typeValueLikeMining, hectareValue)
-        impacts.push({ label: 'PMNM', displayName: 'Produtos não-madeireiros e madeireiros', category: CATEGORY_DEFORESTATION, value: totalPMNM })
-        //console.log('totalPMNM', totalPMNM)
+        const inflationPMNM = calculateInflation(inflation, totalPMNM)
+        const totalPMNMInflation = inflationPMNM+totalPMNM
+        impacts.push({ label: 'PMNM', displayName: 'Produtos não-madeireiros e madeireiros', category: CATEGORY_DEFORESTATION, value: getValueToCountry(country_region, totalPMNMInflation, dolarTOReal) })
 
         const totalRecreation = recreation(likeMining, popDensity2010, species, typeValueLikeMining, hectareValue)
-        impacts.push({ label: 'Recreação', displayName: 'Recreação', category: CATEGORY_DEFORESTATION, value: totalRecreation })
-        //console.log('totalRecreation', totalRecreation)
+        const inflationRecreation = calculateInflation(inflation, totalRecreation)
+        const totalRecreationInflation = inflationRecreation+totalRecreation
+        impacts.push({ label: 'Recreação', displayName: 'Recreação', category: CATEGORY_DEFORESTATION, value: getValueToCountry(country_region, totalRecreationInflation, dolarTOReal)  })
 
         const totalCulturedAndSpecies = culturedAndSpecies(likeMining, popDensity2010, species, typeValueLikeMining, hectareValue)
-        impacts.push({ label: 'Espécies', displayName: 'Espécies', category: CATEGORY_DEFORESTATION, value: totalCulturedAndSpecies })
-        //console.log('totalCulturedAndSpecies', totalCulturedAndSpecies)
+        const inflationCulturedAndSpecies = calculateInflation(inflation, totalCulturedAndSpecies)
+        const totalCulturedAndSpeciesInflation = inflationCulturedAndSpecies+totalCulturedAndSpecies
+        impacts.push({ label: 'Espécies', displayName: 'Espécies', category: CATEGORY_DEFORESTATION, value: getValueToCountry(country_region, totalCulturedAndSpeciesInflation, dolarTOReal)  })
         
         const totalCavaGroundingCostAuFertile = cavaGroundingCostAuFertile(country_region,likeMining, typeValueLikeMining, valueLikeMining, pitDepth, distanceanningCenter, goldValue)
+        const inflationCavaGroundingCostAuFertile = calculateInflation(inflation, totalCavaGroundingCostAuFertile)
+        const totalCavaGroundingCostAuFertileInflation = inflationCavaGroundingCostAuFertile+totalCavaGroundingCostAuFertile
+
         const totalCavaGroundingCostAuNorm = cavaGroundingCostAuNorm(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth, distanceanningCenter, hectareValue)
-        impacts.push({ label: 'Aterramento de cava', displayName: 'Aterramento de cava', category: CATEGORY_SILTING_RIVERS, value:(totalCavaGroundingCostAuFertile+totalCavaGroundingCostAuNorm)})
-        //console.log('totalCavaGroundingCostAuFertile', totalCavaGroundingCostAuFertile)
-        //console.log('totalCavaGroundingCostAuNorm', totalCavaGroundingCostAuNorm)
+        const inflationCavaGroundingCostAuNorm = calculateInflation(inflation, totalCavaGroundingCostAuNorm)
+        const totalCavaGroundingCostAuNormInflation = inflationCavaGroundingCostAuNorm+totalCavaGroundingCostAuNorm
+        const totalFertilNorm = totalCavaGroundingCostAuFertileInflation+totalCavaGroundingCostAuNormInflation
+        impacts.push({ label: 'Aterramento de cava', displayName: 'Aterramento de cava', category: CATEGORY_SILTING_RIVERS, value: getValueToCountry(country_region, totalFertilNorm, dolarTOReal) })
 
         const totalRecoveryOfTopsoil = recoveryOfTopsoil(country_region, likeMining, distanceanningCenter, goldValue, gramadeOuroporHe, txPrevalence, typeValueLikeMining)
-        impacts.push({ label: 'Recuperação superficie do solo', displayName: 'Recuperação superficie do solo', category: CATEGORY_DEFORESTATION, value: totalRecoveryOfTopsoil })
-        //console.log('totalRecoveryOfTopsoil', totalRecoveryOfTopsoil)
+        impacts.push({ label: 'Recuperação superficie do solo', displayName: 'Recuperação superficie do solo', category: CATEGORY_DEFORESTATION, value: getValueToCountry(country_region, totalRecoveryOfTopsoil, dolarTOReal) })
  
         const totalDredgingAndRiverSediments = dredgingAndRiverSediments(country_region, likeMining, typeValueLikeMining, valueLikeMining, distanceanningCenter, pitDepth, hectareValue)
-        impacts.push({ label: 'Dragagem de sedimentos no rio', displayName: 'Dragagem de sedimentos no rio', category: CATEGORY_SILTING_RIVERS, value: totalDredgingAndRiverSediments })
-        //console.log('totalDredgingAndRiverSediments', totalDredgingAndRiverSediments)
+        const inflationDredgingAndRiverSediments = calculateInflation(inflation, totalDredgingAndRiverSediments)
+        const totalDredgingAndRiverSedimentsInflation = inflationDredgingAndRiverSediments+totalDredgingAndRiverSediments
+        impacts.push({ label: 'Dragagem de sedimentos no rio', displayName: 'Dragagem de sedimentos no rio', category: CATEGORY_SILTING_RIVERS, value: getValueToCountry(country_region, totalDredgingAndRiverSedimentsInflation, dolarTOReal) })
         
         const totalErosionSiltingUp = erosionSiltingUp(country_region, likeMining, txPrevalence, typeValueLikeMining, hectareValue)
-        impacts.push({ label: 'Erosão', displayName: 'Erosão', category: CATEGORY_SILTING_RIVERS, value: totalErosionSiltingUp })
-        //console.log('totalErosionSiltingUp', totalErosionSiltingUp)
+        const inflationErosionSiltingUp = calculateInflation(inflation, totalErosionSiltingUp)
+        const totalErosionSiltingUpInflation = inflationErosionSiltingUp+totalErosionSiltingUp
+        impacts.push({ label: 'Erosão', displayName: 'Erosão', category: CATEGORY_SILTING_RIVERS, value: getValueToCountry(country_region, totalErosionSiltingUpInflation, dolarTOReal) })
     
         if(!retort[0].checked) {
             const totalNeuroSymptomsGarimpeiro = neuroSymptomsGarimpeiro(country_region, likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, goldValue)//gold
-            impacts.push({ label: 'Sintomas neuropsicológicos em garimpeiros', displayName: 'Sintomas neuropsicológicos em garimpeiros', category: CATEGORY_MERCURY, value: totalNeuroSymptomsGarimpeiro })
-            //console.log('totalNeuroSymptomsGarimpeiro', totalNeuroSymptomsGarimpeiro)
+            const inflationNeuroSymptomsGarimpeiro = calculateInflation(inflation, totalNeuroSymptomsGarimpeiro)
+            const totalNeuroSymptomsGarimpeiroInflation = inflationNeuroSymptomsGarimpeiro+totalNeuroSymptomsGarimpeiro
+            impacts.push({ label: 'Sintomas neuropsicológicos em garimpeiros', displayName: 'Sintomas neuropsicológicos em garimpeiros', category: CATEGORY_MERCURY, value: getValueToCountry(country_region, totalNeuroSymptomsGarimpeiroInflation, dolarTOReal) })
         }
         
         
         const totalLossQI = lossQI (country_region, likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, urbanPopMunicipality, ruralPopMunicipality, popDensity2060, goldValue, knowRegion)//gold
-        impacts.push({ label: 'Perda de Qi em Fetos', displayName: 'Perda de Qi em Fetos', category: CATEGORY_MERCURY, value: totalLossQI })
-        //console.log('totalLossQI', totalLossQI)
+        const inflationLossQI = calculateInflation(inflation, totalLossQI)
+        const totalLossQIInflation = inflationLossQI+totalLossQI
+        impacts.push({ label: 'Perda de Qi em Fetos', displayName: 'Perda de Qi em Fetos', category: CATEGORY_MERCURY, value: getValueToCountry(country_region, totalLossQIInflation, dolarTOReal) })
 
         const totalHypertension = hypertension(country_region, likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, urbanPopMunicipality, ruralPopMunicipality, popDensity2060, goldValue, knowRegion)//gold
-        //console.log('totalHypertension', totalHypertension)
+        const inflationHypertension = calculateInflation(inflation, totalHypertension)
+        const totalHypertensionInflation = inflationHypertension+totalHypertension
+
         const totalHeartAttack = heartAttack(country_region, likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, urbanPopMunicipality, ruralPopMunicipality, popDensity2060, goldValue, knowRegion)//gold
-        //console.log('totalHeartAttack', totalHeartAttack)
-        impacts.push({ label: 'Doenças cardiovasculares', displayName: 'Doenças cardiovasculares (HIPERTENSÃO + INFARTO)', category: CATEGORY_MERCURY, value: (totalHeartAttack+totalHypertension) })
+        const inflationHeartAttack = calculateInflation(inflation, totalHeartAttack)
+        const totalHeartAttackInflation = inflationHeartAttack+totalHeartAttack
+
+        const totalHeartHypertension = totalHypertensionInflation+totalHeartAttackInflation
+        impacts.push({ label: 'Doenças cardiovasculares', displayName: 'Doenças cardiovasculares (HIPERTENSÃO + INFARTO)', category: CATEGORY_MERCURY, value: getValueToCountry(country_region, totalHeartHypertension, dolarTOReal) })
         
         const totalsoilMercuryRemediation = soilMercuryRemediation(country_region,likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, goldValue)//gold
-        impacts.push({ label: 'Remediação de mercúrio no solo', displayName: 'Remediação de mercúrio no solo', category: CATEGORY_MERCURY, value: totalsoilMercuryRemediation })
-        //console.log('totalsoilMercuryRemediation', totalsoilMercuryRemediation)
+        const inflationsoilMercuryRemediation = calculateInflation(inflation, totalsoilMercuryRemediation)
+        const totalsoilMercuryRemediationInflation = inflationsoilMercuryRemediation+totalsoilMercuryRemediation
+        impacts.push({ label: 'Remediação de mercúrio no solo', displayName: 'Remediação de mercúrio no solo', category: CATEGORY_MERCURY, value: getValueToCountry(country_region, totalsoilMercuryRemediationInflation, dolarTOReal) })
 
         const reducer = ((acc, current) => acc+current.value);
         const totalValue = impacts.reduce(reducer, 0);
-        const inflationCalc = Number(inflation) ? (inflation/100) * totalValue : null
-        const totalInflation = inflationCalc ? totalValue+inflationCalc : totalValue
 
-        const totalConverted = isBrazil ? ToBRL(totalInflation*dolarTOReal) : toUSD(totalInflation)
+        const totalConverted = isBrazil ? ToBRL(totalValue*dolarTOReal) : toUSD(totalValue)
         
 
         dispatch({ type: stateTypes.ADD_VALUE, payload: impacts })

@@ -3,8 +3,16 @@ import CustomTooltip from './CustomTooltip'
 import { colors } from 'theme/colors'
 import ToBRL from 'utils/toBRL';
 import { WrapperPrint } from './style';
+import { useContext } from 'react';
+import { AppContext } from 'utils/AppContext';
+import { BRAZIL, countries_region } from 'components/CountrySelect';
+import toUSD from 'utils/toUSD';
 
 const CustomizedLabel = ({x, y, width, value }) => {
+  const { state } = useContext(AppContext)
+  const { country_region } = state
+  const isBrazil = country_region.country === countries_region[BRAZIL].country
+  const totalConverted = isBrazil ? ToBRL(value) : toUSD(value)
   return (
           <text 
             x={x + width - (window.innerWidth > 768 ? 25 : 15)} 
@@ -15,7 +23,7 @@ const CustomizedLabel = ({x, y, width, value }) => {
             fontWeight='bold'
             margin={100}
             fill={colors.primary}
-            textAnchor="middle">{ToBRL(value)}</text>
+            textAnchor="middle">{totalConverted}</text>
   )
 }
   
@@ -48,7 +56,7 @@ const Chart = ({data}) => {
           <Tooltip content={CustomTooltip} />
           <Bar barSize={window.innerWidth >= 1366 ? 50 : (window.innerWidth >= 768 ? 30 : 20)} dataKey="value" label={<CustomizedLabel />} fill={colors.primary}>
           {data.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={colors.primary} />
+              <Cell key={`cell-${index}`} fill= {colors.primary} />
             ))}
           </Bar>
           

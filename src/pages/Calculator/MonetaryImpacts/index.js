@@ -21,6 +21,10 @@ import html2canvas from 'html2canvas'
 import { jsPDF } from "jspdf";
 
 import useExchange from 'hooks/useExchange'
+import getGoldValue from 'utils/getGoldValue'
+import { BRAZIL, countries_region } from 'components/CountrySelect'
+import convertAllinGold from 'utils/convertAllinGold'
+import toUSD from 'utils/toUSD'
 
 
 
@@ -34,7 +38,7 @@ export const DataChart = ({impact, headline, hiddenMonetary, txtTotalNonetary}) 
                 </Col>
                 {!hiddenMonetary ?
                 <Col xs={12} md={4} style={{textAlign: 'right'}}>
-                    <Label style={{textAlign: 'right', display: 'inline-block', marginRight: 10}}>{txtTotalNonetary}</Label>
+                     <Label style={{textAlign: 'right', display: 'inline-block', marginRight: 10}}>{txtTotalNonetary}</Label>
                      <Monetary style={{display: 'inline-block'}}>{total}</Monetary> 
                 </Col>
                 : null }
@@ -365,9 +369,10 @@ const FormCalc = () => {
 
 
 const MonetaryImpacts = () => {
+    const [dolarTOReal, setDolarReal] = useState(null)
     const {state, dispatch} = useContext(AppContext);
-    const {language, calculator} = state
-    const { txPrevalence } = calculator
+    const {language, calculator, country_region} = state
+    const { txPrevalence, pitDepth } = calculator
     const {impacts} = language
     const history = useHistory();
     const { USDtoBRL } = useExchange()
@@ -409,8 +414,9 @@ const MonetaryImpacts = () => {
 
     useEffect(() => {
         if(USDtoBRL) {
-        const dolarTOReal = Number(USDtoBRL.high)
-        calcResults(state, dispatch, dolarTOReal)
+            const val = Number(USDtoBRL.high)
+            setDolarReal(val)
+            calcResults(state, dispatch, val)
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [txPrevalence, USDtoBRL])
@@ -419,9 +425,9 @@ const MonetaryImpacts = () => {
         const graphics_resume = document.getElementById('graphics_resume');
         const graphics_total = document.getElementById('graphics_total');
         const totalMonay = document.getElementById('totalMoney');
-        const canvasGraphics_resume = await html2canvas(graphics_resume, { scale: 0.6 })
+        const canvasGraphics_resume = await html2canvas(graphics_resume, { scale: 0.55 })
         const canvasGraphics_total = await html2canvas(graphics_total, { scale: 0.53 })
-        const canvasTotalMoney = await html2canvas(totalMonay, { scale: 0.7 })
+        const canvasTotalMoney = await html2canvas(totalMonay, { scale: 0.8 })
 
         const pdf = new jsPDF(
             {
@@ -434,11 +440,11 @@ const MonetaryImpacts = () => {
         );
         pdf.setFontSize(8)
         pdf.text('© CSF All rights reserved', pdf.internal.pageSize.width / 2, 287, { align: 'center' })
-        pdf.addImage(canvasTotalMoney.toDataURL('image/png'), 'JPEG', 10, 10);
-        pdf.addImage(canvasGraphics_resume.toDataURL('image/png'), 'JPEG', 10, 50);
+        pdf.addImage(canvasTotalMoney.toDataURL('image/png'), 'JPEG', 7, 10);
+        pdf.addImage(canvasGraphics_resume.toDataURL('image/png'), 'JPEG', 10, 70);
         pdf.addPage('a4', 'p')
 
-        pdf.addImage(canvasGraphics_total.toDataURL('image/png'), 'JPEG', 10, 10);
+        pdf.addImage(canvasGraphics_total.toDataURL('image/png'), 'JPEG', 7, 10);
         pdf.text('© CSF All rights reserved', pdf.internal.pageSize.width / 2, 287, { align: 'center' })
         pdf.save("CSF-report.pdf");
 
@@ -469,7 +475,17 @@ const MonetaryImpacts = () => {
         typeAnalysis = language.calculatorForm.values.qtdAnalysisUnit.months
     }
 
+    const likeMining = calculator.valuatioMethod // FERRY, PIT or ALLUVION
+    const valueLikeMining = calculator.qtdAnalysis.value // gold, hactare, months, years
+    const typeValueLikeMining = calculator.analysisUnit // AMOUNT_GOLD / IMPACTED_AREA / YEARS_OF_MINING / MONTHS_OF_MINING
+
     const hiddenMenu = calculator.valuatioMethod === FERRY ? [impacts.menu.deforestation] : []
+    const isBrazil = country_region.country === countries_region[BRAZIL].country
+
+    const goldValue = Math.round(convertAllinGold(likeMining, typeValueLikeMining, valueLikeMining, pitDepth))
+
+    const goldPrice = getGoldValue.goldPrice() * goldValue
+    const totalGoldPrice = isBrazil ? ToBRL(goldPrice) : toUSD(goldPrice*dolarTOReal)
     return (
         <Container>
             <Grid fluid>
@@ -488,7 +504,9 @@ const MonetaryImpacts = () => {
                                 <FormGroup>
                                     <Label>{impacts.monetaryImpacts.labels.finalValue}</Label>
                                     <Monetary>{valueTotal}</Monetary>
-                                    <MonetaryType>{`${impacts.monetaryImpacts.labels.typeText} ${calculator.qtdAnalysis.value} ${typeAnalysis.toLowerCase()}`}</MonetaryType>
+                                    <MonetaryType>{`
+                                        ${impacts.monetaryImpacts.labels.typeText} ${calculator.qtdAnalysis.value} ${typeAnalysis.toLowerCase()}
+                                        | Valor de ${totalGoldPrice} para ${goldValue} gramas de ouro`}</MonetaryType>
                                 </FormGroup>
                             </Col>
                         </Row>
