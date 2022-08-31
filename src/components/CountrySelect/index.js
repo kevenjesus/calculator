@@ -1,6 +1,7 @@
 import { useState, useCallback, useContext } from 'react'
 import { AppContext, stateTypes } from 'utils/AppContext'
-
+import ptBR from 'utils/pt_BR'
+import esES from 'utils/es_ES'
 import Modal from "components/Modal"
 import * as S from './styles'
 import { Button } from 'theme';
@@ -45,6 +46,14 @@ const CountrySelect = () => {
     const handleNext = useCallback(() => {
         setModal(false)
         dispatch({type: stateTypes.SET_COUNTRY_REGION, payload: selected })
+        console.log(selected)
+        if(selected.country === countries_region[BRAZIL].country) {
+            dispatch({type: stateTypes.SET_LANGUAGE, payload: ptBR })
+        }else {
+            dispatch({type: stateTypes.SET_LANGUAGE, payload: esES })
+        }
+        
+        
     }, [setModal, dispatch, selected])
 
     return (

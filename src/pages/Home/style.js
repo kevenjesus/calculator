@@ -5,7 +5,7 @@ export const ContainerBackground = styled.div`
     width: 100%;
     height: auto;
     background: url(${Image}) center center no-repeat;
-    background-size: cover;
+    background-size: 100% 100%;
     position: absolute;
     left: 0;
     right: 0;
@@ -19,7 +19,7 @@ export const Overlay = styled.div`
     width: 100%;
     height: 100%;
     background: rgba(0,0,0,0.5);
-    position: absolute;
+    position: fixed;
     left: 0;
     right: 0;
     bottom: 0;

@@ -24,7 +24,7 @@ const es_ES = {
             knowRegion: '¿Le gustaría conocer los impactos generales de la extracción de oro o los impactos de una extracción de oro específica? ',
             state: 'Región',
             country: 'Municipio',
-            analysisUnit: 'Unidad de análisis',
+            analysisUnit: 'Unidade de análisis',
             pitDepth: 'Profundidad del socavón',
             extractionType: 'Tipo de extracción',
             btnCalulator: 'Calcular impactos'

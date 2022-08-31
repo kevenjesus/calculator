@@ -386,21 +386,13 @@ function Form() {
                 </Row>
                 <Row>
                     
-                    <Col xs={12} lg={knowRegion ? 6 : 12}>
+                    <Col xs={12}>
                         <label>{calculatorForm.labels.valueHypothesis}</label>
                         <select name="txPrevalencia" value={txPrevalence} onChange={handleTxPrevalance}>
                             <option value="0.29">{calculatorForm.values.valueHypothesis.conservative}</option>
                             <option value="0.343">{calculatorForm.values.valueHypothesis.precautionaryPrinciple}</option>
                         </select>
                     </Col>
-                    {
-                        knowRegion ? (
-                            <Col xs={12} lg={6}>
-                                <label>Possui retorta?</label>
-                                <RadioBoxConditional state={retort} setState={handleRetort} />
-                            </Col>
-                        ) : <></>
-                    }
                     
                 </Row>
                 <Row>
@@ -412,6 +404,16 @@ function Form() {
                             onChange={handleInflation}
                             name="valor" placeholder="Inflação" />
                     </Col>
+                </Row>
+                <Row>
+                {
+                        knowRegion ? (
+                            <Col xs={12} lg={6}>
+                                <label>uso de capela?</label>
+                                <RadioBoxConditional state={retort} setState={handleRetort} />
+                            </Col>
+                        ) : <></>
+                    }
                 </Row>
 
                 <ButtonFixed>
