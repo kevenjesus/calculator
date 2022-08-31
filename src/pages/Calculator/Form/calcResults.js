@@ -100,7 +100,7 @@ const calcResults = (state, dispatch) => {
         //console.log('totalErosionSiltingUp', totalErosionSiltingUp)
     
         if(!retort[0].checked) {
-            const totalNeuroSymptomsGarimpeiro = neuroSymptomsGarimpeiro(likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, goldValue)//gold
+            const totalNeuroSymptomsGarimpeiro = neuroSymptomsGarimpeiro(country_region, likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, goldValue)//gold
             impacts.push({ label: 'Sintomas neuropsicológicos em garimpeiros', displayName: 'Sintomas neuropsicológicos em garimpeiros', category: CATEGORY_MERCURY, value: totalNeuroSymptomsGarimpeiro })
             //console.log('totalNeuroSymptomsGarimpeiro', totalNeuroSymptomsGarimpeiro)
         }
