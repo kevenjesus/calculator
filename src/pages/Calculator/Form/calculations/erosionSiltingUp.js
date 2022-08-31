@@ -1,18 +1,20 @@
+import fixedCalcultions from "hooks/fixedCalculations";
 import calcMontante from "utils/calcMontante";
 import vpl from "utils/vpl";
 import { ALLUVIUM, AMOUNT_GOLD, FERRY, IMPACTED_AREA, PIT } from "../consts";
 
 const CONSERVATIVE = 0.29
 
-const erosionSiltingUp = (likeMining, txPrevalence, typeValueLikeMining, hectare) => {
+const erosionSiltingUp = (country_region, likeMining, txPrevalence, typeValueLikeMining, hectare) => {
  
-  const GDPperCapitaBrazil2019USD = 8717.18
+  const { erosionSiltingUp, general } = fixedCalcultions(country_region)
+  const { GDPperCapitaBrazilUSD } = general
+  const { siltingUpCostPerHaUSD } = erosionSiltingUp
 
   if(txPrevalence === CONSERVATIVE) {
     const discountRate = 0.03;
-    const siltingUpCostPerHaBRL = 66.42;
 
-    const amounts = calcMontante(siltingUpCostPerHaBRL)
+    const amounts = calcMontante(siltingUpCostPerHaUSD)
     const VPLhectareSilting = vpl(discountRate, amounts)
     
     let toErosion;
@@ -36,13 +38,13 @@ const erosionSiltingUp = (likeMining, txPrevalence, typeValueLikeMining, hectare
 
       const discountRate = 0.03;
       const txCambio = 5;
-      const calc1 = Math.log(GDPperCapitaBrazil2019USD);
+      const calc1 = Math.log(GDPperCapitaBrazilUSD);
       const calc2 = Math.pow(calc1, 2);
       const calc3 = 13.32 * calc1;
       const calc4 = 0.623 * calc2;
       const calc5 = calc3 - 65.64 - calc4;
       const siltingUpCostPerHaUSD = Math.exp(calc5);
-      //const siltingUpCostPerHaBRL = siltingUpCostPerHaUSD * txCambio;
+      //const siltingUpCostPerHaUSD = siltingUpCostPerHaUSD * txCambio;
 
       const amounts = calcMontante(siltingUpCostPerHaUSD)
       const VPLhectareSilting = vpl(discountRate, amounts)
