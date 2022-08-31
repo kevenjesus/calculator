@@ -1,3 +1,4 @@
+import fixedCalcultions from 'hooks/fixedCalculations';
 import normDist from 'utils/normDist'
 import { ALLUVIUM, AMOUNT_GOLD, FERRY, MONTHS_OF_MINING, PIT, YEARS_OF_MINING } from '../consts';
 
@@ -6,50 +7,67 @@ const CONSERVATIVE = 0.29
 // impacto 6: Perda de QI (mercury na saude humana)
     ////// Parte 01: grama de mercúrio que é metilado
 
-const lossQI =  (likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, urbanPopMunicipality, ruralPopMunicipality, popDensity2060, gold, isRegion) => {
+const lossQI =  (country_region, likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, urbanPopMunicipality, ruralPopMunicipality, popDensity2060, gold, isRegion) => {
  
+  const { general, lossQI } = fixedCalcultions(country_region)
+  const {
+      methyladPercent_conservative,
+      methyladPercent,
+      ruralIndividualWeight,
+      urbanindividualWeight,
+      percentLossHgInWater_convervative,
+      percentLossHgInWater,
+      percentLossHgInWater_ferry__convervative,
+      percentLossHgInWater_ferry,
+      densityPopulationalRegionNorth2060,
+      consumptionMediumFishByDayInGramsUrban,
+      AverageFishConsumptionPerDayInRuralGrams,
+      levelMediumContaminationFish,
+      goldProductionMonthFerry,
+      amountOfTotalGoldWell,
+      aDALYUSD,
+      HgAuRatio
+  } = general
+  const { birthRate } = lossQI
 
-  const methyladPercent = txPrevalence === CONSERVATIVE ? 0.11 : 0.22;
-  const HgAuRatio = 2.6;
+  const methyladPercentValue = txPrevalence === CONSERVATIVE ? methyladPercent_conservative : methyladPercent;
   
   let gramsHgReleasedinWater;
 
   if (likeMining === PIT && typeValueLikeMining === YEARS_OF_MINING) { //input anos de garimpo
-    const percentLossHgInWater = txPrevalence === CONSERVATIVE ? 0.132 : 0.21;
-    const quantityOfGramsGoldYearWell = 23700;
-    const amountOfTotalGoldWell = quantityOfGramsGoldYearWell * valueLikeMining
-    gramsHgReleasedinWater = percentLossHgInWater * HgAuRatio * amountOfTotalGoldWell;
+    const percentLossHgInWaterValue = txPrevalence === CONSERVATIVE ? percentLossHgInWater_convervative : percentLossHgInWater;
+    const amountOfTotalGoldWellValue = amountOfTotalGoldWell * valueLikeMining
+    gramsHgReleasedinWater = percentLossHgInWaterValue * HgAuRatio * amountOfTotalGoldWellValue;
     
   }else if(likeMining === PIT && typeValueLikeMining === AMOUNT_GOLD) { //input gramas de ouro
-    const percentLossHgInWater = txPrevalence === CONSERVATIVE ? 0.132 : 0.21;
-    gramsHgReleasedinWater = percentLossHgInWater * HgAuRatio * valueLikeMining;
+    const percentLossHgInWaterValue = txPrevalence === CONSERVATIVE ? percentLossHgInWater_convervative : percentLossHgInWater;
+    gramsHgReleasedinWater = percentLossHgInWaterValue * HgAuRatio * valueLikeMining;
         
   }else if(likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING) { //input Meses de garimpo
-    const percentLossHgInWater = txPrevalence === CONSERVATIVE ? 0.22 : 0.35;
-    const prodGoldMonthFerry = 302;
-    const toFerryGoldProductivy = valueLikeMining * prodGoldMonthFerry;
-    gramsHgReleasedinWater = percentLossHgInWater * HgAuRatio * toFerryGoldProductivy;
+    const percentLossHgInWaterValue = txPrevalence === CONSERVATIVE ? percentLossHgInWater_ferry__convervative : percentLossHgInWater_ferry;
+    const toFerryGoldProductivy = valueLikeMining * goldProductionMonthFerry;
+    gramsHgReleasedinWater = percentLossHgInWaterValue * HgAuRatio * toFerryGoldProductivy;
     
   }else if(likeMining === FERRY && typeValueLikeMining === AMOUNT_GOLD) { //input gramas de ouro
-    const percentLossHgInWater = txPrevalence === CONSERVATIVE ? 0.22 : 0.35;
-    gramsHgReleasedinWater = percentLossHgInWater * HgAuRatio * valueLikeMining;
+    const percentLossHgInWaterValue = txPrevalence === CONSERVATIVE ? percentLossHgInWater_ferry__convervative : percentLossHgInWater_ferry;
+    gramsHgReleasedinWater = percentLossHgInWaterValue * HgAuRatio * valueLikeMining;
     
   }else if(likeMining === ALLUVIUM) { //input gramas de ouro/hectare
-    const percentLossHgInWater = txPrevalence === CONSERVATIVE ? 0.132 : 0.21;
-    gramsHgReleasedinWater = percentLossHgInWater * HgAuRatio * gold;
+    const percentLossHgInWaterValue = txPrevalence === CONSERVATIVE ? percentLossHgInWater_convervative : percentLossHgInWater;
+    gramsHgReleasedinWater = percentLossHgInWaterValue * HgAuRatio * gold;
     
   }
   
-  const toMethylatedWater = methyladPercent * gramsHgReleasedinWater;
+  const toMethylatedWater = methyladPercentValue * gramsHgReleasedinWater;
 
   const years = 50;
-  const birthRate = 18.8;
-  const ruralIndividualWeight = 59.1;
-  const urbanindividualWeight = 70;
-  const levelMediumContaminationFish = 0.5;
-  const AverageFishConsumptionPerDayInRuralGrams = 144.5;
-  const consumptionMediumFishByDayInGramsUrban = 57;
-  const densityPopulationalRegionNorth2060 = 6.00696;
+  //const birthRate = 18.8;
+  //const ruralIndividualWeight = 59.1;
+  //const urbanindividualWeight = 70;
+  //const levelMediumContaminationFish = 0.5;
+  //const AverageFishConsumptionPerDayInRuralGrams = 144.5;
+  //const consumptionMediumFishByDayInGramsUrban = 57;
+  //const densityPopulationalRegionNorth2060 = 6.00696;
 
   const individualAverageWeight = (ruralPopMunicipality*ruralIndividualWeight)+(urbanPopMunicipality*urbanindividualWeight);
   const ingestionMediaDailyMicrogramMercuryUrban = (consumptionMediumFishByDayInGramsUrban * levelMediumContaminationFish) / urbanindividualWeight;
@@ -136,7 +154,7 @@ distNorm28ate30 + distNorm30ate32 + distNorm32ate34 + distNorm34ate36 + distNorm
   const calculation5 = (1-agwt)/discountRate;
   const calculation6 = (1-Math.exp(-discountRate*durationOfDisability));
   const daly = weightOfDisabilityPorincidence*(agwt*calculation1*((Math.exp(calculation2)*calculation3)-calculation4)+calculation5*calculation6);
-  const aDALYUSD = 103599;
+  //const aDALYUSD = 103599;
   const toLossQIFetuses = daly*aDALYUSD;
   
   return toLossQIFetuses
