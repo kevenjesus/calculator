@@ -147,7 +147,7 @@ function Form() {
             getStates()
         }
        
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [getCounties, dispatch, isBrazil, isEquador, isPeru, isCOlombia])
 
     useEffect(() => {
@@ -208,7 +208,7 @@ function Form() {
             return r
         })
         dispatch({type: stateTypes.SET_RETORT, payload: retort_update})
-    }, [dispatch])
+    }, [dispatch, retort])
 
     const handleState = useCallback((e) => {
         const { value } = e.target

@@ -2,7 +2,6 @@ import { createContext, useReducer  } from 'react'
 import { IMPACTED_AREA, NO, YES, ALLUVIUM, TX_PREVALENCE_MAX } from 'pages/Calculator/Form/consts'
 import ptBR from 'utils/pt_BR'
 import { INTRODUCTION } from 'pages/Introduction/consts'
-import { countries_region } from 'components/CountrySelect'
 
 const dataOverflow = [
     {

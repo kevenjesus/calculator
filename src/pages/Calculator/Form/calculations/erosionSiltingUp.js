@@ -37,7 +37,6 @@ const erosionSiltingUp = (country_region, likeMining, txPrevalence, typeValueLik
     }else{
 
       const discountRate = 0.03;
-      const txCambio = 5;
       const calc1 = Math.log(GDPperCapitaBrazilUSD);
       const calc2 = Math.pow(calc1, 2);
       const calc3 = 13.32 * calc1;

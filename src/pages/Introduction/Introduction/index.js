@@ -22,7 +22,7 @@ const IntroductionPage = () => {
             const selectedBrazil = country_region.country === countries_region[0].country
             setIsBrazil(selectedBrazil)
         }
-    }, [state])
+    }, [country_region])
 
 
     return (

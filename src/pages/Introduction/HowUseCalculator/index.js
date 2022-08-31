@@ -37,7 +37,7 @@ const HowUseCalculator = () => {
         dispatch({type: stateTypes.SET_COUNTIES, payload: mock});
         dispatch({type: stateTypes.SET_COUNTRY, payload: mock[0].id});
 
-    }, [])
+    }, [dispatch])
 
     const getCounties = useCallback((uf) => {
         let dataCountries = [];
@@ -87,6 +87,7 @@ const HowUseCalculator = () => {
              
           }
           getStates();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [getCounties, isBrazil, isEquador, isPeru, isCOlombia, dispatch])
 
     useEffect(() => {
