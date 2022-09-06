@@ -209,6 +209,10 @@ const ptBR = {
                 {
                     type: 'Poço',
                     text: 'Extração de minério por meio de túneis subterrâneo, tem menores impactos em termos de desmatamento e erosão, porém também utiliza o mercúrio no processamento do minério.'
+                },
+                {
+                    type: 'Uso de retorta?',
+                    text: 'Extração de minério por meio de túneis subterrâneo, tem menores impactos em termos de desmatamento e erosão, porém também utiliza o mercúrio no processamento do minério.'
                 }
             ],
             text: 'Caso não seja especificado o tipo, serão considerados os impactos do tipo de garimpo mais comum na Amazônia, o garimpo de aluvião'
