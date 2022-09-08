@@ -25,10 +25,14 @@ const ptBR = {
             knowRegion: 'Você gostaria de avaliar os impactos gerais do garimpo de ouro ou dos impactos de um garimpo específico?',
             state: 'Estado',
             country: 'Municipio',
+            district: 'distrito',
             analysisUnit: 'Unidade de análise',
             pitDepth: 'Profundidade da cava',
             extractionType: 'Tipo de garimpo',
             valueHypothesis: 'Hipóteses de valores' ,
+            retort: 'Uso de Capela',
+            inflation: 'Inflação acumulada desde de 2022 %',
+            inflation_placeholder: 'Digite a inflação neste formato: 10 ou 6.2',
             btnCalulator: 'Calcular impactos'
         },
         values: {
@@ -99,7 +103,8 @@ const ptBR = {
                 typeHectare: 'hectares',
                 impactCategories: 'Categorias de impacto',
                 impactedsVisualization: 'Visualização de impactos',
-                mobileImpactedsVisualization: 'É possivel apenas visualizar 4 impactos por vez no smartphone.'
+                mobileImpactedsVisualization: 'É possivel apenas visualizar 4 impactos por vez no smartphone.',
+                goldImpact: 'Valor de $value para $grams de ouro'
             },
             values: {
                 deforestation: 'Desmatamento',
@@ -312,7 +317,7 @@ const ptBR = {
             soil_mercury_comments_line1: 'Assume-se que a biorremediação, a partir do plantio de mudas de espécies capazes de absorver o mercúrio no solo, seria a alternativa mais aplicável ao contexto amazônico para remediar o impacto do garimpo.',
             soil_mercury_comments_line2: 'Hipótese de concentração média de mercúrio nos solos de 0,24 gramas de ouro por tonelada de sedimento.',
         }
-    }
+    },
 };
 
 export default ptBR;

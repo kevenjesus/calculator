@@ -45,10 +45,10 @@ const Home = () => {
                         </Col>
                         <Col md={5} mdOffset={1} style={{position: 'relative'}}> 
                             <Embed>
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/iRJmh62xHxU" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/iRJmh62xHxU?rel=0" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                             </Embed>
                             <Button style={{marginTop: 37}} onClick={() =>  window.open('https://www.youtube.com/watch?v=sVlf8GCF-SU&list=PLBfu1mD9hk678ePbwqO1Aq3gugwzrhXTx')} variant="default">Ver outros videos sobre garimpo ilegal</Button>
-                            <img onClick={() => window.open('https://pubmed.ncbi.nlm.nih.gov/34831624/')} style={{cursor: 'pointer', position: 'absolute', top: 0, right: '-130px'}} src={PrintPage} title="Natial library of Medicine" alt="Natial library of Medicine" width={100} />
+                            <img onClick={() => window.open('https://pubmed.ncbi.nlm.nih.gov/34831624/')} style={{cursor: 'pointer', position: 'absolute', top: 0, right: '-130px'}} src={PrintPage} title="National library of Medicine" alt="National library of Medicine" width={100} />
                         </Col>
                     </Row>
                 </Container>
