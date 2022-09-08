@@ -52,7 +52,7 @@ export const DataChart = ({impact, headline, hiddenMonetary, txtTotalNonetary}) 
 const FormCalc = () => {
     const { state: stateContext, dispatch } = useContext(AppContext)
     const [placeholder, setPlaceholder] = useState("")
-    const { calculator, language, priceUSDtoBRL } = stateContext
+    const { calculator, language, country_region, priceUSDtoBRL } = stateContext
     const {
         regionList,
         knowRegion,
@@ -63,9 +63,13 @@ const FormCalc = () => {
         qtdAnalysis,
         pitDepth,
         valuatioMethod,
+        retort,
+        inflation,
         txPrevalence } = calculator
     const { calculatorForm, introduction } = language
     const alert = useAlert()
+
+    const isBrazil = country_region && country_region.country === countries_region[BRAZIL].country
 
 
     const dataPitDepth = [
@@ -159,7 +163,22 @@ const FormCalc = () => {
                 checked: knowRegion === false ? true : false
             },
         ]
+        const dataRetort = [
+            {
+                name: 'retort',
+                label: 'Sim',
+                value: YES,
+                checked: false
+            },
+            {
+                name: 'retort',
+                label: 'Não',
+                value: NO,
+                checked: true
+            },
+        ]
         dispatch({type: stateTypes.SET_REGION_LIST, payload: dataRegion})
+        dispatch({type: stateTypes.SET_RETORT, payload: dataRetort})
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [language, knowRegion])
 
@@ -187,6 +206,25 @@ const FormCalc = () => {
     const updateCalc = useCallback(() => {
         submitCalc(stateContext)
     }, [stateContext, submitCalc])
+
+    const handleRetort = useCallback((e) => {
+        const { value } = e.target
+        const retort_update = retort.map(r => {
+            r.checked = false
+            if (r.value === Number(value)) {
+                r.checked = !r.checked
+            }
+            return r
+        })
+        dispatch({type: stateTypes.SET_RETORT, payload: retort_update})
+        submitCalc({...stateContext, calculator: {...calculator, retort:retort_update}})
+    }, [dispatch, calculator, stateContext, submitCalc, retort])
+
+    const handleInflation = useCallback((e) => {
+        const { value } = e.target
+        dispatch({ type: stateTypes.SET_INFLATION, payload: value })
+        submitCalc({...stateContext, calculator: {...calculator, inflation:value}})
+    }, [calculator, stateContext, submitCalc, dispatch])
 
 
     const handleRegion = useCallback((e) => {
@@ -283,26 +321,47 @@ const FormCalc = () => {
         </Row>
         <Conditional check={knowRegion}>
             <Row>
-                <Col xs={12} sm={6}>
-                    <label>{calculatorForm.labels.state}</label>
-                    <select name="state" value={state} onChange={handleState}>
-                        {stateList.map(({ sigla, id }) => (
-                            <option key={id} value={id}>{sigla}</option>
-                        ))}
-                    </select>
-                </Col>
-                <Col xs={12} sm={6}>
-                    <label>{calculatorForm.labels.country}</label>
-                    <select name="country" value={country} onChange={handleCountry}>
-                        {counties.map(({ nome, id }) => (
-                            <option key={id} value={id}>{nome}</option>
-                        ))}
-                    </select>
-                </Col>
+            {
+                                isBrazil ? (
+                                    <>
+                                        <Col xs={12} sm={6}>
+                                            <label>{calculatorForm.labels.state}</label>
+                                            <select name="state" value={state} onChange={handleState}>
+                                            {
+                                                stateList.map(({sigla, id}) => (
+                                                    <option key={id} value={id}>{sigla}</option>
+                                                ))
+                                            }
+                                            </select>
+                                        </Col>
+                                        <Col xs={12} sm={6}>
+                                            <label>{calculatorForm.labels.country}</label>
+                                            <select name="state" value={country} onChange={handleCountry}>
+                                                {
+                                                    counties.map(({nome, id}) => (
+                                                        <option key={id} value={id}>{nome}</option>
+                                                    ))
+                                                }
+                                            </select>
+                                        </Col>
+                                    </>
+                                ) : (
+                                    <Col xs={12}>
+                                            <label>{calculatorForm.labels.country}</label>
+                                        <select name="state" value={country} onChange={handleCountry}>
+                                            {
+                                                counties.map(({nome, id}) => (
+                                                    <option key={id} value={id}>{nome}</option>
+                                                ))
+                                            }
+                                        </select>
+                                    </Col>
+                                )
+                            }
             </Row>
         </Conditional>
         <Row>
-        <Col xs={6}>
+        <Col xs={12} lg={6}>
             <label>{calculatorForm.labels.extractionType}</label>
             <select name="valuationMethod" value={valuatioMethod} onChange={handleValuationMethod}>
                 <option value={ALLUVIUM}>{calculatorForm.values.extractionType.openPit}</option>
@@ -310,7 +369,15 @@ const FormCalc = () => {
                 <option value={PIT}>{calculatorForm.values.extractionType.pitMine}</option>
             </select>
         </Col>
-        <Col xs={6}>
+        {
+            knowRegion ? (
+                <Col xs={12} lg={6}>
+                    <label>uso de capela?</label>
+                    <RadioBoxConditional state={retort} setState={handleRetort} />
+                </Col>
+            ) : <></>
+        }
+        <Col xs={12}>
             <label>{calculatorForm.labels.analysisUnit}</label>
             <select name="analysisUnit" value={calculator.analysisUnit} onChange={handleAnalysisUnit}>
                 <ExtrationTypeOptions value={calculator.analysisUnit} type={valuatioMethod} translate={introduction} />
@@ -343,6 +410,17 @@ const FormCalc = () => {
                     <option value="0.29">{calculatorForm.values.valueHypothesis.conservative}</option>
                     <option value="0.343">{calculatorForm.values.valueHypothesis.precautionaryPrinciple}</option>
                 </select>
+            </Col>
+        </Row>
+        <Row>
+            <Col xs={12}>
+                <TextField
+                    label="Inflação acumulada desde de 2022 %"
+                    type="number"
+                    value={inflation}
+                    onChange={handleInflation}
+                    onBlur={() => updateCalc()}
+                    name="valor" placeholder="Digite a inflação neste formato: 10 ou 6,2" />
             </Col>
         </Row>
     </Grid>

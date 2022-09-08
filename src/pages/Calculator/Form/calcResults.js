@@ -25,7 +25,7 @@ import woodAndNonWoodProducts from "./calculations/woodAndNonWoodProducts"
 import { AMOUNT_GOLD, CATEGORY_DEFORESTATION, CATEGORY_MERCURY, CATEGORY_SILTING_RIVERS, IMPACTED_AREA } from "./consts"
 
 const totalWithInflation = (isBrazil, inflation, total) => {
-    const inflationNumber = inflation.replace(",", ".")
+    const inflationNumber = Number(inflation.replace(",", "."))
     if(isBrazil) {
         const valueInflation2020at2021 = calculateInflation(14.58, total)
         const valueInflation = calculateInflation(inflationNumber, total)
