@@ -411,7 +411,7 @@ function Form() {
                             type="number"
                             value={inflation}
                             onChange={handleInflation}
-                            name="valor" placeholder="Inflação" />
+                            name="valor" placeholder="Digite a inflação neste formato: 10 ou 6,2" />
                     </Col>
                 </Row>
                

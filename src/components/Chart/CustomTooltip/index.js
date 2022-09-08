@@ -7,13 +7,14 @@ import { Container, Item, Value } from './style'
 
 const CustomTooltip = (props) => {
   const { state } = useContext(AppContext)
-  const { country_region } = state
+  const { country_region, priceUSDtoBRL } = state
   const isBrazil = country_region.country === countries_region[BRAZIL].country
+  
   
   const { active, payload } = props;
     if (active && payload && payload.length) {
       const { value, displayName } = payload[0].payload
-      const totalConverted = isBrazil ? ToBRL(value) : toUSD(value)
+      const totalConverted = isBrazil && priceUSDtoBRL ? ToBRL(value*priceUSDtoBRL) : toUSD(value)
       return (
         <Container>
           <Item>{displayName}</Item>

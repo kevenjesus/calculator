@@ -447,7 +447,7 @@ const MonetaryImpacts = () => {
         pdf.text('https://calculadora.conservation-strategy.org', 146, 287, { align: 'left' })
         pdf.save("CSF-report.pdf");
 
-    }, [])
+    }, [isBrazil])
     
 
     const impactsDesforestation = {
