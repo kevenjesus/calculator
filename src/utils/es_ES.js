@@ -207,6 +207,10 @@ const es_ES = {
                 {
                     type: 'Socavón',
                     text: 'La extracción de mineral a través de túneles subterráneos, tiene un menor impacto en términos de deforestación y erosión, pero también utiliza mercurio en el procesamiento del mineral.'
+                },
+                {
+                    type: 'Uso de retorta?',
+                    text: 'La extracción de mineral a través de túneles subterráneos, tiene un menor impacto en términos de deforestación y erosión, pero también utiliza mercurio en el procesamiento del mineral.'
                 }
             ],
             text: 'Si no se especifica el tipo, se considerarán los impactos del tipo de minería más común en la Amazonía, la minería aluvial'

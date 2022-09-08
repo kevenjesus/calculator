@@ -4,20 +4,22 @@ import { ContainerPartner } from 'pages/Introduction/About/style'
 import { Headline, Text } from 'pages/Introduction/style'
 import { useContext } from 'react'
 import { Col, Row } from 'react-flexbox-grid'
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { Button } from 'theme'
 import { AppContext } from 'utils/AppContext'
 import LogoMPF from 'assets/images/mpf-logo-ministerio-publico-federal.png'
 import LogoConservationStrategy from 'assets/images/logo.svg'
 import { Container, ContainerBackground, Embed, Overlay } from './style'
 import { BRAZIL, countries_region } from 'components/CountrySelect'
+import PrintPage from 'assets/images/print_page.png'
 
 const Home = () => {
     const { state } = useContext(AppContext)
     const { language, country_region } = state
     const { introduction } = language
-    console.log(country_region)
     const isBrazil = country_region && country_region.country === countries_region[BRAZIL].country
+    const history = useHistory()
+
     return (
         <>
             <ContainerBackground>
@@ -36,23 +38,17 @@ const Home = () => {
                             <img src={LogoConservationStrategy} width="120"  alt="" />
                         </ContainerPartner>
                         <label style={{color: 'white'}}>{language.iDontKnowYet}</label>
-                            <Link to="/introduction">
-                                <Button variant="secondary">{language.buttonIntroduction}</Button>
-                            </Link>
+                            <Button onClick={() => history.push('/introduction')} variant="secondary">{language.buttonIntroduction}</Button>
 
                             <label style={{color: 'white'}}>{language.iAlreadyKnow}</label>
-                            <Link to="/calculator">
-                                <Button variant="default">{language.buttonResumeCalculator}</Button>
-                            </Link>
+                            <Button onClick={() => history.push('/calculator')} variant="default">{language.buttonResumeCalculator}</Button>
                         </Col>
-                        <Col md={5} mdOffset={1}>
+                        <Col md={5} mdOffset={1} style={{position: 'relative'}}> 
                             <Embed>
                                 <iframe width="560" height="315" src="https://www.youtube.com/embed/iRJmh62xHxU" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                             </Embed>
-                            <a href="https://www.youtube.com/watch?v=sVlf8GCF-SU&list=PLBfu1mD9hk678ePbwqO1Aq3gugwzrhXTx" target="_blank">
-                                <Button style={{marginTop: 37}} variant="default">Ver outros videos sobre garimpo ilegal</Button>
-                            </a>
-                            
+                            <Button style={{marginTop: 37}} onClick={() =>  window.open('https://www.youtube.com/watch?v=sVlf8GCF-SU&list=PLBfu1mD9hk678ePbwqO1Aq3gugwzrhXTx')} variant="default">Ver outros videos sobre garimpo ilegal</Button>
+                            <img onClick={() => window.open('https://pubmed.ncbi.nlm.nih.gov/34831624/')} style={{cursor: 'pointer', position: 'absolute', top: 0, right: '-130px'}} src={PrintPage} title="Natial library of Medicine" alt="Natial library of Medicine" width={100} />
                         </Col>
                     </Row>
                 </Container>

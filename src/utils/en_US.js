@@ -209,6 +209,10 @@ const en_US = {
                 {
                     type: 'Pit',
                     text: 'Mining through underground tunnels has less impact in terms of deforestation and erosion, but also uses mercury in ore processing.'
+                },
+                {
+                    type: 'Uso de retorta?',
+                    text: 'Mining through underground tunnels has less impact in terms of deforestation and erosion, but also uses mercury in ore processing.'
                 }
             ],
             text: 'If the type is not specified, the impacts of the most common type of artisanal small scale gold mine in the Amazon, the alluvial type, will be considered.'

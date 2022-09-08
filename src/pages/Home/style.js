@@ -10,9 +10,6 @@ export const ContainerBackground = styled.div`
     left: 0;
     right: 0;
     top: 0;
-    @media (min-width: 768px) {
-        bottom: 0;
-    }
 ` 
 
 export const Overlay = styled.div`
