@@ -350,7 +350,7 @@ function Form() {
                     </Row>
                 </Conditional>
                 <Row>
-                <Col xs={6}>
+                <Col xs={12} lg={6}>
                         <label>{calculatorForm.labels.extractionType}</label>
                         <select name="valuationMethod" value={valuatioMethod} onChange={handleValuationMethod}>
                             <option value={ALLUVIUM}>{calculatorForm.values.extractionType.openPit}</option>
@@ -358,12 +358,21 @@ function Form() {
                             <option value={PIT}>{calculatorForm.values.extractionType.pitMine}</option>
                         </select>
                     </Col>
-                    <Col xs={6}>
+                    {
+                        knowRegion ? (
+                            <Col xs={12} lg={6}>
+                                <label>uso de capela?</label>
+                                <RadioBoxConditional state={retort} setState={handleRetort} />
+                            </Col>
+                        ) : <></>
+                    }
+                    <Col xs={12}>
                         <label>{calculatorForm.labels.analysisUnit}</label>
                         <select name="analysisUnit" value={calculator.analysisUnit} onChange={handleAnalysisUnit}>
                             <ExtrationTypeOptions value={calculator.analysisUnit} type={valuatioMethod} translate={introduction} />
                         </select>
                     </Col>
+                    
                     <Col xs={valuatioMethod === ALLUVIUM ? 6 : 12} lg={valuatioMethod === ALLUVIUM ? 4 : 12}>
                         <TextField
                             label={placeholder}
@@ -405,16 +414,7 @@ function Form() {
                             name="valor" placeholder="Inflação" />
                     </Col>
                 </Row>
-                <Row>
-                {
-                        knowRegion ? (
-                            <Col xs={12} lg={6}>
-                                <label>uso de capela?</label>
-                                <RadioBoxConditional state={retort} setState={handleRetort} />
-                            </Col>
-                        ) : <></>
-                    }
-                </Row>
+               
 
                 <ButtonFixed>
                     <Grid>
