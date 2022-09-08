@@ -419,6 +419,12 @@ const MonetaryImpacts = () => {
         const canvasGraphics_resume = await html2canvas(graphics_resume, { scale: 0.55 })
         const canvasGraphics_total = await html2canvas(graphics_total, { scale: 0.53 })
         const canvasTotalMoney = await html2canvas(totalMonay, { scale: 0.8 })
+        
+        var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        var today  = new Date();
+
+        const date = today.toLocaleDateString(isBrazil ? "pt-BR" : "en-US", options)
+        const footer = `© CSF All rights reserved | ${date}`
 
         const pdf = new jsPDF(
             {
@@ -430,13 +436,15 @@ const MonetaryImpacts = () => {
                }
         );
         pdf.setFontSize(8)
-        pdf.text('© CSF All rights reserved', pdf.internal.pageSize.width / 2, 287, { align: 'center' })
+        pdf.text(footer, 88, 287, { align: 'right' })
+        pdf.text('https://calculadora.conservation-strategy.org', 146, 287, { align: 'left' })
         pdf.addImage(canvasTotalMoney.toDataURL('image/png'), 'JPEG', 7, 10);
         pdf.addImage(canvasGraphics_resume.toDataURL('image/png'), 'JPEG', 10, 70);
         pdf.addPage('a4', 'p')
 
         pdf.addImage(canvasGraphics_total.toDataURL('image/png'), 'JPEG', 7, 10);
-        pdf.text('© CSF All rights reserved', pdf.internal.pageSize.width / 2, 287, { align: 'center' })
+        pdf.text(footer, 88, 287, { align: 'right' })
+        pdf.text('https://calculadora.conservation-strategy.org', 146, 287, { align: 'left' })
         pdf.save("CSF-report.pdf");
 
     }, [])
