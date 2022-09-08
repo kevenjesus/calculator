@@ -8,4 +8,5 @@ export const Headling = styled.h1`
 export const Text = styled.p`
     font-size: 16px;
     margin-bottom: 32px;
+    display: flex;
 `

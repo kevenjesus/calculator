@@ -5,6 +5,8 @@ import esES from 'utils/es_ES'
 import Modal from "components/Modal"
 import * as S from './styles'
 import { Button } from 'theme';
+import { ReactComponent as Portuguese } from 'assets/icons/portuguese.svg'
+import { ReactComponent as Spanish } from 'assets/icons/spanish.svg'
 
 export const BRAZIL = 0
 export const EQUADOR = 1
@@ -57,15 +59,17 @@ const CountrySelect = () => {
 
     return (
         <Modal open={modalState}>
-            <S.Headling>Selecione qual país</S.Headling>
-            <S.Text>Selecione o país onde será baseado as informaçoes de garimpo ilegal de ouro.</S.Text>
+            <S.Headling>Território</S.Headling>
+            <S.Text><Portuguese width={40} style={{marginRight: '8px'}} />  Selecione o país onde será baseado as informaçoes de garimpo ilegal de ouro.</S.Text>
+            <hr />
+            <S.Text><Spanish width={40} style={{marginRight: '8px'}} />  Seleccione el país donde se basará la información sobre minería ilegal de oro.</S.Text>
             <select value={selected && selected.country} onChange={handleCountry}>
                 {
                     countries_region.map(item => <option key={item.country} value={item.country}>{item.label}</option>)
                 }
                 
             </select>
-            <Button style={{marginTop: 32}} onClick={handleNext}>Prosseguir</Button>
+            <Button style={{marginTop: 32}} onClick={handleNext}>Ok</Button>
             
         </Modal>
     )
