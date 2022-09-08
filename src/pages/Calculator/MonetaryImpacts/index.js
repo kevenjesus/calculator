@@ -373,6 +373,18 @@ const MonetaryImpacts = () => {
     const dataSiltingRivers = impactsValues.filter(i => i.category === CATEGORY_SILTING_RIVERS)
     const dataMercury = impactsValues.filter(i => i.category === CATEGORY_MERCURY)
 
+    const likeMining = calculator.valuatioMethod // FERRY, PIT or ALLUVION
+    const valueLikeMining = calculator.qtdAnalysis.value // gold, hactare, months, years
+    const typeValueLikeMining = calculator.analysisUnit // AMOUNT_GOLD / IMPACTED_AREA / YEARS_OF_MINING / MONTHS_OF_MINING
+
+    const hiddenMenu = calculator.valuatioMethod === FERRY ? [impacts.menu.deforestation] : []
+
+    const goldValue = Math.round(convertAllinGold(likeMining, typeValueLikeMining, valueLikeMining, pitDepth))
+    
+    const goldPrice = getGoldValue.goldPrice() * goldValue
+    const subtotalGoldPrice = isBrazil && priceUSDtoBRL ? goldPrice : goldPrice*priceUSDtoBRL
+    const totalGoldPrice = isBrazil && priceUSDtoBRL ? ToBRL(goldPrice) : toUSD(goldPrice*priceUSDtoBRL)
+
 
     const allImpacts = {
         data: [
@@ -391,6 +403,11 @@ const MonetaryImpacts = () => {
                 displayName: impacts.mercuryContamination.headline,
                 value: dataMercury.reduce(reducer, 0)
             },
+            {
+                label: `${goldValue} gramas de ouro`,
+                displayName: `Valor de ${goldValue} gramas de ouro`,
+                value: subtotalGoldPrice
+            }
         ],
         total: sumTotal(impactsValues)
     }
@@ -449,16 +466,9 @@ const MonetaryImpacts = () => {
         typeAnalysis = language.calculatorForm.values.qtdAnalysisUnit.months
     }
 
-    const likeMining = calculator.valuatioMethod // FERRY, PIT or ALLUVION
-    const valueLikeMining = calculator.qtdAnalysis.value // gold, hactare, months, years
-    const typeValueLikeMining = calculator.analysisUnit // AMOUNT_GOLD / IMPACTED_AREA / YEARS_OF_MINING / MONTHS_OF_MINING
+    
 
-    const hiddenMenu = calculator.valuatioMethod === FERRY ? [impacts.menu.deforestation] : []
-
-    const goldValue = Math.round(convertAllinGold(likeMining, typeValueLikeMining, valueLikeMining, pitDepth))
-
-    const goldPrice = getGoldValue.goldPrice() * goldValue
-    const totalGoldPrice = isBrazil && priceUSDtoBRL ? ToBRL(goldPrice) : toUSD(goldPrice*priceUSDtoBRL)
+    
     return (
         <Container>
             <Grid fluid>
