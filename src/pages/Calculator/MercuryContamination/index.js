@@ -11,18 +11,23 @@ import ToBRL from 'utils/toBRL';
 import { DataChart } from '../MonetaryImpacts';
 import MenuImpacts from '../Menu';
 import popSize100kmRadius from 'utils/popSize100kmRadius';
+import { BRAZIL, countries_region } from 'components/CountrySelect';
+import toUSD from 'utils/toUSD';
 
 const MercuryContamination = () => {
     const {state} = useContext(AppContext)
-    const { language, calculator } = state
+    const { language, calculator, country_region, priceUSDtoBRL } = state
     const { counties, country, knowRegion } = calculator
     const { impacts } = language
+
+    const isBrazil = country_region && country_region.country === countries_region[BRAZIL].country
+
     window.scrollTo(0,0)
 
     const impactsValues = state.calculator.values
 
     const reducer = ((acc, current) => acc + current.value)
-    const sumTotal = (item) => ToBRL(item.reduce(reducer, 0))
+    const sumTotal = (item) => isBrazil && priceUSDtoBRL ? ToBRL(item.reduce(reducer, 0)*priceUSDtoBRL) : toUSD(item.reduce(reducer, 0))
 
     const dataMercury = impactsValues.filter(i => i.category === CATEGORY_MERCURY)
 

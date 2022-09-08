@@ -46,7 +46,6 @@ const CountrySelect = () => {
     const handleNext = useCallback(() => {
         setModal(false)
         dispatch({type: stateTypes.SET_COUNTRY_REGION, payload: selected })
-        console.log(selected)
         if(selected.country === countries_region[BRAZIL].country) {
             dispatch({type: stateTypes.SET_LANGUAGE, payload: ptBR })
         }else {

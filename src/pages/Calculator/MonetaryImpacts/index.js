@@ -20,7 +20,6 @@ import { useAlert } from 'react-alert'
 import html2canvas from 'html2canvas'
 import { jsPDF } from "jspdf";
 
-import useExchange from 'hooks/useExchange'
 import getGoldValue from 'utils/getGoldValue'
 import { BRAZIL, countries_region } from 'components/CountrySelect'
 import convertAllinGold from 'utils/convertAllinGold'
@@ -53,7 +52,7 @@ export const DataChart = ({impact, headline, hiddenMonetary, txtTotalNonetary}) 
 const FormCalc = () => {
     const { state: stateContext, dispatch } = useContext(AppContext)
     const [placeholder, setPlaceholder] = useState("")
-    const { calculator, language } = stateContext
+    const { calculator, language, priceUSDtoBRL } = stateContext
     const {
         regionList,
         knowRegion,
@@ -67,7 +66,6 @@ const FormCalc = () => {
         txPrevalence } = calculator
     const { calculatorForm, introduction } = language
     const alert = useAlert()
-    const { USDtoBRL } = useExchange()
 
 
     const dataPitDepth = [
@@ -175,19 +173,19 @@ const FormCalc = () => {
         return false
     }, [alert, dispatch, qtdAnalysis])
 
-    const submitCalc = useCallback((state, dolarTOReal) => {
+    const submitCalc = useCallback((state) => {
         if(checkFormIsInvalid()) {
             return;
         }
         
-        calcResults(state, dispatch, dolarTOReal)
+        calcResults(state, dispatch, priceUSDtoBRL)
         const { calculator } = state
         sessionStorage.removeItem('@Calculator/form')
         sessionStorage.setItem('@Calculator/form', JSON.stringify(calculator))
-    },[checkFormIsInvalid, dispatch])
+    },[checkFormIsInvalid, priceUSDtoBRL, dispatch])
 
-    const updateCalc = useCallback((dolarTOReal) => {
-        submitCalc(stateContext, dolarTOReal)
+    const updateCalc = useCallback(() => {
+        submitCalc(stateContext)
     }, [stateContext, submitCalc])
 
 
@@ -200,35 +198,31 @@ const FormCalc = () => {
             }
             return r
         })
-        const dolarTOReal = Number(USDtoBRL.high)
         dispatch({ type: stateTypes.SET_REGION_LIST, payload: regionListUpdate })
         dispatch({ type: stateTypes.SET_KNOW_REGION, payload: Number(value) === YES })
-        submitCalc({...stateContext, calculator: {...calculator, regionList:regionListUpdate, knowRegion: Number(value) === YES}}, dolarTOReal)
-    }, [calculator, dispatch, regionList, USDtoBRL, stateContext, submitCalc])
+        submitCalc({...stateContext, calculator: {...calculator, regionList:regionListUpdate, knowRegion: Number(value) === YES}})
+    }, [calculator, dispatch, regionList, stateContext, submitCalc])
 
     const handleState = useCallback((e) => {
         const { value } = e.target
-        const dolarTOReal = Number(USDtoBRL.high)
         getCounties(value)
         dispatch({ type: stateTypes.SET_STATE, payload: value })
-        submitCalc({...stateContext, calculator:{...calculator, state: value}}, dolarTOReal)
-    }, [getCounties, dispatch, USDtoBRL, submitCalc, stateContext, calculator])
+        submitCalc({...stateContext, calculator:{...calculator, state: value}})
+    }, [getCounties, dispatch, submitCalc, stateContext, calculator])
 
     const handleCountry = useCallback((e) => {
         const { value } = e.target
-        const dolarTOReal = Number(USDtoBRL.high)
 
         dispatch({ type: stateTypes.SET_COUNTRY, payload: value })
-        submitCalc({...stateContext, calculator:{...calculator, country: value}}, dolarTOReal)
-    }, [calculator, dispatch, stateContext, USDtoBRL, submitCalc])
+        submitCalc({...stateContext, calculator:{...calculator, country: value}})
+    }, [calculator, dispatch, stateContext, submitCalc])
 
     const handleAnalysisUnit = useCallback((e) => {
         const { value } = e.target
-        const dolarTOReal = Number(USDtoBRL.high)
 
         dispatch({ type: stateTypes.SET_ANALYS_UNIT, payload: Number(value) })
-        submitCalc({...stateContext, calculator:{...calculator, analysisUnit: Number(value)}}, dolarTOReal)
-    }, [calculator, dispatch, stateContext, USDtoBRL, submitCalc])
+        submitCalc({...stateContext, calculator:{...calculator, analysisUnit: Number(value)}})
+    }, [calculator, dispatch, stateContext, submitCalc])
 
     const handleQtdAnalysis = useCallback((e) => {
         const { value } = e.target
@@ -237,11 +231,10 @@ const FormCalc = () => {
 
     const handlePitDepth = useCallback((e) => {
         const { value } = e.target
-        const dolarTOReal = Number(USDtoBRL.high)
 
         dispatch({ type: stateTypes.SET_PITDEPTH, payload: Number(value) })
-        submitCalc({...stateContext, calculator:{ ...calculator, pitDepth: Number(value)}}, dolarTOReal)
-    }, [calculator, dispatch, stateContext, USDtoBRL, submitCalc])
+        submitCalc({...stateContext, calculator:{ ...calculator, pitDepth: Number(value)}})
+    }, [calculator, dispatch, stateContext, submitCalc])
 
     const handleValuationMethod = useCallback((e) => {
         const { value } = e.target
@@ -257,24 +250,13 @@ const FormCalc = () => {
         }
     }, [calculator, dispatch])
 
-    
-
-    useEffect(() => {
-        if(USDtoBRL) {
-            const dolarTOReal = Number(USDtoBRL.high)
-            updateCalc(dolarTOReal);
-        }
-        
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [valuatioMethod, USDtoBRL])
 
     const handleTxPrevalance = useCallback((e) => {
         const { value } = e.target
-        const dolarTOReal = Number(USDtoBRL.high)
 
         dispatch({ type: stateTypes.SET_TX_PREVALENCE, payload: Number(value) })
-        submitCalc({...stateContext, calculator:{...calculator, txPrevalence: Number(value)}}, dolarTOReal)
-    }, [calculator, dispatch, stateContext, USDtoBRL, submitCalc])
+        submitCalc({...stateContext, calculator:{...calculator, txPrevalence: Number(value)}})
+    }, [calculator, dispatch, stateContext, submitCalc])
 
     useEffect(() => {
         let placeholder;
@@ -341,7 +323,7 @@ const FormCalc = () => {
                 type="number"
                 value={qtdAnalysis.value}
                 onChange={handleQtdAnalysis}
-                onBlur={() => updateCalc(Number(USDtoBRL.high))}
+                onBlur={() => updateCalc()}
                 name="valor" placeholder={placeholder} />
         </Col>
 
@@ -369,13 +351,14 @@ const FormCalc = () => {
 
 
 const MonetaryImpacts = () => {
-    const [dolarTOReal, setDolarReal] = useState(null)
-    const {state, dispatch} = useContext(AppContext);
-    const {language, calculator, country_region} = state
-    const { txPrevalence, pitDepth } = calculator
+    const {state} = useContext(AppContext);
+    const {language, calculator, country_region, priceUSDtoBRL} = state
+    const {  pitDepth } = calculator
     const {impacts} = language
     const history = useHistory();
-    const { USDtoBRL } = useExchange()
+
+    const isBrazil = country_region && country_region.country === countries_region[BRAZIL].country
+
 
     window.scrollTo(0,0)
 
@@ -384,7 +367,7 @@ const MonetaryImpacts = () => {
     const impactsValues = state.calculator.values
 
     const reducer = ((acc, current) => acc + current.value)
-    const sumTotal = (item) => ToBRL(item.reduce(reducer, 0))
+    const sumTotal = (item) => isBrazil && priceUSDtoBRL ? ToBRL(item.reduce(reducer, 0)*priceUSDtoBRL) : toUSD(item.reduce(reducer, 0))
 
     const dataDesforestation = impactsValues.filter(i => i.category === CATEGORY_DEFORESTATION)
     const dataSiltingRivers = impactsValues.filter(i => i.category === CATEGORY_SILTING_RIVERS)
@@ -411,15 +394,6 @@ const MonetaryImpacts = () => {
         ],
         total: sumTotal(impactsValues)
     }
-
-    useEffect(() => {
-        if(USDtoBRL) {
-            const val = Number(USDtoBRL.high)
-            setDolarReal(val)
-            calcResults(state, dispatch, val)
-        }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [txPrevalence, USDtoBRL])
 
     const handleDownloadPDF = useCallback(async () =>{
         const graphics_resume = document.getElementById('graphics_resume');
@@ -480,12 +454,11 @@ const MonetaryImpacts = () => {
     const typeValueLikeMining = calculator.analysisUnit // AMOUNT_GOLD / IMPACTED_AREA / YEARS_OF_MINING / MONTHS_OF_MINING
 
     const hiddenMenu = calculator.valuatioMethod === FERRY ? [impacts.menu.deforestation] : []
-    const isBrazil = country_region.country === countries_region[BRAZIL].country
 
     const goldValue = Math.round(convertAllinGold(likeMining, typeValueLikeMining, valueLikeMining, pitDepth))
 
     const goldPrice = getGoldValue.goldPrice() * goldValue
-    const totalGoldPrice = isBrazil ? ToBRL(goldPrice) : toUSD(goldPrice*dolarTOReal)
+    const totalGoldPrice = isBrazil && priceUSDtoBRL ? ToBRL(goldPrice) : toUSD(goldPrice*priceUSDtoBRL)
     return (
         <Container>
             <Grid fluid>

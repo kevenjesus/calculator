@@ -41,7 +41,8 @@ export const stateTypes = {
     SET_CALCULATEFORM: 'SET_CALCULATEFORM',
     SET_COUNTRY_REGION: 'SET_COUNTRY_REGION',
     SET_RETORT: 'SET_RETORT',
-    SET_INFLATION: 'SET_INFLATION'
+    SET_INFLATION: 'SET_INFLATION',
+    SET_PRICEUSDTOBRL: 'SET_PRICEUSDTOBRL'
 }
 
 const initialState = {
@@ -72,6 +73,7 @@ const initialState = {
     },
     language: ptBR,
     country_region: null,
+    priceUSDtoBRL: null
 }
 
 
@@ -137,6 +139,15 @@ const CountryRegionReducer = (state, action) => {
     }
 }
 
+const priceUSDtoBRLReducer = (state, action) => {
+    switch(action.type) {
+        case stateTypes.SET_PRICEUSDTOBRL:
+            return action.payload
+        default:
+            return state;
+    }
+}
+
 
 const introductoinReducer = (state, action) => {
     switch(action.type) {
@@ -147,11 +158,12 @@ const introductoinReducer = (state, action) => {
     }
 }
 
-const combineReducers = ({calculator, language, country_region, introduction}, action) => ({
+const combineReducers = ({calculator, language, country_region, priceUSDtoBRL, introduction}, action) => ({
     calculator: calculatorReducer(calculator, action),
     language: languageReducer(language, action),
     country_region: CountryRegionReducer(country_region, action),
-    introduction: introductoinReducer(introduction, action)
+    introduction: introductoinReducer(introduction, action),
+    priceUSDtoBRL: priceUSDtoBRLReducer(priceUSDtoBRL, action),
 })
 
 export const AppContext = createContext({

@@ -13,7 +13,6 @@ const cubicMeters = (likeMining, typeValueLikeMining, valueLikeMining, pitDepth)
    
     if (likeMining === PIT && typeValueLikeMining === YEARS_OF_MINING) {
         const toGoldGramQuantityWell = amountOfGoldGramsPerYearWell * valueLikeMining;
-        console.log(toGoldGramQuantityWell)
         const revolvedSoloTon = toGoldGramQuantityWell / productivityGoldMiningTon;
         const upturnedSterileTon = revolvedSoloTon * sterileOreEnhancement;
         const toUpturnedSoil = upturnedSterileTon + revolvedSoloTon;

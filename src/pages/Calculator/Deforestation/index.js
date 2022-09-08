@@ -7,29 +7,39 @@ import { ReactComponent as ImageExampleUS } from 'assets/images/[calculadora]Inf
 import { useContext } from 'react';
 import { AppContext } from 'utils/AppContext';
 import ToBRL from 'utils/toBRL';
+import toUSD from 'utils/toUSD'
 import { CATEGORY_DEFORESTATION, FERRY } from '../Form/consts';
 import { DataChart } from 'pages/Calculator/MonetaryImpacts' 
 import MenuImpacts from '../Menu';
 import convertAllinGold from 'utils/convertAllinGold';
 import convertAllinHectare from 'utils/convertAllinHectare';
+import { countries_region, BRAZIL } from 'components/CountrySelect';
+
 const Deforestation = () => {
     const {state} = useContext(AppContext)
-    const { language, calculator } = state
+    const { language, calculator, country_region, priceUSDtoBRL } = state
     const { valuatioMethod, qtdAnalysis, pitDepth } = calculator
-
     const { impacts } = language
+
+  
+    const isBrazil = country_region && country_region.country === countries_region[BRAZIL].country
+
     window.scrollTo(0,0)
 
     const impactsValues = state.calculator.values
 
     const reducer = ((acc, current) => acc + current.value)
-    const sumTotal = (item) => ToBRL(item.reduce(reducer, 0))
+    const sumTotal = (item) => isBrazil && priceUSDtoBRL ? ToBRL(item.reduce(reducer, 0)*priceUSDtoBRL) : toUSD(item.reduce(reducer, 0))
 
     const dataDesforestation = impactsValues.filter(i => i.category === CATEGORY_DEFORESTATION)
     const impactsDesforestation = {
         data: dataDesforestation,
         total: sumTotal(dataDesforestation)
     }
+ 
+    
+
+    
 
     const likeMining = valuatioMethod // FERRY, PIT or ALLUVION
     const valueLikeMining = qtdAnalysis.value // gold, hactare, months, years

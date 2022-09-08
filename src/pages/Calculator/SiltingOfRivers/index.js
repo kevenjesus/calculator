@@ -12,18 +12,24 @@ import { DataChart } from '../MonetaryImpacts';
 import MenuImpacts from '../Menu';
 import cubicMeters from 'utils/cubicMeters';
 import convertAllinGold from 'utils/convertAllinGold';
+import { BRAZIL, countries_region } from 'components/CountrySelect';
+import toUSD from 'utils/toUSD';
 
 const SiltingOfRivers = () => {
     const {state} = useContext(AppContext)
-    const { language, calculator } = state
+    const { language, calculator, country_region, priceUSDtoBRL } = state
     const { valuatioMethod, qtdAnalysis, pitDepth } = calculator
     const { impacts } = language
+
+    const isBrazil = country_region && country_region.country === countries_region[BRAZIL].country
+
+
     window.scrollTo(0,0)
 
     const impactsValues = state.calculator.values
 
     const reducer = ((acc, current) => acc + current.value)
-    const sumTotal = (item) => ToBRL(item.reduce(reducer, 0))
+    const sumTotal = (item) => isBrazil && priceUSDtoBRL ? ToBRL(item.reduce(reducer, 0)*priceUSDtoBRL) : toUSD(item.reduce(reducer, 0))
 
     const dataSiltingRivers = impactsValues.filter(i => i.category === CATEGORY_SILTING_RIVERS)
 

@@ -10,9 +10,9 @@ import toUSD from 'utils/toUSD';
 
 const CustomizedLabel = ({x, y, width, value }) => {
   const { state } = useContext(AppContext)
-  const { country_region } = state
+  const { country_region, priceUSDtoBRL } = state
   const isBrazil = country_region.country === countries_region[BRAZIL].country
-  const totalConverted = isBrazil ? ToBRL(value) : toUSD(value)
+  const totalConverted = isBrazil && priceUSDtoBRL ? ToBRL(value*priceUSDtoBRL) : toUSD(value)
   return (
           <text 
             x={x + width - (window.innerWidth > 768 ? 25 : 15)} 
@@ -29,11 +29,18 @@ const CustomizedLabel = ({x, y, width, value }) => {
   
 
 const Chart = ({data}) => {
-    const items = data.map(d => {
-      return {...d, value: Math.round(d.value * 100) / 100}
-    })
+  const { state } = useContext(AppContext)
+  const { country_region, priceUSDtoBRL } = state
+  const isBrazil = country_region.country === countries_region[BRAZIL].country
+  const items = data.map(d => {
+    return {...d, value: Math.round(d.value * 100) / 100}
+  })
 
-    const size = window.innerWidth;
+  const tickFormatterHandle = (value) => {
+    return isBrazil && priceUSDtoBRL ? ToBRL(value*priceUSDtoBRL) : toUSD(value)
+  }
+
+  const size = window.innerWidth;
 
     return (
       <WrapperPrint>
@@ -51,7 +58,7 @@ const Chart = ({data}) => {
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="label"  fontSize={12} interval={0} />
-          <YAxis width={150} domain={[0, 'dataMax']} allowDecimals tickFormatter={ToBRL} hide={size < 768} />
+          <YAxis width={150} domain={[0, 'dataMax']} allowDecimals tickFormatter={tickFormatterHandle} hide={size < 768} />
           
           <Tooltip content={CustomTooltip} />
           <Bar barSize={window.innerWidth >= 1366 ? 50 : (window.innerWidth >= 768 ? 30 : 20)} dataKey="value" label={<CustomizedLabel />} fill={colors.primary}>

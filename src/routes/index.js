@@ -18,13 +18,23 @@ import MercuryReferences from 'pages/Calculator/MercuryContamination/references'
 import Team from 'pages/Team';
 import MoralDamages from 'pages/MoralDamages';
 import CountrySelect from 'components/CountrySelect'
-import { useContext } from 'react';
-import { AppContext } from 'utils/AppContext';
+import { useContext, useEffect } from 'react';
+import { AppContext, stateTypes } from 'utils/AppContext';
+import useExchange from 'hooks/useExchange';
 
 
 const Routes = () => {
-    const {state} = useContext(AppContext)
+    const {state, dispatch} = useContext(AppContext)
     const { country_region } = state
+    const { USDtoBRL } = useExchange()
+
+    useEffect(() => {
+        if(USDtoBRL) {
+            const dolarReal = Number(USDtoBRL.high)
+            dispatch({type: stateTypes.SET_PRICEUSDTOBRL, payload: dolarReal})
+        }
+        // eslint-disable-next-line
+    }, [USDtoBRL])
     return (
         <Router basename={process.env.PUBLIC_URL}>
             <Header />
