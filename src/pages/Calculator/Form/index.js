@@ -340,7 +340,7 @@ function Form() {
                                         <select name="state" value={country} onChange={handleCountry}>
                                             {
                                                 counties.map(({nome, id}) => (
-                                                    <option key={id} value={id}>{nome}</option>
+                                                    <option key={id} value={id}>{nome.toLowerCase()}</option>
                                                 ))
                                             }
                                         </select>
