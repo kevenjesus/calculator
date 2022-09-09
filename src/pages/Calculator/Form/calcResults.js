@@ -150,6 +150,7 @@ const calcResults = (state, dispatch, dolarTOReal) => {
         const totalValue = impacts.reduce(reducer, 0);
 
         const totalConverted = isBrazil ? ToBRL(totalValue*dolarTOReal) : toUSD(totalValue)
+
         
 
         dispatch({ type: stateTypes.ADD_VALUE, payload: impacts })

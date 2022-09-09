@@ -33,7 +33,7 @@ const Content = ({step}) => {
 
 const Introduction = () => {
     const {state, dispatch} = useContext(AppContext) 
-    const {calculator, introduction, language} = state;
+    const {calculator, introduction, language, priceUSDtoBRL} = state;
     const { step } = introduction
     const history = useHistory();
     const alert = useAlert();
@@ -55,13 +55,13 @@ const Introduction = () => {
                 dispatch({type: stateTypes.SET_QTD_ANALYS_UNIT, payload: {...calculator.qtdAnalysis, error: true}});
                 alert.error(<span style={{textTransform: 'initial'}}>Por favor. Preencha o valor de unidade</span>)
             }else {
-                calcResults(state, dispatch)
+                calcResults(state, dispatch, priceUSDtoBRL)
                 history.push('/loading')
             }
         }else {
             dispatch({type: stateTypes.SET_STEP, payload: { step: step+1}});
         }
-    }, [state, step, dispatch, history, calculator, alert]);
+    }, [state, step, dispatch, history, calculator, alert, priceUSDtoBRL]);
 
     const PreviosStep = useCallback(() => {
         dispatch({type: stateTypes.SET_STEP, payload: { step: step-1}});
