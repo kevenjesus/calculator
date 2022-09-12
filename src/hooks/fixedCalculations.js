@@ -95,7 +95,7 @@ const fixedCalcultions = (country_region) => {
         }
         let neuroSymptomsGarimpeiro = {
             amountOfGoldminersYear: 150.45,
-            neuroTreatmentCostPerGoldMinerUSD: 448.8,
+            neuroTreatmentCostPerGoldMinerUSD: 449.8,
 
         }
         let heartAttack = {
@@ -180,7 +180,7 @@ const fixedCalcultions = (country_region) => {
             
 
             neuroSymptomsGarimpeiro.amountOfGoldminersYear = 384
-            neuroSymptomsGarimpeiro.neuroTreatmentCostPerGoldMinerUSD = 5317.83
+            neuroSymptomsGarimpeiro.neuroTreatmentCostPerGoldMinerUSD = 534
 
             heartAttack.proMenOver40ByPopTotal = 0.17
             heartAttack.accumulatedRiskMercuryInfarction = 0.0161
@@ -257,7 +257,7 @@ const fixedCalcultions = (country_region) => {
             
 
             neuroSymptomsGarimpeiro.amountOfGoldminersYear = 1464.28
-            neuroSymptomsGarimpeiro.neuroTreatmentCostPerGoldMinerUSD = 1921.7
+            neuroSymptomsGarimpeiro.neuroTreatmentCostPerGoldMinerUSD = 5921.7
 
             heartAttack.proMenOver40ByPopTotal = 0.2204
             heartAttack.accumulatedRiskMercuryInfarction = 0.0161
@@ -333,8 +333,8 @@ const fixedCalcultions = (country_region) => {
             lossQI.aDALYUSD = 16003.8
             
 
-            neuroSymptomsGarimpeiro.amountOfGoldminersYear = 41.45
-            neuroSymptomsGarimpeiro.neuroTreatmentCostPerGoldMinerUSD = 36636.6
+            neuroSymptomsGarimpeiro.amountOfGoldminersYear = 150.45
+            neuroSymptomsGarimpeiro.neuroTreatmentCostPerGoldMinerUSD = 49
 
             heartAttack.proMenOver40ByPopTotal = 0.2564
             heartAttack.accumulatedRiskMercuryInfarction = 0.0161
