@@ -284,7 +284,7 @@ const fixedCalcultions = (country_region) => {
             general.averageDriverSalaryFreightPerKmUSD = 0.14
             general.quantityOfGoldGramsPerYearWell = 3456
             general.averageDepthOfFertileEarth = 0.4
-            general.quantitOfM3ExcavatorPerHour = 160
+            general.quantitOfM3ExcavatorPerHour = 64
             general.HgAuRatio = 7
             general.percentLossHgInWater_convervative = 0.09
             general.percentLossHgInWater = 0.2
@@ -327,7 +327,7 @@ const fixedCalcultions = (country_region) => {
             dredgingAndRiverSediments.transportCost1DredgeUSD = 0.76
 
             cavaGroundingCostAuNorm.normalCavaGroundingCostUSD = 0.2
-            cavaGroundingCostAuFertile.groundingCostFertilePitUSD = 2.54
+            cavaGroundingCostAuFertile.groundingCostFertilePitUSD = 1.55
 
             lossQI.birthRate = 14.7
             lossQI.aDALYUSD = 16003.8
