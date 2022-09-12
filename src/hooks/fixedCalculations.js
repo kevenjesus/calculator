@@ -48,7 +48,7 @@ const fixedCalcultions = (country_region) => {
             levelMediumContaminationFish: 0.5,
             AverageFishConsumptionPerDayInRuralGrams: 144.5,
             consumptionMediumFishByDayInGramsUrban: 57,
-            densityPopulationalRegionNorth2060: 6.00,
+            densityPopulationalRegionNorth2060: 6,
             aDALYUSD: 20719.8,
             excavatorHoursDays: 10,
             excavatorCostPerKMUSD: 0.76,
@@ -130,7 +130,7 @@ const fixedCalcultions = (country_region) => {
             general.quantitOfM3ExcavatorPerHour = 70
             general.HgAuRatio = 2.6
             general.percentLossHgInWater_convervative = 0.075
-            general.percentLossHgInWater = 0.2
+            general.percentLossHgInWater = 0.35
             general.percentLossHgInWater_ferry__convervative = 0.155
             general.percentLossHgInWater_ferry = 0.28
             general.methyladPercent_conservative = 0.11
@@ -146,7 +146,7 @@ const fixedCalcultions = (country_region) => {
             general.excavatorCostPerKMUSD = 0.77
             general.hollowMediumDepth = 100
             general.cavaAverageProductivity = 0.141
-            general.prodGoldMonthFerry = 229.33
+            general.prodGoldMonthFerry = 229.4
 
             carbon.carbonCostPerHaUSD = 259.73
 
@@ -218,7 +218,7 @@ const fixedCalcultions = (country_region) => {
             general.urbanindividualWeight = 70
             general.levelMediumContaminationFish = 0.36
             general.AverageFishConsumptionPerDayInRuralGrams = 183
-            general.consumptionMediumFishByDayInGramsUrban = 57
+            general.consumptionMediumFishByDayInGramsUrban = 23.33
             general.densityPopulationalRegionNorth2060 = 6.2
             general.aDALYUSD = 16801.17
             general.excavatorHoursDays = 10
@@ -285,16 +285,16 @@ const fixedCalcultions = (country_region) => {
             general.quantityOfGoldGramsPerYearWell = 3456
             general.averageDepthOfFertileEarth = 0.4
             general.quantitOfM3ExcavatorPerHour = 64
-            general.HgAuRatio = 7
+            general.HgAuRatio = 2.33
             general.percentLossHgInWater_convervative = 0.09
             general.percentLossHgInWater = 0.2
             general.percentLossHgInWater_ferry__convervative = 0.17
             general.percentLossHgInWater_ferry = 0.28
             general.methyladPercent_conservative = 0.11
             general.methyladPercent = 0.22
-            general.ruralIndividualWeight = 66.81482
-            general.urbanindividualWeight = 69.06588
-            general.levelMediumContaminationFish = 0.21
+            general.ruralIndividualWeight = 65.25
+            general.urbanindividualWeight = 69.14
+            general.levelMediumContaminationFish = 0.49
             general.AverageFishConsumptionPerDayInRuralGrams = 89.55
             general.consumptionMediumFishByDayInGramsUrban = 9.35
             general.densityPopulationalRegionNorth2060 = 2.59
@@ -302,7 +302,7 @@ const fixedCalcultions = (country_region) => {
             general.excavatorCostPerKMUSD = 0.76
             general.hollowMediumDepth = 10
             general.cavaAverageProductivity = 0.20
-            general.prodGoldMonthFerry = 2637.83
+            general.prodGoldMonthFerry = 1064.58
 
             carbon.carbonCostPerHaUSD = 277.53
             recoverOfTopSoll.hectare = 0.31
