@@ -1,19 +1,22 @@
+import fixedCalcultions from "hooks/fixedCalculations";
 import calcMontante from "utils/calcMontante";
 import vpl from "utils/vpl";
 import { ALLUVIUM, AMOUNT_GOLD, FERRY, IMPACTED_AREA, PIT } from "../consts";
 
 const CONSERVATIVE = 0.29
 
-const bioprospecting = (likeMining, typeValueLikeMining, txPrevalence, hectare) => { 
+const bioprospecting = (country_region, likeMining, typeValueLikeMining, txPrevalence, hectare) => { 
+  const { bioprospecting } = fixedCalcultions(country_region) 
+  const { bioprospectingCostByUSD_conservative, bioprospectingCostByUSD, discountRate} = bioprospecting
   
   //const bioprospectingCostByBRL = txPrevalence === CONSERVATIVE ? 68.19 : 116.95
-  const bioprospectingCostByUSD = txPrevalence === CONSERVATIVE ? 13.63 : 23.39
-  const txDiscount = 0.03;
+  const bioprospectingCostByUSDValue = txPrevalence === CONSERVATIVE ? bioprospectingCostByUSD_conservative : bioprospectingCostByUSD
+  //const discountRate = 0.03;
 
   
 
-  const amounts = calcMontante(bioprospectingCostByUSD)
-  const VPLBioprospecting = vpl(txDiscount, amounts)
+  const amounts = calcMontante(bioprospectingCostByUSDValue)
+  const VPLBioprospecting = vpl(discountRate, amounts)
 
     let toBioprospecting;
       if(likeMining === FERRY)  {

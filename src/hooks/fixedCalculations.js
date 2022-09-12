@@ -4,6 +4,7 @@ const fixedCalcultions = (country_region) => {
     let fixedValues = {
         general: null,
         carbon: null,
+        bioprospecting: null,
         recoverOfTopSoll: null,
         erosionSiltingUp: null,
         dredgingAndRiverSediments: null,
@@ -13,7 +14,8 @@ const fixedCalcultions = (country_region) => {
         neuroSymptomsGarimpeiro: null,
         heartAttack: null,
         soilMercuryRemediation: null,
-        hypertension: null
+        hypertension: null,
+        woodAndNonWoodProducts: null
     }
 
         const isPeru = country_region && country_region.country === countries_region[PERU].country
@@ -55,6 +57,12 @@ const fixedCalcultions = (country_region) => {
             cavaAverageProductivity: 0.4,
             prodGoldMonthFerry: 302,
         }
+        let bioprospecting = { 
+            bioprospectingCostByUSD_conservative: 13.63,
+            bioprospectingCostByUSD: 23.39,
+            discountRate: 0.03
+        }
+
         let carbon = {
             carbonCostPerHaUSD: 177.55
         }
@@ -117,6 +125,11 @@ const fixedCalcultions = (country_region) => {
             remediationCostUSDPerTonOfSoil: 37.6
         }
 
+        let woodAndNonWoodProducts = {
+            costPMNMPerHaYearUSD: 152.8,
+            discountRate: 0.03
+        }
+
         if(isPeru) {
             general.GDPperCapitaBrazilUSD = 6126.9
             general.celciusTemperature = 26
@@ -147,6 +160,10 @@ const fixedCalcultions = (country_region) => {
             general.hollowMediumDepth = 100
             general.cavaAverageProductivity = 0.141
             general.prodGoldMonthFerry = 229.4
+
+            bioprospecting.bioprospectingCostByUSD_conservative = 13.63
+            bioprospecting.bioprospectingCostByUSD = 23.39
+            bioprospecting.discountRate = 0.03
 
             carbon.carbonCostPerHaUSD = 259.73
 
@@ -194,6 +211,9 @@ const fixedCalcultions = (country_region) => {
             soilMercuryRemediation.HgContainedSoilinGrassPerTon  = 0.02
             soilMercuryRemediation.DensidadeSolo = 2.76
             soilMercuryRemediation.remediationCostUSDPerTonOfSoil = 0.21
+
+            woodAndNonWoodProducts.costPMNMPerHaYearUSD = 93.83
+            woodAndNonWoodProducts.discountRate = 0.03
             
 
         }else if(isEquador) {
@@ -226,8 +246,13 @@ const fixedCalcultions = (country_region) => {
             general.hollowMediumDepth = 10
             general.cavaAverageProductivity = 0.4
             general.prodGoldMonthFerry = 302
+
+            bioprospecting.bioprospectingCostByUSD_conservative = 13.63
+            bioprospecting.bioprospectingCostByUSD = 23.39
+            bioprospecting.discountRate = 0.03
             
             carbon.carbonCostPerHaUSD = 113.39
+
             recoverOfTopSoll.hectare = 0.31
             recoverOfTopSoll.soilSurfaceRecPerHa_conservative = 990
             recoverOfTopSoll.soilSurfaceRecPerHa = 2715
@@ -271,6 +296,9 @@ const fixedCalcultions = (country_region) => {
             soilMercuryRemediation.HgContainedSoilinGrassPerTon = 0.19
             soilMercuryRemediation.DensidadeSolo = 2.76
             soilMercuryRemediation.remediationCostUSDPerTonOfSoil = 0.21
+
+            woodAndNonWoodProducts.costPMNMPerHaYearUSD = 484.84
+            woodAndNonWoodProducts.discountRate = 0.03
             
 
         
@@ -304,7 +332,12 @@ const fixedCalcultions = (country_region) => {
             general.cavaAverageProductivity = 0.20
             general.prodGoldMonthFerry = 1064.58
 
+            bioprospecting.bioprospectingCostByUSD_conservative = 13.63
+            bioprospecting.bioprospectingCostByUSD = 23.39
+            bioprospecting.discountRate = 0.03
+
             carbon.carbonCostPerHaUSD = 277.53
+
             recoverOfTopSoll.hectare = 0.31
             recoverOfTopSoll.soilSurfaceRecPerHa_conservative = 1771
             recoverOfTopSoll.soilSurfaceRecPerHa = 4833
@@ -349,9 +382,14 @@ const fixedCalcultions = (country_region) => {
             soilMercuryRemediation.DensidadeSolo = 2.76
             soilMercuryRemediation.remediationCostUSDPerTonOfSoil = 0.21
 
+            woodAndNonWoodProducts.costPMNMPerHaYearUSD = 119.81
+            woodAndNonWoodProducts.discountRate = 0.03
+
         }
 
         fixedValues = {
+            bioprospecting,
+            woodAndNonWoodProducts,
             carbon,
             cavaGroundingCostAuFertile,
             cavaGroundingCostAuNorm,
