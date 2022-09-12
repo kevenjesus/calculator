@@ -182,7 +182,7 @@ const fixedCalcultions = (country_region) => {
             neuroSymptomsGarimpeiro.amountOfGoldminersYear = 384
             neuroSymptomsGarimpeiro.neuroTreatmentCostPerGoldMinerUSD = 534
 
-            heartAttack.proMenOver40ByPopTotal = 0.17
+            heartAttack.proMenOver40ByPopTotal = 0.1732
             heartAttack.accumulatedRiskMercuryInfarction = 0.0161
             heartAttack.annualInfarctTreatmentCostUSD = 6191.55
 
@@ -338,7 +338,7 @@ const fixedCalcultions = (country_region) => {
 
             heartAttack.proMenOver40ByPopTotal = 0.2564
             heartAttack.accumulatedRiskMercuryInfarction = 0.0161
-            heartAttack.annualInfarctTreatmentCostUSD = 460
+            heartAttack.annualInfarctTreatmentCostUSD = 1509.40
 
             hypertension.AnnualHypertensionCostTreatamentUSD = 1081.69
             hypertension.propOfPeopleOver20YearsOfAgeByTotalPop = 67.3
