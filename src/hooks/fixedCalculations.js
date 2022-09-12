@@ -187,8 +187,8 @@ const fixedCalcultions = (country_region) => {
             heartAttack.annualInfarctTreatmentCostUSD = 6191.55
 
             hypertension.AnnualHypertensionCostTreatamentUSD = 96.15
-            hypertension.propOfPeopleOver20YearsOfAgeByTotalPop = 67.82
-            hypertension.accumulatedRiskMercuryHypertension = 0.5075
+            hypertension.propOfPeopleOver20YearsOfAgeByTotalPop = 0.6782
+            hypertension.accumulatedRiskMercuryHypertension = 0.0121
 
             soilMercuryRemediation.lossPercentHgInSoil = 0.088
             soilMercuryRemediation.HgContainedSoilinGrassPerTon  = 0.02
@@ -263,7 +263,7 @@ const fixedCalcultions = (country_region) => {
             heartAttack.accumulatedRiskMercuryInfarction = 0.0161
             heartAttack.annualInfarctTreatmentCostUSD = 8139.05
 
-            hypertension.AnnualHypertensionCostTreatamentUSD = 1296.47
+            hypertension.AnnualHypertensionCostTreatamentUSD = 1296.43
             hypertension.propOfPeopleOver20YearsOfAgeByTotalPop = 0.5075
             hypertension.accumulatedRiskMercuryHypertension = 0.0121
 
@@ -340,12 +340,12 @@ const fixedCalcultions = (country_region) => {
             heartAttack.accumulatedRiskMercuryInfarction = 0.0161
             heartAttack.annualInfarctTreatmentCostUSD = 1509.40
 
-            hypertension.AnnualHypertensionCostTreatamentUSD = 1081.69
-            hypertension.propOfPeopleOver20YearsOfAgeByTotalPop = 67.3
+            hypertension.AnnualHypertensionCostTreatamentUSD = 5896.29
+            hypertension.propOfPeopleOver20YearsOfAgeByTotalPop = 0.67
             hypertension.accumulatedRiskMercuryHypertension = 0.0121
 
             soilMercuryRemediation.lossPercentHgInSoil = 0.088
-            soilMercuryRemediation.HgContainedSoilinGrassPerTon  = 0.4388401771
+            soilMercuryRemediation.HgContainedSoilinGrassPerTon  = 0.44
             soilMercuryRemediation.DensidadeSolo = 2.76
             soilMercuryRemediation.remediationCostUSDPerTonOfSoil = 0.21
 
