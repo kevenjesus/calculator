@@ -15,6 +15,7 @@ const dredgingAndRiverSediments = (country_region, likeMining, typeValueLikeMini
         quantityOfGoldGramsPerYearWell,
     } = general
     const { 
+        prodOuroKgporMes,
         dredgingCostPerM3, 
         productionSedimentTurnsFeatherTonnesPerMonth,
         equivalentErosionTonPerHaPerYear,
@@ -63,7 +64,8 @@ const dredgingAndRiverSediments = (country_region, likeMining, typeValueLikeMini
     return ferryDredgingDamageValue
 
     }else if(likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING) {//input meses de garimpo
-    const productionSedimentturnsTonFeather = productionSedimentTurnsFeatherTonnesPerMonth * averageMotorPower * valueLikeMining;
+    const productionGoldBalsa = averageMotorPower * valueLikeMining * prodOuroKgporMes
+    const productionSedimentturnsTonFeather = productionGoldBalsa * (productionSedimentTurnsFeatherTonnesPerMonth * valueLikeMining);
     const equivalenceHaImpacted = productionSedimentturnsTonFeather / equivalentErosionTonPerHaPerYear;
     const ferryDredgingDamageValue = equivalenceHaImpacted * erosionControlUSD;
     return ferryDredgingDamageValue

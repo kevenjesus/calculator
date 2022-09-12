@@ -71,6 +71,8 @@ const fixedCalcultions = (country_region) => {
             siltingUpCostPerHaUSD: 13.28
         }
         let dredgingAndRiverSediments = {
+            prodMediaCava: 10,
+            prodOuroKgporMes: 0.00604,
             dredgingCostPerM3: 5.6,
             averageMotorPower: 54.4,
             productionSedimentTurnsFeatherTonnesPerMonth: 37.82,
@@ -118,9 +120,11 @@ const fixedCalcultions = (country_region) => {
         if(isPeru) {
             general.GDPperCapitaBrazilUSD = 6126.9
             general.celciusTemperature = 26
+            general.densityGold = 2.76
+            general.excavationGoldLoss = 2
             general.kmRotatedPerLiter = 5.4
             general.priceLiterDieselUSD = 0.82
-            general.averageDriverSalaryFreightPerKmUSD = 0.015
+            general.averageDriverSalaryFreightPerKmUSD = 0.4
             general.quantityOfGoldGramsPerYearWell = 23700
             general.averageDepthOfFertileEarth = 0.4
             general.quantitOfM3ExcavatorPerHour = 70
@@ -147,16 +151,17 @@ const fixedCalcultions = (country_region) => {
             carbon.carbonCostPerHaUSD = 259.73
 
             recoverOfTopSoll.hectare = 0.31
-            recoverOfTopSoll.soilSurfaceRecPerHa_conservative = 2536.63
-            recoverOfTopSoll.soilSurfaceRecPerHa = 3318
+            recoverOfTopSoll.soilSurfaceRecPerHa_conservative = 850.77
+            recoverOfTopSoll.soilSurfaceRecPerHa = 2536.63
             recoverOfTopSoll.capacityLoadTruckNumberOfSeedlings = 1500
             recoverOfTopSoll.superficialSeedlingsPerHa = 1111
-            recoverOfTopSoll.transportCostChangesPerKm = 1.28
+            recoverOfTopSoll.transportCostChangesPerKm = 0.32
 
             erosionSiltingUp.siltingUpCostPerHaUSD = 13.28
 
+            dredgingAndRiverSediments.prodMediaCava = 100
             dredgingAndRiverSediments.dredgingCostPerM3 = 7.51
-            
+            dredgingAndRiverSediments.prodOuroKgporMes = 0.2294
             dredgingAndRiverSediments.averageMotorPower = 250
             dredgingAndRiverSediments.productionSedimentTurnsFeatherTonnesPerMonth = 37.82
             dredgingAndRiverSediments.equivalentErosionTonPerHaPerYear = 12.54
@@ -195,8 +200,10 @@ const fixedCalcultions = (country_region) => {
             general.GDPperCapitaBrazilUSD = 5600.39
             general.celciusTemperature = 24.5
             general.kmRotatedPerLiter = 2.86
+            general.densityGold = 2.76
+            general.excavationGoldLoss = 2
             general.priceLiterDieselUSD = 0.502
-            general.averageDriverSalaryFreightPerKmUSD = 2.18
+            general.averageDriverSalaryFreightPerKmUSD = 0.28
             general.quantityOfGoldGramsPerYearWell = 18000
             general.averageDepthOfFertileEarth = 0.4
             general.quantitOfM3ExcavatorPerHour = 160
@@ -217,20 +224,22 @@ const fixedCalcultions = (country_region) => {
             general.excavatorHoursDays = 10
             general.excavatorCostPerKMUSD = 0.76
             general.hollowMediumDepth = 10
-            general.cavaAverageProductivity = 0.141
+            general.cavaAverageProductivity = 0.4
             general.prodGoldMonthFerry = 302
             
             carbon.carbonCostPerHaUSD = 113.39
             recoverOfTopSoll.hectare = 0.31
-            recoverOfTopSoll.soilSurfaceRecPerHa_conservative = 2938
-            recoverOfTopSoll.soilSurfaceRecPerHa = 4680
-            recoverOfTopSoll.capacityLoadTruckNumberOfSeedlings = 2700
-            recoverOfTopSoll.superficialSeedlingsPerHa = 1667
+            recoverOfTopSoll.soilSurfaceRecPerHa_conservative = 990
+            recoverOfTopSoll.soilSurfaceRecPerHa = 2715
+            recoverOfTopSoll.capacityLoadTruckNumberOfSeedlings = 1500
+            recoverOfTopSoll.superficialSeedlingsPerHa = 1111
             recoverOfTopSoll.transportCostChangesPerKm = 0.32
 
             erosionSiltingUp.siltingUpCostPerHaUSD = 13.28
 
+            dredgingAndRiverSediments.prodMediaCava = 10
             dredgingAndRiverSediments.dredgingCostPerM3 = 7.51
+            dredgingAndRiverSediments.prodOuroKgporMes = 0.00604
             dredgingAndRiverSediments.averageMotorPower = 54.4
             dredgingAndRiverSediments.productionSedimentTurnsFeatherTonnesPerMonth = 37.82
             dredgingAndRiverSediments.equivalentErosionTonPerHaPerYear = 12.54
@@ -268,9 +277,11 @@ const fixedCalcultions = (country_region) => {
         }else if(isColombia) {
             general.GDPperCapitaBrazilUSD = 5334.6
             general.celciusTemperature = 26.3
-            general.kmRotatedPerLiter = 2.5
+            general.kmRotatedPerLiter = 3.17
+            general.excavationGoldLoss = 2
             general.priceLiterDieselUSD = 0.75
-            general.averageDriverSalaryFreightPerKmUSD = 0.444
+            general.densityGold = 2.76
+            general.averageDriverSalaryFreightPerKmUSD = 0.14
             general.quantityOfGoldGramsPerYearWell = 3456
             general.averageDepthOfFertileEarth = 0.4
             general.quantitOfM3ExcavatorPerHour = 160
@@ -290,21 +301,23 @@ const fixedCalcultions = (country_region) => {
             general.excavatorHoursDays = 10
             general.excavatorCostPerKMUSD = 0.76
             general.hollowMediumDepth = 10
-            general.cavaAverageProductivity = 0.141
+            general.cavaAverageProductivity = 0.20
             general.prodGoldMonthFerry = 2637.83
 
             carbon.carbonCostPerHaUSD = 277.53
             recoverOfTopSoll.hectare = 0.31
-            recoverOfTopSoll.soilSurfaceRecPerHa_conservative = 2662.51
-            recoverOfTopSoll.soilSurfaceRecPerHa = 4833.05
+            recoverOfTopSoll.soilSurfaceRecPerHa_conservative = 1771
+            recoverOfTopSoll.soilSurfaceRecPerHa = 4833
             recoverOfTopSoll.capacityLoadTruckNumberOfSeedlings = 2700
             recoverOfTopSoll.superficialSeedlingsPerHa = 1100
             recoverOfTopSoll.transportCostChangesPerKm = 0.32
 
             erosionSiltingUp.siltingUpCostPerHaUSD = 13.28
 
+            dredgingAndRiverSediments.prodMediaCava = 10
             dredgingAndRiverSediments.dredgingCostPerM3 = 7.51
-            dredgingAndRiverSediments.averageMotorPower = 20
+            dredgingAndRiverSediments.prodOuroKgporMes = 0.0011
+            dredgingAndRiverSediments.averageMotorPower = 147
             dredgingAndRiverSediments.productionSedimentTurnsFeatherTonnesPerMonth = 37.82
             dredgingAndRiverSediments.equivalentErosionTonPerHaPerYear = 12.54
             dredgingAndRiverSediments.erosionControlUSD = 13.28

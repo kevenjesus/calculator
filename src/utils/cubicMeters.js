@@ -1,6 +1,10 @@
+import fixedCalcultions from "hooks/fixedCalculations";
 import { PIT, YEARS_OF_MINING, AMOUNT_GOLD, ALLUVIUM, IMPACTED_AREA, FERRY, MONTHS_OF_MINING } from "pages/Calculator/Form/consts";
 
-const cubicMeters = (likeMining, typeValueLikeMining, valueLikeMining, pitDepth) => {
+const cubicMeters = (country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth) => {
+
+    const { dredgingAndRiverSediments } = fixedCalcultions(country_region)
+    const { prodOuroKgporMes } = dredgingAndRiverSediments
 
     
     const sterileOreEnhancement = 7;
@@ -47,7 +51,7 @@ const cubicMeters = (likeMining, typeValueLikeMining, valueLikeMining, pitDepth)
         return `${Math.round(prodSedimentoViraPlumaTon * 100) / 100} ton` 
 
     }else if (likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING){
-        const prodOuroKgporMes = 0.00604;
+        //const prodOuroKgporMes = 0.00604;
         const prodOuroGrporMes = prodOuroKgporMes * 1000;
         const potenciaMediaMotor = 54.4;
         const ProdSedimentoViraPlumaTonPorMes = 6.262;

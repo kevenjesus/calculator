@@ -45,8 +45,8 @@ const SiltingOfRivers = () => {
     const valueLikeMining = qtdAnalysis.value // gold, hactare, months, years
     const typeValueLikeMining = calculator.analysisUnit // AMOUNT_GOLD / IMPACTED_AREA / YEARS_OF_MINING / MONTHS_OF_MINING
 
-    const goldValue = Math.round(convertAllinGold(likeMining, typeValueLikeMining, valueLikeMining, pitDepth))
-    const volumeM3 = cubicMeters(likeMining, typeValueLikeMining, valueLikeMining, pitDepth)
+    const goldValue = Math.round(convertAllinGold(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth))
+    const volumeM3 = cubicMeters(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth)
     const paragraphy_01 = impacts.siltingOfRivers.paragraphy_01.replace("$grams", goldValue).replace("$volumeM3", volumeM3)
     const paragraphy_02 = impacts.siltingOfRivers.paragraphy_02.replace("$volumeM3", volumeM3)
     return (
