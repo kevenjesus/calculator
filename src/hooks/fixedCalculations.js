@@ -168,7 +168,7 @@ const fixedCalcultions = (country_region) => {
             carbon.carbonCostPerHaUSD = 259.73
 
             recoverOfTopSoll.hectare = 0.31
-            recoverOfTopSoll.soilSurfaceRecPerHa_conservative = 850.77
+            recoverOfTopSoll.soilSurfaceRecPerHa_conservative = 933.19
             recoverOfTopSoll.soilSurfaceRecPerHa = 2536.63
             recoverOfTopSoll.capacityLoadTruckNumberOfSeedlings = 1500
             recoverOfTopSoll.superficialSeedlingsPerHa = 1111
@@ -185,7 +185,7 @@ const fixedCalcultions = (country_region) => {
             dredgingAndRiverSediments.erosionControlUSD = 13.28
             dredgingAndRiverSediments.productionSedimentTurnsFeatherTonnesPerMonthGold = 6.262
             dredgingAndRiverSediments.siltingPercentage = 0.15
-            dredgingAndRiverSediments.theAmountOfSedimentPer1DredgeM3PerHour = 10710
+            dredgingAndRiverSediments.theAmountOfSedimentPer1DredgeM3PerHour = 250
             dredgingAndRiverSediments.transportCost1DredgeUSD = 0.73
 
             cavaGroundingCostAuNorm.normalCavaGroundingCostUSD = 0.2
@@ -210,7 +210,7 @@ const fixedCalcultions = (country_region) => {
             soilMercuryRemediation.lossPercentHgInSoil = 0.088
             soilMercuryRemediation.HgContainedSoilinGrassPerTon  = 0.02
             soilMercuryRemediation.DensidadeSolo = 2.76
-            soilMercuryRemediation.remediationCostUSDPerTonOfSoil = 0.21
+            soilMercuryRemediation.remediationCostUSDPerTonOfSoil = 45.67
 
             woodAndNonWoodProducts.costPMNMPerHaYearUSD = 93.83
             woodAndNonWoodProducts.discountRate = 0.03
@@ -254,8 +254,8 @@ const fixedCalcultions = (country_region) => {
             carbon.carbonCostPerHaUSD = 113.39
 
             recoverOfTopSoll.hectare = 0.31
-            recoverOfTopSoll.soilSurfaceRecPerHa_conservative = 990
-            recoverOfTopSoll.soilSurfaceRecPerHa = 2715
+            recoverOfTopSoll.soilSurfaceRecPerHa_conservative = 933.19
+            recoverOfTopSoll.soilSurfaceRecPerHa = 3134
             recoverOfTopSoll.capacityLoadTruckNumberOfSeedlings = 1500
             recoverOfTopSoll.superficialSeedlingsPerHa = 1111
             recoverOfTopSoll.transportCostChangesPerKm = 0.32
@@ -295,7 +295,7 @@ const fixedCalcultions = (country_region) => {
             soilMercuryRemediation.lossPercentHgInSoil = 0.088
             soilMercuryRemediation.HgContainedSoilinGrassPerTon = 0.19
             soilMercuryRemediation.DensidadeSolo = 2.76
-            soilMercuryRemediation.remediationCostUSDPerTonOfSoil = 0.21
+            soilMercuryRemediation.remediationCostUSDPerTonOfSoil = 45.67
 
             woodAndNonWoodProducts.costPMNMPerHaYearUSD = 484.84
             woodAndNonWoodProducts.discountRate = 0.03
@@ -330,7 +330,7 @@ const fixedCalcultions = (country_region) => {
             general.excavatorCostPerKMUSD = 0.76
             general.hollowMediumDepth = 10
             general.cavaAverageProductivity = 0.20
-            general.prodGoldMonthFerry = 1064.58
+            general.prodGoldMonthFerry = 852
 
             bioprospecting.bioprospectingCostByUSD_conservative = 13.63
             bioprospecting.bioprospectingCostByUSD = 23.39
@@ -380,7 +380,7 @@ const fixedCalcultions = (country_region) => {
             soilMercuryRemediation.lossPercentHgInSoil = 0.088
             soilMercuryRemediation.HgContainedSoilinGrassPerTon  = 0.44
             soilMercuryRemediation.DensidadeSolo = 2.76
-            soilMercuryRemediation.remediationCostUSDPerTonOfSoil = 0.21
+            soilMercuryRemediation.remediationCostUSDPerTonOfSoil = 45.67
 
             woodAndNonWoodProducts.costPMNMPerHaYearUSD = 119.81
             woodAndNonWoodProducts.discountRate = 0.03

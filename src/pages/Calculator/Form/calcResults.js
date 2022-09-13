@@ -146,6 +146,7 @@ const calcResults = (state, dispatch, dolarTOReal) => {
         const totalsoilMercuryRemediationInflation = totalWithInflation(isBrazil, inflation, totalsoilMercuryRemediation)
         impacts.push({ label: 'Remediação de mercúrio no solo', displayName: 'Remediação de mercúrio no solo', category: CATEGORY_MERCURY, value: getValueToCountry(country_region, totalsoilMercuryRemediationInflation, dolarTOReal) })
 
+        console.log(impacts)
         const reducer = ((acc, current) => acc+current.value);
         const totalValue = impacts.reduce(reducer, 0);
 
