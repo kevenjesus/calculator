@@ -15,16 +15,16 @@ const convertAllinHectare = (country_region, likeMining, typeValueLikeMining, va
 
     if (likeMining === PIT && typeValueLikeMining === YEARS_OF_MINING) {
         //const quantityOfGoldGramsPerYearWell = 23700;
-        const goldGrass = quantityOfGoldGramsPerYearWell * valueLikeMining;
-        const turnedSoilTon = goldGrass / cavaAverageProductivity;
-        const turnedSterileTon = turnedSoilTon * sterileMineralRelation;
-        const toSoilUpTurned = turnedSoilTon + turnedSterileTon;
-        const volumeWithoutLoss = toSoilUpTurned / densityGold;
-        const lossyVolume = volumeWithoutLoss * excavationGoldLoss;
-        const affectedAreaM2 = lossyVolume / pitDepth;
-        const hectare = affectedAreaM2 / 10000;
-        const hectareOverflow = hectare * overflow;
-        return hectareOverflow
+        // const goldGrass = quantityOfGoldGramsPerYearWell * valueLikeMining;
+        // const turnedSoilTon = goldGrass / cavaAverageProductivity;
+        // const turnedSterileTon = turnedSoilTon * sterileMineralRelation;
+        // const toSoilUpTurned = turnedSoilTon + turnedSterileTon;
+        // const volumeWithoutLoss = toSoilUpTurned / densityGold;
+        // const lossyVolume = volumeWithoutLoss * excavationGoldLoss;
+        // const affectedAreaM2 = lossyVolume / pitDepth;
+        // const hectare = affectedAreaM2 / 10000;
+        // const hectareOverflow = hectare * overflow;
+        return hectare
         
     }else if(likeMining === PIT && AMOUNT_GOLD){ 
         //const hectare = 0.31;

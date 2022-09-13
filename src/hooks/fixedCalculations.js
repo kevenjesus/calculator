@@ -119,7 +119,8 @@ const fixedCalcultions = (country_region) => {
         }
 
         let soilMercuryRemediation = {
-            lossPercentHgInSoil: 0.088,
+            lossPercentHgInSoil_conservative: 0.088,
+            lossPercentHgInSoil: 0.14,
             HgContainedSoilinGrassPerTon: 0.24,
             DensidadeSolo: 2.76,
             remediationCostUSDPerTonOfSoil: 37.6
@@ -207,7 +208,8 @@ const fixedCalcultions = (country_region) => {
             hypertension.propOfPeopleOver20YearsOfAgeByTotalPop = 0.6782
             hypertension.accumulatedRiskMercuryHypertension = 0.0121
 
-            soilMercuryRemediation.lossPercentHgInSoil = 0.088
+            soilMercuryRemediation.lossPercentHgInSoil_conservative = 0.088
+            soilMercuryRemediation.lossPercentHgInSoil = 0.14
             soilMercuryRemediation.HgContainedSoilinGrassPerTon  = 0.02
             soilMercuryRemediation.DensidadeSolo = 2.76
             soilMercuryRemediation.remediationCostUSDPerTonOfSoil = 45.67
@@ -292,7 +294,8 @@ const fixedCalcultions = (country_region) => {
             hypertension.propOfPeopleOver20YearsOfAgeByTotalPop = 0.5075
             hypertension.accumulatedRiskMercuryHypertension = 0.0121
 
-            soilMercuryRemediation.lossPercentHgInSoil = 0.088
+            soilMercuryRemediation.lossPercentHgInSoil_conservative = 0.088
+            soilMercuryRemediation.lossPercentHgInSoil = 0.14
             soilMercuryRemediation.HgContainedSoilinGrassPerTon = 0.19
             soilMercuryRemediation.DensidadeSolo = 2.76
             soilMercuryRemediation.remediationCostUSDPerTonOfSoil = 45.67
@@ -377,7 +380,8 @@ const fixedCalcultions = (country_region) => {
             hypertension.propOfPeopleOver20YearsOfAgeByTotalPop = 0.67
             hypertension.accumulatedRiskMercuryHypertension = 0.0121
 
-            soilMercuryRemediation.lossPercentHgInSoil = 0.088
+            soilMercuryRemediation.lossPercentHgInSoil_conservative = 0.088
+            soilMercuryRemediation.lossPercentHgInSoil = 0.14
             soilMercuryRemediation.HgContainedSoilinGrassPerTon  = 0.44
             soilMercuryRemediation.DensidadeSolo = 2.76
             soilMercuryRemediation.remediationCostUSDPerTonOfSoil = 45.67

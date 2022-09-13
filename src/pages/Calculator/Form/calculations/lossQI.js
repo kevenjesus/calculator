@@ -31,7 +31,6 @@ const lossQI =  (country_region, likeMining, typeValueLikeMining, valueLikeMinin
   const { birthRate } = lossQI
 
   const methyladPercentValue = txPrevalence === CONSERVATIVE ? methyladPercent_conservative : methyladPercent;
-  
   let gramsHgReleasedinWater;
 
   if (likeMining === PIT && typeValueLikeMining === YEARS_OF_MINING) { //input anos de garimpo

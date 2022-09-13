@@ -1,5 +1,5 @@
 const getGoldValue = {
-    goldPrice: () => 285.73
+    goldPrice: () => 55.33
 }
 
 export default getGoldValue
