@@ -178,7 +178,7 @@ const fixedCalcultions = (country_region) => {
 
             dredgingAndRiverSediments.prodMediaCava = 100
             dredgingAndRiverSediments.dredgingCostPerM3 = 7.51
-            dredgingAndRiverSediments.prodOuroKgporMes = 0.2294
+            dredgingAndRiverSediments.prodOuroKgporMes = 0.00604
             dredgingAndRiverSediments.averageMotorPower = 250
             dredgingAndRiverSediments.productionSedimentTurnsFeatherTonnesPerMonth = 37.82
             dredgingAndRiverSediments.equivalentErosionTonPerHaPerYear = 12.54

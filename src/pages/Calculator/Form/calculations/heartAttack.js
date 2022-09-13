@@ -18,7 +18,8 @@ const heartAttack = (country_region, likeMining, typeValueLikeMining, valueLikeM
         consumptionMediumFishByDayInGramsUrban,
         AverageFishConsumptionPerDayInRuralGrams,
         levelMediumContaminationFish,
-        goldProductionMonthFerry,
+        prodGoldMonthFerry,
+        quantityOfGoldGramsPerYearWell,
         aDALYUSD,
         HgAuRatio
     } = general
@@ -27,8 +28,8 @@ const heartAttack = (country_region, likeMining, typeValueLikeMining, valueLikeM
     let HgGrassReleasedInWater
     if (likeMining === PIT && typeValueLikeMining === YEARS_OF_MINING) { //Input Anos de Garimpo
         const lossPercentHgInWater = txPrevalence === CONSERVATIVE ? percentLossHgInWater_convervative : percentLossHgInWater;
-        const quantityOgGramsgoldYearWell = 23700;
-        const amountOfTotalGoldWell = quantityOgGramsgoldYearWell * valueLikeMining;
+        //const quantityOfGoldGramsPerYearWell = 23700;
+        const amountOfTotalGoldWell = quantityOfGoldGramsPerYearWell * valueLikeMining;
         HgGrassReleasedInWater = lossPercentHgInWater * HgAuRatio * amountOfTotalGoldWell
 
     }else if (likeMining === PIT && typeValueLikeMining === AMOUNT_GOLD) { //input Ouro
@@ -37,7 +38,7 @@ const heartAttack = (country_region, likeMining, typeValueLikeMining, valueLikeM
 
     }else if (likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING) { //input Meses de garimpo
         const lossPercentHgInWater = txPrevalence === CONSERVATIVE ? percentLossHgInWater_ferry__convervative : percentLossHgInWater_ferry;
-        const toGoldFerryProduction = valueLikeMining * goldProductionMonthFerry;
+        const toGoldFerryProduction = valueLikeMining * prodGoldMonthFerry;
         HgGrassReleasedInWater = lossPercentHgInWater * HgAuRatio * toGoldFerryProduction;
 
     }else if (likeMining === FERRY && typeValueLikeMining === AMOUNT_GOLD) { //input Ouro
@@ -52,6 +53,7 @@ const heartAttack = (country_region, likeMining, typeValueLikeMining, valueLikeM
     
     const methyladPercentValue = txPrevalence === CONSERVATIVE ? methyladPercent_conservative : methyladPercent;
     const toMethylatedWater = methyladPercentValue * HgGrassReleasedInWater;
+    
     
     const years = 50;
     //const ruralIndividualWeight = 59.1;

@@ -20,7 +20,7 @@ const hypertension = (country_region, likeMining, typeValueLikeMining, valueLike
         consumptionMediumFishByDayInGramsUrban,
         AverageFishConsumptionPerDayInRuralGrams,
         levelMediumContaminationFish,
-        goldProductionMonthFerry,
+        prodGoldMonthFerry,
         aDALYUSD,
         HgAuRatio
     } = general
@@ -40,7 +40,7 @@ const hypertension = (country_region, likeMining, typeValueLikeMining, valueLike
 
     }else if (likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING) { //input Meses de garimpo de balsa
         const lossPercentHgInWater = txPrevalence === CONSERVATIVE ? percentLossHgInWater_ferry__convervative : percentLossHgInWater_ferry;
-        const toFerryGoldProductivity = valueLikeMining * goldProductionMonthFerry;
+        const toFerryGoldProductivity = valueLikeMining * prodGoldMonthFerry;
         gramsHgReleasedInWater = lossPercentHgInWater * HgAuRatio * toFerryGoldProductivity;
 
     }else if (likeMining === FERRY && typeValueLikeMining === AMOUNT_GOLD) { //input Ouro

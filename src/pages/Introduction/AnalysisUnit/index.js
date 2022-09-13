@@ -87,7 +87,6 @@ const AnalysisUnit = () => {
             }
             
         }else if(valuatioMethod === FERRY) {
-            console.log('form', form)
             if(form && form.analysisUnit) {
                 setState(form.analysisUnit)
             }else {

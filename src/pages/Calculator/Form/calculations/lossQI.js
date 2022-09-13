@@ -23,8 +23,8 @@ const lossQI =  (country_region, likeMining, typeValueLikeMining, valueLikeMinin
       consumptionMediumFishByDayInGramsUrban,
       AverageFishConsumptionPerDayInRuralGrams,
       levelMediumContaminationFish,
-      goldProductionMonthFerry,
-      amountOfTotalGoldWell,
+      prodGoldMonthFerry,
+      quantityOfGoldGramsPerYearWell,
       aDALYUSD,
       HgAuRatio
   } = general
@@ -36,16 +36,16 @@ const lossQI =  (country_region, likeMining, typeValueLikeMining, valueLikeMinin
 
   if (likeMining === PIT && typeValueLikeMining === YEARS_OF_MINING) { //input anos de garimpo
     const percentLossHgInWaterValue = txPrevalence === CONSERVATIVE ? percentLossHgInWater_convervative : percentLossHgInWater;
-    const amountOfTotalGoldWellValue = amountOfTotalGoldWell * valueLikeMining
+    const amountOfTotalGoldWellValue = quantityOfGoldGramsPerYearWell * valueLikeMining
     gramsHgReleasedinWater = percentLossHgInWaterValue * HgAuRatio * amountOfTotalGoldWellValue;
     
   }else if(likeMining === PIT && typeValueLikeMining === AMOUNT_GOLD) { //input gramas de ouro
     const percentLossHgInWaterValue = txPrevalence === CONSERVATIVE ? percentLossHgInWater_convervative : percentLossHgInWater;
     gramsHgReleasedinWater = percentLossHgInWaterValue * HgAuRatio * valueLikeMining;
-        
+
   }else if(likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING) { //input Meses de garimpo
     const percentLossHgInWaterValue = txPrevalence === CONSERVATIVE ? percentLossHgInWater_ferry__convervative : percentLossHgInWater_ferry;
-    const toFerryGoldProductivy = valueLikeMining * goldProductionMonthFerry;
+    const toFerryGoldProductivy = valueLikeMining * prodGoldMonthFerry;
     gramsHgReleasedinWater = percentLossHgInWaterValue * HgAuRatio * toFerryGoldProductivy;
     
   }else if(likeMining === FERRY && typeValueLikeMining === AMOUNT_GOLD) { //input gramas de ouro

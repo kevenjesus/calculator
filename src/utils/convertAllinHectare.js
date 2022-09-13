@@ -3,8 +3,9 @@ import { AMOUNT_GOLD, FERRY, PIT, YEARS_OF_MINING } from "pages/Calculator/Form/
 
 const convertAllinHectare = (country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth) => {
 
-    const { general } = fixedCalcultions(country_region)
-    const { densityGold, excavationGoldLoss, hectare, quantityOfGoldGramsPerYearWell, cavaAverageProductivity } = general
+    const { general, recoverOfTopSoll } = fixedCalcultions(country_region)
+    const { hectare } = recoverOfTopSoll
+    const { densityGold, excavationGoldLoss, quantityOfGoldGramsPerYearWell, cavaAverageProductivity } = general
 
     //const densityGold = 2.76;
     //const excavationGoldLoss = 2;
