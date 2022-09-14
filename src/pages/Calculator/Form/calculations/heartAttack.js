@@ -24,6 +24,25 @@ const heartAttack = (country_region, likeMining, typeValueLikeMining, valueLikeM
         HgAuRatio
     } = general
     const { proMenOver40ByPopTotal, accumulatedRiskMercuryInfarction, annualInfarctTreatmentCostUSD } = heartAttack
+
+    // console.log('methyladPercent_conservative', methyladPercent_conservative)
+    // console.log('methyladPercent', methyladPercent)
+    // console.log('ruralIndividualWeight', ruralIndividualWeight)
+    // console.log('urbanindividualWeight', urbanindividualWeight)
+    // console.log('percentLossHgInWater_convervative', percentLossHgInWater_convervative)
+    // console.log('percentLossHgInWater', percentLossHgInWater)
+    // console.log('percentLossHgInWater_ferry__convervative', percentLossHgInWater_ferry__convervative)
+    // console.log('densityPopulationalRegionNorth2060', densityPopulationalRegionNorth2060)
+    // console.log('consumptionMediumFishByDayInGramsUrban', consumptionMediumFishByDayInGramsUrban)
+    // console.log('AverageFishConsumptionPerDayInRuralGrams', AverageFishConsumptionPerDayInRuralGrams)
+    // console.log('levelMediumContaminationFish', levelMediumContaminationFish)
+    // console.log('prodGoldMonthFerry', prodGoldMonthFerry)
+    // console.log('quantityOfGoldGramsPerYearWell', quantityOfGoldGramsPerYearWell)
+    // console.log('aDALYUSD', aDALYUSD)
+    // console.log('HgAuRatio', HgAuRatio)
+    // console.log('proMenOver40ByPopTotal', proMenOver40ByPopTotal)
+    // console.log('accumulatedRiskMercuryInfarction', accumulatedRiskMercuryInfarction)
+    // console.log('annualInfarctTreatmentCostUSD', annualInfarctTreatmentCostUSD)
         
     let HgGrassReleasedInWater
     if (likeMining === PIT && typeValueLikeMining === YEARS_OF_MINING) { //Input Anos de Garimpo
@@ -31,6 +50,7 @@ const heartAttack = (country_region, likeMining, typeValueLikeMining, valueLikeM
         //const quantityOfGoldGramsPerYearWell = 23700;
         const amountOfTotalGoldWell = quantityOfGoldGramsPerYearWell * valueLikeMining;
         HgGrassReleasedInWater = lossPercentHgInWater * HgAuRatio * amountOfTotalGoldWell
+
 
     }else if (likeMining === PIT && typeValueLikeMining === AMOUNT_GOLD) { //input Ouro
         const lossPercentHgInWater = txPrevalence === CONSERVATIVE ? percentLossHgInWater_convervative : percentLossHgInWater;
