@@ -1,12 +1,16 @@
-const goldToHecatere = (gold, pitDepth) => {
+import fixedCalcultions from "hooks/fixedCalculations";
+
+const goldToHecatere = (gold, pitDepth, country_region) => {
+    const { general } = fixedCalcultions(country_region)
+    const { densityGold, excavationGoldLoss, cavaAverageProductivity } = general
     const sterileMineralRelation = 7;
-    const goldDensity = 2.76;
-    const excavationGoldLoss = 2;
-    const averageProductivityCava = 0.4;
-    const turnedSoilTon = gold / averageProductivityCava;
+    //const densityGold = 2.76;
+    //const excavationGoldLoss = 2;
+    //const cavaAverageProductivity = 0.4;
+    const turnedSoilTon = gold / cavaAverageProductivity;
     const turnedSterileTon = turnedSoilTon * sterileMineralRelation;
     const toSoilUpTurned = turnedSoilTon + turnedSterileTon;
-    const volumeWithoutLoss = toSoilUpTurned / goldDensity;
+    const volumeWithoutLoss = toSoilUpTurned / densityGold;
     const lossyVolume = volumeWithoutLoss * excavationGoldLoss;
     const affectedAreaM2 = lossyVolume / pitDepth;
     const hectare = affectedAreaM2 / 10000;

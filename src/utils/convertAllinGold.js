@@ -2,10 +2,8 @@ import fixedCalcultions from "hooks/fixedCalculations";
 import { ALLUVIUM, FERRY, IMPACTED_AREA, MONTHS_OF_MINING, PIT, YEARS_OF_MINING } from "pages/Calculator/Form/consts";
 
 const convertAllinGold = (country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth) => {
-    const { dredgingAndRiverSediments, general } = fixedCalcultions(country_region)
-    const { prodOuroKgporMes,  averageMotorPower } = dredgingAndRiverSediments
+    const { general } = fixedCalcultions(country_region)
     const { densityGold, excavationGoldLoss, prodGoldMonthFerry, quantityOfGoldGramsPerYearWell, cavaAverageProductivity } = general
-    console.log(quantityOfGoldGramsPerYearWell)
     let goldGrass
    
     if (likeMining === PIT && typeValueLikeMining === YEARS_OF_MINING) {
@@ -30,7 +28,7 @@ const convertAllinGold = (country_region, likeMining, typeValueLikeMining, value
     }else if (likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING){
         //const prodOuroKgporMes = 0.00604;
         //const averageMotorPower = 54.4;
-        const prodOuroGrporMes = prodOuroKgporMes * 1000;
+        //const prodOuroGrporMes = prodOuroKgporMes * 1000;
         //const goldGrass = averageMotorPower * valueLikeMining * prodOuroGrporMes;
         const goldGrass =  valueLikeMining * prodGoldMonthFerry;
         return goldGrass

@@ -61,8 +61,8 @@ const calcResults = (state, dispatch, dolarTOReal) => {
         const impacts = []
         const { general } = fixedCalcultions(country_region)
         const { densityPopulationalRegionNorth2060 } = general
-        const hectareValue = calculator.analysisUnit === AMOUNT_GOLD ? goldToHecatere(Number(qtdAnalysis.value), pitDepth) : Number(qtdAnalysis.value)
-        const goldValue = calculator.analysisUnit === IMPACTED_AREA ? hectareToGold(Number(qtdAnalysis.value), pitDepth) : Number(qtdAnalysis.value)
+        const hectareValue = calculator.analysisUnit === AMOUNT_GOLD ? goldToHecatere(Number(qtdAnalysis.value), pitDepth, country_region) : Number(qtdAnalysis.value)
+        const goldValue = calculator.analysisUnit === IMPACTED_AREA ? hectareToGold(Number(qtdAnalysis.value), pitDepth, country_region) : Number(qtdAnalysis.value)
         const gramadeOuroporHe = goldenGramForHectare(hectareValue, goldValue)
     
         const currentCountry = counties.find(c => c.id === Number(country))
@@ -98,7 +98,7 @@ const calcResults = (state, dispatch, dolarTOReal) => {
         const totalRecreationInflation = totalWithInflation(isBrazil, inflation, totalRecreation)
         impacts.push({ label: 'Recreação', displayName: 'Recreação', category: CATEGORY_DEFORESTATION, value: getValueToCountry(country_region, totalRecreationInflation, dolarTOReal)  })
 
-        const totalCulturedAndSpecies = culturedAndSpecies(likeMining, popDensity2010, species, typeValueLikeMining, hectareValue)
+        const totalCulturedAndSpecies = culturedAndSpecies(country_region, likeMining, popDensity2010, species, typeValueLikeMining, hectareValue)
         const totalCulturedAndSpeciesInflation = totalWithInflation(isBrazil, inflation, totalCulturedAndSpecies)
         impacts.push({ label: 'Espécies', displayName: 'Espécies', category: CATEGORY_DEFORESTATION, value: getValueToCountry(country_region, totalCulturedAndSpeciesInflation, dolarTOReal)  })
         
