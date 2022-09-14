@@ -1,11 +1,14 @@
+import fixedCalcultions from "hooks/fixedCalculations";
 import calcMontante from "utils/calcMontante";
 import vpl from "utils/vpl";
 import { ALLUVIUM, AMOUNT_GOLD, FERRY, IMPACTED_AREA, PIT } from "../consts";
 
-const recreation = (likeMining, popDensity2010, species, typeValueLikeMining, hectare) => {
+const recreation = (country_region, likeMining, popDensity2010, species, typeValueLikeMining, hectare) => {
+    const { general } = fixedCalcultions(country_region)
+    const { GDPperCapitaBrazilUSD, celciusTemperature } = general
    
-    const GDPperCapitaBrazilUSD = 8717.18;
-    const celciusTemperature = 26.8;
+    //const GDPperCapitaBrazilUSD = 8717.18;
+    //const celciusTemperature = 26.8;
     const discountRate = 0.03;
 
     const calculation1 = 0.562 * Math.log(popDensity2010);

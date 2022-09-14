@@ -20,18 +20,36 @@ const hypertension = (country_region, likeMining, typeValueLikeMining, valueLike
         consumptionMediumFishByDayInGramsUrban,
         AverageFishConsumptionPerDayInRuralGrams,
         levelMediumContaminationFish,
-        goldProductionMonthFerry,
+        quantityOfGoldGramsPerYearWell,
+        prodGoldMonthFerry,
         aDALYUSD,
         HgAuRatio
     } = general
     const { propOfPeopleOver20YearsOfAgeByTotalPop, AnnualHypertensionCostTreatamentUSD, accumulatedRiskMercuryHypertension } = hypertension
 
+    console.log('methyladPercent_conservative', methyladPercent_conservative)
+    console.log('methyladPercent', methyladPercent)
+    console.log('ruralIndividualWeight', ruralIndividualWeight)
+    console.log('urbanindividualWeight', urbanindividualWeight)
+    console.log('percentLossHgInWater_convervative', percentLossHgInWater_convervative)
+    console.log('percentLossHgInWater', percentLossHgInWater)
+    console.log('percentLossHgInWater_ferry__convervative', percentLossHgInWater_ferry__convervative)
+    console.log('densityPopulationalRegionNorth2060', densityPopulationalRegionNorth2060)
+    console.log('consumptionMediumFishByDayInGramsUrban', consumptionMediumFishByDayInGramsUrban)
+    console.log('AverageFishConsumptionPerDayInRuralGrams', AverageFishConsumptionPerDayInRuralGrams)
+    console.log('levelMediumContaminationFish', levelMediumContaminationFish)
+    console.log('prodGoldMonthFerry', prodGoldMonthFerry)
+    console.log('aDALYUSD', aDALYUSD)
+    console.log('HgAuRatio', HgAuRatio)
+    console.log('propOfPeopleOver20YearsOfAgeByTotalPop', propOfPeopleOver20YearsOfAgeByTotalPop)
+    console.log('AnnualHypertensionCostTreatamentUSD', AnnualHypertensionCostTreatamentUSD)
+    console.log('accumulatedRiskMercuryHypertension', accumulatedRiskMercuryHypertension)
         
     let gramsHgReleasedInWater
     if (likeMining === PIT && typeValueLikeMining === YEARS_OF_MINING) { //Input Anos de Garimpo
         const lossPercentHgInWater = txPrevalence === CONSERVATIVE ? percentLossHgInWater_convervative : percentLossHgInWater;
-        const quantityOfGramsGoldYearWell = 23700;
-        const amountOfTotalGoldWell = quantityOfGramsGoldYearWell * valueLikeMining;
+        //const quantityOfGoldGramsPerYearWell = 23700;
+        const amountOfTotalGoldWell = quantityOfGoldGramsPerYearWell * valueLikeMining;
         gramsHgReleasedInWater = lossPercentHgInWater * HgAuRatio * amountOfTotalGoldWell
 
     }else if (likeMining === PIT && typeValueLikeMining === AMOUNT_GOLD) { //input Ouro
@@ -40,7 +58,7 @@ const hypertension = (country_region, likeMining, typeValueLikeMining, valueLike
 
     }else if (likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING) { //input Meses de garimpo de balsa
         const lossPercentHgInWater = txPrevalence === CONSERVATIVE ? percentLossHgInWater_ferry__convervative : percentLossHgInWater_ferry;
-        const toFerryGoldProductivity = valueLikeMining * goldProductionMonthFerry;
+        const toFerryGoldProductivity = valueLikeMining * prodGoldMonthFerry;
         gramsHgReleasedInWater = lossPercentHgInWater * HgAuRatio * toFerryGoldProductivity;
 
     }else if (likeMining === FERRY && typeValueLikeMining === AMOUNT_GOLD) { //input Ouro

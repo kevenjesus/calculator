@@ -80,7 +80,7 @@ const calcResults = (state, dispatch, dolarTOReal) => {
         // valor do tipo de garimpo = valueLikeMining
         // tipo de valor do garimpo = typeValueLikeMining
 
-        const totalBio = bioprospecting(likeMining, typeValueLikeMining, txPrevalence, hectareValue)
+        const totalBio = bioprospecting(country_region, likeMining, typeValueLikeMining, txPrevalence, hectareValue)
         const totalBioInflation = totalWithInflation(isBrazil, inflation, totalBio)
 
         impacts.push({ label: 'BioProspecção', displayName: 'BioProspecção', category: CATEGORY_DEFORESTATION, value: getValueToCountry(country_region, totalBioInflation, dolarTOReal) })
@@ -90,11 +90,11 @@ const calcResults = (state, dispatch, dolarTOReal) => {
 
         impacts.push({ label: 'Carbono', displayName: 'Carbono', category: CATEGORY_DEFORESTATION, value: getValueToCountry(country_region, totalCarbonInflation, dolarTOReal) })
 
-        const totalPMNM = woodAndNonWoodProducts(likeMining, typeValueLikeMining, hectareValue)
+        const totalPMNM = woodAndNonWoodProducts(country_region, likeMining, typeValueLikeMining, hectareValue)
         const totalPMNMInflation = totalWithInflation(isBrazil, inflation, totalPMNM)
         impacts.push({ label: 'PMNM', displayName: 'Produtos não-madeireiros e madeireiros', category: CATEGORY_DEFORESTATION, value: getValueToCountry(country_region, totalPMNMInflation, dolarTOReal) })
 
-        const totalRecreation = recreation(likeMining, popDensity2010, species, typeValueLikeMining, hectareValue)
+        const totalRecreation = recreation(country_region, likeMining, popDensity2010, species, typeValueLikeMining, hectareValue)
         const totalRecreationInflation = totalWithInflation(isBrazil, inflation, totalRecreation)
         impacts.push({ label: 'Recreação', displayName: 'Recreação', category: CATEGORY_DEFORESTATION, value: getValueToCountry(country_region, totalRecreationInflation, dolarTOReal)  })
 
@@ -150,6 +150,7 @@ const calcResults = (state, dispatch, dolarTOReal) => {
         const totalValue = impacts.reduce(reducer, 0);
 
         const totalConverted = isBrazil ? ToBRL(totalValue*dolarTOReal) : toUSD(totalValue)
+
         
 
         dispatch({ type: stateTypes.ADD_VALUE, payload: impacts })

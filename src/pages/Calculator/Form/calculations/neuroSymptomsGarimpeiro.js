@@ -3,8 +3,8 @@ import { FERRY, MONTHS_OF_MINING, PIT, YEARS_OF_MINING } from "../consts";
 
 const neuroSymptomsGarimpeiro = (country_region, likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, gold) => {
 
-    const { general, neuroSymptomsGarimpeiro, prodGoldMonthFerry } = fixedCalcultions(country_region)
-    const { aDALYUSD, quantityOfGoldGramsPerYearWell } = general
+    const { general, neuroSymptomsGarimpeiro } = fixedCalcultions(country_region)
+    const { aDALYUSD, quantityOfGoldGramsPerYearWell, prodGoldMonthFerry } = general
     const { amountOfGoldminersYear, neuroTreatmentCostPerGoldMinerUSD } = neuroSymptomsGarimpeiro
     
     //const aDALYUSD = 103599;

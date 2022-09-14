@@ -1,13 +1,17 @@
+import fixedCalcultions from 'hooks/fixedCalculations'
 import calcMontante from 'utils/calcMontante'
 import vpl from 'utils/vpl'
 import { ALLUVIUM, AMOUNT_GOLD, FERRY, IMPACTED_AREA, PIT } from '../consts'
 
-const woodAndNonWoodProducts = (likeMining, typeValueLikeMining, hectare) => {
+const woodAndNonWoodProducts = (country_region, likeMining, typeValueLikeMining, hectare) => {
 
-  const costPMNMPerHaYearBRL = 764.00
-  const discountRate = 0.03;
+  const { woodAndNonWoodProducts } = fixedCalcultions(country_region)
+  const { costPMNMPerHaYearUSD, discountRate} = woodAndNonWoodProducts
 
-  const amounts = calcMontante(costPMNMPerHaYearBRL)
+  //const costPMNMPerHaYearBRl = 764.00
+  //const discountRate = 0.03;
+
+  const amounts = calcMontante(costPMNMPerHaYearUSD)
   const VPLwoodAndNonWoodProducts = vpl(discountRate, amounts)
 
   let toWoodAndNonWoodProducts;

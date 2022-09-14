@@ -457,11 +457,11 @@ const MonetaryImpacts = () => {
 
     const hiddenMenu = calculator.valuatioMethod === FERRY ? [impacts.menu.deforestation] : []
 
-    const goldValue = Math.round(convertAllinGold(likeMining, typeValueLikeMining, valueLikeMining, pitDepth))
+    const goldValue = Math.round(convertAllinGold(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth))
     
     const goldPrice = getGoldValue.goldPrice() * goldValue
-    const subtotalGoldPrice = isBrazil && priceUSDtoBRL ? goldPrice : goldPrice*priceUSDtoBRL
-    const totalGoldPrice = isBrazil && priceUSDtoBRL ? ToBRL(goldPrice) : toUSD(goldPrice*priceUSDtoBRL)
+    const subtotalGoldPrice = isBrazil && priceUSDtoBRL ? goldPrice*priceUSDtoBRL : goldPrice
+    const totalGoldPrice = isBrazil && priceUSDtoBRL ? ToBRL(subtotalGoldPrice) : toUSD(subtotalGoldPrice)
 
 
     const allImpacts = {
