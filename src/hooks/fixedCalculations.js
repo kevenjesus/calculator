@@ -34,7 +34,7 @@ const fixedCalcultions = (country_region) => {
             averageDriverSalaryFreightPerKmUSD: 0.444,
             densityGold: 2.76,
             excavationGoldLoss: 2,
-            hollowMediumDepth: 0.4,
+            hollowMediumDepth: 10,
             averageDepthOfFertileEarth: 0.4,
             quantitOfM3ExcavatorPerHour: 160,
             quantityOfGoldGramsPerYearWell: 23700,

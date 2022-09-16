@@ -438,8 +438,6 @@ const MonetaryImpacts = () => {
     const isBrazil = country_region && country_region.country === countries_region[BRAZIL].country
 
 
-    window.scrollTo(0,0)
-
     const valueTotal = state.calculator.totalValue
 
     const impactsValues = state.calculator.values
