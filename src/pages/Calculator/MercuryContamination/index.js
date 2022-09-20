@@ -39,7 +39,7 @@ const MercuryContamination = () => {
     const hiddenMenu = calculator.valuatioMethod === FERRY ? [impacts.menu.deforestation] : []
     const currentCountry = counties.find(c => c.id === Number(country))
     const popDensity2060 = knowRegion ? currentCountry.popDensity2060  : 6.0;
-    const people = Math.round(popSize100kmRadius(knowRegion, popDensity2060))
+    const people = Math.round(popSize100kmRadius(knowRegion, popDensity2060, country_region))
     const paragraphy_01 = impacts.mercuryContamination.paragraphy_01.replace("$people", people.toLocaleString('pt-BR'))
 
     return (

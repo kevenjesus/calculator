@@ -6,8 +6,11 @@ const convertAllinHectare = (country_region, likeMining, typeValueLikeMining, va
     const { general, recoverOfTopSoll } = fixedCalcultions(country_region)
     const { hectare } = recoverOfTopSoll
     const { densityGold, excavationGoldLoss, cavaAverageProductivity } = general
+<<<<<<< HEAD
 
     console.log('convertAllinHectare', densityGold, excavationGoldLoss, cavaAverageProductivity )
+=======
+>>>>>>> ce473f6af1778be2fcf67a4e591bede8aa56de5d
 
     //const densityGold = 2.76;
     //const excavationGoldLoss = 2;
