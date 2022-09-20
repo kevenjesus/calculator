@@ -17,7 +17,7 @@ export const Modal = styled.div`
     padding: 20px;
     background-color: #fff;
     position: absolute;
-    top: 20%;
+    top: 10%;
     margin: 0 auto;
     left: 0;
     right: 0;
