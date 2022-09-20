@@ -3,7 +3,9 @@ import vpl from "utils/vpl";
 import { ALLUVIUM, AMOUNT_GOLD, FERRY, IMPACTED_AREA, PIT } from "../consts";
 
 const culturedAndSpecies = (likeMining, popDensity2010, species, typeValueLikeMining, hectare) => {
-  
+
+  console.log('AQUI', likeMining, popDensity2010, species, typeValueLikeMining, hectare)
+
   const GDPperCapitaBrazil2019USD = 8717.18;
   const celsiusTemperature = 26.8;
   const discountRate = 0.03;

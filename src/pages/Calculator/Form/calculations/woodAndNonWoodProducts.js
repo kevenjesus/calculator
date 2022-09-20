@@ -8,6 +8,8 @@ const woodAndNonWoodProducts = (country_region, likeMining, typeValueLikeMining,
   const { woodAndNonWoodProducts } = fixedCalcultions(country_region)
   const { costPMNMPerHaYearUSD, discountRate} = woodAndNonWoodProducts
 
+  console.log('woodAndNonWoodProducts', costPMNMPerHaYearUSD, discountRate)
+
   //const costPMNMPerHaYearBRl = 764.00
   //const discountRate = 0.03;
 

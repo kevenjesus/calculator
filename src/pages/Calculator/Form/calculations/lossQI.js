@@ -30,6 +30,25 @@ const lossQI =  (country_region, likeMining, typeValueLikeMining, valueLikeMinin
   } = general
   const { birthRate } = lossQI
 
+  console.log('lossQI', 
+  methyladPercent_conservative,
+  methyladPercent,
+  ruralIndividualWeight,
+  urbanindividualWeight,
+  percentLossHgInWater_convervative,
+  percentLossHgInWater,
+  percentLossHgInWater_ferry__convervative,
+  percentLossHgInWater_ferry,
+  densityPopulationalRegionNorth2060,
+  consumptionMediumFishByDayInGramsUrban,
+  AverageFishConsumptionPerDayInRuralGrams,
+  levelMediumContaminationFish,
+  prodGoldMonthFerry,
+  quantityOfGoldGramsPerYearWell,
+  aDALYUSD,
+  HgAuRatio,
+  birthRate)
+
   const methyladPercentValue = txPrevalence === CONSERVATIVE ? methyladPercent_conservative : methyladPercent;
   let gramsHgReleasedinWater;
 

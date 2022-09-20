@@ -25,6 +25,27 @@ const heartAttack = (country_region, likeMining, typeValueLikeMining, valueLikeM
     } = general
     const { proMenOver40ByPopTotal, accumulatedRiskMercuryInfarction, annualInfarctTreatmentCostUSD } = heartAttack
 
+    console.log('heartAttack', 
+    methyladPercent_conservative,
+    methyladPercent,
+    ruralIndividualWeight,
+    urbanindividualWeight,
+    percentLossHgInWater_convervative,
+    percentLossHgInWater,
+    percentLossHgInWater_ferry__convervative,
+    percentLossHgInWater_ferry,
+    densityPopulationalRegionNorth2060,
+    consumptionMediumFishByDayInGramsUrban,
+    AverageFishConsumptionPerDayInRuralGrams,
+    levelMediumContaminationFish,
+    prodGoldMonthFerry,
+    quantityOfGoldGramsPerYearWell,
+    aDALYUSD,
+    HgAuRatio, 
+    proMenOver40ByPopTotal, 
+    accumulatedRiskMercuryInfarction, 
+    annualInfarctTreatmentCostUSD)
+
     // console.log('methyladPercent_conservative', methyladPercent_conservative)
     // console.log('methyladPercent', methyladPercent)
     // console.log('ruralIndividualWeight', ruralIndividualWeight)

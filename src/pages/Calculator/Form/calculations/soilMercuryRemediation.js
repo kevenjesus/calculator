@@ -9,6 +9,8 @@ const soilMercuryRemediation = (country_region, likeMining, typeValueLikeMining,
     const { quantityOfGoldGramsPerYearWell, HgAuRatio } = general
     const { lossPercentHgInSoil, lossPercentHgInSoil_conservative, HgContainedSoilinGrassPerTon, DensidadeSolo, remediationCostUSDPerTonOfSoil } = soilMercuryRemediation
 
+    console.log('soilMercuryRemediation', quantityOfGoldGramsPerYearWell, HgAuRatio, lossPercentHgInSoil, lossPercentHgInSoil_conservative, HgContainedSoilinGrassPerTon, DensidadeSolo, remediationCostUSDPerTonOfSoil)
+
     //const quantityOfGoldGramsPerYearWell = 23700;
     //const HgAuRatio = 2.6;
     //const lossPercentHgInSoil = 0.088;

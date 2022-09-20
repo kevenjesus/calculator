@@ -9,6 +9,8 @@ const recoveryOfTopsoil = (country_region, likeMining, distanceanningCenter, gol
   const { kmRotatedPerLiter, priceLiterDieselUSD, averageDriverSalaryFreightPerKmUSD } = general 
   const { hectare, soilSurfaceRecPerHa_conservative, soilSurfaceRecPerHa, capacityLoadTruckNumberOfSeedlings, superficialSeedlingsPerHa, transportCostChangesPerKm } = recoverOfTopSoll
 
+  console.log('recoveryOfTopsoil', kmRotatedPerLiter, priceLiterDieselUSD, averageDriverSalaryFreightPerKmUSD, hectare, soilSurfaceRecPerHa_conservative, soilSurfaceRecPerHa, capacityLoadTruckNumberOfSeedlings, superficialSeedlingsPerHa, transportCostChangesPerKm)
+
 
   const soilSurfaceRecPerHaValue = txPrevalence === CONSERVATIVE ? soilSurfaceRecPerHa_conservative : soilSurfaceRecPerHa;
 

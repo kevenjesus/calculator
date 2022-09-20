@@ -11,6 +11,8 @@ const erosionSiltingUp = (country_region, likeMining, txPrevalence, typeValueLik
   const { GDPperCapitaBrazilUSD } = general
   const { siltingUpCostPerHaUSD } = erosionSiltingUp
 
+  console.log('erosionSiltingUp', GDPperCapitaBrazilUSD, siltingUpCostPerHaUSD)
+
   if(txPrevalence === CONSERVATIVE) {
     const discountRate = 0.03;
 

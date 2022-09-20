@@ -24,6 +24,22 @@ const dredgingAndRiverSediments = (country_region, likeMining, typeValueLikeMini
         transportCost1DredgeUSD
       } = dredgingAndRiverSediments
 
+    console.log('dredgingAndRiverSediments', 
+    kmRotatedPerLiter,
+    averageDriverSalaryFreightPerKmUSD,
+    priceLiterDieselUSD,
+    cavaAverageProductivity,
+    densityGold,
+    excavationGoldLoss,
+    quantityOfGoldGramsPerYearWell, averageMotorPower,
+    dredgingCostPerM3, 
+    productionSedimentTurnsFeatherTonnesPerMonth,
+    equivalentErosionTonPerHaPerYear,
+    erosionControlUSD,
+    productionSedimentTurnsFeatherTonnesPerMonthGold,
+    siltingPercentage,
+    theAmountOfSedimentPer1DredgeM3PerHour,
+    transportCost1DredgeUSD)
 
     //const productionSedimentTurnsFeatherTonnesPerMonthGold = 6.262;
     //const equivalentErosionTonPerHaPerYear = 12.54;

@@ -20,6 +20,20 @@ const cavaGroundingCostAuFertile = (country_region,likeMining, typeValueLikeMini
         } = general
         const { groundingCostFertilePitUSD } = cavaGroundingCostAuFertile
 
+        console.log('cavaGroundingCostAuFertile', 
+        quantitOfM3ExcavatorPerHour, 
+        averageDepthOfFertileEarth,
+        excavatorHoursDays,
+        excavatorCostPerKMUSD,
+        kmRotatedPerLiter,
+        averageDriverSalaryFreightPerKmUSD,
+        priceLiterDieselUSD,
+        densityGold,
+        excavationGoldLoss,
+        quantityOfGoldGramsPerYearWell,
+        cavaAverageProductivity,
+        hollowMediumDepth,
+        groundingCostFertilePitUSD)
         /*
         const groundingCostFertilePit = 12.7;
         nome original = groundingCostFertilePit

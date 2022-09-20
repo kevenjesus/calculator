@@ -6,6 +6,8 @@ import { ALLUVIUM, AMOUNT_GOLD, FERRY, IMPACTED_AREA, PIT } from "../consts";
 const recreation = (country_region, likeMining, popDensity2010, species, typeValueLikeMining, hectare) => {
     const { general } = fixedCalcultions(country_region)
     const { GDPperCapitaBrazilUSD, celciusTemperature } = general
+
+    console.log('recreation', GDPperCapitaBrazilUSD, celciusTemperature)
    
     //const GDPperCapitaBrazilUSD = 8717.18;
     //const celciusTemperature = 26.8;

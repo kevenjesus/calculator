@@ -6,6 +6,8 @@ const neuroSymptomsGarimpeiro = (country_region, likeMining, typeValueLikeMining
     const { general, neuroSymptomsGarimpeiro } = fixedCalcultions(country_region)
     const { aDALYUSD, quantityOfGoldGramsPerYearWell, prodGoldMonthFerry } = general
     const { amountOfGoldminersYear, neuroTreatmentCostPerGoldMinerUSD } = neuroSymptomsGarimpeiro
+
+    console.log('neuroSymptomsGarimpeiro', aDALYUSD, quantityOfGoldGramsPerYearWell, prodGoldMonthFerry, amountOfGoldminersYear, neuroTreatmentCostPerGoldMinerUSD)
     
     //const aDALYUSD = 103599;
     const weightNeuroDisabilityGoldminers = 0.368;
