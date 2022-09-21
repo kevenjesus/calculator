@@ -14,7 +14,7 @@ const CustomTooltip = (props) => {
   const { active, payload } = props;
     if (active && payload && payload.length) {
       const { value, displayName } = payload[0].payload
-      const totalConverted = isBrazil && priceUSDtoBRL ? ToBRL(value*priceUSDtoBRL) : toUSD(value)
+      const totalConverted = isBrazil && priceUSDtoBRL ? ToBRL(value) : toUSD(value)
       return (
         <Container>
           <Item>{displayName}</Item>
