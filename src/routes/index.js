@@ -1,4 +1,4 @@
-import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Form from 'pages/Calculator/Form'
 import Loading from 'pages/Calculator/Loading'
 import Deforestation from 'pages/Calculator/Deforestation'
@@ -28,6 +28,7 @@ const Routes = () => {
     const { country_region } = state
     const { USDtoBRL } = useExchange()
 
+
     useEffect(() => {
         if(USDtoBRL) {
             const dolarReal = Number(USDtoBRL.high)
@@ -35,9 +36,11 @@ const Routes = () => {
         }
         // eslint-disable-next-line
     }, [USDtoBRL])
+
+    const isHome = window.location.pathname === '/'
     return (
-        <Router basename={process.env.PUBLIC_URL}>
-            <Header />
+        <Router>
+            {!isHome  && <Header />}
             {
                 country_region === null ? (
                     <CountrySelect />
@@ -60,7 +63,7 @@ const Routes = () => {
                 <Route path="/impacts/mercury-contamination/references" exact component={MercuryReferences} />
                 <Route path="/impacts/monetary-impacts" exact component={MonetaryImpacts} />
             </Switch>
-            <Footer />
+             <Footer />
         </Router>
     )
 }

@@ -3,20 +3,16 @@ import Image from 'assets/images/Capa-min.jpg'
 
 export const ContainerBackground = styled.div`
     width: 100%;
-    height: auto;
+    height: 900px;
     background: url(${Image}) center center no-repeat;
     background-size: 100% 100%;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
 ` 
 
 export const Overlay = styled.div`
     width: 100%;
-    height: 100%;
+    height: 900px;
     background: rgba(0,0,0,0.5);
-    position: fixed;
+    position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
@@ -55,3 +51,8 @@ export const Embed = styled.div`
     height: 100%;
   }
 ` 
+
+export const Img = styled.img`
+    max-width: 100%;
+    width: 100%;
+`

@@ -9,7 +9,8 @@ import { Button } from 'theme'
 import { AppContext } from 'utils/AppContext'
 import LogoMPF from 'assets/images/mpf-logo-ministerio-publico-federal.png'
 import LogoConservationStrategy from 'assets/images/logo.svg'
-import { Container, ContainerBackground, Embed, Overlay } from './style'
+import MetodologiaIMG from 'assets/images/metodologia.png'
+import { Container, ContainerBackground, Embed, Img, Overlay } from './style'
 
 const Home = () => {
     const { state } = useContext(AppContext)
@@ -46,14 +47,35 @@ const Home = () => {
                             <Embed>
                                 <iframe width="560" height="315" src="https://www.youtube.com/embed/iRJmh62xHxU" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                             </Embed>
-                            <a href="https://www.youtube.com/watch?v=sVlf8GCF-SU&list=PLBfu1mD9hk678ePbwqO1Aq3gugwzrhXTx" target="_blank">
-                                <Button style={{marginTop: 37}} variant="default">Ver outros videos sobre garimpo ilegal</Button>
-                            </a>
+                            <Button style={{marginTop: 37}} onClick={() => window.open('https://www.youtube.com/watch?v=sVlf8GCF-SU&list=PLBfu1mD9hk678ePbwqO1Aq3gugwzrhXTx')} variant="default">Ver outros videos sobre garimpo ilegal</Button>
+                        
                             
                         </Col>
                     </Row>
                 </Container>
             </ContainerBackground>
+            <Container>
+                
+                <Row middle="md">
+                    <Col xs={12} md={2}>
+                        <Img src="https://www.conservation-strategy.org/sites/default/files/field-required-image/Page%201.jpg" alt="" />
+                    </Col>
+                    <Col xs={12} md={3}>
+                        <Headline style={{textAlign: 'left', marginBottom: '32px'}}>Artigo científico</Headline>
+                        <Button onClick={() => window.open('https://www.conservation-strategy.org/sites/default/files/field-file/ijerph-18-11869.pdf')}>Baixar em pdf</Button>
+                    </Col>
+           
+                
+                    <Col xs={12} md={2} mdOffset={1}>
+                        <Img src={MetodologiaIMG} alt="" />
+                    </Col>
+                    <Col xs={12} md={3}>
+                        <Headline style={{textAlign: 'left', marginBottom: '32px'}}>Metodologia</Headline>
+                        <Button onClick={() => window.open('https://www.conservation-strategy.org/sites/default/files/field-file/ijerph-18-11869.pdf')}>Baixar em pdf</Button>
+                    </Col>
+                    
+                </Row>
+            </Container>
         </>
     )
 }
