@@ -93,21 +93,26 @@ const ExtrationType = () => {
                 </Col>
             </Row>
           
+            <Text>
+                {introduction.extractionType.text}
+            </Text>
+
             {
                         knowRegion ? (
                             <>
                               <br />
                               <br />
                                 <Row center="xs">
-                                    <Col md={4}>
-                                    <ItemType>
-                                        <Title style={{marginBottom: 0, height: 50}}>{introduction.extractionType.values[3].type}</Title>
+                                    <Col md={6}>
+                                    <ItemType style={{display: 'flex'}}>
+                                        <Thumbnail width={200} src={RetortaIMG} style={{marginRight: '32px'}} alt="" />
+                                        <div style={{textAlign: 'left'}}>
+                                        <Title style={{textAlign: 'left', marginBottom: 0, height: 50}}>{introduction.extractionType.values[3].type}</Title>
                                         <RadioBoxConditional state={retort} setState={handleRetort} />
-                                        <Thumbnail width={200} src={RetortaIMG} alt="" />
                                         <Paragraphy>
                                             {introduction.extractionType.values[3].text}
                                         </Paragraphy>
-                                        
+                                        </div>
                                     </ItemType>
                                     </Col>
                                 </Row>
@@ -116,11 +121,6 @@ const ExtrationType = () => {
                             </>
                         ) : <></>
                     }
-             
-               
-            <Text>
-                {introduction.extractionType.text}
-            </Text>
         </>
     )
 }
