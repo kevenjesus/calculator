@@ -41,11 +41,12 @@ function Form() {
     const history = useHistory()
     const alert = useAlert()
 
+    
+
     const isBrazil = useMemo(() => country_region && country_region.country === countries_region[BRAZIL].country, [country_region]) 
     const isEquador = useMemo(() => country_region && country_region.country === countries_region[EQUADOR].country, [country_region]) 
     const isPeru = useMemo(() => country_region && country_region.country === countries_region[PERU].country, [country_region]) 
-    const isCOlombia = useMemo(() => country_region && country_region.country === countries_region[COLOMBIA].country, [country_region]) 
-
+    const isColombia = useMemo(() => country_region && country_region.country === countries_region[COLOMBIA].country, [country_region]) 
 
     const dataPitDepth = [
         {
@@ -138,18 +139,18 @@ function Form() {
             }else if(isPeru) {
                 const data = mockStatePeru
                 getCountiesNotBrazil(data)
-            }else if(isCOlombia) {
+            }else if(isColombia) {
+                console.log('colombia')
                 const data = mockStateColombia
                 getCountiesNotBrazil(data)
             }
              
         }
-        if (state === '' || country === '') {
-            getStates()
-        }
+
+        getStates()
        
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [getCounties, dispatch, isBrazil, isEquador, isPeru, isCOlombia])
+    }, [getCounties, dispatch, isBrazil, isEquador, isPeru, isColombia])
 
     useEffect(() => {
         const dataRegion = [

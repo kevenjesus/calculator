@@ -12,7 +12,7 @@ const CustomizedLabel = ({x, y, width, value }) => {
   const { state } = useContext(AppContext)
   const { country_region, priceUSDtoBRL } = state
   const isBrazil = country_region.country === countries_region[BRAZIL].country
-  const totalConverted = isBrazil && priceUSDtoBRL ? ToBRL(value*priceUSDtoBRL) : toUSD(value)
+  const totalConverted = isBrazil && priceUSDtoBRL ? ToBRL(value) : toUSD(value)
   return (
           <text 
             x={x + width - (window.innerWidth > 768 ? 25 : 15)} 
@@ -37,7 +37,7 @@ const Chart = ({data}) => {
   })
 
   const tickFormatterHandle = (value) => {
-    return isBrazil && priceUSDtoBRL ? ToBRL(value*priceUSDtoBRL) : toUSD(value)
+    return isBrazil && priceUSDtoBRL ? ToBRL(value) : toUSD(value)
   }
 
   const size = window.innerWidth;

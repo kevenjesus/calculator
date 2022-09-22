@@ -27,7 +27,7 @@ const MercuryContamination = () => {
     const impactsValues = state.calculator.values
 
     const reducer = ((acc, current) => acc + current.value)
-    const sumTotal = (item) => isBrazil && priceUSDtoBRL ? ToBRL(item.reduce(reducer, 0)*priceUSDtoBRL) : toUSD(item.reduce(reducer, 0))
+    const sumTotal = (item) => isBrazil && priceUSDtoBRL ? ToBRL(item.reduce(reducer, 0)) : toUSD(item.reduce(reducer, 0))
 
     const dataMercury = impactsValues.filter(i => i.category === CATEGORY_MERCURY)
 

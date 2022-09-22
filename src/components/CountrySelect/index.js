@@ -7,6 +7,7 @@ import * as S from './styles'
 import { Button } from 'theme';
 import { ReactComponent as Portuguese } from 'assets/icons/portuguese.svg'
 import { ReactComponent as Spanish } from 'assets/icons/spanish.svg'
+import { ReactComponent as English } from 'assets/icons/usa.svg'
 
 export const BRAZIL = 0
 export const EQUADOR = 1
@@ -61,8 +62,8 @@ const CountrySelect = () => {
         <Modal open={modalState}>
             <S.Headling>Território</S.Headling>
             <S.Text><Portuguese width={40} style={{marginRight: '8px'}} />  Selecione o país onde será baseado as informaçoes de garimpo ilegal de ouro.</S.Text>
-            <hr />
             <S.Text><Spanish width={40} style={{marginRight: '8px'}} />  Seleccione el país donde se basará la información sobre minería ilegal de oro.</S.Text>
+            <S.Text><English width={40} style={{marginRight: '8px'}} />  Select the country where the illegal gold mining information will be based.</S.Text>
             <select value={selected && selected.country} onChange={handleCountry}>
                 {
                     countries_region.map(item => <option key={item.country} value={item.country}>{item.label}</option>)
