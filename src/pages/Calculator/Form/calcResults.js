@@ -5,8 +5,6 @@ import calculateInflation from "utils/calculateInflation"
 import getValueToCountry from "utils/getValueToCountry"
 import goldToHecatere from "utils/GoldToHectare"
 import hectareToGold, { goldenGramForHectare } from "utils/hectareToGold"
-import ToBRL from "utils/toBRL"
-import toUSD from "utils/toUSD"
 import bioprospecting from "./calculations/bioprospecting"
 import carbon from "./calculations/carbon"
 import cavaGroundingCostAuFertile from "./calculations/cavaGroundingCostAuFertile"
@@ -74,7 +72,7 @@ const calcResults = (state, dispatch, dolarTOReal) => {
         const urbanPopMunicipality = knowRegion ? currentCountry.urbanPopMunicipality : 0.7353;
         const ruralPopMunicipality = knowRegion ? currentCountry.ruralPopMunicipality : 0.2647;
         const distanceanningCenter = knowRegion ? currentCountry.distanceanningCenter : 212.74;
-        const species = knowRegion ? (currentCountry.species <= 0 ? StateCity.species : currentCountry.species) : 69.21;
+        const species = knowRegion ? (currentCountry.species <= 0 ? StateCity.especie : currentCountry.species) : 69.21;
 
         // tipo de garimpo = likeMining
         // valor do tipo de garimpo = valueLikeMining
@@ -148,13 +146,10 @@ const calcResults = (state, dispatch, dolarTOReal) => {
 
         const reducer = ((acc, current) => acc+current.value);
         const totalValue = impacts.reduce(reducer, 0);
-
-        const totalConverted = isBrazil ? ToBRL(totalValue*dolarTOReal) : toUSD(totalValue)
-
-        
+        console.log(impacts)
 
         dispatch({ type: stateTypes.ADD_VALUE, payload: impacts })
-        dispatch({ type: stateTypes.CHANGE_TOTALVALUE, payload: totalConverted })
+        dispatch({ type: stateTypes.CHANGE_TOTALVALUE, payload: totalValue })
         
 
         return {

@@ -24,6 +24,7 @@ import getGoldValue from 'utils/getGoldValue'
 import { BRAZIL, countries_region } from 'components/CountrySelect'
 import convertAllinGold from 'utils/convertAllinGold'
 import toUSD from 'utils/toUSD'
+import { colors } from 'theme/colors'
 
 
 
@@ -119,6 +120,7 @@ const FormCalc = () => {
         mockContry.forEach(country => {
             dataCountries.forEach(countries => {
                 if (country.id === countries.id) {
+
                     countries.popDensity2010 = country.densidadePop2010
                     countries.popDensity2060 = country.densidadePop2060
                     countries.urbanPopMunicipality = country.PopUrbMunicipio
@@ -438,7 +440,6 @@ const MonetaryImpacts = () => {
     const isBrazil = country_region && country_region.country === countries_region[BRAZIL].country
 
 
-    const valueTotal = state.calculator.totalValue
 
     const impactsValues = state.calculator.values
 
@@ -458,8 +459,16 @@ const MonetaryImpacts = () => {
     const goldValue = Math.round(convertAllinGold(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth))
     
     const goldPrice = getGoldValue.goldPrice() * goldValue
-    const subtotalGoldPrice = isBrazil && priceUSDtoBRL ? goldPrice : goldPrice
-    const totalGoldPrice = isBrazil && priceUSDtoBRL ? ToBRL(subtotalGoldPrice) : toUSD(subtotalGoldPrice)
+
+    const subValueTotalImpact = state.calculator.totalValue
+    const valueTotalImpact = isBrazil ? ToBRL(subValueTotalImpact) : toUSD(subValueTotalImpact)
+
+    const subTotalGoldPrice = isBrazil ? goldPrice*priceUSDtoBRL : goldPrice
+    const totalGoldPrice = isBrazil ? ToBRL(subTotalGoldPrice) : toUSD(subTotalGoldPrice)
+
+    
+    const SubValueTotal = subValueTotalImpact+goldPrice
+    const valueTotal = isBrazil ? ToBRL(SubValueTotal) : toUSD(SubValueTotal)
 
 
     const allImpacts = {
@@ -482,7 +491,7 @@ const MonetaryImpacts = () => {
             {
                 label: `${goldValue} gramas de ouro`,
                 displayName: `Valor de ${goldValue} gramas de ouro`,
-                value: subtotalGoldPrice
+                value: subTotalGoldPrice
             }
         ],
         total: sumTotal(impactsValues)
@@ -567,13 +576,26 @@ const MonetaryImpacts = () => {
                     <Col xs={12} sm={8} md={9} id="totalMoney">
                         <Headline>{impacts.monetaryImpacts.headline}</Headline>
                         <Row>
-                            <Col xs={12} sm={6}>
+                            <Col xs={12} sm={4}>
+                                <FormGroup>
+                                    <Label>Total em impactos</Label>
+                                    <Monetary style={{color: colors.secondary}}>{valueTotalImpact}</Monetary>
+                                    <MonetaryType>{`
+                                        ${impacts.monetaryImpacts.labels.typeText} ${calculator.qtdAnalysis.value} ${typeAnalysis.toLowerCase()}`}</MonetaryType>
+                                </FormGroup>
+                            </Col>
+                            <Col xs={12} sm={4}>
+                                <FormGroup>
+                                    <Label>Total em ouro</Label>
+                                    <Monetary style={{color: '#8b8b28'}}>{totalGoldPrice}</Monetary>
+                                    <MonetaryType>{`Para ${goldValue} gramas de ouro`}</MonetaryType>
+                                </FormGroup>
+                            </Col>
+                            <Col xs={12} sm={4}>
                                 <FormGroup>
                                     <Label>{impacts.monetaryImpacts.labels.finalValue}</Label>
                                     <Monetary>{valueTotal}</Monetary>
-                                    <MonetaryType>{`
-                                        ${impacts.monetaryImpacts.labels.typeText} ${calculator.qtdAnalysis.value} ${typeAnalysis.toLowerCase()}
-                                        | Valor de ${totalGoldPrice} para ${goldValue} gramas de ouro`}</MonetaryType>
+                                    <MonetaryType>{`Impactos + ouro`}</MonetaryType>
                                 </FormGroup>
                             </Col>
                         </Row>
