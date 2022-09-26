@@ -309,8 +309,18 @@ const es_ES = {
             soil_mercury_ref_line1: 'Miranda (2019) Kahhat et al (2019)',
             soil_mercury_comments_line1: 'Se supone que la biorremediación, a partir de la plantación de mudas de especies capaces de absorber el mercurio en el suelo, sería la alternativa más aplicable al contexto amazónico para remediar el impacto de la minería.',
             soil_mercury_comments_line2: 'La hipótesis es que la concentración media de mercurio en los suelos es de 0,24 gramos de oro por tonelada de sedimento.',
-        }
-    }
+        },
+    },
+    inflation: 'Inflação acumulada desde de 2022 %',
+    inflation_placeholder: 'Digite a inflação neste formato: 10 ou 6.2',
+    district: 'Distrito',
+    goldImpact: 'para $grams de ouro',
+    goldImpact_graphic: '$grams de ouro',
+    goldImpact_graphic_tooltip: 'valor de $value para $grams de ouro',
+    monetaryimpact_text: 'Impactos + ouro',
+    science_article: 'Artigo Cientifico',
+    methodology: 'Metodologia',
+    button_download_pdf: 'Baixar em PDF',
 
 };
 
