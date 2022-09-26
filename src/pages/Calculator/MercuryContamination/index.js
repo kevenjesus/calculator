@@ -2,8 +2,9 @@ import { Link } from 'react-router-dom'
 import { Button } from 'theme'
 import { Grid, Row, Col } from 'react-flexbox-grid'
 import { Container, Headline, Text } from 'pages/Calculator/ImpactsStyles'
-import { ReactComponent as ImageExample } from 'assets/images/[calculadora]infografico3.svg';
-import { ReactComponent as ImageExampleUS } from 'assets/images/[calculadora]infografico3_INGLES.svg';
+import { ReactComponent as InfoPorugues } from 'assets/images/[calculadora]infografico3_PORTUGUÊS.svg';
+import { ReactComponent as InfoEnglish } from 'assets/images/[calculadora]infografico3_INGLES.svg';
+import { ReactComponent as InfoSpanish } from 'assets/images/[calculadora]infografico3_ESPANHOL.svg';
 import { AppContext } from 'utils/AppContext';
 import { useContext } from 'react';
 import { CATEGORY_MERCURY, FERRY } from '../Form/consts';
@@ -13,6 +14,16 @@ import MenuImpacts from '../Menu';
 import popSize100kmRadius from 'utils/popSize100kmRadius';
 import { BRAZIL, countries_region } from 'components/CountrySelect';
 import toUSD from 'utils/toUSD';
+
+const InfoComponent = ({language}) => {
+    if(language === 'enUS') {
+        return <InfoEnglish style={{display: 'block', margin: '50px auto'}} />
+    }else if(language === 'esES') {
+        return <InfoSpanish style={{display: 'block', margin: '50px auto'}} />
+    }else {
+        return <InfoPorugues style={{display: 'block', margin: '50px auto'}} />
+    }
+}
 
 const MercuryContamination = () => {
     const {state} = useContext(AppContext)
@@ -58,7 +69,7 @@ const MercuryContamination = () => {
                         <Text>
                         {impacts.mercuryContamination.paragraphy_02} 
                         </Text>
-                        { language.type === 'enUS' ? <ImageExampleUS style={{display: 'block', margin: '50px auto'}} /> : <ImageExample style={{display: 'block', margin: '50px auto'}} />}
+                        <InfoComponent language={language.type} />
                     </Col>
                 </Row>
                 <Row>

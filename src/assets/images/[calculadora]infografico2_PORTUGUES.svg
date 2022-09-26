@@ -49,8 +49,8 @@
 	.st43{fill:#151616;}
 	.st44{fill:none;stroke:#FF8C00;stroke-width:8.8992;stroke-miterlimit:10;stroke-dasharray:11.9753,11.9753;}
 	.st45{opacity:0.66;fill:url(#SVGID_1_);}
-	.st46{opacity:0.66;fill:url(#SVGID_00000075856631534820318080000014450058950806245305_);}
-	.st47{opacity:0.44;fill:url(#SVGID_00000033348900910797673520000008196396225288402574_);}
+	.st46{opacity:0.66;fill:url(#SVGID_00000052803526340011562250000009965688017756940697_);}
+	.st47{opacity:0.44;fill:url(#SVGID_00000151531951585850405480000006096437594585947298_);}
 	.st48{fill:#2D1404;}
 	.st49{fill:#F4D0A8;}
 	.st50{fill:none;stroke:#FF8C00;stroke-width:8.8992;stroke-miterlimit:10;stroke-dasharray:11.9613,11.9613;}
@@ -1377,16 +1377,16 @@
 <g>
 	<circle class="st19" cx="646.5" cy="2145.73" r="198.82"/>
 </g>
-<text transform="matrix(1 0 0 1 1143.6488 811.6901)" class="st10 st20 st21">Fishing</text>
-<text transform="matrix(1 0 0 1 2546.9695 811.6901)"><tspan x="0" y="0" class="st10 st20 st21">Recreative </tspan><tspan x="0" y="78" class="st10 st20 st21">usage</tspan></text>
-<text transform="matrix(1 0 0 1 1942.2047 811.6901)"><tspan x="0" y="0" class="st10 st20 st21">Erosion </tspan><tspan x="0" y="78" class="st10 st20 st21">control: </tspan></text>
-<text transform="matrix(1 0 0 1 714.7652 813.9569)"><tspan x="0" y="0" class="st10 st20 st21">Drinking </tspan><tspan x="0" y="78" class="st10 st20 st21">water</tspan></text>
+<text transform="matrix(1 0 0 1 1143.6488 811.6901)" class="st10 st20 st21">Pesca</text>
+<text transform="matrix(1 0 0 1 2546.9695 811.6901)"><tspan x="0" y="0" class="st10 st20 st21">Uso </tspan><tspan x="0" y="78" class="st10 st20 st21">recreativo</tspan></text>
+<text transform="matrix(1 0 0 1 1942.2047 811.6901)"><tspan x="0" y="0" class="st10 st20 st21">Controle </tspan><tspan x="0" y="78" class="st10 st20 st21">de erosão:</tspan></text>
+<text transform="matrix(1 0 0 1 714.7652 813.9569)"><tspan x="0" y="0" class="st10 st20 st21">Água </tspan><tspan x="0" y="78" class="st10 st20 st21">potável</tspan></text>
 <g>
 	<rect x="592.29" y="7500.71" class="st22" width="2470.47" height="315.5"/>
-	<text transform="matrix(1 0 0 1 867.2787 7550.1094)"><tspan x="0" y="0" class="st10 st20 st21">While the area is not recovered, the accumulated costs of not </tspan><tspan x="-84.82" y="78" class="st10 st20 st21">being able to use part of the benefits provided by the rivers should </tspan><tspan x="-150.88" y="156" class="st10 st20 st21">be accounted for, considering lost job opportunities in fishing, tourism, </tspan><tspan x="224.44" y="234" class="st10 st20 st21">and worsening of the quality of drinking water.</tspan></text>
+	<text transform="matrix(1 0 0 1 717.5693 7550.1094)"><tspan x="0" y="0" class="st10 st20 st21">Enquanto a área não é recuperada, devem ser contabilizados os custos </tspan><tspan x="-43.58" y="78" class="st10 st20 st21">acumulados da impossibilidade de uso de parte dos benefícios fornecidos </tspan><tspan x="-29.63" y="156" class="st10 st20 st21">pelos rios, considerando oportunidades perdidas de trabalho com pesca, </tspan><tspan x="335.03" y="234" class="st10 st20 st21">turismo e piora da qualidade da água para beber.</tspan></text>
 </g>
 <rect x="1545.54" y="5285.74" class="st22" width="635.96" height="191.08"/>
-<text transform="matrix(1 0 0 1 1545.5398 5335.1357)"><tspan x="0" y="0" class="st10 st20 st21">Sediment </tspan><tspan x="0" y="78" class="st10 st20 st21">dredging</tspan></text>
+<text transform="matrix(1 0 0 1 1545.5398 5335.1357)"><tspan x="0" y="0" class="st10 st20 st21">Dragagem </tspan><tspan x="0" y="78" class="st10 st20 st21">de sedimento</tspan></text>
 <g>
 	<g>
 		<line class="st23" x1="1505.26" y1="6648.03" x2="1505.26" y2="6642.03"/>
@@ -1394,8 +1394,8 @@
 		<line class="st23" x1="1505.26" y1="5291.74" x2="1505.26" y2="5285.74"/>
 	</g>
 </g>
-<rect x="2278.22" y="4925.97" class="st22" width="751.37" height="69.28"/>
-<text transform="matrix(1 0 0 1 2278.2212 4975.3662)" class="st10 st20 st21">Filling the pits</text>
+<rect x="2278.22" y="4925.97" class="st22" width="546.73" height="142.97"/>
+<text transform="matrix(1 0 0 1 2278.2212 4975.3652)"><tspan x="0" y="0" class="st10 st20 st21">Aterramento </tspan><tspan x="0" y="78" class="st10 st20 st21">de cava</tspan></text>
 <g>
 	<g>
 		<line class="st23" x1="2236.3" y1="6125.3" x2="2236.3" y2="6119.3"/>
@@ -1404,15 +1404,16 @@
 	</g>
 </g>
 <rect x="2588.73" y="5446.45" class="st22" width="454.24" height="180.33"/>
-<text transform="matrix(1 0 0 1 2588.7268 5495.8467)"><tspan x="0" y="0" class="st10 st20 st21">Forestry </tspan><tspan x="0" y="78" class="st10 st20 st21">restoration</tspan></text>
-<rect x="1855.49" y="3094.37" class="st22" width="413.75" height="161.01"/>
+<text transform="matrix(1 0 0 1 2588.7268 5495.8467)"><tspan x="0" y="0" class="st10 st20 st21">Restauração </tspan><tspan x="0" y="78" class="st10 st20 st21">florestal</tspan></text>
+<rect x="1855.49" y="3094.37" class="st22" width="518.96" height="247.02"/>
 <text transform="matrix(1 0 0 1 1855.4865 3143.7717)" class="st10 st20 st21">2,1 m</text>
 <text transform="matrix(0.583 0 0 0.583 2026.0797 3122.1272)" class="st10 st20 st21">3</text>
-<text transform="matrix(1 0 0 1 2047.7101 3143.7717)" class="st10 st20 st21"> are </text>
-<text transform="matrix(1 0 0 1 1855.4865 3221.7717)" class="st10 st20 st21">sedimented.</text>
-<text transform="matrix(1 0 0 1 492.4858 425.5872)"><tspan x="0" y="0" class="st10 st26 st27">ORIGINAL CONDITION AND </tspan><tspan x="0" y="142" class="st10 st26 st27">(LOST) BENEFITS OF NATURE</tspan></text>
-<text transform="matrix(1 0 0 1 533.0309 2962.4597)" class="st10 st26 st27">IMPACTS – EROSION AND SILTING</text>
-<text transform="matrix(1 0 0 1 492.486 4919.7095)"><tspan x="0" y="0" class="st10 st26 st27">Forest </tspan><tspan x="0" y="153.6" class="st10 st26 st27">recovery</tspan></text>
+<text transform="matrix(1 0 0 1 2047.7101 3143.7717)" class="st10 st20 st21"> causam </text>
+<text transform="matrix(1 0 0 1 1855.4865 3221.7717)" class="st10 st20 st21">assoreamento </text>
+<text transform="matrix(1 0 0 1 1855.4865 3299.7717)" class="st10 st20 st21">nos rios.</text>
+<text transform="matrix(1 0 0 1 492.4858 425.5872)"><tspan x="0" y="0" class="st10 st26 st27">CONDIÇÃO ORIGINAL E BENEFÍCIOS </tspan><tspan x="0" y="142" class="st10 st26 st27">DA NATUREZA PERDIDOS</tspan></text>
+<text transform="matrix(1 0 0 1 533.0309 2962.4597)" class="st10 st26 st27">IMPACTO – EROSÃO E ASSOREAMENTO</text>
+<text transform="matrix(1 0 0 1 492.486 4919.7095)"><tspan x="0" y="0" class="st10 st26 st27">RECUPERAÇÃO </tspan><tspan x="0" y="153.6" class="st10 st26 st27">FLORESTAL</tspan></text>
 <circle class="st10" cx="304.69" cy="384.76" r="103.63"/>
 <circle class="st10" cx="304.69" cy="2919.04" r="103.63"/>
 <circle class="st10" cx="304.69" cy="4919.71" r="103.63"/>
@@ -1429,11 +1430,15 @@
 <text transform="matrix(1 0 0 1 279.8344 2962.4597)" class="st0 st26 st32">2</text>
 <text transform="matrix(1 0 0 1 277.3898 4969.0005)" class="st0 st26 st32">3</text>
 <g>
-	<text transform="matrix(1 0 0 1 1668.1827 5536.9541)"><tspan x="0" y="0" class="st10 st26 st33">COST OF USD 6.4 /M³ </tspan><tspan x="0" y="78" class="st10 st26 st33">OF SEDIMENT</tspan></text>
+	<text transform="matrix(1 0 0 1 1668.1827 5536.9541)" class="st10 st26 st33">CUSTO DE: </text>
+	<text transform="matrix(1 0 0 1 1668.1827 5614.9541)" class="st10 st26 st33">R$ 32/M</text>
+	<text transform="matrix(0.583 0 0 0.583 1866.736 5594.1631)" class="st10 st26 st33">3</text>
+	<text transform="matrix(1 0 0 1 1885.131 5614.9541)" class="st10 st26 st33"> </text>
+	<text transform="matrix(1 0 0 1 1668.1827 5692.9541)" class="st10 st26 st33">DE SEDIMENTO</text>
 </g>
 <g>
-	<circle class="st10" cx="2321.84" cy="5062.71" r="45.16"/>
-	<text transform="matrix(1 0 0 1 2310.3418 5081.2246)" class="st0 st26 st34">$</text>
+	<circle class="st10" cx="2321.84" cy="5166.52" r="45.16"/>
+	<text transform="matrix(1 0 0 1 2310.3418 5185.0352)" class="st0 st26 st34">$</text>
 </g>
 <g>
 	<circle class="st10" cx="1590.7" cy="5521.97" r="45.16"/>
@@ -1444,20 +1449,23 @@
 	<text transform="matrix(1 0 0 1 2627.9033 5690.4434)" class="st0 st26 st34">$</text>
 </g>
 <g>
-	<text transform="matrix(1 0 0 1 2400.1091 5074.0811)"><tspan x="0" y="0" class="st10 st26 st33">COST OF </tspan><tspan x="0" y="78" class="st10 st26 st33">USD 2.8 /M³ OF SOIL</tspan></text>
+	<text transform="matrix(1 0 0 1 2400.1091 5177.8916)" class="st10 st26 st33">CUSTO DE: </text>
+	<text transform="matrix(1 0 0 1 2400.1091 5255.8916)" class="st10 st26 st33">R$ 14/M</text>
+	<text transform="matrix(0.583 0 0 0.583 2595.7053 5235.1006)" class="st10 st26 st33">3</text>
+	<text transform="matrix(1 0 0 1 2614.1003 5255.8916)" class="st10 st26 st33"> DE SOLO</text>
 </g>
-<rect x="508.44" y="5174.39" class="st22" width="809.62" height="542.7"/>
-<text transform="matrix(1 0 0 1 508.4357 5223.7861)"><tspan x="0" y="0" class="st10 st20 st21">This area must be </tspan><tspan x="0" y="78" class="st10 st20 st21">restored for the </tspan><tspan x="0" y="156" class="st10 st20 st21">ecosystem to return </tspan><tspan x="0" y="234" class="st10 st20 st21">minimally to its previous </tspan><tspan x="0" y="312" class="st10 st20 st21">conditions, a complex </tspan><tspan x="0" y="390" class="st10 st20 st21">process that takes many </tspan><tspan x="0" y="468" class="st10 st20 st21">years to generate results.</tspan></text>
+<rect x="508.44" y="5174.39" class="st22" width="809.62" height="653.54"/>
+<text transform="matrix(1 0 0 1 508.4357 5223.7861)"><tspan x="0" y="0" class="st10 st20 st21">Essa área deve ser </tspan><tspan x="0" y="78" class="st10 st20 st21">recuperada para que </tspan><tspan x="0" y="156" class="st10 st20 st21">o ecossistema volte </tspan><tspan x="0" y="234" class="st10 st20 st21">minimamente às </tspan><tspan x="0" y="312" class="st10 st20 st21">condições anteriores,</tspan><tspan x="0" y="390" class="st10 st20 st21">um processo complexo </tspan><tspan x="0" y="468" class="st10 st20 st21">que leva muitos anos </tspan><tspan x="0" y="546" class="st10 st20 st21">para gerar resultados.</tspan></text>
 <g>
 	<rect x="786.49" y="3087.52" class="st22" width="835.65" height="458.02"/>
-	<text transform="matrix(1 0 0 1 786.4946 3136.9155)" class="st10 st20 st21">The extraction of 1kg </text>
-	<text transform="matrix(1 0 0 1 786.4946 3214.9155)" class="st10 st20 st21">of gold moves around </text>
-	<text transform="matrix(1 0 0 1 786.4946 3292.9155)" class="st10 st20 st21">15 thousand m</text>
-	<text transform="matrix(0.583 0 0 0.583 1255.4912 3271.271)" class="st10 st20 st21">3</text>
-	<text transform="matrix(1 0 0 1 1277.1216 3292.9155)" class="st10 st20 st21"> of </text>
-	<text transform="matrix(1 0 0 1 786.4946 3370.9155)" class="st10 st20 st21">sediments, generating </text>
-	<text transform="matrix(1 0 0 1 786.4946 3448.9155)" class="st10 st20 st21">erosion, silting and </text>
-	<text transform="matrix(1 0 0 1 786.4946 3526.9155)" class="st10 st20 st21">sedimentation of rivers.</text>
+	<text transform="matrix(1 0 0 1 786.4946 3136.9155)" class="st10 st20 st21">A extração de 1 kg </text>
+	<text transform="matrix(1 0 0 1 786.4946 3214.9155)" class="st10 st20 st21">de ouro movimenta </text>
+	<text transform="matrix(1 0 0 1 786.4946 3292.9155)" class="st10 st20 st21">cerca de 15 mil m</text>
+	<text transform="matrix(0.583 0 0 0.583 1334.2656 3271.271)" class="st10 st20 st21">3</text>
+	<text transform="matrix(1 0 0 1 1355.896 3292.9155)" class="st10 st20 st21"> de </text>
+	<text transform="matrix(1 0 0 1 786.4946 3370.9155)" class="st10 st20 st21">sedimentos, gerando </text>
+	<text transform="matrix(1 0 0 1 786.4946 3448.9155)" class="st10 st20 st21">erosão, assoreamento e </text>
+	<text transform="matrix(1 0 0 1 786.4946 3526.9155)" class="st10 st20 st21">sedimentação dos rios.</text>
 </g>
 <g>
 	<circle class="st10" cx="651.86" cy="3193.79" r="103.63"/>
@@ -1500,7 +1508,7 @@
 <line class="st38" x1="1894.79" y1="1235.12" x2="1894.79" y2="766.96"/>
 <line class="st38" x1="651.37" y1="1954.42" x2="651.37" y2="765.99"/>
 <g>
-	<text transform="matrix(1 0 0 1 2726.0806 5671.9312)"><tspan x="0" y="0" class="st10 st26 st33">COST OF </tspan><tspan x="0" y="78" class="st10 st26 st33">USD 5,432 </tspan><tspan x="0" y="156" class="st10 st26 st33">PER HECTARE</tspan></text>
+	<text transform="matrix(1 0 0 1 2726.0806 5671.9312)"><tspan x="0" y="0" class="st10 st26 st33">CUSTO DE: </tspan><tspan x="0" y="78" class="st10 st26 st33">R$ 27.167 </tspan><tspan x="0" y="156" class="st10 st26 st33">POR HECTARE</tspan></text>
 </g>
 <g>
 	<path class="st3" d="M2185.09,6352.3c7.56-14.65,12.98-31.27,17.62-48.97c5.19-19.77,4.57-42.84-8.93-58.19
@@ -1630,17 +1638,17 @@
 	<stop  offset="1" style="stop-color:#AFD1F2"/>
 </linearGradient>
 <polygon class="st45" points="1118.42,4033.87 1031.62,4077.94 1307.52,4084.14 1365.62,4033.98 "/>
-<linearGradient id="SVGID_00000142898851538280938760000007772661857307361199_" gradientUnits="userSpaceOnUse" x1="2255.8479" y1="4059.0024" x2="2579.9221" y2="4059.0024" gradientTransform="matrix(-1 0 0 1 4978.3818 0)">
+<linearGradient id="SVGID_00000039111899177793490340000004018238611604221316_" gradientUnits="userSpaceOnUse" x1="2255.8479" y1="4059.0024" x2="2579.9221" y2="4059.0024" gradientTransform="matrix(-1 0 0 1 4978.3818 0)">
 	<stop  offset="1.260747e-03" style="stop-color:#FF8C00"/>
 	<stop  offset="1" style="stop-color:#AFD1F2"/>
 </linearGradient>
-<polygon style="opacity:0.66;fill:url(#SVGID_00000142898851538280938760000007772661857307361199_);" points="2645.66,4033.87 
+<polygon style="opacity:0.66;fill:url(#SVGID_00000039111899177793490340000004018238611604221316_);" points="2645.66,4033.87 
 	2722.53,4072.9 2456.56,4084.14 2398.46,4033.98 "/>
-<linearGradient id="SVGID_00000003103678630502536740000005370076130457933236_" gradientUnits="userSpaceOnUse" x1="1031.6217" y1="4232.7129" x2="3073.6699" y2="4232.7129">
+<linearGradient id="SVGID_00000013903386402269326370000004950981701310693275_" gradientUnits="userSpaceOnUse" x1="1031.6217" y1="4232.7129" x2="3073.6699" y2="4232.7129">
 	<stop  offset="1.260747e-03" style="stop-color:#FF8C00"/>
 	<stop  offset="1" style="stop-color:#AFD1F2"/>
 </linearGradient>
-<path style="opacity:0.44;fill:url(#SVGID_00000003103678630502536740000005370076130457933236_);" d="M2949.06,4223.33
+<path style="opacity:0.44;fill:url(#SVGID_00000013903386402269326370000004950981701310693275_);" d="M2949.06,4223.33
 	c-40.58-8.19-77.58-17.51-113.7-38.67c-40.7-23.85-80.24-48.31-112.83-111.76c0,0-266.29,11-266.41,11
 	c1.03,0.02,45.74,92.41,50.16,98.77c46.55,67,111.11,119.4,184.44,154.37c-24.03-5.72-48.5-11.08-73.06-8.98
 	c-35.28,3.02-69.67,21.31-104.49,14.84c-46.18-8.58-78.99-54.37-118.91-76.6c-44.64-24.86-96.58-35.13-147.2-26.59
@@ -1754,7 +1762,7 @@
 <text transform="matrix(1 0 0 1 -364.7281 1760.3029)" style="font-family:'MyriadPro-Regular'; font-size:12px;">Lorem ipsum</text>
 <g>
 	<g>
-		<text transform="matrix(0.8901 0 0 1 2101.8511 1002.5004)"><tspan x="0" y="0" class="st10 st51 st52">USD 17.4 </tspan><tspan x="0" y="66" class="st10 st51 st52">per hectare </tspan><tspan x="0" y="132" class="st10 st51 st52">per year</tspan></text>
+		<text transform="matrix(0.8901 0 0 1 2101.8511 1002.5004)"><tspan x="0" y="0" class="st10 st51 st52">R$ 87 </tspan><tspan x="0" y="66" class="st10 st51 st52">por hectare </tspan><tspan x="0" y="132" class="st10 st51 st52">por ano</tspan></text>
 	</g>
 </g>
 <circle class="st10" cx="1995.94" cy="1002.5" r="54.3"/>

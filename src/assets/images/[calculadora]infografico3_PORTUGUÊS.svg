@@ -27,21 +27,21 @@
 	.st21{font-size:32.9795px;}
 	.st22{fill:none;}
 	.st23{font-size:56px;}
-	.st24{clip-path:url(#SVGID_00000117645224743767468450000006696712256522473898_);fill:#3B84DB;}
+	.st24{clip-path:url(#SVGID_00000143613431425830293970000015178190571060834968_);fill:#3B84DB;}
 	.st25{font-size:31.9049px;}
-	.st26{fill:none;stroke:#FF8C00;stroke-width:7.0562;stroke-miterlimit:10;}
-	.st27{fill:none;stroke:#FF8C00;stroke-width:7.0562;stroke-miterlimit:10;stroke-dasharray:9.4577,9.4577;}
-	.st28{fill:none;stroke:#3B84DB;stroke-width:7.4315;stroke-miterlimit:10;}
-	.st29{fill:none;stroke:#3B84DB;stroke-width:7.4315;stroke-miterlimit:10;stroke-dasharray:7.764,7.764;}
-	.st30{fill:none;stroke:#FF8C00;stroke-width:5.5503;stroke-miterlimit:10;stroke-dasharray:7.4843;}
-	.st31{fill:none;stroke:#3B84DB;stroke-width:7.4315;stroke-miterlimit:10;stroke-dasharray:7.794;}
-	.st32{font-size:80px;}
+	.st26{letter-spacing:-2;}
+	.st27{fill:none;stroke:#FF8C00;stroke-width:7.0562;stroke-miterlimit:10;}
+	.st28{fill:none;stroke:#FF8C00;stroke-width:7.0562;stroke-miterlimit:10;stroke-dasharray:9.5872,9.5872;}
+	.st29{fill:none;stroke:#3B84DB;stroke-width:7.4315;stroke-miterlimit:10;}
+	.st30{fill:none;stroke:#3B84DB;stroke-width:7.4315;stroke-miterlimit:10;stroke-dasharray:7.764,7.764;}
+	.st31{fill:none;stroke:#FF8C00;stroke-width:5.5503;stroke-miterlimit:10;stroke-dasharray:7.4843;}
+	.st32{fill:none;stroke:#3B84DB;stroke-width:7.4315;stroke-miterlimit:10;stroke-dasharray:7.794;}
 	.st33{fill:#FFF766;}
 	.st34{fill:#F2CF3D;}
 	.st35{font-size:132px;}
 	.st36{fill:#7D7875;}
-	.st37{clip-path:url(#SVGID_00000004515911066146251500000016206735875384491188_);}
-	.st38{opacity:0.25;clip-path:url(#SVGID_00000142169031196606064420000009870022047613895093_);}
+	.st37{clip-path:url(#SVGID_00000013153151247470487470000001695974568744906370_);}
+	.st38{opacity:0.25;clip-path:url(#SVGID_00000124143006969616982660000003831131968229014969_);}
 	.st39{fill:none;stroke:#E1EAE6;stroke-width:10;stroke-miterlimit:10;}
 	.st40{fill:#AFD1F2;}
 	.st41{fill:#7C400E;}
@@ -69,7 +69,7 @@
 	.st62{fill:#252324;}
 	.st63{font-size:59.6195px;}
 	.st64{font-size:98.0145px;}
-	.st65{clip-path:url(#SVGID_00000161590838737984099480000003880995943315295139_);}
+	.st65{clip-path:url(#SVGID_00000096760038535733994800000008523305241769818290_);}
 	.st66{fill:none;stroke:#073C29;stroke-width:3.9227;stroke-miterlimit:10;}
 	.st67{fill:none;stroke:#FF8C00;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
 	.st68{fill:#D67307;}
@@ -111,7 +111,7 @@
 <rect x="-2.16" y="4549.05" class="st4" width="3591.32" height="2729.49"/>
 <path class="st9" d="M3229.9,6872.64c0-788.09-654.29-1467.64-1442.39-1467.64S360.54,6084.54,360.54,6872.64H3229.9z"/>
 <circle class="st3" cx="2107.83" cy="639.66" r="212.65"/>
-<text transform="matrix(1 0 0 1 1936.6012 581.6144)"><tspan x="0" y="0" class="st10 st11 st12">Reutilized</tspan><tspan x="54.09" y="153.6" class="st10 st13 st14">45%</tspan></text>
+<text transform="matrix(1 0 0 1 1907.672 581.6144)"><tspan x="0" y="0" class="st10 st11 st12">REUTILIZADO</tspan><tspan x="83.02" y="153.6" class="st10 st13 st14">45%</tspan></text>
 <g>
 	<circle class="st10" cx="185.09" cy="3754.51" r="88.04"/>
 	<circle class="st10" cx="313.95" cy="3731.4" r="88.04"/>
@@ -672,15 +672,19 @@
 </g>
 <g>
 	<rect x="2527.15" y="3285.6" class="st22" width="805.51" height="393.45"/>
-	<text transform="matrix(1 0 0 1 2527.145 3334.9954)"><tspan x="0" y="0" class="st10 st11 st12">of all mercury used in </tspan><tspan x="0" y="78" class="st10 st11 st12">mining ends up being </tspan><tspan x="0" y="156" class="st10 st11 st12">consumed by humans </tspan><tspan x="0" y="234" class="st10 st11 st12">who eat fish.</tspan></text>
+	<text transform="matrix(1 0 0 1 2527.145 3334.9954)"><tspan x="0" y="0" class="st10 st11 st12">de todo o mercúrio </tspan><tspan x="0" y="78" class="st10 st11 st12">utilizado no garimpo, </tspan><tspan x="0" y="156" class="st10 st11 st12">acaba sendo consumido </tspan><tspan x="0" y="234" class="st10 st11 st12">por humanos que </tspan><tspan x="0" y="312" class="st10 st11 st12">comem peixes.</tspan></text>
 </g>
 <g>
 	<rect x="3002.21" y="2500.46" class="st22" width="432.36" height="683.35"/>
-	<text transform="matrix(1 0 0 1 3002.2117 2550.2034)"><tspan x="0" y="0" class="st15 st13 st23">Depending on the </tspan><tspan x="0" y="67.2" class="st15 st13 st23">fish consumption, </tspan><tspan x="0" y="134.4" class="st15 st13 st23">the level of </tspan><tspan x="0" y="201.6" class="st15 st13 st23">contamination </tspan><tspan x="0" y="268.8" class="st15 st13 st23">can increase </tspan><tspan x="0" y="336" class="st15 st13 st23">between 4ug/g </tspan><tspan x="0" y="403.2" class="st15 st13 st23">and 14,5ug/g </tspan><tspan x="0" y="470.4" class="st15 st13 st23">of mercury, </tspan><tspan x="0" y="537.6" class="st15 st13 st23">on average.</tspan></text>
+	<text transform="matrix(1 0 0 1 3002.2117 2550.2034)"><tspan x="0" y="0" class="st15 st13 st23">Dependendo </tspan><tspan x="0" y="67.2" class="st15 st13 st23">do consumo de </tspan><tspan x="0" y="134.4" class="st15 st13 st23">peixe, o nível </tspan><tspan x="0" y="201.6" class="st15 st13 st23">de contaminação </tspan><tspan x="0" y="268.8" class="st15 st13 st23">pode aumentar </tspan><tspan x="0" y="336" class="st15 st13 st23">entre 4 ug/g a </tspan><tspan x="0" y="403.2" class="st15 st13 st23">14,5 ug/g de </tspan><tspan x="0" y="470.4" class="st15 st13 st23">mercúrio, </tspan><tspan x="0" y="537.6" class="st15 st13 st23">em média.</tspan></text>
 </g>
 <g>
 	<rect x="1866.41" y="2646.25" class="st22" width="1015.83" height="341.36"/>
-	<text transform="matrix(1 0 0 1 1911.6274 2695.6445)"><tspan x="0" y="0" class="st10 st11 st12">turns into an even more toxic </tspan><tspan x="108.59" y="78" class="st10 st11 st12">form of the substance, </tspan><tspan x="123.05" y="156" class="st10 st13 st12">methylmercury</tspan><tspan x="515.52" y="156" class="st10 st11 st12">, which is </tspan><tspan x="178.81" y="234" class="st10 st11 st12">consumed by fish.</tspan></text>
+	<text transform="matrix(1 0 0 1 2016.4272 2695.6445)"><tspan x="0" y="0" class="st10 st11 st12">se transforma em uma </tspan><tspan x="-67.41" y="78" class="st10 st11 st12">forma ainda mais tóxica de </tspan><tspan x="-48.12" y="156" class="st10 st11 st12">substância, o </tspan><tspan x="380.29" y="156" class="st10 st13 st12">metilmercúrio</tspan><tspan x="746.55" y="156" class="st10 st11 st12">, </tspan><tspan x="-90.99" y="234" class="st10 st11 st12">que é consumido por peixes.</tspan></text>
+</g>
+<g>
+	<rect x="3932.12" y="2646.25" class="st22" width="1015.83" height="341.36"/>
+	<text transform="matrix(1 0 0 1 3977.3447 2695.6445)"><tspan x="0" y="0" class="st10 st11 st12">turns into an even more toxic </tspan><tspan x="108.59" y="78" class="st10 st11 st12">form of the substance, </tspan><tspan x="123.05" y="156" class="st10 st13 st12">methylmercury</tspan><tspan x="515.52" y="156" class="st10 st11 st12">, which is </tspan><tspan x="178.81" y="234" class="st10 st11 st12">consumed by fish.</tspan></text>
 </g>
 <g>
 	<g>
@@ -688,10 +692,10 @@
 			<circle id="SVGID_1_" cx="2905.61" cy="1693.99" r="394.21"/>
 		</defs>
 		<use xlink:href="#SVGID_1_"  style="overflow:visible;fill:#356958;"/>
-		<clipPath id="SVGID_00000054957594717205366510000013367231754022009791_">
+		<clipPath id="SVGID_00000085939691167284577980000003094892912937348238_">
 			<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
 		</clipPath>
-		<path style="clip-path:url(#SVGID_00000054957594717205366510000013367231754022009791_);fill:#3B84DB;" d="M2823.1,1696.44
+		<path style="clip-path:url(#SVGID_00000085939691167284577980000003094892912937348238_);fill:#3B84DB;" d="M2823.1,1696.44
 			c-1.9-116.41-80.88-263-133.93-363.8c-4.09-7.77,100.76-31.95,122.88-10.85c20.22,19.28,42.85,125.1,52.45,154.67
 			c17.89,55.09,31.18,118.3,79.32,150.51c39.46,26.4,92.64,23.37,136.79,5.9c26.84-10.62,51.44-25.97,75.22-42.16
 			c11.91-8.11,22.73-16.24,34.5-24.43c6.31-4.39,11.44-10.22,16.91-15.64c12.73-12.62,25.64-19.38,41.04-27.25
@@ -704,66 +708,9 @@
 		<circle class="st15" cx="2886.34" cy="1693.99" r="30.21"/>
 		<text transform="matrix(1 0 0 1 2870.0637 1707.002)" class="st10 st13 st25">Hg</text>
 	</g>
-	<rect x="2939.96" y="826.54" class="st22" width="359.95" height="144.96"/>
-	<text transform="matrix(1 0 0 1 2939.9614 875.9351)"><tspan x="0" y="0" class="st7 st11 st12">Physical </tspan><tspan x="0" y="78" class="st7 st11 st12">dispersion:</tspan></text>
+	<rect x="2939.96" y="936.54" class="st22" width="474.09" height="320.74"/>
+	<text transform="matrix(1 0 0 1 2939.9614 985.9371)"><tspan x="0" y="0" class="st7 st11 st12">Dispersão </tspan><tspan x="0" y="78" class="st7 st11 st12">física:</tspan><tspan x="0" y="231.6" class="st7 st13 st12">ATÉ</tspan><tspan x="84.52" y="231.6" class="st7 st13 st14 st26"> </tspan><tspan x="109.46" y="231.6" class="st7 st13 st14">100km</tspan></text>
 	<g>
-		<path class="st8" d="M2871.19,515.3h-7.52v-46.4h26.18v6.41h-18.66v14.5h17.49v6.44h-17.49V515.3z"/>
-		<path class="st8" d="M2897.03,470.9c0-1.33,0.37-2.36,1.1-3.08c0.73-0.72,1.77-1.08,3.13-1.08c1.31,0,2.33,0.36,3.06,1.08
-			c0.73,0.72,1.09,1.75,1.09,3.08c0,1.27-0.36,2.27-1.09,3c-0.73,0.73-1.75,1.09-3.06,1.09c-1.35,0-2.4-0.37-3.13-1.09
-			C2897.39,473.17,2897.03,472.17,2897.03,470.9z M2904.93,515.3h-7.46v-35.1h7.46V515.3z"/>
-		<path class="st8" d="M2939.18,505.3c0,3.43-1.25,6.06-3.75,7.89s-6.07,2.75-10.73,2.75c-4.68,0-8.43-0.71-11.27-2.13v-6.44
-			c4.13,1.9,7.97,2.86,11.52,2.86c4.59,0,6.89-1.39,6.89-4.16c0-0.89-0.25-1.63-0.76-2.22c-0.51-0.59-1.34-1.21-2.51-1.84
-			s-2.78-1.35-4.86-2.16c-4.04-1.57-6.78-3.13-8.2-4.7c-1.43-1.57-2.14-3.6-2.14-6.09c0-3,1.21-5.34,3.63-7
-			c2.42-1.66,5.72-2.49,9.89-2.49c4.13,0,8.03,0.84,11.71,2.51l-2.41,5.62c-3.79-1.57-6.97-2.35-9.55-2.35
-			c-3.94,0-5.9,1.12-5.9,3.36c0,1.1,0.51,2.03,1.54,2.79c1.03,0.76,3.26,1.81,6.71,3.14c2.9,1.12,5,2.15,6.32,3.08
-			c1.31,0.93,2.29,2,2.92,3.22S2939.18,503.61,2939.18,505.3z"/>
-		<path class="st8" d="M2978.12,515.3h-7.49v-21.58c0-2.71-0.54-4.73-1.63-6.06c-1.09-1.33-2.82-2-5.19-2
-			c-3.13,0-5.43,0.94-6.9,2.81c-1.47,1.87-2.21,5.01-2.21,9.41v17.42h-7.46v-49.38h7.46v12.54c0,2.01-0.13,4.16-0.38,6.44h0.48
-			c1.02-1.69,2.43-3,4.24-3.94c1.81-0.93,3.92-1.4,6.33-1.4c8.51,0,12.76,4.28,12.76,12.85V515.3z"/>
-		<path class="st8" d="M2874.71,593.93c-4.38,0-7.8-1.59-10.25-4.76s-3.68-7.63-3.68-13.36c0-5.75,1.24-10.24,3.73-13.44
-			c2.49-3.21,5.93-4.81,10.33-4.81c4.61,0,8.12,1.7,10.54,5.11h0.38c-0.36-2.52-0.54-4.51-0.54-5.97v-12.79h7.49v49.38h-5.84
-			l-1.3-4.6h-0.35C2882.83,592.19,2879.33,593.93,2874.71,593.93z M2876.71,587.9c3.07,0,5.3-0.86,6.7-2.59
-			c1.4-1.72,2.12-4.52,2.16-8.39v-1.05c0-4.42-0.72-7.56-2.16-9.43c-1.44-1.86-3.69-2.79-6.76-2.79c-2.62,0-4.64,1.06-6.06,3.19
-			c-1.42,2.13-2.13,5.16-2.13,9.09c0,3.89,0.69,6.86,2.06,8.9S2873.96,587.9,2876.71,587.9z"/>
-		<path class="st8" d="M2902.93,548.9c0-1.33,0.37-2.36,1.1-3.08c0.73-0.72,1.77-1.08,3.13-1.08c1.31,0,2.33,0.36,3.06,1.08
-			c0.73,0.72,1.09,1.75,1.09,3.08c0,1.27-0.36,2.27-1.09,3c-0.73,0.73-1.75,1.09-3.06,1.09c-1.35,0-2.4-0.37-3.13-1.09
-			C2903.3,551.17,2902.93,550.17,2902.93,548.9z M2910.83,593.3h-7.46v-35.1h7.46V593.3z"/>
-		<path class="st8" d="M2945.08,583.3c0,3.43-1.25,6.06-3.75,7.89s-6.07,2.75-10.73,2.75c-4.68,0-8.43-0.71-11.27-2.13v-6.44
-			c4.13,1.9,7.97,2.86,11.52,2.86c4.59,0,6.89-1.39,6.89-4.16c0-0.89-0.25-1.63-0.76-2.22c-0.51-0.59-1.34-1.21-2.51-1.84
-			s-2.78-1.35-4.86-2.16c-4.04-1.57-6.78-3.13-8.2-4.7c-1.43-1.57-2.14-3.6-2.14-6.09c0-3,1.21-5.34,3.63-7
-			c2.42-1.66,5.72-2.49,9.89-2.49c4.13,0,8.03,0.84,11.71,2.51l-2.41,5.62c-3.79-1.57-6.97-2.35-9.55-2.35
-			c-3.94,0-5.9,1.12-5.9,3.36c0,1.1,0.51,2.03,1.54,2.79c1.03,0.76,3.26,1.81,6.71,3.14c2.9,1.12,5,2.15,6.32,3.08
-			c1.31,0.93,2.29,2,2.92,3.22S2945.08,581.61,2945.08,583.3z"/>
-		<path class="st8" d="M2970.95,593.93c-4.44,0-7.89-1.6-10.35-4.79h-0.44c0.3,2.96,0.44,4.76,0.44,5.4v14.38h-7.46V558.2h6.03
-			c0.17,0.66,0.52,2.22,1.05,4.7h0.38c2.33-3.55,5.82-5.33,10.47-5.33c4.38,0,7.79,1.59,10.24,4.76s3.67,7.63,3.67,13.36
-			c0,5.73-1.24,10.21-3.73,13.43C2978.76,592.33,2975.33,593.93,2970.95,593.93z M2969.14,563.66c-2.96,0-5.13,0.87-6.49,2.6
-			c-1.36,1.74-2.05,4.51-2.05,8.32v1.11c0,4.27,0.68,7.37,2.03,9.28s3.57,2.87,6.63,2.87c2.58,0,4.57-1.06,5.97-3.17
-			c1.4-2.12,2.09-5.13,2.09-9.05c0-3.94-0.69-6.91-2.08-8.93C2973.86,564.67,2971.82,563.66,2969.14,563.66z"/>
-		<path class="st8" d="M3008.97,593.93c-5.46,0-9.73-1.59-12.81-4.78s-4.62-7.57-4.62-13.16c0-5.73,1.43-10.24,4.28-13.52
-			c2.86-3.28,6.78-4.92,11.77-4.92c4.63,0,8.29,1.41,10.98,4.22c2.69,2.81,4.03,6.69,4.03,11.62v4.03h-23.39
-			c0.11,3.41,1.03,6.03,2.76,7.86s4.18,2.75,7.33,2.75c2.07,0,4-0.2,5.79-0.59c1.79-0.39,3.71-1.04,5.76-1.95v6.06
-			c-1.82,0.87-3.66,1.48-5.52,1.84S3011.36,593.93,3008.97,593.93z M3007.6,563.21c-2.37,0-4.27,0.75-5.7,2.25
-			c-1.43,1.5-2.28,3.69-2.56,6.57h15.93c-0.04-2.9-0.74-5.09-2.09-6.59C3011.83,563.96,3009.97,563.21,3007.6,563.21z"/>
-		<path class="st8" d="M3048.89,557.56c1.5,0,2.74,0.11,3.71,0.32l-0.73,6.95c-1.06-0.25-2.16-0.38-3.3-0.38
-			c-2.98,0-5.4,0.97-7.25,2.92c-1.85,1.95-2.78,4.48-2.78,7.59v18.34h-7.46v-35.1h5.84l0.98,6.19h0.38
-			c1.16-2.09,2.68-3.76,4.55-4.98C3044.72,558.18,3046.74,557.56,3048.89,557.56z"/>
-		<path class="st8" d="M3082.7,583.3c0,3.43-1.25,6.06-3.75,7.89s-6.07,2.75-10.73,2.75c-4.68,0-8.43-0.71-11.27-2.13v-6.44
-			c4.13,1.9,7.97,2.86,11.52,2.86c4.59,0,6.89-1.39,6.89-4.16c0-0.89-0.25-1.63-0.76-2.22c-0.51-0.59-1.34-1.21-2.51-1.84
-			s-2.78-1.35-4.86-2.16c-4.04-1.57-6.78-3.13-8.2-4.7c-1.43-1.57-2.14-3.6-2.14-6.09c0-3,1.21-5.34,3.63-7
-			c2.42-1.66,5.72-2.49,9.89-2.49c4.13,0,8.03,0.84,11.71,2.51l-2.41,5.62c-3.79-1.57-6.97-2.35-9.55-2.35
-			c-3.94,0-5.9,1.12-5.9,3.36c0,1.1,0.51,2.03,1.54,2.79c1.03,0.76,3.26,1.81,6.71,3.14c2.9,1.12,5,2.15,6.32,3.08
-			c1.31,0.93,2.29,2,2.92,3.22S3082.7,581.61,3082.7,583.3z"/>
-		<path class="st8" d="M3090.31,548.9c0-1.33,0.37-2.36,1.1-3.08c0.73-0.72,1.77-1.08,3.13-1.08c1.31,0,2.33,0.36,3.06,1.08
-			c0.73,0.72,1.09,1.75,1.09,3.08c0,1.27-0.36,2.27-1.09,3c-0.73,0.73-1.75,1.09-3.06,1.09c-1.35,0-2.4-0.37-3.13-1.09
-			C3090.68,551.17,3090.31,550.17,3090.31,548.9z M3098.22,593.3h-7.46v-35.1h7.46V593.3z"/>
-		<path class="st8" d="M3140.02,575.69c0,5.73-1.47,10.21-4.41,13.43c-2.94,3.22-7.04,4.82-12.28,4.82c-3.28,0-6.18-0.74-8.7-2.22
-			c-2.52-1.48-4.45-3.61-5.81-6.38c-1.35-2.77-2.03-5.99-2.03-9.65c0-5.69,1.46-10.13,4.38-13.33c2.92-3.19,7.04-4.79,12.35-4.79
-			c5.08,0,9.1,1.63,12.06,4.9C3138.53,565.74,3140.02,570.14,3140.02,575.69z M3114.47,575.69c0,8.1,2.99,12.16,8.98,12.16
-			c5.92,0,8.89-4.05,8.89-12.16c0-8.02-2.98-12.03-8.95-12.03c-3.13,0-5.4,1.04-6.81,3.11
-			C3115.17,568.84,3114.47,571.81,3114.47,575.69z"/>
-		<path class="st8" d="M3179.47,593.3h-7.49v-21.58c0-2.71-0.54-4.73-1.63-6.06c-1.09-1.33-2.82-2-5.19-2
-			c-3.15,0-5.46,0.93-6.92,2.79c-1.46,1.86-2.19,4.98-2.19,9.36v17.49h-7.46v-35.1h5.84l1.05,4.6h0.38
-			c1.06-1.67,2.56-2.96,4.51-3.87c1.95-0.91,4.1-1.36,6.47-1.36c8.42,0,12.63,4.28,12.63,12.85V593.3z"/>
 		<path class="st8" d="M2901.31,690.22l-41.5,25.85v-15.08l26.81-15.21v-0.52l-26.81-15.15v-15.15l41.5,25.78V690.22z"/>
 		<path class="st8" d="M2943.85,713.68c0-3.91,0.54-8.16,1.61-12.76h13.02v9.02c0,5.24,0.76,9.01,2.29,11.31
 			c1.52,2.3,4.03,3.45,7.51,3.45c3.52,0,6.02-1.27,7.48-3.8c1.46-2.53,2.19-6.19,2.19-10.96v-21.27c0-2.75-0.24-4.97-0.71-6.67
@@ -800,20 +747,20 @@
 	</g>
 	<g>
 		<g>
-			<line class="st26" x1="2886.34" y1="826.54" x2="2886.34" y2="831.29"/>
-			<line class="st27" x1="2886.34" y1="840.75" x2="2886.34" y2="1573.72"/>
-			<line class="st26" x1="2886.34" y1="1578.45" x2="2886.34" y2="1583.21"/>
+			<line class="st27" x1="2886.34" y1="931.35" x2="2886.34" y2="936.1"/>
+			<line class="st28" x1="2886.34" y1="945.69" x2="2886.34" y2="1573.65"/>
+			<line class="st27" x1="2886.34" y1="1578.45" x2="2886.34" y2="1583.21"/>
 		</g>
 	</g>
 	<g>
 		<g>
-			<line class="st28" x1="2789.55" y1="468.05" x2="2789.55" y2="471.95"/>
-			<line class="st29" x1="2789.55" y1="479.71" x2="2789.55" y2="1283.29"/>
-			<line class="st28" x1="2789.55" y1="1287.17" x2="2789.55" y2="1291.07"/>
+			<line class="st29" x1="2789.55" y1="468.05" x2="2789.55" y2="471.95"/>
+			<line class="st30" x1="2789.55" y1="479.71" x2="2789.55" y2="1283.29"/>
+			<line class="st29" x1="2789.55" y1="1287.17" x2="2789.55" y2="1291.07"/>
 		</g>
 	</g>
-	<circle class="st30" cx="2872.97" cy="1683.11" r="104.56"/>
-	<circle class="st31" cx="2907.27" cy="1693.99" r="420.99"/>
+	<circle class="st31" cx="2872.97" cy="1683.11" r="104.56"/>
+	<circle class="st32" cx="2907.27" cy="1693.99" r="420.99"/>
 	<g id="ARY3Te.tif">
 		<g>
 			<path class="st15" d="M2761.01,1386.49c0.24-0.55,0.47-1.1,0.72-1.66c0.68-1.5,1.42-3.02,1.36-4.45
@@ -859,45 +806,43 @@
 				C2751.07,1989.52,2751.08,1989.59,2751.09,1989.66z"/>
 		</g>
 	</g>
-	<text transform="matrix(1 0 0 1 2945.0786 1199.28)" class="st7 st13 st14">100km</text>
-	<text transform="matrix(1 0 0 1 2945.0786 1061.437)" class="st7 st13 st32">UNTIL</text>
 </g>
 <g>
-	<rect x="250.74" y="513.06" class="st22" width="950.12" height="391.46"/>
-	<text transform="matrix(1 0 0 1 250.7446 562.4603)"><tspan x="0" y="0" class="st10 st11 st12">Mercury is an element that is </tspan><tspan x="0" y="78" class="st10 st11 st12">present in nature, but mining </tspan><tspan x="0" y="156" class="st10 st11 st12">dumps tons of it into rivers, </tspan><tspan x="0" y="234" class="st10 st11 st12">contaminating ecosystems, </tspan><tspan x="0" y="312" class="st10 st11 st12">fish, and humans.</tspan></text>
+	<rect x="250.74" y="513.06" class="st22" width="950.12" height="520.26"/>
+	<text transform="matrix(1 0 0 1 250.7446 562.4603)"><tspan x="0" y="0" class="st10 st11 st12">O mercúrio é um elemento </tspan><tspan x="0" y="78" class="st10 st11 st12">presente na natureza, porém, </tspan><tspan x="0" y="156" class="st10 st11 st12">o garimpo despeja toneladas </tspan><tspan x="0" y="234" class="st10 st11 st12">dessa substância nos rios, </tspan><tspan x="0" y="312" class="st10 st11 st12">contaminando ecossistemas, </tspan><tspan x="0" y="390" class="st10 st11 st12">peixes e humanos.</tspan></text>
 </g>
 <g>
-	<rect x="526.58" y="980.89" class="st22" width="777.65" height="310.18"/>
-	<text transform="matrix(1 0 0 1 526.5849 1030.2924)"><tspan x="0" y="0" class="st10 st11 st12">The extraction </tspan><tspan x="0" y="78" class="st10 st11 st12">of 1 kg of gold uses, </tspan><tspan x="0" y="156" class="st10 st11 st12">on average 2.6 kg </tspan><tspan x="0" y="234" class="st10 st11 st12">of mercury.</tspan></text>
+	<rect x="526.58" y="1063.39" class="st22" width="777.65" height="310.18"/>
+	<text transform="matrix(1 0 0 1 526.5849 1112.786)"><tspan x="0" y="0" class="st10 st11 st12">A extração de </tspan><tspan x="0" y="78" class="st10 st11 st12">1 kg de ouro usa, </tspan><tspan x="0" y="156" class="st10 st11 st12">em média, 2,6 kg </tspan><tspan x="0" y="234" class="st10 st11 st12">de mercúrio.</tspan></text>
 </g>
 <g>
-	<circle class="st10" cx="344.08" cy="1087.7" r="103.63"/>
-	<path class="st33" d="M332.44,1047c3.1-4.13,6.32-8.37,10.77-11c4.45-2.63,10.48-3.27,14.61-0.17c5.95,4.48,5.35,14.12,10.77,19.23
-		c6.3,5.95,19.42,4.77,21.16,13.26c1.44,7.01-7.3,12-8.82,18.99c-2.15,9.88,10.39,17.15,11.69,27.18
-		c3.05,23.53-33.41,21.31-46.77,21.42c-3.17,0.03-6.51,0.01-9.27-1.56c-4.37-2.49-6-8.22-10.45-10.53
-		c-3.96-2.06-5.47-0.61-9.33-1.29c-9.43-1.66-15.82-4.73-19.2-14.69c-1.76-5.18-3.65-12.69-1.06-17.67c1.35-2.6,2.44-5.09,4.51-7.16
-		c1.37-1.37,2.69-2.79,4-4.21c3.2-3.46,6.32-6.99,9.42-10.54c5.44-6.23,10.82-12.53,16.07-18.91
-		C331.18,1048.57,331.84,1047.81,332.44,1047z"/>
-	<path class="st34" d="M345.28,1089.25c5.01,0.65,9.95,1.86,14.7,3.59c2.29,0.83,4.65,1.86,6.16,3.78c1.37,1.73,1.89,3.96,2.87,5.92
-		c2.18,4.34,6.45,7.15,10.18,10.26c3.73,3.11,7.29,7.3,7.04,12.15c-0.22,4.41-3.67,8.14-7.68,9.99c-4.01,1.86-8.53,2.2-12.94,2.51
+	<circle class="st10" cx="344.08" cy="1170.19" r="103.63"/>
+	<path class="st33" d="M332.44,1129.5c3.1-4.13,6.32-8.37,10.77-11c4.45-2.63,10.48-3.27,14.61-0.17
+		c5.95,4.48,5.35,14.12,10.77,19.23c6.3,5.95,19.42,4.77,21.16,13.26c1.44,7.01-7.3,12-8.82,18.99
+		c-2.15,9.88,10.39,17.15,11.69,27.18c3.05,23.53-33.41,21.31-46.77,21.42c-3.17,0.03-6.51,0.01-9.27-1.56
+		c-4.37-2.49-6-8.22-10.45-10.53c-3.96-2.06-5.47-0.61-9.33-1.29c-9.43-1.66-15.82-4.73-19.2-14.69
+		c-1.76-5.18-3.65-12.69-1.06-17.67c1.35-2.6,2.44-5.09,4.51-7.16c1.37-1.37,2.69-2.79,4-4.21c3.2-3.46,6.32-6.99,9.42-10.54
+		c5.44-6.23,10.82-12.53,16.07-18.91C331.18,1131.06,331.84,1130.3,332.44,1129.5z"/>
+	<path class="st34" d="M345.28,1171.74c5.01,0.65,9.95,1.86,14.7,3.59c2.29,0.83,4.65,1.86,6.16,3.78c1.37,1.73,1.89,3.96,2.87,5.92
+		c2.18,4.34,6.45,7.15,10.18,10.26c3.73,3.11,7.29,7.3,7.04,12.15c-0.22,4.41-3.67,8.14-7.68,9.99s-8.53,2.2-12.94,2.51
 		c-7.14,0.51-13.22,0.63-20.28-0.29c-2.6-0.34-5.26-0.88-7.43-2.36c-6.27-4.28-1.1-15.52,0.18-21.55
-		C338.59,1110.96,343.33,1088.99,345.28,1089.25z"/>
-	<path class="st34" d="M362.07,1067.86c4.91,0.91,1.12-27.55-2.47-30.94c-4.59-4.33-13.37-4.44-16.32,1.14
-		C335.85,1052.08,350.17,1065.66,362.07,1067.86z"/>
-	<path class="st34" d="M316.3,1066.16c0.96,0.5,3.9,2.87,4.44,3.82c1.87,3.31,3.75,6.62,5.62,9.93c0.97,1.72,1.97,3.51,2.11,5.47
+		C338.59,1193.45,343.33,1171.49,345.28,1171.74z"/>
+	<path class="st34" d="M362.07,1150.36c4.91,0.91,1.12-27.55-2.47-30.94c-4.59-4.33-13.37-4.44-16.32,1.14
+		C335.85,1134.58,350.17,1148.16,362.07,1150.36z"/>
+	<path class="st34" d="M316.3,1148.66c0.96,0.5,3.9,2.87,4.44,3.82c1.87,3.31,3.75,6.62,5.62,9.93c0.97,1.72,1.97,3.51,2.11,5.47
 		c0.33,4.49-3.69,7.95-7.32,10.62c-2.91,2.14-6.29,4.39-9.83,3.7c-2.24-0.43-4.07-1.98-6.16-2.89c-5.53-2.42-11.79-1.49-7.81-9.54
-		c1.08-2.18,2.67-4.07,4.25-5.92C303.85,1078.68,316.3,1066.16,316.3,1066.16z"/>
-	<path class="st3" d="M395.05,1058.75c-4.54-4.54-7.42-26.95-8.79-31.95c-1.37,5-4.25,27.4-8.79,31.95
+		c1.08-2.18,2.67-4.07,4.25-5.92C303.85,1161.18,316.3,1148.66,316.3,1148.66z"/>
+	<path class="st3" d="M395.05,1141.24c-4.54-4.54-7.42-26.95-8.79-31.95c-1.37,5-4.25,27.4-8.79,31.95
 		c-3.58,3.58-4.83,5.63-23.27,7.41c15.63,0,19.69,3.83,23.27,7.41c4.54,4.54,7.42,23.38,8.79,28.38c1.37-5,4.25-23.83,8.79-28.38
-		c3.58-3.58,7.65-7.41,23.27-7.41C399.88,1064.38,398.63,1062.33,395.05,1058.75z"/>
-	<path class="st3" d="M328.62,1122.63c-2.13-2.13-3.48-12.65-4.13-15c-0.64,2.35-1.99,12.87-4.13,15
+		c3.58-3.58,7.65-7.41,23.27-7.41C399.88,1146.87,398.63,1144.83,395.05,1141.24z"/>
+	<path class="st3" d="M328.62,1205.13c-2.13-2.13-3.48-12.65-4.13-15c-0.64,2.35-1.99,12.87-4.13,15
 		c-1.68,1.68-2.27,2.64-10.93,3.48c7.34,0,9.24,1.8,10.93,3.48c2.13,2.13,3.48,10.98,4.13,13.32c0.64-2.35,2-11.19,4.13-13.32
-		c1.68-1.68,3.59-3.48,10.93-3.48C330.88,1125.27,330.3,1124.31,328.62,1122.63z"/>
-	<path class="st3" d="M327.34,1054.47c-1.47-1.47-2.4-8.73-2.85-10.35c-0.44,1.62-1.38,8.88-2.85,10.35
+		c1.68-1.68,3.59-3.48,10.93-3.48C330.88,1207.77,330.3,1206.81,328.62,1205.13z"/>
+	<path class="st3" d="M327.34,1136.96c-1.47-1.47-2.4-8.73-2.85-10.35c-0.44,1.62-1.38,8.88-2.85,10.35
 		c-1.16,1.16-1.56,1.82-7.54,2.4c5.06,0,6.38,1.24,7.54,2.4c1.47,1.47,2.4,7.57,2.85,9.19c0.44-1.62,1.38-7.72,2.85-9.19
-		c1.16-1.16,2.48-2.4,7.54-2.4C328.9,1056.29,328.5,1055.63,327.34,1054.47z"/>
+		c1.16-1.16,2.48-2.4,7.54-2.4C328.9,1138.79,328.5,1138.12,327.34,1136.96z"/>
 </g>
-<text transform="matrix(1 0 0 1 504.4411 371.8173)" class="st10 st13 st35">Amalgamation</text>
+<text transform="matrix(1 0 0 1 504.4411 371.8173)" class="st10 st13 st35">QUEIMA DA AMÁLGAMA</text>
 <g>
 	<g>
 		<path class="st33" d="M1854.47,1416.77c-4.08-5.44-8.32-11.02-14.18-14.48c-5.86-3.46-13.8-4.31-19.23-0.22
@@ -956,13 +901,13 @@
 <g>
 	<g>
 		<defs>
-			<circle id="SVGID_00000134967799765095386330000012354388055291679618_" cx="1246.64" cy="1733.72" r="251.52"/>
+			<circle id="SVGID_00000158733368152667322170000006250554715499678599_" cx="1246.64" cy="1733.72" r="251.52"/>
 		</defs>
-		<use xlink:href="#SVGID_00000134967799765095386330000012354388055291679618_"  style="overflow:visible;fill:#AFD1F2;"/>
-		<clipPath id="SVGID_00000008844268483006276310000014086573004853007496_">
-			<use xlink:href="#SVGID_00000134967799765095386330000012354388055291679618_"  style="overflow:visible;"/>
+		<use xlink:href="#SVGID_00000158733368152667322170000006250554715499678599_"  style="overflow:visible;fill:#AFD1F2;"/>
+		<clipPath id="SVGID_00000157278668007178383570000012355067837852458654_">
+			<use xlink:href="#SVGID_00000158733368152667322170000006250554715499678599_"  style="overflow:visible;"/>
 		</clipPath>
-		<g style="clip-path:url(#SVGID_00000008844268483006276310000014086573004853007496_);">
+		<g style="clip-path:url(#SVGID_00000157278668007178383570000012355067837852458654_);">
 			<circle class="st4" cx="1428.41" cy="1701.34" r="57.72"/>
 			<circle class="st4" cx="1486.13" cy="1751.36" r="57.72"/>
 			<circle class="st4" cx="1403.36" cy="1751.36" r="57.72"/>
@@ -971,7 +916,7 @@
 			<circle class="st4" cx="1553" cy="1768.34" r="45.09"/>
 			<polyline class="st4" points="1253.33,1813.43 1553,1813.43 1553,1760.63 1253.33,1777.61 			"/>
 		</g>
-		<g style="clip-path:url(#SVGID_00000008844268483006276310000014086573004853007496_);">
+		<g style="clip-path:url(#SVGID_00000157278668007178383570000012355067837852458654_);">
 			<circle class="st4" cx="1110.82" cy="1538.63" r="57.72"/>
 			<circle class="st4" cx="1168.54" cy="1588.65" r="57.72"/>
 			<circle class="st4" cx="1085.77" cy="1588.65" r="57.72"/>
@@ -980,7 +925,7 @@
 			<circle class="st4" cx="1235.41" cy="1605.63" r="45.09"/>
 			<polyline class="st4" points="935.74,1650.72 1235.41,1650.72 1235.41,1597.92 935.74,1614.9 			"/>
 		</g>
-		<g style="clip-path:url(#SVGID_00000008844268483006276310000014086573004853007496_);">
+		<g style="clip-path:url(#SVGID_00000157278668007178383570000012355067837852458654_);">
 			<circle class="st4" cx="1255.59" cy="1919.97" r="57.72"/>
 			<circle class="st4" cx="1313.31" cy="1969.99" r="57.72"/>
 			<circle class="st4" cx="1230.54" cy="1969.99" r="57.72"/>
@@ -991,18 +936,18 @@
 		</g>
 	</g>
 	<text transform="matrix(1 0 0 1 1143.4818 1840.9664)" class="st10 st13 st14">33%</text>
-	<text transform="matrix(1 0 0 1 1205.92 1695.7035)" class="st10 st13 st12">AIR</text>
+	<text transform="matrix(1 0 0 1 1214.6637 1695.7035)" class="st10 st13 st12">AR</text>
 </g>
 <g>
 	<g>
 		<defs>
-			<circle id="SVGID_00000113326136436697214160000010025778187649683382_" cx="2359.34" cy="1733.72" r="251.52"/>
+			<circle id="SVGID_00000116918711445634200600000001729669257650409615_" cx="2359.34" cy="1733.72" r="251.52"/>
 		</defs>
-		<use xlink:href="#SVGID_00000113326136436697214160000010025778187649683382_"  style="overflow:visible;fill:#3B84DB;"/>
-		<clipPath id="SVGID_00000117668394614237703840000003172636432752453792_">
-			<use xlink:href="#SVGID_00000113326136436697214160000010025778187649683382_"  style="overflow:visible;"/>
+		<use xlink:href="#SVGID_00000116918711445634200600000001729669257650409615_"  style="overflow:visible;fill:#3B84DB;"/>
+		<clipPath id="SVGID_00000023975122655267516400000018244269149386808457_">
+			<use xlink:href="#SVGID_00000116918711445634200600000001729669257650409615_"  style="overflow:visible;"/>
 		</clipPath>
-		<g style="opacity:0.25;clip-path:url(#SVGID_00000117668394614237703840000003172636432752453792_);">
+		<g style="opacity:0.25;clip-path:url(#SVGID_00000023975122655267516400000018244269149386808457_);">
 			<g>
 				<path class="st39" d="M2610.86,1784.46c-50.3,0-50.3-38-100.6-38c-50.3,0-50.3,38-100.6,38c-50.3,0-50.3-38-100.6-38
 					c-50.3,0-50.3,38-100.61,38c-50.3,0-50.3-38-100.61-38"/>
@@ -1027,7 +972,7 @@
 	</g>
 	<text transform="matrix(1 0 0 1 2243.4375 1840.9667)" class="st4 st13 st14">13%</text>
 	<g>
-		<text transform="matrix(1 0 0 1 2276.981 1693.9918)" class="st4 st13 st12">WATER</text>
+		<text transform="matrix(1 0 0 1 2294.6748 1693.9918)" class="st4 st13 st12">ÁGUA</text>
 	</g>
 </g>
 <g>
@@ -1046,7 +991,7 @@
 	</g>
 	<text transform="matrix(1 0 0 1 1680.6415 1938.7448)" class="st4 st13 st14">8,8%</text>
 	<g>
-		<text transform="matrix(1 0 0 1 1759.5822 1779.5812)" class="st4 st13 st12">SOIL</text>
+		<text transform="matrix(1 0 0 1 1751.7589 1779.5812)" class="st4 st13 st12">SOLO</text>
 	</g>
 </g>
 <path class="st1" d="M1603.32,1077.77c0-100.37-81.36-181.73-181.73-181.73h-94.79"/>
@@ -1386,10 +1331,10 @@
 		<rect x="504.31" y="6357.12" class="st3" width="45.49" height="47.51"/>
 	</g>
 </g>
-<rect x="409.95" y="5170.37" class="st22" width="805.31" height="234.63"/>
-<text transform="matrix(1 0 0 1 674.1474 5219.771)" class="st10 st11 st12">Illegal miners are</text>
-<rect x="409.95" y="5385.15" class="st22" width="805.31" height="234.63"/>
-<text transform="matrix(1 0 0 1 700.395 5434.5537)"><tspan x="0" y="0" class="st10 st11 st12">to develop more </tspan><tspan x="-93.09" y="78" class="st10 st11 st12">neuropsychological </tspan><tspan x="198.9" y="156" class="st10 st11 st12">problems.</tspan></text>
+<rect x="296.78" y="5153.67" class="st22" width="918.47" height="66.2"/>
+<text transform="matrix(1 0 0 1 352.7973 5203.0728)" class="st10 st11 st12">Garimpeiros ilegais têm até  </text>
+<rect x="314.68" y="5395.55" class="st22" width="900.57" height="234.63"/>
+<text transform="matrix(1 0 0 1 386.5668 5444.9507)"><tspan x="0" y="0" class="st10 st11 st12">de desenvolver problemas </tspan><tspan x="10.6" y="78" class="st10 st11 st12">neuropsicológicos por sua </tspan><tspan x="125.05" y="156" class="st10 st11 st12">atividade ocupacional.</tspan></text>
 <g>
 	<g>
 		<circle class="st4" cx="1242.82" cy="6043.46" r="216.31"/>
@@ -1609,15 +1554,15 @@
 </g>
 <g>
 	<rect x="1605.87" y="5297.68" class="st22" width="798.57" height="358.29"/>
-	<text transform="matrix(1 0 0 1 1605.8693 5347.0781)"><tspan x="0" y="0" class="st10 st11 st12"> of children will be </tspan><tspan x="0" y="78" class="st10 st11 st12">born with an intelligence </tspan><tspan x="0" y="156" class="st10 st11 st12">index (IQ) at least </tspan><tspan x="0" y="234" class="st10 st11 st12">2 points lower.</tspan></text>
+	<text transform="matrix(1 0 0 1 1605.8693 5347.0781)"><tspan x="0" y="0" class="st10 st11 st12">das crianças nascerão </tspan><tspan x="0" y="78" class="st10 st11 st12">com um índice de </tspan><tspan x="0" y="156" class="st10 st11 st12">inteligência (QI) pelo </tspan><tspan x="0" y="234" class="st10 st11 st12">menos 2 pontos menor.</tspan></text>
 </g>
 <g>
 	<rect x="2534.84" y="4842.81" class="st22" width="941.12" height="157.69"/>
-	<text transform="matrix(1 0 0 1 2534.8379 4892.2095)"><tspan x="0" y="0" class="st10 st11 st12">The contaminated </tspan><tspan x="0" y="78" class="st10 st11 st12">population has a</tspan></text>
+	<text transform="matrix(1 0 0 1 2534.8379 4892.2095)"><tspan x="0" y="0" class="st10 st11 st12">A população contaminada </tspan><tspan x="0" y="78" class="st10 st11 st12">terá uma probabilidade</tspan></text>
 </g>
 <g>
-	<rect x="2534.84" y="5166.31" class="st22" width="873.64" height="383.8"/>
-	<text transform="matrix(1 0 0 1 2534.8379 5215.708)"><tspan x="0" y="0" class="st10 st11 st12">chance of having a </tspan><tspan x="0" y="78" class="st10 st11 st12">heart attack and</tspan><tspan x="0" y="156" class="st10 st11 st12">hypertension than </tspan><tspan x="0" y="234" class="st10 st11 st12">a non-contaminated </tspan><tspan x="0" y="312" class="st10 st11 st12">population.</tspan></text>
+	<rect x="2534.84" y="5166.31" class="st22" width="873.64" height="310.52"/>
+	<text transform="matrix(1 0 0 1 2534.8379 5215.708)"><tspan x="0" y="0" class="st10 st11 st12">de ter um infarto do </tspan><tspan x="0" y="78" class="st10 st11 st12">miocárdio e hipertensão </tspan><tspan x="0" y="156" class="st10 st11 st12">do que uma população </tspan><tspan x="0" y="234" class="st10 st11 st12">não contaminada.</tspan></text>
 </g>
 <g>
 	<path class="st0" d="M1712.78,6575.71c13.51,14.49,24.4,32.27,35.81,47.64c15.22,20.51,30.6,41.76,37.21,66.43
@@ -1819,7 +1764,7 @@
 </g>
 <circle class="st8" cx="1863.6" cy="6143.06" r="44.7"/>
 <g>
-	<text transform="matrix(1 0 0 1 1836.7032 6159.4731)" class="st3 st13 st56">IQ</text>
+	<text transform="matrix(1 0 0 1 1836.7032 6159.4731)" class="st3 st13 st56">QI</text>
 </g>
 <g>
 	<line class="st57" x1="1880.69" y1="6123.08" x2="1880.69" y2="6163.04"/>
@@ -1837,7 +1782,7 @@
 <path class="st59" d="M1529.17,5177.16v590.64c0,53.66,43.5,97.15,97.15,97.15h23.57c62.72,0,113.57,50.85,113.57,113.57v89.63"/>
 <path class="st59" d="M2454.25,4848.84V5596c0,53.66-43.5,97.15-97.16,97.15h-23.57c-62.72,0-113.57,50.85-113.57,113.57v89.63"/>
 <line class="st59" x1="1259.21" y1="5743.82" x2="1259.21" y2="5177.16"/>
-<text transform="matrix(1 0 0 1 545.5405 4848.8403)"><tspan x="0" y="0" class="st10 st13 st14">Consequences </tspan><tspan x="0" y="145" class="st10 st13 st14">and remediatioN</tspan></text>
+<text transform="matrix(1 0 0 1 545.5405 4848.8403)"><tspan x="0" y="0" class="st10 st13 st14">CONSEQUÊNCIAS </tspan><tspan x="0" y="145" class="st10 st13 st14">E REMEDIAÇÃO</tspan></text>
 <path class="st0" d="M3137.22,6899.61c0,13.5-85.78,24.44-191.6,24.44c-53.47,0-109.42-0.3-161.99-11.38
 	c-7.59-1.6-32.33-4.76-31.23-16.92c1.35-14.99,64.89-25.25,76.6-28.69c13.78-4.04,27.71-8.15,40.15-15.32
 	c16.59-9.56,35.21-24.94,52.25-16.2c10.18,5.21,14.63,17.2,22.55,25.44c10.58,11,26.77,14.64,42.03,14.86
@@ -1964,7 +1909,7 @@
 		c-3.61,0.28-7.09,1.41-10.63,2.2c-16.44,3.67-34.45-0.48-47.62-10.98c1.76-3.94,6.82-5.13,11.14-4.96
 		c4.32,0.17,8.81,1.17,12.85-0.37c8.13-3.11,9.51-14.01,15.29-20.51C3099.31,6242.08,3099.92,6241.49,3100.55,6240.95z"/>
 </g>
-<text transform="matrix(1 0 0 1 488.4838 2264.4622)" class="st10 st13 st35">Contamination</text>
+<text transform="matrix(1 0 0 1 488.4838 2264.4622)" class="st10 st13 st35">CONTAMINAÇÃO</text>
 <g>
 	<circle class="st3" cx="777.41" cy="3931.32" r="57.72"/>
 	<circle class="st3" cx="827.43" cy="3873.6" r="57.72"/>
@@ -1996,13 +1941,13 @@
 	</g>
 </g>
 <g>
-	<text transform="matrix(1 0 0 1 556.0923 5344.4751)" class="st10 st13 st64">35% MORE LIKELY</text>
+	<text transform="matrix(1 0 0 1 339.4719 5345.8701)" class="st10 st13 st64">35% DE CHANCE A MAIS </text>
 </g>
 <g>
-	<text transform="matrix(1 0 0 1 2536.0581 5113.9761)" class="st10 st13 st64">69% to 35% HIGHER</text>
+	<text transform="matrix(1 0 0 1 2536.0581 5113.9761)" class="st10 st13 st64">69% e 35% MAIOR</text>
 </g>
 <g>
-	<text transform="matrix(1 0 0 1 1610.493 5264.1265)" class="st10 st13 st64">UP TO 25%</text>
+	<text transform="matrix(1 0 0 1 1610.493 5264.1265)" class="st10 st13 st64">Até 25%</text>
 </g>
 <path class="st44" d="M2479.64,3197.52h-118.92c-47.55,0-86.09,38.54-86.09,86.09v725.87c0,46.19-37.44,83.63-83.63,83.63"/>
 <line class="st44" x1="2762.05" y1="3869.91" x2="2762.05" y2="3711.78"/>
@@ -2041,13 +1986,13 @@
 </g>
 <g>
 	<defs>
-		<circle id="SVGID_00000021105499447899749670000009029114556771185550_" cx="2359.34" cy="2312.5" r="126.7"/>
+		<circle id="SVGID_00000044173438314185745810000008417542955118837404_" cx="2359.34" cy="2312.5" r="126.7"/>
 	</defs>
-	<use xlink:href="#SVGID_00000021105499447899749670000009029114556771185550_"  style="overflow:visible;fill:#3B84DB;"/>
-	<clipPath id="SVGID_00000016073561557295461860000006966270794591859647_">
-		<use xlink:href="#SVGID_00000021105499447899749670000009029114556771185550_"  style="overflow:visible;"/>
+	<use xlink:href="#SVGID_00000044173438314185745810000008417542955118837404_"  style="overflow:visible;fill:#3B84DB;"/>
+	<clipPath id="SVGID_00000003820159416493879220000011442594257026746777_">
+		<use xlink:href="#SVGID_00000044173438314185745810000008417542955118837404_"  style="overflow:visible;"/>
 	</clipPath>
-	<g style="clip-path:url(#SVGID_00000016073561557295461860000006966270794591859647_);">
+	<g style="clip-path:url(#SVGID_00000003820159416493879220000011442594257026746777_);">
 		<path class="st15" d="M2391.88,2252.28c2.82-1.44,5.67-2.83,8.53-4.18c5.3-2.5,10.66-4.85,16.1-7.02c2.72-1.08,5.45-2.12,8.2-3.11
 			c1.23-0.44,2.79-0.73,3.89-1.43c1.05-0.67,1.74-1.07,3.05-1.17c1.17-0.08,2.31-0.56,3.45-0.93c10.91-3.51,22.06-6.3,33.36-8.25
 			c11.27-1.94,22.7-3.05,34.14-3.19c11.38-0.13,22.78,0.7,34,2.64c-0.04,0.15-0.07,0.31-0.11,0.46c0.06-0.15,0.13-0.29,0.19-0.45
@@ -2111,7 +2056,7 @@
 				C2721.7,2297.32,2734.23,2295.47,2746.8,2293.77z"/>
 		</g>
 	</g>
-	<g style="clip-path:url(#SVGID_00000016073561557295461860000006966270794591859647_);">
+	<g style="clip-path:url(#SVGID_00000003820159416493879220000011442594257026746777_);">
 		<circle class="st15" cx="2293.06" cy="2325.19" r="30.21"/>
 		<text transform="matrix(1 0 0 1 2276.7883 2338.2)" class="st10 st13 st25">Hg</text>
 	</g>
@@ -2232,11 +2177,11 @@
 </g>
 <g>
 	<rect x="1138.57" y="3356.03" class="st22" width="480.44" height="141.17"/>
-	<text transform="matrix(1 0 0 1 1154.7142 3405.4272)"><tspan x="0" y="0" class="st10 st11 st12">Contaminated </tspan><tspan x="170.28" y="75" class="st10 st11 st12">soil</tspan></text>
+	<text transform="matrix(1 0 0 1 1312.1522 3405.4272)"><tspan x="0" y="0" class="st10 st11 st12">Solo </tspan><tspan x="-141.28" y="75" class="st10 st11 st12">contaminado</tspan></text>
 </g>
 <g>
 	<rect x="587.98" y="3443.8" class="st22" width="435.79" height="169.28"/>
-	<text transform="matrix(1 0 0 1 645.6119 3493.198)"><tspan x="0" y="0" class="st10 st11 st12">Inhalation </tspan><tspan x="-26.28" y="75" class="st10 st11 st12">intoxication</tspan></text>
+	<text transform="matrix(1 0 0 1 625.9977 3493.198)"><tspan x="0" y="0" class="st10 st11 st12">Intoxicação </tspan><tspan x="-13.93" y="75" class="st10 st11 st12">por inalação</tspan></text>
 </g>
 <g>
 	<path class="st15" d="M2179.79,6555.33c-2.25,8.31-2.19,17.05-2.12,25.66c0.3,36.95-10.75,79.11-10.45,116.07
@@ -2464,19 +2409,19 @@
 <circle class="st44" cx="2113.46" cy="4211.73" r="145.11"/>
 <circle class="st44" cx="2755.84" cy="4014.09" r="145.11"/>
 <g>
-	<rect x="2610.4" y="5914.11" class="st22" width="452.8" height="132.27"/>
-	<text transform="matrix(1 0 0 1 2780.9519 5963.5068)"><tspan x="0" y="0" class="st10 st11 st12">Soil </tspan><tspan x="-137.17" y="70" class="st10 st11 st12">remediation</tspan></text>
+	<rect x="2610.06" y="5872.3" class="st22" width="453.47" height="209.29"/>
+	<text transform="matrix(1 0 0 1 2644.541 5921.7036)"><tspan x="0" y="0" class="st10 st11 st12">Remediação </tspan><tspan x="79.12" y="70" class="st10 st11 st12">do solo </tspan><tspan x="-15.66" y="140" class="st10 st11 st12">contaminado</tspan></text>
 </g>
 <g>
-	<line class="st30" x1="2870.06" y1="1734.79" x2="2773.61" y2="1927.77"/>
+	<line class="st31" x1="2870.06" y1="1734.79" x2="2773.61" y2="1927.77"/>
 	<polyline class="st67" points="2768.4,1904.8 2769.41,1935.81 2793.53,1916.3 	"/>
 </g>
 <g>
-	<path class="st30" d="M2977.53,1687.54c99.67-10.88,221.3-88.32,221.3-88.32"/>
+	<path class="st31" d="M2977.53,1687.54c99.67-10.88,221.3-88.32,221.3-88.32"/>
 	<polyline class="st67" points="3170.96,1600.34 3201.63,1595.69 3186.83,1622.96 	"/>
 </g>
 <g>
-	<line class="st30" x1="2870.06" y1="1642.06" x2="2796.3" y2="1434.93"/>
+	<line class="st31" x1="2870.06" y1="1642.06" x2="2796.3" y2="1434.93"/>
 	<polyline class="st67" points="2793.65,1465.85 2796.3,1434.93 2819.35,1455.7 	"/>
 </g>
 <g>
@@ -3205,5 +3150,5 @@ GO/v288G/SlZJbSfT1owD60fWnC3phaQNQxFExbWe+213qB/CEXYE0qix36sxx3r6elrbO8jAAPA
 	</image>
 </g>
 <text transform="matrix(1 0 0 1 -567.1337 5374.0317)" style="font-family:'MyriadPro-Regular'; font-size:12px;">Lorem ipsum</text>
-<text transform="matrix(1 0 0 1 3188.8064 593.9347)" class="st8 st11 st12">:</text>
+<text transform="matrix(1 0 0 1 2874.3914 512.6711)"><tspan x="0" y="0" class="st8 st11 st12">Dispersão</tspan><tspan x="0" y="78" class="st8 st11 st12">por peixes:</tspan></text>
 </svg>
