@@ -11,11 +11,15 @@ import LogoMPF from 'assets/images/mpf-logo-ministerio-publico-federal.png'
 import LogoConservationStrategy from 'assets/images/logo.svg'
 import MetodologiaIMG from 'assets/images/metodologia.png'
 import { Container, ContainerBackground, Embed, Img, Overlay } from './style'
+import { BRAZIL, countries_region } from 'components/CountrySelect'
 
 const Home = () => {
     const { state } = useContext(AppContext)
-    const { language } = state
+    const { language, country_region } = state
     const { introduction } = language
+    const isBrazil = country_region && country_region.country === countries_region[BRAZIL].country
+
+    console.log(country_region)
     return (
         <>
             <ContainerBackground>
@@ -30,7 +34,7 @@ const Home = () => {
                     <Row style={{marginTop: 20}}>
                         <Col md={4}> 
                         <ContainerPartner>
-                            <img src={LogoMPF} width="150" height="80" alt="" />
+                           {isBrazil && <img src={LogoMPF} width="150" height="80" alt="" />}
                             <img src={LogoConservationStrategy} width="120"  alt="" />
                         </ContainerPartner>
                         <label style={{color: 'white'}}>{language.iDontKnowYet}</label>
