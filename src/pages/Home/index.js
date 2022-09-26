@@ -71,7 +71,7 @@ const Home = () => {
                     </Col>
                     <Col xs={12} md={3}>
                         <Headline style={{textAlign: 'left', marginBottom: '32px'}}>Metodologia</Headline>
-                        <Button onClick={() => window.open('https://www.conservation-strategy.org/sites/default/files/field-file/ijerph-18-11869.pdf')}>Baixar em pdf</Button>
+                        <Button onClick={() => window.open('https://www.conservation-strategy.org/sites/default/files/field-file/Metodologia%20de%20Valorac%CC%A7a%CC%83o%20de%20Impactos%20do%20Garimpo%20Ilegal%20de%20Ouro%20na%20Amazo%CC%82nia_0.pdf')}>Baixar em pdf</Button>
                     </Col>
                     
                 </Row>
