@@ -45,10 +45,10 @@ const ptBR = {
                 amountOfGold: 'Quantidade de ouro',
             },
             qtdAnalysisUnit: {
-                hactare: 'Hectares',
-                grams: 'Gramas de ouro',
-                months: 'Meses',
-                years: 'Anos'
+                hactare: 'Hectare(s)',
+                grams: 'Grama(s) de ouro',
+                months: 'Mese(s)',
+                years: 'Ano(s)'
             },
             pitDepth: {
                 meters: 'metros'
