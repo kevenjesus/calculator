@@ -1,0 +1,13 @@
+[
+    {"id":	26,	"nome":	"Tambopata", 	            "densidadePop2010":	3.07,	"densidadePop2060": 3.07, 	"PopUrbMunicipio":	0.916, 	"PopRuralMunicipio":	0.084, 	"Distancia_Garimpo_Centro":	6.23, "Especies_por_Municipio": 63.8	},
+    {"id":	27,	"nome":	"Manu", 	                "densidadePop2010":	0.66,	"densidadePop2060": 0.66, 	"PopUrbMunicipio":	0.491, 	"PopRuralMunicipio":	0.509, 	"Distancia_Garimpo_Centro":	50.89, "Especies_por_Municipio": 63.8	},
+    {"id":	28,	"nome":	"Tahuamanu", 	            "densidadePop2010":	0.52,	"densidadePop2060": 0.52, 	"PopUrbMunicipio":	0.5, 	"PopRuralMunicipio":	0.5, 	"Distancia_Garimpo_Centro":	165.77, 	"Especies_por_Municipio": 63.8	},
+    {"id":	29,	"nome":	"Maynas", 	                "densidadePop2010":	7.45,	"densidadePop2060": 7.45, 	"PopUrbMunicipio":	0.797, 	"PopRuralMunicipio":	0.203, 	"Distancia_Garimpo_Centro":	44.73, 	"Especies_por_Municipio": 63.8	},
+    {"id":	30,	"nome":	"Alto Amazonas",            "densidadePop2010":	7.99,	"densidadePop2060": 7.99, 	"PopUrbMunicipio":	0.6, 	"PopRuralMunicipio":	0.4, 	"Distancia_Garimpo_Centro":	42.65, 	"Especies_por_Municipio": 63.8	},
+    {"id":	31,	"nome":	"Loreto", 	                "densidadePop2010":	1.07,	"densidadePop2060": 1.07, 	"PopUrbMunicipio":	0.423, 	"PopRuralMunicipio":	0.577, 	"Distancia_Garimpo_Centro":	15.75, 	"Especies_por_Municipio": 63.8	},
+    {"id":	32,	"nome":	"Requena", 	                "densidadePop2010":	1.30,	"densidadePop2060": 1.30, 	"PopUrbMunicipio":	0.572, 	"PopRuralMunicipio":	0.428, 	"Distancia_Garimpo_Centro":	83.33, 	"Especies_por_Municipio": 63.8	},
+    {"id":	33,	"nome":	"Ucayali", 	                "densidadePop2010":	2.13,	"densidadePop2060": 2.13, 	"PopUrbMunicipio":	0.548, 	"PopRuralMunicipio":	0.452, 	"Distancia_Garimpo_Centro":	137.09, 	"Especies_por_Municipio": 63.8	},
+    {"id":	34,	"nome":	"Datem del Marañon",        "densidadePop2010":	1.28,	"densidadePop2060": 1.28, 	"PopUrbMunicipio":	0.274, 	"PopRuralMunicipio":	0.726, 	"Distancia_Garimpo_Centro":	141.07, 	"Especies_por_Municipio": 63.8	},
+    {"id":	35,	"nome":	"Mariscal Ramon Castilla", 	"densidadePop2010":	1.58,	"densidadePop2060": 1.58, 	"PopUrbMunicipio":	0.302, 	"PopRuralMunicipio":	0.698, 	"Distancia_Garimpo_Centro":	70.46, 	"Especies_por_Municipio": 63.8	},
+    {"id":	36,	"nome":	"Putumayo", 	            "densidadePop2010":	0.20,	"densidadePop2060": 0.20, 	"PopUrbMunicipio":	0.5, 	"PopRuralMunicipio":	0.5, 	"Distancia_Garimpo_Centro":	75.8, 	"Especies_por_Municipio": 63.8	}
+]
