@@ -13,6 +13,7 @@ import { ReactComponent as Bar } from 'assets/icons/bar.svg'
 import { ReactComponent as Portuguese } from 'assets/icons/portuguese.svg'
 import { ReactComponent as Spanish } from 'assets/icons/spanish.svg'
 import { ReactComponent as Usa } from 'assets/icons/usa.svg'
+import calcResults from 'pages/Calculator/Form/calcResults';
 
 const Header = ({theme = 'white'}) => {
     const [visibleSidebar, setVisibleSidebar] = useState(false);
@@ -20,7 +21,7 @@ const Header = ({theme = 'white'}) => {
     const [lang, setLanguage] = useState('pt');
     const {state, dispatch} = useContext(AppContext)
     const location = useLocation();
-    const { language } = state;
+    const { language, priceUSDtoBRL } = state;
     const { header } = language;
 
     useLayoutEffect(() => {
@@ -47,7 +48,9 @@ const Header = ({theme = 'white'}) => {
     const handleRegion = useCallback((langString, file) => {
         setLanguage(langString)
         dispatch({type: stateTypes.SET_LANGUAGE, payload: file })
-    }, [dispatch])
+        calcResults({...state, language: file}, dispatch, priceUSDtoBRL)
+        
+    }, [dispatch, state, priceUSDtoBRL])
 
 
     if(notRender >= 0) {
@@ -86,7 +89,7 @@ const Header = ({theme = 'white'}) => {
                     
                     <Menuitem theme={theme}>
                         <Link to="/team">
-                            Equipe
+                            {language.header.team}
                         </Link>
                     </Menuitem>
 

@@ -68,8 +68,8 @@ const Home = () => {
                         <Img src={ArtigoCapa} alt="" />
                     </Col>
                     <Col xs={12} md={3}>
-                        <Headline style={{textAlign: 'left', marginBottom: '32px'}}>Artigo científico</Headline>
-                        <Button onClick={() => window.open(ArtigoPDF)}>Baixar em pdf</Button>
+                        <Headline style={{textAlign: 'left', marginBottom: '32px'}}>{language.science_article}</Headline>
+                        <Button onClick={() => window.open(ArtigoPDF)}>{language.button_download_pdf}</Button>
                     </Col>
            
                 
@@ -77,8 +77,8 @@ const Home = () => {
                         <Img src={MetodologiaIMG} alt="" />
                     </Col>
                     <Col xs={12} md={3}>
-                        <Headline style={{textAlign: 'left', marginBottom: '32px'}}>Metodologia</Headline>
-                        <Button onClick={() => window.open(MetodologiaPDF)}>Baixar em pdf</Button>
+                        <Headline style={{textAlign: 'left', marginBottom: '32px'}}>{language.methodology}</Headline>
+                        <Button onClick={() => window.open(MetodologiaPDF)}>{language.button_download_pdf}</Button>
                     </Col>
                     
                 </Row>

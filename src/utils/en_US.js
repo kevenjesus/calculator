@@ -3,7 +3,8 @@ const en_US = {
     header: {
         naming: 'mining impacts calculator',
         slogan: '',
-        linkWebsite: 'go to website'
+        linkWebsite: 'go to website',
+        team: 'Team'
     },
     resume: 'Resume',
     comeBack: 'Back',
@@ -321,7 +322,7 @@ const en_US = {
     district: 'District',
     goldImpact: 'Value of $value for $grams of gold',
     goldImpact_graphic: '$grams of gold',
-    goldImpact_graphic_tooltip: 'Value of $value for $grams of gold',
+    goldImpact_graphic_tooltip: 'Value $grams of gold',
     monetaryimpact_text: 'Impacts + gold',
     science_article: 'Scientific article',
     methodology: 'Methodology',
@@ -332,7 +333,8 @@ const en_US = {
     culturedAndSpecies: 'Species',
     dredgingAndRiverSediments: 'Dredging sediment in the river',
     erosionSiltingUp: 'Erosion',
-    woodAndNonWoodProducts: 'Timber and non-timber forest products',
+    woodAndNonWoodProducts:'NTFP',
+    woodAndNonWoodProducts_tooltip: 'Timber and non-timber forest products',
     recreation: 'Recreation',
     recoveryOfTopsoil: 'Soil surface recovery',
     neuroSymptomsGarimpeiro: 'Neuropsychological symptoms in miners',

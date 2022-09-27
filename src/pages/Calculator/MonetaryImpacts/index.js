@@ -168,13 +168,13 @@ const FormCalc = () => {
         const dataRetort = [
             {
                 name: 'retort',
-                label: 'Sim',
+                label: language.calculatorForm.commons.yes,
                 value: YES,
                 checked: false
             },
             {
                 name: 'retort',
-                label: 'Não',
+                label: language.calculatorForm.commons.no,
                 value: NO,
                 checked: true
             },
@@ -349,7 +349,7 @@ const FormCalc = () => {
                                     </>
                                 ) : (
                                     <Col xs={12}>
-                                            <label>{calculatorForm.labels.country}</label>
+                                            <label>{language.district}</label>
                                         <select name="state" value={country} onChange={handleCountry}>
                                             {
                                                 counties.map(({nome, id}) => (
@@ -374,7 +374,7 @@ const FormCalc = () => {
         {
             knowRegion ? (
                 <Col xs={12} lg={6}>
-                    <label>uso de capela?</label>
+                    <label>{language.calculatorForm.labels.retort}</label>
                     <RadioBoxConditional state={retort} setState={handleRetort} />
                 </Col>
             ) : <></>
@@ -417,12 +417,12 @@ const FormCalc = () => {
         <Row>
             <Col xs={12}>
                 <TextField
-                    label="Inflação acumulada desde de 2022 %"
+                    label={language.inflation}
                     type="number"
                     value={inflation}
                     onChange={handleInflation}
                     onBlur={() => updateCalc()}
-                    name="valor" placeholder="Digite a inflação neste formato: 10 ou 6,2" />
+                    name="valor" placeholder={language.inflation_placeholder} />
             </Col>
         </Row>
     </Grid>
@@ -470,6 +470,10 @@ const MonetaryImpacts = () => {
     const SubValueTotal = subValueTotalImpact+goldPrice
     const valueTotal = isBrazil ? ToBRL(SubValueTotal) : toUSD(SubValueTotal)
 
+    const goldLabel = language.goldImpact_graphic.replace("$grams", goldValue)
+    const goldDisplayName = language.goldImpact_graphic_tooltip.replace("$grams", goldValue)
+
+    const goldImpact = language.goldImpact.replace("$grams", goldValue)
 
     const allImpacts = {
         data: [
@@ -489,8 +493,8 @@ const MonetaryImpacts = () => {
                 value: dataMercury.reduce(reducer, 0)
             },
             {
-                label: `${goldValue} gramas de ouro`,
-                displayName: `Valor de ${goldValue} gramas de ouro`,
+                label: goldLabel,
+                displayName: goldDisplayName,
                 value: subTotalGoldPrice
             }
         ],
@@ -578,7 +582,7 @@ const MonetaryImpacts = () => {
                         <Row>
                             <Col xs={12} sm={4}>
                                 <FormGroup>
-                                    <Label>Total em impactos</Label>
+                                    <Label>{impacts.monetaryImpacts.labels.totalImpacts}</Label>
                                     <Monetary style={{color: colors.secondary}}>{valueTotalImpact}</Monetary>
                                     <MonetaryType>{`
                                         ${impacts.monetaryImpacts.labels.typeText} ${calculator.qtdAnalysis.value} ${typeAnalysis.toLowerCase()}`}</MonetaryType>
@@ -586,16 +590,16 @@ const MonetaryImpacts = () => {
                             </Col>
                             <Col xs={12} sm={4}>
                                 <FormGroup>
-                                    <Label>Total em ouro</Label>
+                                    <Label>{impacts.monetaryImpacts.labels.totalGold}</Label>
                                     <Monetary style={{color: '#8b8b28'}}>{totalGoldPrice}</Monetary>
-                                    <MonetaryType>{`Para ${goldValue} gramas de ouro`}</MonetaryType>
+                                    <MonetaryType>{goldImpact}</MonetaryType>
                                 </FormGroup>
                             </Col>
                             <Col xs={12} sm={4}>
                                 <FormGroup>
                                     <Label>{impacts.monetaryImpacts.labels.finalValue}</Label>
                                     <Monetary>{valueTotal}</Monetary>
-                                    <MonetaryType>{`Impactos + ouro`}</MonetaryType>
+                                    <MonetaryType>{language.monetaryimpact_text}</MonetaryType>
                                 </FormGroup>
                             </Col>
                         </Row>
