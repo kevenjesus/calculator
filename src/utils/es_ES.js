@@ -339,8 +339,8 @@ const es_ES = {
     lossQI: 'Pérdida de coeficiente intelectual en el feto',
     HeartHypertesion: 'Enfermedades cardiovasculares',
     HeartHypertesion_tooltip: 'Enfermedades cardiovasculares (Hipertensión + Infarto)',
-    soilMercuryRemediation: 'Remediación de mercurio en suelo'
-
+    soilMercuryRemediation: 'Remediación de mercurio en suelo',
+    button_youtube: 'Ver otros videos sobre minería ilegal'
 };
 
 export default es_ES;

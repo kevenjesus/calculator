@@ -344,7 +344,8 @@ const ptBR = {
     lossQI: 'Perda de Qi em Fetos',
     HeartHypertesion: 'Doenças cardiovasculares',
     HeartHypertesion_tooltip: 'Doenças cardiovasculares (Hipertensão + Infarto)',
-    soilMercuryRemediation: 'Remediação de mercúrio no solo'
+    soilMercuryRemediation: 'Remediação de mercúrio no solo',
+    button_youtube: 'Ver outros videos sobre garimpo ilegal'
 };
 
 export default ptBR;

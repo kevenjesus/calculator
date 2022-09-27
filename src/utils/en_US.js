@@ -341,7 +341,8 @@ const en_US = {
     lossQI: 'Loss of QI in fetus',
     HeartHypertesion: 'Cardiovascular diseases',
     HeartHypertesion_tooltip: 'Cardiovascular diseases (Hypertension + Infarction)',
-    soilMercuryRemediation: 'Mercury remediation in soil'
+    soilMercuryRemediation: 'Mercury remediation in soil',
+    button_youtube: 'See other videos about illegal mining',
 };
 
 export default en_US;
