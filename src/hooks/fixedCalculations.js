@@ -76,7 +76,7 @@ const fixedCalcultions = (country_region) => {
 
         }
         let erosionSiltingUp = {
-            siltingUpCostPerHaUSD: 13.28
+            siltingUpCostPerHaUSD: 18
         }
         let dredgingAndRiverSediments = {
             prodMediaCava: 10,
@@ -143,7 +143,7 @@ const fixedCalcultions = (country_region) => {
             general.averageDepthOfFertileEarth = 0.4
             general.quantitOfM3ExcavatorPerHour = 70
             general.HgAuRatio = 2.6
-            general.percentLossHgInWater_convervative = 0.075
+            general.percentLossHgInWater_convervative = 0.13
             general.percentLossHgInWater = 0.35
             general.percentLossHgInWater_ferry__convervative = 0.155
             general.percentLossHgInWater_ferry = 0.28
@@ -175,11 +175,11 @@ const fixedCalcultions = (country_region) => {
             recoverOfTopSoll.superficialSeedlingsPerHa = 1111
             recoverOfTopSoll.transportCostChangesPerKm = 0.32
 
-            erosionSiltingUp.siltingUpCostPerHaUSD = 13.28
+            erosionSiltingUp.siltingUpCostPerHaUSD = 18
 
             dredgingAndRiverSediments.prodMediaCava = 100
             dredgingAndRiverSediments.dredgingCostPerM3 = 7.51
-            dredgingAndRiverSediments.prodOuroKgporMes = 0.00604
+            dredgingAndRiverSediments.prodOuroKgporMes = 0.009
             dredgingAndRiverSediments.averageMotorPower = 250
             dredgingAndRiverSediments.productionSedimentTurnsFeatherTonnesPerMonth = 37.82
             dredgingAndRiverSediments.equivalentErosionTonPerHaPerYear = 12.54
@@ -198,7 +198,7 @@ const fixedCalcultions = (country_region) => {
             
 
             neuroSymptomsGarimpeiro.amountOfGoldminersYear = 384
-            neuroSymptomsGarimpeiro.neuroTreatmentCostPerGoldMinerUSD = 534
+            neuroSymptomsGarimpeiro.neuroTreatmentCostPerGoldMinerUSD = 353
 
             heartAttack.proMenOver40ByPopTotal = 0.1732
             heartAttack.accumulatedRiskMercuryInfarction = 0.0161
@@ -230,8 +230,8 @@ const fixedCalcultions = (country_region) => {
             general.averageDepthOfFertileEarth = 0.4
             general.quantitOfM3ExcavatorPerHour = 160
             general.HgAuRatio = 7.2
-            general.percentLossHgInWater_convervative = 0.075
-            general.percentLossHgInWater = 0.2
+            general.percentLossHgInWater_convervative = 0.13
+            general.percentLossHgInWater = 0.36
             general.percentLossHgInWater_ferry__convervative = 0.155
             general.percentLossHgInWater_ferry = 0.28
             general.methyladPercent_conservative = 0.11
@@ -262,7 +262,7 @@ const fixedCalcultions = (country_region) => {
             recoverOfTopSoll.superficialSeedlingsPerHa = 1111
             recoverOfTopSoll.transportCostChangesPerKm = 0.32
 
-            erosionSiltingUp.siltingUpCostPerHaUSD = 13.28
+            erosionSiltingUp.siltingUpCostPerHaUSD = 18
 
             dredgingAndRiverSediments.prodMediaCava = 10
             dredgingAndRiverSediments.dredgingCostPerM3 = 7.51
@@ -283,8 +283,8 @@ const fixedCalcultions = (country_region) => {
             lossQI.birthRate = 19.19
             
 
-            neuroSymptomsGarimpeiro.amountOfGoldminersYear = 1464.28
-            neuroSymptomsGarimpeiro.neuroTreatmentCostPerGoldMinerUSD = 5921.7
+            neuroSymptomsGarimpeiro.amountOfGoldminersYear = 255
+            neuroSymptomsGarimpeiro.neuroTreatmentCostPerGoldMinerUSD = 362
 
             heartAttack.proMenOver40ByPopTotal = 0.2204
             heartAttack.accumulatedRiskMercuryInfarction = 0.0161
@@ -313,7 +313,7 @@ const fixedCalcultions = (country_region) => {
             general.priceLiterDieselUSD = 0.75
             general.densityGold = 2.76
             general.averageDriverSalaryFreightPerKmUSD = 0.14
-            general.quantityOfGoldGramsPerYearWell = 3456
+            general.quantityOfGoldGramsPerYearWell = 23700
             general.averageDepthOfFertileEarth = 0.4
             general.quantitOfM3ExcavatorPerHour = 64
             general.HgAuRatio = 2.33
@@ -341,14 +341,14 @@ const fixedCalcultions = (country_region) => {
 
             carbon.carbonCostPerHaUSD = 277.53
 
-            recoverOfTopSoll.hectare = 0.31
+            recoverOfTopSoll.hectare = 0.27
             recoverOfTopSoll.soilSurfaceRecPerHa_conservative = 1771
             recoverOfTopSoll.soilSurfaceRecPerHa = 4833
             recoverOfTopSoll.capacityLoadTruckNumberOfSeedlings = 2700
             recoverOfTopSoll.superficialSeedlingsPerHa = 1100
             recoverOfTopSoll.transportCostChangesPerKm = 0.32
 
-            erosionSiltingUp.siltingUpCostPerHaUSD = 13.28
+            erosionSiltingUp.siltingUpCostPerHaUSD = 18
 
             dredgingAndRiverSediments.prodMediaCava = 10
             dredgingAndRiverSediments.dredgingCostPerM3 = 7.51
@@ -382,7 +382,7 @@ const fixedCalcultions = (country_region) => {
 
             soilMercuryRemediation.lossPercentHgInSoil_conservative = 0.088
             soilMercuryRemediation.lossPercentHgInSoil = 0.14
-            soilMercuryRemediation.HgContainedSoilinGrassPerTon  = 0.44
+            soilMercuryRemediation.HgContainedSoilinGrassPerTon  = 0.21
             soilMercuryRemediation.DensidadeSolo = 2.76
             soilMercuryRemediation.remediationCostUSDPerTonOfSoil = 45.67
 
