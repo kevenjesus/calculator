@@ -26,6 +26,7 @@ const es_ES = {
             country: 'Municipio',
             analysisUnit: 'Unidade de análisis',
             pitDepth: 'Profundidad del socavón',
+            retort: 'Usa retorta?',
             extractionType: 'Tipo de extracción',
             btnCalulator: 'Calcular impactos'
         },
@@ -89,6 +90,8 @@ const es_ES = {
         monetaryImpacts: {
             headline: 'Impactos monetarios',
             labels: {
+                totalImpacts: 'Valor total impactos',
+                totalGold: 'Valor total oro',
                 finalValue: 'Valor total monetario',
                 typeText: 'por',
                 typeGold: 'gramos de oro',
@@ -210,7 +213,7 @@ const es_ES = {
                 },
                 {
                     type: 'Uso de retorta?',
-                    text: 'La extracción de mineral a través de túneles subterráneos, tiene un menor impacto en términos de deforestación y erosión, pero también utiliza mercurio en el procesamiento del mineral.'
+                    text: 'La retorta es un equipo que reduce la dispersión de mercurio por evaporación durante la amalgamación.'
                 }
             ],
             text: 'Si no se especifica el tipo, se considerarán los impactos del tipo de minería más común en la Amazonía, la minería aluvial'
@@ -321,6 +324,20 @@ const es_ES = {
     science_article: 'Artigo Cientifico',
     methodology: 'Metodologia',
     button_download_pdf: 'Baixar em PDF',
+    bioprospecting: 'Bioprospección',
+    carbon: 'Carbono',
+    cavaGroundingCostAu: 'Puesta a tierra del pozo',
+    culturedAndSpecies: 'Especies',
+    dredgingAndRiverSediments: 'Dragado de sedimentos en el río',
+    erosionSiltingUp: 'Erosión',
+    woodAndNonWoodProducts: 'Productos maderables y non-maderable',
+    recreation: 'Recreación',
+    recoveryOfTopsoil: 'Recuperación de la superficie del suelo',
+    neuroSymptomsGarimpeiro: 'Síntomas neuropsicológicos en mineros',
+    lossQI: 'Pérdida de coeficiente intelectual en el feto',
+    HeartHypertesion: 'Enfermedades cardiovasculares',
+    HeartHypertesion_tooltip: 'Enfermedades cardiovasculares (Hipertensión + Infarto)',
+    soilMercuryRemediation: 'Remediación de mercurio en suelo'
 
 };
 
