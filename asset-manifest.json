@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/static/js/main.9ae729d0.chunk.js",
-    "main.js.map": "/static/js/main.9ae729d0.chunk.js.map",
+    "main.js": "/static/js/main.e4a2f918.chunk.js",
+    "main.js.map": "/static/js/main.e4a2f918.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.d5b4f1ff.js",
     "runtime-main.js.map": "/static/js/runtime-main.d5b4f1ff.js.map",
     "static/css/2.4ee2f7a8.chunk.css": "/static/css/2.4ee2f7a8.chunk.css",
@@ -50,7 +50,7 @@
     "static/media/logo-original.a347b34e.svg": "/static/media/logo-original.a347b34e.svg",
     "static/media/logo.e492941d.svg": "/static/media/logo.e492941d.svg",
     "static/media/metodologia.2e8ab01f.pdf": "/static/media/metodologia.2e8ab01f.pdf",
-    "static/media/metodologia.573b9f79.png": "/static/media/metodologia.573b9f79.png",
+    "static/media/metodologia_capa.a09673b2.png": "/static/media/metodologia_capa.a09673b2.png",
     "static/media/mpf-logo-ministerio-publico-federal.f56f7bfa.png": "/static/media/mpf-logo-ministerio-publico-federal.f56f7bfa.png",
     "static/media/poco-min.d4c8d0c0.jpg": "/static/media/poco-min.d4c8d0c0.jpg",
     "static/media/portuguese.f3bd38ce.svg": "/static/media/portuguese.f3bd38ce.svg",
@@ -65,6 +65,6 @@
     "static/js/runtime-main.d5b4f1ff.js",
     "static/css/2.4ee2f7a8.chunk.css",
     "static/js/2.b3286898.chunk.js",
-    "static/js/main.9ae729d0.chunk.js"
+    "static/js/main.e4a2f918.chunk.js"
   ]
 }
