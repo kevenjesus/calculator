@@ -467,7 +467,7 @@ const MonetaryImpacts = () => {
     const totalGoldPrice = isBrazil ? ToBRL(subTotalGoldPrice) : toUSD(subTotalGoldPrice)
 
     
-    const SubValueTotal = subValueTotalImpact+goldPrice
+    const SubValueTotal = subValueTotalImpact+subTotalGoldPrice
     const valueTotal = isBrazil ? ToBRL(SubValueTotal) : toUSD(SubValueTotal)
 
     const goldLabel = language.goldImpact_graphic.replace("$grams", goldValue)
