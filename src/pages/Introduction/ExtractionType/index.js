@@ -42,13 +42,13 @@ const ExtrationType = () => {
         const dataRetort = [
             {
                 name: 'retort',
-                label: 'Sim',
+                label: language.calculatorForm.commons.yes,
                 value: YES,
                 checked: false
             },
             {
                 name: 'retort',
-                label: 'Não',
+                label: language.calculatorForm.commons.no,
                 value: NO,
                 checked: true
             },

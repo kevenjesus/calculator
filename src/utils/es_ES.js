@@ -3,7 +3,8 @@ const es_ES = {
     header: {
         naming: 'calculadora',
         slogan: 'impactos de la minería artesanal de oro',
-        linkWebsite: 'ir para el sitio web'
+        linkWebsite: 'ir para el sitio web',
+        team: 'Equipo'
     },
     resume: 'Resumen',
     comeBack: 'Volver',
@@ -26,6 +27,7 @@ const es_ES = {
             country: 'Municipio',
             analysisUnit: 'Unidade de análisis',
             pitDepth: 'Profundidad del socavón',
+            retort: 'Usa retorta?',
             extractionType: 'Tipo de extracción',
             btnCalulator: 'Calcular impactos'
         },
@@ -89,6 +91,8 @@ const es_ES = {
         monetaryImpacts: {
             headline: 'Impactos monetarios',
             labels: {
+                totalImpacts: 'Valor total impactos',
+                totalGold: 'Valor total oro',
                 finalValue: 'Valor total monetario',
                 typeText: 'por',
                 typeGold: 'gramos de oro',
@@ -210,7 +214,7 @@ const es_ES = {
                 },
                 {
                     type: 'Uso de retorta?',
-                    text: 'La extracción de mineral a través de túneles subterráneos, tiene un menor impacto en términos de deforestación y erosión, pero también utiliza mercurio en el procesamiento del mineral.'
+                    text: 'La retorta es un equipo que reduce la dispersión de mercurio por evaporación durante la amalgamación.'
                 }
             ],
             text: 'Si no se especifica el tipo, se considerarán los impactos del tipo de minería más común en la Amazonía, la minería aluvial'
@@ -309,8 +313,33 @@ const es_ES = {
             soil_mercury_ref_line1: 'Miranda (2019) Kahhat et al (2019)',
             soil_mercury_comments_line1: 'Se supone que la biorremediación, a partir de la plantación de mudas de especies capaces de absorber el mercurio en el suelo, sería la alternativa más aplicable al contexto amazónico para remediar el impacto de la minería.',
             soil_mercury_comments_line2: 'La hipótesis es que la concentración media de mercurio en los suelos es de 0,24 gramos de oro por tonelada de sedimento.',
-        }
-    }
+        },
+    },
+    inflation: 'Inflação acumulada desde de 2022 %',
+    inflation_placeholder: 'Digite a inflação neste formato: 10 ou 6.2',
+    district: 'Distrito',
+    goldImpact: 'para $grams de oro',
+    goldImpact_graphic: '$grams de oro',
+    goldImpact_graphic_tooltip: 'Valor de $grams para de oro',
+    monetaryimpact_text: 'Impactos + oro',
+    science_article: 'Artículo científico',
+    methodology: 'Metodologia',
+    button_download_pdf: 'Descargar en PDF',
+    bioprospecting: 'Bioprospección',
+    carbon: 'Carbono',
+    cavaGroundingCostAu: 'Puesta a tierra del pozo',
+    culturedAndSpecies: 'Especies',
+    dredgingAndRiverSediments: 'Dragado de sedimentos en el río',
+    erosionSiltingUp: 'Erosión',
+    woodAndNonWoodProducts:'PFNM',
+    woodAndNonWoodProducts_tooltip: 'Productos maderables y non-maderable',
+    recreation: 'Recreación',
+    recoveryOfTopsoil: 'Recuperación de la superficie del suelo',
+    neuroSymptomsGarimpeiro: 'Síntomas neuropsicológicos en mineros',
+    lossQI: 'Pérdida de coeficiente intelectual en el feto',
+    HeartHypertesion: 'Enfermedades cardiovasculares',
+    HeartHypertesion_tooltip: 'Enfermedades cardiovasculares (Hipertensión + Infarto)',
+    soilMercuryRemediation: 'Remediación de mercurio en suelo'
 
 };
 

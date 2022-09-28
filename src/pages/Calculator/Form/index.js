@@ -170,13 +170,13 @@ function Form() {
         const dataRetort = [
             {
                 name: 'retort',
-                label: 'Sim',
+                label: language.calculatorForm.commons.yes,
                 value: YES,
                 checked: false
             },
             {
                 name: 'retort',
-                label: 'Não',
+                label: language.calculatorForm.commons.no,
                 value: NO,
                 checked: true
             },
@@ -334,7 +334,7 @@ function Form() {
                                     </>
                                 ) : (
                                     <Col xs={12}>
-                                            <label>{calculatorForm.labels.country}</label>
+                                            <label>{language.district}</label>
                                         <select name="state" value={country} onChange={handleCountry}>
                                             {
                                                 counties.map(({nome, id}) => (
@@ -359,7 +359,7 @@ function Form() {
                     {
                         knowRegion ? (
                             <Col xs={12} lg={6}>
-                                <label>uso de capela?</label>
+                                <label>{language.calculatorForm.labels.retort}</label>
                                 <RadioBoxConditional state={retort} setState={handleRetort} />
                             </Col>
                         ) : <></>
@@ -405,11 +405,11 @@ function Form() {
                 <Row>
                     <Col xs={12}>
                         <TextField
-                            label="Inflação acumulada desde de 2022 %"
+                            label={language.inflation}
                             type="number"
                             value={inflation}
                             onChange={handleInflation}
-                            name="valor" placeholder="Digite a inflação neste formato: 10 ou 6,2" />
+                            name="valor" placeholder={language.inflation_placeholder}/>
                     </Col>
                 </Row>
                

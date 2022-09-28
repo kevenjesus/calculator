@@ -3,7 +3,8 @@ const en_US = {
     header: {
         naming: 'mining impacts calculator',
         slogan: '',
-        linkWebsite: 'go to website'
+        linkWebsite: 'go to website',
+        team: 'Team'
     },
     resume: 'Resume',
     comeBack: 'Back',
@@ -26,6 +27,7 @@ const en_US = {
             country: 'Municipality',
             analysisUnit: 'Unit of measurement',
             pitDepth: 'Pit Depth',
+            retort: 'Does it use retort?',
             extractionType: 'Extraction type',
             valueHypothesis: 'Value hypothesis',
             btnCalulator: 'Calculate impacts'
@@ -92,6 +94,8 @@ const en_US = {
         monetaryImpacts: {
             headline: 'Monetary impacts',
             labels: {
+                totalImpacts: 'Total impacts value',
+                totalGold: 'Total gold value',
                 finalValue: 'Total monetary value',
                 typeText: 'by',
                 typeGold: 'gram of gold',
@@ -211,7 +215,7 @@ const en_US = {
                     text: 'Mining through underground tunnels has less impact in terms of deforestation and erosion, but also uses mercury in ore processing.'
                 },
                 {
-                    type: 'Uso de retorta?',
+                    type: 'Does it use retort?',
                     text: 'Mining through underground tunnels has less impact in terms of deforestation and erosion, but also uses mercury in ore processing.'
                 }
             ],
@@ -311,9 +315,33 @@ const en_US = {
             soil_mercury_ref_line1: 'Miranda (2019) Kahhat et al (2019)',
             soil_mercury_comments_line1: 'It is assumed that bioremediation, starting with the planting of seedlings of species capable of absorbing mercury in the soil, would be the most applicable alternative to the Amazonian context to remediate the impact of mining.',
             soil_mercury_comments_line2: 'We hypothesize an average mercury concentration in soils of 0.24 grams of gold per ton of sediment.',
-        }
-    }
-
+        },
+    },
+    inflation: 'Accumulated inflation since January 2022 (%)',
+    inflation_placeholder: 'Insert the inflation in this format: 10 or 6.2',
+    district: 'District',
+    goldImpact: 'Value of $value for $grams of gold',
+    goldImpact_graphic: '$grams of gold',
+    goldImpact_graphic_tooltip: 'Value $grams of gold',
+    monetaryimpact_text: 'Impacts + gold',
+    science_article: 'Scientific article',
+    methodology: 'Methodology',
+    button_download_pdf: 'Download PDF',
+    bioprospecting: 'Bioprospecting',
+    carbon: 'Carbon',
+    cavaGroundingCostAu: 'Pit grounding',
+    culturedAndSpecies: 'Species',
+    dredgingAndRiverSediments: 'Dredging sediment in the river',
+    erosionSiltingUp: 'Erosion',
+    woodAndNonWoodProducts:'NTFP',
+    woodAndNonWoodProducts_tooltip: 'Timber and non-timber forest products',
+    recreation: 'Recreation',
+    recoveryOfTopsoil: 'Soil surface recovery',
+    neuroSymptomsGarimpeiro: 'Neuropsychological symptoms in miners',
+    lossQI: 'Loss of QI in fetus',
+    HeartHypertesion: 'Cardiovascular diseases',
+    HeartHypertesion_tooltip: 'Cardiovascular diseases (Hypertension + Infarction)',
+    soilMercuryRemediation: 'Mercury remediation in soil'
 };
 
 export default en_US;

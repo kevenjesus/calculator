@@ -8,14 +8,17 @@ const useExchange = () => {
     const [USDtoBRL, setValue] = useState(null) 
     
     const convertUSDToBRL = useCallback(async () => {
-        try {
-            const request = await fetch('https://economia.awesomeapi.com.br/json/last/USD-BRL')
-            const response = await request.json()
-            const { USDBRL } = response
-            setValue(USDBRL)  
-        } catch (err) {
-            console.log(err)
-        }
+        // try {
+        //     const request = await fetch('https://economia.awesomeapi.com.br/json/last/USD-BRL')
+        //     const response = await request.json()
+        //     const { USDBRL } = response
+        //     setValue(USDBRL)  
+        // } catch (err) {
+        //     console.log(err)
+        // }
+        setValue({
+            high: '5.33'
+        })
         
     }, [])
 

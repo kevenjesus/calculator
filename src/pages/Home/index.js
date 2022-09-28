@@ -10,12 +10,19 @@ import { AppContext } from 'utils/AppContext'
 import LogoMPF from 'assets/images/mpf-logo-ministerio-publico-federal.png'
 import LogoConservationStrategy from 'assets/images/logo.svg'
 import MetodologiaIMG from 'assets/images/metodologia.png'
+import ArtigoCapa from 'assets/images/artigo_capa.jpeg'
 import { Container, ContainerBackground, Embed, Img, Overlay } from './style'
+import { BRAZIL, countries_region } from 'components/CountrySelect'
+import ArtigoPDF from 'assets/pdf/artigo.pdf'
+import MetodologiaPDF from 'assets/pdf/metodologia.pdf'
 
 const Home = () => {
     const { state } = useContext(AppContext)
-    const { language } = state
+    const { language, country_region } = state
     const { introduction } = language
+    const isBrazil = country_region && country_region.country === countries_region[BRAZIL].country
+
+    console.log(country_region)
     return (
         <>
             <ContainerBackground>
@@ -30,7 +37,7 @@ const Home = () => {
                     <Row style={{marginTop: 20}}>
                         <Col md={4}> 
                         <ContainerPartner>
-                            <img src={LogoMPF} width="150" height="80" alt="" />
+                           {isBrazil && <img src={LogoMPF} width="150" height="80" alt="" />}
                             <img src={LogoConservationStrategy} width="120"  alt="" />
                         </ContainerPartner>
                         <label style={{color: 'white'}}>{language.iDontKnowYet}</label>
@@ -58,11 +65,11 @@ const Home = () => {
                 
                 <Row middle="md">
                     <Col xs={12} md={2}>
-                        <Img src="https://www.conservation-strategy.org/sites/default/files/field-required-image/Page%201.jpg" alt="" />
+                        <Img src={ArtigoCapa} alt="" />
                     </Col>
                     <Col xs={12} md={3}>
-                        <Headline style={{textAlign: 'left', marginBottom: '32px'}}>Artigo científico</Headline>
-                        <Button onClick={() => window.open('https://www.conservation-strategy.org/sites/default/files/field-file/ijerph-18-11869.pdf')}>Baixar em pdf</Button>
+                        <Headline style={{textAlign: 'left', marginBottom: '32px'}}>{language.science_article}</Headline>
+                        <Button onClick={() => window.open(ArtigoPDF)}>{language.button_download_pdf}</Button>
                     </Col>
            
                 
@@ -70,8 +77,8 @@ const Home = () => {
                         <Img src={MetodologiaIMG} alt="" />
                     </Col>
                     <Col xs={12} md={3}>
-                        <Headline style={{textAlign: 'left', marginBottom: '32px'}}>Metodologia</Headline>
-                        <Button onClick={() => window.open('https://www.conservation-strategy.org/sites/default/files/field-file/ijerph-18-11869.pdf')}>Baixar em pdf</Button>
+                        <Headline style={{textAlign: 'left', marginBottom: '32px'}}>{language.methodology}</Headline>
+                        <Button onClick={() => window.open(MetodologiaPDF)}>{language.button_download_pdf}</Button>
                     </Col>
                     
                 </Row>

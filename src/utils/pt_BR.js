@@ -30,7 +30,7 @@ const ptBR = {
             pitDepth: 'Profundidade da cava',
             extractionType: 'Tipo de garimpo',
             valueHypothesis: 'Hipóteses de valores' ,
-            retort: 'Uso de Capela',
+            retort: 'Usa Retorta?',
             inflation: 'Inflação acumulada desde de 2022 %',
             inflation_placeholder: 'Digite a inflação neste formato: 10 ou 6.2',
             btnCalulator: 'Calcular impactos'
@@ -45,10 +45,10 @@ const ptBR = {
                 amountOfGold: 'Quantidade de ouro',
             },
             qtdAnalysisUnit: {
-                hactare: 'Hectares',
-                grams: 'Gramas de ouro',
-                months: 'Meses',
-                years: 'Anos'
+                hactare: 'Hectare(s)',
+                grams: 'Grama(s) de ouro',
+                months: 'Mese(s)',
+                years: 'Ano(s)'
             },
             pitDepth: {
                 meters: 'metros'
@@ -97,6 +97,8 @@ const ptBR = {
         monetaryImpacts: {
             headline: 'Impactos monetários',
             labels: {
+                totalImpacts: 'Total em impactos',
+                totalGold: 'Total em ouro',
                 finalValue: 'Valor total monetário',
                 typeText: 'por',
                 typeGold: 'gramas de ouro',
@@ -216,8 +218,8 @@ const ptBR = {
                     text: 'Extração de minério por meio de túneis subterrâneo, tem menores impactos em termos de desmatamento e erosão, porém também utiliza o mercúrio no processamento do minério.'
                 },
                 {
-                    type: 'Uso de retorta?',
-                    text: 'Extração de minério por meio de túneis subterrâneo, tem menores impactos em termos de desmatamento e erosão, porém também utiliza o mercúrio no processamento do minério.'
+                    type: 'Usa retorta?',
+                    text: 'A retorta é um equipamento que reduz a dispersão do mercúrio por evaporação durante a amalgamação.'
                 }
             ],
             text: 'Caso não seja especificado o tipo, serão considerados os impactos do tipo de garimpo mais comum na Amazônia, o garimpo de aluvião'
@@ -318,6 +320,31 @@ const ptBR = {
             soil_mercury_comments_line2: 'Hipótese de concentração média de mercúrio nos solos de 0,24 gramas de ouro por tonelada de sedimento.',
         }
     },
+    inflation: 'Inflação acumulada desde de 2022 %',
+    inflation_placeholder: 'Digite a inflação neste formato: 10 ou 6.2',
+    district: 'Distrito',
+    goldImpact: 'para $grams de ouro',
+    goldImpact_graphic: '$grams de ouro',
+    goldImpact_graphic_tooltip: 'valor $grams de ouro',
+    monetaryimpact_text: 'Impactos + ouro',
+    science_article: 'Artigo Cientifico',
+    methodology: 'Metodologia',
+    button_download_pdf: 'Baixar em PDF',
+    bioprospecting: 'Bioprospecção',
+    carbon: 'Carbono',
+    cavaGroundingCostAu: 'Aterramento de cava',
+    culturedAndSpecies: 'Espécies',
+    dredgingAndRiverSediments: 'Dragagem de sedimentos no rio',
+    erosionSiltingUp: 'Erosão',
+    woodAndNonWoodProducts: 'PMNM',
+    woodAndNonWoodProducts_tooltip: 'Produtos não-madeireiros e madeireiros',
+    recreation: 'Recreação',
+    recoveryOfTopsoil: 'Recuperação superficie do solo',
+    neuroSymptomsGarimpeiro: 'Sintomas neuropsicológicos em garimpeiros',
+    lossQI: 'Perda de Qi em Fetos',
+    HeartHypertesion: 'Doenças cardiovasculares',
+    HeartHypertesion_tooltip: 'Doenças cardiovasculares (Hipertensão + Infarto)',
+    soilMercuryRemediation: 'Remediação de mercúrio no solo'
 };
 
 export default ptBR;

@@ -2,8 +2,9 @@ import { Link } from 'react-router-dom'
 import { Button } from 'theme'
 import { Grid, Row, Col } from 'react-flexbox-grid'
 import { Container, Headline, Text } from 'pages/Calculator/ImpactsStyles'
-import { ReactComponent as ImageExample } from 'assets/images/[calculadora]infografico2.svg';
-import { ReactComponent as ImageExampleUS } from 'assets/images/[calculadora]infografico2_INGLES.svg';
+import { ReactComponent as InfoPorugues } from 'assets/images/[calculadora]infografico2_PORTUGUES.svg';
+import { ReactComponent as InfoEnglish } from 'assets/images/[calculadora]infografico2_INGLES.svg';
+import { ReactComponent as InfoSpanish } from 'assets/images/[calculadora]infografico2_ESPANHOL.svg';
 import { useContext } from 'react';
 import { AppContext } from 'utils/AppContext';
 import ToBRL from 'utils/toBRL';
@@ -14,6 +15,16 @@ import cubicMeters from 'utils/cubicMeters';
 import convertAllinGold from 'utils/convertAllinGold';
 import { BRAZIL, countries_region } from 'components/CountrySelect';
 import toUSD from 'utils/toUSD';
+
+const InfoComponent = ({language}) => {
+    if(language === 'enUS') {
+        return <InfoEnglish style={{display: 'block', margin: '50px auto'}} />
+    }else if(language === 'esES') {
+        return <InfoSpanish style={{display: 'block', margin: '50px auto'}} />
+    }else {
+        return <InfoPorugues style={{display: 'block', margin: '50px auto'}} />
+    }
+}
 
 const SiltingOfRivers = () => {
     const {state} = useContext(AppContext)
@@ -64,7 +75,7 @@ const SiltingOfRivers = () => {
                         <Text>
                         <div dangerouslySetInnerHTML={{__html: paragraphy_02 }} />
                         </Text>
-                        { language.type === 'enUS' ? <ImageExampleUS style={{display: 'block', margin: '50px auto'}} /> : <ImageExample style={{display: 'block', margin: '50px auto'}} />}
+                        <InfoComponent language={language.type} />
                     </Col>
                 </Row>
                 <Row>
