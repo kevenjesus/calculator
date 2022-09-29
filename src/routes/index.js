@@ -37,7 +37,7 @@ const Routes = () => {
         // eslint-disable-next-line
     }, [USDtoBRL])
 
-    const isHome = window.location.pathname === '#/'
+    const isHome = window.location.hash === '#/'
     return (
         <Router>
             {!isHome  && <Header />}
