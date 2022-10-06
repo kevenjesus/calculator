@@ -73,7 +73,7 @@ const calcResults = (state, dispatch, dolarTOReal) => {
         const ruralPopMunicipality = knowRegion ? currentCountry.ruralPopMunicipality : 0.2647;
         const distanceanningCenter = knowRegion ? currentCountry.distanceanningCenter : 212.74;
         const species = knowRegion ? (currentCountry.species <= 0 ? StateCity.especie : currentCountry.species) : 69.21;
-
+        console.log('StateCity', StateCity)
         // tipo de garimpo = likeMining
         // valor do tipo de garimpo = valueLikeMining
         // tipo de valor do garimpo = typeValueLikeMining
@@ -96,6 +96,7 @@ const calcResults = (state, dispatch, dolarTOReal) => {
         const totalRecreationInflation = totalWithInflation(isBrazil, inflation, totalRecreation)
         impacts.push({ label: language.recreation, displayName: language.recreation, category: CATEGORY_DEFORESTATION, value: getValueToCountry(country_region, totalRecreationInflation, dolarTOReal)  })
 
+        console.log('especies', country_region, likeMining, popDensity2010, species, typeValueLikeMining, hectareValue)
         const totalCulturedAndSpecies = culturedAndSpecies(country_region, likeMining, popDensity2010, species, typeValueLikeMining, hectareValue)
         const totalCulturedAndSpeciesInflation = totalWithInflation(isBrazil, inflation, totalCulturedAndSpecies)
         impacts.push({ label: language.culturedAndSpecies, displayName: language.culturedAndSpecies, category: CATEGORY_DEFORESTATION, value: getValueToCountry(country_region, totalCulturedAndSpeciesInflation, dolarTOReal)  })
