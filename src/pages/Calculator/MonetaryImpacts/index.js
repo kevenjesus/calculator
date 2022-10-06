@@ -505,6 +505,11 @@ const MonetaryImpacts = () => {
         total: sumTotal(impactsValues)
     }
 
+    if(dataDesforestation.length === 0) {
+        allImpacts.data.splice(0, 1)
+    }
+
+
     const handleDownloadPDF = useCallback(async () =>{
         const graphics_resume = document.getElementById('graphics_resume');
         const graphics_total = document.getElementById('graphics_total');
