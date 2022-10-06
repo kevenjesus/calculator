@@ -22,7 +22,6 @@ const Home = () => {
     const { introduction } = language
     const isBrazil = country_region && country_region.country === countries_region[BRAZIL].country
 
-    console.log(country_region)
     return (
         <>
             <ContainerBackground>

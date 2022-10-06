@@ -140,7 +140,6 @@ function Form() {
                 const data = mockStatePeru
                 getCountiesNotBrazil(data)
             }else if(isColombia) {
-                console.log('colombia')
                 const data = mockStateColombia
                 getCountiesNotBrazil(data)
             }

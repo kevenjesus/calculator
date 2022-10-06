@@ -72,8 +72,7 @@ const calcResults = (state, dispatch, dolarTOReal) => {
         const urbanPopMunicipality = knowRegion ? currentCountry.urbanPopMunicipality : 0.7353;
         const ruralPopMunicipality = knowRegion ? currentCountry.ruralPopMunicipality : 0.2647;
         const distanceanningCenter = knowRegion ? currentCountry.distanceanningCenter : 212.74;
-        const species = knowRegion ? (currentCountry.species <= 0 ? StateCity.especie : currentCountry.species) : 69.21;
-        console.log('StateCity', StateCity)
+        const species = knowRegion ? (currentCountry.species <= 0 ? 69.21 : currentCountry.species) : 69.21;
         // tipo de garimpo = likeMining
         // valor do tipo de garimpo = valueLikeMining
         // tipo de valor do garimpo = typeValueLikeMining
@@ -96,7 +95,6 @@ const calcResults = (state, dispatch, dolarTOReal) => {
         const totalRecreationInflation = totalWithInflation(isBrazil, inflation, totalRecreation)
         impacts.push({ label: language.recreation, displayName: language.recreation, category: CATEGORY_DEFORESTATION, value: getValueToCountry(country_region, totalRecreationInflation, dolarTOReal)  })
 
-        console.log('especies', country_region, likeMining, popDensity2010, species, typeValueLikeMining, hectareValue)
         const totalCulturedAndSpecies = culturedAndSpecies(country_region, likeMining, popDensity2010, species, typeValueLikeMining, hectareValue)
         const totalCulturedAndSpeciesInflation = totalWithInflation(isBrazil, inflation, totalCulturedAndSpecies)
         impacts.push({ label: language.culturedAndSpecies, displayName: language.culturedAndSpecies, category: CATEGORY_DEFORESTATION, value: getValueToCountry(country_region, totalCulturedAndSpeciesInflation, dolarTOReal)  })
@@ -147,7 +145,6 @@ const calcResults = (state, dispatch, dolarTOReal) => {
 
         const reducer = ((acc, current) => acc+current.value);
         const totalValue = impacts.reduce(reducer, 0);
-        console.log(impacts)
 
         dispatch({ type: stateTypes.ADD_VALUE, payload: impacts })
         dispatch({ type: stateTypes.CHANGE_TOTALVALUE, payload: totalValue })

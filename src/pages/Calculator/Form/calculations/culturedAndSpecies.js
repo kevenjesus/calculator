@@ -4,7 +4,6 @@ import vpl from "utils/vpl";
 import { ALLUVIUM, AMOUNT_GOLD, FERRY, IMPACTED_AREA, PIT } from "../consts";
 
 const culturedAndSpecies = (country_region, likeMining, popDensity2010, species, typeValueLikeMining, hectare) => {
-  console.log(species)
   const { general, bioprospecting } = fixedCalcultions(country_region)
   const { discountRate } = bioprospecting
   const { celciusTemperature, GDPperCapitaBrazilUSD } = general
