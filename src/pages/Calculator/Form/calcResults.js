@@ -143,7 +143,8 @@ const calcResults = (state, dispatch, dolarTOReal) => {
         const totalsoilMercuryRemediationInflation = totalWithInflation(isBrazil, inflation, totalsoilMercuryRemediation)
         impacts.push({ label: language.soilMercuryRemediation, displayName: language.soilMercuryRemediation, category: CATEGORY_MERCURY, value: getValueToCountry(country_region, totalsoilMercuryRemediationInflation, dolarTOReal) })
 
-        const impactsFiltered = likeMining === FERRY ? impacts.filter(impact => {
+        // eslint-disable-next-line
+        const impactsFiltered = likeMining === FERRY ? impacts.filter(function(impact) {
             if(impact.category !== CATEGORY_DEFORESTATION) {
                 return impact
             }

@@ -2,7 +2,7 @@ import {  useCallback, useContext, useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Button, TextField } from 'theme'
 import { Grid, Row, Col } from 'react-flexbox-grid'
-import { ALLUVIUM, AMOUNT_GOLD, CATEGORY_DEFORESTATION, CATEGORY_MERCURY, CATEGORY_SILTING_RIVERS, FERRY, IMPACTED_AREA, MONTHS_OF_MINING, NO, PIT, YEARS_OF_MINING, YES } from 'pages/Calculator/Form/consts'
+import { ALLUVIUM, AMOUNT_GOLD, CATEGORY_DEFORESTATION, CATEGORY_MERCURY, CATEGORY_SILTING_RIVERS, FERRY, IMPACTED_AREA, NO, PIT, YEARS_OF_MINING, YES } from 'pages/Calculator/Form/consts'
 import { Container, Headline, ButtonFixed, HiddenPrint, HiddenXS, HiddenSm } from 'pages/Calculator/ImpactsStyles'
 import { Monetary, MonetaryType, Label, FormGroup, Card } from './style'
 import Chart from 'components/Chart'
@@ -156,7 +156,7 @@ const FormCalc = () => {
         dispatch({ type: stateTypes.SET_COUNTRY, payload: dataCountries[0].id })
         submitCalc({...stateContext, calculator:{...calculator, state: uf, country: dataCountries[0].id, counties: dataCountries}})
 
-    }, [dispatch, stateContext, submitCalc])
+    }, [dispatch, stateContext, submitCalc, calculator])
 
     useEffect(() => {
         const getStates = () => {
@@ -249,7 +249,7 @@ const FormCalc = () => {
         const { value } = e.target
         getCounties(value)
         dispatch({ type: stateTypes.SET_STATE, payload: value })
-    }, [getCounties, dispatch, submitCalc, stateContext, calculator])
+    }, [getCounties, dispatch])
 
     const handleCountry = useCallback((e) => {
         const { value } = e.target
@@ -279,12 +279,11 @@ const FormCalc = () => {
 
     const handleValuationMethod = useCallback((e) => {
         const { value } = e.target
-        const { analysisUnit } = calculator
         dispatch({ type: stateTypes.SET_VALUATION_METHOD, payload: Number(value) })
         submitCalc({...stateContext, calculator:{ ...calculator, valuatioMethod: Number(value)}})
 
 
-    }, [calculator, dispatch])
+    }, [calculator, stateContext, submitCalc, dispatch])
 
 
     const handleTxPrevalance = useCallback((e) => {
