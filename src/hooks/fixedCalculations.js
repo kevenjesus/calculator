@@ -27,6 +27,7 @@ const fixedCalcultions = (country_region) => {
          ************************/ 
 
         let general = {
+            speciesForZero: 69,
             GDPperCapitaBrazilUSD: 6796.84,
             celciusTemperature: 26.8,
             kmRotatedPerLiter: 2.5,
@@ -132,6 +133,7 @@ const fixedCalcultions = (country_region) => {
         }
 
         if(isPeru) {
+            general.speciesForZero = 5216.8
             general.GDPperCapitaBrazilUSD = 6126.9
             general.celciusTemperature = 26
             general.densityGold = 2.76
@@ -219,6 +221,7 @@ const fixedCalcultions = (country_region) => {
             
 
         }else if(isEquador) {
+            general.speciesForZero = 35
             general.GDPperCapitaBrazilUSD = 5600.39
             general.celciusTemperature = 24.5
             general.kmRotatedPerLiter = 2.86
@@ -306,6 +309,7 @@ const fixedCalcultions = (country_region) => {
 
         
         }else if(isColombia) {
+            general.speciesForZero = 7984
             general.GDPperCapitaBrazilUSD = 5334.6
             general.celciusTemperature = 26.3
             general.kmRotatedPerLiter = 3.17
