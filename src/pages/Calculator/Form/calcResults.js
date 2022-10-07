@@ -38,7 +38,6 @@ const totalWithInflation = (isBrazil, inflation, total) => {
 
 
 const calcResults = (state, dispatch, dolarTOReal) => {
-    console.log(state)
     const { calculator, language, country_region } = state
     const {
         knowRegion,

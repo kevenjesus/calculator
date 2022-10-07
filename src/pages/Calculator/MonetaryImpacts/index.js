@@ -306,7 +306,6 @@ const FormCalc = () => {
         }
     setPlaceholder(placeholder)
     }, [calculator.analysisUnit, calculatorForm])
-
     
     return (
         <Grid fluid id="ignorePDF">
