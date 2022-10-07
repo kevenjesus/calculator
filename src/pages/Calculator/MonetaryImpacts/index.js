@@ -281,17 +281,9 @@ const FormCalc = () => {
         const { value } = e.target
         const { analysisUnit } = calculator
         dispatch({ type: stateTypes.SET_VALUATION_METHOD, payload: Number(value) })
+        submitCalc({...stateContext, calculator:{ ...calculator, valuatioMethod: Number(value)}})
 
-        if(analysisUnit !== AMOUNT_GOLD && Number(value) === FERRY) {
-            dispatch({ type: stateTypes.SET_ANALYS_UNIT, payload: MONTHS_OF_MINING })
-            submitCalc({...stateContext, calculator:{ ...calculator, valuatioMethod: Number(value), analysisUnit: MONTHS_OF_MINING}})
-        }else if(analysisUnit !== AMOUNT_GOLD && Number(value) === PIT) {
-            dispatch({ type: stateTypes.SET_ANALYS_UNIT, payload: YEARS_OF_MINING })
-            submitCalc({...stateContext, calculator:{ ...calculator, valuatioMethod: Number(value), analysisUnit: YEARS_OF_MINING}})
-        }else if(analysisUnit !== AMOUNT_GOLD && Number(value) === ALLUVIUM) {
-            dispatch({ type: stateTypes.SET_ANALYS_UNIT, payload: IMPACTED_AREA })
-            submitCalc({...stateContext, calculator:{ ...calculator, valuatioMethod: Number(value), analysisUnit: IMPACTED_AREA}})
-        }
+
     }, [calculator, dispatch])
 
 
@@ -413,8 +405,8 @@ const FormCalc = () => {
             <Col xs={12}>
                 <label>{calculatorForm.labels.valueHypothesis}</label>
                 <select name="txPrevalencia" value={txPrevalence} onChange={handleTxPrevalance}>
-                    <option value="0.29">{calculatorForm.values.valueHypothesis.conservative}</option>
-                    <option value="0.343">{calculatorForm.values.valueHypothesis.precautionaryPrinciple}</option>
+                    <option value={0.29}>{calculatorForm.values.valueHypothesis.conservative}</option>
+                    <option value={0.343}>{calculatorForm.values.valueHypothesis.precautionaryPrinciple}</option>
                 </select>
             </Col>
         </Row>
