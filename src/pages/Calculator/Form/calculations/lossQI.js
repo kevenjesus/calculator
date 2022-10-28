@@ -102,6 +102,7 @@ const lossQI =  (country_region, likeMining, typeValueLikeMining, valueLikeMinin
   const disnorm6 = normDist(6, concentrationMediaMercuryHair, deflectionPatternAverageMercury, 1);
   const disnorm8 = normDist(8, concentrationMediaMercuryHair, deflectionPatternAverageMercury, 1);
   const disnorm10 = normDist(10, concentrationMediaMercuryHair, deflectionPatternAverageMercury, 1);
+  console.log('disnorm10', disnorm10)
   const disnorm12 = normDist(12, concentrationMediaMercuryHair, deflectionPatternAverageMercury, 1);
   const disnorm14 = normDist(14, concentrationMediaMercuryHair, deflectionPatternAverageMercury, 1);
   const disnorm16 = normDist(16, concentrationMediaMercuryHair, deflectionPatternAverageMercury, 1);

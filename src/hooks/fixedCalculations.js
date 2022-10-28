@@ -132,13 +132,13 @@ const fixedCalcultions = (country_region) => {
         }
 
         if(isPeru) {
-            general.GDPperCapitaBrazilUSD = 6126.9
+            general.GDPperCapitaBrazilUSD = 6692.2
             general.celciusTemperature = 26
             general.densityGold = 2.76
             general.excavationGoldLoss = 2
             general.kmRotatedPerLiter = 5.4
             general.priceLiterDieselUSD = 0.82
-            general.averageDriverSalaryFreightPerKmUSD = 0.4
+            general.averageDriverSalaryFreightPerKmUSD = 0.78
             general.quantityOfGoldGramsPerYearWell = 23700
             general.averageDepthOfFertileEarth = 0.4
             general.quantitOfM3ExcavatorPerHour = 70
@@ -180,7 +180,7 @@ const fixedCalcultions = (country_region) => {
             dredgingAndRiverSediments.prodMediaCava = 100
             dredgingAndRiverSediments.dredgingCostPerM3 = 7.51
             dredgingAndRiverSediments.prodOuroKgporMes = 0.009
-            dredgingAndRiverSediments.averageMotorPower = 250
+            dredgingAndRiverSediments.averageMotorPower = 130
             dredgingAndRiverSediments.productionSedimentTurnsFeatherTonnesPerMonth = 37.82
             dredgingAndRiverSediments.equivalentErosionTonPerHaPerYear = 12.54
             dredgingAndRiverSediments.erosionControlUSD = 13.28
@@ -197,7 +197,7 @@ const fixedCalcultions = (country_region) => {
             lossQI.birthRate = 17.55
             
 
-            neuroSymptomsGarimpeiro.amountOfGoldminersYear = 384
+            neuroSymptomsGarimpeiro.amountOfGoldminersYear = 170
             neuroSymptomsGarimpeiro.neuroTreatmentCostPerGoldMinerUSD = 353
 
             heartAttack.proMenOver40ByPopTotal = 0.1732

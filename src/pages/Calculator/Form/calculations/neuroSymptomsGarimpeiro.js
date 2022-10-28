@@ -18,6 +18,7 @@ const neuroSymptomsGarimpeiro = (country_region, likeMining, typeValueLikeMining
         const goldenGrass = quantityOfGoldGramsPerYearWell * valueLikeMining;
         const qtdTotalGoldMiners = goldenGrass / amountOfGoldminersYear;
         const qtdOfMinersAffected = txPrevalence * qtdTotalGoldMiners;
+        console.log('Quantidade de garimpeiros afetados', qtdOfMinersAffected)
         const neuroGoldMinersTreatmentCost = neuroTreatmentCostPerGoldMinerUSD * qtdOfMinersAffected;
 	
         const weightNeuroDisabilityGoldminersQtdGoldDiggers = weightNeuroDisabilityGoldminers * qtdTotalGoldMiners;
@@ -29,8 +30,9 @@ const neuroSymptomsGarimpeiro = (country_region, likeMining, typeValueLikeMining
     }else if (likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING) { //Input Meses de garimpo
         const goldenGrass = prodGoldMonthFerry * valueLikeMining;
         const tonumberOfGoldMiners = goldenGrass / amountOfGoldminersYear;
-        const numberOfMinersAffected = txPrevalence * tonumberOfGoldMiners;
-        const neuroGoldMinersTreatmentCost = neuroTreatmentCostPerGoldMinerUSD * numberOfMinersAffected;
+        const qtdOfMinersAffected = txPrevalence * tonumberOfGoldMiners;
+        console.log('Quantidade de garimpeiros afetados', qtdOfMinersAffected)
+        const neuroGoldMinersTreatmentCost = neuroTreatmentCostPerGoldMinerUSD * qtdOfMinersAffected;
 
         const weightNeuroDisabilityGoldminers_QtdGarimpeiros = weightNeuroDisabilityGoldminers  * tonumberOfGoldMiners;
         const DALYyearsGoldMiner = txPrevalence * weightNeuroDisabilityGoldminers_QtdGarimpeiros;
@@ -41,6 +43,7 @@ const neuroSymptomsGarimpeiro = (country_region, likeMining, typeValueLikeMining
     }else {
         const qtdTotalGoldMiners = gold / amountOfGoldminersYear;
         const qtdOfMinersAffected = qtdTotalGoldMiners * txPrevalence;
+        console.log('Quantidade de garimpeiros afetados', qtdOfMinersAffected)
         const neuroGoldMinersTreatmentCost = qtdOfMinersAffected * neuroTreatmentCostPerGoldMinerUSD;
 	
         const weightNeuroDisabilityGoldminersQtdGoldDiggers = weightNeuroDisabilityGoldminers * qtdTotalGoldMiners;
