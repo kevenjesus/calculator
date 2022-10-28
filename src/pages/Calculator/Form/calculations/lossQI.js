@@ -103,7 +103,6 @@ const lossQI =  (country_region, likeMining, typeValueLikeMining, valueLikeMinin
   const disnorm6 = normDist(6, concentrationMediaMercuryHair, deflectionPatternAverageMercury, 1);
   const disnorm8 = normDist(8, concentrationMediaMercuryHair, deflectionPatternAverageMercury, 1);
   const disnorm10 = normDist(10, concentrationMediaMercuryHair, deflectionPatternAverageMercury, 1);
-  console.log('disnorm10', disnorm10)
   const disnorm12 = normDist(12, concentrationMediaMercuryHair, deflectionPatternAverageMercury, 1);
   const disnorm14 = normDist(14, concentrationMediaMercuryHair, deflectionPatternAverageMercury, 1);
   const disnorm16 = normDist(16, concentrationMediaMercuryHair, deflectionPatternAverageMercury, 1);
@@ -119,6 +118,10 @@ const lossQI =  (country_region, likeMining, typeValueLikeMining, valueLikeMinin
   const disnorm36 = normDist(36, concentrationMediaMercuryHair, deflectionPatternAverageMercury, 1);
   const disnorm38 = normDist(38, concentrationMediaMercuryHair, deflectionPatternAverageMercury, 1);
   const disnorm40 = normDist(40, concentrationMediaMercuryHair, deflectionPatternAverageMercury, 1);
+ 
+
+  const porcentNascidosVivosPerdaQIAcimaDe2Pts = 1 - disnorm10
+  console.log('porcentNascidosVivosPerdaQIAcimaDe2Pts', porcentNascidosVivosPerdaQIAcimaDe2Pts)
 
   const distNorm0ate2 = ((1 - disnorm0) - (1 - disnorm2)) * 1000 * 0.0005;
   const distNorm2ate4 = ((1 - disnorm2) - (1 - disnorm4)) * 1000 * 0.0022;

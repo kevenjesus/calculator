@@ -31,7 +31,7 @@ const convertAllinHectare = (country_region, likeMining, typeValueLikeMining, va
         
     }else if(likeMining === PIT && AMOUNT_GOLD){ 
         //const hectare = 0.31;
-        const proporcaoKgporHectare = valueLikeMining * hectare
+        const proporcaoKgporHectare = valueLikeMining / hectare
         console.log('proporcaoKgporHectare', proporcaoKgporHectare)
         const hectareOverflow = hectare * overflow;
         console.log('hectare', hectareOverflow)
@@ -45,7 +45,7 @@ const convertAllinHectare = (country_region, likeMining, typeValueLikeMining, va
         const lossyVolume = volumeWithoutLoss * excavationGoldLoss;
         const affectedAreaM2 = lossyVolume / pitDepth;
         const hectare = affectedAreaM2 / 10000;
-        const proporcaoKgporHectare = valueLikeMining * hectare
+        const proporcaoKgporHectare = valueLikeMining / hectare
         console.log('proporcaoKgporHectare', proporcaoKgporHectare)
         const hectareOverflow = hectare * overflow;
         console.log('hectare', hectareOverflow)
@@ -66,7 +66,7 @@ const convertAllinHectare = (country_region, likeMining, typeValueLikeMining, va
         const calculationBaseTon = toSoilUpturned / (sterileOreRatio + 1);
         const revolvedMineralTon = calculationBaseTon * 1;
         const goldGrass = cavaAverageProductivity * revolvedMineralTon;
-        const proporcaoKgporHectare = goldGrass * hectare
+        const proporcaoKgporHectare = goldGrass / hectare
         console.log('proporcaoKgporHectare', proporcaoKgporHectare)
         console.log('hectare', hectare)
         return hectare
