@@ -55,7 +55,7 @@ const heartAttack = (country_region, likeMining, typeValueLikeMining, valueLikeM
     
     const methyladPercentValue = txPrevalence === CONSERVATIVE ? methyladPercent_conservative : methyladPercent;
     const toMethylatedWater = methyladPercentValue * HgGrassReleasedInWater;
-    console.log('Mercurio metilado na agua', HgGrassReleasedInWater)
+    console.log('Mercurio metilado na agua', toMethylatedWater)
     
     
     const years = 50;
@@ -92,8 +92,6 @@ const heartAttack = (country_region, likeMining, typeValueLikeMining, valueLikeM
     const ingestionMediaDailyMicrogramMercuryRural = (AverageFishConsumptionPerDayInRuralGrams * levelMediumContaminationFish) / ruralIndividualWeight;
     const ingestionMediaMercuryDaily1IndividualInMicrogramsPerKG = (ruralPopMunicipality * ingestionMediaDailyMicrogramMercuryRural) + (urbanPopMunicipality * ingestionMediaDailyMicrogramMercuryUrban);
     const ingestionMediaMercuryDaily1IndividualInGramsPerKGDay = ingestionMediaMercuryDaily1IndividualInMicrogramsPerKG/1000000;
-    console.log(' IngestaoMediaMercurioDiaria1IndividuoEmMicrogramasporkg', ingestionMediaMercuryDaily1IndividualInGramsPerKGDay)
-
     const ingestionMediaDaily1IndividualInGrams = ingestionMediaMercuryDaily1IndividualInGramsPerKGDay*individualAverageWeight;
     const ingestionMediaMercuryEmyears = daysIn50years * ingestionMediaDaily1IndividualInGrams;
 

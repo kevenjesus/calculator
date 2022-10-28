@@ -77,6 +77,7 @@ const lossQI =  (country_region, likeMining, typeValueLikeMining, valueLikeMinin
   const ingestionMediaMercuryIn50years = (365*years)* ingestionMediaDailyIndividualInGramsPerDaily;
   
   const concentrationMediaMercuryHair = ingestionMediaMercuryDaily1IndividualInMicrogramsPerKG/0.1;
+  console.log('concentração médio de mercurio no cabelo', concentrationMediaMercuryHair)
   const deflectionPatternAverageMercury = concentrationMediaMercuryHair/2;
   const rAoQuadrado = Math.pow(100, 2)
   const popSize100kmRadius = isRegion ? (popDensity2060 * (Math.PI * rAoQuadrado)) : (densityPopulationalRegionNorth2060 * (Math.PI * rAoQuadrado));
