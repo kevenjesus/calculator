@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import Form from 'pages/Calculator/Form'
 import Loading from 'pages/Calculator/Loading'
 import Deforestation from 'pages/Calculator/Deforestation'
@@ -37,7 +37,7 @@ const Routes = () => {
         // eslint-disable-next-line
     }, [USDtoBRL])
 
-    const isHome = window.location.pathname === '/'
+    const isHome = window.location.hash === '#/'
     return (
         <Router>
             {!isHome  && <Header />}

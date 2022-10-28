@@ -108,6 +108,27 @@ const FormCalc = () => {
         },
     ]
 
+    const checkFormIsInvalid = useCallback(() => {
+        alert.removeAll()
+        if (qtdAnalysis.value === '') {
+            dispatch({ type: stateTypes.SET_QTD_ANALYS_UNIT, payload: { ...qtdAnalysis, error: true } })
+            alert.error(<span style={{textTransform: 'initial'}}>Por favor. Preencha o valor de unidade</span>)
+            return true
+        }
+        return false
+    }, [alert, dispatch, qtdAnalysis])
+
+    const submitCalc = useCallback((state) => {
+        if(checkFormIsInvalid()) {
+            return;
+        }
+        
+        calcResults(state, dispatch, priceUSDtoBRL)
+        const { calculator } = state
+        sessionStorage.removeItem('@Calculator/form')
+        sessionStorage.setItem('@Calculator/form', JSON.stringify(calculator))
+    },[checkFormIsInvalid, priceUSDtoBRL, dispatch])
+
 
     const getCounties = useCallback((uf) => {
         let dataCountries = []
@@ -133,8 +154,9 @@ const FormCalc = () => {
 
         dispatch({ type: stateTypes.SET_COUNTIES, payload: dataCountries })
         dispatch({ type: stateTypes.SET_COUNTRY, payload: dataCountries[0].id })
+        submitCalc({...stateContext, calculator:{...calculator, state: uf, country: dataCountries[0].id, counties: dataCountries}})
 
-    }, [dispatch])
+    }, [dispatch, stateContext, submitCalc])
 
     useEffect(() => {
         const getStates = () => {
@@ -184,26 +206,6 @@ const FormCalc = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [language, knowRegion])
 
-    const checkFormIsInvalid = useCallback(() => {
-        alert.removeAll()
-        if (qtdAnalysis.value === '') {
-            dispatch({ type: stateTypes.SET_QTD_ANALYS_UNIT, payload: { ...qtdAnalysis, error: true } })
-            alert.error(<span style={{textTransform: 'initial'}}>Por favor. Preencha o valor de unidade</span>)
-            return true
-        }
-        return false
-    }, [alert, dispatch, qtdAnalysis])
-
-    const submitCalc = useCallback((state) => {
-        if(checkFormIsInvalid()) {
-            return;
-        }
-        
-        calcResults(state, dispatch, priceUSDtoBRL)
-        const { calculator } = state
-        sessionStorage.removeItem('@Calculator/form')
-        sessionStorage.setItem('@Calculator/form', JSON.stringify(calculator))
-    },[checkFormIsInvalid, priceUSDtoBRL, dispatch])
 
     const updateCalc = useCallback(() => {
         submitCalc(stateContext)
@@ -247,7 +249,6 @@ const FormCalc = () => {
         const { value } = e.target
         getCounties(value)
         dispatch({ type: stateTypes.SET_STATE, payload: value })
-        submitCalc({...stateContext, calculator:{...calculator, state: value}})
     }, [getCounties, dispatch, submitCalc, stateContext, calculator])
 
     const handleCountry = useCallback((e) => {
@@ -283,10 +284,13 @@ const FormCalc = () => {
 
         if(analysisUnit !== AMOUNT_GOLD && Number(value) === FERRY) {
             dispatch({ type: stateTypes.SET_ANALYS_UNIT, payload: MONTHS_OF_MINING })
+            submitCalc({...stateContext, calculator:{ ...calculator, valuatioMethod: Number(value), analysisUnit: MONTHS_OF_MINING}})
         }else if(analysisUnit !== AMOUNT_GOLD && Number(value) === PIT) {
             dispatch({ type: stateTypes.SET_ANALYS_UNIT, payload: YEARS_OF_MINING })
+            submitCalc({...stateContext, calculator:{ ...calculator, valuatioMethod: Number(value), analysisUnit: YEARS_OF_MINING}})
         }else if(analysisUnit !== AMOUNT_GOLD && Number(value) === ALLUVIUM) {
             dispatch({ type: stateTypes.SET_ANALYS_UNIT, payload: IMPACTED_AREA })
+            submitCalc({...stateContext, calculator:{ ...calculator, valuatioMethod: Number(value), analysisUnit: IMPACTED_AREA}})
         }
     }, [calculator, dispatch])
 
@@ -467,7 +471,7 @@ const MonetaryImpacts = () => {
     const totalGoldPrice = isBrazil ? ToBRL(subTotalGoldPrice) : toUSD(subTotalGoldPrice)
 
     
-    const SubValueTotal = subValueTotalImpact+goldPrice
+    const SubValueTotal = subValueTotalImpact+subTotalGoldPrice
     const valueTotal = isBrazil ? ToBRL(SubValueTotal) : toUSD(SubValueTotal)
 
     const goldLabel = language.goldImpact_graphic.replace("$grams", goldValue)

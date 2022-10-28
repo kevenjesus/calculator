@@ -20,7 +20,7 @@ import recoveryOfTopsoil from "./calculations/recoverOfTopsoil"
 import recreation from "./calculations/recreation"
 import soilMercuryRemediation from "./calculations/soilMercuryRemediation"
 import woodAndNonWoodProducts from "./calculations/woodAndNonWoodProducts"
-import { AMOUNT_GOLD, CATEGORY_DEFORESTATION, CATEGORY_MERCURY, CATEGORY_SILTING_RIVERS, IMPACTED_AREA } from "./consts"
+import { AMOUNT_GOLD, CATEGORY_DEFORESTATION, CATEGORY_MERCURY, CATEGORY_SILTING_RIVERS, FERRY, IMPACTED_AREA } from "./consts"
 
 const totalWithInflation = (isBrazil, inflation, total) => {
     const inflationNumber = inflation ? Number(inflation.replace(",", ".")) : 0
@@ -43,7 +43,6 @@ const calcResults = (state, dispatch, dolarTOReal) => {
         knowRegion,
         counties,
         country,
-        state: StateCity,
         qtdAnalysis,
         pitDepth,
         txPrevalence,
@@ -72,8 +71,7 @@ const calcResults = (state, dispatch, dolarTOReal) => {
         const urbanPopMunicipality = knowRegion ? currentCountry.urbanPopMunicipality : 0.7353;
         const ruralPopMunicipality = knowRegion ? currentCountry.ruralPopMunicipality : 0.2647;
         const distanceanningCenter = knowRegion ? currentCountry.distanceanningCenter : 212.74;
-        const species = knowRegion ? (currentCountry.species <= 0 ? StateCity.especie : currentCountry.species) : 69.21;
-
+        const species = knowRegion ? (currentCountry.species <= 0 ? 69.21 : currentCountry.species) : 69.21;
         // tipo de garimpo = likeMining
         // valor do tipo de garimpo = valueLikeMining
         // tipo de valor do garimpo = typeValueLikeMining
@@ -144,11 +142,19 @@ const calcResults = (state, dispatch, dolarTOReal) => {
         const totalsoilMercuryRemediationInflation = totalWithInflation(isBrazil, inflation, totalsoilMercuryRemediation)
         impacts.push({ label: language.soilMercuryRemediation, displayName: language.soilMercuryRemediation, category: CATEGORY_MERCURY, value: getValueToCountry(country_region, totalsoilMercuryRemediationInflation, dolarTOReal) })
 
-        const reducer = ((acc, current) => acc+current.value);
-        const totalValue = impacts.reduce(reducer, 0);
-        console.log(impacts)
+        const impactsFiltered = likeMining === FERRY ? impacts.filter(impact => {
+            if(impact.category !== CATEGORY_DEFORESTATION) {
+                return impact
+            }
+        }) : impacts
 
-        dispatch({ type: stateTypes.ADD_VALUE, payload: impacts })
+
+        const reducer = ((acc, current) => acc+current.value);
+        const totalValue = impactsFiltered.reduce(reducer, 0);
+
+    
+
+        dispatch({ type: stateTypes.ADD_VALUE, payload: impactsFiltered })
         dispatch({ type: stateTypes.CHANGE_TOTALVALUE, payload: totalValue })
         
 
