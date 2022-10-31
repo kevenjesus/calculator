@@ -57,7 +57,7 @@ const calcResults = (state, dispatch, dolarTOReal) => {
 
         const impacts = []
         const { general } = fixedCalcultions(country_region)
-        const { densityPopulationalRegionNorth2060 } = general
+        const { densityPopulationalRegionNorth2060, speciesForZero } = general
         const hectareValue = calculator.analysisUnit === AMOUNT_GOLD ? goldToHecatere(Number(qtdAnalysis.value), pitDepth, country_region) : Number(qtdAnalysis.value)
         const goldValue = calculator.analysisUnit === IMPACTED_AREA ? hectareToGold(Number(qtdAnalysis.value), pitDepth, country_region) : Number(qtdAnalysis.value)
         const gramadeOuroporHe = goldenGramForHectare(hectareValue, goldValue)
@@ -71,7 +71,7 @@ const calcResults = (state, dispatch, dolarTOReal) => {
         const urbanPopMunicipality = knowRegion ? currentCountry.urbanPopMunicipality : 0.7353;
         const ruralPopMunicipality = knowRegion ? currentCountry.ruralPopMunicipality : 0.2647;
         const distanceanningCenter = knowRegion ? currentCountry.distanceanningCenter : 212.74;
-        const species = knowRegion ? (currentCountry.species <= 0 ? 69.21 : currentCountry.species) : 69.21;
+        const species = knowRegion ? (currentCountry.species <= 0 ? speciesForZero : currentCountry.species) : speciesForZero;
         // tipo de garimpo = likeMining
         // valor do tipo de garimpo = valueLikeMining
         // tipo de valor do garimpo = typeValueLikeMining
