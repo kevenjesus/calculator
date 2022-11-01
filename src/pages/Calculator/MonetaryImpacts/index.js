@@ -546,12 +546,13 @@ const MonetaryImpacts = () => {
         pdf.text('https://calculadora.conservation-strategy.org', 146, 287, { align: 'left' })
         pdf.addImage(canvasTotalMoney.toDataURL('image/png'), 'JPEG', 7, 10);
         pdf.addImage(canvasGraphics_resume.toDataURL('image/png'), 'JPEG', 10, 55);
-        pdf.addImage(canvasToNotMonetary.toDataURL('image/png'), 'JPEG', 7, 137);
         pdf.addPage('a4', 'p')
         
         pdf.addImage(canvasGraphics_total.toDataURL('image/png'), 'JPEG', 7, 10);
         pdf.text(footer, 88, 287, { align: 'right' })
         pdf.text('https://calculadora.conservation-strategy.org', 146, 287, { align: 'left' })
+        pdf.addPage('a4', 'p')
+        pdf.addImage(canvasToNotMonetary.toDataURL('image/png'), 'JPEG', 7, 10);
         pdf.save("CSF-report.pdf");
         tablenotMonetary.firstElementChild.removeAttribute("style")
         headlineNotMonetary.removeAttribute("style")
