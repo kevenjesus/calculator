@@ -173,6 +173,7 @@ const calcResults = (state, dispatch, dolarTOReal) => {
             }
         }) : impacts
 
+        // eslint-disable-next-line
         const notMonetaryFiltered = notMonetary.filter(impact => {
             if(impact.value) {
                 return impact
