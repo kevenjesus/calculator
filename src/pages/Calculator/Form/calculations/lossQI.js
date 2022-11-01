@@ -161,7 +161,11 @@ distNorm28ate30 + distNorm30ate32 + distNorm32ate34 + distNorm34ate36 + distNorm
   //const aDALYUSD = 103599;
   const toLossQIFetuses = daly*aDALYUSD;
   
-  return toLossQIFetuses
+  return {
+    concentrationMediaMercuryHair,
+    porcentNascidosVivosPerdaQIAcimaDe2Pts,
+    value: toLossQIFetuses
+  } 
 
 }
 

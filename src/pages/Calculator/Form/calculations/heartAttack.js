@@ -126,7 +126,12 @@ const heartAttack = (country_region, likeMining, typeValueLikeMining, valueLikeM
     const toCostOfInfarctionTreatmentYears = infarctionIncidenceTreatment * durationDisabilityInfarction * annualInfarctTreatmentCostUSD;
     const toDALYCostAndInfarctionTreatment = toCostOfInfarctionTreatmentYears + DALYInfarction;
 
-    return toDALYCostAndInfarctionTreatment
+    return {
+        toMethylatedWater,
+        toPopulationAffectedMercuryHair,
+        menOver40InTheRegionIn27Years,
+        value: toDALYCostAndInfarctionTreatment
+    } 
 }
 
 export default heartAttack

@@ -27,7 +27,10 @@ const convertAllinHectare = (country_region, likeMining, typeValueLikeMining, va
         console.log('proporcaoKgporHectare', proporcaoKgporHectare)
         const hectareOverflow = hectare * overflow;
         console.log('hectare', hectareOverflow)
-        return hectareOverflow
+        return {
+            proporcaoKgporHectare,
+            value: hectareOverflow
+        }
         
     }else if(likeMining === PIT && AMOUNT_GOLD){ 
         //const hectare = 0.31;
@@ -35,8 +38,10 @@ const convertAllinHectare = (country_region, likeMining, typeValueLikeMining, va
         console.log('proporcaoKgporHectare', proporcaoKgporHectare)
         const hectareOverflow = hectare * overflow;
         console.log('hectare', hectareOverflow)
-        return hectareOverflow
-
+        return {
+            proporcaoKgporHectare,
+            value: hectareOverflow
+        }
     }else if (typeValueLikeMining === AMOUNT_GOLD){
         const turnedSoilTon = valueLikeMining / cavaAverageProductivity;
         const turnedSterileTon = turnedSoilTon * sterileMineralRelation;
@@ -49,8 +54,10 @@ const convertAllinHectare = (country_region, likeMining, typeValueLikeMining, va
         console.log('proporcaoKgporHectare', proporcaoKgporHectare)
         const hectareOverflow = hectare * overflow;
         console.log('hectare', hectareOverflow)
-        return hectareOverflow
-
+        return {
+            proporcaoKgporHectare,
+            value: hectareOverflow
+        }
     }else if(likeMining === FERRY){
         return 0
     }else{
@@ -69,8 +76,10 @@ const convertAllinHectare = (country_region, likeMining, typeValueLikeMining, va
         const proporcaoKgporHectare = goldGrass / hectare
         console.log('proporcaoKgporHectare', proporcaoKgporHectare)
         console.log('hectare', hectare)
-        return hectare
-    }
+        return {
+            proporcaoKgporHectare,
+            value: hectare
+        }    }
 
 }
 export default convertAllinHectare 

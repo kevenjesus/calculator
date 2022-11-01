@@ -25,7 +25,10 @@ const neuroSymptomsGarimpeiro = (country_region, likeMining, typeValueLikeMining
         const dalyYearsProspectors = txPrevalence * weightNeuroDisabilityGoldminersQtdGoldDiggers;
         const toCostDALYGoldDigger = aDALYUSD * dalyYearsProspectors;
         const toGoldMinersCost = toCostDALYGoldDigger + neuroGoldMinersTreatmentCost;
-        return toGoldMinersCost
+        return {
+            qtdOfMinersAffected,
+            value: toGoldMinersCost
+        }
 
     }else if (likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING) { //Input Meses de garimpo
         const goldenGrass = prodGoldMonthFerry * valueLikeMining;
@@ -38,7 +41,10 @@ const neuroSymptomsGarimpeiro = (country_region, likeMining, typeValueLikeMining
         const DALYyearsGoldMiner = txPrevalence * weightNeuroDisabilityGoldminers_QtdGarimpeiros;
         const toCostDALYGoldMiners =  aDALYUSD  * DALYyearsGoldMiner;
         const toCostGoldMiners = toCostDALYGoldMiners  + neuroGoldMinersTreatmentCost;
-        return toCostGoldMiners
+        return {
+            qtdOfMinersAffected,
+            value: toCostGoldMiners
+        }
 
     }else {
         const qtdTotalGoldMiners = gold / amountOfGoldminersYear;
@@ -50,9 +56,11 @@ const neuroSymptomsGarimpeiro = (country_region, likeMining, typeValueLikeMining
         const dalyYearsProspectors = txPrevalence * weightNeuroDisabilityGoldminersQtdGoldDiggers;
         const toCostDALYGoldDigger = dalyYearsProspectors * aDALYUSD;
         const toGoldMinersCost = toCostDALYGoldDigger + neuroGoldMinersTreatmentCost;
-        return toGoldMinersCost
+        return {
+            qtdOfMinersAffected,
+            value: toGoldMinersCost
+        }
     }
-
 }
 
 export default neuroSymptomsGarimpeiro

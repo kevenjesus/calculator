@@ -99,7 +99,10 @@ const cavaGroundingCostAuFertile = (country_region,likeMining, typeValueLikeMini
         const toCostShippingGroundFertilityRoundtrip = totalCostShippingFertileOneWay * 2;
         const toCostFreightFinalFertileGrounding = toCostShippingGroundFertilityRoundtrip * excavatornsQuantityFertil;
         const toCostOfFertileGroundingWithFreight = toCostFreightFinalFertileGrounding + toCostGroundingFertileLandWithoutFreight;
-        return toCostOfFertileGroundingWithFreight
+        return {
+            lossyVolume,
+            value: toCostOfFertileGroundingWithFreight
+        }
         
     }else if (likeMining === PIT && typeValueLikeMining === AMOUNT_GOLD){
 
@@ -123,7 +126,10 @@ const cavaGroundingCostAuFertile = (country_region,likeMining, typeValueLikeMini
         const toCostShippingGroundFertilityRoundtrip = totalCostShippingFertileOneWay * 2;
         const toCostFreightFinalFertileGrounding = toCostShippingGroundFertilityRoundtrip * excavatornsQuantityFertil;
         const toCostOfFertileGroundingWithFreight = toCostFreightFinalFertileGrounding + toCostGroundingFertileLandWithoutFreight;
-        return toCostOfFertileGroundingWithFreight
+        return {
+            lossyVolume,
+            value: toCostOfFertileGroundingWithFreight
+        }
 
     }else { 
         
@@ -147,7 +153,10 @@ const cavaGroundingCostAuFertile = (country_region,likeMining, typeValueLikeMini
         const toCostShippingGroundFertilityRoundtrip = totalCostShippingFertileOneWay * 2;
         const toCostFreightFinalFertileGrounding = toCostShippingGroundFertilityRoundtrip * excavatornsQuantityFertil;
         const toCostOfFertileGroundingWithFreight = toCostFreightFinalFertileGrounding + toCostGroundingFertileLandWithoutFreight;
-        return toCostOfFertileGroundingWithFreight
+        return {
+            lossyVolume,
+            value: toCostOfFertileGroundingWithFreight
+        }
     }
 }
 

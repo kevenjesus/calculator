@@ -14,6 +14,7 @@ import MenuImpacts from '../Menu';
 import popSize100kmRadius from 'utils/popSize100kmRadius';
 import { BRAZIL, countries_region } from 'components/CountrySelect';
 import toUSD from 'utils/toUSD';
+import * as S from './style'
 
 const InfoComponent = ({language}) => {
     if(language === 'enUS') {
@@ -28,7 +29,7 @@ const InfoComponent = ({language}) => {
 const MercuryContamination = () => {
     const {state} = useContext(AppContext)
     const { language, calculator, country_region, priceUSDtoBRL } = state
-    const { counties, country, knowRegion } = calculator
+    const { counties, country, knowRegion, notMonetary } = calculator
     const { impacts } = language
 
     const isBrazil = country_region && country_region.country === countries_region[BRAZIL].country
@@ -70,6 +71,32 @@ const MercuryContamination = () => {
                         {impacts.mercuryContamination.paragraphy_02} 
                         </Text>
                         <InfoComponent language={language.type} />
+                    </Col>
+                </Row>
+                <Row>
+                    <Col xs={12}>
+                        <h2>Impactos não monetários</h2>
+                        <br />
+                        <S.TableResponsive>
+                        <S.Table>
+                            <thead>
+                                <tr>
+                                    <S.Th width="700px">Tipo de impacto</S.Th>
+                                    <S.Th>Resultado</S.Th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    notMonetary.map(impact => (
+                                        <tr>
+                                            <S.Td>{impact.label}</S.Td>
+                                            <S.Td>{`${impact.value} ${impact.measure}`}</S.Td>
+                                        </tr>
+                                    ))
+                                }
+                            </tbody>
+                        </S.Table>
+                        </S.TableResponsive>
                     </Col>
                 </Row>
                 <Row>
