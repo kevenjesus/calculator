@@ -81,7 +81,7 @@ const MercuryContamination = () => {
                         <S.Table>
                             <thead>
                                 <tr>
-                                    <S.Th width="700px">Tipo de impacto</S.Th>
+                                    <S.Th width="800px">Tipo de impacto</S.Th>
                                     <S.Th>Resultado</S.Th>
                                 </tr>
                             </thead>
@@ -104,6 +104,8 @@ const MercuryContamination = () => {
                         <DataChart impact={impactsMercury} headline={impacts.mercuryContamination.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
                     </Col>
                 </Row>
+                <br />
+                <br />
                 <Row>
                     <Col xs={12} smOffset={3} sm={3}>
                         <Link to="/impacts/mercury-contamination/references">

@@ -20,6 +20,7 @@ export const Th = styled.th`
 
 export const Td = styled.td`
     padding: 20px;
+    font-size: 20px;
     text-align: left;
     border: 1px solid black;
     border-collapse: collapse;

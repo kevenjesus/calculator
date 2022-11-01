@@ -629,7 +629,7 @@ const MonetaryImpacts = () => {
                         <S.Table>
                             <thead>
                                 <tr>
-                                    <S.Th width="700px">Tipo de impacto</S.Th>
+                                    <S.Th width="800px">Tipo de impacto</S.Th>
                                     <S.Th>Resultado</S.Th>
                                 </tr>
                             </thead>

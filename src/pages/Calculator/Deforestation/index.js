@@ -87,6 +87,8 @@ const Deforestation = () => {
                         <DataChart impact={impactsDesforestation} headline={impacts.deforestation.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
                     </Col>
                 </Row>
+                <br />
+                <br />
                 <Row>
                     <Col xs={12} smOffset={3} sm={3}>
                         <Link to="/impacts/deforestation/references">

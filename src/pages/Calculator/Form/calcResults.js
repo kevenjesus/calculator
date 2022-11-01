@@ -151,7 +151,7 @@ const calcResults = (state, dispatch, dolarTOReal) => {
         
         const { value: totalHeartAttack, toMethylatedWater, toPopulationAffectedMercuryHair, menOver40InTheRegionIn27Years } = heartAttack(country_region, likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, urbanPopMunicipality, ruralPopMunicipality, popDensity2060, goldValue, knowRegion)//gold
         const totalHeartAttackInflation = totalWithInflation(isBrazil, inflation, totalHeartAttack)
-        notMonetary.push({label: 'Quantidade de mercúrio que se transforma em metilmercúrio e entra na cadeia trófica (em gramas)', value: toMethylatedWater, measure: 'g de Hg'})
+        notMonetary.push({label: 'Quantidade de mercúrio que se transforma em metilmercúrio e entra na cadeia trófica (em gramas)', value: (Math.round(toMethylatedWater*100)/100), measure: 'g de Hg'})
         notMonetary.push({label: 'População potencialmente exposta ao risco', value: Math.ceil(toPopulationAffectedMercuryHair), measure: 'pessoa(s)'})
         notMonetary.push({label: 'População com risco de infarto agudo do miocárdio', value: Math.ceil(menOver40InTheRegionIn27Years), measure: 'pessoa(s)'})
         notMonetary.push({label: 'População com risco de hipertensão arterial', value: Math.ceil(peopleAbove20YearsoldInTheRegionIn52Years), measure: 'pessoa(s)'})
