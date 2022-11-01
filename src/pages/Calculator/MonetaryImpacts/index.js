@@ -520,7 +520,7 @@ const MonetaryImpacts = () => {
         const canvasGraphics_resume = await html2canvas(graphics_resume, { scale: 0.55 })
         const canvasGraphics_total = await html2canvas(graphics_total, { scale: 0.53 })
         const canvasTotalMoney = await html2canvas(totalMonay, { scale: 0.8 })
-        const canvasToNotMonetary = await html2canvas(tablenotMonetary, { scale: 0.58})
+        const canvasToNotMonetary = await html2canvas(tablenotMonetary, { scale: 0.52})
         
         var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         var today  = new Date();
@@ -619,8 +619,10 @@ const MonetaryImpacts = () => {
                         </Row>
                     </Col>
                 </Row>
-
+                
                <FormCalc />
+               <br />
+                <br />
                <Row id="table-notMonetary">
                     <Col xs={12}>
                         <h2>Impactos não monetários</h2>

@@ -59,7 +59,10 @@ const convertAllinHectare = (country_region, likeMining, typeValueLikeMining, va
             value: hectareOverflow
         }
     }else if(likeMining === FERRY){
-        return 0
+        return {
+            proporcaoKgporHectare: 0,
+            value: 0
+        }
     }else{
         const hectare = valueLikeMining
         const sterileOreRatio = 7;

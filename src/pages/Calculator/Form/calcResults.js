@@ -82,7 +82,6 @@ const calcResults = (state, dispatch, dolarTOReal) => {
 
         const goldGrass = convertAllinGold(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth)
         const { proporcaoKgporHectare, value: hecatereGrass } = convertAllinHectare(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth)
-
         notMonetary.push({label: 'Produção de ouro total', value: goldGrass, measure: 'kg de Au'})
         notMonetary.push({label: 'Kg de ouro por hectare impactado', value: (Math.round((proporcaoKgporHectare/1000)*100)/100), measure: 'kg de Au / ha'})
         notMonetary.push({label: 'Total de hectares impactados', value: (Math.round(hecatereGrass*100)/100), measure: 'ha'})
@@ -109,14 +108,18 @@ const calcResults = (state, dispatch, dolarTOReal) => {
         const totalCulturedAndSpeciesInflation = totalWithInflation(isBrazil, inflation, totalCulturedAndSpecies)
         impacts.push({ label: language.culturedAndSpecies, displayName: language.culturedAndSpecies, category: CATEGORY_DEFORESTATION, value: getValueToCountry(country_region, totalCulturedAndSpeciesInflation, dolarTOReal)  })
         
-        const { value: totalCavaGroundingCostAuFertile, lossyVolume: lossyVolumeFertile } = cavaGroundingCostAuFertile(country_region,likeMining, typeValueLikeMining, valueLikeMining, pitDepth, distanceanningCenter, goldValue)
-        const totalCavaGroundingCostAuFertileInflation = totalWithInflation(isBrazil, inflation, totalCavaGroundingCostAuFertile)
-        notMonetary.push({label: 'Volume de sedimentos movimentado', value: (Math.round(lossyVolumeFertile*100)/100), measure: 'm3'})
+       
         
-        const totalCavaGroundingCostAuNorm = cavaGroundingCostAuNorm(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth, distanceanningCenter, hectareValue)
-        const totalCavaGroundingCostAuNormInflation = totalWithInflation(isBrazil, inflation, totalCavaGroundingCostAuNorm)
-        const totalFertilNorm = totalCavaGroundingCostAuFertileInflation+totalCavaGroundingCostAuNormInflation
-        impacts.push({ label: language.cavaGroundingCostAu, displayName: language.cavaGroundingCostAu, category: CATEGORY_SILTING_RIVERS, value: getValueToCountry(country_region, totalFertilNorm, dolarTOReal) })
+        if(valuatioMethod !== FERRY) {
+            const { value: totalCavaGroundingCostAuFertile, lossyVolume: lossyVolumeFertile } = cavaGroundingCostAuFertile(country_region,likeMining, typeValueLikeMining, valueLikeMining, pitDepth, distanceanningCenter, goldValue)
+            const totalCavaGroundingCostAuFertileInflation = totalWithInflation(isBrazil, inflation, totalCavaGroundingCostAuFertile)
+            notMonetary.push({label: 'Volume de sedimentos movimentado', value: (Math.round(lossyVolumeFertile*100)/100), measure: 'm3'})
+
+            const totalCavaGroundingCostAuNorm = cavaGroundingCostAuNorm(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth, distanceanningCenter, hectareValue)
+            const totalCavaGroundingCostAuNormInflation = totalWithInflation(isBrazil, inflation, totalCavaGroundingCostAuNorm)
+            const totalFertilNorm = totalCavaGroundingCostAuFertileInflation+totalCavaGroundingCostAuNormInflation
+            impacts.push({ label: language.cavaGroundingCostAu, displayName: language.cavaGroundingCostAu, category: CATEGORY_SILTING_RIVERS, value: getValueToCountry(country_region, totalFertilNorm, dolarTOReal) })
+        }
         
         const totalRecoveryOfTopsoil = recoveryOfTopsoil(country_region, likeMining, distanceanningCenter, goldValue, gramadeOuroporHe, txPrevalence, typeValueLikeMining)
         const totalRecoveryOfTopsoiInflation = totalWithInflation(isBrazil, inflation, totalRecoveryOfTopsoil)
@@ -169,11 +172,18 @@ const calcResults = (state, dispatch, dolarTOReal) => {
             }
         }) : impacts
 
+        const notMonetaryFiltered = notMonetary.filter(impact => {
+            if(impact.value) {
+                return impact
+            }
+        })
+
 
         const reducer = ((acc, current) => acc+current.value);
         const totalValue = impactsFiltered.reduce(reducer, 0);
+        
 
-        dispatch({ type: stateTypes.SET_NOT_MONETARY, payload: notMonetary})
+        dispatch({ type: stateTypes.SET_NOT_MONETARY, payload: notMonetaryFiltered})
         dispatch({ type: stateTypes.ADD_VALUE, payload: impactsFiltered })
         dispatch({ type: stateTypes.CHANGE_TOTALVALUE, payload: totalValue })
         
