@@ -26,6 +26,8 @@ import convertAllinGold from 'utils/convertAllinGold'
 import toUSD from 'utils/toUSD'
 import { colors } from 'theme/colors'
 
+import * as S from 'pages/Calculator/MercuryContamination/style'
+
 
 
 export const DataChart = ({impact, headline, hiddenMonetary, txtTotalNonetary}) => {
@@ -427,7 +429,7 @@ const FormCalc = () => {
 const MonetaryImpacts = () => {
     const {state} = useContext(AppContext);
     const {language, calculator, country_region, priceUSDtoBRL} = state
-    const {  pitDepth } = calculator
+    const {  pitDepth, notMonetary } = calculator
     const {impacts} = language
     const history = useHistory();
 
@@ -504,9 +506,15 @@ const MonetaryImpacts = () => {
         const graphics_resume = document.getElementById('graphics_resume');
         const graphics_total = document.getElementById('graphics_total');
         const totalMonay = document.getElementById('totalMoney');
+        const tablenotMonetary = document.getElementById('table-notMonetary');
+        const headlineNotMonetary = document.getElementById('headline-notMonetary');
+        tablenotMonetary.firstElementChild.style.maxWidth = '73%';
+        headlineNotMonetary.style.fontSize = '23px';
+        
         const canvasGraphics_resume = await html2canvas(graphics_resume, { scale: 0.55 })
         const canvasGraphics_total = await html2canvas(graphics_total, { scale: 0.53 })
         const canvasTotalMoney = await html2canvas(totalMonay, { scale: 0.8 })
+        const canvasToNotMonetary = await html2canvas(tablenotMonetary, {scale: 0.7})
         
         var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         var today  = new Date();
@@ -527,13 +535,17 @@ const MonetaryImpacts = () => {
         pdf.text(footer, 88, 287, { align: 'right' })
         pdf.text('https://calculadora.conservation-strategy.org', 146, 287, { align: 'left' })
         pdf.addImage(canvasTotalMoney.toDataURL('image/png'), 'JPEG', 7, 10);
-        pdf.addImage(canvasGraphics_resume.toDataURL('image/png'), 'JPEG', 10, 70);
+        pdf.addImage(canvasGraphics_resume.toDataURL('image/png'), 'JPEG', 10, 55);
         pdf.addPage('a4', 'p')
-
+        
         pdf.addImage(canvasGraphics_total.toDataURL('image/png'), 'JPEG', 7, 10);
         pdf.text(footer, 88, 287, { align: 'right' })
         pdf.text('https://calculadora.conservation-strategy.org', 146, 287, { align: 'left' })
+        pdf.addPage('a4', 'p')
+        pdf.addImage(canvasToNotMonetary.toDataURL('image/png'), 'JPEG', 7, 10);
         pdf.save("CSF-report.pdf");
+        tablenotMonetary.firstElementChild.removeAttribute("style")
+        headlineNotMonetary.removeAttribute("style")
 
     }, [isBrazil])
     
@@ -604,8 +616,37 @@ const MonetaryImpacts = () => {
                         </Row>
                     </Col>
                 </Row>
-
+                
                <FormCalc />
+               <br />
+                <br />
+               <Row id="table-notMonetary">
+                    <Col xs={12}>
+                        <h2 id="headline-notMonetary">Impactos não monetários</h2>
+                        <br />
+                        <S.TableResponsive>
+                        <S.Table>
+                            <thead>
+                                <tr>
+                                    <S.Th width="700px">Tipo de impacto</S.Th>
+                                    <S.Th>Resultado</S.Th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    notMonetary.map(impact => (
+                                        <tr>
+                                            <S.Td>{impact.label}</S.Td>
+                                            <S.Td>{`${impact.value} ${impact.measure}`}</S.Td>
+                                        </tr>
+                                    ))
+                                }
+                            </tbody>
+                        </S.Table>
+                        </S.TableResponsive>
+                    </Col>
+                </Row>
+
                <div id="graphics_resume">
                 <DataChart impact={allImpacts} headline={language.resume} hiddenMonetary />
                </div>
