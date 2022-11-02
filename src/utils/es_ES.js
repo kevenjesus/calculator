@@ -340,7 +340,22 @@ const es_ES = {
     HeartHypertesion: 'Enfermedades cardiovasculares',
     HeartHypertesion_tooltip: 'Enfermedades cardiovasculares (Hipertensión + Infarto)',
     soilMercuryRemediation: 'Remediación de mercurio en suelo',
-    button_youtube: 'Ver otros videos sobre minería ilegal'
+    button_youtube: 'Ver otros videos sobre minería ilegal',
+    not_monetary_headline: 'impactos no monetarios ',
+    not_monetary_type: 'Tipo de impacto',
+    not_monetary_results: 'Resultados',
+    not_monerary_goldGrass: 'Produção de ouro total',
+    not_monetary_proporcaoKgporHectare: 'Kg de ouro por hectare impactado',
+    not_monerary_hecatereGrass: 'Total de hectares impactados',
+    not_monetary_lossyVolumeFertile: 'Volume de sedimentos movimentado',
+    not_monetary_qtdOfMinersAffected: 'Garimpeiros com risco de desenvolver sintomas neuropsicológicos',
+    not_monetary_concentrationMediaMercuryHair: 'Nível de contaminação médio de mercúrio no cabelo pela ingestão de peixes contaminados',
+    not_monetary_porcentNascidosVivosPerdaQIAcimaDe2Pts: 'Nascidos vivos com perda de QI maior que 2 pontos',
+    not_monetary_toMethylatedWater: 'Quantidade de mercúrio que se transforma em metilmercúrio e entra na cadeia trófica (em gramas)',
+    not_monetary_toPopulationAffectedMercuryHair: 'População potencialmente exposta ao risco',
+    not_monetary_menOver40InTheRegionIn27Years: 'População com risco de infarto agudo do miocárdio',
+    not_monetary_peopleAbove20YearsoldInTheRegionIn52Years: 'População com risco de hipertensão arterial',
+    not_monetary_people: 'pessoa(s)'
 };
 
 export default es_ES;

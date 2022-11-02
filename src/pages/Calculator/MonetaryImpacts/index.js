@@ -622,14 +622,14 @@ const MonetaryImpacts = () => {
                 <br />
                <Row id="table-notMonetary">
                     <Col xs={12}>
-                        <h2 id="headline-notMonetary">Impactos não monetários</h2>
+                        <h2 id="headline-notMonetary">{language.not_monetary_headline}</h2>
                         <br />
                         <S.TableResponsive>
                         <S.Table>
                             <thead>
                                 <tr>
-                                    <S.Th width="700px">Tipo de impacto</S.Th>
-                                    <S.Th>Resultado</S.Th>
+                                    <S.Th width="700px">{language.not_monetary_type}</S.Th>
+                                    <S.Th>{language.not_monetary_results}</S.Th>
                                 </tr>
                             </thead>
                             <tbody>
