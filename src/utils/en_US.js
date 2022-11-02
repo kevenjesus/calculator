@@ -65,7 +65,8 @@ const en_US = {
         
     },
     loading: {
-        text: 'Calculating impacts...'
+        text: 'Calculating impacts...',
+        pdfText: 'Generating PDF...'
     },
     impacts: {
         menu: {

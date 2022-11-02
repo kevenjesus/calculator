@@ -70,7 +70,8 @@ const ptBR = {
         }
     },
     loading: {
-        text: 'Calculando impactos...'
+        text: 'Calculando impactos...',
+        pdfText: 'Gerando PDF...'
     },
     impacts: {
         menu: {

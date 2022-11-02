@@ -73,6 +73,12 @@ const MercuryContamination = () => {
                         <InfoComponent language={language.type} />
                     </Col>
                 </Row>
+                
+                <Row>
+                    <Col xs={12}>
+                        <DataChart impact={impactsMercury} headline={impacts.mercuryContamination.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
+                    </Col>
+                </Row>
                 <Row>
                     <Col xs={12}>
                         <h2>{language.not_monetary_headline}</h2>
@@ -97,11 +103,6 @@ const MercuryContamination = () => {
                             </tbody>
                         </S.Table>
                         </S.TableResponsive>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col xs={12}>
-                        <DataChart impact={impactsMercury} headline={impacts.mercuryContamination.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
                     </Col>
                 </Row>
                 <br />

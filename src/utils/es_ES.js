@@ -63,7 +63,8 @@ const es_ES = {
         
     },
     loading: {
-        text: 'Calculando impactos...'
+        text: 'Calculando impactos...',
+        pdfText: 'Generando PDF...'
     },
     impacts: {
         menu: {
