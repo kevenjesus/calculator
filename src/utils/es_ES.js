@@ -344,18 +344,18 @@ const es_ES = {
     not_monetary_headline: 'impactos no monetarios ',
     not_monetary_type: 'Tipo de impacto',
     not_monetary_results: 'Resultados',
-    not_monerary_goldGrass: 'Produção de ouro total',
-    not_monetary_proporcaoKgporHectare: 'Kg de ouro por hectare impactado',
-    not_monerary_hecatereGrass: 'Total de hectares impactados',
-    not_monetary_lossyVolumeFertile: 'Volume de sedimentos movimentado',
-    not_monetary_qtdOfMinersAffected: 'Garimpeiros com risco de desenvolver sintomas neuropsicológicos',
-    not_monetary_concentrationMediaMercuryHair: 'Nível de contaminação médio de mercúrio no cabelo pela ingestão de peixes contaminados',
-    not_monetary_porcentNascidosVivosPerdaQIAcimaDe2Pts: 'Nascidos vivos com perda de QI maior que 2 pontos',
-    not_monetary_toMethylatedWater: 'Quantidade de mercúrio que se transforma em metilmercúrio e entra na cadeia trófica (em gramas)',
-    not_monetary_toPopulationAffectedMercuryHair: 'População potencialmente exposta ao risco',
-    not_monetary_menOver40InTheRegionIn27Years: 'População com risco de infarto agudo do miocárdio',
-    not_monetary_peopleAbove20YearsoldInTheRegionIn52Years: 'População com risco de hipertensão arterial',
-    not_monetary_people: 'pessoa(s)'
+    not_monerary_goldGrass: 'Producción total de oro',
+    not_monetary_proporcaoKgporHectare: 'Kg de oro por hectárea impactada',
+    not_monerary_hecatereGrass: 'Total de hectáreas impactadas',
+    not_monetary_lossyVolumeFertile: 'Volumen de sedimentos movido',
+    not_monetary_qtdOfMinersAffected: 'Trabajadores mineros en riesgo de desarrollar síntomas neuropsicológicos',
+    not_monetary_concentrationMediaMercuryHair: 'Nivel medio de contaminación por mercurio en el cabello por comer pescado contaminado',
+    not_monetary_porcentNascidosVivosPerdaQIAcimaDe2Pts: 'Nacidos vivos con una pérdida de CI superior a 2 puntos',
+    not_monetary_toMethylatedWater: 'Cantidad de mercurio que se convierte en metilmercurio y entra en la cadena trófica (en gramos)',
+    not_monetary_toPopulationAffectedMercuryHair: 'Población potencialmente expuesta al riesgo',
+    not_monetary_menOver40InTheRegionIn27Years: 'Población en riesgo de infarto agudo de miocardio',
+    not_monetary_peopleAbove20YearsoldInTheRegionIn52Years: 'Población en riesgo de hipertensión arterial',
+    not_monetary_people: 'persona(s)'
 };
 
 export default es_ES;
