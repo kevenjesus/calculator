@@ -11,6 +11,7 @@ const convertAllinGold = (country_region, likeMining, typeValueLikeMining, value
     if (likeMining === PIT && typeValueLikeMining === YEARS_OF_MINING) {
         //const quantityOfGoldGramsPerYearWell = 23700;
         goldGrass = quantityOfGoldGramsPerYearWell * valueLikeMining;
+        console.log('grama de ouro', goldGrass)
         return goldGrass
 
     }else if (likeMining === ALLUVIUM && typeValueLikeMining === IMPACTED_AREA){
@@ -25,6 +26,7 @@ const convertAllinGold = (country_region, likeMining, typeValueLikeMining, value
         const calculationBaseTon = toSoilUpturned / (sterileOreRatio + 1);
         const revolvedMineralTon = calculationBaseTon * 1;
         const goldGrass = cavaAverageProductivity * revolvedMineralTon;
+        console.log('grama de ouro', goldGrass)
         return goldGrass
 
     }else if (likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING){
@@ -33,9 +35,11 @@ const convertAllinGold = (country_region, likeMining, typeValueLikeMining, value
         //const prodOuroGrporMes = prodOuroKgporMes * 1000;
         //const goldGrass = averageMotorPower * valueLikeMining * prodOuroGrporMes;
         const goldGrass =  valueLikeMining * prodGoldMonthFerry;
+        console.log('grama de ouro', goldGrass)
         return goldGrass
     }else{
         const goldGrass = valueLikeMining;
+        console.log('grama de ouro', goldGrass)
         return goldGrass 
     }
 }

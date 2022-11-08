@@ -42,7 +42,8 @@ export const stateTypes = {
     SET_COUNTRY_REGION: 'SET_COUNTRY_REGION',
     SET_RETORT: 'SET_RETORT',
     SET_INFLATION: 'SET_INFLATION',
-    SET_PRICEUSDTOBRL: 'SET_PRICEUSDTOBRL'
+    SET_PRICEUSDTOBRL: 'SET_PRICEUSDTOBRL',
+    SET_NOT_MONETARY: 'SET_NOT_MONETARY'
 }
 
 const initialState = {
@@ -66,7 +67,8 @@ const initialState = {
         txPrevalence: TX_PREVALENCE_MAX,
         retort: [],
         values: [],
-        totalValue: 0
+        totalValue: 0,
+        notMonetary: []
     },
     introduction: {
         step: INTRODUCTION
@@ -115,6 +117,8 @@ const calculatorReducer = (state, action) => {
             return {...state, retort: action.payload}
         case stateTypes.SET_INFLATION:
             return {...state, inflation: action.payload}
+        case stateTypes.SET_NOT_MONETARY:
+            return {...state, notMonetary: action.payload}
         default:
             return state;
     }

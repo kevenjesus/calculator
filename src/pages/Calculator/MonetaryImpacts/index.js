@@ -2,9 +2,9 @@ import {  useCallback, useContext, useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Button, TextField } from 'theme'
 import { Grid, Row, Col } from 'react-flexbox-grid'
-import { ALLUVIUM, AMOUNT_GOLD, CATEGORY_DEFORESTATION, CATEGORY_MERCURY, CATEGORY_SILTING_RIVERS, FERRY, IMPACTED_AREA, MONTHS_OF_MINING, NO, PIT, YEARS_OF_MINING, YES } from 'pages/Calculator/Form/consts'
+import { ALLUVIUM, AMOUNT_GOLD, CATEGORY_DEFORESTATION, CATEGORY_MERCURY, CATEGORY_SILTING_RIVERS, FERRY, IMPACTED_AREA, NO, PIT, YEARS_OF_MINING, YES } from 'pages/Calculator/Form/consts'
 import { Container, Headline, ButtonFixed, HiddenPrint, HiddenXS, HiddenSm } from 'pages/Calculator/ImpactsStyles'
-import { Monetary, MonetaryType, Label, FormGroup, Card } from './style'
+import { Monetary, MonetaryType, Label, FormGroup, Card, OverLay } from './style'
 import Chart from 'components/Chart'
 import { AppContext, stateTypes } from 'utils/AppContext'
 import ToBRL from 'utils/toBRL'
@@ -25,6 +25,11 @@ import { BRAZIL, countries_region } from 'components/CountrySelect'
 import convertAllinGold from 'utils/convertAllinGold'
 import toUSD from 'utils/toUSD'
 import { colors } from 'theme/colors'
+
+import * as S from 'pages/Calculator/MercuryContamination/style'
+import { ReactComponent as LoadingIcon } from 'assets/icons/loading-icon.svg'
+import { Text } from '../Loading/style'
+
 
 
 
@@ -108,6 +113,27 @@ const FormCalc = () => {
         },
     ]
 
+    const checkFormIsInvalid = useCallback(() => {
+        alert.removeAll()
+        if (qtdAnalysis.value === '') {
+            dispatch({ type: stateTypes.SET_QTD_ANALYS_UNIT, payload: { ...qtdAnalysis, error: true } })
+            alert.error(<span style={{textTransform: 'initial'}}>Por favor. Preencha o valor de unidade</span>)
+            return true
+        }
+        return false
+    }, [alert, dispatch, qtdAnalysis])
+
+    const submitCalc = useCallback((state) => {
+        if(checkFormIsInvalid()) {
+            return;
+        }
+        
+        calcResults(state, dispatch, priceUSDtoBRL)
+        const { calculator } = state
+        sessionStorage.removeItem('@Calculator/form')
+        sessionStorage.setItem('@Calculator/form', JSON.stringify(calculator))
+    },[checkFormIsInvalid, priceUSDtoBRL, dispatch])
+
 
     const getCounties = useCallback((uf) => {
         let dataCountries = []
@@ -133,8 +159,9 @@ const FormCalc = () => {
 
         dispatch({ type: stateTypes.SET_COUNTIES, payload: dataCountries })
         dispatch({ type: stateTypes.SET_COUNTRY, payload: dataCountries[0].id })
+        submitCalc({...stateContext, calculator:{...calculator, state: uf, country: dataCountries[0].id, counties: dataCountries}})
 
-    }, [dispatch])
+    }, [dispatch, stateContext, submitCalc, calculator])
 
     useEffect(() => {
         const getStates = () => {
@@ -184,26 +211,6 @@ const FormCalc = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [language, knowRegion])
 
-    const checkFormIsInvalid = useCallback(() => {
-        alert.removeAll()
-        if (qtdAnalysis.value === '') {
-            dispatch({ type: stateTypes.SET_QTD_ANALYS_UNIT, payload: { ...qtdAnalysis, error: true } })
-            alert.error(<span style={{textTransform: 'initial'}}>Por favor. Preencha o valor de unidade</span>)
-            return true
-        }
-        return false
-    }, [alert, dispatch, qtdAnalysis])
-
-    const submitCalc = useCallback((state) => {
-        if(checkFormIsInvalid()) {
-            return;
-        }
-        
-        calcResults(state, dispatch, priceUSDtoBRL)
-        const { calculator } = state
-        sessionStorage.removeItem('@Calculator/form')
-        sessionStorage.setItem('@Calculator/form', JSON.stringify(calculator))
-    },[checkFormIsInvalid, priceUSDtoBRL, dispatch])
 
     const updateCalc = useCallback(() => {
         submitCalc(stateContext)
@@ -247,8 +254,7 @@ const FormCalc = () => {
         const { value } = e.target
         getCounties(value)
         dispatch({ type: stateTypes.SET_STATE, payload: value })
-        submitCalc({...stateContext, calculator:{...calculator, state: value}})
-    }, [getCounties, dispatch, submitCalc, stateContext, calculator])
+    }, [getCounties, dispatch])
 
     const handleCountry = useCallback((e) => {
         const { value } = e.target
@@ -278,17 +284,11 @@ const FormCalc = () => {
 
     const handleValuationMethod = useCallback((e) => {
         const { value } = e.target
-        const { analysisUnit } = calculator
         dispatch({ type: stateTypes.SET_VALUATION_METHOD, payload: Number(value) })
+        submitCalc({...stateContext, calculator:{ ...calculator, valuatioMethod: Number(value)}})
 
-        if(analysisUnit !== AMOUNT_GOLD && Number(value) === FERRY) {
-            dispatch({ type: stateTypes.SET_ANALYS_UNIT, payload: MONTHS_OF_MINING })
-        }else if(analysisUnit !== AMOUNT_GOLD && Number(value) === PIT) {
-            dispatch({ type: stateTypes.SET_ANALYS_UNIT, payload: YEARS_OF_MINING })
-        }else if(analysisUnit !== AMOUNT_GOLD && Number(value) === ALLUVIUM) {
-            dispatch({ type: stateTypes.SET_ANALYS_UNIT, payload: IMPACTED_AREA })
-        }
-    }, [calculator, dispatch])
+
+    }, [calculator, stateContext, submitCalc, dispatch])
 
 
     const handleTxPrevalance = useCallback((e) => {
@@ -311,7 +311,6 @@ const FormCalc = () => {
         }
     setPlaceholder(placeholder)
     }, [calculator.analysisUnit, calculatorForm])
-
     
     return (
         <Grid fluid id="ignorePDF">
@@ -409,8 +408,8 @@ const FormCalc = () => {
             <Col xs={12}>
                 <label>{calculatorForm.labels.valueHypothesis}</label>
                 <select name="txPrevalencia" value={txPrevalence} onChange={handleTxPrevalance}>
-                    <option value="0.29">{calculatorForm.values.valueHypothesis.conservative}</option>
-                    <option value="0.343">{calculatorForm.values.valueHypothesis.precautionaryPrinciple}</option>
+                    <option value={0.29}>{calculatorForm.values.valueHypothesis.conservative}</option>
+                    <option value={0.343}>{calculatorForm.values.valueHypothesis.precautionaryPrinciple}</option>
                 </select>
             </Col>
         </Row>
@@ -431,9 +430,10 @@ const FormCalc = () => {
 
 
 const MonetaryImpacts = () => {
+    const [loading, setLoading] = useState(false)
     const {state} = useContext(AppContext);
     const {language, calculator, country_region, priceUSDtoBRL} = state
-    const {  pitDepth } = calculator
+    const {  pitDepth, notMonetary } = calculator
     const {impacts} = language
     const history = useHistory();
 
@@ -467,7 +467,7 @@ const MonetaryImpacts = () => {
     const totalGoldPrice = isBrazil ? ToBRL(subTotalGoldPrice) : toUSD(subTotalGoldPrice)
 
     
-    const SubValueTotal = subValueTotalImpact+goldPrice
+    const SubValueTotal = subValueTotalImpact+subTotalGoldPrice
     const valueTotal = isBrazil ? ToBRL(SubValueTotal) : toUSD(SubValueTotal)
 
     const goldLabel = language.goldImpact_graphic.replace("$grams", goldValue)
@@ -501,19 +501,33 @@ const MonetaryImpacts = () => {
         total: sumTotal(impactsValues)
     }
 
+    if(dataDesforestation.length === 0) {
+        allImpacts.data.splice(0, 1)
+    }
+
+
     const handleDownloadPDF = useCallback(async () =>{
+        setLoading(true)
         const graphics_resume = document.getElementById('graphics_resume');
         const graphics_total = document.getElementById('graphics_total');
         const totalMonay = document.getElementById('totalMoney');
+        const tablenotMonetary = document.getElementById('table-notMonetary');
+        const headlineNotMonetary = document.getElementById('headline-notMonetary');
+        tablenotMonetary.firstElementChild.style.maxWidth = '73%';
+        headlineNotMonetary.style.fontSize = '23px';
+        
         const canvasGraphics_resume = await html2canvas(graphics_resume, { scale: 0.55 })
         const canvasGraphics_total = await html2canvas(graphics_total, { scale: 0.53 })
         const canvasTotalMoney = await html2canvas(totalMonay, { scale: 0.8 })
+        const canvasToNotMonetary = await html2canvas(tablenotMonetary, {scale: 0.7})
         
         var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         var today  = new Date();
 
         const date = today.toLocaleDateString(isBrazil ? "pt-BR" : "en-US", options)
         const footer = `© CSF All rights reserved | ${date}`
+        tablenotMonetary.firstElementChild.removeAttribute("style")
+        headlineNotMonetary.removeAttribute("style")
 
         const pdf = new jsPDF(
             {
@@ -528,13 +542,18 @@ const MonetaryImpacts = () => {
         pdf.text(footer, 88, 287, { align: 'right' })
         pdf.text('https://calculadora.conservation-strategy.org', 146, 287, { align: 'left' })
         pdf.addImage(canvasTotalMoney.toDataURL('image/png'), 'JPEG', 7, 10);
-        pdf.addImage(canvasGraphics_resume.toDataURL('image/png'), 'JPEG', 10, 70);
+        pdf.addImage(canvasGraphics_resume.toDataURL('image/png'), 'JPEG', 10, 55);
         pdf.addPage('a4', 'p')
-
+        
         pdf.addImage(canvasGraphics_total.toDataURL('image/png'), 'JPEG', 7, 10);
         pdf.text(footer, 88, 287, { align: 'right' })
         pdf.text('https://calculadora.conservation-strategy.org', 146, 287, { align: 'left' })
+        pdf.addPage('a4', 'p')
+        pdf.addImage(canvasToNotMonetary.toDataURL('image/png'), 'JPEG', 7, 10);
+        pdf.text(footer, 88, 287, { align: 'right' })
+        pdf.text('https://calculadora.conservation-strategy.org', 146, 287, { align: 'left' })
         pdf.save("CSF-report.pdf");
+        setTimeout(() => setLoading(false), 1000)
 
     }, [isBrazil])
     
@@ -568,6 +587,13 @@ const MonetaryImpacts = () => {
     
     return (
         <Container>
+            {loading && (
+                <OverLay>
+                    <LoadingIcon style={{margin: 0}} width="40" height="40" />
+                    <Text>{language.loading.pdfText}</Text>
+                </OverLay>
+            )}
+            
             <Grid fluid>
                 <Row>
                     <Col xs={12} sm={4} md={3}>
@@ -605,8 +631,10 @@ const MonetaryImpacts = () => {
                         </Row>
                     </Col>
                 </Row>
-
+                
                <FormCalc />
+               
+
                <div id="graphics_resume">
                 <DataChart impact={allImpacts} headline={language.resume} hiddenMonetary />
                </div>
@@ -618,6 +646,34 @@ const MonetaryImpacts = () => {
                     <DataChart impact={impactsSiltingRivers} headline={impacts.siltingOfRivers.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
                     <DataChart impact={impactsMercury} headline={impacts.mercuryContamination.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
                 </div>
+                <br />
+                <br />
+               <Row id="table-notMonetary">
+                    <Col xs={12}>
+                        <h2 id="headline-notMonetary">{language.not_monetary_headline}</h2>
+                        <br />
+                        <S.TableResponsive>
+                        <S.Table>
+                            <thead>
+                                <tr>
+                                    <S.Th width="700px">{language.not_monetary_type}</S.Th>
+                                    <S.Th>{language.not_monetary_results}</S.Th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    notMonetary.map(impact => (
+                                        <tr>
+                                            <S.Td>{impact.label}</S.Td>
+                                            <S.Td>{`${impact.value} ${impact.measure}`}</S.Td>
+                                        </tr>
+                                    ))
+                                }
+                            </tbody>
+                        </S.Table>
+                        </S.TableResponsive>
+                    </Col>
+                </Row>
                 <HiddenSm>
                     <br /><br />
                     <Button variant="default" onClick={() => history.push('/moral-damages')}>Danos morais</Button>

@@ -10,6 +10,8 @@ const erosionSiltingUp = (country_region, likeMining, txPrevalence, typeValueLik
   const { erosionSiltingUp, general } = fixedCalcultions(country_region)
   const { GDPperCapitaBrazilUSD } = general
   const { siltingUpCostPerHaUSD } = erosionSiltingUp
+  
+
 
   console.log('erosionSiltingUp', GDPperCapitaBrazilUSD, siltingUpCostPerHaUSD)
 
@@ -25,6 +27,7 @@ const erosionSiltingUp = (country_region, likeMining, txPrevalence, typeValueLik
       
     }else if (likeMining === PIT)  {
       toErosion = VPLhectareSilting * 0.31 * 12
+      
     
     }else if(likeMining === ALLUVIUM && typeValueLikeMining === AMOUNT_GOLD){
       toErosion = VPLhectareSilting * hectare * 12

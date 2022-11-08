@@ -96,6 +96,7 @@ const lossQI =  (country_region, likeMining, typeValueLikeMining, valueLikeMinin
   const ingestionMediaMercuryIn50years = (365*years)* ingestionMediaDailyIndividualInGramsPerDaily;
   
   const concentrationMediaMercuryHair = ingestionMediaMercuryDaily1IndividualInMicrogramsPerKG/0.1;
+  console.log('concentração médio de mercurio no cabelo', concentrationMediaMercuryHair)
   const deflectionPatternAverageMercury = concentrationMediaMercuryHair/2;
   const rAoQuadrado = Math.pow(100, 2)
   const popSize100kmRadius = isRegion ? (popDensity2060 * (Math.PI * rAoQuadrado)) : (densityPopulationalRegionNorth2060 * (Math.PI * rAoQuadrado));
@@ -136,6 +137,10 @@ const lossQI =  (country_region, likeMining, typeValueLikeMining, valueLikeMinin
   const disnorm36 = normDist(36, concentrationMediaMercuryHair, deflectionPatternAverageMercury, 1);
   const disnorm38 = normDist(38, concentrationMediaMercuryHair, deflectionPatternAverageMercury, 1);
   const disnorm40 = normDist(40, concentrationMediaMercuryHair, deflectionPatternAverageMercury, 1);
+ 
+
+  const porcentNascidosVivosPerdaQIAcimaDe2Pts = 1 - disnorm10
+  console.log('porcentNascidosVivosPerdaQIAcimaDe2Pts', porcentNascidosVivosPerdaQIAcimaDe2Pts)
 
   const distNorm0ate2 = ((1 - disnorm0) - (1 - disnorm2)) * 1000 * 0.0005;
   const distNorm2ate4 = ((1 - disnorm2) - (1 - disnorm4)) * 1000 * 0.0022;
@@ -175,7 +180,11 @@ distNorm28ate30 + distNorm30ate32 + distNorm32ate34 + distNorm34ate36 + distNorm
   //const aDALYUSD = 103599;
   const toLossQIFetuses = daly*aDALYUSD;
   
-  return toLossQIFetuses
+  return {
+    concentrationMediaMercuryHair,
+    porcentNascidosVivosPerdaQIAcimaDe2Pts,
+    value: toLossQIFetuses
+  } 
 
 }
 

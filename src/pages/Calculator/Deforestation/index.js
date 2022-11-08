@@ -56,8 +56,8 @@ const Deforestation = () => {
     const typeValueLikeMining = calculator.analysisUnit // AMOUNT_GOLD / IMPACTED_AREA / YEARS_OF_MINING / MONTHS_OF_MINING
 
     const hiddenMenu = calculator.valuatioMethod === FERRY ? [impacts.menu.deforestation] : []
-
-    const hectareValue = Math.round(convertAllinHectare(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth) * 100) / 100
+    const { value: hectare } = convertAllinHectare(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth)
+    const hectareValue = Math.round(hectare * 100) / 100
     const goldValue = Math.round(convertAllinGold(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth))
     
     const paragraphy_01 = impacts.deforestation.paragraphy_01.replace("$grams", goldValue).replace("$hectare", hectareValue)
@@ -87,6 +87,8 @@ const Deforestation = () => {
                         <DataChart impact={impactsDesforestation} headline={impacts.deforestation.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
                     </Col>
                 </Row>
+                <br />
+                <br />
                 <Row>
                     <Col xs={12} smOffset={3} sm={3}>
                         <Link to="/impacts/deforestation/references">

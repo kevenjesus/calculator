@@ -140,7 +140,6 @@ function Form() {
                 const data = mockStatePeru
                 getCountiesNotBrazil(data)
             }else if(isColombia) {
-                console.log('colombia')
                 const data = mockStateColombia
                 getCountiesNotBrazil(data)
             }
@@ -396,8 +395,8 @@ function Form() {
                     <Col xs={12}>
                         <label>{calculatorForm.labels.valueHypothesis}</label>
                         <select name="txPrevalencia" value={txPrevalence} onChange={handleTxPrevalance}>
-                            <option value="0.29">{calculatorForm.values.valueHypothesis.conservative}</option>
-                            <option value="0.343">{calculatorForm.values.valueHypothesis.precautionaryPrinciple}</option>
+                            <option value={0.29}>{calculatorForm.values.valueHypothesis.conservative}</option>
+                            <option value={0.343}>{calculatorForm.values.valueHypothesis.precautionaryPrinciple}</option>
                         </select>
                     </Col>
                     

@@ -63,7 +63,8 @@ const es_ES = {
         
     },
     loading: {
-        text: 'Calculando impactos...'
+        text: 'Calculando impactos...',
+        pdfText: 'Generando PDF...'
     },
     impacts: {
         menu: {
@@ -339,8 +340,23 @@ const es_ES = {
     lossQI: 'Pérdida de coeficiente intelectual en el feto',
     HeartHypertesion: 'Enfermedades cardiovasculares',
     HeartHypertesion_tooltip: 'Enfermedades cardiovasculares (Hipertensión + Infarto)',
-    soilMercuryRemediation: 'Remediación de mercurio en suelo'
-
+    soilMercuryRemediation: 'Remediación de mercurio en suelo',
+    button_youtube: 'Ver otros videos sobre minería ilegal',
+    not_monetary_headline: 'impactos no monetarios ',
+    not_monetary_type: 'Tipo de impacto',
+    not_monetary_results: 'Resultados',
+    not_monerary_goldGrass: 'Producción total de oro',
+    not_monetary_proporcaoKgporHectare: 'Kg de oro por hectárea impactada',
+    not_monerary_hecatereGrass: 'Total de hectáreas impactadas',
+    not_monetary_lossyVolumeFertile: 'Volumen de sedimentos movido',
+    not_monetary_qtdOfMinersAffected: 'Trabajadores mineros en riesgo de desarrollar síntomas neuropsicológicos',
+    not_monetary_concentrationMediaMercuryHair: 'Nivel medio de contaminación por mercurio en el cabello por comer pescado contaminado',
+    not_monetary_porcentNascidosVivosPerdaQIAcimaDe2Pts: 'Nacidos vivos con una pérdida de CI superior a 2 puntos',
+    not_monetary_toMethylatedWater: 'Cantidad de mercurio que se convierte en metilmercurio y entra en la cadena trófica (en gramos)',
+    not_monetary_toPopulationAffectedMercuryHair: 'Población potencialmente expuesta al riesgo',
+    not_monetary_menOver40InTheRegionIn27Years: 'Población en riesgo de infarto agudo de miocardio',
+    not_monetary_peopleAbove20YearsoldInTheRegionIn52Years: 'Población en riesgo de hipertensión arterial',
+    not_monetary_people: 'persona(s)'
 };
 
 export default es_ES;

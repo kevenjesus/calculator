@@ -65,7 +65,8 @@ const en_US = {
         
     },
     loading: {
-        text: 'Calculating impacts...'
+        text: 'Calculating impacts...',
+        pdfText: 'Generating PDF...'
     },
     impacts: {
         menu: {
@@ -341,7 +342,23 @@ const en_US = {
     lossQI: 'Loss of QI in fetus',
     HeartHypertesion: 'Cardiovascular diseases',
     HeartHypertesion_tooltip: 'Cardiovascular diseases (Hypertension + Infarction)',
-    soilMercuryRemediation: 'Mercury remediation in soil'
+    soilMercuryRemediation: 'Mercury remediation in soil',
+    button_youtube: 'See other videos about illegal mining',
+    not_monetary_headline: 'non-monetary impacts',
+    not_monetary_type: 'type of impact',
+    not_monetary_results: 'Results',
+    not_monerary_goldGrass: 'Total gold production',
+    not_monetary_proporcaoKgporHectare: 'Kg of gold per impacted hectare',
+    not_monerary_hecatereGrass: 'Total hectares impacted',
+    not_monetary_lossyVolumeFertile: 'Volume of sediments moved',
+    not_monetary_qtdOfMinersAffected: 'Miners at risk of developing neuropsychological symptoms',
+    not_monetary_concentrationMediaMercuryHair: 'Average level of mercury contamination in hair from eating contaminated fish',
+    not_monetary_porcentNascidosVivosPerdaQIAcimaDe2Pts: 'Live births with an IQ loss greater than 2 points',
+    not_monetary_toMethylatedWater: 'Amount of mercury that turns into methylmercury and enters the trophic chain (in grams)',
+    not_monetary_toPopulationAffectedMercuryHair: 'Population potentially exposed to risk',
+    not_monetary_menOver40InTheRegionIn27Years: 'Population at risk of acute myocardial infarction',
+    not_monetary_peopleAbove20YearsoldInTheRegionIn52Years: 'Population at risk of high blood pressure',
+    not_monetary_people: 'people'
 };
 
 export default en_US;
