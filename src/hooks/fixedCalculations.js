@@ -212,7 +212,7 @@ const fixedCalcultions = (country_region) => {
 
             soilMercuryRemediation.lossPercentHgInSoil_conservative = 0.088
             soilMercuryRemediation.lossPercentHgInSoil = 0.14
-            soilMercuryRemediation.HgContainedSoilinGrassPerTon  = 0.02
+            soilMercuryRemediation.HgContainedSoilinGrassPerTon  = 0.2
             soilMercuryRemediation.DensidadeSolo = 2.76
             soilMercuryRemediation.remediationCostUSDPerTonOfSoil = 45.67
 
