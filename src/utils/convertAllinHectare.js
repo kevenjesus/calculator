@@ -6,11 +6,7 @@ const convertAllinHectare = (country_region, likeMining, typeValueLikeMining, va
     const { general, recoverOfTopSoll } = fixedCalcultions(country_region)
     const { hectare } = recoverOfTopSoll
     const { densityGold, excavationGoldLoss, cavaAverageProductivity } = general
-<<<<<<< HEAD
 
-    console.log('convertAllinHectare', densityGold, excavationGoldLoss, cavaAverageProductivity )
-=======
->>>>>>> ce473f6af1778be2fcf67a4e591bede8aa56de5d
 
     //const densityGold = 2.76;
     //const excavationGoldLoss = 2;
@@ -29,9 +25,9 @@ const convertAllinHectare = (country_region, likeMining, typeValueLikeMining, va
         const affectedAreaM2 = lossyVolume / pitDepth;
         const hectare = affectedAreaM2 / 10000;
         const proporcaoKgporHectare = goldGrass * hectare
-        console.log('proporcaoKgporHectare', proporcaoKgporHectare)
+        //console.log('proporcaoKgporHectare', proporcaoKgporHectare)
         const hectareOverflow = hectare * overflow;
-        console.log('hectare', hectareOverflow)
+        //console.log('hectare', hectareOverflow)
         return {
             proporcaoKgporHectare,
             value: hectareOverflow
@@ -40,9 +36,9 @@ const convertAllinHectare = (country_region, likeMining, typeValueLikeMining, va
     }else if(likeMining === PIT && AMOUNT_GOLD){ 
         //const hectare = 0.31;
         const proporcaoKgporHectare = valueLikeMining / hectare
-        console.log('proporcaoKgporHectare', proporcaoKgporHectare)
+        //console.log('proporcaoKgporHectare', proporcaoKgporHectare)
         const hectareOverflow = hectare * overflow;
-        console.log('hectare', hectareOverflow)
+        //console.log('hectare', hectareOverflow)
         return {
             proporcaoKgporHectare,
             value: hectareOverflow
@@ -56,9 +52,9 @@ const convertAllinHectare = (country_region, likeMining, typeValueLikeMining, va
         const affectedAreaM2 = lossyVolume / pitDepth;
         const hectare = affectedAreaM2 / 10000;
         const proporcaoKgporHectare = valueLikeMining / hectare
-        console.log('proporcaoKgporHectare', proporcaoKgporHectare)
+        //console.log('proporcaoKgporHectare', proporcaoKgporHectare)
         const hectareOverflow = hectare * overflow;
-        console.log('hectare', hectareOverflow)
+        //console.log('hectare', hectareOverflow)
         return {
             proporcaoKgporHectare,
             value: hectareOverflow
@@ -82,8 +78,8 @@ const convertAllinHectare = (country_region, likeMining, typeValueLikeMining, va
         const revolvedMineralTon = calculationBaseTon * 1;
         const goldGrass = cavaAverageProductivity * revolvedMineralTon;
         const proporcaoKgporHectare = goldGrass / hectare
-        console.log('proporcaoKgporHectare', proporcaoKgporHectare)
-        console.log('hectare', hectare)
+        //console.log('proporcaoKgporHectare', proporcaoKgporHectare)
+        //console.log('hectare', hectare)
         return {
             proporcaoKgporHectare,
             value: hectare

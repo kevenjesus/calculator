@@ -9,7 +9,7 @@ const bioprospecting = (country_region, likeMining, typeValueLikeMining, txPreva
   const { bioprospecting } = fixedCalcultions(country_region) 
   const { bioprospectingCostByUSD_conservative, bioprospectingCostByUSD, discountRate} = bioprospecting
   
-  console.log('bioprospecting', bioprospectingCostByUSD_conservative, bioprospectingCostByUSD, discountRate)
+  //console.log('bioprospecting', bioprospectingCostByUSD_conservative, bioprospectingCostByUSD, discountRate)
 
   //const bioprospectingCostByBRL = txPrevalence === CONSERVATIVE ? 68.19 : 116.95
   const bioprospectingCostByUSDValue = txPrevalence === CONSERVATIVE ? bioprospectingCostByUSD_conservative : bioprospectingCostByUSD

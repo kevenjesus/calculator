@@ -7,7 +7,7 @@ const neuroSymptomsGarimpeiro = (country_region, likeMining, typeValueLikeMining
     const { aDALYUSD, quantityOfGoldGramsPerYearWell, prodGoldMonthFerry } = general
     const { amountOfGoldminersYear, neuroTreatmentCostPerGoldMinerUSD } = neuroSymptomsGarimpeiro
 
-    console.log('neuroSymptomsGarimpeiro', aDALYUSD, quantityOfGoldGramsPerYearWell, prodGoldMonthFerry, amountOfGoldminersYear, neuroTreatmentCostPerGoldMinerUSD)
+    //console.log('neuroSymptomsGarimpeiro', aDALYUSD, quantityOfGoldGramsPerYearWell, prodGoldMonthFerry, amountOfGoldminersYear, neuroTreatmentCostPerGoldMinerUSD)
     
     //const aDALYUSD = 103599;
     const weightNeuroDisabilityGoldminers = 0.368;
@@ -20,7 +20,7 @@ const neuroSymptomsGarimpeiro = (country_region, likeMining, typeValueLikeMining
         const goldenGrass = quantityOfGoldGramsPerYearWell * valueLikeMining;
         const qtdTotalGoldMiners = goldenGrass / amountOfGoldminersYear;
         const qtdOfMinersAffected = txPrevalence * qtdTotalGoldMiners;
-        console.log('Quantidade de garimpeiros afetados', qtdOfMinersAffected)
+        //console.log('Quantidade de garimpeiros afetados', qtdOfMinersAffected)
         const neuroGoldMinersTreatmentCost = neuroTreatmentCostPerGoldMinerUSD * qtdOfMinersAffected;
 	
         const weightNeuroDisabilityGoldminersQtdGoldDiggers = weightNeuroDisabilityGoldminers * qtdTotalGoldMiners;
@@ -36,7 +36,7 @@ const neuroSymptomsGarimpeiro = (country_region, likeMining, typeValueLikeMining
         const goldenGrass = prodGoldMonthFerry * valueLikeMining;
         const tonumberOfGoldMiners = goldenGrass / amountOfGoldminersYear;
         const qtdOfMinersAffected = txPrevalence * tonumberOfGoldMiners;
-        console.log('Quantidade de garimpeiros afetados', qtdOfMinersAffected)
+        //console.log('Quantidade de garimpeiros afetados', qtdOfMinersAffected)
         const neuroGoldMinersTreatmentCost = neuroTreatmentCostPerGoldMinerUSD * qtdOfMinersAffected;
 
         const weightNeuroDisabilityGoldminers_QtdGarimpeiros = weightNeuroDisabilityGoldminers  * tonumberOfGoldMiners;
@@ -51,7 +51,7 @@ const neuroSymptomsGarimpeiro = (country_region, likeMining, typeValueLikeMining
     }else {
         const qtdTotalGoldMiners = gold / amountOfGoldminersYear;
         const qtdOfMinersAffected = qtdTotalGoldMiners * txPrevalence;
-        console.log('Quantidade de garimpeiros afetados', qtdOfMinersAffected)
+        //console.log('Quantidade de garimpeiros afetados', qtdOfMinersAffected)
         const neuroGoldMinersTreatmentCost = qtdOfMinersAffected * neuroTreatmentCostPerGoldMinerUSD;
 	
         const weightNeuroDisabilityGoldminersQtdGoldDiggers = weightNeuroDisabilityGoldminers * qtdTotalGoldMiners;

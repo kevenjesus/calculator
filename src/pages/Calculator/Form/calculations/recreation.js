@@ -7,7 +7,7 @@ const recreation = (country_region, likeMining, popDensity2010, species, typeVal
     const { general } = fixedCalcultions(country_region)
     const { GDPperCapitaBrazilUSD, celciusTemperature } = general
 
-    console.log('recreation', GDPperCapitaBrazilUSD, celciusTemperature)
+    //console.log('recreation', GDPperCapitaBrazilUSD, celciusTemperature)
    
     //const GDPperCapitaBrazilUSD = 8717.18;
     //const celciusTemperature = 26.8;
