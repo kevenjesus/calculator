@@ -128,8 +128,9 @@ const es_ES = {
         },
         
         analysisUnit: {
-            headline: 'Qual base de informação você usará para o cálculo de impacto?',
+            headline: '¿Qué base de información utilizará para el cálculo del impacto?',
             chooseOption: '* Elige una opción',
+            input_qtdAnalysis: '* Introduzca el valor en',
             goldType: {
                 headline: 'Cantidad de oro',
                 text: 'Considera el contexto medio de la productividad y el impacto del garimpo en el Amazonas. Se utiliza cuando se produce la aprehensión de oro ilegal sin conocer su origen exacto.'
@@ -316,12 +317,12 @@ const es_ES = {
             soil_mercury_comments_line2: 'La hipótesis es que la concentración media de mercurio en los suelos es de 0,24 gramos de oro por tonelada de sedimento.',
         },
     },
-    inflation: 'Inflação acumulada desde de 2022 %',
-    inflation_placeholder: 'Digite a inflação neste formato: 10 ou 6.2',
+    inflation: 'Inflación acumulada desde de enero de 2022 (%)',
+    inflation_placeholder: 'Ingrese la inflación en este formato: 10 o 6.2',
     district: 'Distrito',
-    goldImpact: 'para $grams de oro',
-    goldImpact_graphic: '$grams de oro',
-    goldImpact_graphic_tooltip: 'Valor de $grams para de oro',
+    goldImpact: 'para $grams gramos de oro',
+    goldImpact_graphic: '$grams gramos de oro',
+    goldImpact_graphic_tooltip: 'Valor de $grams gramos de oro',
     monetaryimpact_text: 'Impactos + oro',
     science_article: 'Artículo científico',
     methodology: 'Metodologia',
@@ -335,7 +336,7 @@ const es_ES = {
     woodAndNonWoodProducts:'PFNM',
     woodAndNonWoodProducts_tooltip: 'Productos maderables y non-maderable',
     recreation: 'Recreación',
-    recoveryOfTopsoil: 'Recuperación de la superficie del suelo',
+    recoveryOfTopsoil: 'Reforestación',
     neuroSymptomsGarimpeiro: 'Síntomas neuropsicológicos en mineros',
     lossQI: 'Pérdida de coeficiente intelectual en el feto',
     HeartHypertesion: 'Enfermedades cardiovasculares',

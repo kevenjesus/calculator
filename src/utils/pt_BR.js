@@ -135,6 +135,7 @@ const ptBR = {
         analysisUnit: {
             headline: 'Qual base de informação você usará para o cálculo de impacto?',
             chooseOption: '* Escolha uma opção',
+            input_qtdAnalysis: '* Digite o valor em',
             goldType: {
                 headline: 'Quantidade de ouro',
                 text: 'Considera o contexto médio de produtividade e impacto de garimpo na Amazônia. Utilizado quando ocorre apreensão de ouro ilegal sem que se saiba sua origem exata.'
@@ -324,9 +325,9 @@ const ptBR = {
     inflation: 'Inflação acumulada desde de 2022 %',
     inflation_placeholder: 'Digite a inflação neste formato: 10 ou 6.2',
     district: 'Distrito',
-    goldImpact: 'para $grams de ouro',
-    goldImpact_graphic: '$grams de ouro',
-    goldImpact_graphic_tooltip: 'valor $grams de ouro',
+    goldImpact: 'para $grams gramas de ouro',
+    goldImpact_graphic: '$grams gramas de ouro',
+    goldImpact_graphic_tooltip: 'valor $grams gramas de ouro',
     monetaryimpact_text: 'Impactos + ouro',
     science_article: 'Artigo Cientifico',
     methodology: 'Metodologia',
@@ -340,7 +341,7 @@ const ptBR = {
     woodAndNonWoodProducts: 'PMNM',
     woodAndNonWoodProducts_tooltip: 'Produtos não-madeireiros e madeireiros',
     recreation: 'Recreação',
-    recoveryOfTopsoil: 'Recuperação superficie do solo',
+    recoveryOfTopsoil: 'Reflorestamento',
     neuroSymptomsGarimpeiro: 'Sintomas neuropsicológicos em garimpeiros',
     lossQI: 'Perda de Qi em Fetos',
     HeartHypertesion: 'Doenças cardiovasculares',

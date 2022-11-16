@@ -132,7 +132,7 @@ const AnalysisUnit = () => {
                     <TextField 
                         ref={ref}
                         error={stateContext.calculator.qtdAnalysis.error}
-                        label={`* Digite o valor em ${placeholder}`} 
+                        label={`${introduction.analysisUnit.input_qtdAnalysis} ${placeholder}`} 
                         type="number" 
                         placeholder={placeholder}
                         onChange={handleQtdAnalysis}

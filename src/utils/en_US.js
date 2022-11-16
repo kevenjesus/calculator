@@ -132,6 +132,7 @@ const en_US = {
         analysisUnit: {
             headline: 'What baseline information will you use for the impact calculation?',
             chooseOption: '* Select an alternative',
+            input_qtdAnalysis: '* Enter the value in',
             goldType: {
                 headline: 'Amount of gold',
                 text: 'Considers the average context of productivity and impact of garimpo in the Amazon. Used when illegal gold is apprehended and its origin is unknown.'
@@ -321,9 +322,9 @@ const en_US = {
     inflation: 'Accumulated inflation since January 2022 (%)',
     inflation_placeholder: 'Insert the inflation in this format: 10 or 6.2',
     district: 'District',
-    goldImpact: 'Value of $value for $grams of gold',
-    goldImpact_graphic: '$grams of gold',
-    goldImpact_graphic_tooltip: 'Value $grams of gold',
+    goldImpact: 'Value for $grams grams of gold',
+    goldImpact_graphic: '$grams grams of gold',
+    goldImpact_graphic_tooltip: 'Value $grams grams of gold',
     monetaryimpact_text: 'Impacts + gold',
     science_article: 'Scientific article',
     methodology: 'Methodology',

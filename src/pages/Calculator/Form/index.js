@@ -296,6 +296,13 @@ function Form() {
         }
     setPlaceholder(placeholder)
     }, [calculator.analysisUnit, calculatorForm])
+
+    let districtForPeruAndEquador = language.district
+    if(isPeru) {
+        districtForPeruAndEquador = 'Provincia'
+    }else if(isColombia) {
+        districtForPeruAndEquador = 'Departamento'
+    }
     return (
         <Container>
             <Grid fluid>
@@ -333,7 +340,7 @@ function Form() {
                                     </>
                                 ) : (
                                     <Col xs={12}>
-                                            <label>{language.district}</label>
+                                            <label>{districtForPeruAndEquador}</label>
                                         <select name="state" value={country} onChange={handleCountry}>
                                             {
                                                 counties.map(({nome, id}) => (

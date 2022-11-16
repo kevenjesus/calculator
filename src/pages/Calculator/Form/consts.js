@@ -11,6 +11,7 @@ export const DEFORESTATION = 1;
 export const MERCURY_IMPACTED = 2;
 export const PIT_DEPTH = 3;
 export const TX_PREVALENCE_MAX = 0.343;
+export const TX_PREVALENCE_Med = 0.29;
 export const CATEGORY_DEFORESTATION = 1;
 export const CATEGORY_SILTING_RIVERS = 2;
 export const CATEGORY_MERCURY = 3;
