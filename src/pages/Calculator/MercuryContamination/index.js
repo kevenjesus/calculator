@@ -73,16 +73,22 @@ const MercuryContamination = () => {
                         <InfoComponent language={language.type} />
                     </Col>
                 </Row>
+                
                 <Row>
                     <Col xs={12}>
-                        <h2>Impactos não monetários</h2>
+                        <DataChart impact={impactsMercury} headline={impacts.mercuryContamination.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
+                    </Col>
+                </Row>
+                <Row>
+                    <Col xs={12}>
+                        <h2>{language.not_monetary_headline}</h2>
                         <br />
                         <S.TableResponsive>
                         <S.Table>
                             <thead>
                                 <tr>
-                                    <S.Th width="800px">Tipo de impacto</S.Th>
-                                    <S.Th>Resultado</S.Th>
+                                    <S.Th width="800px">{language.not_monetary_type}</S.Th>
+                                    <S.Th>{language.not_monetary_results}</S.Th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -97,11 +103,6 @@ const MercuryContamination = () => {
                             </tbody>
                         </S.Table>
                         </S.TableResponsive>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col xs={12}>
-                        <DataChart impact={impactsMercury} headline={impacts.mercuryContamination.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
                     </Col>
                 </Row>
                 <br />

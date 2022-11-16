@@ -1,5 +1,21 @@
 import styled from 'styled-components'
 
+
+export const OverLay = styled.div`
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: #fff;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`
+
 export const Monetary = styled.span`
     display: block;
     color: red;

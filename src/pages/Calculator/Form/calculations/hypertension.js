@@ -26,6 +26,24 @@ const hypertension = (country_region, likeMining, typeValueLikeMining, valueLike
         HgAuRatio
     } = general
     const { propOfPeopleOver20YearsOfAgeByTotalPop, AnnualHypertensionCostTreatamentUSD, accumulatedRiskMercuryHypertension } = hypertension
+
+    // console.log('methyladPercent_conservative', methyladPercent_conservative)
+    // console.log('methyladPercent', methyladPercent)
+    // console.log('ruralIndividualWeight', ruralIndividualWeight)
+    // console.log('urbanindividualWeight', urbanindividualWeight)
+    // console.log('percentLossHgInWater_convervative', percentLossHgInWater_convervative)
+    // console.log('percentLossHgInWater', percentLossHgInWater)
+    // console.log('percentLossHgInWater_ferry__convervative', percentLossHgInWater_ferry__convervative)
+    // console.log('densityPopulationalRegionNorth2060', densityPopulationalRegionNorth2060)
+    // console.log('consumptionMediumFishByDayInGramsUrban', consumptionMediumFishByDayInGramsUrban)
+    // console.log('AverageFishConsumptionPerDayInRuralGrams', AverageFishConsumptionPerDayInRuralGrams)
+    // console.log('levelMediumContaminationFish', levelMediumContaminationFish)
+    // console.log('prodGoldMonthFerry', prodGoldMonthFerry)
+    // console.log('aDALYUSD', aDALYUSD)
+    // console.log('HgAuRatio', HgAuRatio)
+    // console.log('propOfPeopleOver20YearsOfAgeByTotalPop', propOfPeopleOver20YearsOfAgeByTotalPop)
+    // console.log('AnnualHypertensionCostTreatamentUSD', AnnualHypertensionCostTreatamentUSD)
+    // console.log('accumulatedRiskMercuryHypertension', accumulatedRiskMercuryHypertension)
         
     let gramsHgReleasedInWater
     if (likeMining === PIT && typeValueLikeMining === YEARS_OF_MINING) { //Input Anos de Garimpo
@@ -97,7 +115,7 @@ const hypertension = (country_region, likeMining, typeValueLikeMining, valueLike
     const toPopulationAffectedMercuryHair = affectedPeople < popSize100kmRadius ? affectedPeople : popSize100kmRadius;
     const popPeopleAbove20YearsOldinTheRegion = toPopulationAffectedMercuryHair * propOfPeopleOver20YearsOfAgeByTotalPop;
     const peopleAbove20YearsoldInTheRegionIn52Years = accumulatedRiskMercuryHypertension * popPeopleAbove20YearsOldinTheRegion;
-    console.log('Homens acima de 20 anos', peopleAbove20YearsoldInTheRegionIn52Years)
+    //console.log('Homens acima de 20 anos', peopleAbove20YearsoldInTheRegionIn52Years)
     const hypertensionIncidenceRate = (peopleAbove20YearsoldInTheRegionIn52Years * 1000)/  toPopulationAffectedMercuryHair;
     
     const hypertensionIncidence = (hypertensionIncidenceRate * toPopulationAffectedMercuryHair) / 1000;

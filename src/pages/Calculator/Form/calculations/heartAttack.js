@@ -25,6 +25,24 @@ const heartAttack = (country_region, likeMining, typeValueLikeMining, valueLikeM
     } = general
     const { proMenOver40ByPopTotal, accumulatedRiskMercuryInfarction, annualInfarctTreatmentCostUSD } = heartAttack
 
+    // console.log('methyladPercent_conservative', methyladPercent_conservative)
+    // console.log('methyladPercent', methyladPercent)
+    // console.log('ruralIndividualWeight', ruralIndividualWeight)
+    // console.log('urbanindividualWeight', urbanindividualWeight)
+    // console.log('percentLossHgInWater_convervative', percentLossHgInWater_convervative)
+    // console.log('percentLossHgInWater', percentLossHgInWater)
+    // console.log('percentLossHgInWater_ferry__convervative', percentLossHgInWater_ferry__convervative)
+    // console.log('densityPopulationalRegionNorth2060', densityPopulationalRegionNorth2060)
+    // console.log('consumptionMediumFishByDayInGramsUrban', consumptionMediumFishByDayInGramsUrban)
+    // console.log('AverageFishConsumptionPerDayInRuralGrams', AverageFishConsumptionPerDayInRuralGrams)
+    // console.log('levelMediumContaminationFish', levelMediumContaminationFish)
+    // console.log('prodGoldMonthFerry', prodGoldMonthFerry)
+    // console.log('quantityOfGoldGramsPerYearWell', quantityOfGoldGramsPerYearWell)
+    // console.log('aDALYUSD', aDALYUSD)
+    // console.log('HgAuRatio', HgAuRatio)
+    // console.log('proMenOver40ByPopTotal', proMenOver40ByPopTotal)
+    // console.log('accumulatedRiskMercuryInfarction', accumulatedRiskMercuryInfarction)
+    // console.log('annualInfarctTreatmentCostUSD', annualInfarctTreatmentCostUSD)
         
     let HgGrassReleasedInWater
     if (likeMining === PIT && typeValueLikeMining === YEARS_OF_MINING) { //Input Anos de Garimpo
@@ -55,7 +73,7 @@ const heartAttack = (country_region, likeMining, typeValueLikeMining, valueLikeM
     
     const methyladPercentValue = txPrevalence === CONSERVATIVE ? methyladPercent_conservative : methyladPercent;
     const toMethylatedWater = methyladPercentValue * HgGrassReleasedInWater;
-    console.log('Mercurio metilado na agua', toMethylatedWater)
+    //console.log('Mercurio metilado na agua', toMethylatedWater)
     
     
     const years = 50;
@@ -101,10 +119,10 @@ const heartAttack = (country_region, likeMining, typeValueLikeMining, valueLikeM
 
     const affectedPeople = (toMethylatedWater/ingestionMediaMercuryEmyears);
     const toPopulationAffectedMercuryHair = affectedPeople < popSize100kmRadius ? affectedPeople : popSize100kmRadius;
-    console.log('População afetada com mercurio no cabelo', toPopulationAffectedMercuryHair)
+    //console.log('População afetada com mercurio no cabelo', toPopulationAffectedMercuryHair)
     const popMenOver40inTheRegion = toPopulationAffectedMercuryHair * proMenOver40ByPopTotal;
     const menOver40InTheRegionIn27Years = accumulatedRiskMercuryInfarction * popMenOver40inTheRegion;
-    console.log('Homens acima de 40anos', menOver40InTheRegionIn27Years)
+    //console.log('Homens acima de 40anos', menOver40InTheRegionIn27Years)
     const infarctionIncidenceRate = (menOver40InTheRegionIn27Years * 1000)/  toPopulationAffectedMercuryHair;
 
     const infarctionIncidence = (infarctionIncidenceRate * toPopulationAffectedMercuryHair) / 1000;

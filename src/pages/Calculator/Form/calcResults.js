@@ -82,9 +82,9 @@ const calcResults = (state, dispatch, dolarTOReal) => {
 
         const goldGrass = convertAllinGold(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth)
         const { proporcaoKgporHectare, value: hecatereGrass } = convertAllinHectare(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth)
-        notMonetary.push({label: 'Produção de ouro total', value: goldGrass, measure: 'kg de Au'})
-        notMonetary.push({label: 'Kg de ouro por hectare impactado', value: (Math.round((proporcaoKgporHectare/1000)*100)/100), measure: 'kg de Au / ha'})
-        notMonetary.push({label: 'Total de hectares impactados', value: (Math.round(hecatereGrass*100)/100), measure: 'ha'})
+        notMonetary.push({label: language.not_monerary_goldGrass, value: goldGrass, measure: 'kg de Au'})
+        notMonetary.push({label: language.not_monetary_proporcaoKgporHectare, value: (Math.round((proporcaoKgporHectare/1000)*100)/100), measure: 'kg de Au / ha'})
+        notMonetary.push({label: language.not_monerary_hecatereGrass, value: (Math.round(hecatereGrass*100)/100), measure: 'ha'})
 
         const totalBio = bioprospecting(country_region, likeMining, typeValueLikeMining, txPrevalence, hectareValue)
         const totalBioInflation = totalWithInflation(isBrazil, inflation, totalBio)
@@ -113,7 +113,7 @@ const calcResults = (state, dispatch, dolarTOReal) => {
         if(valuatioMethod !== FERRY) {
             const { value: totalCavaGroundingCostAuFertile, lossyVolume: lossyVolumeFertile } = cavaGroundingCostAuFertile(country_region,likeMining, typeValueLikeMining, valueLikeMining, pitDepth, distanceanningCenter, goldValue)
             const totalCavaGroundingCostAuFertileInflation = totalWithInflation(isBrazil, inflation, totalCavaGroundingCostAuFertile)
-            notMonetary.push({label: 'Volume de sedimentos movimentado', value: (Math.round(lossyVolumeFertile*100)/100), measure: 'm3'})
+            notMonetary.push({label: language.not_monetary_lossyVolumeFertile, value: (Math.round(lossyVolumeFertile*100)/100), measure: 'm3'})
 
             const totalCavaGroundingCostAuNorm = cavaGroundingCostAuNorm(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth, distanceanningCenter, hectareValue)
             const totalCavaGroundingCostAuNormInflation = totalWithInflation(isBrazil, inflation, totalCavaGroundingCostAuNorm)
@@ -135,7 +135,7 @@ const calcResults = (state, dispatch, dolarTOReal) => {
     
         if(!retort[0].checked) {
             const { value: totalNeuroSymptomsGarimpeiro, qtdOfMinersAffected } = neuroSymptomsGarimpeiro(country_region, likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, goldValue)//gold
-            notMonetary.push({label: 'Garimpeiros com risco de desenvolver sintomas neuropsicológicos', value: Math.ceil(qtdOfMinersAffected), measure: 'pessoa(s)'})
+            notMonetary.push({label: language.not_monetary_qtdOfMinersAffected, value: Math.ceil(qtdOfMinersAffected), measure: language.not_monetary_people})
 
             const totalNeuroSymptomsGarimpeiroInflation = totalWithInflation(isBrazil, inflation, totalNeuroSymptomsGarimpeiro)
             impacts.push({ label: language.neuroSymptomsGarimpeiro, displayName: language.neuroSymptomsGarimpeiro, category: CATEGORY_MERCURY, value: getValueToCountry(country_region, totalNeuroSymptomsGarimpeiroInflation, dolarTOReal) })
@@ -143,8 +143,8 @@ const calcResults = (state, dispatch, dolarTOReal) => {
         
         
         const { value: totalLossQI, concentrationMediaMercuryHair, porcentNascidosVivosPerdaQIAcimaDe2Pts } = lossQI (country_region, likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, urbanPopMunicipality, ruralPopMunicipality, popDensity2060, goldValue, knowRegion)//gold
-        notMonetary.push({label: 'Nível de contaminação médio de mercúrio no cabelo pela ingestão de peixes contaminados', value: (Math.round(concentrationMediaMercuryHair*100)/100), measure: 'μg/g'})
-        notMonetary.push({label: 'Nascidos vivos com perda de QI maior que 2 pontos', value: ((Math.round(porcentNascidosVivosPerdaQIAcimaDe2Pts*100)/100)*100) , measure: '%'})
+        notMonetary.push({label: language.not_monetary_concentrationMediaMercuryHair, value: (Math.round(concentrationMediaMercuryHair*100)/100), measure: 'μg/g'})
+        notMonetary.push({label: language.not_monetary_porcentNascidosVivosPerdaQIAcimaDe2Pts, value: ((Math.round(porcentNascidosVivosPerdaQIAcimaDe2Pts*100)/100)*100) , measure: '%'})
         
         const totalLossQIInflation = totalWithInflation(isBrazil, inflation, totalLossQI)
         impacts.push({ label: language.lossQI, displayName: language.lossQI, category: CATEGORY_MERCURY, value: getValueToCountry(country_region, totalLossQIInflation, dolarTOReal) })
@@ -154,10 +154,10 @@ const calcResults = (state, dispatch, dolarTOReal) => {
         
         const { value: totalHeartAttack, toMethylatedWater, toPopulationAffectedMercuryHair, menOver40InTheRegionIn27Years } = heartAttack(country_region, likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, urbanPopMunicipality, ruralPopMunicipality, popDensity2060, goldValue, knowRegion)//gold
         const totalHeartAttackInflation = totalWithInflation(isBrazil, inflation, totalHeartAttack)
-        notMonetary.push({label: 'Quantidade de mercúrio que se transforma em metilmercúrio e entra na cadeia trófica (em gramas)', value: (Math.round(toMethylatedWater*100)/100), measure: 'g de Hg'})
-        notMonetary.push({label: 'População potencialmente exposta ao risco', value: Math.ceil(toPopulationAffectedMercuryHair), measure: 'pessoa(s)'})
-        notMonetary.push({label: 'População com risco de infarto agudo do miocárdio', value: Math.ceil(menOver40InTheRegionIn27Years), measure: 'pessoa(s)'})
-        notMonetary.push({label: 'População com risco de hipertensão arterial', value: Math.ceil(peopleAbove20YearsoldInTheRegionIn52Years), measure: 'pessoa(s)'})
+        notMonetary.push({label: language.not_monetary_toMethylatedWater, value: (Math.round(toMethylatedWater*100)/100), measure: 'g de Hg'})
+        notMonetary.push({label: language.not_monetary_toPopulationAffectedMercuryHair, value: Math.ceil(toPopulationAffectedMercuryHair), measure: language.not_monetary_people})
+        notMonetary.push({label: language.not_monetary_menOver40InTheRegionIn27Years, value: Math.ceil(menOver40InTheRegionIn27Years), measure: language.not_monetary_people})
+        notMonetary.push({label: language.not_monetary_peopleAbove20YearsoldInTheRegionIn52Years, value: Math.ceil(peopleAbove20YearsoldInTheRegionIn52Years), measure: language.not_monetary_people})
 
         const totalHeartHypertension = totalHypertensionInflation+totalHeartAttackInflation
         impacts.push({ label: language.HeartHypertesion, displayName: language.HeartHypertesion_tooltip, category: CATEGORY_MERCURY, value: getValueToCountry(country_region, totalHeartHypertension, dolarTOReal) })
@@ -166,12 +166,14 @@ const calcResults = (state, dispatch, dolarTOReal) => {
         const totalsoilMercuryRemediationInflation = totalWithInflation(isBrazil, inflation, totalsoilMercuryRemediation)
         impacts.push({ label: language.soilMercuryRemediation, displayName: language.soilMercuryRemediation, category: CATEGORY_MERCURY, value: getValueToCountry(country_region, totalsoilMercuryRemediationInflation, dolarTOReal) })
 
-        const impactsFiltered = likeMining === FERRY ? impacts.filter(impact => {
+        // eslint-disable-next-line
+        const impactsFiltered = likeMining === FERRY ? impacts.filter(function(impact) {
             if(impact.category !== CATEGORY_DEFORESTATION) {
                 return impact
             }
         }) : impacts
 
+        // eslint-disable-next-line
         const notMonetaryFiltered = notMonetary.filter(impact => {
             if(impact.value) {
                 return impact

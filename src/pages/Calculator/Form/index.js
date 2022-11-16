@@ -395,8 +395,8 @@ function Form() {
                     <Col xs={12}>
                         <label>{calculatorForm.labels.valueHypothesis}</label>
                         <select name="txPrevalencia" value={txPrevalence} onChange={handleTxPrevalance}>
-                            <option value="0.29">{calculatorForm.values.valueHypothesis.conservative}</option>
-                            <option value="0.343">{calculatorForm.values.valueHypothesis.precautionaryPrinciple}</option>
+                            <option value={0.29}>{calculatorForm.values.valueHypothesis.conservative}</option>
+                            <option value={0.343}>{calculatorForm.values.valueHypothesis.precautionaryPrinciple}</option>
                         </select>
                     </Col>
                     

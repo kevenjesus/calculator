@@ -8,8 +8,8 @@ const culturedAndSpecies = (country_region, likeMining, popDensity2010, species,
   const { discountRate } = bioprospecting
   const { celciusTemperature, GDPperCapitaBrazilUSD } = general
   
-  //const GDPperCapitaBrazilUSD = 8717.18;
-  //const celciusTemperature = 26.8;
+  //const GDPperCapitaBrazil2019USD = 8717.18;
+  //const celsiusTemperature = 26.8;
   //const discountRate = 0.03;
 
   const calc1 = 0.643 * Math.log(popDensity2010);

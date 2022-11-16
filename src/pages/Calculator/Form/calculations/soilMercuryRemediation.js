@@ -9,6 +9,15 @@ const soilMercuryRemediation = (country_region, likeMining, typeValueLikeMining,
     const { quantityOfGoldGramsPerYearWell, HgAuRatio } = general
     const { lossPercentHgInSoil, lossPercentHgInSoil_conservative, HgContainedSoilinGrassPerTon, DensidadeSolo, remediationCostUSDPerTonOfSoil } = soilMercuryRemediation
 
+    // console.log(
+    //     'quantityOfGoldGramsPerYearWell', quantityOfGoldGramsPerYearWell,
+    //     'HgAuRatio',  HgAuRatio,
+    //     'lossPercentHgInSoil', lossPercentHgInSoil,
+    //     'lossPercentHgInSoil_conservative', lossPercentHgInSoil_conservative,
+    //     'HgContainedSoilinGrassPerTon', HgContainedSoilinGrassPerTon,
+    //     'DensidadeSolo', DensidadeSolo,
+    //     'remediationCostUSDPerTonOfSoil', remediationCostUSDPerTonOfSoil)
+
     //const quantityOfGoldGramsPerYearWell = 23700;
     //const HgAuRatio = 2.6;
     //const lossPercentHgInSoil = 0.088;
@@ -34,8 +43,9 @@ const soilMercuryRemediation = (country_region, likeMining, typeValueLikeMining,
     }else {
         const toQuantityHgDumpedSoil = amountOfHgDumpedintoSoilerGold * gold;
         const contaminatedSoilTon = toQuantityHgDumpedSoil / HgContainedSoilinGrassPerTon;
-        const M3solocontaminadoHg = contaminatedSoilTon / DensidadeSolo;
-        const toCostOfSoilHgRemediation = remediationCostUSDPerTonOfSoil * M3solocontaminadoHg;
+        const M3SoloContaminadoHg = contaminatedSoilTon / DensidadeSolo;
+        
+        const toCostOfSoilHgRemediation = remediationCostUSDPerTonOfSoil * M3SoloContaminadoHg;
         return toCostOfSoilHgRemediation
         
     }

@@ -19,6 +19,20 @@ const cavaGroundingCostAuNorm = (country_region, likeMining, typeValueLikeMining
     } = general
     const { normalCavaGroundingCostUSD } = cavaGroundingCostAuNorm
 
+    // console.log('cavaGroundingCostAuNorm', 
+    // quantitOfM3ExcavatorPerHour, 
+    // averageDepthOfFertileEarth,
+    // excavatorHoursDays,
+    // excavatorCostPerKMUSD,
+    // kmRotatedPerLiter,
+    // averageDriverSalaryFreightPerKmUSD,
+    // priceLiterDieselUSD,
+    // densityGold,
+    // excavationGoldLoss,
+    // quantityOfGoldGramsPerYearWell,
+    // hollowMediumDepth,
+    // normalCavaGroundingCostUSD)
+
     //const averageDepthOfFertileEarth = 0.4;
     //const quantitOfM3ExcavatorPerHour = 160;
     //const excavatorHoursDays = 10;

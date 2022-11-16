@@ -20,6 +20,20 @@ const cavaGroundingCostAuFertile = (country_region,likeMining, typeValueLikeMini
         } = general
         const { groundingCostFertilePitUSD } = cavaGroundingCostAuFertile
 
+        // console.log('cavaGroundingCostAuFertile', 
+        // quantitOfM3ExcavatorPerHour, 
+        // averageDepthOfFertileEarth,
+        // excavatorHoursDays,
+        // excavatorCostPerKMUSD,
+        // kmRotatedPerLiter,
+        // averageDriverSalaryFreightPerKmUSD,
+        // priceLiterDieselUSD,
+        // densityGold,
+        // excavationGoldLoss,
+        // quantityOfGoldGramsPerYearWell,
+        // cavaAverageProductivity,
+        // hollowMediumDepth,
+        // groundingCostFertilePitUSD)
         /*
         const groundingCostFertilePit = 12.7;
         nome original = groundingCostFertilePit
@@ -85,7 +99,7 @@ const cavaGroundingCostAuFertile = (country_region,likeMining, typeValueLikeMini
         const toUpturnedSoil = upturnedSterileTon + revolvedSoloTon;
         const losslessVolume = toUpturnedSoil / densityGold;
         const lossyVolume = losslessVolume * excavationGoldLoss;
-        console.log('volume com perda', lossyVolume)
+        //console.log('volume com perda', lossyVolume)
         const affectedAreaM2 = lossyVolume / hollowMediumDepth;
         const fertileLandVolume = averageDepthOfFertileEarth * affectedAreaM2
         const toCostGroundingFertileLandWithoutFreight = fertileLandVolume * groundingCostFertilePitUSD; 
@@ -111,7 +125,7 @@ const cavaGroundingCostAuFertile = (country_region,likeMining, typeValueLikeMini
         const toUpturnedSoil = revolvedSoloTon + upturnedSterileTon;
         const losslessVolume = toUpturnedSoil / densityGold;
         const lossyVolume = losslessVolume * excavationGoldLoss;
-        console.log('volume com perda', lossyVolume)
+        //console.log('volume com perda', lossyVolume)
         const affectedAreaM2 = lossyVolume / hollowMediumDepth;
 
         const fertileLandVolume = averageDepthOfFertileEarth * affectedAreaM2;
@@ -138,7 +152,7 @@ const cavaGroundingCostAuFertile = (country_region,likeMining, typeValueLikeMini
         const toUpturnedSoil = revolvedSoloTon + upturnedSterileTon;
         const losslessVolume = toUpturnedSoil / densityGold;
         const lossyVolume = losslessVolume * excavationGoldLoss;
-        console.log('volume com perda', lossyVolume)
+        //console.log('volume com perda', lossyVolume)
         const affectedAreaM2 = lossyVolume / pitDepth;
         
         const fertileLandVolume = averageDepthOfFertileEarth * affectedAreaM2;

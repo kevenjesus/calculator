@@ -7,6 +7,8 @@ const carbon = (country_region, likeMining, typeValueLikeMining, hectare) => {
     const { carbon } = fixedCalcultions(country_region)
     const { carbonCostPerHaUSD } = carbon
 
+    //console.log('carbon', carbonCostPerHaUSD)
+
     const txDiscount = 0.03;
     //const carbonCostPerHaUSD = 887.74;
     

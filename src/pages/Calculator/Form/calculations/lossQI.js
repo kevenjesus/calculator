@@ -30,6 +30,25 @@ const lossQI =  (country_region, likeMining, typeValueLikeMining, valueLikeMinin
   } = general
   const { birthRate } = lossQI
 
+  // console.log('lossQI', 
+  // methyladPercent_conservative,
+  // methyladPercent,
+  // ruralIndividualWeight,
+  // urbanindividualWeight,
+  // percentLossHgInWater_convervative,
+  // percentLossHgInWater,
+  // percentLossHgInWater_ferry__convervative,
+  // percentLossHgInWater_ferry,
+  // densityPopulationalRegionNorth2060,
+  // consumptionMediumFishByDayInGramsUrban,
+  // AverageFishConsumptionPerDayInRuralGrams,
+  // levelMediumContaminationFish,
+  // prodGoldMonthFerry,
+  // quantityOfGoldGramsPerYearWell,
+  // aDALYUSD,
+  // HgAuRatio,
+  // birthRate)
+
   const methyladPercentValue = txPrevalence === CONSERVATIVE ? methyladPercent_conservative : methyladPercent;
   let gramsHgReleasedinWater;
 
@@ -77,7 +96,7 @@ const lossQI =  (country_region, likeMining, typeValueLikeMining, valueLikeMinin
   const ingestionMediaMercuryIn50years = (365*years)* ingestionMediaDailyIndividualInGramsPerDaily;
   
   const concentrationMediaMercuryHair = ingestionMediaMercuryDaily1IndividualInMicrogramsPerKG/0.1;
-  console.log('concentração médio de mercurio no cabelo', concentrationMediaMercuryHair)
+  //console.log('concentração médio de mercurio no cabelo', concentrationMediaMercuryHair)
   const deflectionPatternAverageMercury = concentrationMediaMercuryHair/2;
   const rAoQuadrado = Math.pow(100, 2)
   const popSize100kmRadius = isRegion ? (popDensity2060 * (Math.PI * rAoQuadrado)) : (densityPopulationalRegionNorth2060 * (Math.PI * rAoQuadrado));
@@ -121,7 +140,7 @@ const lossQI =  (country_region, likeMining, typeValueLikeMining, valueLikeMinin
  
 
   const porcentNascidosVivosPerdaQIAcimaDe2Pts = 1 - disnorm10
-  console.log('porcentNascidosVivosPerdaQIAcimaDe2Pts', porcentNascidosVivosPerdaQIAcimaDe2Pts)
+  //console.log('porcentNascidosVivosPerdaQIAcimaDe2Pts', porcentNascidosVivosPerdaQIAcimaDe2Pts)
 
   const distNorm0ate2 = ((1 - disnorm0) - (1 - disnorm2)) * 1000 * 0.0005;
   const distNorm2ate4 = ((1 - disnorm2) - (1 - disnorm4)) * 1000 * 0.0022;

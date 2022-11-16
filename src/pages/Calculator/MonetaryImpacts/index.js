@@ -2,9 +2,9 @@ import {  useCallback, useContext, useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Button, TextField } from 'theme'
 import { Grid, Row, Col } from 'react-flexbox-grid'
-import { ALLUVIUM, AMOUNT_GOLD, CATEGORY_DEFORESTATION, CATEGORY_MERCURY, CATEGORY_SILTING_RIVERS, FERRY, IMPACTED_AREA, MONTHS_OF_MINING, NO, PIT, YEARS_OF_MINING, YES } from 'pages/Calculator/Form/consts'
+import { ALLUVIUM, AMOUNT_GOLD, CATEGORY_DEFORESTATION, CATEGORY_MERCURY, CATEGORY_SILTING_RIVERS, FERRY, IMPACTED_AREA, NO, PIT, YEARS_OF_MINING, YES } from 'pages/Calculator/Form/consts'
 import { Container, Headline, ButtonFixed, HiddenPrint, HiddenXS, HiddenSm } from 'pages/Calculator/ImpactsStyles'
-import { Monetary, MonetaryType, Label, FormGroup, Card } from './style'
+import { Monetary, MonetaryType, Label, FormGroup, Card, OverLay } from './style'
 import Chart from 'components/Chart'
 import { AppContext, stateTypes } from 'utils/AppContext'
 import ToBRL from 'utils/toBRL'
@@ -27,6 +27,9 @@ import toUSD from 'utils/toUSD'
 import { colors } from 'theme/colors'
 
 import * as S from 'pages/Calculator/MercuryContamination/style'
+import { ReactComponent as LoadingIcon } from 'assets/icons/loading-icon.svg'
+import { Text } from '../Loading/style'
+
 
 
 
@@ -158,7 +161,7 @@ const FormCalc = () => {
         dispatch({ type: stateTypes.SET_COUNTRY, payload: dataCountries[0].id })
         submitCalc({...stateContext, calculator:{...calculator, state: uf, country: dataCountries[0].id, counties: dataCountries}})
 
-    }, [dispatch, stateContext, submitCalc])
+    }, [dispatch, stateContext, submitCalc, calculator])
 
     useEffect(() => {
         const getStates = () => {
@@ -251,7 +254,7 @@ const FormCalc = () => {
         const { value } = e.target
         getCounties(value)
         dispatch({ type: stateTypes.SET_STATE, payload: value })
-    }, [getCounties, dispatch, submitCalc, stateContext, calculator])
+    }, [getCounties, dispatch])
 
     const handleCountry = useCallback((e) => {
         const { value } = e.target
@@ -281,20 +284,11 @@ const FormCalc = () => {
 
     const handleValuationMethod = useCallback((e) => {
         const { value } = e.target
-        const { analysisUnit } = calculator
         dispatch({ type: stateTypes.SET_VALUATION_METHOD, payload: Number(value) })
+        submitCalc({...stateContext, calculator:{ ...calculator, valuatioMethod: Number(value)}})
 
-        if(analysisUnit !== AMOUNT_GOLD && Number(value) === FERRY) {
-            dispatch({ type: stateTypes.SET_ANALYS_UNIT, payload: MONTHS_OF_MINING })
-            submitCalc({...stateContext, calculator:{ ...calculator, valuatioMethod: Number(value), analysisUnit: MONTHS_OF_MINING}})
-        }else if(analysisUnit !== AMOUNT_GOLD && Number(value) === PIT) {
-            dispatch({ type: stateTypes.SET_ANALYS_UNIT, payload: YEARS_OF_MINING })
-            submitCalc({...stateContext, calculator:{ ...calculator, valuatioMethod: Number(value), analysisUnit: YEARS_OF_MINING}})
-        }else if(analysisUnit !== AMOUNT_GOLD && Number(value) === ALLUVIUM) {
-            dispatch({ type: stateTypes.SET_ANALYS_UNIT, payload: IMPACTED_AREA })
-            submitCalc({...stateContext, calculator:{ ...calculator, valuatioMethod: Number(value), analysisUnit: IMPACTED_AREA}})
-        }
-    }, [calculator, dispatch])
+
+    }, [calculator, stateContext, submitCalc, dispatch])
 
 
     const handleTxPrevalance = useCallback((e) => {
@@ -317,7 +311,6 @@ const FormCalc = () => {
         }
     setPlaceholder(placeholder)
     }, [calculator.analysisUnit, calculatorForm])
-
     
     return (
         <Grid fluid id="ignorePDF">
@@ -415,8 +408,8 @@ const FormCalc = () => {
             <Col xs={12}>
                 <label>{calculatorForm.labels.valueHypothesis}</label>
                 <select name="txPrevalencia" value={txPrevalence} onChange={handleTxPrevalance}>
-                    <option value="0.29">{calculatorForm.values.valueHypothesis.conservative}</option>
-                    <option value="0.343">{calculatorForm.values.valueHypothesis.precautionaryPrinciple}</option>
+                    <option value={0.29}>{calculatorForm.values.valueHypothesis.conservative}</option>
+                    <option value={0.343}>{calculatorForm.values.valueHypothesis.precautionaryPrinciple}</option>
                 </select>
             </Col>
         </Row>
@@ -437,6 +430,7 @@ const FormCalc = () => {
 
 
 const MonetaryImpacts = () => {
+    const [loading, setLoading] = useState(false)
     const {state} = useContext(AppContext);
     const {language, calculator, country_region, priceUSDtoBRL} = state
     const {  pitDepth, notMonetary } = calculator
@@ -513,6 +507,7 @@ const MonetaryImpacts = () => {
 
 
     const handleDownloadPDF = useCallback(async () =>{
+        setLoading(true)
         const graphics_resume = document.getElementById('graphics_resume');
         const graphics_total = document.getElementById('graphics_total');
         const totalMonay = document.getElementById('totalMoney');
@@ -531,6 +526,8 @@ const MonetaryImpacts = () => {
 
         const date = today.toLocaleDateString(isBrazil ? "pt-BR" : "en-US", options)
         const footer = `© CSF All rights reserved | ${date}`
+        tablenotMonetary.firstElementChild.removeAttribute("style")
+        headlineNotMonetary.removeAttribute("style")
 
         const pdf = new jsPDF(
             {
@@ -553,9 +550,10 @@ const MonetaryImpacts = () => {
         pdf.text('https://calculadora.conservation-strategy.org', 146, 287, { align: 'left' })
         pdf.addPage('a4', 'p')
         pdf.addImage(canvasToNotMonetary.toDataURL('image/png'), 'JPEG', 7, 10);
+        pdf.text(footer, 88, 287, { align: 'right' })
+        pdf.text('https://calculadora.conservation-strategy.org', 146, 287, { align: 'left' })
         pdf.save("CSF-report.pdf");
-        tablenotMonetary.firstElementChild.removeAttribute("style")
-        headlineNotMonetary.removeAttribute("style")
+        setTimeout(() => setLoading(false), 1000)
 
     }, [isBrazil])
     
@@ -589,6 +587,13 @@ const MonetaryImpacts = () => {
     
     return (
         <Container>
+            {loading && (
+                <OverLay>
+                    <LoadingIcon style={{margin: 0}} width="40" height="40" />
+                    <Text>{language.loading.pdfText}</Text>
+                </OverLay>
+            )}
+            
             <Grid fluid>
                 <Row>
                     <Col xs={12} sm={4} md={3}>
@@ -628,18 +633,31 @@ const MonetaryImpacts = () => {
                 </Row>
                 
                <FormCalc />
-               <br />
+               
+
+               <div id="graphics_resume">
+                <DataChart impact={allImpacts} headline={language.resume} hiddenMonetary />
+               </div>
+               <div id="graphics_total">
+                    {
+                        hiddenMenu.length === 0 ? <DataChart impact={impactsDesforestation} headline={impacts.deforestation.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
+                        : null
+                    }
+                    <DataChart impact={impactsSiltingRivers} headline={impacts.siltingOfRivers.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
+                    <DataChart impact={impactsMercury} headline={impacts.mercuryContamination.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
+                </div>
+                <br />
                 <br />
                <Row id="table-notMonetary">
                     <Col xs={12}>
-                        <h2 id="headline-notMonetary">Impactos não monetários</h2>
+                        <h2 id="headline-notMonetary">{language.not_monetary_headline}</h2>
                         <br />
                         <S.TableResponsive>
                         <S.Table>
                             <thead>
                                 <tr>
-                                    <S.Th width="700px">Tipo de impacto</S.Th>
-                                    <S.Th>Resultado</S.Th>
+                                    <S.Th width="700px">{language.not_monetary_type}</S.Th>
+                                    <S.Th>{language.not_monetary_results}</S.Th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -656,18 +674,6 @@ const MonetaryImpacts = () => {
                         </S.TableResponsive>
                     </Col>
                 </Row>
-
-               <div id="graphics_resume">
-                <DataChart impact={allImpacts} headline={language.resume} hiddenMonetary />
-               </div>
-               <div id="graphics_total">
-                    {
-                        hiddenMenu.length === 0 ? <DataChart impact={impactsDesforestation} headline={impacts.deforestation.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
-                        : null
-                    }
-                    <DataChart impact={impactsSiltingRivers} headline={impacts.siltingOfRivers.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
-                    <DataChart impact={impactsMercury} headline={impacts.mercuryContamination.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
-                </div>
                 <HiddenSm>
                     <br /><br />
                     <Button variant="default" onClick={() => history.push('/moral-damages')}>Danos morais</Button>
