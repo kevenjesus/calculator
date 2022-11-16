@@ -1,8 +1,8 @@
 import fixedCalcultions from "hooks/fixedCalculations";
 import { ALLUVIUM, AMOUNT_GOLD, FERRY, MONTHS_OF_MINING, PIT, YEARS_OF_MINING } from "../consts";
 
-const dredgingAndRiverSediments = (country_region, likeMining, typeValueLikeMining, valueLikeMining, distanceanningCenter, pitDepth, hectare) => {
-    const { dredgingAndRiverSediments, general } = fixedCalcultions(country_region)
+const dredgingAndRiverSediments = (country_region, likeMining, typeValueLikeMining, valueLikeMining, distanceanningCenter, pitDepth, hectare, motorPower) => {
+    const { dredgingAndRiverSediments, general } = fixedCalcultions(country_region, motorPower)
     const { 
         kmRotatedPerLiter,
         averageDriverSalaryFreightPerKmUSD,

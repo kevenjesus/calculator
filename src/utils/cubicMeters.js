@@ -1,9 +1,9 @@
 import fixedCalcultions from "hooks/fixedCalculations";
 import { PIT, YEARS_OF_MINING, AMOUNT_GOLD, ALLUVIUM, IMPACTED_AREA, FERRY, MONTHS_OF_MINING } from "pages/Calculator/Form/consts";
 
-const cubicMeters = (country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth) => {
+const cubicMeters = (country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth, motorPower) => {
 
-    const { general, dredgingAndRiverSediments } = fixedCalcultions(country_region)
+    const { general, dredgingAndRiverSediments } = fixedCalcultions(country_region, motorPower)
     const { densityGold, excavationGoldLoss, quantityOfGoldGramsPerYearWell } = general
     const { prodOuroKgporMes, averageMotorPower, productionSedimentTurnsFeatherTonnesPerMonthGold } = dredgingAndRiverSediments
 

@@ -33,6 +33,7 @@ function Form() {
         country,
         qtdAnalysis,
         pitDepth,
+        motorPower,
         valuatioMethod,
         retort,
         inflation,
@@ -41,13 +42,53 @@ function Form() {
     const history = useHistory()
     const alert = useAlert()
 
-    
-
     const isBrazil = useMemo(() => country_region && country_region.country === countries_region[BRAZIL].country, [country_region]) 
     const isEquador = useMemo(() => country_region && country_region.country === countries_region[EQUADOR].country, [country_region]) 
     const isPeru = useMemo(() => country_region && country_region.country === countries_region[PERU].country, [country_region]) 
     const isColombia = useMemo(() => country_region && country_region.country === countries_region[COLOMBIA].country, [country_region]) 
 
+    const dataMotorPower = [
+        {
+            label: '25cv',
+            value: 25
+        },
+        {
+            label: '50cv',
+            value: 50
+        },
+        {
+            label: '75cv',
+            value: 75
+        },
+        {
+            label: '100cv',
+            value: 100
+        },
+        {
+            label: '125cv',
+            value: 125
+        },
+        {
+            label: '150cv',
+            value: 150
+        },
+        {
+            label: '175cv',
+            value: 175
+        },
+        {
+            label: '200cv',
+            value: 200
+        },
+        {
+            label: '225cv',
+            value: 225
+        },
+        {
+            label: '250cv',
+            value: 250
+        },
+    ]
     const dataPitDepth = [
         {
             label: '2,5 ' + calculatorForm.values.pitDepth.meters + ' ('+language.defaultValue+')',
@@ -244,19 +285,25 @@ function Form() {
         dispatch({ type: stateTypes.SET_PITDEPTH, payload: Number(value) })
     }, [dispatch])
 
+    const handleMotorPower = useCallback((e) => {
+        const { value } = e.target
+        dispatch({ type: stateTypes.SET_MOTOR_POWER, payload: Number(value) })
+    }, [dispatch])
+
     const handleValuationMethod = useCallback((e) => {
         const { value } = e.target
         const { analysisUnit } = calculator
-        dispatch({ type: stateTypes.SET_VALUATION_METHOD, payload: Number(value) })
+        let analysUnitValue;
 
         if(analysisUnit !== AMOUNT_GOLD && Number(value) === FERRY) {
-            dispatch({ type: stateTypes.SET_ANALYS_UNIT, payload: MONTHS_OF_MINING })
+            analysUnitValue = MONTHS_OF_MINING
         }else if(analysisUnit !== AMOUNT_GOLD && Number(value) === PIT) {
-            dispatch({ type: stateTypes.SET_ANALYS_UNIT, payload: YEARS_OF_MINING })
+            analysUnitValue = YEARS_OF_MINING
         }else if(analysisUnit !== AMOUNT_GOLD && Number(value) === ALLUVIUM) {
-            dispatch({ type: stateTypes.SET_ANALYS_UNIT, payload: IMPACTED_AREA })
+            analysUnitValue = IMPACTED_AREA
         }
-
+        dispatch({ type: stateTypes.SET_VALUATION_METHOD, payload: Number(value) })
+        dispatch({ type: stateTypes.SET_ANALYS_UNIT, payload: analysUnitValue })
     }, [calculator, dispatch])
 
     const handleTxPrevalance = useCallback((e) => {
@@ -303,6 +350,7 @@ function Form() {
     }else if(isColombia) {
         districtForPeruAndEquador = 'Departamento'
     }
+
     return (
         <Container>
             <Grid fluid>
@@ -377,7 +425,7 @@ function Form() {
                         </select>
                     </Col>
                     
-                    <Col xs={valuatioMethod === ALLUVIUM ? 6 : 12} lg={valuatioMethod === ALLUVIUM ? 4 : 12}>
+                    <Col xs={valuatioMethod === ALLUVIUM || valuatioMethod === FERRY ? 6 : 12} lg={valuatioMethod === ALLUVIUM || valuatioMethod === FERRY ? 4 : 12}>
                         <TextField
                             label={placeholder}
                             error={qtdAnalysis.error}
@@ -387,6 +435,16 @@ function Form() {
                             name="valor" placeholder={placeholder} />
                     </Col>
 
+                    <Conditional check={valuatioMethod === FERRY}>
+                    
+                        <Col xs={6} lg={8}>
+                            <label>{calculatorForm.labels.motorPower}</label>
+                            <select name="motorPower" value={motorPower} onChange={handleMotorPower}>
+                                {dataMotorPower.map(({ label, value }) => <option key={value} value={value}>{label}</option>)}
+                            </select>
+                        </Col>
+                    </Conditional>
+
                     <Conditional check={valuatioMethod === ALLUVIUM}>
                     
                         <Col xs={6} lg={8}>
@@ -395,7 +453,7 @@ function Form() {
                                 {dataPitDepth.map(({ label, value }) => <option key={value} value={value}>{label}</option>)}
                             </select>
                         </Col>
-                        </Conditional>
+                    </Conditional>
                 </Row>
                 <Row>
                     

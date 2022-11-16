@@ -2,7 +2,7 @@ import {  useCallback, useContext, useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Button, TextField } from 'theme'
 import { Grid, Row, Col } from 'react-flexbox-grid'
-import { ALLUVIUM, AMOUNT_GOLD, CATEGORY_DEFORESTATION, CATEGORY_MERCURY, CATEGORY_SILTING_RIVERS, FERRY, IMPACTED_AREA, NO, PIT, YEARS_OF_MINING, YES } from 'pages/Calculator/Form/consts'
+import { ALLUVIUM, AMOUNT_GOLD, CATEGORY_DEFORESTATION, CATEGORY_MERCURY, CATEGORY_SILTING_RIVERS, FERRY, IMPACTED_AREA, MONTHS_OF_MINING, NO, PIT, YEARS_OF_MINING, YES } from 'pages/Calculator/Form/consts'
 import { Container, Headline, ButtonFixed, HiddenPrint, HiddenXS, HiddenSm } from 'pages/Calculator/ImpactsStyles'
 import { Monetary, MonetaryType, Label, FormGroup, Card, OverLay } from './style'
 import Chart from 'components/Chart'
@@ -68,6 +68,7 @@ const FormCalc = () => {
         country,
         qtdAnalysis,
         pitDepth,
+        motorPower,
         valuatioMethod,
         retort,
         inflation,
@@ -77,6 +78,48 @@ const FormCalc = () => {
 
     const isBrazil = country_region && country_region.country === countries_region[BRAZIL].country
 
+    const dataMotorPower = [
+        {
+            label: '25cv',
+            value: 25
+        },
+        {
+            label: '50cv',
+            value: 50
+        },
+        {
+            label: '75cv',
+            value: 75
+        },
+        {
+            label: '100cv',
+            value: 100
+        },
+        {
+            label: '125cv',
+            value: 125
+        },
+        {
+            label: '150cv',
+            value: 150
+        },
+        {
+            label: '175cv',
+            value: 175
+        },
+        {
+            label: '200cv',
+            value: 200
+        },
+        {
+            label: '225cv',
+            value: 225
+        },
+        {
+            label: '250cv',
+            value: 250
+        },
+    ]
 
     const dataPitDepth = [
         {
@@ -282,10 +325,28 @@ const FormCalc = () => {
         submitCalc({...stateContext, calculator:{ ...calculator, pitDepth: Number(value)}})
     }, [calculator, dispatch, stateContext, submitCalc])
 
+    const handleMotorPower = useCallback((e) => {
+        const { value } = e.target
+        dispatch({ type: stateTypes.SET_MOTOR_POWER, payload: Number(value) })
+        submitCalc({...stateContext, calculator:{ ...calculator, motorPower: Number(value)}})
+    }, [calculator, dispatch, stateContext, submitCalc])
+
     const handleValuationMethod = useCallback((e) => {
         const { value } = e.target
+        const { analysisUnit } = calculator
+
+        let analysUnitValue;
+
+        if(analysisUnit !== AMOUNT_GOLD && Number(value) === FERRY) {
+            analysUnitValue = MONTHS_OF_MINING
+        }else if(analysisUnit !== AMOUNT_GOLD && Number(value) === PIT) {
+            analysUnitValue = YEARS_OF_MINING
+        }else if(analysisUnit !== AMOUNT_GOLD && Number(value) === ALLUVIUM) {
+            analysUnitValue = IMPACTED_AREA
+        }
         dispatch({ type: stateTypes.SET_VALUATION_METHOD, payload: Number(value) })
-        submitCalc({...stateContext, calculator:{ ...calculator, valuatioMethod: Number(value)}})
+        dispatch({ type: stateTypes.SET_ANALYS_UNIT, payload: analysUnitValue })
+        submitCalc({...stateContext, calculator:{ ...calculator, analysisUnit:analysUnitValue,  valuatioMethod: Number(value)}})
 
 
     }, [calculator, stateContext, submitCalc, dispatch])
@@ -384,7 +445,7 @@ const FormCalc = () => {
                 <ExtrationTypeOptions value={calculator.analysisUnit} type={valuatioMethod} translate={introduction} />
             </select>
         </Col>
-        <Col xs={valuatioMethod === ALLUVIUM ? 6 : 12} lg={valuatioMethod === ALLUVIUM ? 4 : 12}>
+        <Col xs={valuatioMethod === ALLUVIUM || valuatioMethod === FERRY ? 6 : 12} lg={valuatioMethod === ALLUVIUM || valuatioMethod === FERRY ? 4 : 12}>
             <TextField
                 label={placeholder}
                 error={qtdAnalysis.error}
@@ -394,6 +455,16 @@ const FormCalc = () => {
                 onBlur={() => updateCalc()}
                 name="valor" placeholder={placeholder} />
         </Col>
+
+        <Conditional check={valuatioMethod === FERRY}>
+                    
+            <Col xs={6} lg={8}>
+                <label>{calculatorForm.labels.motorPower}</label>
+                <select name="motorPower" value={motorPower} onChange={handleMotorPower}>
+                    {dataMotorPower.map(({ label, value }) => <option key={value} value={value}>{label}</option>)}
+                </select>
+            </Col>
+        </Conditional>
 
         <Conditional check={valuatioMethod === ALLUVIUM}>
             <Col xs={6} lg={8}>
@@ -433,7 +504,7 @@ const MonetaryImpacts = () => {
     const [loading, setLoading] = useState(false)
     const {state} = useContext(AppContext);
     const {language, calculator, country_region, priceUSDtoBRL} = state
-    const {  pitDepth, notMonetary } = calculator
+    const {  pitDepth, motorPower, notMonetary } = calculator
     const {impacts} = language
     const history = useHistory();
 
@@ -456,7 +527,7 @@ const MonetaryImpacts = () => {
 
     const hiddenMenu = calculator.valuatioMethod === FERRY ? [impacts.menu.deforestation] : []
 
-    const goldValue = Math.round(convertAllinGold(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth))
+    const goldValue = Math.round(convertAllinGold(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth, motorPower))
     
     const goldPrice = getGoldValue.goldPrice() * goldValue
 

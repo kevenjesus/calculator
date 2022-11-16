@@ -47,6 +47,7 @@ const calcResults = (state, dispatch, dolarTOReal) => {
         country,
         qtdAnalysis,
         pitDepth,
+        motorPower,
         txPrevalence,
         retort,
         inflation,
@@ -56,7 +57,7 @@ const calcResults = (state, dispatch, dolarTOReal) => {
         if(!country) {
             return
         }
-
+        console.log('calcResults', calculator)
         const impacts = []
         const notMonetary = []
         const { general } = fixedCalcultions(country_region)
@@ -80,7 +81,7 @@ const calcResults = (state, dispatch, dolarTOReal) => {
         // valor do tipo de garimpo = valueLikeMining
         // tipo de valor do garimpo = typeValueLikeMining
 
-        const goldGrass = convertAllinGold(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth)
+        const goldGrass = convertAllinGold(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth, motorPower)
         const { proporcaoKgporHectare, value: hecatereGrass } = convertAllinHectare(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth)
         notMonetary.push({label: language.not_monerary_goldGrass, value: goldGrass, measure: 'kg de Au'})
         notMonetary.push({label: language.not_monetary_proporcaoKgporHectare, value: (Math.round((proporcaoKgporHectare/1000)*100)/100), measure: 'kg de Au / ha'})
@@ -125,7 +126,7 @@ const calcResults = (state, dispatch, dolarTOReal) => {
         const totalRecoveryOfTopsoiInflation = totalWithInflation(isBrazil, inflation, totalRecoveryOfTopsoil)
         impacts.push({ label: language.recoveryOfTopsoil, displayName: language.recoveryOfTopsoil, category: CATEGORY_DEFORESTATION, value: getValueToCountry(country_region, totalRecoveryOfTopsoiInflation, dolarTOReal) })
  
-        const totalDredgingAndRiverSediments = dredgingAndRiverSediments(country_region, likeMining, typeValueLikeMining, valueLikeMining, distanceanningCenter, pitDepth, hectareValue)
+        const totalDredgingAndRiverSediments = dredgingAndRiverSediments(country_region, likeMining, typeValueLikeMining, valueLikeMining, distanceanningCenter, pitDepth, hectareValue, motorPower)
         const totalDredgingAndRiverSedimentsInflation = totalWithInflation(isBrazil, inflation, totalDredgingAndRiverSediments)
         impacts.push({ label: language.dredgingAndRiverSediments, displayName: language.dredgingAndRiverSediments, category: CATEGORY_SILTING_RIVERS, value: getValueToCountry(country_region, totalDredgingAndRiverSedimentsInflation, dolarTOReal) })
         

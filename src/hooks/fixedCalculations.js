@@ -1,6 +1,7 @@
 import { COLOMBIA, countries_region, EQUADOR, PERU } from 'components/CountrySelect'
 
-const fixedCalcultions = (country_region) => {
+const fixedCalcultions = (country_region, motorPower) => {
+    console.log('motorPower', motorPower)
     let fixedValues = {
         general: null,
         carbon: null,
@@ -83,7 +84,7 @@ const fixedCalcultions = (country_region) => {
             prodMediaCava: 10,
             prodOuroKgporMes: 0.00604,
             dredgingCostPerM3: 5.6,
-            averageMotorPower: 54.4,
+            averageMotorPower: motorPower || 54.4,
             productionSedimentTurnsFeatherTonnesPerMonth: 37.82,
             equivalentErosionTonPerHaPerYear: 12.54,
             erosionControlUSD: 13.28,
@@ -182,7 +183,7 @@ const fixedCalcultions = (country_region) => {
             dredgingAndRiverSediments.prodMediaCava = 100
             dredgingAndRiverSediments.dredgingCostPerM3 = 7.51
             dredgingAndRiverSediments.prodOuroKgporMes = 0.009
-            dredgingAndRiverSediments.averageMotorPower = 130
+            // dredgingAndRiverSediments.averageMotorPower = 130
             dredgingAndRiverSediments.productionSedimentTurnsFeatherTonnesPerMonth = 37.82
             dredgingAndRiverSediments.equivalentErosionTonPerHaPerYear = 12.54
             dredgingAndRiverSediments.erosionControlUSD = 13.28
@@ -270,7 +271,7 @@ const fixedCalcultions = (country_region) => {
             dredgingAndRiverSediments.prodMediaCava = 10
             dredgingAndRiverSediments.dredgingCostPerM3 = 7.51
             dredgingAndRiverSediments.prodOuroKgporMes = 0.00604
-            dredgingAndRiverSediments.averageMotorPower = 54.4
+            // dredgingAndRiverSediments.averageMotorPower = 54.4
             dredgingAndRiverSediments.productionSedimentTurnsFeatherTonnesPerMonth = 37.82
             dredgingAndRiverSediments.equivalentErosionTonPerHaPerYear = 12.54
             dredgingAndRiverSediments.erosionControlUSD = 13.28
@@ -357,7 +358,7 @@ const fixedCalcultions = (country_region) => {
             dredgingAndRiverSediments.prodMediaCava = 10
             dredgingAndRiverSediments.dredgingCostPerM3 = 7.51
             dredgingAndRiverSediments.prodOuroKgporMes = 0.0011
-            dredgingAndRiverSediments.averageMotorPower = 147
+            // dredgingAndRiverSediments.averageMotorPower = 147
             dredgingAndRiverSediments.productionSedimentTurnsFeatherTonnesPerMonth = 37.82
             dredgingAndRiverSediments.equivalentErosionTonPerHaPerYear = 12.54
             dredgingAndRiverSediments.erosionControlUSD = 13.28

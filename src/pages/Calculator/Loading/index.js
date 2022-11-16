@@ -21,7 +21,7 @@ const Loading = () => {
     }, [history, calculator])
     return (
         <Container>
-            <LoadingIcon width="40" height="40" />
+            <LoadingIcon width="40" height="40" style={{margin: '0 auto'}} />
             <Text>{language.loading.text}...</Text>
         </Container>
     )

@@ -43,7 +43,8 @@ export const stateTypes = {
     SET_RETORT: 'SET_RETORT',
     SET_INFLATION: 'SET_INFLATION',
     SET_PRICEUSDTOBRL: 'SET_PRICEUSDTOBRL',
-    SET_NOT_MONETARY: 'SET_NOT_MONETARY'
+    SET_NOT_MONETARY: 'SET_NOT_MONETARY',
+    SET_MOTOR_POWER: 'SET_MOTOR_POWER'
 }
 
 const initialState = {
@@ -63,6 +64,7 @@ const initialState = {
         overflowList: dataOverflow,
         overflow: YES,
         pitDepth: 2.5,
+        motorPower: 25,
         valuatioMethod: ALLUVIUM,
         txPrevalence: TX_PREVALENCE_Med,
         retort: [],
@@ -119,6 +121,8 @@ const calculatorReducer = (state, action) => {
             return {...state, inflation: action.payload}
         case stateTypes.SET_NOT_MONETARY:
             return {...state, notMonetary: action.payload}
+        case stateTypes.SET_MOTOR_POWER:
+            return {...state, motorPower: action.payload}
         default:
             return state;
     }

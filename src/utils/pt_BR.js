@@ -28,6 +28,7 @@ const ptBR = {
             district: 'distrito',
             analysisUnit: 'Unidade de análise',
             pitDepth: 'Profundidade da cava',
+            motorPower: 'Potencia do motor',
             extractionType: 'Tipo de garimpo',
             valueHypothesis: 'Hipóteses de valores' ,
             retort: 'Usa Retorta?',
@@ -199,6 +200,10 @@ const ptBR = {
         pitDepth: {
             headline: 'Profundidade da cava',
             paragraphy_01: 'Qual é a profundidade média das cavas (valas) do garimpo em questão? '
+        },
+        motorPower: {
+            headline: 'Potencia do motor',
+            paragraphy_01: 'Qual é a potencia do motor? '
         },
         region: {
             headline: 'Região',
