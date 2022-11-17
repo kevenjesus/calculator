@@ -36,6 +36,7 @@ function Form() {
         motorPower,
         valuatioMethod,
         retort,
+        analysisUnit,
         inflation,
         txPrevalence } = calculator
     const { calculatorForm, introduction } = language
@@ -425,7 +426,7 @@ function Form() {
                         </select>
                     </Col>
                     
-                    <Col xs={valuatioMethod === ALLUVIUM || valuatioMethod === FERRY ? 6 : 12} lg={valuatioMethod === ALLUVIUM || valuatioMethod === FERRY ? 4 : 12}>
+                    <Col xs={valuatioMethod === ALLUVIUM || (valuatioMethod === FERRY && analysisUnit !== AMOUNT_GOLD) ? 6 : 12} lg={valuatioMethod === ALLUVIUM || (valuatioMethod === FERRY && analysisUnit !== AMOUNT_GOLD) ? 4 : 12}>
                         <TextField
                             label={placeholder}
                             error={qtdAnalysis.error}
@@ -435,7 +436,7 @@ function Form() {
                             name="valor" placeholder={placeholder} />
                     </Col>
 
-                    <Conditional check={valuatioMethod === FERRY}>
+                    <Conditional check={valuatioMethod === FERRY && analysisUnit !== AMOUNT_GOLD}>
                     
                         <Col xs={6} lg={8}>
                             <label>{calculatorForm.labels.motorPower}</label>

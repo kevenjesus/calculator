@@ -27,7 +27,7 @@ const en_US = {
             country: 'Municipality',
             analysisUnit: 'Unit of measurement',
             pitDepth: 'Pit Depth',
-            motorPower: 'Potencia do motor',
+            motorPower: 'Motor Power',
             retort: 'Does it use retort?',
             extractionType: 'Extraction type',
             valueHypothesis: 'Value hypothesis',
@@ -199,8 +199,8 @@ const en_US = {
             paragraphy_01: 'What is the average depth of the pits (ditches) at the mine?'
         },
         motorPower: {
-            headline: 'Potencia do motor',
-            paragraphy_01: 'Qual é a potencia do motor? '
+            headline: 'Motor Power',
+            paragraphy_01: 'What is the power of the engine? '
         },
         region: {
             headline: 'Region',
