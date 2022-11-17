@@ -724,7 +724,7 @@ const MonetaryImpacts = () => {
     const mercuryContaminationText = impacts.mercuryContamination.paragraphy_01.replace("$people", people.toLocaleString('pt-BR'))
 
     const customTextStyle = {fontSize: '24px', lineHeight: '45px'}
-    const customWrap = {width: '100%', display: 'block'}
+    const customWrap = {width: '100%', display: 'none'}
     
     const deforestationInfo =  <div id="deforestationInfo" style={customWrap}>
         <Text style={customTextStyle}>
