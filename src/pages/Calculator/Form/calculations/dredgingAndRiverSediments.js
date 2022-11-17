@@ -79,10 +79,24 @@ const dredgingAndRiverSediments = (country_region, likeMining, typeValueLikeMini
     return ferryDredgingDamageValue
 
     }else if(likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING) {//input meses de garimpo
-    //const productionGoldBalsa = averageMotorPower * valueLikeMining * prodOuroKgporMes
+    //const productionGoldBalsa = averageMotorPower * valueLikeMining * prodOuroKgporMes   
+    
+    /*Padrão por mês de garimpo*/
+
     const productionSedimentturnsTonFeather = averageMotorPower * productionSedimentTurnsFeatherTonnesPerMonth * valueLikeMining;
     const equivalenceHaImpacted = productionSedimentturnsTonFeather / equivalentErosionTonPerHaPerYear;
     const ferryDredgingDamageValue = equivalenceHaImpacted * erosionControlUSD;
+
+    /*Padrão por número de balsas fixo a 1 ano de garimpo*/
+
+    // const quantiaDeBalsas = valueLikeMining
+    // const tempoFixo1Ano = 12
+    // const productionSedimentturnsTonFeather = averageMotorPower * productionSedimentTurnsFeatherTonnesPerMonth * tempoFixo1Ano;
+    // const equivalenceHaImpacted = productionSedimentturnsTonFeather / equivalentErosionTonPerHaPerYear;
+    // const ferryDredgingDamageValue = equivalenceHaImpacted * erosionControlUSD * quantiaDeBalsas;
+
+    console.log('ferryDredgingDamageValue', ferryDredgingDamageValue)
+    
     return ferryDredgingDamageValue
 
     }else if (likeMining === PIT && typeValueLikeMining === AMOUNT_GOLD) { //input ouro
