@@ -599,8 +599,11 @@ const MonetaryImpacts = () => {
         const deforestationInfo = document.getElementById("deforestationInfo")
         const siltingOfRiversinfo = document.getElementById("siltingOfRiversinfo")
         const mercuryContaminationInfo = document.getElementById("mercuryContaminationInfo")
-
-        deforestationInfo.style.display="block"
+        
+        if(hiddenMenu.length === 0) {
+            deforestationInfo.style.display="block"
+        }
+        
         siltingOfRiversinfo.style.display="block"
         mercuryContaminationInfo.style.display="block"
     
@@ -609,10 +612,11 @@ const MonetaryImpacts = () => {
         headlineNotMonetary.style.fontSize = '23px';
         
         const canvasGraphics_resume = await html2canvas(graphics_resume, { scale: 0.55 })
-        const canvasGraphics_deforestation = await html2canvas(graphics_deforestation, { scale: 0.55 })
-        const canvasGraphics_siltingRivers = await html2canvas(graphics_siltingRivers, { scale: 0.55 })
-        const canvasGraphics_mercury = await html2canvas(graphics_mercury, { scale: 0.55 })
-        const canvasTotalMoney = await html2canvas(totalMonay, { scale: 0.8 })
+        const canvasGraphics_deforestation = await html2canvas(graphics_deforestation, { scale: 0.53 })
+        
+        const canvasGraphics_siltingRivers = await html2canvas(graphics_siltingRivers, { scale: 0.53 })
+        const canvasGraphics_mercury = await html2canvas(graphics_mercury, { scale: 0.53 })
+        const canvasTotalMoney = await html2canvas(totalMonay, {scale: 0.8})
         const canvasToNotMonetary = await html2canvas(tablenotMonetary, {scale: 0.7})
         
         var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -641,16 +645,25 @@ const MonetaryImpacts = () => {
         pdf.addImage(canvasGraphics_resume.toDataURL('image/png'), 'JPEG', 10, 55);
         
         pdf.addPage('a4', 'p')
-        pdf.addImage(canvasGraphics_deforestation.toDataURL('image/png'), 'JPEG', 7, 10);
-        pdf.addImage(canvasGraphics_siltingRivers.toDataURL('image/png'), 'JPEG', 7, 120);
-        pdf.text(footer, 88, 287, { align: 'right' })
-        pdf.text('https://calculadora.conservation-strategy.org', 146, 287, { align: 'left' })
-        
+        if(hiddenMenu.length === 0) {
+            pdf.addImage(canvasGraphics_deforestation.toDataURL('image/png'), 'JPEG', 7, 10);
+            pdf.addImage(canvasGraphics_siltingRivers.toDataURL('image/png'), 'JPEG', 7, 135);
+            pdf.text(footer, 88, 287, { align: 'right' })
+            pdf.text('https://calculadora.conservation-strategy.org', 146, 287, { align: 'left' })
 
-        pdf.addPage('a4', 'p')
-        pdf.addImage(canvasGraphics_mercury.toDataURL('image/png'), 'JPEG', 7, 10);
-        pdf.text(footer, 88, 287, { align: 'right' })
-        pdf.text('https://calculadora.conservation-strategy.org', 146, 287, { align: 'left' })
+            pdf.addPage('a4', 'p')
+            pdf.addImage(canvasGraphics_mercury.toDataURL('image/png'), 'JPEG', 7, 10);
+            pdf.text(footer, 88, 287, { align: 'right' })
+            pdf.text('https://calculadora.conservation-strategy.org', 146, 287, { align: 'left' })
+        }else {
+            pdf.addImage(canvasGraphics_siltingRivers.toDataURL('image/png'), 'JPEG', 7, 10);
+            pdf.addImage(canvasGraphics_mercury.toDataURL('image/png'), 'JPEG', 7, 135);
+            pdf.text(footer, 88, 287, { align: 'right' })
+            pdf.text('https://calculadora.conservation-strategy.org', 146, 287, { align: 'left' })
+            
+        }
+        
+        
 
         pdf.addPage('a4', 'p')
         pdf.addImage(canvasToNotMonetary.toDataURL('image/png'), 'JPEG', 7, 10);
@@ -658,13 +671,15 @@ const MonetaryImpacts = () => {
         pdf.text('https://calculadora.conservation-strategy.org', 146, 287, { align: 'left' })
         pdf.save("CSF-report.pdf");
         setTimeout(() => {
-            deforestationInfo.style.display="none"
+            if(hiddenMenu.length === 0) {
+                deforestationInfo.style.display="none"
+            }
             siltingOfRiversinfo.style.display="none"
             mercuryContaminationInfo.style.display="none"
             setLoading(false)
         }, 1000)
 
-    }, [isBrazil])
+    }, [isBrazil, hiddenMenu.length])
     
 
     const impactsDesforestation = {
@@ -709,7 +724,7 @@ const MonetaryImpacts = () => {
     const mercuryContaminationText = impacts.mercuryContamination.paragraphy_01.replace("$people", people.toLocaleString('pt-BR'))
 
     const customTextStyle = {fontSize: '24px', lineHeight: '45px'}
-    const customWrap = {width: '100%', display: 'none'}
+    const customWrap = {width: '100%', display: 'block'}
     
     const deforestationInfo =  <div id="deforestationInfo" style={customWrap}>
         <Text style={customTextStyle}>
