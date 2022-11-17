@@ -28,12 +28,16 @@ import { colors } from 'theme/colors'
 
 import * as S from 'pages/Calculator/MercuryContamination/style'
 import { ReactComponent as LoadingIcon } from 'assets/icons/loading-icon.svg'
-import { Text } from '../Loading/style'
+import { Text } from 'pages/Calculator/ImpactsStyles'
+import convertAllinHectare from 'utils/convertAllinHectare'
+import cubicMeters from 'utils/cubicMeters'
+import popSize100kmRadius from 'utils/popSize100kmRadius'
+import fixedCalcultions from 'hooks/fixedCalculations'
 
 
 
 
-export const DataChart = ({impact, headline, hiddenMonetary, txtTotalNonetary}) => {
+export const DataChart = ({impact, headline, hiddenMonetary, txtTotalNonetary, text}) => {
     const { total, data } = impact
     return (
         <Card>
@@ -47,6 +51,9 @@ export const DataChart = ({impact, headline, hiddenMonetary, txtTotalNonetary}) 
                      <Monetary style={{display: 'inline-block'}}>{total}</Monetary> 
                 </Col>
                 : null }
+                <Col xs={12}>
+                    {text && text}
+                </Col>
                 <Col xs={12}>
                     <Chart data={data} />
                 </Col>
@@ -504,11 +511,14 @@ const MonetaryImpacts = () => {
     const [loading, setLoading] = useState(false)
     const {state} = useContext(AppContext);
     const {language, calculator, country_region, priceUSDtoBRL} = state
-    const {  pitDepth, motorPower, notMonetary } = calculator
+    const {  pitDepth, motorPower, knowRegion, country, counties, notMonetary } = calculator
     const {impacts} = language
     const history = useHistory();
 
     const isBrazil = country_region && country_region.country === countries_region[BRAZIL].country
+
+    const { general } = fixedCalcultions(country_region)
+    const { densityPopulationalRegionNorth2060 } = general
 
 
 
@@ -580,15 +590,28 @@ const MonetaryImpacts = () => {
     const handleDownloadPDF = useCallback(async () =>{
         setLoading(true)
         const graphics_resume = document.getElementById('graphics_resume');
-        const graphics_total = document.getElementById('graphics_total');
+        const graphics_deforestation = document.getElementById('graphics_deforestation');
+        const graphics_siltingRivers = document.getElementById('graphics_siltingRivers');
+        const graphics_mercury = document.getElementById('graphics_mercury');
         const totalMonay = document.getElementById('totalMoney');
         const tablenotMonetary = document.getElementById('table-notMonetary');
         const headlineNotMonetary = document.getElementById('headline-notMonetary');
-        tablenotMonetary.firstElementChild.style.maxWidth = '73%';
+        const deforestationInfo = document.getElementById("deforestationInfo")
+        const siltingOfRiversinfo = document.getElementById("siltingOfRiversinfo")
+        const mercuryContaminationInfo = document.getElementById("mercuryContaminationInfo")
+
+        deforestationInfo.style.display="block"
+        siltingOfRiversinfo.style.display="block"
+        mercuryContaminationInfo.style.display="block"
+    
+
+        tablenotMonetary.firstElementChild.style.maxWidth = '75%';
         headlineNotMonetary.style.fontSize = '23px';
         
         const canvasGraphics_resume = await html2canvas(graphics_resume, { scale: 0.55 })
-        const canvasGraphics_total = await html2canvas(graphics_total, { scale: 0.53 })
+        const canvasGraphics_deforestation = await html2canvas(graphics_deforestation, { scale: 0.55 })
+        const canvasGraphics_siltingRivers = await html2canvas(graphics_siltingRivers, { scale: 0.55 })
+        const canvasGraphics_mercury = await html2canvas(graphics_mercury, { scale: 0.55 })
         const canvasTotalMoney = await html2canvas(totalMonay, { scale: 0.8 })
         const canvasToNotMonetary = await html2canvas(tablenotMonetary, {scale: 0.7})
         
@@ -600,6 +623,7 @@ const MonetaryImpacts = () => {
         tablenotMonetary.firstElementChild.removeAttribute("style")
         headlineNotMonetary.removeAttribute("style")
 
+
         const pdf = new jsPDF(
             {
                 orientation: 'p',
@@ -609,22 +633,36 @@ const MonetaryImpacts = () => {
                 floatPrecision: 16
                }
         );
+
         pdf.setFontSize(8)
         pdf.text(footer, 88, 287, { align: 'right' })
         pdf.text('https://calculadora.conservation-strategy.org', 146, 287, { align: 'left' })
         pdf.addImage(canvasTotalMoney.toDataURL('image/png'), 'JPEG', 7, 10);
         pdf.addImage(canvasGraphics_resume.toDataURL('image/png'), 'JPEG', 10, 55);
-        pdf.addPage('a4', 'p')
         
-        pdf.addImage(canvasGraphics_total.toDataURL('image/png'), 'JPEG', 7, 10);
+        pdf.addPage('a4', 'p')
+        pdf.addImage(canvasGraphics_deforestation.toDataURL('image/png'), 'JPEG', 7, 10);
+        pdf.addImage(canvasGraphics_siltingRivers.toDataURL('image/png'), 'JPEG', 7, 120);
         pdf.text(footer, 88, 287, { align: 'right' })
         pdf.text('https://calculadora.conservation-strategy.org', 146, 287, { align: 'left' })
+        
+
+        pdf.addPage('a4', 'p')
+        pdf.addImage(canvasGraphics_mercury.toDataURL('image/png'), 'JPEG', 7, 10);
+        pdf.text(footer, 88, 287, { align: 'right' })
+        pdf.text('https://calculadora.conservation-strategy.org', 146, 287, { align: 'left' })
+
         pdf.addPage('a4', 'p')
         pdf.addImage(canvasToNotMonetary.toDataURL('image/png'), 'JPEG', 7, 10);
         pdf.text(footer, 88, 287, { align: 'right' })
         pdf.text('https://calculadora.conservation-strategy.org', 146, 287, { align: 'left' })
         pdf.save("CSF-report.pdf");
-        setTimeout(() => setLoading(false), 1000)
+        setTimeout(() => {
+            deforestationInfo.style.display="none"
+            siltingOfRiversinfo.style.display="none"
+            mercuryContaminationInfo.style.display="none"
+            setLoading(false)
+        }, 1000)
 
     }, [isBrazil])
     
@@ -653,11 +691,54 @@ const MonetaryImpacts = () => {
         typeAnalysis = language.calculatorForm.values.qtdAnalysisUnit.months
     }
 
+    const { value: hectare } = convertAllinHectare(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth)
+    const hectareValue = Math.round(hectare * 100) / 100
+    const goldValueText = Math.round(convertAllinGold(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth))
+    const currentCountry = counties.find(c => c.id === Number(country))
+    const volumeM3 = cubicMeters(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth)
+    const popDensity2060 = knowRegion ? currentCountry.popDensity2060  : densityPopulationalRegionNorth2060;
+    const people = Math.round(popSize100kmRadius(knowRegion, popDensity2060, country_region))
+
+    const deforestationText1 = impacts.deforestation.paragraphy_01.replace("$grams", goldValueText).replace("$hectare", hectareValue)
+    const deforestationText2 = impacts.deforestation.paragraphy_02.replace("$hectare", hectareValue)
+
+    const siltingOfRiversText1 = impacts.siltingOfRivers.paragraphy_01.replace("$grams", goldValue).replace("$volumeM3", volumeM3)
+    const siltingOfRiversText2 = impacts.siltingOfRivers.paragraphy_02.replace("$volumeM3", volumeM3)
+
     
+    const mercuryContaminationText = impacts.mercuryContamination.paragraphy_01.replace("$people", people.toLocaleString('pt-BR'))
+
+    const customTextStyle = {fontSize: '24px', lineHeight: '45px'}
+    const customWrap = {width: '100%', display: 'none'}
+    
+    const deforestationInfo =  <div id="deforestationInfo" style={customWrap}>
+        <Text style={customTextStyle}>
+            <div dangerouslySetInnerHTML={{__html: deforestationText1 }} />
+        </Text>
+        <Text style={customTextStyle}>
+            <div dangerouslySetInnerHTML={{__html: deforestationText2 }} />
+        </Text>
+    </div>
+
+    const siltingOfRiversinfo =  <div id="siltingOfRiversinfo" style={customWrap}>
+        <Text style={customTextStyle}>
+            <div dangerouslySetInnerHTML={{__html: siltingOfRiversText1 }} />
+        </Text>
+        <Text style={customTextStyle}>
+            <div dangerouslySetInnerHTML={{__html: siltingOfRiversText2 }} />
+        </Text>
+    </div>
+
+    const mercuryContaminationInfo =  <div id="mercuryContaminationInfo" style={customWrap}>
+        <Text style={customTextStyle}>
+            <div dangerouslySetInnerHTML={{__html: mercuryContaminationText }} />
+        </Text>
+    </div>
 
     
     return (
         <Container>
+            
             {loading && (
                 <OverLay>
                     <LoadingIcon style={{margin: 0}} width="40" height="40" />
@@ -709,13 +790,17 @@ const MonetaryImpacts = () => {
                <div id="graphics_resume">
                 <DataChart impact={allImpacts} headline={language.resume} hiddenMonetary />
                </div>
-               <div id="graphics_total">
+               <div id="graphics_deforestation">
                     {
-                        hiddenMenu.length === 0 ? <DataChart impact={impactsDesforestation} headline={impacts.deforestation.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
+                        hiddenMenu.length === 0 ? (<DataChart impact={impactsDesforestation} headline={impacts.deforestation.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} text={deforestationInfo} />)
                         : null
                     }
-                    <DataChart impact={impactsSiltingRivers} headline={impacts.siltingOfRivers.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
-                    <DataChart impact={impactsMercury} headline={impacts.mercuryContamination.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} />
+                </div>
+                <div id="graphics_siltingRivers">
+                    <DataChart impact={impactsSiltingRivers} headline={impacts.siltingOfRivers.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} text={siltingOfRiversinfo} />
+                </div>
+                <div id="graphics_mercury">
+                    <DataChart impact={impactsMercury} headline={impacts.mercuryContamination.headline} txtTotalNonetary={impacts.monetaryImpacts.labels.finalValue} text={mercuryContaminationInfo} />
                 </div>
                 <br />
                 <br />

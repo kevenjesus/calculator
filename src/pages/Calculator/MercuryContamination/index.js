@@ -15,6 +15,7 @@ import popSize100kmRadius from 'utils/popSize100kmRadius';
 import { BRAZIL, countries_region } from 'components/CountrySelect';
 import toUSD from 'utils/toUSD';
 import * as S from './style'
+import fixedCalcultions from 'hooks/fixedCalculations';
 
 const InfoComponent = ({language}) => {
     if(language === 'enUS') {
@@ -28,9 +29,13 @@ const InfoComponent = ({language}) => {
 
 const MercuryContamination = () => {
     const {state} = useContext(AppContext)
+    
     const { language, calculator, country_region, priceUSDtoBRL } = state
     const { counties, country, knowRegion, notMonetary } = calculator
     const { impacts } = language
+
+    const { general } = fixedCalcultions(country_region)
+    const { densityPopulationalRegionNorth2060 } = general
 
     const isBrazil = country_region && country_region.country === countries_region[BRAZIL].country
 
@@ -50,7 +55,7 @@ const MercuryContamination = () => {
 
     const hiddenMenu = calculator.valuatioMethod === FERRY ? [impacts.menu.deforestation] : []
     const currentCountry = counties.find(c => c.id === Number(country))
-    const popDensity2060 = knowRegion ? currentCountry.popDensity2060  : 6.0;
+    const popDensity2060 = knowRegion ? currentCountry.popDensity2060  : densityPopulationalRegionNorth2060;
     const people = Math.round(popSize100kmRadius(knowRegion, popDensity2060, country_region))
     const paragraphy_01 = impacts.mercuryContamination.paragraphy_01.replace("$people", people.toLocaleString('pt-BR'))
 
