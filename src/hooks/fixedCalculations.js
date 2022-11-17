@@ -1,7 +1,6 @@
 import { COLOMBIA, countries_region, EQUADOR, PERU } from 'components/CountrySelect'
 
 const fixedCalcultions = (country_region, motorPower) => {
-    console.log('motorPower', motorPower)
     let fixedValues = {
         general: null,
         carbon: null,
