@@ -27,7 +27,7 @@ const es_ES = {
             country: 'Municipio',
             analysisUnit: 'Unidade de análisis',
             pitDepth: 'Profundidad del socavón',
-            motorPower: 'Potencia do motor',
+            motorPower: 'Fuerza de motor',
             retort: 'Usa retorta?',
             extractionType: 'Tipo de extracción',
             btnCalulator: 'Calcular impactos'
@@ -197,8 +197,8 @@ const es_ES = {
             paragraphy_01: '¿Cuál es la profundidad promedio de los socavones en la minería? '
         },
         motorPower: {
-            headline: 'Potencia do motor',
-            paragraphy_01: 'Qual é a potencia do motor? '
+            headline: 'Fuerza de motor',
+            paragraphy_01: 'Cual es la potencia del motor? '
         },
         region: {
             headline: 'Región',
