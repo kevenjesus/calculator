@@ -1,5 +1,5 @@
 import fixedCalcultions from "hooks/fixedCalculations";
-import { ALLUVIUM, AMOUNT_GOLD, FERRY, MONTHS_OF_MINING, PIT, YEARS_OF_MINING } from "../consts";
+import { ALLUVIUM, AMOUNT_GOLD, FERRY, QTD_FERRY, PIT, YEARS_OF_MINING } from "../consts";
 
 const dredgingAndRiverSediments = (country_region, likeMining, typeValueLikeMining, valueLikeMining, distanceanningCenter, pitDepth, hectare, motorPower) => {
     const { dredgingAndRiverSediments, general } = fixedCalcultions(country_region, motorPower)
@@ -78,7 +78,7 @@ const dredgingAndRiverSediments = (country_region, likeMining, typeValueLikeMini
   
     return ferryDredgingDamageValue
 
-    }else if(likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING) {//input meses de garimpo TROCAR POR QUANTIDADE DE BALSAS
+    }else if(likeMining === FERRY && typeValueLikeMining === QTD_FERRY) {//input meses de garimpo TROCAR POR QUANTIDADE DE BALSAS
     //const productionGoldBalsa = averageMotorPower * valueLikeMining * prodOuroKgporMes   
     
     /*Padrão por mês de garimpo*/

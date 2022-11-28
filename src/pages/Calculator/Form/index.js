@@ -4,7 +4,7 @@ import { Grid, Row, Col } from 'react-flexbox-grid'
 import { Button, TextField } from 'theme'
 import { Container } from './style'
 import { ButtonFixed } from 'pages/Calculator/ImpactsStyles'
-import { YES, IMPACTED_AREA, AMOUNT_GOLD, ALLUVIUM, FERRY, PIT, YEARS_OF_MINING, NO, MONTHS_OF_MINING} from './consts'
+import { YES, IMPACTED_AREA, AMOUNT_GOLD, ALLUVIUM, FERRY, PIT, YEARS_OF_MINING, NO, QTD_FERRY} from './consts'
 import { AppContext, stateTypes } from 'utils/AppContext'
 import Conditional from 'components/Conditional'
 import RadioBoxConditional from 'components/RadioBoxConditional'
@@ -297,7 +297,7 @@ function Form() {
         let analysUnitValue;
 
         if(analysisUnit !== AMOUNT_GOLD && Number(value) === FERRY) {
-            analysUnitValue = MONTHS_OF_MINING
+            analysUnitValue = QTD_FERRY
         }else if(analysisUnit !== AMOUNT_GOLD && Number(value) === PIT) {
             analysUnitValue = YEARS_OF_MINING
         }else if(analysisUnit !== AMOUNT_GOLD && Number(value) === ALLUVIUM) {
@@ -340,7 +340,7 @@ function Form() {
         }else if (calculator.analysisUnit === YEARS_OF_MINING) {
             placeholder = calculatorForm.values.qtdAnalysisUnit.years
         }else {
-            placeholder = calculatorForm.values.qtdAnalysisUnit.months
+            placeholder = calculatorForm.values.qtdAnalysisUnit.ferry
         }
     setPlaceholder(placeholder)
     }, [calculator.analysisUnit, calculatorForm])

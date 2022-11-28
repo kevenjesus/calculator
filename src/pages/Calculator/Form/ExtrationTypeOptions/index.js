@@ -1,5 +1,5 @@
 import React from 'react'
-import { ALLUVIUM, AMOUNT_GOLD, FERRY, IMPACTED_AREA, MONTHS_OF_MINING, YEARS_OF_MINING } from '../consts'
+import { ALLUVIUM, AMOUNT_GOLD, FERRY, IMPACTED_AREA, QTD_FERRY, YEARS_OF_MINING } from '../consts'
 
 const ExtrationTypeOptions = ({value, type, translate}) => {
     if (type === ALLUVIUM) {
@@ -12,7 +12,8 @@ const ExtrationTypeOptions = ({value, type, translate}) => {
     }else if (type === FERRY) {
         return (
             <>
-                <option value={MONTHS_OF_MINING}>{translate.analysisUnit.monthsMining.headline}</option>
+                <option value={QTD_FERRY}>{translate.analysisUnit.qtdFerry.headline}</option>
+                {/* <option value={MONTHS_OF_MINING}>{translate.analysisUnit.monthsMining.headline}</option> */}
                 <option value={AMOUNT_GOLD}>{translate.analysisUnit.goldType.headline}</option>
             </>
         )

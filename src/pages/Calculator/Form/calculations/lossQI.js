@@ -1,6 +1,6 @@
 import fixedCalcultions from 'hooks/fixedCalculations';
 import normDist from 'utils/normDist'
-import { ALLUVIUM, AMOUNT_GOLD, FERRY, MONTHS_OF_MINING, PIT, YEARS_OF_MINING } from '../consts';
+import { ALLUVIUM, AMOUNT_GOLD, FERRY, QTD_FERRY, PIT, YEARS_OF_MINING } from '../consts';
 
 const CONSERVATIVE = 0.29
 
@@ -61,7 +61,7 @@ const lossQI =  (country_region, likeMining, typeValueLikeMining, valueLikeMinin
     const percentLossHgInWaterValue = txPrevalence === CONSERVATIVE ? percentLossHgInWater_convervative : percentLossHgInWater;
     gramsHgReleasedinWater = percentLossHgInWaterValue * HgAuRatio * valueLikeMining;
 
-  }else if(likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING) { //input Meses de garimpo TROCAR POR QUANTIDADE DE BALSAS
+  }else if(likeMining === FERRY && typeValueLikeMining === QTD_FERRY) { //input Meses de garimpo TROCAR POR QUANTIDADE DE BALSAS
 
      /*Padrão por mês de garimpo*/
 

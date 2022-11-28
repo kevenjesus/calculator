@@ -36,13 +36,15 @@ const en_US = {
         values: {
             analysisUnit: {
                 impactedArea: 'Impacted area size',
-                amountOfGold: 'Amount of gold'
+                amountOfGold: 'Amount of gold',
+                qtd_ferry: 'Ferries'
             },
             qtdAnalysisUnit: {
                 hactare: 'Hectare',
                 grams: 'Grams',
                 months: 'Months',
-                years: 'Years'
+                years: 'Years',
+                ferry: 'ferries'
             },
             pitDepth: {
                 meters: 'meters'
@@ -150,6 +152,10 @@ const en_US = {
                 headline: 'Meses de garimpo',
                 text: 'The operating time of the boat can be used as an approximation of the amount of gold mined and mercury dumped into the environment'
             },
+            qtdFerry: {
+                headline: 'number of ferries',
+                text: ''
+            }
         },
         contextValue: {
             headline: 'The value of the impact depends on the context',

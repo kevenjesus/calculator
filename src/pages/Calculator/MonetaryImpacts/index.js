@@ -2,7 +2,7 @@ import {  useCallback, useContext, useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Button, TextField } from 'theme'
 import { Grid, Row, Col } from 'react-flexbox-grid'
-import { ALLUVIUM, AMOUNT_GOLD, CATEGORY_DEFORESTATION, CATEGORY_MERCURY, CATEGORY_SILTING_RIVERS, FERRY, IMPACTED_AREA, MONTHS_OF_MINING, NO, PIT, YEARS_OF_MINING, YES } from 'pages/Calculator/Form/consts'
+import { ALLUVIUM, AMOUNT_GOLD, CATEGORY_DEFORESTATION, CATEGORY_MERCURY, CATEGORY_SILTING_RIVERS, FERRY, IMPACTED_AREA, NO, PIT, QTD_FERRY, YEARS_OF_MINING, YES } from 'pages/Calculator/Form/consts'
 import { Container, Headline, ButtonFixed, HiddenPrint, HiddenXS, HiddenSm } from 'pages/Calculator/ImpactsStyles'
 import { Monetary, MonetaryType, Label, FormGroup, Card, OverLay } from './style'
 import Chart from 'components/Chart'
@@ -345,7 +345,7 @@ const FormCalc = () => {
         let analysUnitValue;
 
         if(analysisUnit !== AMOUNT_GOLD && Number(value) === FERRY) {
-            analysUnitValue = MONTHS_OF_MINING
+            analysUnitValue = QTD_FERRY
         }else if(analysisUnit !== AMOUNT_GOLD && Number(value) === PIT) {
             analysUnitValue = YEARS_OF_MINING
         }else if(analysisUnit !== AMOUNT_GOLD && Number(value) === ALLUVIUM) {
@@ -373,9 +373,9 @@ const FormCalc = () => {
         }else if(calculator.analysisUnit === IMPACTED_AREA) {
             placeholder = calculatorForm.values.qtdAnalysisUnit.hactare
         }else if (calculator.analysisUnit === YEARS_OF_MINING) {
-            placeholder = calculatorForm.values.qtdAnalysisUnit.years
+            placeholder = calculatorForm.values.qtdAnalysisUnit.years  
         }else {
-            placeholder = calculatorForm.values.qtdAnalysisUnit.months
+            placeholder = calculatorForm.values.qtdAnalysisUnit.ferry
         }
     setPlaceholder(placeholder)
     }, [calculator.analysisUnit, calculatorForm])
@@ -703,14 +703,14 @@ const MonetaryImpacts = () => {
     }else if (calculator.analysisUnit === YEARS_OF_MINING) {
         typeAnalysis = language.calculatorForm.values.qtdAnalysisUnit.years
     }else {
-        typeAnalysis = language.calculatorForm.values.qtdAnalysisUnit.months
+        typeAnalysis = language.calculatorForm.values.qtdAnalysisUnit.ferry
     }
 
     const { value: hectare } = convertAllinHectare(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth)
     const hectareValue = Math.round(hectare * 100) / 100
     const goldValueText = Math.round(convertAllinGold(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth))
     const currentCountry = counties.find(c => c.id === Number(country))
-    const volumeM3 = cubicMeters(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth)
+    const volumeM3 = cubicMeters(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth, motorPower)
     const popDensity2060 = knowRegion ? currentCountry.popDensity2060  : densityPopulationalRegionNorth2060;
     const people = Math.round(popSize100kmRadius(knowRegion, popDensity2060, country_region))
 

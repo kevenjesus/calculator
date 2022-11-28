@@ -1,5 +1,5 @@
 import fixedCalcultions from "hooks/fixedCalculations";
-import { FERRY, MONTHS_OF_MINING, PIT, YEARS_OF_MINING } from "../consts";
+import { FERRY, QTD_FERRY, PIT, YEARS_OF_MINING } from "../consts";
 
 const neuroSymptomsGarimpeiro = (country_region, likeMining, typeValueLikeMining, valueLikeMining, txPrevalence, gold) => {
 
@@ -32,7 +32,7 @@ const neuroSymptomsGarimpeiro = (country_region, likeMining, typeValueLikeMining
             value: toGoldMinersCost
         }
 
-    }else if (likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING) { //Input Meses de garimpo TROCAR POR QUANTIDADE DE BALSAS
+    }else if (likeMining === FERRY && typeValueLikeMining === QTD_FERRY) { //Input Meses de garimpo TROCAR POR QUANTIDADE DE BALSAS
 
         /*Padrão por mês de garimpo*/
 

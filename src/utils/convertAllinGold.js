@@ -1,5 +1,5 @@
 import fixedCalcultions from "hooks/fixedCalculations";
-import { ALLUVIUM, FERRY, IMPACTED_AREA, MONTHS_OF_MINING, PIT, YEARS_OF_MINING } from "pages/Calculator/Form/consts";
+import { ALLUVIUM, FERRY, IMPACTED_AREA, QTD_FERRY, PIT, YEARS_OF_MINING } from "pages/Calculator/Form/consts";
 
 const convertAllinGold = (country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth, motorPower) => {
     const { general, dredgingAndRiverSediments } = fixedCalcultions(country_region, motorPower)
@@ -29,7 +29,7 @@ const convertAllinGold = (country_region, likeMining, typeValueLikeMining, value
         //console.log('grama de ouro', goldGrass)
         return goldGrass
 
-    }else if (likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING){ //input por meses TROCAR POR QUANTIDADE DE BALSAS
+    }else if (likeMining === FERRY && typeValueLikeMining === QTD_FERRY){ //input por meses TROCAR POR QUANTIDADE DE BALSAS
         
         /*Padrão por número de balsas fixo a 1 ano de garimpo*/
 

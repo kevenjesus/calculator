@@ -44,12 +44,14 @@ const ptBR = {
             analysisUnit: {
                 impactedArea: 'Tamanho da área impactada',
                 amountOfGold: 'Quantidade de ouro',
+                qtd_ferry: 'Balsas'
             },
             qtdAnalysisUnit: {
                 hactare: 'Hectare(s)',
                 grams: 'Grama(s) de ouro',
                 months: 'Mese(s)',
-                years: 'Ano(s)'
+                years: 'Ano(s)',
+                ferry: 'Balsas'
             },
             pitDepth: {
                 meters: 'metros'
@@ -153,6 +155,10 @@ const ptBR = {
                 headline: 'Meses de garimpo',
                 text: 'O tempo de funcionamento da balsa pode ser utilizado como uma aproximação da quantidade de ouro extraído e mercúrio despejado no ambiente'
             },
+            qtdFerry: {
+                headline: 'Quantidade de balsas',
+                text: ''
+            }
         },
         contextValue: {
             headline: 'O valor do impacto depende do contexto',

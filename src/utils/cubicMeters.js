@@ -1,5 +1,5 @@
 import fixedCalcultions from "hooks/fixedCalculations";
-import { PIT, YEARS_OF_MINING, AMOUNT_GOLD, ALLUVIUM, IMPACTED_AREA, FERRY, MONTHS_OF_MINING } from "pages/Calculator/Form/consts";
+import { PIT, YEARS_OF_MINING, AMOUNT_GOLD, ALLUVIUM, IMPACTED_AREA, FERRY, QTD_FERRY } from "pages/Calculator/Form/consts";
 
 const cubicMeters = (country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth, motorPower) => {
 
@@ -51,7 +51,7 @@ const cubicMeters = (country_region, likeMining, typeValueLikeMining, valueLikeM
         const prodSedimentoViraPlumaTon = productionSedimentTurnsFeatherTonnesPerMonthGold * valueLikeMining;
         return `${Math.round(prodSedimentoViraPlumaTon * 100) / 100} ton` 
 
-    }else if (likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING){
+    }else if (likeMining === FERRY && typeValueLikeMining === QTD_FERRY){
 
         /*Padrão por mês de garimpo*/
 

@@ -1,5 +1,5 @@
 import fixedCalcultions from "hooks/fixedCalculations";
-import { ALLUVIUM, AMOUNT_GOLD, FERRY, MONTHS_OF_MINING, PIT, YEARS_OF_MINING } from "../consts";
+import { ALLUVIUM, AMOUNT_GOLD, FERRY, QTD_FERRY, PIT, YEARS_OF_MINING } from "../consts";
 
 const CONSERVATIVE = 0.29;
 
@@ -56,7 +56,7 @@ const heartAttack = (country_region, likeMining, typeValueLikeMining, valueLikeM
         const lossPercentHgInWater = txPrevalence === CONSERVATIVE ? percentLossHgInWater_convervative : percentLossHgInWater;
         HgGrassReleasedInWater = lossPercentHgInWater * HgAuRatio * valueLikeMining;
 
-    }else if (likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING) { //input Meses de garimpo
+    }else if (likeMining === FERRY && typeValueLikeMining === QTD_FERRY) { //input Meses de garimpo
 
         /*Padrão por mês de garimpo*/
 

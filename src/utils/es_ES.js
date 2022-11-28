@@ -35,13 +35,15 @@ const es_ES = {
         values: {
             analysisUnit: {
                 impactedArea: 'Tamaño del área impactada',
-                amountOfGold: 'Cantidad de oro'
+                amountOfGold: 'Cantidad de oro',
+                qtd_ferry: 'Transbordadores'
             },
             qtdAnalysisUnit: {
                 hactare: 'Hectáreas',
                 grams: 'Gramos de oro',
                 months: 'Meses',
-                years: 'Anos'
+                years: 'Anos',
+                ferry: 'transbordadores'
             },
             pitDepth: {
                 meters: 'metros'
@@ -148,6 +150,10 @@ const es_ES = {
                 headline: 'Meses de minería ilegal',
                 text: 'El tiempo de funcionamiento de la balsa puede utilizarse como una aproximación a la cantidad de oro extraído y de mercurio descargado en el medio ambiente'
             },
+            qtdFerry: {
+                headline: 'número de transbordadores',
+                text: ''
+            }
         },
         contextValue: {
             headline: 'El valor del impacto depende del contexto',

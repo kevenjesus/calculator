@@ -1,10 +1,11 @@
-import { ALLUVIUM, FERRY } from 'pages/Calculator/Form/consts'
-import { IMPACTED_AREA, AMOUNT_GOLD, YEARS_OF_MINING, MONTHS_OF_MINING } from 'pages/Calculator/Form/consts'
+import { ALLUVIUM, FERRY, QTD_FERRY } from 'pages/Calculator/Form/consts'
+import { IMPACTED_AREA, AMOUNT_GOLD, YEARS_OF_MINING } from 'pages/Calculator/Form/consts'
 import { ItemType, Title, Paragraphy } from '../style'
 import { Col } from 'react-flexbox-grid'
 import React from 'react'
 
 const ExtractionType = ({type, state, translate, handleState}) => {
+    console.log('state', state)
     if(type === ALLUVIUM) {
         return (
             <>
@@ -30,10 +31,10 @@ const ExtractionType = ({type, state, translate, handleState}) => {
         return (
             <>
                 <Col xs={6}>
-                    <ItemType active={state === MONTHS_OF_MINING} onClick={() => handleState(MONTHS_OF_MINING)}>
-                    <Title>{translate.analysisUnit.monthsMining.headline}</Title>
+                    <ItemType active={state === QTD_FERRY} onClick={() => handleState(QTD_FERRY)}>
+                    <Title>{translate.analysisUnit.qtdFerry.headline}</Title>
                         <Paragraphy>
-                            {translate.analysisUnit.monthsMining.text}
+                            {translate.analysisUnit.qtdFerry.text}
                         </Paragraphy>
                     </ItemType>
                 </Col>

@@ -2,7 +2,7 @@ import { useState, useRef, useContext, useCallback, useEffect } from 'react'
 import { Row, Col } from 'react-flexbox-grid'
 import { Headline } from 'pages/Introduction/style'
 import { AppContext, stateTypes } from 'utils/AppContext'
-import { IMPACTED_AREA, AMOUNT_GOLD, YEARS_OF_MINING, ALLUVIUM, FERRY, MONTHS_OF_MINING } from 'pages/Calculator/Form/consts'
+import { IMPACTED_AREA, AMOUNT_GOLD, YEARS_OF_MINING, ALLUVIUM, FERRY, QTD_FERRY } from 'pages/Calculator/Form/consts'
 import { TextField } from 'theme'
 import ExtractionType from './ExtractionType'
 import Conditional from 'components/Conditional'
@@ -90,8 +90,8 @@ const AnalysisUnit = () => {
             if(form && form.analysisUnit) {
                 setState(form.analysisUnit)
             }else {
-                setState(MONTHS_OF_MINING)
-                dispatch({type: stateTypes.SET_ANALYS_UNIT, payload: MONTHS_OF_MINING })
+                setState(QTD_FERRY)
+                dispatch({type: stateTypes.SET_ANALYS_UNIT, payload: QTD_FERRY })
             }
             
         }else {
@@ -113,7 +113,7 @@ const AnalysisUnit = () => {
     }else if (state === YEARS_OF_MINING) {
         placeholder = calculatorForm.values.qtdAnalysisUnit.years
     }else {
-        placeholder = calculatorForm.values.qtdAnalysisUnit.months
+        placeholder = calculatorForm.values.qtdAnalysisUnit.ferry
     }
 
 
