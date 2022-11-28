@@ -2,9 +2,9 @@ import fixedCalcultions from "hooks/fixedCalculations";
 import { ALLUVIUM, FERRY, IMPACTED_AREA, MONTHS_OF_MINING, PIT, YEARS_OF_MINING } from "pages/Calculator/Form/consts";
 
 const convertAllinGold = (country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth, motorPower) => {
-    const { general } = fixedCalcultions(country_region, motorPower)
-    //const { prodOuroKgporMes,  averageMotorPower } = dredgingAndRiverSediments
-    const { densityGold, excavationGoldLoss, prodGoldMonthFerry, quantityOfGoldGramsPerYearWell, cavaAverageProductivity } = general
+    const { general, dredgingAndRiverSediments } = fixedCalcultions(country_region, motorPower)
+    const { prodOuroKgporMes } = dredgingAndRiverSediments
+    const { densityGold, excavationGoldLoss, quantityOfGoldGramsPerYearWell, cavaAverageProductivity } = general //prodGoldMonthFerry valor utilizaddo para MESES DE GARIMPO
     //console.log(quantityOfGoldGramsPerYearWell)
     let goldGrass
    
@@ -29,13 +29,15 @@ const convertAllinGold = (country_region, likeMining, typeValueLikeMining, value
         //console.log('grama de ouro', goldGrass)
         return goldGrass
 
-    }else if (likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING){
-        //const prodOuroKgporMes = 0.00604;
-        //const averageMotorPower = 54.4;
-        //const prodOuroGrporMes = prodOuroKgporMes * 1000;
-        //const goldGrass = averageMotorPower * valueLikeMining * prodOuroGrporMes;
-        const goldGrass =  valueLikeMining * prodGoldMonthFerry;
-        //console.log('grama de ouro', goldGrass)
+    }else if (likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING){ //input por meses TROCAR POR QUANTIDADE DE BALSAS
+        
+        /*Padrão por número de balsas fixo a 1 ano de garimpo*/
+
+        const tempoFixo1Ano = 12
+        const prodOuroGrporMes = prodOuroKgporMes * 1000;
+        const goldGrass = (motorPower * tempoFixo1Ano * prodOuroGrporMes) * valueLikeMining; //valueLikemining = Quantidade de BALSAS 
+
+        //const goldGrass =  valueLikeMining * prodGoldMonthFerry;
         return goldGrass
     }else{
         const goldGrass = valueLikeMining;
