@@ -54,8 +54,8 @@ function Form() {
             value: 25
         },
         {
-            label: '50cv',
-            value: 50
+            label: '55cv',
+            value: 55
         },
         {
             label: '75cv',
@@ -66,8 +66,8 @@ function Form() {
             value: 100
         },
         {
-            label: '125cv',
-            value: 125
+            label: '130cv',
+            value: 130
         },
         {
             label: '150cv',
@@ -222,8 +222,22 @@ function Form() {
                 checked: true
             },
         ]
+
+        let motoPowerDefault;
+
+        if(isBrazil || isEquador) {
+            motoPowerDefault = 55
+        }else if(isPeru) {
+            motoPowerDefault = 130
+        }else if(isColombia) {
+            motoPowerDefault = 100
+        }
+
         dispatch({type: stateTypes.SET_REGION_LIST, payload: dataRegion})
         dispatch({type: stateTypes.SET_RETORT, payload: dataRetort})
+        dispatch({type: stateTypes.SET_MOTOR_POWER, payload: motoPowerDefault})
+        
+        
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [language, knowRegion])
 

@@ -1,4 +1,4 @@
-import {  useCallback, useContext, useEffect, useState } from 'react'
+import {  useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Button, TextField } from 'theme'
 import { Grid, Row, Col } from 'react-flexbox-grid'
@@ -83,7 +83,7 @@ const FormCalc = () => {
     const { calculatorForm, introduction } = language
     const alert = useAlert()
 
-    const isBrazil = country_region && country_region.country === countries_region[BRAZIL].country
+    const isBrazil = useMemo(() => country_region && country_region.country === countries_region[BRAZIL].country, [country_region]) 
 
     const dataMotorPower = [
         {
@@ -91,8 +91,8 @@ const FormCalc = () => {
             value: 25
         },
         {
-            label: '50cv',
-            value: 50
+            label: '55cv',
+            value: 55
         },
         {
             label: '75cv',
@@ -103,8 +103,8 @@ const FormCalc = () => {
             value: 100
         },
         {
-            label: '125cv',
-            value: 125
+            label: '130cv',
+            value: 130
         },
         {
             label: '150cv',
@@ -256,6 +256,7 @@ const FormCalc = () => {
                 checked: true
             },
         ]
+        
         dispatch({type: stateTypes.SET_REGION_LIST, payload: dataRegion})
         dispatch({type: stateTypes.SET_RETORT, payload: dataRetort})
     // eslint-disable-next-line react-hooks/exhaustive-deps
