@@ -160,7 +160,7 @@ const fixedCalcultions = (country_region, motorPower) => {
             general.aDALYUSD = 18360.7
             general.excavatorHoursDays = 10
             general.excavatorCostPerKMUSD = 0.77
-            general.hollowMediumDepth = 100
+            general.hollowMediumDepth = 10
             general.cavaAverageProductivity = 0.141
             general.prodGoldMonthFerry = 229.4
 
