@@ -61,10 +61,25 @@ const lossQI =  (country_region, likeMining, typeValueLikeMining, valueLikeMinin
     const percentLossHgInWaterValue = txPrevalence === CONSERVATIVE ? percentLossHgInWater_convervative : percentLossHgInWater;
     gramsHgReleasedinWater = percentLossHgInWaterValue * HgAuRatio * valueLikeMining;
 
-  }else if(likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING) { //input Meses de garimpo
+  }else if(likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING) { //input Meses de garimpo TROCAR POR QUANTIDADE DE BALSAS
+
+     /*Padrão por mês de garimpo*/
+
+    // const percentLossHgInWaterValue = txPrevalence === CONSERVATIVE ? percentLossHgInWater_ferry__convervative : percentLossHgInWater_ferry;
+    // const toFerryGoldProductivy = valueLikeMining * prodGoldMonthFerry;
+    // gramsHgReleasedinWater = percentLossHgInWaterValue * HgAuRatio * toFerryGoldProductivy;
+    // console.log('gramsHgReleasedinWater', gramsHgReleasedinWater)
+
+
+    /*Padrão por número de balsas fixo a 1 ano de garimpo*/
+
+    const tempoFixo1Ano = 12
     const percentLossHgInWaterValue = txPrevalence === CONSERVATIVE ? percentLossHgInWater_ferry__convervative : percentLossHgInWater_ferry;
-    const toFerryGoldProductivy = valueLikeMining * prodGoldMonthFerry;
-    gramsHgReleasedinWater = percentLossHgInWaterValue * HgAuRatio * toFerryGoldProductivy;
+    const toFerryGoldProductivy = tempoFixo1Ano * prodGoldMonthFerry;
+    const somaLossHgHgAuRatioFerryGoldProd = percentLossHgInWaterValue * HgAuRatio * toFerryGoldProductivy;
+    gramsHgReleasedinWater = somaLossHgHgAuRatioFerryGoldProd * valueLikeMining; // valuelikemining = QUANTIA DE BALSAS
+    //console.log('gramsHgReleasedinWater', gramsHgReleasedinWater)
+
     
   }else if(likeMining === FERRY && typeValueLikeMining === AMOUNT_GOLD) { //input gramas de ouro
     const percentLossHgInWaterValue = txPrevalence === CONSERVATIVE ? percentLossHgInWater_ferry__convervative : percentLossHgInWater_ferry;
@@ -178,14 +193,17 @@ distNorm28ate30 + distNorm30ate32 + distNorm32ate34 + distNorm34ate36 + distNorm
   const calculation6 = (1-Math.exp(-discountRate*durationOfDisability));
   const daly = weightOfDisabilityPorincidence*(agwt*calculation1*((Math.exp(calculation2)*calculation3)-calculation4)+calculation5*calculation6);
   //const aDALYUSD = 103599;
-  const toLossQIFetuses = daly*aDALYUSD;
-  
+  const toLossQIFetuses = daly * aDALYUSD;
+ 
+
+
   return {
     concentrationMediaMercuryHair,
     porcentNascidosVivosPerdaQIAcimaDe2Pts,
     value: toLossQIFetuses
   } 
-
+  
+  
 }
 
 export default lossQI

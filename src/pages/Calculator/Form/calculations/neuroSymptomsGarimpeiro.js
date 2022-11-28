@@ -32,8 +32,26 @@ const neuroSymptomsGarimpeiro = (country_region, likeMining, typeValueLikeMining
             value: toGoldMinersCost
         }
 
-    }else if (likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING) { //Input Meses de garimpo
-        const goldenGrass = prodGoldMonthFerry * valueLikeMining;
+    }else if (likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING) { //Input Meses de garimpo TROCAR POR QUANTIDADE DE BALSAS
+
+        /*Padrão por mês de garimpo*/
+
+        // const goldenGrass = prodGoldMonthFerry * valueLikeMining;
+        // const tonumberOfGoldMiners = goldenGrass / amountOfGoldminersYear;
+        // const qtdOfMinersAffected = txPrevalence * tonumberOfGoldMiners;
+        // //console.log('Quantidade de garimpeiros afetados', qtdOfMinersAffected)
+        // const neuroGoldMinersTreatmentCost = neuroTreatmentCostPerGoldMinerUSD * qtdOfMinersAffected;
+
+        // const weightNeuroDisabilityGoldminers_QtdGarimpeiros = weightNeuroDisabilityGoldminers  * tonumberOfGoldMiners;
+        // const DALYyearsGoldMiner = txPrevalence * weightNeuroDisabilityGoldminers_QtdGarimpeiros;
+        // const toCostDALYGoldMiners =  aDALYUSD  * DALYyearsGoldMiner;
+        // const toCostGoldMiners = toCostDALYGoldMiners  + neuroGoldMinersTreatmentCost;
+        // console.log('toCostGoldMiners', toCostGoldMiners)
+
+        /*Padrão por número de balsas fixo a 1 ano de garimpo*/
+
+        const tempoFixo1Ano = 12
+        const goldenGrass = prodGoldMonthFerry * tempoFixo1Ano;
         const tonumberOfGoldMiners = goldenGrass / amountOfGoldminersYear;
         const qtdOfMinersAffected = txPrevalence * tonumberOfGoldMiners;
         //console.log('Quantidade de garimpeiros afetados', qtdOfMinersAffected)
@@ -42,7 +60,10 @@ const neuroSymptomsGarimpeiro = (country_region, likeMining, typeValueLikeMining
         const weightNeuroDisabilityGoldminers_QtdGarimpeiros = weightNeuroDisabilityGoldminers  * tonumberOfGoldMiners;
         const DALYyearsGoldMiner = txPrevalence * weightNeuroDisabilityGoldminers_QtdGarimpeiros;
         const toCostDALYGoldMiners =  aDALYUSD  * DALYyearsGoldMiner;
-        const toCostGoldMiners = toCostDALYGoldMiners  + neuroGoldMinersTreatmentCost;
+        const somaCostDALYeNeuroGoldMiners = toCostDALYGoldMiners  + neuroGoldMinersTreatmentCost;
+        const toCostGoldMiners = somaCostDALYeNeuroGoldMiners * valueLikeMining; // valuelikemining = QUANTIA DE BALSAS
+        //console.log('toCostGoldMiners', toCostGoldMiners)
+
         return {
             qtdOfMinersAffected,
             value: toCostGoldMiners

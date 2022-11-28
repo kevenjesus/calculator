@@ -78,24 +78,23 @@ const dredgingAndRiverSediments = (country_region, likeMining, typeValueLikeMini
   
     return ferryDredgingDamageValue
 
-    }else if(likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING) {//input meses de garimpo
+    }else if(likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING) {//input meses de garimpo TROCAR POR QUANTIDADE DE BALSAS
     //const productionGoldBalsa = averageMotorPower * valueLikeMining * prodOuroKgporMes   
     
     /*Padrão por mês de garimpo*/
 
-    const productionSedimentturnsTonFeather = averageMotorPower * productionSedimentTurnsFeatherTonnesPerMonth * valueLikeMining;
-    const equivalenceHaImpacted = productionSedimentturnsTonFeather / equivalentErosionTonPerHaPerYear;
-    const ferryDredgingDamageValue = equivalenceHaImpacted * erosionControlUSD;
+    // const productionSedimentturnsTonFeather = averageMotorPower * productionSedimentTurnsFeatherTonnesPerMonth * valueLikeMining;
+    // const equivalenceHaImpacted = productionSedimentturnsTonFeather / equivalentErosionTonPerHaPerYear;
+    // const ferryDredgingDamageValue = equivalenceHaImpacted * erosionControlUSD;
 
     /*Padrão por número de balsas fixo a 1 ano de garimpo*/
 
-    // const quantiaDeBalsas = valueLikeMining
-    // const tempoFixo1Ano = 12
-    // const productionSedimentturnsTonFeather = averageMotorPower * productionSedimentTurnsFeatherTonnesPerMonth * tempoFixo1Ano;
-    // const equivalenceHaImpacted = productionSedimentturnsTonFeather / equivalentErosionTonPerHaPerYear;
-    // const ferryDredgingDamageValue = equivalenceHaImpacted * erosionControlUSD * quantiaDeBalsas;
+    const tempoFixo1Ano = 12
+    const productionSedimentturnsTonFeather = averageMotorPower * productionSedimentTurnsFeatherTonnesPerMonth * tempoFixo1Ano;
+    const equivalenceHaImpacted = productionSedimentturnsTonFeather / equivalentErosionTonPerHaPerYear;
+    const ferryDredgingDamageValue = equivalenceHaImpacted * erosionControlUSD * valueLikeMining; // valuelikemining = QUANTIA DE BALSAS
 
-    console.log('ferryDredgingDamageValue', ferryDredgingDamageValue)
+    //console.log('ferryDredgingDamageValue', ferryDredgingDamageValue)
     
     return ferryDredgingDamageValue
 

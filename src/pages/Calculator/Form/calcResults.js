@@ -57,7 +57,7 @@ const calcResults = (state, dispatch, dolarTOReal) => {
         if(!country) {
             return
         }
-        console.log('calcResults', calculator)
+        //console.log('calcResults', calculator)
         const impacts = []
         const notMonetary = []
         const { general } = fixedCalcultions(country_region)

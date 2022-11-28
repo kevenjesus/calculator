@@ -57,9 +57,25 @@ const heartAttack = (country_region, likeMining, typeValueLikeMining, valueLikeM
         HgGrassReleasedInWater = lossPercentHgInWater * HgAuRatio * valueLikeMining;
 
     }else if (likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING) { //input Meses de garimpo
+
+        /*Padrão por mês de garimpo*/
+
+        // const lossPercentHgInWater = txPrevalence === CONSERVATIVE ? percentLossHgInWater_ferry__convervative : percentLossHgInWater_ferry;
+        // const toGoldFerryProduction = valueLikeMining * prodGoldMonthFerry;
+        // HgGrassReleasedInWater = lossPercentHgInWater * HgAuRatio * toGoldFerryProduction;
+
+        /*Padrão por número de balsas fixo a 1 ano de garimpo*/
+
+        const tempoFixo1Ano = 12
         const lossPercentHgInWater = txPrevalence === CONSERVATIVE ? percentLossHgInWater_ferry__convervative : percentLossHgInWater_ferry;
-        const toGoldFerryProduction = valueLikeMining * prodGoldMonthFerry;
-        HgGrassReleasedInWater = lossPercentHgInWater * HgAuRatio * toGoldFerryProduction;
+        const toFerryGoldProductivity = tempoFixo1Ano * prodGoldMonthFerry;
+        const somaLossHgHgAuRatioFerryGoldProd = lossPercentHgInWater * HgAuRatio * toFerryGoldProductivity;
+        HgGrassReleasedInWater = somaLossHgHgAuRatioFerryGoldProd * valueLikeMining;  // valuelikemining = QUANTIA DE BALSAS
+
+        //console.log('HgGrassReleasedInWater', HgGrassReleasedInWater)
+
+
+
 
     }else if (likeMining === FERRY && typeValueLikeMining === AMOUNT_GOLD) { //input Ouro
         const lossPercentHgInWater = txPrevalence === CONSERVATIVE ? percentLossHgInWater_ferry__convervative : percentLossHgInWater_ferry;
@@ -143,6 +159,8 @@ const heartAttack = (country_region, likeMining, typeValueLikeMining, valueLikeM
     const infarctionIncidenceTreatment = (infarctionIncidenceRate * toPopulationAffectedMercuryHair) /1000;
     const toCostOfInfarctionTreatmentYears = infarctionIncidenceTreatment * durationDisabilityInfarction * annualInfarctTreatmentCostUSD;
     const toDALYCostAndInfarctionTreatment = toCostOfInfarctionTreatmentYears + DALYInfarction;
+
+    //console.log('toDALYCostAndInfarctionTreatment', toDALYCostAndInfarctionTreatment)
 
     return {
         toMethylatedWater,

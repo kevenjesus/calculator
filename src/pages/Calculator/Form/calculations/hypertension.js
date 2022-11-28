@@ -56,10 +56,23 @@ const hypertension = (country_region, likeMining, typeValueLikeMining, valueLike
         const lossPercentHgInWater = txPrevalence === CONSERVATIVE ? percentLossHgInWater_convervative : percentLossHgInWater;
         gramsHgReleasedInWater = lossPercentHgInWater * HgAuRatio * valueLikeMining;
 
-    }else if (likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING) { //input Meses de garimpo de balsa
+    }else if (likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING) { //input Meses de garimpo TROCAR POR QUANTIDADE DE BALSAS
+
+        /*Padrão por mês de garimpo*/
+
+        // const lossPercentHgInWater = txPrevalence === CONSERVATIVE ? percentLossHgInWater_ferry__convervative : percentLossHgInWater_ferry;
+        // const toFerryGoldProductivity = valueLikeMining * prodGoldMonthFerry;
+        // gramsHgReleasedInWater = lossPercentHgInWater * HgAuRatio * toFerryGoldProductivity;
+
+        /*Padrão por número de balsas fixo a 1 ano de garimpo*/
+
+        const tempoFixo1Ano = 12
         const lossPercentHgInWater = txPrevalence === CONSERVATIVE ? percentLossHgInWater_ferry__convervative : percentLossHgInWater_ferry;
-        const toFerryGoldProductivity = valueLikeMining * prodGoldMonthFerry;
-        gramsHgReleasedInWater = lossPercentHgInWater * HgAuRatio * toFerryGoldProductivity;
+        const toFerryGoldProductivity = tempoFixo1Ano * prodGoldMonthFerry;
+        const somaLossHgHgAuRatioFerryGoldProd = lossPercentHgInWater * HgAuRatio * toFerryGoldProductivity;
+        gramsHgReleasedInWater = somaLossHgHgAuRatioFerryGoldProd * valueLikeMining;  // valuelikemining = QUANTIA DE BALSAS
+
+        //console.log('gramsHgReleasedInWater', gramsHgReleasedInWater)
 
     }else if (likeMining === FERRY && typeValueLikeMining === AMOUNT_GOLD) { //input Ouro
         const lossPercentHgInWater = txPrevalence === CONSERVATIVE ? percentLossHgInWater_ferry__convervative : percentLossHgInWater_ferry;
@@ -135,6 +148,8 @@ const hypertension = (country_region, likeMining, typeValueLikeMining, valueLike
     const incidenceHypertensionTreatament = (hypertensionIncidence * toPopulationAffectedMercuryHair) /1000;
     const toCostHypertensionTreatamentInYears = incidenceHypertensionTreatament * durationOfDisabilityHypertension * AnnualHypertensionCostTreatamentUSD;
     const toDALYCostAndHypertensionTreatment = toCostHypertensionTreatamentInYears + DALY1HypertensionCost;
+
+    //console.log('toDALYCostAndHypertensionTreatment', toDALYCostAndHypertensionTreatment)
 
     return {
         peopleAbove20YearsoldInTheRegionIn52Years,

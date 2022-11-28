@@ -5,7 +5,7 @@ const cubicMeters = (country_region, likeMining, typeValueLikeMining, valueLikeM
 
     const { general, dredgingAndRiverSediments } = fixedCalcultions(country_region, motorPower)
     const { densityGold, excavationGoldLoss, quantityOfGoldGramsPerYearWell } = general
-    const { prodOuroKgporMes, averageMotorPower, productionSedimentTurnsFeatherTonnesPerMonthGold } = dredgingAndRiverSediments
+    const { prodOuroKgporMes, productionSedimentTurnsFeatherTonnesPerMonthGold } = dredgingAndRiverSediments
 
     
     const sterileOreEnhancement = 7;
@@ -52,12 +52,29 @@ const cubicMeters = (country_region, likeMining, typeValueLikeMining, valueLikeM
         return `${Math.round(prodSedimentoViraPlumaTon * 100) / 100} ton` 
 
     }else if (likeMining === FERRY && typeValueLikeMining === MONTHS_OF_MINING){
+
+        /*Padrão por mês de garimpo*/
+
+        // //const prodOuroKgporMes = 0.00604;
+        // //const averageMotorPower = 54.4;
+        // //const productionSedimentTurnsFeatherTonnesPerMonthGold = 6.262;
+        // const prodOuroGrporMes = prodOuroKgporMes * 1000;
+        // const prodOuroTotalBalsaDragagem = motorPower * valueLikeMining * prodOuroGrporMes;
+        // const prodSedimentoViraPlumaTon = productionSedimentTurnsFeatherTonnesPerMonthGold * prodOuroTotalBalsaDragagem * valueLikeMining;
+
+        /*Padrão por número de balsas fixo a 1 ano de garimpo*/
+
         //const prodOuroKgporMes = 0.00604;
-        const prodOuroGrporMes = prodOuroKgporMes * 1000;
         //const averageMotorPower = 54.4;
         //const productionSedimentTurnsFeatherTonnesPerMonthGold = 6.262;
-        const prodOuroTotalBalsaDragagem = averageMotorPower * valueLikeMining * prodOuroGrporMes;
-        const prodSedimentoViraPlumaTon = productionSedimentTurnsFeatherTonnesPerMonthGold * prodOuroTotalBalsaDragagem * valueLikeMining;
+
+        const tempoFixo1Ano = 12
+        const ProducaoSedimentoViraPlumaTonporMes = 38.82
+        const prodOuroGrporMes = prodOuroKgporMes * 1000;
+        const prodOuroTotalBalsaDragagem = motorPower * tempoFixo1Ano * prodOuroGrporMes;
+        console.log('motorPower', motorPower)
+        const prodSedimentoViraPlumaTon = ProducaoSedimentoViraPlumaTonporMes * prodOuroTotalBalsaDragagem * valueLikeMining;
+
         return `${Math.round(prodSedimentoViraPlumaTon * 100) / 100} ton`
     }
 }
