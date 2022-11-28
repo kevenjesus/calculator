@@ -154,7 +154,7 @@ const lossQI =  (country_region, likeMining, typeValueLikeMining, valueLikeMinin
   const disnorm40 = normDist(40, concentrationMediaMercuryHair, deflectionPatternAverageMercury, 1);
  
 
-  const porcentNascidosVivosPerdaQIAcimaDe2Pts = 1 - disnorm10
+  let porcentNascidosVivosPerdaQIAcimaDe2Pts = 1 - disnorm10
   //console.log('porcentNascidosVivosPerdaQIAcimaDe2Pts', porcentNascidosVivosPerdaQIAcimaDe2Pts)
 
   const distNorm0ate2 = ((1 - disnorm0) - (1 - disnorm2)) * 1000 * 0.0005;
@@ -194,12 +194,12 @@ distNorm28ate30 + distNorm30ate32 + distNorm32ate34 + distNorm34ate36 + distNorm
   const daly = weightOfDisabilityPorincidence*(agwt*calculation1*((Math.exp(calculation2)*calculation3)-calculation4)+calculation5*calculation6);
   //const aDALYUSD = 103599;
   const toLossQIFetuses = daly * aDALYUSD;
- 
 
+  const porcentNascidosVivosPerdaQIAcimaDe2PtsValue = Number(porcentNascidosVivosPerdaQIAcimaDe2Pts.toString().replace('e-8', ''));
 
   return {
     concentrationMediaMercuryHair,
-    porcentNascidosVivosPerdaQIAcimaDe2Pts,
+    porcentNascidosVivosPerdaQIAcimaDe2Pts: porcentNascidosVivosPerdaQIAcimaDe2PtsValue,
     value: toLossQIFetuses
   } 
   
