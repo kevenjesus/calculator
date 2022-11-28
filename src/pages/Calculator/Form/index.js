@@ -425,14 +425,13 @@ function Form() {
                             <option value={PIT}>{calculatorForm.values.extractionType.pitMine}</option>
                         </select>
                     </Col>
-                    {
-                        knowRegion ? (
-                            <Col xs={12} lg={6}>
-                                <label>{language.calculatorForm.labels.retort}</label>
-                                <RadioBoxConditional state={retort} setState={handleRetort} />
-                            </Col>
-                        ) : <></>
-                    }
+             
+                    <Col xs={12} lg={6}>
+                        <label>{language.calculatorForm.labels.retort}</label>
+                        <RadioBoxConditional state={retort} setState={handleRetort} />
+                    </Col>
+                        
+                    
                     <Col xs={12}>
                         <label>{calculatorForm.labels.analysisUnit}</label>
                         <select name="analysisUnit" value={calculator.analysisUnit} onChange={handleAnalysisUnit}>

@@ -13,7 +13,7 @@ import RadioBoxConditional from 'components/RadioBoxConditional'
 const ExtrationType = () => {
     const {state, dispatch} = useContext(AppContext);
     const { calculator, language } = state
-    const { knowRegion, retort } = calculator
+    const { retort } = calculator
     const { introduction } = language
 
     const handleOption = useCallback((value) => {
@@ -95,32 +95,25 @@ const ExtrationType = () => {
           
             <Text>
                 {introduction.extractionType.text}
-            </Text>
-
-            {
-                        knowRegion ? (
-                            <>
-                              <br />
-                              <br />
-                                <Row center="xs">
-                                    <Col md={6}>
-                                    <ItemType style={{display: 'flex'}}>
-                                        <Thumbnail width={200} src={RetortaIMG} style={{marginRight: '32px'}} alt="" />
-                                        <div style={{textAlign: 'left'}}>
-                                        <Title style={{textAlign: 'left', marginBottom: 0, height: 50}}>{introduction.extractionType.values[3].type}</Title>
-                                        <RadioBoxConditional state={retort} setState={handleRetort} />
-                                        <Paragraphy>
-                                            {introduction.extractionType.values[3].text}
-                                        </Paragraphy>
-                                        </div>
-                                    </ItemType>
-                                    </Col>
-                                </Row>
-                               <br />
-                               <br />
-                            </>
-                        ) : <></>
-                    }
+            </Text>                        
+            <br />
+            <br />
+            <Row center="xs">
+                <Col md={6}>
+                <ItemType style={{display: 'flex'}}>
+                    <Thumbnail width={200} src={RetortaIMG} style={{marginRight: '32px'}} alt="" />
+                    <div style={{textAlign: 'left'}}>
+                    <Title style={{textAlign: 'left', marginBottom: 0, height: 50}}>{introduction.extractionType.values[3].type}</Title>
+                    <RadioBoxConditional state={retort} setState={handleRetort} />
+                    <Paragraphy>
+                        {introduction.extractionType.values[3].text}
+                    </Paragraphy>
+                    </div>
+                </ItemType>
+                </Col>
+            </Row>
+            <br />
+            <br />
         </>
     )
 }
