@@ -380,7 +380,7 @@ const fixedCalcultions = (country_region, motorPower) => {
             heartAttack.accumulatedRiskMercuryInfarction = 0.0161
             heartAttack.annualInfarctTreatmentCostUSD = 1509.40
 
-            hypertension.AnnualHypertensionCostTreatamentUSD = 5896.29
+            hypertension.AnnualHypertensionCostTreatamentUSD = 96.15   //acerto do leo csf  "5896.29"
             hypertension.propOfPeopleOver20YearsOfAgeByTotalPop = 0.67
             hypertension.accumulatedRiskMercuryHypertension = 0.0121
 
