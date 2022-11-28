@@ -80,7 +80,6 @@ const fixedCalcultions = (country_region, motorPower) => {
             siltingUpCostPerHaUSD: 18
         }
         let dredgingAndRiverSediments = {
-            prodMediaCava: 10,
             prodOuroKgporMes: 0.00604,
             dredgingCostPerM3: 5.6,
             averageMotorPower: motorPower || 54.4,
@@ -179,14 +178,13 @@ const fixedCalcultions = (country_region, motorPower) => {
 
             erosionSiltingUp.siltingUpCostPerHaUSD = 18
 
-            dredgingAndRiverSediments.prodMediaCava = 100
             dredgingAndRiverSediments.dredgingCostPerM3 = 7.51
-            dredgingAndRiverSediments.prodOuroKgporMes = 0.009
+            dredgingAndRiverSediments.prodOuroKgporMes = 0.0015
             // dredgingAndRiverSediments.averageMotorPower = 130
-            dredgingAndRiverSediments.productionSedimentTurnsFeatherTonnesPerMonth = 37.82
+            dredgingAndRiverSediments.productionSedimentTurnsFeatherTonnesPerMonth = 9.94
             dredgingAndRiverSediments.equivalentErosionTonPerHaPerYear = 12.54
             dredgingAndRiverSediments.erosionControlUSD = 13.28
-            dredgingAndRiverSediments.productionSedimentTurnsFeatherTonnesPerMonthGold = 6.262
+            dredgingAndRiverSediments.productionSedimentTurnsFeatherTonnesPerMonthGold = 6.54
             dredgingAndRiverSediments.siltingPercentage = 0.15
             dredgingAndRiverSediments.theAmountOfSedimentPer1DredgeM3PerHour = 250
             dredgingAndRiverSediments.transportCost1DredgeUSD = 0.73
@@ -267,16 +265,15 @@ const fixedCalcultions = (country_region, motorPower) => {
 
             erosionSiltingUp.siltingUpCostPerHaUSD = 18
 
-            dredgingAndRiverSediments.prodMediaCava = 10
             dredgingAndRiverSediments.dredgingCostPerM3 = 7.51
             dredgingAndRiverSediments.prodOuroKgporMes = 0.00604
             // dredgingAndRiverSediments.averageMotorPower = 54.4
-            dredgingAndRiverSediments.productionSedimentTurnsFeatherTonnesPerMonth = 37.82
+            dredgingAndRiverSediments.productionSedimentTurnsFeatherTonnesPerMonth = 9.94
             dredgingAndRiverSediments.equivalentErosionTonPerHaPerYear = 12.54
             dredgingAndRiverSediments.erosionControlUSD = 13.28
             dredgingAndRiverSediments.productionSedimentTurnsFeatherTonnesPerMonthGold = 6.262
             dredgingAndRiverSediments.siltingPercentage = 0.15
-            dredgingAndRiverSediments.theAmountOfSedimentPer1DredgeM3PerHour = 300
+            dredgingAndRiverSediments.theAmountOfSedimentPer1DredgeM3PerHour = 245
             dredgingAndRiverSediments.transportCost1DredgeUSD = 0.76
 
             cavaGroundingCostAuNorm.normalCavaGroundingCostUSD = 0.2
@@ -354,14 +351,13 @@ const fixedCalcultions = (country_region, motorPower) => {
 
             erosionSiltingUp.siltingUpCostPerHaUSD = 18
 
-            dredgingAndRiverSediments.prodMediaCava = 10
             dredgingAndRiverSediments.dredgingCostPerM3 = 7.51
-            dredgingAndRiverSediments.prodOuroKgporMes = 0.0011
+            dredgingAndRiverSediments.prodOuroKgporMes = 0.0028
             // dredgingAndRiverSediments.averageMotorPower = 147
-            dredgingAndRiverSediments.productionSedimentTurnsFeatherTonnesPerMonth = 37.82
+            dredgingAndRiverSediments.productionSedimentTurnsFeatherTonnesPerMonth = 9.94
             dredgingAndRiverSediments.equivalentErosionTonPerHaPerYear = 12.54
             dredgingAndRiverSediments.erosionControlUSD = 13.28
-            dredgingAndRiverSediments.productionSedimentTurnsFeatherTonnesPerMonthGold = 6.262
+            dredgingAndRiverSediments.productionSedimentTurnsFeatherTonnesPerMonthGold = 3.51
             dredgingAndRiverSediments.siltingPercentage = 0.15
             dredgingAndRiverSediments.theAmountOfSedimentPer1DredgeM3PerHour = 20
             dredgingAndRiverSediments.transportCost1DredgeUSD = 0.76
@@ -377,7 +373,7 @@ const fixedCalcultions = (country_region, motorPower) => {
             neuroSymptomsGarimpeiro.neuroTreatmentCostPerGoldMinerUSD = 49
 
             heartAttack.proMenOver40ByPopTotal = 0.2564
-            heartAttack.accumulatedRiskMercuryInfarction = 0.0161
+            heartAttack.accumulatedRiskMercuryInfarction = 0.0178
             heartAttack.annualInfarctTreatmentCostUSD = 1509.40
 
             hypertension.AnnualHypertensionCostTreatamentUSD = 96.15   //acerto do leo csf  "5896.29"
