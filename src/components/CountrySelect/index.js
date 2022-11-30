@@ -21,11 +21,11 @@ export const countries_region = [
     },
     {
         country: 'EC',
-        label: 'Equador'
+        label: 'Ecuador'
     },
     {
         country: 'PE',
-        label: 'Peru'
+        label: 'Perú'
     },
     {
         country: 'CO',
