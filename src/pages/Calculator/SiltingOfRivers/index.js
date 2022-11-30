@@ -60,6 +60,8 @@ const SiltingOfRivers = () => {
     const volumeM3 = cubicMeters(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth, motorPower)
     const paragraphy_01 = impacts.siltingOfRivers.paragraphy_01.replace("$grams", goldValue).replace("$volumeM3", volumeM3)
     const paragraphy_02 = impacts.siltingOfRivers.paragraphy_02.replace("$volumeM3", volumeM3)
+
+    window.scroll(0, 0)
     return (
         <Container>
             <Grid fluid>

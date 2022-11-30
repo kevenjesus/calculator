@@ -59,6 +59,8 @@ const MercuryContamination = () => {
     const people = Math.round(popSize100kmRadius(knowRegion, popDensity2060, country_region))
     const paragraphy_01 = impacts.mercuryContamination.paragraphy_01.replace("$people", people.toLocaleString('pt-BR'))
 
+    window.scroll(0, 0)
+
     return (
         <Container>
             <Grid fluid>
