@@ -234,7 +234,7 @@ const es_ES = {
         }
     },
     hypotheses: 'Hipoteses',
-    references: 'Referências',
+    references: 'Referencias',
     observation: 'Observações',
     hypothesesReferences: {
         deforestation: {
