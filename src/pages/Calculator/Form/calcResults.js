@@ -7,6 +7,7 @@ import convertAllinHectare from "utils/convertAllinHectare"
 import getValueToCountry from "utils/getValueToCountry"
 import goldToHecatere from "utils/GoldToHectare"
 import hectareToGold, { goldenGramForHectare } from "utils/hectareToGold"
+import proporcaoKgporHectare from "utils/proporcaoKgporHectare"
 import bioprospecting from "./calculations/bioprospecting"
 import carbon from "./calculations/carbon"
 import cavaGroundingCostAuFertile from "./calculations/cavaGroundingCostAuFertile"
@@ -82,9 +83,10 @@ const calcResults = (state, dispatch, dolarTOReal) => {
         // tipo de valor do garimpo = typeValueLikeMining
 
         const goldGrass = convertAllinGold(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth, motorPower)
-        const { proporcaoKgporHectare, value: hecatereGrass } = convertAllinHectare(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth)
+        const proporcaoKgporHectareValue = proporcaoKgporHectare(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth)
+        const { value: hecatereGrass } = convertAllinHectare(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth)
         notMonetary.push({label: language.not_monerary_goldGrass, value: goldGrass, measure: 'kg de Au'})
-        notMonetary.push({label: language.not_monetary_proporcaoKgporHectare, value: (Math.round((proporcaoKgporHectare/1000)*100)/100), measure: 'kg de Au / ha'})
+        notMonetary.push({label: language.not_monetary_proporcaoKgporHectare, value: (Math.round((proporcaoKgporHectareValue/1000)*100)/100), measure: 'kg de Au / ha'})
         notMonetary.push({label: language.not_monerary_hecatereGrass, value: (Math.round(hecatereGrass*100)/100), measure: 'ha'})
 
         const totalBio = bioprospecting(country_region, likeMining, typeValueLikeMining, txPrevalence, hectareValue)
