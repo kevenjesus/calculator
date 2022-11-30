@@ -35,13 +35,13 @@
 	.st29{fill:none;stroke:#FF8C00;stroke-width:8.8992;stroke-miterlimit:10;stroke-dasharray:12.0123,12.0123;}
 	.st30{font-family:'OpenSans-SemiBold';}
 	.st31{font-size:65px;}
-	.st32{font-family:'FjallaOne';}
+	.st32{font-family:'Fjalla One';}
 	.st33{font-size:128px;}
 	.st34{fill:none;stroke:#073C29;stroke-width:20;stroke-linecap:round;stroke-miterlimit:10;}
 	.st35{fill:none;stroke:#073C29;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
 	.st36{fill:none;}
-	.st37{font-family:'OpenSans-Bold';}
-	.st38{font-family:'OpenSans-Regular';}
+	.st37{font-family:'Open Sans';font-weight: bold;}
+	.st38{font-family:'Open Sans';}
 	.st39{fill:none;stroke:#FF8C00;stroke-width:8.8992;stroke-miterlimit:10;}
 	.st40{fill:none;stroke:#FF8C00;stroke-width:8.8992;stroke-miterlimit:10;stroke-dasharray:11.9334,11.9334;}
 	.st41{fill:none;stroke:#FF8C00;stroke-width:8.8992;stroke-miterlimit:10;stroke-dasharray:12.073,12.073;}
