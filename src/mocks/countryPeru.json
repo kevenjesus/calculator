@@ -7,7 +7,7 @@
     {"id":	31,	"nome":	"Loreto", 	                "densidadePop2010":	1.07,	"densidadePop2060": 1.07, 	"PopUrbMunicipio":	0.423, 	"PopRuralMunicipio":	0.577, 	"Distancia_Garimpo_Centro":	15.75, 	"Especies_por_Municipio": 114	},
     {"id":	32,	"nome":	"Requena", 	                "densidadePop2010":	1.30,	"densidadePop2060": 1.30, 	"PopUrbMunicipio":	0.572, 	"PopRuralMunicipio":	0.428, 	"Distancia_Garimpo_Centro":	83.33, 	"Especies_por_Municipio": 87	},
     {"id":	33,	"nome":	"Ucayali", 	                "densidadePop2010":	2.13,	"densidadePop2060": 2.13, 	"PopUrbMunicipio":	0.548, 	"PopRuralMunicipio":	0.452, 	"Distancia_Garimpo_Centro":	137.09, 	"Especies_por_Municipio": 49	},
-    {"id":	34,	"nome":	"Datem del Marañon",        "densidadePop2010":	1.28,	"densidadePop2060": 1.28, 	"PopUrbMunicipio":	0.274, 	"PopRuralMunicipio":	0.726, 	"Distancia_Garimpo_Centro":	141.07, 	"Especies_por_Municipio": 94	},
-    {"id":	35,	"nome":	"Mariscal Ramon Castilla", 	"densidadePop2010":	1.58,	"densidadePop2060": 1.58, 	"PopUrbMunicipio":	0.302, 	"PopRuralMunicipio":	0.698, 	"Distancia_Garimpo_Centro":	70.46, 	"Especies_por_Municipio": 78	},
+    {"id":	34,	"nome":	"Datem del Marañón",        "densidadePop2010":	1.28,	"densidadePop2060": 1.28, 	"PopUrbMunicipio":	0.274, 	"PopRuralMunicipio":	0.726, 	"Distancia_Garimpo_Centro":	141.07, 	"Especies_por_Municipio": 94	},
+    {"id":	35,	"nome":	"Mariscal Ramón Castilla", 	"densidadePop2010":	1.58,	"densidadePop2060": 1.58, 	"PopUrbMunicipio":	0.302, 	"PopRuralMunicipio":	0.698, 	"Distancia_Garimpo_Centro":	70.46, 	"Especies_por_Municipio": 78	},
     {"id":	36,	"nome":	"Putumayo", 	            "densidadePop2010":	0.20,	"densidadePop2060": 0.20, 	"PopUrbMunicipio":	0.5, 	"PopRuralMunicipio":	0.5, 	"Distancia_Garimpo_Centro":	75.8, 	"Especies_por_Municipio": 54	}
 ]
