@@ -854,12 +854,16 @@ const MonetaryImpacts = () => {
                 <ButtonFixed>
                     <Grid>
                         <Row between="sm" center="md">
-                           
-                                <Col md={3}>
-                                    <HiddenXS>
-                                        <Button variant="default" onClick={() => history.push('/moral-damages')}>Danos morais</Button>
-                                    </HiddenXS>
-                                </Col>
+                                {
+                                    isBrazil && (
+                                        <Col md={3}>
+                                            <HiddenXS>
+                                                <Button variant="default" onClick={() => history.push('/moral-damages')}>Danos morais</Button>
+                                            </HiddenXS>
+                                        </Col>
+                                    )
+                                }
+                                
                             
                             <Col xs={6} md={3}>
                                 <Button onClick={() => history.push('/')}>{impacts.buttons.newCalculation}</Button>
