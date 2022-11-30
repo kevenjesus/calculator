@@ -19,6 +19,10 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Open Sans', sans-serif;
     }
 
+    svg {
+        font-family: 'Open Sans', sans-serif;
+    }
+
     button {
         margin: 0;
         padding: 0;
