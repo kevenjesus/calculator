@@ -72,7 +72,7 @@ const cubicMeters = (country_region, likeMining, typeValueLikeMining, valueLikeM
         const ProducaoSedimentoViraPlumaTonporMes = 38.82
         const prodOuroGrporMes = prodOuroKgporMes * 1000;
         const prodOuroTotalBalsaDragagem = motorPower * tempoFixo1Ano * prodOuroGrporMes;
-        console.log('motorPower', motorPower)
+        //console.log('motorPower', motorPower)
         const prodSedimentoViraPlumaTon = ProducaoSedimentoViraPlumaTonporMes * prodOuroTotalBalsaDragagem * valueLikeMining;
 
         return `${Math.round(prodSedimentoViraPlumaTon * 100) / 100} ton`
