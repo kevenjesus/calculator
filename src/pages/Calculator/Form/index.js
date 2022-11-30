@@ -18,6 +18,7 @@ import calcResults from './calcResults'
 import ExtrationTypeOptions from './ExtrationTypeOptions'
 import { useAlert } from 'react-alert'
 import { BRAZIL, COLOMBIA, countries_region, EQUADOR, PERU } from 'components/CountrySelect';
+import capitalizeFirstLetter from 'utils/capitalize'
 
 
 function Form() {
@@ -385,7 +386,7 @@ function Form() {
                                             <select name="state" value={state} onChange={handleState}>
                                             {
                                                 stateList.map(({sigla, id}) => (
-                                                    <option key={id} value={id}>{sigla}</option>
+                                                    <option key={id} value={id}>{capitalizeFirstLetter(sigla.toLowerCase())}</option>
                                                 ))
                                             }
                                             </select>
@@ -395,7 +396,7 @@ function Form() {
                                             <select name="state" value={country} onChange={handleCountry}>
                                                 {
                                                     counties.map(({nome, id}) => (
-                                                        <option key={id} value={id}>{nome}</option>
+                                                        <option key={id} value={id}>{capitalizeFirstLetter(nome.toLowerCase())}</option>
                                                     ))
                                                 }
                                             </select>
@@ -403,11 +404,11 @@ function Form() {
                                     </>
                                 ) : (
                                     <Col xs={12}>
-                                            <label>{districtForPeruAndEquador}</label>
+                                        <label>{districtForPeruAndEquador}</label>
                                         <select name="state" value={country} onChange={handleCountry}>
                                             {
                                                 counties.map(({nome, id}) => (
-                                                    <option key={id} value={id}>{nome.toLowerCase()}</option>
+                                                    <option key={id} value={id}>{capitalizeFirstLetter(nome.toLowerCase())}</option>
                                                 ))
                                             }
                                         </select>
