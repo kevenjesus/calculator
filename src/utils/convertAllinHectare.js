@@ -12,9 +12,10 @@ const convertAllinHectare = (country_region, likeMining, typeValueLikeMining, va
 
     if (likeMining === PIT) { 
         const hectareOverflow = hectare * overflow;
-        console.log('hectare', hectare)
-        console.log('hectareOverflow', hectareOverflow)
+        //console.log('hectare', hectare)
+        //console.log('hectareOverflow', hectareOverflow)
         return {
+            hectare,
             value: hectareOverflow
         }
         
@@ -27,23 +28,27 @@ const convertAllinHectare = (country_region, likeMining, typeValueLikeMining, va
         const affectedAreaM2 = lossyVolume / pitDepth;
         const hectare = affectedAreaM2 / 10000;
         const hectareOverflow = hectare * overflow;
-        console.log('hectare', hectare)
-        console.log('hectareOverflow', hectareOverflow)
+        //console.log('hectare', hectare)
+        //console.log('hectareOverflow', hectareOverflow)
         return {
+            hectare,
             value: hectareOverflow
         }
     }else if(likeMining === FERRY){
         return {
+            hectare,
             value: 0
         }
     }else{
         const hectare = valueLikeMining;
         const hectareOverflow = hectare * overflow;
-        console.log('hectare', hectare)
-        console.log('hectareOverflow', hectareOverflow)
+        //console.log('hectare', hectare)
+        //console.log('hectareOverflow', hectareOverflow)
         return {
-            value: hectare
-        }    }
+            hectare,
+            value: hectareOverflow
+        }    
+    }
 
 }
 export default convertAllinHectare 

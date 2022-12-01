@@ -78,7 +78,7 @@ const es_ES = {
         },
         deforestation: {
             headline: 'Deforestación',
-            paragraphy_01: 'La extracción de <strong>$grams gramos de oro</strong> provoca la deforestación de <strong>$hectare hectáreas</strong>, en promedio',
+            paragraphy_01: 'La extracción de <strong>$grams gramos de oro</strong> se realiza en un área de, en promedio, <strong>$withoutOverflow hectáreas</strong>, y genera una deforestación total de <strong>$hectare hectáreas</strong>, incluida la deforestación indirecta',
             paragraphy_02: 'La deforestación de estas <strong>$hectare hectáreas</strong> conlleva la pérdida de oportunidades para realizar otras actividades, como la extracción de productos forestales no maderables, el uso recreativo y cultural, y el mantenimiento de los servicios ecosistémicos para la regulación del clima y el control de la erosión'
         },
         siltingOfRivers: {

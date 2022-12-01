@@ -80,7 +80,7 @@ const en_US = {
         },
         deforestation: {
             headline: 'Deforestation',
-            paragraphy_01: 'The extraction of <strong>$grams grams of gold</strong> leads to <strong>$hectare hectares</strong> of deforestation, in average.',
+            paragraphy_01: 'The extraction of <strong>$grams grams of gold</strong> takes place in an area of, on average, <strong>$withoutOverflow hectares</strong>, and generates total deforestation of <strong>$hectare hectares</strong>, including indirect deforestation',
             paragraphy_02: 'The deforestation of these <strong>$hectare hectares</strong> leads to loss of opportunities for other activities, such as extraction of non-timber forest products, recreational and cultural use, and maintenance of the ecosystem services of climate regulation and erosion control.'
 
         },
