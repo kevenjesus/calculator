@@ -12,6 +12,7 @@ import mockCountries from 'mocks/countries.json'
 import mockContry from 'mocks/country.json'
 import { NO, YES } from 'pages/Calculator/Form/consts';
 import { BRAZIL, COLOMBIA, countries_region, EQUADOR, PERU } from 'components/CountrySelect';
+import capitalizeFirstLetter from 'utils/capitalize';
 
 const HowUseCalculator = () => {
     const { state: stateContext, dispatch } = useContext(AppContext)
@@ -22,7 +23,7 @@ const HowUseCalculator = () => {
     const isBrazil = useMemo(() => country_region && country_region.country === countries_region[BRAZIL].country, [country_region]) 
     const isEquador = useMemo(() => country_region && country_region.country === countries_region[EQUADOR].country, [country_region]) 
     const isPeru = useMemo(() => country_region && country_region.country === countries_region[PERU].country, [country_region]) 
-    const isCOlombia = useMemo(() => country_region && country_region.country === countries_region[COLOMBIA].country, [country_region]) 
+    const isColombia = useMemo(() => country_region && country_region.country === countries_region[COLOMBIA].country, [country_region]) 
 
     const getCountiesNotBrazil = useCallback((mock) => {
         mock.forEach((countries) => {
@@ -80,7 +81,7 @@ const HowUseCalculator = () => {
             }else if(isPeru) {
                 const data = mockStatePeru
                 getCountiesNotBrazil(data)
-            }else if(isCOlombia) {
+            }else if(isColombia) {
                 const data = mockStateColombia
                 getCountiesNotBrazil(data)
             }
@@ -88,7 +89,7 @@ const HowUseCalculator = () => {
           }
           getStates();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [getCounties, isBrazil, isEquador, isPeru, isCOlombia, dispatch])
+    }, [getCounties, isBrazil, isEquador, isPeru, isColombia, dispatch])
 
     useEffect(() => {
         const dataRegion = [
@@ -134,6 +135,15 @@ const HowUseCalculator = () => {
         const { value } = e.target;
         dispatch({type: stateTypes.SET_COUNTRY, payload: value})
     }, [dispatch])
+    
+    let districtForPeruAndEquador = language.district
+    if(isPeru) {
+        districtForPeruAndEquador = 'Provincia'
+    }else if(isColombia) {
+        districtForPeruAndEquador = 'Departamento'
+    }else if (isEquador) {
+        districtForPeruAndEquador = 'Cantón'
+    }
 
     return (
         <>
@@ -182,7 +192,7 @@ const HowUseCalculator = () => {
                                             <select name="state" value={state} onChange={handleState}>
                                             {
                                                 stateList.map(({sigla, id}) => (
-                                                    <option key={id} value={id}>{sigla}</option>
+                                                    <option key={id} value={id}>{capitalizeFirstLetter(sigla.toLowerCase())}</option>
                                                 ))
                                             }
                                             </select>
@@ -192,7 +202,7 @@ const HowUseCalculator = () => {
                                             <select name="state" value={country} onChange={handleCountry}>
                                                 {
                                                     counties.map(({nome, id}) => (
-                                                        <option key={id} value={id}>{nome}</option>
+                                                        <option key={id} value={id}>{capitalizeFirstLetter(nome.toLowerCase())}</option>
                                                     ))
                                                 }
                                             </select>
@@ -200,11 +210,11 @@ const HowUseCalculator = () => {
                                     </>
                                 ) : (
                                     <Col xs={12}>
-                                            <label>{calculatorForm.labels.country}</label>
+                                            <label>{districtForPeruAndEquador}</label>
                                         <select name="state" value={country} onChange={handleCountry}>
                                             {
                                                 counties.map(({nome, id}) => (
-                                                    <option key={id} value={id}>{nome.toLowerCase()}</option>
+                                                    <option key={id} value={id}>{capitalizeFirstLetter(nome.toLowerCase())}</option>
                                                 ))
                                             }
                                         </select>

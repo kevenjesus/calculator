@@ -85,12 +85,12 @@ const ptBR = {
         },
         deforestation: {
             headline: 'Desmatamento',
-            paragraphy_01: 'A extração de <strong>$grams gramas de ouro</strong> gera o desmatamento de <strong>$hectare hectares</strong>, em média.',
-            paragraphy_02: 'O desmatamento destes <strong>$hectare hectares</strong> leva a perdas de oportunidade de realização de outras atividades, como extração de produtos florestais não-madeireiros, uso recreativo, cultural, e da manutenção de serviços ecossistêmicos de regulação do clima e de controle de erosão'
+            paragraphy_01: 'A extração de <strong>$grams gramas de ouro</strong> ocorre em uma área de, em média, <strong>$withoutOverflow hectares</strong>, e gera o desmatamento total de <strong>$hectare hectares</strong>, incluindo o desmatamento indireto.',
+            paragraphy_02: 'O desmatamento destes <strong>$hectare hectares</strong> leva a perdas de oportunidade de realização de outras atividades, como extração de produtos florestais não-madeireiros, uso recreativo, cultural, e da manutenção de serviços ecossistêmicos de regulação do clima e de controle de erosão.'
         },
         siltingOfRivers: {
             headline: 'Assoreamento dos rios',
-            paragraphy_01: 'A extração de <strong>$grams gramas de ouro</strong> gera erosão/sedimentação de <strong>$volumeM3</strong> de solo, em média',
+            paragraphy_01: 'A extração de <strong>$grams gramas de ouro</strong> gera erosão/sedimentação de <strong>$volumeM3</strong> de solo, em média.',
             paragraphy_02: 'O assoreamento/sedimentação destes <strong>$volumeM3</strong> leva a perdas de oportunidade de realização de outras atividades nos rios, como o uso da água para beber, pesca e turismo.'
         },
         mercuryContamination: {
@@ -333,7 +333,7 @@ const ptBR = {
             soil_mercury_comments_line2: 'Hipótese de concentração média de mercúrio nos solos de 0,24 gramas de ouro por tonelada de sedimento.',
         }
     },
-    inflation: 'Inflação acumulada desde de 2022 %',
+    inflation: 'Inflação acumulada desde de janeiro de 2022 (%)',
     inflation_placeholder: 'Digite a inflação neste formato: 10 ou 6.2',
     district: 'Distrito',
     goldImpact: 'para $grams gramas de ouro',
@@ -370,7 +370,7 @@ const ptBR = {
     not_monetary_concentrationMediaMercuryHair: 'Nível de contaminação médio de mercúrio no cabelo pela ingestão de peixes contaminados',
     not_monetary_porcentNascidosVivosPerdaQIAcimaDe2Pts: 'Nascidos vivos com perda de QI maior que 2 pontos',
     not_monetary_toMethylatedWater: 'Quantidade de mercúrio que se transforma em metilmercúrio e entra na cadeia trófica (em gramas)',
-    not_monetary_toPopulationAffectedMercuryHair: 'População potencialmente exposta ao risco',
+    not_monetary_toPopulationAffectedMercuryHair: 'População potencialmente exposta ao risco de se contaminar por mercúrio através do consumo de peixes',
     not_monetary_menOver40InTheRegionIn27Years: 'População com risco de infarto agudo do miocárdio',
     not_monetary_peopleAbove20YearsoldInTheRegionIn52Years: 'População com risco de hipertensão arterial',
     not_monetary_people: 'pessoa(s)'

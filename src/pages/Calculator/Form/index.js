@@ -365,6 +365,8 @@ function Form() {
         districtForPeruAndEquador = 'Provincia'
     }else if(isColombia) {
         districtForPeruAndEquador = 'Departamento'
+    }else if (isEquador) {
+        districtForPeruAndEquador = 'Cantón'
     }
 
     return (

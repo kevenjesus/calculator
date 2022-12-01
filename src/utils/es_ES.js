@@ -39,8 +39,8 @@ const es_ES = {
                 qtd_ferry: 'Transbordadores'
             },
             qtdAnalysisUnit: {
-                hactare: 'Hectáreas',
-                grams: 'Gramos de oro',
+                hactare: 'Digite el valor en hectáreas',
+                grams: 'Digite el valor en gramos de oro',
                 months: 'Meses',
                 years: 'Anos',
                 ferry: 'transbordadores'
@@ -78,19 +78,19 @@ const es_ES = {
         },
         deforestation: {
             headline: 'Deforestación',
-            paragraphy_01: 'La extracción de <strong>$grams gramos de oro</strong> provoca la deforestación de <strong>$hectare hectáreas</strong>, en promedio',
-            paragraphy_02: 'La deforestación de estas <strong>$hectare hectáreas</strong> conlleva la pérdida de oportunidades para realizar otras actividades, como la extracción de productos forestales no maderables, el uso recreativo y cultural, y el mantenimiento de los servicios ecosistémicos para la regulación del clima y el control de la erosión'
+            paragraphy_01: 'La extracción de <strong>$grams gramos de oro</strong> se realiza en un área de, en promedio, <strong>$withoutOverflow hectáreas</strong>, y genera una deforestación total de <strong>$hectare hectáreas</strong>, incluida la deforestación indirecta',
+            paragraphy_02: 'La deforestación de estas <strong>$hectare hectáreas</strong> conlleva la pérdida de oportunidades para realizar otras actividades, como la extracción de productos forestales no maderables, el uso recreativo y cultural, y el mantenimiento de los servicios ecosistémicos para la regulación del clima y el control de la erosión.'
         },
         siltingOfRivers: {
             headline: 'Sedimentación de ríos',
-            paragraphy_01: 'La extracción de <strong>$grams gramos de oro</strong> provoca la erosión y la erosión / sedimentación de <strong>$volumeM3</strong> de suelo, en promedio',
-            paragraphy_02: 'La erosión / sedimentación de estos <strong>$volumeM3</strong> provoca la pérdida de oportunidades para realizar otras actividades en los ríos, como el uso del agua para beber, la pesca y el turismo',
+            paragraphy_01: 'La extracción de <strong>$grams gramos de oro</strong> provoca la erosión y la erosión / sedimentación de <strong>$volumeM3</strong> de suelo, en promedio.',
+            paragraphy_02: 'La erosión / sedimentación de estos <strong>$volumeM3</strong> provoca la pérdida de oportunidades para realizar otras actividades en los ríos, como el uso del agua para beber, la pesca y el turismo.',
 
         },
         mercuryContamination: {
             headline: 'Contaminación por mercurio',
             paragraphy_01: 'La extracción de 1 kg de oro utiliza 2,6 kg de mercurio, de los cuales el 13% se descargan en los ríos. De los cuales, el 3% se metila, volviéndose aún más tóxico y siendo absorbido por los peces, que pueden migrar hasta 2000 km, contaminando a las personas que se alimentan de ellos. Siendo conservadores, consideramos que el radio de dispersión del mercurio es de 100 km, que tiene <strong>$people personas</strong> expuestas al riesgo adicional por la exposición al mercurio de la minería.',
-            paragraphy_02: 'Según el nivel de consumo de pescado, un individuo tendrá un aumento promedio del nivel de mercurio de entre 4ug/g y 15ug/g, lo que provocará problemas neuropsicológicos, cognitivos y cardiacos',
+            paragraphy_02: 'Según el nivel de consumo de pescado, un individuo tendrá un aumento promedio del nivel de mercurio de entre 4ug/g y 15ug/g, lo que provocará problemas neuropsicológicos, cognitivos y cardiacos.',
         },
         monetaryImpacts: {
             headline: 'Impactos monetarios',
@@ -127,7 +127,7 @@ const es_ES = {
         },
         about: {
             headline: 'Introducción',
-            text: 'La calculadora de impactos es un resultado de la colaboración entre CSF y MPF, una herramienta analítica y pedagógica que describe los impactos de la minería ilegal de oro, sus valores monetarios y el paso a paso para su medición',
+            text: 'La calculadora de impactos es un resultado de la colaboración entre CSF y MPF, una herramienta analítica y pedagógica que describe los impactos de la minería ilegal de oro, sus valores monetarios y el paso a paso para su medición.',
         },
         
         analysisUnit: {
@@ -167,7 +167,7 @@ const es_ES = {
             paragraphy_08: '-Cuanto más escaso es el recurso natural, mayor es su valor.'       
 },
         howUseCalculator: {
-            headline: 'Cómo utilizar la calculadora',
+            headline: '¿Cómo utilizar la calculadora?',
             paragraphy_01: "Puedes incluir alguna información sobre el contexto para que la calculadora estime el valor de los impactos con mayor precisión",
             paragraphy_02: 'La ubicación define otras variables como:',
             paragraphy_03: "-Densidad y tamaño de la población afectada",
@@ -219,7 +219,7 @@ const es_ES = {
                 },
                 {
                     type: 'Balsa (flotante)',
-                    text: 'Extracción de mineral mediante el dragado de los lechos de los ríos. Realizado en botes o flotantes, no genera deforestación, pero tiene mayor impacto en términos de contaminación del río por mercurio',
+                    text: 'Extracción de mineral mediante el dragado de los lechos de los ríos. Realizado en botes o flotantes, no genera deforestación, pero tiene mayor impacto en términos de contaminación del río por mercurio.',
                 },
                 {
                     type: 'Socavón',
@@ -230,7 +230,7 @@ const es_ES = {
                     text: 'La retorta es un equipo que reduce la dispersión de mercurio por evaporación durante la amalgamación.'
                 }
             ],
-            text: 'Si no se especifica el tipo, se considerarán los impactos del tipo de minería más común en la Amazonía, la minería aluvial'
+            text: 'Si no se especifica el tipo, se considerarán los impactos del tipo de minería más común en la Amazonía, la minería aluvial.'
         }
     },
     hypotheses: 'Hipoteses',
@@ -239,7 +239,7 @@ const es_ES = {
     hypothesesReferences: {
         deforestation: {
             headline: 'Deforestación / Hipótesis y referencias',
-            bioprospecting: 'bioprospección',
+            bioprospecting: 'Bioprospección',
             bio_ref_line1: 'Andersen (1997)',
             bio_ref_line2: 'May et al (2013)',
             bio_ref_line3: 'Groot et al (2012)',
@@ -336,7 +336,7 @@ const es_ES = {
     goldImpact_graphic_tooltip: 'Valor de $grams gramos de oro',
     monetaryimpact_text: 'Impactos + oro',
     science_article: 'Artículo científico',
-    methodology: 'Metodologia',
+    methodology: 'Metodología (para Brasil)',
     button_download_pdf: 'Descargar en PDF',
     bioprospecting: 'Bioprospección',
     carbon: 'Carbono',
@@ -354,7 +354,7 @@ const es_ES = {
     HeartHypertesion_tooltip: 'Enfermedades cardiovasculares (Hipertensión + Infarto)',
     soilMercuryRemediation: 'Remediación de mercurio en suelo',
     button_youtube: 'Ver otros videos sobre minería ilegal',
-    not_monetary_headline: 'impactos no monetarios ',
+    not_monetary_headline: 'Impactos no monetarios ',
     not_monetary_type: 'Tipo de impacto',
     not_monetary_results: 'Resultados',
     not_monerary_goldGrass: 'Producción total de oro',
@@ -365,7 +365,7 @@ const es_ES = {
     not_monetary_concentrationMediaMercuryHair: 'Nivel medio de contaminación por mercurio en el cabello por comer pescado contaminado',
     not_monetary_porcentNascidosVivosPerdaQIAcimaDe2Pts: 'Nacidos vivos con una pérdida de CI superior a 2 puntos',
     not_monetary_toMethylatedWater: 'Cantidad de mercurio que se convierte en metilmercurio y entra en la cadena trófica (en gramos)',
-    not_monetary_toPopulationAffectedMercuryHair: 'Población potencialmente expuesta al riesgo',
+    not_monetary_toPopulationAffectedMercuryHair: 'Población potencialmente expuesta al riesgo de contaminación por mercurio a través del consumo de pescado',
     not_monetary_menOver40InTheRegionIn27Years: 'Población en riesgo de infarto agudo de miocardio',
     not_monetary_peopleAbove20YearsoldInTheRegionIn52Years: 'Población en riesgo de hipertensión arterial',
     not_monetary_people: 'persona(s)'

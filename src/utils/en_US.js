@@ -40,8 +40,8 @@ const en_US = {
                 qtd_ferry: 'Ferries'
             },
             qtdAnalysisUnit: {
-                hactare: 'Hectare',
-                grams: 'Grams',
+                hactare: 'Insert the value in hectares',
+                grams: 'Insert the value in grams of gold',
                 months: 'Months',
                 years: 'Years',
                 ferry: 'ferries'
@@ -80,18 +80,18 @@ const en_US = {
         },
         deforestation: {
             headline: 'Deforestation',
-            paragraphy_01: 'The extraction of <strong>$grams grams of gold</strong> leads to <strong>$hectare hectares</strong> of deforestation, in average.',
+            paragraphy_01: 'The extraction of <strong>$grams grams of gold</strong> takes place in an area of, on average, <strong>$withoutOverflow hectares</strong>, and generates total deforestation of <strong>$hectare hectares</strong>, including indirect deforestation',
             paragraphy_02: 'The deforestation of these <strong>$hectare hectares</strong> leads to loss of opportunities for other activities, such as extraction of non-timber forest products, recreational and cultural use, and maintenance of the ecosystem services of climate regulation and erosion control.'
 
         },
         siltingOfRivers: {
             headline: 'Erosion and silting',
             paragraphy_01: 'The extraction of <strong>$grams grams of gold</strong> leads to erosion / sedimentation of <strong>$volumeM3</strong> of soil, in average.',
-            paragraphy_02: 'The sedimentation of <strong>$volumeM3</strong> leads to a decline in fishing and tourism, and prevents the river from being used as a source of drinking water'
+            paragraphy_02: 'The sedimentation of <strong>$volumeM3</strong> leads to a decline in fishing and tourism, and prevents the river from being used as a source of drinking water.'
         },
         mercuryContamination: {
             headline: 'Mercury contamination',
-            paragraphy_01: 'The extraction of 1 kg of gold utilizes 2.6 kg of mercury, which 13% are deposited in rivers. Of those, 3% are metilated, becoming even more toxic and being absorbed by fish, which can migrate up to 2000km, contaminating the people who eat them. Conservatively, we consider the dispersion radius of mercury to be 100km which has <strong>$people people</strong> exposed to additional risk from the exposure to the mercury from mining',
+            paragraphy_01: 'The extraction of 1 kg of gold utilizes 2.6 kg of mercury, which 13% are deposited in rivers. Of those, 3% are metilated, becoming even more toxic and being absorbed by fish, which can migrate up to 2000km, contaminating the people who eat them. Conservatively, we consider the dispersion radius of mercury to be 100km which has <strong>$people people</strong> exposed to additional risk from the exposure to the mercury from mining.',
             paragraphy_02: 'Depending on the level of fish consumption, an individual will have an average increase in mercury level between 4ug/g and 15ug/g, leading to neuropsychological, cognitive and cardiac problems.'
 
         },
@@ -338,7 +338,7 @@ const en_US = {
     goldImpact_graphic_tooltip: 'Value $grams grams of gold',
     monetaryimpact_text: 'Impacts + gold',
     science_article: 'Scientific article',
-    methodology: 'Methodology',
+    methodology: 'Methodology (for Brazil)',
     button_download_pdf: 'Download PDF',
     bioprospecting: 'Bioprospecting',
     carbon: 'Carbon',
@@ -367,7 +367,7 @@ const en_US = {
     not_monetary_concentrationMediaMercuryHair: 'Average level of mercury contamination in hair from eating contaminated fish',
     not_monetary_porcentNascidosVivosPerdaQIAcimaDe2Pts: 'Live births with an IQ loss greater than 2 points',
     not_monetary_toMethylatedWater: 'Amount of mercury that turns into methylmercury and enters the trophic chain (in grams)',
-    not_monetary_toPopulationAffectedMercuryHair: 'Population potentially exposed to risk',
+    not_monetary_toPopulationAffectedMercuryHair: 'Population potentially exposed to the risk of mercury contamination through fish consumption',
     not_monetary_menOver40InTheRegionIn27Years: 'Population at risk of acute myocardial infarction',
     not_monetary_peopleAbove20YearsoldInTheRegionIn52Years: 'Population at risk of high blood pressure',
     not_monetary_people: 'people'

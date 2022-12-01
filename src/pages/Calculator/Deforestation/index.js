@@ -9,12 +9,13 @@ import { useContext } from 'react';
 import { AppContext } from 'utils/AppContext';
 import ToBRL from 'utils/toBRL';
 import toUSD from 'utils/toUSD'
-import { CATEGORY_DEFORESTATION, FERRY } from '../Form/consts';
+import { ALLUVIUM, CATEGORY_DEFORESTATION, FERRY, IMPACTED_AREA } from '../Form/consts';
 import { DataChart } from 'pages/Calculator/MonetaryImpacts' 
 import MenuImpacts from '../Menu';
 import convertAllinGold from 'utils/convertAllinGold';
 import convertAllinHectare from 'utils/convertAllinHectare';
 import { countries_region, BRAZIL } from 'components/CountrySelect';
+
 
 const InfoComponent = ({language}) => {
     if(language === 'enUS') {
@@ -56,12 +57,45 @@ const Deforestation = () => {
     const typeValueLikeMining = calculator.analysisUnit // AMOUNT_GOLD / IMPACTED_AREA / YEARS_OF_MINING / MONTHS_OF_MINING
 
     const hiddenMenu = calculator.valuatioMethod === FERRY ? [impacts.menu.deforestation] : []
-    const { value: hectare } = convertAllinHectare(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth)
+    const { hectare: hectareWithoutOverflow, value: hectare } = convertAllinHectare(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth)
+
     const hectareValue = Math.round(hectare * 100) / 100
     const goldValue = Math.round(convertAllinGold(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth))
+
+    let withoutOverflow;
+    let parentsText;
+
+    if(language.type === 'ptBR') {
+        parentsText = '(transbordamento).'
+    }else if(language.type === 'enUS') {
+        parentsText = '(overflow).'
+    }else {
+        parentsText = '(desbordamiento).'
+    }
+
+    if(likeMining === ALLUVIUM && typeValueLikeMining === IMPACTED_AREA) {
+        withoutOverflow = likeMining
+        if(language.type === 'ptBR') {
+            parentsText = '(transbordamento, que não foi incluído nessa análise).'
+        }else if(language.type === 'enUS') {
+            parentsText = '(overflow, which was not included in this analysis).'
+        }else {
+            parentsText = '(desbordamiento, que no se incluyó en este análisis).'
+        }
+    }
+
+    withoutOverflow = Math.round(hectareWithoutOverflow * 100) / 100
+
+
+    console.log('withoutOverflow',withoutOverflow)
     
-    const paragraphy_01 = impacts.deforestation.paragraphy_01.replace("$grams", goldValue).replace("$hectare", hectareValue)
+    const paragraphy_01 = impacts.deforestation.paragraphy_01.replace("$grams", goldValue).replace("$hectare", hectareValue).replace("$withoutOverflow", withoutOverflow)
     const paragraphy_02 = impacts.deforestation.paragraphy_02.replace("$hectare", hectareValue)
+
+    // o que o usuario digita == aluvião e tamanho do garimpo
+    // hectare convertido pelo ouro == aluviao e a quantidade de gramas de ouro
+    // heacte fixo por pais sem transbordamento == poço
+    // hectare com transbordamento == 
     
     return (
         <Container>
@@ -73,7 +107,7 @@ const Deforestation = () => {
                     <Col xs={12} sm={8} md={9}>
                         <Headline>{impacts.deforestation.headline}</Headline>
                         <Text>
-                            <div dangerouslySetInnerHTML={{__html: paragraphy_01 }} />
+                            <div dangerouslySetInnerHTML={{__html: `${paragraphy_01} ${parentsText}` }} />
                         </Text>
                         <Text>
                             <div dangerouslySetInnerHTML={{__html: paragraphy_02 }} />
