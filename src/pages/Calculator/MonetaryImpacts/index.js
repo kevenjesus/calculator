@@ -21,7 +21,7 @@ import html2canvas from 'html2canvas'
 import { jsPDF } from "jspdf";
 
 import getGoldValue from 'utils/getGoldValue'
-import { BRAZIL, countries_region } from 'components/CountrySelect'
+import { BRAZIL, COLOMBIA, countries_region, EQUADOR, PERU } from 'components/CountrySelect'
 import convertAllinGold from 'utils/convertAllinGold'
 import toUSD from 'utils/toUSD'
 import { colors } from 'theme/colors'
@@ -84,6 +84,9 @@ const FormCalc = () => {
     const alert = useAlert()
 
     const isBrazil = useMemo(() => country_region && country_region.country === countries_region[BRAZIL].country, [country_region]) 
+    const isEquador = useMemo(() => country_region && country_region.country === countries_region[EQUADOR].country, [country_region]) 
+    const isPeru = useMemo(() => country_region && country_region.country === countries_region[PERU].country, [country_region]) 
+    const isColombia = useMemo(() => country_region && country_region.country === countries_region[COLOMBIA].country, [country_region]) 
 
     const dataMotorPower = [
         {
@@ -380,6 +383,15 @@ const FormCalc = () => {
         }
     setPlaceholder(placeholder)
     }, [calculator.analysisUnit, calculatorForm])
+
+    let districtForPeruAndEquador = language.district
+    if(isPeru) {
+        districtForPeruAndEquador = 'Provincia'
+    }else if(isColombia) {
+        districtForPeruAndEquador = 'Departamento'
+    }else if (isEquador) {
+        districtForPeruAndEquador = 'Cantón'
+    }
     
     return (
         <Grid fluid id="ignorePDF">
@@ -417,7 +429,7 @@ const FormCalc = () => {
                                     </>
                                 ) : (
                                     <Col xs={12}>
-                                            <label>{language.district}</label>
+                                            <label>{districtForPeruAndEquador}</label>
                                         <select name="state" value={country} onChange={handleCountry}>
                                             {
                                                 counties.map(({nome, id}) => (
