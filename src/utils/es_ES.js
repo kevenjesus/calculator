@@ -151,7 +151,7 @@ const es_ES = {
                 text: 'El tiempo de funcionamiento de la balsa puede utilizarse como una aproximación a la cantidad de oro extraído y de mercurio descargado en el medio ambiente'
             },
             qtdFerry: {
-                headline: 'número de transbordadores',
+                headline: 'número de ferries en 1 año',
                 text: ''
             }
         },

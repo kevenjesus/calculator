@@ -156,7 +156,7 @@ const ptBR = {
                 text: 'O tempo de funcionamento da balsa pode ser utilizado como uma aproximação da quantidade de ouro extraído e mercúrio despejado no ambiente'
             },
             qtdFerry: {
-                headline: 'Quantidade de balsas',
+                headline: 'Quantidade de balsas em 1 ano',
                 text: ''
             }
         },

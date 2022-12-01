@@ -153,7 +153,7 @@ const en_US = {
                 text: 'The operating time of the boat can be used as an approximation of the amount of gold mined and mercury dumped into the environment'
             },
             qtdFerry: {
-                headline: 'number of ferries',
+                headline: 'number of ferries in 1 year',
                 text: ''
             }
         },
