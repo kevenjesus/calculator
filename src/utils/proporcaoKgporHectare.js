@@ -7,10 +7,6 @@ const proporcaoKgporHectare = (country_region, likeMining, typeValueLikeMining, 
     const { hectare } = recoverOfTopSoll
     const { densityGold, excavationGoldLoss, cavaAverageProductivity } = general
 
-
-    //const densityGold = 2.76;
-    //const excavationGoldLoss = 2;
-    //const cavaAverageProductivity = 0.4;
     const sterileMineralRelation = 7;
 
     if (likeMining === PIT && typeValueLikeMining === YEARS_OF_MINING) {
@@ -23,12 +19,14 @@ const proporcaoKgporHectare = (country_region, likeMining, typeValueLikeMining, 
         const lossyVolume = volumeWithoutLoss * excavationGoldLoss;
         const affectedAreaM2 = lossyVolume / pitDepth;
         const hectare = affectedAreaM2 / 10000;
+        const proporcaoKgporHectare = goldGrass / hectare
         //console.log('proporcaoKgporHectare', proporcaoKgporHectare)
-        //console.log('hectare', hectareOverflow)
-        return goldGrass * hectare
+        return proporcaoKgporHectare
         
     }else if(likeMining === PIT && AMOUNT_GOLD){ 
-        return valueLikeMining / hectare
+        const proporcaoKgporHectare = valueLikeMining / hectare
+
+        return proporcaoKgporHectare
 
     }else if (typeValueLikeMining === AMOUNT_GOLD){
         const turnedSoilTon = valueLikeMining / cavaAverageProductivity;
@@ -38,24 +36,27 @@ const proporcaoKgporHectare = (country_region, likeMining, typeValueLikeMining, 
         const lossyVolume = volumeWithoutLoss * excavationGoldLoss;
         const affectedAreaM2 = lossyVolume / pitDepth;
         const hectare = affectedAreaM2 / 10000;
+        const proporcaoKgporHectare = valueLikeMining / hectare
         
-        return valueLikeMining / hectare
+        return proporcaoKgporHectare
+
     }else if(likeMining === FERRY){
+
         return 0
+
     }else{
+
         const hectare = valueLikeMining
-        const sterileOreRatio = 7;
-        //const densityGold = 2.76;
-        //const excavationGoldLoss = 2;
-       // const cavaAverageProductivity = 0.4;
         const affectedAreaM2 = hectare * 10000;
         const lossyVolume = pitDepth * affectedAreaM2;
         const volumeWithoutLoss = lossyVolume / excavationGoldLoss;
         const toSoilUpturned = densityGold * volumeWithoutLoss;
-        const calculationBaseTon = toSoilUpturned / (sterileOreRatio + 1);
+        const calculationBaseTon = toSoilUpturned / (sterileMineralRelation + 1);
         const revolvedMineralTon = calculationBaseTon * 1;
         const goldGrass = cavaAverageProductivity * revolvedMineralTon;
-        return goldGrass / hectare  
+        const proporcaoKgporHectare = goldGrass / hectare
+
+        return proporcaoKgporHectare
     }
 
 }
