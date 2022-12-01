@@ -51,7 +51,7 @@ const ptBR = {
                 grams: 'Grama(s) de ouro',
                 months: 'Mese(s)',
                 years: 'Ano(s)',
-                ferry: 'Balsas'
+                ferry: 'Balsa(s)'
             },
             pitDepth: {
                 meters: 'metros'

@@ -33,6 +33,7 @@ import convertAllinHectare from 'utils/convertAllinHectare'
 import cubicMeters from 'utils/cubicMeters'
 import popSize100kmRadius from 'utils/popSize100kmRadius'
 import fixedCalcultions from 'hooks/fixedCalculations'
+import capitalizeFirstLetter from 'utils/capitalize'
 
 
 
@@ -399,7 +400,7 @@ const FormCalc = () => {
                                             <select name="state" value={state} onChange={handleState}>
                                             {
                                                 stateList.map(({sigla, id}) => (
-                                                    <option key={id} value={id}>{sigla}</option>
+                                                    <option key={id} value={id}>{capitalizeFirstLetter(sigla.toLowerCase())}</option>
                                                 ))
                                             }
                                             </select>
@@ -409,7 +410,7 @@ const FormCalc = () => {
                                             <select name="state" value={country} onChange={handleCountry}>
                                                 {
                                                     counties.map(({nome, id}) => (
-                                                        <option key={id} value={id}>{nome}</option>
+                                                        <option key={id} value={id}>{capitalizeFirstLetter(nome.toLowerCase())}</option>
                                                     ))
                                                 }
                                             </select>
@@ -421,7 +422,7 @@ const FormCalc = () => {
                                         <select name="state" value={country} onChange={handleCountry}>
                                             {
                                                 counties.map(({nome, id}) => (
-                                                    <option key={id} value={id}>{nome}</option>
+                                                    <option key={id} value={id}>{capitalizeFirstLetter(nome.toLowerCase())}</option>
                                                 ))
                                             }
                                         </select>
