@@ -16,6 +16,7 @@ import { BRAZIL, countries_region } from 'components/CountrySelect';
 import toUSD from 'utils/toUSD';
 import * as S from './style'
 import fixedCalcultions from 'hooks/fixedCalculations';
+import Header from 'layout/Header';
 
 const InfoComponent = ({language}) => {
     if(language === 'enUS') {
@@ -62,6 +63,8 @@ const MercuryContamination = () => {
     window.scroll(0, 0)
 
     return (
+        <>
+        <Header />
         <Container>
             <Grid fluid>
                 <Row>
@@ -128,6 +131,7 @@ const MercuryContamination = () => {
                 </Row>
             </Grid> 
         </Container>
+        </>
     )
 }
 

@@ -1,7 +1,7 @@
 import {  useCallback, useContext, useEffect } from 'react'
 import { useHistory } from 'react-router-dom';
 import { ABOUT, INTRODUCTION, HOW_USE_CALCULATOR, EXTRATION_TYPE, ANALYSIS_UNIT } from './consts'
-import { Container, Header, ButtonsFixed, Go } from './style'
+import { Container, HeaderComponent, ButtonsFixed, Go } from './style'
 import { Button } from 'theme'
 import { Row, Col, Grid } from 'react-flexbox-grid'
 
@@ -14,6 +14,7 @@ import AnalysisUnit from './AnalysisUnit'
 import { AppContext, stateTypes } from 'utils/AppContext';
 import calcResults from 'pages/Calculator/Form/calcResults';
 import { useAlert } from 'react-alert';
+import Header from 'layout/Header'
 
 
 const Content = ({step}) => {
@@ -76,13 +77,15 @@ const Introduction = () => {
     }
     
     return (
+        <>
+        <Header />
         <Container>
-            <Header>
+            <HeaderComponent>
                 <Go hidden={step === ABOUT} onClick={PreviosStep}>
                     <GoBack />
                     <span>{language.comeBack}</span>
                 </Go>
-            </Header>
+            </HeaderComponent>
             <Content 
                 step={step} />
             <ButtonsFixed>
@@ -98,6 +101,7 @@ const Introduction = () => {
                 </Grid>
             </ButtonsFixed>
         </Container>
+        </>
     )
     
 }

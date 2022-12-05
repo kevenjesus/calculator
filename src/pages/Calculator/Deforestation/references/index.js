@@ -5,6 +5,7 @@ import { Button } from 'theme'
 import { ReactComponent as GoBack } from 'assets/icons/goBack.svg'
 import { useContext } from 'react'
 import { AppContext } from 'utils/AppContext'
+import Header from 'layout/Header'
 const DeforestationReferences = () => {
     const {state} = useContext(AppContext)
     const {language} = state
@@ -12,6 +13,8 @@ const DeforestationReferences = () => {
     const history = useHistory();
     window.scrollTo(0,0)
     return (
+        <>
+        <Header />
         <div style={{padding: '0 15px'}}>
         <Container>
             <Go onClick={() => history.push('/impacts/deforestation')}>
@@ -182,6 +185,7 @@ const DeforestationReferences = () => {
             </Link>
         </Container>
         </div>
+        </>
     )
 }
 

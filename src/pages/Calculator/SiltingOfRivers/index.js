@@ -15,6 +15,7 @@ import cubicMeters from 'utils/cubicMeters';
 import convertAllinGold from 'utils/convertAllinGold';
 import { BRAZIL, countries_region } from 'components/CountrySelect';
 import toUSD from 'utils/toUSD';
+import Header from 'layout/Header';
 
 const InfoComponent = ({language}) => {
     if(language === 'enUS') {
@@ -63,6 +64,8 @@ const SiltingOfRivers = () => {
 
     window.scroll(0, 0)
     return (
+        <>
+        <Header />
         <Container>
             <Grid fluid>
                 <Row>
@@ -101,6 +104,7 @@ const SiltingOfRivers = () => {
                 </Row>
             </Grid> 
         </Container>
+        </>
     )
 }
 

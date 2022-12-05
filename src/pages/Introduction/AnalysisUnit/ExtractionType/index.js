@@ -5,7 +5,6 @@ import { Col } from 'react-flexbox-grid'
 import React from 'react'
 
 const ExtractionType = ({type, state, translate, handleState}) => {
-    console.log('state', state)
     if(type === ALLUVIUM) {
         return (
             <>

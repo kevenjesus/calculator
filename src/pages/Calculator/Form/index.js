@@ -19,6 +19,7 @@ import ExtrationTypeOptions from './ExtrationTypeOptions'
 import { useAlert } from 'react-alert'
 import { BRAZIL, COLOMBIA, countries_region, EQUADOR, PERU } from 'components/CountrySelect';
 import capitalizeFirstLetter from 'utils/capitalize'
+import Header from 'layout/Header'
 
 
 function Form() {
@@ -370,6 +371,9 @@ function Form() {
     }
 
     return (
+        <>
+            <Header />
+        
         <Container>
             <Grid fluid>
                 <Row>
@@ -508,6 +512,7 @@ function Form() {
 
             </Grid>
         </Container>
+        </>
     )
 }
 

@@ -17,13 +17,7 @@ const ExtrationType = () => {
     const { introduction } = language
 
     const handleOption = useCallback((value) => {
-        const form = JSON.parse(sessionStorage.getItem("@Calculator/form"))
         dispatch({type: stateTypes.SET_VALUATION_METHOD, payload: value})
-        if(form && form.analysisUnit) {
-            const newForm = {...form, analysisUnit: null}
-            sessionStorage.removeItem('@Calculator/form')
-            sessionStorage.setItem('@Calculator/form', JSON.stringify(newForm))
-        }
     }, [dispatch])
 
     const handleRetort = useCallback((e) => {

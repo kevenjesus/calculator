@@ -1,5 +1,5 @@
-import { useState, useEffect, useContext, useCallback, useLayoutEffect } from 'react'
-import { useLocation, Link } from 'react-router-dom'
+import { useState, useEffect, useContext, useCallback } from 'react'
+import { useLocation, Link, useHistory } from 'react-router-dom'
 import { ContainerHeader, Container, LogoContainer, LogoName, LogoSlogan, BarMenu, MenuShow, LogoBase } from './style'
 import { Language, LanguageLabel, Menuitem } from 'layout/Sidebar/style'
 import { AppContext, stateTypes } from 'utils/AppContext';
@@ -24,17 +24,8 @@ const Header = ({theme = 'white'}) => {
     const { language, priceUSDtoBRL } = state;
     const { header } = language;
 
-    useLayoutEffect(() => {
-        const languageStorage = sessionStorage.getItem('@calculate/language')
-        const formStorage = sessionStorage.getItem('@Calculator/form')
+    const history = useHistory()
 
-        if(languageStorage) {
-            dispatch({type: stateTypes.SET_LANGUAGE, payload: JSON.parse(languageStorage)})
-        }
-        if(formStorage) {
-            dispatch({type: stateTypes.SET_CALCULATEFORM, payload: JSON.parse(formStorage)})
-        }
-    }, [dispatch])
     
     useEffect(() => {
         const { pathname } = location;
@@ -64,9 +55,7 @@ const Header = ({theme = 'white'}) => {
         <ContainerHeader theme={theme}>
             <Container>
                 <LogoContainer>
-                    <Link to="/">
-                        <Logo  />
-                    </Link>
+                     <Logo onClick={() => history.push('/')} style={{cursor: 'pointer'}}  />
                     <LogoBase>
                         <LogoName theme={theme} isPtBR={lang === 'en'}>{header.naming}</LogoName>
                         <LogoSlogan theme={theme}>{header.slogan}</LogoSlogan>

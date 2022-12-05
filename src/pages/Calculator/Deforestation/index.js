@@ -15,6 +15,7 @@ import MenuImpacts from '../Menu';
 import convertAllinGold from 'utils/convertAllinGold';
 import convertAllinHectare from 'utils/convertAllinHectare';
 import { countries_region, BRAZIL } from 'components/CountrySelect';
+import Header from 'layout/Header';
 
 
 const InfoComponent = ({language}) => {
@@ -85,9 +86,6 @@ const Deforestation = () => {
     }
 
     withoutOverflow = Math.round(hectareWithoutOverflow * 100) / 100
-
-
-    console.log('withoutOverflow',withoutOverflow)
     
     const paragraphy_01 = impacts.deforestation.paragraphy_01.replace("$grams", goldValue).replace("$hectare", hectareValue).replace("$withoutOverflow", withoutOverflow)
     const paragraphy_02 = impacts.deforestation.paragraphy_02.replace("$hectare", hectareValue)
@@ -98,6 +96,8 @@ const Deforestation = () => {
     // hectare com transbordamento == 
     
     return (
+        <>
+        <Header />
         <Container>
             <Grid fluid>
                 <Row>
@@ -137,6 +137,7 @@ const Deforestation = () => {
                 </Row>
             </Grid> 
         </Container>
+        </>
     )
 }
 

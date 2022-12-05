@@ -100,7 +100,7 @@ export const Go = styled.button`
     visibility: ${({hidden}) => hidden ? 'hidden' : 'visible'};
 ` 
 
-export const Header = styled.header`
+export const HeaderComponent = styled.header`
     width: 100%;
     height: 50px;
     display: flex;

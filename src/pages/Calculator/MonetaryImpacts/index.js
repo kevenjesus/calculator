@@ -34,6 +34,7 @@ import cubicMeters from 'utils/cubicMeters'
 import popSize100kmRadius from 'utils/popSize100kmRadius'
 import fixedCalcultions from 'hooks/fixedCalculations'
 import capitalizeFirstLetter from 'utils/capitalize'
+import Header from 'layout/Header'
 
 
 
@@ -183,9 +184,6 @@ const FormCalc = () => {
         }
         
         calcResults(state, dispatch, priceUSDtoBRL)
-        const { calculator } = state
-        sessionStorage.removeItem('@Calculator/form')
-        sessionStorage.setItem('@Calculator/form', JSON.stringify(calculator))
     },[checkFormIsInvalid, priceUSDtoBRL, dispatch])
 
 
@@ -395,6 +393,7 @@ const FormCalc = () => {
     }
     
     return (
+      
         <Grid fluid id="ignorePDF">
         <Row>
             <Col xs={12}>
@@ -768,6 +767,8 @@ const MonetaryImpacts = () => {
 
     
     return (
+        <>
+        <Header />
         <Container>
             
             {loading && (
@@ -891,6 +892,7 @@ const MonetaryImpacts = () => {
                 </ButtonFixed>
             </Grid> 
         </Container>
+        </>
     )
 }
 

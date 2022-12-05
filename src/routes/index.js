@@ -9,7 +9,6 @@ import MonetaryImpacts from 'pages/Calculator/MonetaryImpacts'
 import Introduction from 'pages/Introduction'
 import ContextValue from 'pages/Introduction/ContextValue'
 
-import Header from 'layout/Header'
 import Footer from 'layout/Footer'
 import Home from 'pages/Home';
 import DeforestationReferences from 'pages/Calculator/Deforestation/references';
@@ -34,13 +33,15 @@ const Routes = () => {
             const dolarReal = Number(USDtoBRL.high)
             dispatch({type: stateTypes.SET_PRICEUSDTOBRL, payload: dolarReal})
         }
+
+        
         // eslint-disable-next-line
     }, [USDtoBRL])
 
-    const isHome = window.location.hash === '#/'
+
+
     return (
         <Router>
-            {!isHome  && <Header />}
             {
                 country_region === null ? (
                     <CountrySelect />

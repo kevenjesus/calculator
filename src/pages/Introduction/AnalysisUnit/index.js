@@ -1,8 +1,8 @@
-import { useState, useRef, useContext, useCallback, useEffect } from 'react'
+import { useState, useRef, useContext, useCallback } from 'react'
 import { Row, Col } from 'react-flexbox-grid'
 import { Headline } from 'pages/Introduction/style'
 import { AppContext, stateTypes } from 'utils/AppContext'
-import { IMPACTED_AREA, AMOUNT_GOLD, YEARS_OF_MINING, ALLUVIUM, FERRY, QTD_FERRY } from 'pages/Calculator/Form/consts'
+import { IMPACTED_AREA, AMOUNT_GOLD, YEARS_OF_MINING, ALLUVIUM } from 'pages/Calculator/Form/consts'
 import { TextField } from 'theme'
 import ExtractionType from './ExtractionType'
 import Conditional from 'components/Conditional'
@@ -75,35 +75,6 @@ const AnalysisUnit = () => {
         }
     }, [dispatch, alert])
 
-    useEffect(() => {
-        const form = JSON.parse(sessionStorage.getItem('@Calculator/form'))
-        
-        if(valuatioMethod === ALLUVIUM) {
-            if(form && form.analysisUnit) {
-                setState(form.analysisUnit)
-            }else {
-                setState(IMPACTED_AREA)
-                dispatch({type: stateTypes.SET_ANALYS_UNIT, payload: IMPACTED_AREA })
-            }
-            
-        }else if(valuatioMethod === FERRY) {
-            if(form && form.analysisUnit) {
-                setState(form.analysisUnit)
-            }else {
-                setState(QTD_FERRY)
-                dispatch({type: stateTypes.SET_ANALYS_UNIT, payload: QTD_FERRY })
-            }
-            
-        }else {
-            if(form && form.analysisUnit) {
-                setState(form.analysisUnit)
-            }else {
-                setState(YEARS_OF_MINING)
-                dispatch({type: stateTypes.SET_ANALYS_UNIT, payload: YEARS_OF_MINING })
-            }
-            
-        }
-    }, [dispatch, valuatioMethod])
 
     let placeholder;
     if(state === AMOUNT_GOLD) {
