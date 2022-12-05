@@ -154,7 +154,7 @@ const en_US = {
             },
             qtdFerry: {
                 headline: 'number of ferries in 1 year',
-                text: ''
+                text: 'Consider knowing the number of rafts/dredgers in a given river.'
             }
         },
         contextValue: {

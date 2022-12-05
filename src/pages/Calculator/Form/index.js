@@ -392,7 +392,7 @@ function Form() {
                                             <select name="state" value={state} onChange={handleState}>
                                             {
                                                 stateList.map(({sigla, id}) => (
-                                                    <option key={id} value={id}>{capitalizeFirstLetter(sigla.toLowerCase())}</option>
+                                                    <option key={id} value={id}>{sigla.toUpperCase()}</option>
                                                 ))
                                             }
                                             </select>

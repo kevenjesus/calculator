@@ -1,5 +1,4 @@
-import { ALLUVIUM, FERRY, QTD_FERRY } from 'pages/Calculator/Form/consts'
-import { IMPACTED_AREA, AMOUNT_GOLD, YEARS_OF_MINING } from 'pages/Calculator/Form/consts'
+import { IMPACTED_AREA, AMOUNT_GOLD, YEARS_OF_MINING, QTD_FERRY, FERRY, ALLUVIUM } from 'pages/Calculator/Form/consts'
 import { ItemType, Title, Paragraphy } from '../style'
 import { Col } from 'react-flexbox-grid'
 import React from 'react'

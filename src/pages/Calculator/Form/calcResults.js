@@ -186,6 +186,8 @@ const calcResults = (state, dispatch, dolarTOReal) => {
 
         const reducer = ((acc, current) => acc+current.value);
         const totalValue = impactsFiltered.reduce(reducer, 0);
+
+        console.log(impacts)
         
 
         dispatch({ type: stateTypes.SET_NOT_MONETARY, payload: notMonetaryFiltered})

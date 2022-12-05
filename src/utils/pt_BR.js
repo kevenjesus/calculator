@@ -157,7 +157,7 @@ const ptBR = {
             },
             qtdFerry: {
                 headline: 'Quantidade de balsas em 1 ano',
-                text: ''
+                text: 'Considera o conhecimento da quantidade de balsas/dragas existentes em um determinado rio.'
             }
         },
         contextValue: {
@@ -333,7 +333,7 @@ const ptBR = {
             soil_mercury_comments_line2: 'Hipótese de concentração média de mercúrio nos solos de 0,24 gramas de ouro por tonelada de sedimento.',
         }
     },
-    inflation: 'Inflação acumulada desde de janeiro de 2022 (%)',
+    inflation: 'Inflação acumulada desde janeiro de 2022 (%)',
     inflation_placeholder: 'Digite a inflação neste formato: 10 ou 6.2',
     district: 'Distrito',
     goldImpact: 'para $grams gramas de ouro',

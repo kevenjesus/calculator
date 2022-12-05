@@ -1,8 +1,8 @@
-import { useState, useRef, useContext, useCallback } from 'react'
+import { useState, useRef, useContext, useCallback, useLayoutEffect } from 'react'
 import { Row, Col } from 'react-flexbox-grid'
 import { Headline } from 'pages/Introduction/style'
 import { AppContext, stateTypes } from 'utils/AppContext'
-import { IMPACTED_AREA, AMOUNT_GOLD, YEARS_OF_MINING, ALLUVIUM } from 'pages/Calculator/Form/consts'
+import { IMPACTED_AREA, AMOUNT_GOLD, YEARS_OF_MINING, ALLUVIUM, FERRY, QTD_FERRY } from 'pages/Calculator/Form/consts'
 import { TextField } from 'theme'
 import ExtractionType from './ExtractionType'
 import Conditional from 'components/Conditional'
@@ -11,7 +11,7 @@ import { useAlert } from 'react-alert'
 
 
 const AnalysisUnit = () => {
-    const [ state, setState ] = useState(IMPACTED_AREA);
+    const [ state, setState ] = useState(null);
     const { state: stateContext, dispatch} = useContext(AppContext);
     const { language, calculator} = stateContext
     const { pitDepth, valuatioMethod } = calculator;
@@ -53,13 +53,23 @@ const AnalysisUnit = () => {
         },
     ]
 
+    useLayoutEffect(() => {
+        if(valuatioMethod === FERRY) {
+            setState(QTD_FERRY)
+        }else if(valuatioMethod === ALLUVIUM) {
+            setState(IMPACTED_AREA)
+        }else {
+            setState(YEARS_OF_MINING)
+        }
+    }, [valuatioMethod])
+
     const handlePitDepth = useCallback((e) => {
         const { value } = e.target;
         dispatch({type: stateTypes.SET_PITDEPTH, payload: Number(value)})
     }, [dispatch]);
 
     const handleState = useCallback((go) => {
-        setState(go);
+        setState(Number(go));
         dispatch({type: stateTypes.SET_ANALYS_UNIT, payload: go })
 
         const refTop = ref.current.getBoundingClientRect().top;

@@ -7,18 +7,30 @@ import Aluviao from 'assets/images/aluviao-min.jpg'
 import Poco from 'assets/images/poco-min.jpg'
 import Balsa from 'assets/images/Balsa-min.jpg'
 import RetortaIMG from 'assets/images/retorta.jpeg'
-import { ALLUVIUM, FERRY, NO, PIT, YES } from 'pages/Calculator/Form/consts'
+import { ALLUVIUM, AMOUNT_GOLD, FERRY, IMPACTED_AREA, NO, PIT, QTD_FERRY, YEARS_OF_MINING, YES } from 'pages/Calculator/Form/consts'
 import RadioBoxConditional from 'components/RadioBoxConditional'
 
 const ExtrationType = () => {
     const {state, dispatch} = useContext(AppContext);
     const { calculator, language } = state
-    const { retort } = calculator
+    const { retort, analysisUnit } = calculator
     const { introduction } = language
 
     const handleOption = useCallback((value) => {
-        dispatch({type: stateTypes.SET_VALUATION_METHOD, payload: value})
-    }, [dispatch])
+        
+        let analysUnitValue;
+
+        if(analysisUnit !== AMOUNT_GOLD && Number(value) === FERRY) {
+            analysUnitValue = QTD_FERRY
+        }else if(analysisUnit !== AMOUNT_GOLD && Number(value) === PIT) {
+            analysUnitValue = YEARS_OF_MINING
+        }else if(analysisUnit !== AMOUNT_GOLD && Number(value) === ALLUVIUM) {
+            analysUnitValue = IMPACTED_AREA
+        }
+
+        dispatch({ type: stateTypes.SET_VALUATION_METHOD, payload: Number(value) })
+        dispatch({ type: stateTypes.SET_ANALYS_UNIT, payload: analysUnitValue })
+    }, [analysisUnit, dispatch])
 
     const handleRetort = useCallback((e) => {
         const { value } = e.target

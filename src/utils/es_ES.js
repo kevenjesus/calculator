@@ -152,7 +152,7 @@ const es_ES = {
             },
             qtdFerry: {
                 headline: 'número de ferries en 1 año',
-                text: ''
+                text: 'Considere conocer el número de balsas/dragas en un río determinado.'
             }
         },
         contextValue: {
@@ -328,7 +328,7 @@ const es_ES = {
             soil_mercury_comments_line2: 'La hipótesis es que la concentración media de mercurio en los suelos es de 0,24 gramos de oro por tonelada de sedimento.',
         },
     },
-    inflation: 'Inflación acumulada desde de enero de 2022 (%)',
+    inflation: 'Inflación acumulada desde enero de 2022 (%)',
     inflation_placeholder: 'Ingrese la inflación en este formato: 10 o 6.2',
     district: 'Distrito',
     goldImpact: 'para $grams gramos de oro',

@@ -56,6 +56,7 @@ const Introduction = () => {
                 dispatch({type: stateTypes.SET_QTD_ANALYS_UNIT, payload: {...calculator.qtdAnalysis, error: true}});
                 alert.error(<span style={{textTransform: 'initial'}}>Por favor. Preencha o valor de unidade</span>)
             }else {
+                console.log('pre calculo', state)
                 calcResults(state, dispatch, priceUSDtoBRL)
                 history.push('/loading')
             }
