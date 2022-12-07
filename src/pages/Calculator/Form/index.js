@@ -348,6 +348,11 @@ function Form() {
     }, [history, checkFormIsInvalid, stateContext, dispatch, priceUSDtoBRL])
 
     useEffect(() => {
+        document.addEventListener("wheel", function(event){
+            if(document.activeElement.type === "number"){
+                document.activeElement.blur();
+            }
+        });
         let placeholder;
         if(calculator.analysisUnit === AMOUNT_GOLD) {
             placeholder = calculatorForm.values.qtdAnalysisUnit.grams
