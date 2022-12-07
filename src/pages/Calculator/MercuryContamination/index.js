@@ -36,6 +36,10 @@ const MercuryContamination = () => {
     const { impacts } = language
     const history = useHistory()
 
+    if(history.action === 'POP') {
+        return <Redirect to="/" />
+    }
+
     const { general } = fixedCalcultions(country_region)
     const { densityPopulationalRegionNorth2060 } = general
 
@@ -63,9 +67,7 @@ const MercuryContamination = () => {
 
     window.scroll(0, 0)
 
-    if(history.action === 'POP') {
-        return <Redirect to="/" />
-    }
+    
 
     return (
         <>

@@ -530,6 +530,9 @@ const MonetaryImpacts = () => {
     const {impacts} = language
     const history = useHistory();
 
+    
+
+
     const isBrazil = country_region && country_region.country === countries_region[BRAZIL].country
 
     const { general } = fixedCalcultions(country_region)
@@ -695,6 +698,10 @@ const MonetaryImpacts = () => {
         }, 1000)
 
     }, [isBrazil, hiddenMenu.length])
+
+    if(history.action === 'POP') {
+        return <Redirect to="/" />
+    }
     
 
     const impactsDesforestation = {
@@ -767,10 +774,7 @@ const MonetaryImpacts = () => {
 
     window.scroll(0, 0)
 
-    if(history.action === 'POP') {
-        return <Redirect to="/" />
-    }
-
+ 
     
     return (
         <>

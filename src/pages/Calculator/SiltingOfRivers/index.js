@@ -34,6 +34,10 @@ const SiltingOfRivers = () => {
     const { impacts } = language
     const history = useHistory()
 
+    if(history.action === 'POP') {
+        return <Redirect to="/" />
+    }
+
     const isBrazil = country_region && country_region.country === countries_region[BRAZIL].country
 
 
@@ -65,9 +69,7 @@ const SiltingOfRivers = () => {
 
     window.scroll(0, 0)
 
-    if(history.action === 'POP') {
-        return <Redirect to="/" />
-    }
+   
     return (
         <>
         <Header />

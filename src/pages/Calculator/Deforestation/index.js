@@ -35,6 +35,10 @@ const Deforestation = () => {
     const { impacts } = language
     const history = useHistory()
 
+    if(history.action === 'POP') {
+        return <Redirect to="/" />
+    }
+
   
     const isBrazil = country_region && country_region.country === countries_region[BRAZIL].country
 
@@ -96,9 +100,7 @@ const Deforestation = () => {
     // heacte fixo por pais sem transbordamento == poço
     // hectare com transbordamento == 
 
-    if(history.action === 'POP') {
-        return <Redirect to="/" />
-    }
+   
     
     return (
         <>
