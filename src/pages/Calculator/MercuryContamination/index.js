@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, Redirect, useHistory } from 'react-router-dom'
 import { Button } from 'theme'
 import { Grid, Row, Col } from 'react-flexbox-grid'
 import { Container, Headline, Text } from 'pages/Calculator/ImpactsStyles'
@@ -34,6 +34,7 @@ const MercuryContamination = () => {
     const { language, calculator, country_region, priceUSDtoBRL } = state
     const { counties, country, knowRegion, notMonetary } = calculator
     const { impacts } = language
+    const history = useHistory()
 
     const { general } = fixedCalcultions(country_region)
     const { densityPopulationalRegionNorth2060 } = general
@@ -61,6 +62,10 @@ const MercuryContamination = () => {
     const paragraphy_01 = impacts.mercuryContamination.paragraphy_01.replace("$people", people.toLocaleString('pt-BR'))
 
     window.scroll(0, 0)
+
+    if(history.action === 'POP') {
+        return <Redirect to="/" />
+    }
 
     return (
         <>

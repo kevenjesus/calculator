@@ -1,6 +1,6 @@
 import { Container, Headline, Table, Tbody, Td, Text, Th, Thead, Tr } from 'pages/Calculator/ImpactsStyles'
 import { Go } from 'pages/Introduction/style'
-import { Link, useHistory } from 'react-router-dom'
+import { Link, Redirect, useHistory } from 'react-router-dom'
 import { Button } from 'theme'
 import { ReactComponent as GoBack } from 'assets/icons/goBack.svg'
 import { useContext } from 'react'
@@ -12,6 +12,10 @@ const MercuryReferences = () => {
     const {hypothesesReferences} = language
     const history = useHistory();
     window.scrollTo(0,0)
+
+    if(history.action === 'POP') {
+        return <Redirect to="/" />
+    }
     return (
         <>
         <Header />

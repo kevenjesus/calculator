@@ -1,5 +1,5 @@
 import {  useContext, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
+import { Redirect, useHistory } from 'react-router-dom'
 import { Container, Text } from './style'
 import { ReactComponent as LoadingIcon } from 'assets/icons/loading-icon.svg'
 import { AppContext } from 'utils/AppContext'
@@ -19,6 +19,10 @@ const Loading = () => {
             }
         }, 1500);
     }, [history, calculator])
+
+    if(history.action === 'POP') {
+        return <Redirect to="/" />
+    }
     return (
         <>
         <Header />

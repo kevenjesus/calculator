@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, Redirect, useHistory } from 'react-router-dom'
 import { Button } from 'theme'
 import { Grid, Row, Col } from 'react-flexbox-grid'
 import { Container, Headline, Text } from 'pages/Calculator/ImpactsStyles'
@@ -33,6 +33,7 @@ const Deforestation = () => {
     const { language, calculator, country_region, priceUSDtoBRL } = state
     const { valuatioMethod, qtdAnalysis, pitDepth } = calculator
     const { impacts } = language
+    const history = useHistory()
 
   
     const isBrazil = country_region && country_region.country === countries_region[BRAZIL].country
@@ -94,6 +95,10 @@ const Deforestation = () => {
     // hectare convertido pelo ouro == aluviao e a quantidade de gramas de ouro
     // heacte fixo por pais sem transbordamento == poço
     // hectare com transbordamento == 
+
+    if(history.action === 'POP') {
+        return <Redirect to="/" />
+    }
     
     return (
         <>

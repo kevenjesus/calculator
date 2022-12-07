@@ -26,18 +26,15 @@ const Routes = () => {
     const {state, dispatch} = useContext(AppContext)
     const { country_region } = state
     const { USDtoBRL } = useExchange()
-
-
     useEffect(() => {
+        
         if(USDtoBRL) {
             const dolarReal = Number(USDtoBRL.high)
             dispatch({type: stateTypes.SET_PRICEUSDTOBRL, payload: dolarReal})
         }
-
         
         // eslint-disable-next-line
     }, [USDtoBRL])
-
 
 
     return (

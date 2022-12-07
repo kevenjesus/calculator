@@ -1,5 +1,5 @@
 import {  useCallback, useContext, useEffect, useMemo, useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { Redirect, useHistory } from 'react-router-dom'
 import { Button, TextField } from 'theme'
 import { Grid, Row, Col } from 'react-flexbox-grid'
 import { ALLUVIUM, AMOUNT_GOLD, CATEGORY_DEFORESTATION, CATEGORY_MERCURY, CATEGORY_SILTING_RIVERS, FERRY, IMPACTED_AREA, NO, PIT, QTD_FERRY, YEARS_OF_MINING, YES } from 'pages/Calculator/Form/consts'
@@ -766,6 +766,10 @@ const MonetaryImpacts = () => {
     </div>
 
     window.scroll(0, 0)
+
+    if(history.action === 'POP') {
+        return <Redirect to="/" />
+    }
 
     
     return (
