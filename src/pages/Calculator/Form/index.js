@@ -493,6 +493,7 @@ function Form() {
                         <TextField
                             label={language.inflation}
                             type="number"
+                            onWheel={(e) => e.target.blur()}
                             value={inflation}
                             onChange={handleInflation}
                             name="valor" placeholder={language.inflation_placeholder}/>

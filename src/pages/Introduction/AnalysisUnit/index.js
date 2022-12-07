@@ -115,6 +115,7 @@ const AnalysisUnit = () => {
                         error={stateContext.calculator.qtdAnalysis.error}
                         label={`${introduction.analysisUnit.input_qtdAnalysis} ${placeholder}`} 
                         type="number" 
+                        onWheel={(e) => e.target.blur()}
                         placeholder={placeholder}
                         onChange={handleQtdAnalysis}
                         value={stateContext.calculator.qtdAnalysis.value} />

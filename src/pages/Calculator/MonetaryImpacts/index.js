@@ -470,6 +470,7 @@ const FormCalc = () => {
                 label={placeholder}
                 error={qtdAnalysis.error}
                 type="number"
+                onWheel={(e) => e.target.blur()}
                 value={qtdAnalysis.value}
                 onChange={handleQtdAnalysis}
                 onBlur={() => updateCalc()}
@@ -509,6 +510,7 @@ const FormCalc = () => {
                 <TextField
                     label={language.inflation}
                     type="number"
+                    onWheel={(e) => e.target.blur()}
                     value={inflation}
                     onChange={handleInflation}
                     onBlur={() => updateCalc()}
