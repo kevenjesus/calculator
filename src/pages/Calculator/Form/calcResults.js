@@ -85,7 +85,7 @@ const calcResults = (state, dispatch, dolarTOReal) => {
         const goldGrass = convertAllinGold(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth, motorPower)
         const proporcaoKgporHectareValue = proporcaoKgporHectare(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth)
         const { value: hecatereGrass } = convertAllinHectare(country_region, likeMining, typeValueLikeMining, valueLikeMining, pitDepth)
-        notMonetary.push({label: language.not_monerary_goldGrass, value: goldGrass, measure: 'kg de Au'})
+        notMonetary.push({label: language.not_monerary_goldGrass, value: (Math.round((goldGrass/1000)*100)/100), measure: 'kg de Au'})
         notMonetary.push({label: language.not_monetary_proporcaoKgporHectare, value: (Math.round((proporcaoKgporHectareValue/1000)*100)/100), measure: 'kg de Au / ha'})
         notMonetary.push({label: language.not_monerary_hecatereGrass, value: (Math.round(hecatereGrass*100)/100), measure: 'ha'})
 

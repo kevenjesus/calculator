@@ -14,7 +14,7 @@ const es_ES = {
     knowRegionYes: 'Impactos en un lugar específico',
     knowRegionNo: 'Impactos generales promedio',
     iAlreadyKnow: 'Ya lo sé',
-    buttonIntroduction: 'Llévame a la guía',
+    buttonIntroduction: 'Llévame a la guía detallada',
     buttonResumeCalculator: 'Llévame a la versión corta',
     calculatorForm: {
         commons: {
