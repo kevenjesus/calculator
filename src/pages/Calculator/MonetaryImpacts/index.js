@@ -411,7 +411,7 @@ const FormCalc = () => {
                                             <select name="state" value={state} onChange={handleState}>
                                             {
                                                 stateList.map(({sigla, id}) => (
-                                                    <option key={id} value={id}>{capitalizeFirstLetter(sigla.toLowerCase())}</option>
+                                                    <option key={id} value={id}>{capitalizeFirstLetter(sigla.toUpperCase())}</option>
                                                 ))
                                             }
                                             </select>
