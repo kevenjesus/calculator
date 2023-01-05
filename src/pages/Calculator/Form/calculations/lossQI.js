@@ -1,3 +1,4 @@
+import { COLOMBIA } from 'components/CountrySelect';
 import fixedCalcultions from 'hooks/fixedCalculations';
 import normDist from 'utils/normDist'
 import { ALLUVIUM, AMOUNT_GOLD, FERRY, QTD_FERRY, PIT, YEARS_OF_MINING } from '../consts';
@@ -153,8 +154,29 @@ const lossQI =  (country_region, likeMining, typeValueLikeMining, valueLikeMinin
   const disnorm38 = normDist(38, concentrationMediaMercuryHair, deflectionPatternAverageMercury, 1);
   const disnorm40 = normDist(40, concentrationMediaMercuryHair, deflectionPatternAverageMercury, 1);
  
+  
 
-  let porcentNascidosVivosPerdaQIAcimaDe2Pts = 1 - disnorm10
+  const porcentNascidosVivosPerdaQIAcimaDe2Pts = 1 - disnorm10
+
+  const porcentNascidosVivosPerdaQIAcimaDe2PtsValue = Number(porcentNascidosVivosPerdaQIAcimaDe2Pts.toString().replace('e-8', ''));
+  
+
+  let porcentNascidosVivosPerdaQIAcimaDe2PtsFinal
+
+  if(country_region === COLOMBIA){
+
+    porcentNascidosVivosPerdaQIAcimaDe2PtsFinal = porcentNascidosVivosPerdaQIAcimaDe2PtsValue * 100000000
+
+  }else{
+    porcentNascidosVivosPerdaQIAcimaDe2PtsFinal = porcentNascidosVivosPerdaQIAcimaDe2PtsValue
+  }
+
+  
+  console.log('porcentNascidosVivosPerdaQIAcimaDe2PtsFinal', porcentNascidosVivosPerdaQIAcimaDe2PtsFinal)
+
+  //const acima2Pts = porcentNascidosVivosPerdaQIAcimaDe2Pts + 1
+  //console.log('acima2Pts', acima2Pts)
+
   //console.log('porcentNascidosVivosPerdaQIAcimaDe2Pts', porcentNascidosVivosPerdaQIAcimaDe2Pts)
 
   const distNorm0ate2 = ((1 - disnorm0) - (1 - disnorm2)) * 1000 * 0.0005;
@@ -195,11 +217,14 @@ distNorm28ate30 + distNorm30ate32 + distNorm32ate34 + distNorm34ate36 + distNorm
   //const aDALYUSD = 103599;
   const toLossQIFetuses = daly * aDALYUSD;
 
-  const porcentNascidosVivosPerdaQIAcimaDe2PtsValue = Number(porcentNascidosVivosPerdaQIAcimaDe2Pts.toString().replace('e-8', ''));
+  
+  
+  
+  
 
   return {
     concentrationMediaMercuryHair,
-    porcentNascidosVivosPerdaQIAcimaDe2Pts: porcentNascidosVivosPerdaQIAcimaDe2PtsValue,
+    porcentNascidosVivosPerdaQIAcimaDe2Pts : porcentNascidosVivosPerdaQIAcimaDe2PtsFinal, //porcentNascidosVivosPerdaQIAcimaDe2PtsValue,
     value: toLossQIFetuses
   } 
   
