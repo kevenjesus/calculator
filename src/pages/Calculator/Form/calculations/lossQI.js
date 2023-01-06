@@ -165,21 +165,17 @@ const lossQI =  (country_region, likeMining, typeValueLikeMining, valueLikeMinin
 
   let porcentNascidosVivosPerdaQIAcimaDe2PtsFinal
 
-  if(country_region === isColombia){
+  if(isColombia){
 
-    porcentNascidosVivosPerdaQIAcimaDe2PtsFinal = porcentNascidosVivosPerdaQIAcimaDe2PtsValue * 100000000
+    porcentNascidosVivosPerdaQIAcimaDe2PtsFinal = porcentNascidosVivosPerdaQIAcimaDe2PtsValue < 0.01 ? porcentNascidosVivosPerdaQIAcimaDe2PtsValue : 0.01;
+
+    //console.log('porcentNascidosVivosPerdaQIAcimaDe2PtsFinal', porcentNascidosVivosPerdaQIAcimaDe2PtsFinal)
 
   }else{
+
     porcentNascidosVivosPerdaQIAcimaDe2PtsFinal = porcentNascidosVivosPerdaQIAcimaDe2PtsValue
   }
 
-  
-  console.log('porcentNascidosVivosPerdaQIAcimaDe2PtsFinal', porcentNascidosVivosPerdaQIAcimaDe2PtsFinal)
-
-  //const acima2Pts = porcentNascidosVivosPerdaQIAcimaDe2Pts + 1
-  //console.log('acima2Pts', acima2Pts)
-
-  //console.log('porcentNascidosVivosPerdaQIAcimaDe2Pts', porcentNascidosVivosPerdaQIAcimaDe2Pts)
 
   const distNorm0ate2 = ((1 - disnorm0) - (1 - disnorm2)) * 1000 * 0.0005;
   const distNorm2ate4 = ((1 - disnorm2) - (1 - disnorm4)) * 1000 * 0.0022;

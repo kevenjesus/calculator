@@ -2,7 +2,7 @@ import fixedCalcultions from "hooks/fixedCalculations";
 import { ALLUVIUM, AMOUNT_GOLD, FERRY, QTD_FERRY, PIT, YEARS_OF_MINING } from "../consts";
 
 const dredgingAndRiverSediments = (country_region, likeMining, typeValueLikeMining, valueLikeMining, distanceanningCenter, pitDepth, hectare, motorPower) => {
-    console.log('dredgingAndRiverSediments', country_region, likeMining, typeValueLikeMining, valueLikeMining, distanceanningCenter, pitDepth, hectare, motorPower)
+
     const { dredgingAndRiverSediments, general } = fixedCalcultions(country_region, motorPower)
     const { 
         kmRotatedPerLiter,
@@ -95,7 +95,7 @@ const dredgingAndRiverSediments = (country_region, likeMining, typeValueLikeMini
     const equivalenceHaImpacted = productionSedimentturnsTonFeather / equivalentErosionTonPerHaPerYear;
     const ferryDredgingDamageValue = equivalenceHaImpacted * erosionControlUSD * valueLikeMining; // valuelikemining = QUANTIA DE BALSAS
 
-    console.log('ferryDredgingDamageValue', ferryDredgingDamageValue)
+    //console.log('ferryDredgingDamageValue', ferryDredgingDamageValue)
     
     return ferryDredgingDamageValue
 
