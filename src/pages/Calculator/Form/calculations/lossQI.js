@@ -1,4 +1,3 @@
-import { COLOMBIA, countries_region } from 'components/CountrySelect';
 import fixedCalcultions from 'hooks/fixedCalculations';
 import normDist from 'utils/normDist'
 import { ALLUVIUM, AMOUNT_GOLD, FERRY, QTD_FERRY, PIT, YEARS_OF_MINING } from '../consts';
@@ -30,8 +29,6 @@ const lossQI =  (country_region, likeMining, typeValueLikeMining, valueLikeMinin
       HgAuRatio
   } = general
   const { birthRate } = lossQI
-
-  const isColombia = country_region && country_region.country === countries_region[COLOMBIA].country
 
   // console.log('lossQI', 
   // methyladPercent_conservative,
@@ -164,17 +161,8 @@ const lossQI =  (country_region, likeMining, typeValueLikeMining, valueLikeMinin
   
 
   let porcentNascidosVivosPerdaQIAcimaDe2PtsFinal
+  porcentNascidosVivosPerdaQIAcimaDe2PtsFinal = porcentNascidosVivosPerdaQIAcimaDe2PtsValue < 0.01 ? porcentNascidosVivosPerdaQIAcimaDe2PtsValue : 0.01;
 
-  if(isColombia){
-
-    porcentNascidosVivosPerdaQIAcimaDe2PtsFinal = porcentNascidosVivosPerdaQIAcimaDe2PtsValue < 0.01 ? porcentNascidosVivosPerdaQIAcimaDe2PtsValue : 0.01;
-
-    //console.log('porcentNascidosVivosPerdaQIAcimaDe2PtsFinal', porcentNascidosVivosPerdaQIAcimaDe2PtsFinal)
-
-  }else{
-
-    porcentNascidosVivosPerdaQIAcimaDe2PtsFinal = porcentNascidosVivosPerdaQIAcimaDe2PtsValue
-  }
 
 
   const distNorm0ate2 = ((1 - disnorm0) - (1 - disnorm2)) * 1000 * 0.0005;
