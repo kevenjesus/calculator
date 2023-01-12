@@ -1,4 +1,4 @@
-import { COLOMBIA, countries_region } from 'components/CountrySelect';
+//import { COLOMBIA, countries_region } from 'components/CountrySelect';
 import fixedCalcultions from 'hooks/fixedCalculations';
 import normDist from 'utils/normDist'
 import { ALLUVIUM, AMOUNT_GOLD, FERRY, QTD_FERRY, PIT, YEARS_OF_MINING } from '../consts';
@@ -31,7 +31,7 @@ const lossQI =  (country_region, likeMining, typeValueLikeMining, valueLikeMinin
   } = general
   const { birthRate } = lossQI
 
-  const isColombia = country_region && country_region.country === countries_region[COLOMBIA].country
+  //const isColombia = country_region && country_region.country === countries_region[COLOMBIA].country
 
   // console.log('lossQI', 
   // methyladPercent_conservative,
@@ -160,23 +160,27 @@ const lossQI =  (country_region, likeMining, typeValueLikeMining, valueLikeMinin
 
   const porcentNascidosVivosPerdaQIAcimaDe2Pts = 1 - disnorm10
 
-  const porcentNascidosVivosPerdaQIAcimaDe2PtsValue = Number(porcentNascidosVivosPerdaQIAcimaDe2Pts.toString().replace('e-8', ''));
+  //const porcentNascidosVivosPerdaQIAcimaDe2PtsValue = Number(porcentNascidosVivosPerdaQIAcimaDe2Pts.toString().replace('e-8', ''));
   
 
   let porcentNascidosVivosPerdaQIAcimaDe2PtsFinal
 
-  if(isColombia){
+  //if(isColombia){
 
-    porcentNascidosVivosPerdaQIAcimaDe2PtsFinal = porcentNascidosVivosPerdaQIAcimaDe2PtsValue < 0.01 ? porcentNascidosVivosPerdaQIAcimaDe2PtsValue : 0.01;
+    porcentNascidosVivosPerdaQIAcimaDe2PtsFinal = porcentNascidosVivosPerdaQIAcimaDe2Pts < 0.01 ? 0.01 : porcentNascidosVivosPerdaQIAcimaDe2Pts;
 
-    //console.log('porcentNascidosVivosPerdaQIAcimaDe2PtsFinal', porcentNascidosVivosPerdaQIAcimaDe2PtsFinal)
+    const porcentNascidosVivosPerdaQIAcimaDe2PtsFinal2 = porcentNascidosVivosPerdaQIAcimaDe2PtsFinal > 1.00 ? 1.00 : porcentNascidosVivosPerdaQIAcimaDe2PtsFinal;
+    
+    console.log('Colombia', porcentNascidosVivosPerdaQIAcimaDe2PtsFinal2)
+   
+ // }else{
 
-  }else{
+    //porcentNascidosVivosPerdaQIAcimaDe2PtsFinal = porcentNascidosVivosPerdaQIAcimaDe2Pts
+   // console.log('Demais paises', porcentNascidosVivosPerdaQIAcimaDe2PtsFinal)
+    
+  //}
 
-    porcentNascidosVivosPerdaQIAcimaDe2PtsFinal = porcentNascidosVivosPerdaQIAcimaDe2PtsValue
-  }
-
-
+   
   const distNorm0ate2 = ((1 - disnorm0) - (1 - disnorm2)) * 1000 * 0.0005;
   const distNorm2ate4 = ((1 - disnorm2) - (1 - disnorm4)) * 1000 * 0.0022;
   const distNorm4ate6 = ((1 - disnorm4) - (1 - disnorm6)) * 1000 * 0.0034;
@@ -222,7 +226,7 @@ distNorm28ate30 + distNorm30ate32 + distNorm32ate34 + distNorm34ate36 + distNorm
 
   return {
     concentrationMediaMercuryHair,
-    porcentNascidosVivosPerdaQIAcimaDe2Pts : porcentNascidosVivosPerdaQIAcimaDe2PtsFinal, //porcentNascidosVivosPerdaQIAcimaDe2PtsValue,
+    porcentNascidosVivosPerdaQIAcimaDe2Pts : porcentNascidosVivosPerdaQIAcimaDe2PtsFinal2, //porcentNascidosVivosPerdaQIAcimaDe2PtsValue,
     value: toLossQIFetuses
   } 
   
